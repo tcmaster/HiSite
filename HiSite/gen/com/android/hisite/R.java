@@ -21,13 +21,52 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int arrow_down=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int main_home=0x7f020002;
+        public static final int main_home_n=0x7f020003;
+        public static final int main_home_s=0x7f020004;
+        public static final int main_invest_list=0x7f020005;
+        public static final int main_investlist_n=0x7f020006;
+        public static final int main_investlist_s=0x7f020007;
+        public static final int main_more=0x7f020008;
+        public static final int main_more_list_radius=0x7f020009;
+        public static final int main_more_n=0x7f02000a;
+        public static final int main_more_s=0x7f02000b;
+        public static final int main_more_titleimage=0x7f02000c;
+        public static final int main_more_titleimage_bottom=0x7f02000d;
+        public static final int main_myaccount=0x7f02000e;
+        public static final int main_myaccount_n=0x7f02000f;
+        public static final int main_myaccount_s=0x7f020010;
+        public static final int main_rb_bg=0x7f020011;
+        public static final int main_tab_btn_bg=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f08000f;
+        public static final int radio_group=0x7f080001;
+        public static final int rb_account=0x7f080004;
+        public static final int rb_investlist=0x7f080003;
+        public static final int rb_main=0x7f080002;
+        public static final int rb_more=0x7f080005;
+        public static final int tabcontent=0x7f080000;
+        public static final int xlistview_footer_content=0x7f080006;
+        public static final int xlistview_footer_hint_textview=0x7f080007;
+        public static final int xlistview_footer_progressbar=0x7f080008;
+        public static final int xlistview_header_arrow=0x7f08000d;
+        public static final int xlistview_header_content=0x7f080009;
+        public static final int xlistview_header_hint_textview=0x7f08000b;
+        public static final int xlistview_header_progressbar=0x7f08000e;
+        public static final int xlistview_header_text=0x7f08000a;
+        public static final int xlistview_header_time=0x7f08000c;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int fragment_hi_live=0x7f030001;
+        public static final int fragment_myaccount=0x7f030002;
+        public static final int fragment_post_events=0x7f030003;
+        public static final int fragment_tonight_eight=0x7f030004;
+        public static final int xlistview_footer=0x7f030005;
+        public static final int xlistview_header=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -64,5 +103,8 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        /**  首页下方四个单选按钮组 
+         */
+        public static final int main_tab_bottom=0x7f060002;
     }
 }

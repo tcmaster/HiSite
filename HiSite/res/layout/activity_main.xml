@@ -1,16 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/tabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_gravity="bottom"
+        android:background="@drawable/main_rb_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-</RelativeLayout>
+        <RadioButton
+            android:id="@+id/rb_main"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_home"
+            android:tag="0"
+            android:text="8点" />
+
+        <RadioButton
+            android:id="@+id/rb_investlist"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_invest_list"
+            android:tag="1"
+            android:text="Hi现场" />
+
+        <RadioButton
+            android:id="@+id/rb_account"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_myaccount"
+            android:tag="2"
+            android:text="发活动" />
+
+        <RadioButton
+            android:id="@+id/rb_more"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_more"
+            android:paddingTop="15dip"
+            android:tag="3"
+            android:text="我" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -16,5 +16,21 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+    <!-- 首页下方四个单选按钮组 -->
+    <style name="main_tab_bottom">
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center|bottom</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@drawable/main_tab_btn_bg</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">1dp</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
 </resources>
