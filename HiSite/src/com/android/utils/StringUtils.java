@@ -14,6 +14,17 @@ import java.util.Locale;
 public class StringUtils {
 
 	/**
+	 * @Description:判断是否为空
+	 */
+	public static boolean isNullOrEmpty(String text) {
+		if (text == null || text.trim().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
 	 * 获取更新的时间
 	 * 
 	 * @param dateStr

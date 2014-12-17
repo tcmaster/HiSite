@@ -8,7 +8,20 @@
 package com.android.hisite;
 
 public final class R {
+    public static final class anim {
+        public static final int push_bottom_in=0x7f040000;
+        public static final int push_bottom_out=0x7f040001;
+        public static final int push_left_in=0x7f040002;
+        public static final int push_left_out=0x7f040003;
+        public static final int push_right_in=0x7f040004;
+        public static final int push_right_out=0x7f040005;
+    }
     public static final class attr {
+    }
+    public static final class color {
+        public static final int black=0x7f050001;
+        public static final int gray=0x7f050002;
+        public static final int white=0x7f050000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -17,8 +30,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int arrow_down=0x7f020000;
@@ -40,24 +53,26 @@ public final class R {
         public static final int main_myaccount_s=0x7f020010;
         public static final int main_rb_bg=0x7f020011;
         public static final int main_tab_btn_bg=0x7f020012;
+        public static final int toast_border=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000f;
-        public static final int radio_group=0x7f080001;
-        public static final int rb_account=0x7f080004;
-        public static final int rb_investlist=0x7f080003;
-        public static final int rb_main=0x7f080002;
-        public static final int rb_more=0x7f080005;
-        public static final int tabcontent=0x7f080000;
-        public static final int xlistview_footer_content=0x7f080006;
-        public static final int xlistview_footer_hint_textview=0x7f080007;
-        public static final int xlistview_footer_progressbar=0x7f080008;
-        public static final int xlistview_header_arrow=0x7f08000d;
-        public static final int xlistview_header_content=0x7f080009;
-        public static final int xlistview_header_hint_textview=0x7f08000b;
-        public static final int xlistview_header_progressbar=0x7f08000e;
-        public static final int xlistview_header_text=0x7f08000a;
-        public static final int xlistview_header_time=0x7f08000c;
+        public static final int action_settings=0x7f0a0010;
+        public static final int radio_group=0x7f0a0001;
+        public static final int rb_account=0x7f0a0004;
+        public static final int rb_investlist=0x7f0a0003;
+        public static final int rb_main=0x7f0a0002;
+        public static final int rb_more=0x7f0a0005;
+        public static final int tabcontent=0x7f0a0000;
+        public static final int tv_toast=0x7f0a0006;
+        public static final int xlistview_footer_content=0x7f0a0007;
+        public static final int xlistview_footer_hint_textview=0x7f0a0008;
+        public static final int xlistview_footer_progressbar=0x7f0a0009;
+        public static final int xlistview_header_arrow=0x7f0a000e;
+        public static final int xlistview_header_content=0x7f0a000a;
+        public static final int xlistview_header_hint_textview=0x7f0a000c;
+        public static final int xlistview_header_progressbar=0x7f0a000f;
+        public static final int xlistview_header_text=0x7f0a000b;
+        public static final int xlistview_header_time=0x7f0a000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -65,16 +80,17 @@ public final class R {
         public static final int fragment_myaccount=0x7f030002;
         public static final int fragment_post_events=0x7f030003;
         public static final int fragment_tonight_eight=0x7f030004;
-        public static final int xlistview_footer=0x7f030005;
-        public static final int xlistview_header=0x7f030006;
+        public static final int toast=0x7f030005;
+        public static final int xlistview_footer=0x7f030006;
+        public static final int xlistview_header=0x7f030007;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int action_settings=0x7f070001;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070002;
     }
     public static final class style {
         /** 
@@ -98,13 +114,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f080001;
         /**  首页下方四个单选按钮组 
          */
-        public static final int main_tab_bottom=0x7f060002;
+        public static final int main_tab_bottom=0x7f080002;
     }
 }
