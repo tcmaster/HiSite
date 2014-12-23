@@ -1,4 +1,4 @@
-package activity;
+package com.android.hisite.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
