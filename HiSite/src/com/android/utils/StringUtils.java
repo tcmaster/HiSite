@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 字符串处理工具
@@ -91,5 +93,20 @@ public class StringUtils {
 		public static final SimpleDateFormat DATA_FORMAT_CHINES_YYMMDD = new SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault());
 		/** 格式：yyyy-MM-dd */
 		public static final SimpleDateFormat DATA_FORMAT_ENYYMMDD = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+	}
+	/**
+	 * 判断某个字符串是否匹配某个正则表达式
+	 * 
+	 * @param str
+	 *            要匹配的字符串
+	 * @param reg
+	 *            正则
+	 * @return 如果匹配则返回true，否则返回false
+	 * @author LiXiaoSong
+	 */
+	public static boolean matchRegular(String str, String reg) {
+		Pattern pattern = Pattern.compile(reg);
+		Matcher matcher = pattern.matcher(str);
+		return matcher.matches();
 	}
 }
