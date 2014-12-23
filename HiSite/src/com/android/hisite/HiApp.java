@@ -1,5 +1,8 @@
 package com.android.hisite;
 
+import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+
 import android.app.Application;
 import android.content.Context;
 import android.view.Gravity;
@@ -12,6 +15,10 @@ public class HiApp extends Application {
 
 	/** 保存当前Application实例，用于方便调用当前应用的全局变量 */
 	private static HiApp mApp;
+	/** BitmapUtils全局共用实例 */
+	public BitmapUtils bitmapUtils;
+	/** BitmapUtils管理配置类 */
+	public BitmapDisplayConfig config;
 
 	public HiApp() {
 		/* 当前应用对像初始化 */
@@ -24,11 +31,14 @@ public class HiApp extends Application {
 	public static HiApp getSelf() {
 		return mApp;
 	}
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		toastMgr.builder.init(mApp);
+		bitmapUtils = new BitmapUtils(mApp);
+		config = new BitmapDisplayConfig();
+
 	}
 
 	public enum toastMgr {
