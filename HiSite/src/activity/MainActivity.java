@@ -1,4 +1,4 @@
-package com.android.hisite;
+package activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.android.hisite.BaseActivity;
+import com.android.hisite.R;
+import com.android.hisite.R.id;
+import com.android.hisite.R.layout;
 import com.android.hisite.fragment.HiLiveFragment;
 import com.android.hisite.fragment.MyAccountFragment;
 import com.android.hisite.fragment.PostEventsFragment;
