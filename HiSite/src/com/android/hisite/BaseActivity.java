@@ -1,8 +1,11 @@
 package com.android.hisite;
 
+import com.lidroid.xutils.ViewUtils;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 public class BaseActivity extends FragmentActivity {
@@ -14,6 +17,12 @@ public class BaseActivity extends FragmentActivity {
 	public BaseActivity() {
 		mContext = this;
 	}
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		ViewUtils.inject(this);
+	}
+	
 	/**
 	 * 启动activity带有动画切换
 	 * 
