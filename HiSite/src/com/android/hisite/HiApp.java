@@ -9,11 +9,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
 
 public class HiApp extends Application {
 
 	/** 保存当前Application实例，用于方便调用当前应用的全局变量 */
 	private static HiApp mApp;
+	/** BitmapUtils全局共用实例 */
+	public BitmapUtils bitmapUtils;
+	/** BitmapUtils管理配置类 */
+	public BitmapDisplayConfig config;
 
 	public HiApp() {
 		/* 当前应用对像初始化 */
@@ -33,6 +39,8 @@ public class HiApp extends Application {
 		toastMgr.builder.init(mApp);
 		// 初始化百度地图
 		SDKInitializer.initialize(getApplicationContext());
+		bitmapUtils = new BitmapUtils(mApp);
+		config = new BitmapDisplayConfig();
 	}
 
 	public enum toastMgr {

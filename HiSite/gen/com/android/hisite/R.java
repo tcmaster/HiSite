@@ -56,23 +56,30 @@ public final class R {
         public static final int toast_border=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0010;
+        public static final int action_settings=0x7f0a0017;
+        public static final int arrow=0x7f0a0008;
+        public static final int homelayout=0x7f0a0007;
+        public static final int leftText=0x7f0a000a;
+        public static final int logo=0x7f0a0009;
         public static final int radio_group=0x7f0a0001;
         public static final int rb_account=0x7f0a0004;
         public static final int rb_investlist=0x7f0a0003;
         public static final int rb_main=0x7f0a0002;
         public static final int rb_more=0x7f0a0005;
+        public static final int rightText=0x7f0a000c;
         public static final int tabcontent=0x7f0a0000;
-        public static final int tv_toast=0x7f0a0006;
-        public static final int xlistview_footer_content=0x7f0a0007;
-        public static final int xlistview_footer_hint_textview=0x7f0a0008;
-        public static final int xlistview_footer_progressbar=0x7f0a0009;
-        public static final int xlistview_header_arrow=0x7f0a000e;
-        public static final int xlistview_header_content=0x7f0a000a;
-        public static final int xlistview_header_hint_textview=0x7f0a000c;
-        public static final int xlistview_header_progressbar=0x7f0a000f;
-        public static final int xlistview_header_text=0x7f0a000b;
-        public static final int xlistview_header_time=0x7f0a000d;
+        public static final int title=0x7f0a000b;
+        public static final int tv_toast=0x7f0a000d;
+        public static final int vp_header_events=0x7f0a0006;
+        public static final int xlistview_footer_content=0x7f0a000e;
+        public static final int xlistview_footer_hint_textview=0x7f0a000f;
+        public static final int xlistview_footer_progressbar=0x7f0a0010;
+        public static final int xlistview_header_arrow=0x7f0a0015;
+        public static final int xlistview_header_content=0x7f0a0011;
+        public static final int xlistview_header_hint_textview=0x7f0a0013;
+        public static final int xlistview_header_progressbar=0x7f0a0016;
+        public static final int xlistview_header_text=0x7f0a0012;
+        public static final int xlistview_header_time=0x7f0a0014;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -80,9 +87,10 @@ public final class R {
         public static final int fragment_myaccount=0x7f030002;
         public static final int fragment_post_events=0x7f030003;
         public static final int fragment_tonight_eight=0x7f030004;
-        public static final int toast=0x7f030005;
-        public static final int xlistview_footer=0x7f030006;
-        public static final int xlistview_header=0x7f030007;
+        public static final int layout_actionbar=0x7f030005;
+        public static final int toast=0x7f030006;
+        public static final int xlistview_footer=0x7f030007;
+        public static final int xlistview_header=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f090000;
