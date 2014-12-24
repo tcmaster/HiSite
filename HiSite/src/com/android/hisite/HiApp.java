@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.mapapi.SDKInitializer;
+
 public class HiApp extends Application {
 
 	/** 保存当前Application实例，用于方便调用当前应用的全局变量 */
@@ -24,11 +26,13 @@ public class HiApp extends Application {
 	public static HiApp getSelf() {
 		return mApp;
 	}
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		toastMgr.builder.init(mApp);
+		// 初始化百度地图
+		SDKInitializer.initialize(getApplicationContext());
 	}
 
 	public enum toastMgr {
