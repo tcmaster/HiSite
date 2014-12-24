@@ -7,7 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
@@ -23,18 +25,24 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @author:LiuZhao
  * @Date:2014年12月15日
  */
-public class PostEventsFragment extends Fragment {
+public class PostEventsFragment extends Fragment implements OnClickListener {
 
 	/** 主布局 */
 	private View rootView;
 	/** 滑动的图片viewpager控件 */
 	@ViewInject(R.id.vp_header_events)
 	private ViewPager viewPager;
+	/** 登录按钮 */
+	@ViewInject(R.id.btn_shop_login)
+	private Button btn_shop_login;
+	/** 注册按钮 */
+	@ViewInject(R.id.btn_shop_register)
+	private Button btn_shop_register;
 
 	/** 创建一个静态的实例 */
-	public static final TonightEightFragment newInstance() {
-		TonightEightFragment saFragment = new TonightEightFragment();
-		return saFragment;
+	public static PostEventsFragment newInstance() {
+		PostEventsFragment peFragment = new PostEventsFragment();
+		return peFragment;
 	}
 
 	@Override
@@ -46,8 +54,13 @@ public class PostEventsFragment extends Fragment {
 		}
 		rootView = inflater.inflate(R.layout.fragment_post_events, container, false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
-
+		initView();
 		return rootView;
+	}
+
+	private void initView() {
+		btn_shop_login.setOnClickListener(this);
+		btn_shop_register.setOnClickListener(this);
 	}
 
 	/**
@@ -75,5 +88,20 @@ public class PostEventsFragment extends Fragment {
 		}
 
 		return iv;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_shop_login:
+
+			break;
+		case R.id.btn_shop_register:
+
+			break;
+		default:
+			break;
+		}
+
 	}
 }
