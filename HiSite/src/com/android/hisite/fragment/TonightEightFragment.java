@@ -50,7 +50,7 @@ public class TonightEightFragment extends Fragment {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_hi_live, container, false);
+		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container, false);
 		ViewUtils.inject(this, rootView);
 		return rootView;
 	}
