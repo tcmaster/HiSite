@@ -18,6 +18,7 @@ import android.widget.ListView;
 public class HiLiveFragment extends Fragment{
 	private View rootView;
 	private ListView lv_hiLive;
+	
 
 	/** 创建一个静态的实例 */
 	public static final HiLiveFragment newInstance() {
