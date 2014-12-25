@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 
 /**
@@ -16,11 +17,12 @@ import android.view.ViewGroup;
  */
 public class HiLiveFragment extends Fragment{
 	private View rootView;
+	private ListView lv_hiLive;
 
 	/** 创建一个静态的实例 */
-	public static final TonightEightFragment newInstance() {
-		TonightEightFragment saFragment = new TonightEightFragment();
-		return saFragment;
+	public static final HiLiveFragment newInstance() {
+		HiLiveFragment hiFragment = new HiLiveFragment();
+		return hiFragment;
 	}
 
 	@Override

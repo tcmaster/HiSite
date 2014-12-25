@@ -21,6 +21,7 @@ public final class R {
     public static final class color {
         public static final int black=0x7f050001;
         public static final int gray=0x7f050002;
+        public static final int line_gray=0x7f050003;
         public static final int white=0x7f050000;
     }
     public static final class dimen {
@@ -53,33 +54,67 @@ public final class R {
         public static final int main_myaccount_s=0x7f020010;
         public static final int main_rb_bg=0x7f020011;
         public static final int main_tab_btn_bg=0x7f020012;
-        public static final int toast_border=0x7f020013;
+        public static final int point_black=0x7f020013;
+        public static final int point_white=0x7f020014;
+        public static final int toast_border=0x7f020015;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0017;
-        public static final int arrow=0x7f0a0008;
-        public static final int homelayout=0x7f0a0007;
-        public static final int leftText=0x7f0a000a;
-        public static final int logo=0x7f0a0009;
+        public static final int action_settings=0x7f0a0037;
+        public static final int arrow=0x7f0a0028;
+        public static final int btn_shop_login=0x7f0a000c;
+        public static final int btn_shop_register=0x7f0a000d;
+        public static final int et_loginpwd=0x7f0a0009;
+        public static final int et_name=0x7f0a0008;
+        public static final int fl_top=0x7f0a000e;
+        public static final int homelayout=0x7f0a0027;
+        public static final int iv_apply=0x7f0a0024;
+        public static final int iv_bpic=0x7f0a0013;
+        public static final int iv_comment=0x7f0a0021;
+        public static final int iv_mplay=0x7f0a0026;
+        public static final int iv_win=0x7f0a001e;
+        public static final int leftText=0x7f0a002a;
+        public static final int ll_apply=0x7f0a0023;
+        public static final int ll_bottom=0x7f0a001c;
+        public static final int ll_comment=0x7f0a0020;
+        public static final int ll_point_container=0x7f0a0010;
+        public static final int ll_right=0x7f0a0014;
+        public static final int ll_top=0x7f0a0012;
+        public static final int ll_win=0x7f0a001d;
+        public static final int logo=0x7f0a0029;
+        public static final int lv_hiLive=0x7f0a0006;
+        public static final int lv_show_detail=0x7f0a0011;
         public static final int radio_group=0x7f0a0001;
         public static final int rb_account=0x7f0a0004;
         public static final int rb_investlist=0x7f0a0003;
         public static final int rb_main=0x7f0a0002;
         public static final int rb_more=0x7f0a0005;
-        public static final int rightText=0x7f0a000c;
+        public static final int rightText=0x7f0a002c;
         public static final int tabcontent=0x7f0a0000;
-        public static final int title=0x7f0a000b;
-        public static final int tv_toast=0x7f0a000d;
-        public static final int vp_header_events=0x7f0a0006;
-        public static final int xlistview_footer_content=0x7f0a000e;
-        public static final int xlistview_footer_hint_textview=0x7f0a000f;
-        public static final int xlistview_footer_progressbar=0x7f0a0010;
-        public static final int xlistview_header_arrow=0x7f0a0015;
-        public static final int xlistview_header_content=0x7f0a0011;
-        public static final int xlistview_header_hint_textview=0x7f0a0013;
-        public static final int xlistview_header_progressbar=0x7f0a0016;
-        public static final int xlistview_header_text=0x7f0a0012;
-        public static final int xlistview_header_time=0x7f0a0014;
+        public static final int title=0x7f0a002b;
+        public static final int tv_apply=0x7f0a0025;
+        public static final int tv_comment=0x7f0a0022;
+        public static final int tv_company=0x7f0a0017;
+        public static final int tv_count=0x7f0a0019;
+        public static final int tv_forgot_id=0x7f0a000a;
+        public static final int tv_forgot_pwd=0x7f0a000b;
+        public static final int tv_location=0x7f0a0016;
+        public static final int tv_prize=0x7f0a0018;
+        public static final int tv_redpacket=0x7f0a001a;
+        public static final int tv_signup_count=0x7f0a001b;
+        public static final int tv_title=0x7f0a0015;
+        public static final int tv_toast=0x7f0a002d;
+        public static final int tv_win=0x7f0a001f;
+        public static final int vp_header_events=0x7f0a0007;
+        public static final int vp_scan_img=0x7f0a000f;
+        public static final int xlistview_footer_content=0x7f0a002e;
+        public static final int xlistview_footer_hint_textview=0x7f0a002f;
+        public static final int xlistview_footer_progressbar=0x7f0a0030;
+        public static final int xlistview_header_arrow=0x7f0a0035;
+        public static final int xlistview_header_content=0x7f0a0031;
+        public static final int xlistview_header_hint_textview=0x7f0a0033;
+        public static final int xlistview_header_progressbar=0x7f0a0036;
+        public static final int xlistview_header_text=0x7f0a0032;
+        public static final int xlistview_header_time=0x7f0a0034;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -87,10 +122,14 @@ public final class R {
         public static final int fragment_myaccount=0x7f030002;
         public static final int fragment_post_events=0x7f030003;
         public static final int fragment_tonight_eight=0x7f030004;
-        public static final int layout_actionbar=0x7f030005;
-        public static final int toast=0x7f030006;
-        public static final int xlistview_footer=0x7f030007;
-        public static final int xlistview_header=0x7f030008;
+        public static final int hilive_listview_child_item=0x7f030005;
+        public static final int hilive_listview_item=0x7f030006;
+        public static final int item_home_lv=0x7f030007;
+        public static final int item_home_vp=0x7f030008;
+        public static final int layout_actionbar=0x7f030009;
+        public static final int toast=0x7f03000a;
+        public static final int xlistview_footer=0x7f03000b;
+        public static final int xlistview_header=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -127,8 +166,13 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int line_full=0x7f080007;
         /**  首页下方四个单选按钮组 
          */
         public static final int main_tab_bottom=0x7f080002;
+        public static final int match=0x7f080004;
+        public static final int match_height=0x7f080006;
+        public static final int match_width=0x7f080005;
+        public static final int wrap=0x7f080003;
     }
 }
