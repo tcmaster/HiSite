@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 主页图片轮播 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/iv_mplay"
+        style="@style/match"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+</LinearLayout>
