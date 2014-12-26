@@ -10,8 +10,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
-import com.android.hisite.R.id;
-import com.android.hisite.R.layout;
 import com.android.hisite.fragment.HiLiveFragment;
 import com.android.hisite.fragment.MyAccountFragment;
 import com.android.hisite.fragment.PostEventsFragment;

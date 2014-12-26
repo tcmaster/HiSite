@@ -18,8 +18,8 @@ public class MyAccountFragment extends Fragment {
 	private View rootView;
 
 	/** 创建一个静态的实例 */
-	public static final TonightEightFragment newInstance() {
-		TonightEightFragment saFragment = new TonightEightFragment();
+	public static final MyAccountFragment newInstance() {
+		MyAccountFragment saFragment = new MyAccountFragment();
 		return saFragment;
 	}
 

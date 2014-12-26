@@ -1,60 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 通用actionBar -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    style="@style/match"
     android:background="@color/white"
-    >
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
         android:id="@+id/homelayout"
+        style="@style/match_height"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
-        >
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/arrow"
+            style="@style/wrap"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/logo"
+            style="@style/wrap"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/leftText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_height"
+        android:layout_centerInParent="true"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_title_right"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textSize="12sp" />
+    </LinearLayout>
+	<LinearLayout
+        style="@style/match_height"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+    <TextView
+        android:id="@+id/rightText"
+        style="@style/wrap"
+        android:layout_marginRight="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/gray"
+        android:textSize="16sp" />
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
+        android:id="@+id/rightimg"
+        style="@style/wrap"
         android:contentDescription="@string/app_name"
-        android:id="@+id/arrow"
-        />
-    <ImageView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
-        android:contentDescription="@string/app_name"
-        android:id="@+id/logo"/>
-	<TextView
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:textSize="16sp"
-	    android:textColor="@color/gray"
-	    android:text="@string/app_name"
-	    android:id="@+id/leftText"
-	    />
-	</LinearLayout>
-	<TextView
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:textSize="18sp"
-	    android:textColor="@color/gray"
-	    android:text="@string/app_name"
-	    android:id="@+id/title"
-	    android:layout_centerInParent="true"
-	    />
-	<TextView
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:textSize="16sp"
-	    android:textColor="@color/gray"
-	    android:text="@string/app_name"
-	    android:layout_centerVertical="true"
-	    android:id="@+id/rightText"
-	    android:layout_alignParentRight="true"
-	    android:layout_marginRight="10dp"
-	    />
+        android:src="@drawable/ic_launcher" />
+
+    </LinearLayout>
 </RelativeLayout>

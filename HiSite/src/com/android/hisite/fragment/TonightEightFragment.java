@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
 import com.android.hisite.adapter.MainPageListViewAdapter;
 import com.android.hisite.adapter.MyPagerAdapter;
@@ -38,9 +41,11 @@ public class TonightEightFragment extends Fragment {
 	/** 内容列表 */
 	@ViewInject(R.id.lv_show_detail)
 	private XListView lv_item_container;
-	// ***************************变量成员***********************************//
+	// ***************************其他成员***********************************//
 	/** 测试数据 */
 	private List<String> data;
+	/** 本界面的activity */
+	private BaseActivity bA;
 
 	// ***************************生命周期***********************************//
 	@Override
@@ -56,9 +61,21 @@ public class TonightEightFragment extends Fragment {
 	}
 
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		this.bA = (BaseActivity) getActivity();
+	}
+
+	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initData();
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		initActionBar();
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	// ***************************子方法***********************************//
@@ -93,7 +110,18 @@ public class TonightEightFragment extends Fragment {
 	/** 创建一个静态的实例 */
 	public static final TonightEightFragment newInstance() {
 		TonightEightFragment saFragment = new TonightEightFragment();
+		saFragment.setHasOptionsMenu(true);
 		return saFragment;
+	}
+
+	private void initActionBar() {
+		bA.useCustomerActionBar();
+		bA.getLeftText().setVisibility(View.INVISIBLE);
+		bA.getArrow().setVisibility(View.INVISIBLE);
+		bA.getLogo().setVisibility(View.INVISIBLE);
+		bA.getActionTitle().setText("今晚8点");
+		bA.getTitleRight().setText("北京");
+		bA.getRightText().setVisibility(View.GONE);
 	}
 
 }
