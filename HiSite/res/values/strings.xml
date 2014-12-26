@@ -4,5 +4,7 @@
     <string name="app_name">HiSite</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+	<!-- 首页 -->
+	<string name="win">中奖</string>
+	<string name="signin">报名</string>
 </resources>

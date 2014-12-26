@@ -37,13 +37,14 @@ public class ForgetIDActivity extends BaseActivity {
 	/** 找回按钮 */
 	@ViewInject(R.id.btn_findback)
 	private Button btn_findback;
+
 	@OnClick(R.id.btn_findback)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_forgotid_main);
 		useCustomerActionBar();
-		title.setText("忘记密码");
+		// title.setText("忘记密码");
 
 		btn_findback.setOnClickListener(new OnClickListener() {
 
@@ -53,6 +54,7 @@ public class ForgetIDActivity extends BaseActivity {
 			}
 		});
 	}
+
 	private void dealData() {
 		String master_name = et_master_name.getText().toString();
 		String identity = et_identity.getText().toString();

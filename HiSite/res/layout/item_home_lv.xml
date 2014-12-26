@@ -114,7 +114,7 @@
             <TextView
                 android:id="@+id/tv_win"
                 style="@style/wrap"
-                android:text="@string/app_name"
+                android:text="@string/win"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -158,7 +158,7 @@
             <TextView
                 android:id="@+id/tv_apply"
                 style="@style/wrap"
-                android:text="@string/app_name"
+                android:text="@string/signin"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

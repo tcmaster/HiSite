@@ -20,9 +20,21 @@ public class BaseActivity extends FragmentActivity {
 	public ActionBar mActionBar;
 	// 自定义ActionBar相关
 	/** 左边文字 */
-	public TextView left, right, title;
-	public ImageView arrow, logo;
-	public LinearLayout backButton;
+	private TextView tv_left;
+	/** 右边文字 */
+	private TextView tv_right;
+	/** 标题文字 */
+	private TextView tv_title;
+	/** 左边箭头 */
+	private ImageView iv_arrow;
+	/** 左边logo */
+	private ImageView iv_logo;
+	/** 左边整体 */
+	private LinearLayout backButton;
+	/** 标题旁边的字 */
+	private TextView tv_title_right;
+	/** 右边图片 */
+	private ImageView iv_right;
 	/** 获取当前Activity的上下文对象 */
 	protected Context mContext;
 
@@ -95,23 +107,111 @@ public class BaseActivity extends FragmentActivity {
 	 * 要使用自定义actionBar，必须调用这个方法
 	 */
 	public void useCustomerActionBar() {
-		mActionBar = getActionBar();
-		mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-		mActionBar.setCustomView(R.layout.layout_actionbar);
-		mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		View view = mActionBar.getCustomView();
-		left = (TextView) view.findViewById(R.id.leftText);
-		right = (TextView) view.findViewById(R.id.rightText);
-		logo = (ImageView) view.findViewById(R.id.logo);
-		arrow = (ImageView) view.findViewById(R.id.arrow);
-		title = (TextView) view.findViewById(R.id.title);
-		backButton = (LinearLayout) view.findViewById(R.id.homelayout);
-		backButton.setOnClickListener(new OnClickListener() {
+		if (mActionBar == null) {
+			mActionBar = getActionBar();
+			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
+			mActionBar.setCustomView(R.layout.layout_actionbar);
+			mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			View view = mActionBar.getCustomView();
+			tv_left = (TextView) view.findViewById(R.id.leftText);
+			tv_right = (TextView) view.findViewById(R.id.rightText);
+			iv_logo = (ImageView) view.findViewById(R.id.logo);
+			iv_arrow = (ImageView) view.findViewById(R.id.arrow);
+			tv_title = (TextView) view.findViewById(R.id.tv_title);
+			tv_title_right = (TextView) view.findViewById(R.id.tv_title_right);
+			iv_right = (ImageView) view.findViewById(R.id.rightimg);
+			backButton = (LinearLayout) view.findViewById(R.id.homelayout);
+			backButton.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				BaseActivity.this.onBackPressed();
-			}
-		});
+				@Override
+				public void onClick(View v) {
+					BaseActivity.this.onBackPressed();
+				}
+			});
+		}
+	}
+
+	/**
+	 * @Description:得到actionBar左边的文字
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public TextView getLeftText() {
+		return tv_left;
+	}
+
+	/**
+	 * @Description:得到actionBar右边的文字
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public TextView getRightText() {
+		return tv_right;
+	}
+
+	/**
+	 * @Description:得到actionBar的logo
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public ImageView getLogo() {
+		return iv_logo;
+	}
+
+	/**
+	 * @Description:得到actionBar左边的箭头
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public ImageView getArrow() {
+		return iv_arrow;
+	}
+
+	/**
+	 * @Description:得到actionBar的标题
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public TextView getActionTitle() {
+		return tv_title;
+	}
+
+	/**
+	 * @Description:得到title右边的文字
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public TextView getTitleRight() {
+		return tv_title_right;
+	}
+
+	/**
+	 * @Description:得到actionBar右边的图片
+	 * @return
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2014-12-25
+	 */
+	public ImageView getImageRight() {
+		return iv_right;
 	}
 }
