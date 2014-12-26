@@ -4,5 +4,8 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="gray">#BEBEBE</color>
-	<color name="line_gray">#d2d2d2</color>
+    <color name="line_gray">#d2d2d2</color>
+    <color name="base_header_red">#df3031</color>
+    <color name="base_header_btnpressed_red">#df3031</color>
+
 </resources>

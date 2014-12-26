@@ -20,9 +20,9 @@ public class BaseActivity extends FragmentActivity {
 	public ActionBar mActionBar;
 	// 自定义ActionBar相关
 	/** 左边文字 */
-	private TextView left, right, title;
-	private ImageView arrow, logo;
-	private LinearLayout backButton;
+	public TextView left, right, title;
+	public ImageView arrow, logo;
+	public LinearLayout backButton;
 	/** 获取当前Activity的上下文对象 */
 	protected Context mContext;
 
