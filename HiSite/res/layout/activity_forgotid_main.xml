@@ -99,6 +99,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_password"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@color/white"
@@ -120,6 +121,29 @@
                 android:inputType="textPassword" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_shop_id"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I        D："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_shop_id"
+                style="@style/et_comm_style"
+                android:hint="请输入ID"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_findback"
             style="@style/ok_button_style"
@@ -127,5 +151,4 @@
             android:text="找        回" >
         </Button>
     </LinearLayout>
-
 </ScrollView>
