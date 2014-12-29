@@ -46,6 +46,7 @@ public class HiApp extends Application {
 		toastMgr.builder.init(mApp);
 		// 初始化百度地图
 		SDKInitializer.initialize(getApplicationContext());
+		initDeviceParams();
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 	}
