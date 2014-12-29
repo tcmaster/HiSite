@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.android.hisite.AppConstants;
 import com.android.hisite.BaseActivity;
@@ -16,11 +17,11 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * @Description:忘记ID页
+ * @Description:忘记ID页或密码页面
  * @author:LiuZhao
  * @Date:2014年12月25日
  */
-public class ForgetIDActivity extends BaseActivity {
+public class ForgetIDOrPwdActivity extends BaseActivity {
 
 	/** 商家名或者个人名 */
 	@ViewInject(R.id.et_master_name)
@@ -37,6 +38,20 @@ public class ForgetIDActivity extends BaseActivity {
 	/** 找回按钮 */
 	@ViewInject(R.id.btn_findback)
 	private Button btn_findback;
+	/** 密码 */
+	@ViewInject(R.id.ll_password)
+	private LinearLayout ll_password;
+	/** 密码 */
+	@ViewInject(R.id.et_password)
+	private EditText et_password;
+	/** id */
+	@ViewInject(R.id.ll_shop_id)
+	private LinearLayout ll_shop_id;
+	/** id */
+	@ViewInject(R.id.et_shop_id)
+	private EditText et_shop_id;
+	/** 0:id 1:密码 */
+	private int forgottype = 0;
 
 	@OnClick(R.id.btn_findback)
 	@Override
@@ -44,10 +59,14 @@ public class ForgetIDActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_forgotid_main);
 		useCustomerActionBar();
-		// title.setText("忘记密码");
+		forgottype = getIntent().getIntExtra("forgottype", 0);
+		if (forgottype == 0) {
+			ll_password.setVisibility(View.GONE);
+		} else {
+			ll_shop_id.setVisibility(View.GONE);
+		}
 
 		btn_findback.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				dealData();

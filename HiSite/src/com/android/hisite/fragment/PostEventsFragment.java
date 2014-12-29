@@ -1,6 +1,7 @@
 package com.android.hisite.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,9 +12,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
 import com.android.hisite.R;
+import com.android.hisite.activity.ForgetIDOrPwdActivity;
 import com.android.utils.StringUtils;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -38,6 +41,12 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 	/** 注册按钮 */
 	@ViewInject(R.id.btn_shop_register)
 	private Button btn_shop_register;
+	/** 忘记id */
+	@ViewInject(R.id.tv_forgot_id)
+	private TextView tv_forgot_id;
+	/** 忘记密码 */
+	@ViewInject(R.id.tv_forgot_pwd)
+	private TextView tv_forgot_pwd;
 
 	/** 创建一个静态的实例 */
 	public static PostEventsFragment newInstance() {
@@ -46,13 +55,15 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		/* 主布局初始化 */
 		if (rootView != null) {
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_post_events, container, false);
+		rootView = inflater.inflate(R.layout.fragment_post_events, container,
+				false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
 		initView();
 		return rootView;
@@ -70,11 +81,16 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 	 * @param imgResId
 	 * @return
 	 */
-	private ImageView getPageView(final Context context, int imgResId, String imgUrl) {
+	private ImageView getPageView(final Context context, int imgResId,
+			String imgUrl) {
 
 		DisplayMetrics dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		LogUtils.i("width=" + dm.widthPixels + "---" + getActivity().getWindowManager().getDefaultDisplay().getWidth());
+		LogUtils.i("width="
+				+ dm.widthPixels
+				+ "---"
+				+ getActivity().getWindowManager().getDefaultDisplay()
+						.getWidth());
 		imgUrl = "http://bbs.lidroid.com/static/image/common/logo.png";
 		ImageView iv = new ImageView(context);
 		iv.setScaleType(ScaleType.FIT_XY);
@@ -92,6 +108,7 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		Intent intent = null;
 		switch (v.getId()) {
 		case R.id.btn_shop_login:
 
@@ -99,9 +116,17 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 		case R.id.btn_shop_register:
 
 			break;
+		case R.id.tv_forgot_id:
+			intent = new Intent(getActivity(), ForgetIDOrPwdActivity.class);
+			intent.putExtra("forgottype", 0);
+			break;
+		case R.id.tv_forgot_pwd:
+			intent = new Intent(getActivity(), ForgetIDOrPwdActivity.class);
+			intent.putExtra("forgottype", 1);
+			break;
 		default:
 			break;
 		}
-
+		startActivity(intent);
 	}
 }

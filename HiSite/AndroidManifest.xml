@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.hisite.activity.ForgetIDActivity"
+            android:name="com.android.hisite.activity.ForgetIDOrPwdActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
