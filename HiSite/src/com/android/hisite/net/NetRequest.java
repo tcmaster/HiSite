@@ -3,6 +3,7 @@
  */
 package com.android.hisite.net;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -67,25 +68,29 @@ public class NetRequest {
 	}
 
 	/**
-	 * @Description: 进行一次GET请求
-	 * @see:
-	 * @since:
+	 * @Description: 进行一次GET请求(无需传method方法)
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static void doGetRequest() {
-
+	@SuppressWarnings("unchecked")
+	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
+		param.put("method", GET_METHOD);
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list.add(param);
+		doRequest(list, callback);
 	}
 
 	/**
 	 * @Description: 进行一次POST请求
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static void doPostRequest() {
-
+	@SuppressWarnings("unchecked")
+	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
+		param.put("method", POST_METHOD);
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list.add(param);
+		doRequest(list, callback);
 	}
 
 	public abstract class RequestResult<T> extends RequestCallBack<String> {
