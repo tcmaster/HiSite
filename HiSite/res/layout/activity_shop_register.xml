@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/match"
     android:background="@color/white"
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/match_width"
         android:orientation="vertical"
         android:paddingTop="20dp" >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="请输入手机号"
+            android:text="@string/phone"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -33,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请输入手机号"
+                android:hint="@string/input_phone"
                 android:inputType="phone"
                 android:maxLength="11"
                 android:textSize="16sp" />
@@ -53,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请输入验证码"
+                android:hint="@string/input_code"
                 android:inputType="number"
                 android:textSize="16sp" />
 
@@ -64,7 +61,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/setting_btn_selector"
                 android:padding="5dp"
-                android:text="获取验证码"
+                android:text="@string/get_code"
                 android:textColor="@drawable/setting_text_selector"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -74,7 +71,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="请输入密码"
+            android:text="@string/input_password"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -91,7 +88,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="6-20个字符"
+                android:hint="@string/input_wordcount"
                 android:inputType="number"
                 android:textSize="16sp" />
 
@@ -107,7 +104,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="再次确认密码"
+            android:text="@string/pwd_again"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -124,7 +121,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="6-20个字符"
+                android:hint="@string/input_wordcount"
                 android:inputType="number"
                 android:textSize="16sp" />
 
@@ -139,7 +136,7 @@
             android:id="@+id/btn_register_ok"
             style="@style/ok_button_style"
             android:layout_marginTop="30dp"
-            android:text="确认" />
+            android:text="@string/sure" />
     </LinearLayout>
 
 </ScrollView>
