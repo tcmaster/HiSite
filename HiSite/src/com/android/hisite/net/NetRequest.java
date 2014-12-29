@@ -3,6 +3,7 @@
  */
 package com.android.hisite.net;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +50,8 @@ public class NetRequest {
 			Set<Map.Entry<String, String>> entry = param.entrySet();
 			Iterator<Map.Entry<String, String>> it = entry.iterator();
 			RequestParams rP = new RequestParams("utf-8");
+			// 为各个参数添加必要头部
+			addHeader(rP);
 			// 这里需要增加若干基本参数
 			while (it.hasNext()) {
 				Map.Entry<String, String> kv = it.next();
@@ -64,14 +67,6 @@ public class NetRequest {
 					continue;
 				}
 				rP.addBodyParameter(kv.getKey(), kv.getValue());
-				// 为各个参数添加必要头部
-				rP.addBodyParameter("version", AppConstants.version);
-				rP.addBodyParameter("device_type", AppConstants.device_type);
-				rP.addBodyParameter("imei", AppConstants.imei);
-				rP.addBodyParameter("dpi", AppConstants.dpi);
-				rP.addBodyParameter("os_version", AppConstants.os_version);
-				rP.addBodyParameter("phone_model", AppConstants.phone_model);
-				rP.addBodyParameter("auth_code", AppConstants.auth_code);
 
 			}
 			httpUtils.send(method, requestUrl, rP, callback);
@@ -104,6 +99,43 @@ public class NetRequest {
 		doRequest(list, callback);
 	}
 
+	/**
+	 * 
+	 * @Description: 上传文件到服务器(无需传方法类型)
+	 * @param param
+	 *            其余参数，包括url
+	 * @param callback
+	 *            回调方法
+	 * @param fN
+	 *            上传文件的参数
+	 * @param file
+	 *            上传的文件
+	 * @author:LiXiaoSong
+	 * @copyright @HiSite
+	 * @Date:2014-12-29
+	 */
+	public static <T> void postImageToServer(Map<String, String> param, RequestResult<T> callback, String fN, File file) {
+		HttpUtils httpUtils = new HttpUtils();
+		httpUtils.configTimeout(5000);
+		HttpMethod method = null;
+		String requestUrl = "";
+		Set<Map.Entry<String, String>> entry = param.entrySet();
+		Iterator<Map.Entry<String, String>> it = entry.iterator();
+		RequestParams rP = new RequestParams("utf-8");
+		addHeader(rP);
+		// 这里需要增加若干基本参数
+		while (it.hasNext()) {
+			Map.Entry<String, String> kv = it.next();
+			if (kv.getKey().equals("requesUrl")) {
+				requestUrl = kv.getValue();
+				continue;
+			}
+			rP.addBodyParameter(kv.getKey(), kv.getValue());
+		}
+		rP.addBodyParameter(fN, file);
+		httpUtils.send(HttpMethod.POST, requestUrl, callback);
+	}
+
 	public abstract class RequestResult<T> extends RequestCallBack<String> {
 
 		private Class<T> clazz;
@@ -121,4 +153,13 @@ public class NetRequest {
 		public abstract void getData(T t);
 	}
 
+	private static void addHeader(RequestParams rP) {
+		rP.addBodyParameter("version", AppConstants.version);
+		rP.addBodyParameter("device_type", AppConstants.device_type);
+		rP.addBodyParameter("imei", AppConstants.imei);
+		rP.addBodyParameter("dpi", AppConstants.dpi);
+		rP.addBodyParameter("os_version", AppConstants.os_version);
+		rP.addBodyParameter("phone_model", AppConstants.phone_model);
+		rP.addBodyParameter("auth_code", AppConstants.auth_code);
+	}
 }
