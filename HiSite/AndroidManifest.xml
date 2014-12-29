@@ -60,7 +60,13 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
-
+        <!-- 商品详情 -->
+		<activity
+		    android:name="com.android.hisite.activity.CommodityActivity"
+		    android:configChanges="keyboardHidden|orientation"
+		    android:screenOrientation="portrait"
+		    android:launchMode="singleTop"
+		    />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

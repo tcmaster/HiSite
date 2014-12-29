@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -17,6 +19,7 @@ import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
 import com.android.hisite.adapter.MainPageListViewAdapter;
 import com.android.hisite.adapter.MyPagerAdapter;
+import com.android.hisite.function.CirculateFunction;
 import com.android.view.PointLinearlayout;
 import com.android.view.XListView;
 import com.lidroid.xutils.ViewUtils;
@@ -46,6 +49,8 @@ public class TonightEightFragment extends Fragment {
 	private List<String> data;
 	/** 本界面的activity */
 	private BaseActivity bA;
+	/** vp轮播功能 */
+	private CirculateFunction cFunction;
 
 	// ***************************生命周期***********************************//
 	@Override
@@ -78,6 +83,37 @@ public class TonightEightFragment extends Fragment {
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
+	@Override
+	public void onDestroy() {
+		if (cFunction != null)
+			cFunction.stop();// 结束轮播
+		super.onDestroy();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.support.v4.app.Fragment#onResume()
+	 */
+	@Override
+	public void onStart() {
+		if (cFunction != null)
+			cFunction.resume();
+		super.onResume();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.support.v4.app.Fragment#onStop()
+	 */
+	@Override
+	public void onStop() {
+		if (cFunction != null)
+			cFunction.pause();
+		super.onStop();
+	}
+
 	// ***************************子方法***********************************//
 	private void initData() {
 		data = new ArrayList<String>();
@@ -104,6 +140,15 @@ public class TonightEightFragment extends Fragment {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
+		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(), 5, new Handler() {
+
+			@Override
+			public void handleMessage(Message msg) {
+				vp_show_img.setCurrentItem(msg.what);
+				super.handleMessage(msg);
+			}
+		});
+		cFunction.start();// 开始轮播
 		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), data));
 	}
 

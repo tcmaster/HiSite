@@ -72,7 +72,8 @@
         android:id="@+id/rightimg"
         style="@style/wrap"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:scaleType="fitXY" />
 
     </LinearLayout>
 </RelativeLayout>
