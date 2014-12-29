@@ -153,3 +153,135 @@
     </LinearLayout>
 
 </ScrollView>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名    称："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_master_name"
+                style="@style/et_comm_style"
+                android:hint="请输入企业全称或个人全名"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="证件号："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_identity"
+                style="@style/et_comm_style"
+                android:hint="请输入执照或身份证号"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="电    话："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_phonenumber"
+                style="@style/et_comm_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="请输入电话号码"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邮    箱："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                style="@style/et_comm_style"
+                android:hint="请输入邮箱地址" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密    码："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/et_comm_style"
+                android:hint="请输入密码"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_findback"
+            style="@style/ok_button_style"
+            android:layout_marginTop="20dp"
+            android:text="找        回" >
+        </Button>
+    </LinearLayout>
+
+</ScrollView>

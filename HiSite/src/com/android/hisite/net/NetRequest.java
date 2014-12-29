@@ -3,11 +3,14 @@
  */
 package com.android.hisite.net;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.android.hisite.AppConstants;
+import com.android.utils.JsonUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -61,31 +64,44 @@ public class NetRequest {
 					continue;
 				}
 				rP.addBodyParameter(kv.getKey(), kv.getValue());
+				// 为各个参数添加必要头部
+				rP.addBodyParameter("version", AppConstants.version);
+				rP.addBodyParameter("device_type", AppConstants.device_type);
+				rP.addBodyParameter("imei", AppConstants.imei);
+				rP.addBodyParameter("dpi", AppConstants.dpi);
+				rP.addBodyParameter("os_version", AppConstants.os_version);
+				rP.addBodyParameter("phone_model", AppConstants.phone_model);
+				rP.addBodyParameter("auth_code", AppConstants.auth_code);
+
 			}
 			httpUtils.send(method, requestUrl, rP, callback);
 		}
 	}
 
 	/**
-	 * @Description: 进行一次GET请求
-	 * @see:
-	 * @since:
+	 * @Description: 进行一次GET请求(无需传method方法)
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static void doGetRequest() {
-
+	@SuppressWarnings("unchecked")
+	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
+		param.put("method", GET_METHOD);
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list.add(param);
+		doRequest(list, callback);
 	}
 
 	/**
 	 * @Description: 进行一次POST请求
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static void doPostRequest() {
-
+	@SuppressWarnings("unchecked")
+	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
+		param.put("method", POST_METHOD);
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list.add(param);
+		doRequest(list, callback);
 	}
 
 	public abstract class RequestResult<T> extends RequestCallBack<String> {
@@ -98,17 +114,8 @@ public class NetRequest {
 
 		@Override
 		public void onSuccess(ResponseInfo<String> arg0) {
-			// 这里使用json解析工具进行解析
-			T t;
-			try {
-				t = clazz.newInstance();
-				getData(t);
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-
+			T t = JsonUtils.parseJsonStr(arg0.result, clazz);// 解析好需要的实体
+			getData(t);
 		}
 
 		public abstract void getData(T t);
