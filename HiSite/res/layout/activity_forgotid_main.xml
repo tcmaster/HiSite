@@ -21,13 +21,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="名    称："
+                android:text="@string/name"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_master_name"
                 style="@style/et_comm_style"
-                android:hint="请输入企业全称或个人全名"
+                android:hint="@string/input_personname"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -43,13 +43,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="证件号："
+                android:text="@string/identity"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_identity"
                 style="@style/et_comm_style"
-                android:hint="请输入执照或身份证号"
+                android:hint="@string/input_identity"
                 android:inputType="number" />
         </LinearLayout>
 
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="电    话："
+                android:text="@string/phone"
                 android:textSize="16sp" />
 
             <EditText
@@ -73,7 +73,7 @@
                 style="@style/et_comm_style"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入电话号码"
+                android:hint="@string/input_phone"
                 android:inputType="phone" />
         </LinearLayout>
 
@@ -89,13 +89,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="邮    箱："
+                android:text="@string/email"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_email"
                 style="@style/et_comm_style"
-                android:hint="请输入邮箱地址" />
+                android:hint="@string/input_email" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,13 +111,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密    码："
+                android:text="@string/password"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_password"
                 style="@style/et_comm_style"
-                android:hint="请输入密码"
+                android:hint="@string/input_password"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -134,13 +134,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I        D："
+                android:text="@string/shopid"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_shop_id"
                 style="@style/et_comm_style"
-                android:hint="请输入ID"
+                android:hint="@string/input_id"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -148,7 +148,7 @@
             android:id="@+id/btn_findback"
             style="@style/ok_button_style"
             android:layout_marginTop="20dp"
-            android:text="找        回" >
+            android:text="@string/findback" >
         </Button>
     </LinearLayout>
 </ScrollView>
