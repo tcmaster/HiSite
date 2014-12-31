@@ -7,6 +7,24 @@
     <!-- 首页 -->
     <string name="win">中奖</string>
     <string name="signin">报名</string>
+    <!-- 抽奖详情 -->
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="defaultTime">00</string>
+    <string name="toOpenAward">距开奖还有：</string>
+    <string name="activityTheme">活动主题：</string>
+    <string name="sponsor">主办方：</string>
+    <string name="coupon">优惠券：</string>
+    <string name="couponCount">发放数量：</string>
+    <string name="activityDetail">活动详情</string>
+    <string name="activityAward">活动奖品</string>
+    <string name="activityCount">奖品数量</string>
+    <string name="activityTime">活动时间</string>
+    <string name="activityLocation">兑奖地点</string>
+    <string name="activityRule">活动规则</string>
+    <string name="awardIntroduce">奖品介绍</string>
+    <string name="activityQ">活动咨询</string>
     <!-- 发活动 -->
     <string name="email">邮&#160;&#160;箱：</string>
     <string name="name">名&#160;&#160;称：</string>

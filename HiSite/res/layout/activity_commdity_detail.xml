@@ -2,27 +2,223 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
     android:orientation="vertical" >
-    <FrameLayout 
-        style="@style/match_width">
-        <ImageView 
-            style="@style/match_width"
+
+    <FrameLayout style="@style/match_width" >
+
+        <ImageView
+            android:id="@+id/iv_commodity_img"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:id="@+id/iv_commodity_img"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher"/>
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_fg_left_top"
+            style="@style/wrap"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_marginTop="10dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_fg_right_top"
+            style="@style/wrap"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_fg_right_bottom"
+            style="@style/wrap"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
         <TextView
             style="@style/wrap"
-            android:id="@+id/tv_left"
-            android:layout_gravity="left|top"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="@string/app_name"
-            android:textSize="16sp"
+            android:text="@string/toOpenAward"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hour"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/hour"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/minute"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/minute"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/second"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/second"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/signup_Count"
+            style="@style/match_width"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/activityTheme"
             android:textColor="@color/black"
-            />"
-    </FrameLayout>
-	<View 
-	    style="@style/line_full"/>
-	
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_theme"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/sponsor"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/gray" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/coupon"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_coupon"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_coupleCount"
+            style="@style/match_width"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:text="@string/couponCount"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+	<View style="@style/line_full" />
+    <TextView
+        style="@style/match_width"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:text="@string/activityDetail"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+	<View style="@style/line_full" />
+	<LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/activityAward"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_activity_detail"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/gray" />
+    </LinearLayout>
 </LinearLayout>
