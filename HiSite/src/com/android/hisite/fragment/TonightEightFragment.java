@@ -3,6 +3,7 @@ package com.android.hisite.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,9 +15,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
+import com.android.hisite.activity.GoodsDetailActivity;
 import com.android.hisite.adapter.MainPageListViewAdapter;
 import com.android.hisite.adapter.MyPagerAdapter;
 import com.android.hisite.function.CirculateFunction;
@@ -24,6 +27,7 @@ import com.android.view.PointLinearlayout;
 import com.android.view.XListView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnItemClick;
 
 /**
  * @Description:今晚8点
@@ -167,6 +171,12 @@ public class TonightEightFragment extends Fragment {
 		bA.getActionTitle().setText("今晚8点");
 		bA.getTitleRight().setText("北京");
 		bA.getRightText().setVisibility(View.GONE);
+	}
+
+	@OnItemClick(R.id.lv_show_detail)
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
+		startActivity(intent);
 	}
 
 }

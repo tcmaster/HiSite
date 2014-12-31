@@ -62,7 +62,7 @@
         </activity>
         <!-- 商品详情 -->
 		<activity
-		    android:name="com.android.hisite.activity.CommodityActivity"
+		    android:name="com.android.hisite.activity.GoodsDetailActivity"
 		    android:configChanges="keyboardHidden|orientation"
 		    android:screenOrientation="portrait"
 		    android:launchMode="singleTop"

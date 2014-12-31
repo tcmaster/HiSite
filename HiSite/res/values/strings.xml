@@ -18,13 +18,16 @@
     <string name="coupon">优惠券：</string>
     <string name="couponCount">发放数量：</string>
     <string name="activityDetail">活动详情</string>
-    <string name="activityAward">活动奖品</string>
-    <string name="activityCount">奖品数量</string>
-    <string name="activityTime">活动时间</string>
-    <string name="activityLocation">兑奖地点</string>
-    <string name="activityRule">活动规则</string>
+    <string name="activityAward">活动奖品：</string>
+    <string name="activityCount">奖品数量：</string>
+    <string name="activityTime">活动时间：</string>
+    <string name="activityLocation">兑奖地点：</string>
+    <string name="activityRule">活动规则：</string>
     <string name="awardIntroduce">奖品介绍</string>
     <string name="activityQ">活动咨询</string>
+    <string name="commit">评价</string>
+    <string name="signup">立即报名</string>
+    <string name="havesignup">已经报名</string>
     <!-- 发活动 -->
     <string name="email">邮&#160;&#160;箱：</string>
     <string name="name">名&#160;&#160;称：</string>
