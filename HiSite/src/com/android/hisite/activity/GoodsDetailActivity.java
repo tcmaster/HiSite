@@ -69,6 +69,9 @@ public class GoodsDetailActivity extends BaseActivity {
 		manager = getFragmentManager();
 		fg_left = GoodDetailsLeftFragment.newInstance();
 		fg_right = GoodDetailRightFragment.newInstance();
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.ll_tab_container, fg_left);
+		transaction.commit();
 	}
 
 }

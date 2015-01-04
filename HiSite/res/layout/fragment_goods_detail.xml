@@ -2,8 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
     android:orientation="vertical" >
-    <com.andorid.view.XListView
+
+    <LinearLayout
         style="@style/match_width"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:id="@+id/ll_do_page"
+        android:visibility="gone" >
+
+        <ImageButton
+            android:id="@+id/btn_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher" />
+
+        <EditText
+            android:id="@+id/et_which_page"
+            style="@style/wrap"
+            android:hint="@string/activityQ"
+            android:text="@string/app_name" />
+
+        <ImageButton
+            android:id="@+id/btn_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginRight="10dp" />
+    </LinearLayout>
+
+    <com.android.view.ListViewForScrollView
         android:id="@+id/lv_container"
-        />
+        style="@style/match_width" />
+
 </LinearLayout>
