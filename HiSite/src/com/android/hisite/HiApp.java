@@ -12,7 +12,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.hisite.function.LocationFunction;
 import com.android.utils.MD5Utils;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.baidu.mapapi.SDKInitializer;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
@@ -73,6 +76,40 @@ public class HiApp extends Application {
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
 		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei + AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
+		LocationFunction lcf = new LocationFunction(this);
+		lcf.beginLocation(new BDLocationListener() {
+
+			private final int GPS_RESULT = 61;// gps定位结果
+			private final int NETWORK_RESULT = 161;// 网络定位结果
+			private final int GACHE_RESULT = 65;// 缓存定位结果
+			private final int OFFLINE_RESULT = 66;// 离线定位结果
+			private final int OFFLINE_LOCATION_RESULT = 68;// 本地离线定位结果
+
+			@Override
+			public void onReceiveLocation(BDLocation location) {
+				if (location != null) {
+					switch (location.getLocType()) {
+					case GPS_RESULT:
+
+						break;
+					case NETWORK_RESULT:
+
+						break;
+					case GACHE_RESULT:
+
+						break;
+					case OFFLINE_RESULT:
+
+						break;
+					case OFFLINE_LOCATION_RESULT:
+
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		});
 	}
 
 	public enum toastMgr {

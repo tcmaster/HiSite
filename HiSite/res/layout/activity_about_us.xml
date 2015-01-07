@@ -1,0 +1,46 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/match"
+    tools:context=".AboutUsActivity" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            style="@style/match_width"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" >
+
+            <ImageView
+                android:id="@+id/iv_com_logo"
+                style="@style/wrap"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_title_top"
+                style="@style/wrap"
+                android:layout_marginTop="5dp"
+                android:layout_alignTop="@id/iv_com_logo"
+                android:layout_toRightOf="@id/iv_com_logo"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_publish"
+                style="@style/wrap"
+                android:layout_below="@id/tv_title_top"
+                android:layout_alignLeft="@id/tv_title_top"
+                android:layout_marginTop="1dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

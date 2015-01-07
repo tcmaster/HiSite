@@ -65,6 +65,7 @@ public class XListView extends ListView implements OnScrollListener {
 														// load more.
 	private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
 													// feature.
+	private boolean outScroll = false;// 外部是否有滑动控件
 	/** 显示刷新时间 */
 	private Date date = new Date();
 
@@ -401,6 +402,15 @@ public class XListView extends ListView implements OnScrollListener {
 		public void onRefresh();
 
 		public void onLoadMore();
+	}
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		if (outScroll) {
+			int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+			super.onMeasure(widthMeasureSpec, expandSpec);
+		} else
+			super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
 }
