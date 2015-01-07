@@ -49,7 +49,18 @@
     <string name="pwd_again">再次确认密码</string>
     <string name="shop_id">您的商户ID：</string>
     <string name="two_dimension">二维码：</string>
-    <string name="service_phone">客服热线：400-600-8935</string>
+    <string name="service_phone">客服热线：400&#8211;600&#8211;8935</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
-
+	<!-- 主办方资料 -->
+	<string name="company_name">公司名称&#160;:</string>
+	<string name="company_introduce">简&#160;&#160;&#160;&#160;&#160;&#160;&#160;介&#160;:</string>
+	<string name="company_address">地&#160;&#160;&#160;&#160;&#160;&#160;&#160;址&#160;:</string>
+	<string name="company_contact">联&#160;&#160;系&#160;&#160;人:</string>
+	<string name="company_phone">联系电话&#160;:</string>
+	<string name="company_net_address">网&#160;&#160;&#160;&#160;&#160;&#160;&#160;址&#160;:</string>
+	<string name="company_email">邮箱地址&#160;:</string>
+	<string name="company_weibo">微&#160;&#160;&#160;&#160;&#160;&#160;&#160;博&#160;:</string>
+	<string name="company_weixin">微&#160;&#160;信&#160;&#160;号:</string>
+	<string name="company_other">其&#160;&#160;&#160;&#160;&#160;&#160;&#160;他&#160;:</string>
+	
 </resources>

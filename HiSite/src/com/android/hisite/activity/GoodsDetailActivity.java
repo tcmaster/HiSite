@@ -5,8 +5,10 @@ package com.android.hisite.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.hisite.BaseActivity;
@@ -31,6 +33,9 @@ public class GoodsDetailActivity extends BaseActivity {
 	/** 右边的tab */
 	@ViewInject(R.id.tv_choice_activity_q)
 	TextView tv_tab_right;
+	/** 主办方一栏 */
+	@ViewInject(R.id.ll_company)
+	LinearLayout ll_company;
 	// ***************************其他成员***********************************//
 	FragmentManager manager;
 	/** 左边的fragment */
@@ -48,7 +53,7 @@ public class GoodsDetailActivity extends BaseActivity {
 		initData();
 	}
 
-	@OnClick({ R.id.tv_choice_award, R.id.tv_choice_activity_q })
+	@OnClick({ R.id.tv_choice_award, R.id.tv_choice_activity_q, R.id.ll_company })
 	public void onClick(View v) {
 		FragmentTransaction transaction = manager.beginTransaction();
 		switch (v.getId()) {
@@ -58,6 +63,9 @@ public class GoodsDetailActivity extends BaseActivity {
 		case R.id.tv_choice_activity_q:
 			transaction.replace(R.id.ll_tab_container, fg_right);
 			break;
+		case R.id.ll_company:
+			Intent intent = new Intent(this, AboutUsActivity.class);
+			startActivity(intent);
 		default:
 			break;
 		}

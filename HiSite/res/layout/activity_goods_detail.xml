@@ -149,7 +149,8 @@
             style="@style/match_width"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:id="@+id/ll_company" >
 
             <TextView
                 style="@style/wrap"

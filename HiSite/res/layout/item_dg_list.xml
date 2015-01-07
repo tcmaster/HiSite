@@ -1,18 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
-    android:background="#000000" >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher"
-        android:scaleType="fitXY"
-        android:background="#ffffff"
-        android:contentDescription="@string/app_name"
-        android:layout_centerInParent="true"
-        />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="horizontal"
+    android:padding="10dp" >
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_num"
+        style="@style/wrap"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@color/black"
+        android:padding="2dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize"
+        android:layout_gravity="center_vertical" />
+
+    <LinearLayout
+        style="@style/match_height"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/match_width"
+            android:text="@string/app_name"
+            android:textColor="@color/red"
+            android:textSize="@dimen/middleTextSize" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_nearby_good"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_telephone"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_get_goods_way"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_location"
+        style="@style/wrap"
+        android:layout_weight="1"
+        android:text="@string/app_name"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallTextSize"
+        android:layout_gravity="center_vertical" />
+
+</LinearLayout>
