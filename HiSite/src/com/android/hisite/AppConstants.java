@@ -24,5 +24,13 @@ public class AppConstants {
 	public static String phone_model;
 	/** md5 */
 	public static String auth_code;
+	/** 定位得到的城市名称 */
+	public static String city_name;
+	/** 定位得到的经度 */
+	public static String longitude;
+	/** 定位得到的纬度 */
+	public static String latitude;
+	/** 定位得到的地址信息 */
+	public static String address;
 
 }
