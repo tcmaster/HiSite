@@ -50,4 +50,6 @@
     <string name="shop_id">您的商户ID：</string>
     <string name="two_dimension">二维码：</string>
     <string name="service_phone">客服热线：400-600-8935</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+
 </resources>
