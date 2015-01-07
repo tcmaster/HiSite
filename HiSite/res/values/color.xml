@@ -7,5 +7,10 @@
     <color name="line_gray">#d2d2d2</color>
     <color name="base_header_red">#df3031</color>
     <color name="base_header_btnpressed_red">#df3031</color>
+    <color name="red">#f55061</color>
+    <color name="half_black">#838181</color>
+    <color name="half_white">#f2f2f2</color>
+    <color name="white_gray">#dcdcdc</color>
+    <color name="green">#029da1</color>
 
 </resources>
