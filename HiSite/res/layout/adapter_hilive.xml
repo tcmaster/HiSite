@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/match_width" >
+
+        <TextView
+            android:id="@+id/tv_title_hilive"
+            style="@style/wrap"
+            android:text="小米手机免费大抽奖活动"
+            android:textSize="14sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_place_time"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_title_hilive"
+            android:paddingTop="5dp"
+            android:text="小米手机免费大抽奖活动"
+            android:textSize="12sp" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/iv_camera_icon"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_launcher" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/match_width" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_adapter_hilive"
+            android:layout_width="fill_parent"
+            android:layout_height="150dip" />
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/match_width" >
+
+        <TextView
+            android:id="@+id/tv_share"
+            style="@style/wrap"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:text="分享" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_comment"
+            style="@style/wrap"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_share"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:text="评论" />
+    </RelativeLayout>
+
+</LinearLayout>
