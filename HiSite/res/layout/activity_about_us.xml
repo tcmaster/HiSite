@@ -82,11 +82,13 @@
        	            />
        	        <TextView
        	            android:id="@+id/tv_company_name"
-       	            style="@style/wrap"
+       	            style="@style/match_width"
        	            android:layout_marginLeft="10dp"
        	            android:text="@string/app_name"
        	            android:textColor="@color/black"
        	            android:textSize="@dimen/middleTextSize"
+       	            android:gravity="center_vertical|right"
+       	            android:paddingRight="10dp"
        	            />
        	    </LinearLayout>
        	    <LinearLayout 
@@ -103,11 +105,13 @@
        	            />
        	        <TextView
        	            android:id="@+id/tv_company_introduce"
-       	            style="@style/wrap"
+       	            style="@style/match_width"
        	            android:layout_marginLeft="10dp"
        	            android:text="@string/app_name"
        	            android:textColor="@color/black"
        	            android:textSize="@dimen/middleTextSize"
+       	            android:gravity="center_vertical|right"
+       	            android:paddingRight="10dp"
        	            />
        	    </LinearLayout>
        	    <LinearLayout 
@@ -124,11 +128,13 @@
        	            />
        	        <TextView
        	            android:id="@+id/tv_company_address"
-       	            style="@style/wrap"
+       	            style="@style/match_width"
        	            android:layout_marginLeft="10dp"
        	            android:text="@string/app_name"
        	            android:textColor="@color/black"
        	            android:textSize="@dimen/middleTextSize"
+       	            android:gravity="center_vertical|right"
+       	            android:paddingRight="10dp"
        	            />
        	    </LinearLayout>
        	    <LinearLayout 
@@ -145,11 +151,13 @@
        	            />
        	        <TextView
        	            android:id="@+id/tv_company_contact"
-       	            style="@style/wrap"
+       	            style="@style/match_width"
        	            android:layout_marginLeft="10dp"
        	            android:text="@string/app_name"
        	            android:textColor="@color/black"
        	            android:textSize="@dimen/middleTextSize"
+       	            android:gravity="center_vertical|right"
+       	            android:paddingRight="10dp"
        	            />
        	    </LinearLayout>
        	    <LinearLayout 

@@ -80,7 +80,7 @@ public class AboutUsActivity extends BaseActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.about_us, menu);
+		// getMenuInflater().inflate(R.menu.about_us, menu);
 		return true;
 	}
 	// ***************************子方法***********************************//

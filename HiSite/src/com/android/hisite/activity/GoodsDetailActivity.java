@@ -36,6 +36,9 @@ public class GoodsDetailActivity extends BaseActivity {
 	/** 主办方一栏 */
 	@ViewInject(R.id.ll_company)
 	LinearLayout ll_company;
+	/** 查看兑奖地点按钮 */
+	@ViewInject(R.id.tv_see_location)
+	TextView tv_see_prize_location;
 	// ***************************其他成员***********************************//
 	FragmentManager manager;
 	/** 左边的fragment */
@@ -53,23 +56,23 @@ public class GoodsDetailActivity extends BaseActivity {
 		initData();
 	}
 
-	@OnClick({ R.id.tv_choice_award, R.id.tv_choice_activity_q, R.id.ll_company })
+	@OnClick({ R.id.tv_choice_award, R.id.tv_choice_activity_q, R.id.ll_company, R.id.tv_see_location })
 	public void onClick(View v) {
-		FragmentTransaction transaction = manager.beginTransaction();
 		switch (v.getId()) {
 		case R.id.tv_choice_award:
-			transaction.replace(R.id.ll_tab_container, fg_left);
+			doChangeFA();
 			break;
 		case R.id.tv_choice_activity_q:
-			transaction.replace(R.id.ll_tab_container, fg_right);
+			doChangeFB();
 			break;
 		case R.id.ll_company:
-			Intent intent = new Intent(this, AboutUsActivity.class);
-			startActivity(intent);
+			doJumpCompany();
+		case R.id.tv_see_location:
+			doWatchAllPrizeLocation();
+			break;
 		default:
 			break;
 		}
-		transaction.commit();
 	}
 
 	// ***************************子方法***********************************//
@@ -80,6 +83,55 @@ public class GoodsDetailActivity extends BaseActivity {
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.ll_tab_container, fg_left);
 		transaction.commit();
+	}
+
+	/**
+	 * 切换到fragmentA
+	 * 
+	 * @Description:
+	 * @author: LiXiaoSong
+	 * @date:2015-1-8
+	 */
+	private void doChangeFA() {
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.ll_tab_container, fg_left);
+		transaction.commit();
+	}
+
+	/**
+	 * 切换到fragmentB
+	 * 
+	 * @Description:
+	 * @author: LiXiaoSong
+	 * @date:2015-1-8
+	 */
+	private void doChangeFB() {
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.ll_tab_container, fg_right);
+		transaction.commit();
+	}
+
+	/**
+	 * 跳转到主办方详情
+	 * 
+	 * @Description:
+	 * @author: LiXiaoSong
+	 * @date:2015-1-8
+	 */
+	private void doJumpCompany() {
+		Intent intent = new Intent(this, AboutUsActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 查看兑奖地点
+	 * 
+	 * @Description:
+	 * @author: LiXiaoSong
+	 * @date:2015-1-8
+	 */
+	private void doWatchAllPrizeLocation() {
+
 	}
 
 }
