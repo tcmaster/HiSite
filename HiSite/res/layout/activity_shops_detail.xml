@@ -1,8 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:padding="10dp" >
 
-</LinearLayout>
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_name" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_shop_name_value"
+                style="@style/shoptext_style"
+                android:text="北京俏江南" >
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_upflag" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_up_flag_change"
+                style="@style/shoptext_style"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:text="修改" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_up_flag"
+                style="@style/wrap"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/tv_up_flag_change"
+                android:background="@drawable/ic_launcher"
+                android:gravity="right" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_shopid" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_shop_id_value"
+                style="@style/shoptext_style"
+                android:text="123456789" >
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_twocode" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_twodimension_change"
+                style="@style/shoptext_style"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:text="修改" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_two_dimension"
+                style="@style/wrap"
+                android:layout_toLeftOf="@+id/tv_twodimension_change"
+                android:background="@drawable/ic_launcher"
+                android:gravity="right" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_place" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_place_value"
+                style="@style/shoptext_style"
+                android:text="北京朝阳区" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_person" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_personname_value"
+                style="@style/shoptext_style"
+                android:text="张可" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_phone" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_phone_value"
+                style="@style/shoptext_style"
+                android:text="123456789" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_email" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_email_value"
+                style="@style/shoptext_style"
+                android:text="123456789@qq.com" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_id" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_id_value"
+                style="@style/shoptext_style"
+                android:text="123456789000" >
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/shopdetail_password" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_password_value"
+                style="@style/shoptext_style"
+                android:layout_toLeftOf="@+id/tv_pwd_change_value"
+                android:password="true"
+                android:text="123456789" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_pwd_change_value"
+                style="@style/wrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:text="修改" >
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

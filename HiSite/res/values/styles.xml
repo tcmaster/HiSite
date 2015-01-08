@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -59,6 +59,7 @@
         <item name="android:layout_height">1px</item>
         <item name="android:background">@color/line_gray</item>
     </style>
+
     <style name="line_full_vertical">
         <item name="android:layout_width">1px</item>
         <item name="android:layout_height">match_parent</item>
@@ -83,10 +84,17 @@
         <item name="android:textColor">@drawable/setting_text_selector</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <!-- 商家资料的 文本style -->
-    <style name="shoptext_style" parent="wrap">
+    <!-- 商家资料的 左侧文本style -->
+    <style name="shoptext_left_style" parent="wrap">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/middleTextSize</item>
+        <item name="android:gravity">left</item>
     </style>
-    
+    <!-- 商家资料的 文本style -->
+    <style name="shoptext_style" parent="match_width">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">@dimen/middleTextSize</item>
+    </style>
+
 </resources>
