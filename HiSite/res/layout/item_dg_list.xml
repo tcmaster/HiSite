@@ -18,7 +18,7 @@
         android:layout_gravity="center_vertical" />
 
     <LinearLayout
-        style="@style/match_height"
+        style="@style/wrap"
         android:layout_weight="7"
         android:orientation="vertical"
         android:gravity="center_vertical"

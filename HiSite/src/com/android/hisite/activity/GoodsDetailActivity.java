@@ -3,18 +3,28 @@
  */
 package com.android.hisite.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
+import com.android.hisite.adapter.AllPrizeLocationAdapter;
 import com.android.hisite.fragment.GoodDetailRightFragment;
 import com.android.hisite.fragment.GoodDetailsLeftFragment;
+import com.android.utils.DialogUtils;
+import com.android.utils.DialogUtils.ListDialogInterface;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -67,6 +77,7 @@ public class GoodsDetailActivity extends BaseActivity {
 			break;
 		case R.id.ll_company:
 			doJumpCompany();
+			break;
 		case R.id.tv_see_location:
 			doWatchAllPrizeLocation();
 			break;
@@ -131,7 +142,24 @@ public class GoodsDetailActivity extends BaseActivity {
 	 * @date:2015-1-8
 	 */
 	private void doWatchAllPrizeLocation() {
+		DialogUtils.showListDialog(this, DialogUtils.TYPE_SIMPLE_LIST, new ListDialogInterface() {
 
+			@Override
+			public void getListView(ListView lv_list, final AlertDialog dlg) {
+				List<String> testData = new ArrayList<String>();
+				testData.add("");
+				testData.add("");
+				testData.add("");
+				lv_list.setAdapter(new AllPrizeLocationAdapter(GoodsDetailActivity.this, testData));
+				lv_list.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						dlg.dismiss();
+					}
+				});
+			}
+		});
 	}
 
 }
