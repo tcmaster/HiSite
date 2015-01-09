@@ -3,6 +3,7 @@ package com.android.hisite.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,10 +41,8 @@ public class TonightEightFragment extends Fragment {
 	/** 根布局 */
 	private View rootView;
 	/** 图片轮播 */
-	@ViewInject(R.id.vp_scan_img)
 	private ViewPager vp_show_img;
 	/** 图片轮播底部的圆点父布局 */
-	@ViewInject(R.id.ll_point_container)
 	private PointLinearlayout ll_point_container;
 	/** 内容列表 */
 	@ViewInject(R.id.lv_show_detail)
@@ -66,6 +65,7 @@ public class TonightEightFragment extends Fragment {
 		}
 		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container, false);
 		ViewUtils.inject(this, rootView);
+		initHeader();
 		return rootView;
 	}
 
@@ -171,6 +171,22 @@ public class TonightEightFragment extends Fragment {
 		bA.getActionTitle().setText("今晚8点");
 		bA.getTitleRight().setText("北京");
 		bA.getRightText().setVisibility(View.GONE);
+	}
+
+	/**
+	 * 
+	 * @Description:初始化listView头部视图
+	 * @see:
+	 * @since:
+	 * @author: LiXiaoSong
+	 * @date:2015-1-9
+	 */
+	private void initHeader() {
+		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View view = inflater.inflate(R.layout.header_home_page, null, false);
+		vp_show_img = (ViewPager) view.findViewById(R.id.vp_scan_img);
+		ll_point_container = (PointLinearlayout) view.findViewById(R.id.ll_point_container);
+		lv_item_container.addExtraHeaderView(view);
 	}
 
 	@OnItemClick(R.id.lv_show_detail)

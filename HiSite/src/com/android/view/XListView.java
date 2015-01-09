@@ -263,6 +263,17 @@ public class XListView extends ListView implements OnScrollListener {
 		invalidate();
 	}
 
+	/**
+	 * @Description:增加额外的header
+	 * @param headers
+	 * @author: LiXiaoSong
+	 * @date:2015-1-9
+	 */
+	public void addExtraHeaderView(View... headers) {
+		for (int i = 0; i < headers.length; i++)
+			addHeaderView(headers[i]);
+	}
+
 	private void updateFooterHeight(float delta) {
 		int height = mFooterView.getBottomMargin() + (int) delta;
 		if (mEnablePullLoad && !mPullLoading) {

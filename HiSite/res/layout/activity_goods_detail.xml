@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match" >
-
+    <com.android.view.XListView
+        style="@style/match"
+        android:id="@+id/lv_goods_detail"
+        android:scrollbars="none"
+        />
     <LinearLayout
         style="@style/match_width"
-        android:orientation="vertical" >
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom" >
 
-        
-        <!-- 这个fragment用来存放两个fragment，左边是奖品介绍，右边是活动咨询 -->
+        <Button
+            android:id="@+id/btn_commit"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:text="@string/commit"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
 
-        <LinearLayout
-            android:id="@+id/ll_tab_container"
-            style="@style/match_width"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical"
-            android:background="@color/red" />
-
-        <LinearLayout
-            style="@style/match_width"
-            android:layout_margin="5dp"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/btn_commit"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:text="@string/commit"
-                android:textColor="@color/red"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btn_signup"
-                style="@style/wrap"
-                android:layout_weight="9"
-                android:background="@color/red"
-                android:text="@string/signup"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/wrap"
+            android:layout_weight="9"
+            android:background="@color/red"
+            android:text="@string/signup"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>

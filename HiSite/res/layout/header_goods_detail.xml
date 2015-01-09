@@ -329,25 +329,27 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/tv_choice_award"
+        <Button
+            android:id="@+id/btn_choice_award"
             style="@style/wrap"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/awardIntroduce"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:background="@null" />
 
         <View style="@style/line_full_vertical" />
 
-        <TextView
-            android:id="@+id/tv_choice_activity_q"
+        <Button
+            android:id="@+id/btn_choice_activity_q"
             style="@style/wrap"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/activityQ"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:background="@null" />
     </LinearLayout>
 
     <View style="@style/line_full" />

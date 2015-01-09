@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,12 +23,12 @@ import android.widget.TextView;
 import com.android.hisite.BaseActivity;
 import com.android.hisite.R;
 import com.android.hisite.adapter.AllPrizeLocationAdapter;
-import com.android.hisite.fragment.GoodDetailRightFragment;
-import com.android.hisite.fragment.GoodDetailsLeftFragment;
+import com.android.hisite.adapter.GoodLeftAdapter;
+import com.android.hisite.adapter.GoodRightAdapter;
 import com.android.utils.DialogUtils;
 import com.android.utils.DialogUtils.ListDialogInterface;
+import com.android.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:商品详情界面
@@ -34,28 +36,30 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  * @copyright @HiSite
  * @Date:2014-12-29
  */
-public class GoodsDetailActivity extends BaseActivity {
+public class GoodsDetailActivity extends BaseActivity implements OnClickListener {
 
 	// ***************************控件成员***********************************//
+	// headerView 的成员
 	/** 左边的tab */
-	@ViewInject(R.id.tv_choice_award)
-	TextView tv_tab_left;
+	Button tv_tab_left;
 	/** 右边的tab */
-	@ViewInject(R.id.tv_choice_activity_q)
-	TextView tv_tab_right;
+	Button tv_tab_right;
 	/** 主办方一栏 */
-	@ViewInject(R.id.ll_company)
 	LinearLayout ll_company;
 	/** 查看兑奖地点按钮 */
-	@ViewInject(R.id.tv_see_location)
 	TextView tv_see_prize_location;
-	// ***************************其他成员***********************************//
-	FragmentManager manager;
-	/** 左边的fragment */
-	GoodDetailsLeftFragment fg_left;
-	GoodDetailRightFragment fg_right;
+	// headView的成员end
+	/** 本页面的listView */
+	@ViewInject(R.id.lv_goods_detail)
+	XListView lv_goods_detail;
 
-	/** 右边的fragment */
+	// ***************************其他成员***********************************//
+	/** 左边的数据源 */
+	/** 右边的数据源 */
+	/** 左边的适配器 */
+	GoodLeftAdapter adapter_left;
+	/** 右边的适配器 */
+	GoodRightAdapter adapter_right;
 
 	// ***************************生命周期,回调方法***********************************//
 
@@ -63,16 +67,17 @@ public class GoodsDetailActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_goods_detail);
 		super.onCreate(savedInstanceState);
+		initHeaderView();
 		initData();
 	}
 
-	@OnClick({ R.id.tv_choice_award, R.id.tv_choice_activity_q, R.id.ll_company, R.id.tv_see_location })
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.tv_choice_award:
+		case R.id.btn_choice_award:
 			doChangeFA();
 			break;
-		case R.id.tv_choice_activity_q:
+		case R.id.btn_choice_activity_q:
 			doChangeFB();
 			break;
 		case R.id.ll_company:
@@ -88,38 +93,54 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initData() {
-		manager = getFragmentManager();
-		fg_left = GoodDetailsLeftFragment.newInstance();
-		fg_right = GoodDetailRightFragment.newInstance();
-		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.ll_tab_container, fg_left);
-		transaction.commit();
+		adapter_left = new GoodLeftAdapter(this, initTestData());
+		adapter_right = new GoodRightAdapter(this, initTestData());
+		lv_goods_detail.setAdapter(adapter_left);
+	}
+
+	private List<String> initTestData() {// 测试数据
+		List<String> test = new ArrayList<String>();
+		test.add("");
+		test.add("");
+		test.add("");
+		return test;
 	}
 
 	/**
-	 * 切换到fragmentA
-	 * 
-	 * @Description:
+	 * @Description:初始化listview的headerview
+	 * @author: LiXiaoSong
+	 * @date:2015-1-9
+	 */
+	private void initHeaderView() {
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View view = inflater.inflate(R.layout.header_goods_detail, null, false);
+		tv_tab_left = (Button) view.findViewById(R.id.btn_choice_award);
+		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
+		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
+		tv_see_prize_location = (TextView) view.findViewById(R.id.tv_see_location);
+		tv_tab_left.setOnClickListener(this);
+		tv_tab_right.setOnClickListener(this);
+		ll_company.setOnClickListener(this);
+		tv_see_prize_location.setOnClickListener(this);
+		lv_goods_detail.addExtraHeaderView(view);
+	}
+
+	/**
+	 * @Description:切换左边内容
 	 * @author: LiXiaoSong
 	 * @date:2015-1-8
 	 */
 	private void doChangeFA() {
-		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.ll_tab_container, fg_left);
-		transaction.commit();
+		lv_goods_detail.setAdapter(adapter_left);
 	}
 
 	/**
-	 * 切换到fragmentB
-	 * 
-	 * @Description:
+	 * @Description:切换右边内容
 	 * @author: LiXiaoSong
 	 * @date:2015-1-8
 	 */
 	private void doChangeFB() {
-		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.ll_tab_container, fg_right);
-		transaction.commit();
+		lv_goods_detail.setAdapter(adapter_right);
 	}
 
 	/**

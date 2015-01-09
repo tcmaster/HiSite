@@ -2,25 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
     android:orientation="vertical"  >
-    <FrameLayout
-        android:id="@+id/fl_top"
-        style="@style/match_width"
-        android:layout_weight="8" >
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_scan_img"
-            style="@style/match" />
-
-        <com.android.view.PointLinearlayout
-            android:id="@+id/ll_point_container"
-            style="@style/match_width"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:orientation="horizontal" />
-    </FrameLayout>
-
     <com.android.view.XListView
         android:id="@+id/lv_show_detail"
         style="@style/match"
-        android:layout_weight="4" />
+        android:scrollbars="none"
+        />
 
 </LinearLayout>
