@@ -34,7 +34,7 @@
             android:layout_marginRight="10dp" />
     </LinearLayout>
 
-    <com.android.view.ListViewForScrollView
+    <com.android.tonight8.view.ListViewForScrollView
         android:id="@+id/lv_container"
         style="@style/match_width" />
 

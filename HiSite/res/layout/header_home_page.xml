@@ -12,7 +12,7 @@
             android:id="@+id/vp_scan_img"
             style="@style/match" />
 
-        <com.android.view.PointLinearlayout
+        <com.android.tonight8.view.PointLinearlayout
             android:id="@+id/ll_point_container"
             style="@style/match_width"
             android:layout_gravity="bottom"

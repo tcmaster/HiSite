@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match" >
-    <com.android.view.XListView
+    <com.android.tonight8.view.XListView
         style="@style/match"
         android:id="@+id/lv_goods_detail"
         android:scrollbars="none"

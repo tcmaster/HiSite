@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.hisite"
+    package="com.android.tonight8"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -26,11 +26,11 @@
     </uses-permission>
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="14" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
 
     <application
-        android:name="com.android.hisite.HiApp"
+        android:name="com.android.tonight8.Tonight8App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -40,7 +40,7 @@
             android:value="MarqqjAPAzHfxPxNUcAaNSWG" />
 
         <activity
-            android:name="com.android.hisite.activity.MainActivity"
+            android:name="com.android.tonight8.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,20 +49,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.hisite.activity.ForgetIDOrPwdActivity"
+            android:name="com.android.tonight8.activity.ForgetIDOrPwdActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.android.hisite.activity.ShopRegisterActivity"
+            android:name="com.android.tonight8.activity.ShopRegisterActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <!-- 商品详情 -->
         <activity
-            android:name="com.android.hisite.activity.GoodsDetailActivity"
+            android:name="com.android.tonight8.activity.GoodsDetailActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
@@ -74,7 +74,7 @@
         </service>
 
         <activity
-            android:name="com.android.hisite.activity.AboutUsActivity"
+            android:name="com.android.tonight8.activity.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
     </application>
