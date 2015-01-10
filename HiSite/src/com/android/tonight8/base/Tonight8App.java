@@ -1,4 +1,4 @@
-package com.android.tonight8;
+package com.android.tonight8.base;
 
 import android.app.Application;
 import android.content.Context;
@@ -12,6 +12,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.tonight8.R;
+import com.android.tonight8.R.id;
+import com.android.tonight8.R.layout;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.utils.MD5Utils;
 import com.baidu.location.BDLocation;

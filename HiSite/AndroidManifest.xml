@@ -30,7 +30,7 @@
         android:targetSdkVersion="18" />
 
     <application
-        android:name="com.android.tonight8.Tonight8App"
+        android:name="com.android.tonight8.base.Tonight8App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"

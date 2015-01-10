@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.android.tonight8.R;
-import com.android.tonight8.AppConstants;
-import com.android.tonight8.BaseActivity;
+import com.android.tonight8.base.AppConstants;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.CheckId;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.Utils;

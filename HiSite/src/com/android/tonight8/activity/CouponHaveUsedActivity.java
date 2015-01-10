@@ -3,7 +3,7 @@ package com.android.tonight8.activity;
 import android.os.Bundle;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
+import com.android.tonight8.base.BaseActivity;
 
 /**
  * @Description:已用券核销

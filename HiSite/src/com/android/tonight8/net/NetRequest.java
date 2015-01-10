@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.android.tonight8.AppConstants;
+import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;

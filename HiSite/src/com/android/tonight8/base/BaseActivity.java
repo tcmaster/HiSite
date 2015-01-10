@@ -1,4 +1,4 @@
-package com.android.tonight8;
+package com.android.tonight8.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.tonight8.R;
+import com.android.tonight8.R.anim;
+import com.android.tonight8.R.id;
+import com.android.tonight8.R.layout;
 import com.lidroid.xutils.ViewUtils;
 
 public class BaseActivity extends FragmentActivity {

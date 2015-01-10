@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
+import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**

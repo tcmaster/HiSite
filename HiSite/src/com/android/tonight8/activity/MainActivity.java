@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.fragment.HiLiveFragment;
 import com.android.tonight8.fragment.MyAccountFragment;
 import com.android.tonight8.fragment.PostEventsFragment;

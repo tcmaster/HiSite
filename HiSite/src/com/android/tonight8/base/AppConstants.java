@@ -1,4 +1,4 @@
-package com.android.tonight8;
+package com.android.tonight8.base;
 
 public class AppConstants {
 

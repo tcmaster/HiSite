@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.TimeCount;
 import com.lidroid.xutils.view.annotation.ViewInject;

@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.android.tonight8.Tonight8App;
+import com.android.tonight8.base.Tonight8App;
 import com.lidroid.xutils.util.LogUtils;
 
 /**

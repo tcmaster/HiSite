@@ -19,10 +19,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
 import com.android.tonight8.activity.GoodsDetailActivity;
 import com.android.tonight8.adapter.MainPageListViewAdapter;
 import com.android.tonight8.adapter.MyPagerAdapter;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.view.PointLinearlayout;
 import com.android.tonight8.view.XListView;

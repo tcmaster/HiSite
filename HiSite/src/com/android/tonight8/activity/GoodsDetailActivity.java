@@ -21,10 +21,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.BaseActivity;
 import com.android.tonight8.adapter.AllPrizeLocationAdapter;
 import com.android.tonight8.adapter.GoodLeftAdapter;
 import com.android.tonight8.adapter.GoodRightAdapter;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.DialogUtils.ListDialogInterface;
 import com.android.tonight8.view.XListView;
