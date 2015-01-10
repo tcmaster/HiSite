@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Question {
+import com.android.tonight8.model.BaseModel;
+
+public class Question extends BaseModel {
 
 }

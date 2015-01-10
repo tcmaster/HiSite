@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class QuickMark {
+import com.android.tonight8.model.BaseModel;
+
+public class QuickMark extends BaseModel {
 
 }

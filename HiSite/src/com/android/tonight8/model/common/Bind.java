@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Bind {
+import com.android.tonight8.model.BaseModel;
+
+public class Bind extends BaseModel{
 
 }

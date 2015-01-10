@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Identity {
+import com.android.tonight8.model.BaseModel;
+
+public class Identity extends BaseModel {
 
 }

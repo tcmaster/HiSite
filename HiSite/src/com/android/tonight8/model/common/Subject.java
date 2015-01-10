@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Subject {
+import com.android.tonight8.model.BaseModel;
+
+public class Subject extends BaseModel {
 
 }

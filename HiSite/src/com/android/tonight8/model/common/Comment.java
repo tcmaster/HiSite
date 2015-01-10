@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Comment {
+import com.android.tonight8.model.BaseModel;
+
+public class Comment extends BaseModel{
 
 }

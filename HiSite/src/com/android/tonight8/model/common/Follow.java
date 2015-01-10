@@ -1,5 +1,7 @@
 package com.android.tonight8.model.common;
 
-public class Follow {
+import com.android.tonight8.model.BaseModel;
+
+public class Follow extends BaseModel {
 
 }
