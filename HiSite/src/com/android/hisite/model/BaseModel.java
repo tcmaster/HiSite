@@ -1,7 +1,7 @@
 /**
  * 2014-12-26
  */
-package com.android.hisite.entity;
+package com.android.hisite.model;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @copyright @HiSite
  * @Date:2014-12-26
  */
-public class BaseEntity implements Serializable {
+public class BaseModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
