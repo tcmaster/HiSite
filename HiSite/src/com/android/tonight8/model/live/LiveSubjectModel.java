@@ -1,4 +1,4 @@
-package com.android.tonight8.model.Live;
+package com.android.tonight8.model.live;
 
 import java.util.ArrayList;
 import java.util.List;

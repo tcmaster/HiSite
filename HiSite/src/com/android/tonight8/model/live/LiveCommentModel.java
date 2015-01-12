@@ -1,4 +1,4 @@
-package com.android.tonight8.model.Live;
+package com.android.tonight8.model.live;
 
 import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.model.common.Comment;
