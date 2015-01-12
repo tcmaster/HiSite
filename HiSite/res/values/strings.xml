@@ -49,7 +49,7 @@
     <string name="pwd_again">再次确认密码</string>
     <string name="shop_id">您的商户ID：</string>
     <string name="two_dimension">二维码：</string>
-    <string name="service_phone">客服热线：400-600-8935</string>
+    <string name="service_phone">客服热线：400&#8211;600&#8211;8935</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
 
     <!-- 商家资料 -->
@@ -75,5 +75,21 @@
 	<string name="company_weibo">微博</string>
 	<string name="company_weixin">微信号</string>
 	<string name="company_other">其他</string>
-
+	<!-- 我 -->
+	<string name="award_code">中奖码</string>
+	<string name="my_coupon">优惠券包</string>
+	<string name="lottery_activity">参加过的抽奖活动</string>
+	<string name="business">我关注的商家</string>
+	<string name="address">收货地址</string>
+	<string name="complain_sponsor">投诉主办方</string>
+	<string name="setting">设置</string>
+	<string name="cs_phonenum">400&#8211;600&#8211;8935</string>
+	<string name="cs_hot_line">客服热线</string>	
+	
+	<string name="nick_name">昵称</string>	
+	<string name="sex">性别</string>	
+	<string name="receiver_address">收货地址</string>	
+	<string name="phone_num">手机号</string>	
+	<string name="three_party">第三方账号授权</string>	
+	<string name="change_password">修改密码</string>	
 </resources>

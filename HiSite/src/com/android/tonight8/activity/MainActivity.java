@@ -10,10 +10,10 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.fragment.HiLiveFragment;
-import com.android.tonight8.fragment.MyAccountFragment;
-import com.android.tonight8.fragment.PostEventsFragment;
-import com.android.tonight8.fragment.TonightEightFragment;
+import com.android.tonight8.fragment.main.HiLiveFragment;
+import com.android.tonight8.fragment.main.MyAccountFragment;
+import com.android.tonight8.fragment.main.PostEventsFragment;
+import com.android.tonight8.fragment.main.TonightEightFragment;
 
 /**
  * @Description:主界面

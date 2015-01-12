@@ -49,5 +49,8 @@
                 android:layout_marginRight="10dp"
                 />
     </RelativeLayout>
-
+	<LinearLayout
+	    android:id="@+id/ll_fg_container" 
+	    style="@style/match"
+	    android:orientation="vertical"/>
 </LinearLayout>

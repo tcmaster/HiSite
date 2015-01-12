@@ -1,29 +1,26 @@
-package com.android.tonight8.fragment;
-
-import com.android.tonight8.R;
+package com.android.tonight8.fragment.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
+import com.android.tonight8.R;
 
 /**
- * @Description:Hi现场
- * @author:LiuZhao   
+ * @Description:我的账户
+ * @author:LiuZhao
  * @Date:2014年12月15日
  */
-public class HiLiveFragment extends Fragment{
+public class MyAccountFragment extends Fragment {
+
 	private View rootView;
-	private ListView lv_hiLive;
-	
 
 	/** 创建一个静态的实例 */
-	public static final HiLiveFragment newInstance() {
-		HiLiveFragment hiFragment = new HiLiveFragment();
-		return hiFragment;
+	public static final MyAccountFragment newInstance() {
+		MyAccountFragment saFragment = new MyAccountFragment();
+		return saFragment;
 	}
 
 	@Override
@@ -33,7 +30,7 @@ public class HiLiveFragment extends Fragment{
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_hi_live, container, false);
+		rootView = inflater.inflate(R.layout.fragment_myaccount, container, false);
 		return rootView;
 	}
 }

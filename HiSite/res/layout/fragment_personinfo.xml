@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical" >
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_nickname"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_sex"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_receive_address"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_nickname_phone_num"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_authorization"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_change_psw"
+        style="@style/match_width"
+        layout="@layout/include_myaccount_item" />
+
+    <View style="@style/line_full" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.android.tonight8.fragment;
+package com.android.tonight8.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
