@@ -64,32 +64,34 @@
     <string name="shopdetail_id">证号</string>
     <string name="shopdetail_password">密码</string>
 
-	<!-- 主办方资料 -->
-	<string name="company_name">公司名称</string>
-	<string name="company_introduce">简介</string>
-	<string name="company_address">地址</string>
-	<string name="company_contact">联系人</string>
-	<string name="company_phone">联系电话</string>
-	<string name="company_net_address">网址</string>
-	<string name="company_email">邮箱地址</string>
-	<string name="company_weibo">微博</string>
-	<string name="company_weixin">微信号</string>
-	<string name="company_other">其他</string>
-	<!-- 我 -->
-	<string name="award_code">中奖码</string>
-	<string name="my_coupon">优惠券包</string>
-	<string name="lottery_activity">参加过的抽奖活动</string>
-	<string name="business">我关注的商家</string>
-	<string name="address">收货地址</string>
-	<string name="complain_sponsor">投诉主办方</string>
-	<string name="setting">设置</string>
-	<string name="cs_phonenum">400&#8211;600&#8211;8935</string>
-	<string name="cs_hot_line">客服热线</string>	
-	
-	<string name="nick_name">昵称</string>	
-	<string name="sex">性别</string>	
-	<string name="receiver_address">收货地址</string>	
-	<string name="phone_num">手机号</string>	
-	<string name="three_party">第三方账号授权</string>	
-	<string name="change_password">修改密码</string>	
+    <!-- 主办方资料 -->
+    <string name="company_name">公司名称</string>
+    <string name="company_introduce">简介</string>
+    <string name="company_address">地址</string>
+    <string name="company_contact">联系人</string>
+    <string name="company_phone">联系电话</string>
+    <string name="company_net_address">网址</string>
+    <string name="company_email">邮箱地址</string>
+    <string name="company_weibo">微博</string>
+    <string name="company_weixin">微信号</string>
+    <string name="company_other">其他</string>
+    <!-- 我 -->
+    <string name="award_code">中奖码</string>
+    <string name="my_coupon">优惠券包</string>
+    <string name="lottery_activity">参加过的抽奖活动</string>
+    <string name="business">我关注的商家</string>
+    <string name="address">收货地址</string>
+    <string name="complain_sponsor">投诉主办方</string>
+    <string name="setting">设置</string>
+    <string name="cs_phonenum">400&#8211;600&#8211;8935</string>
+    <string name="cs_hot_line">客服热线</string>
+    <string name="nick_name">昵称</string>
+    <string name="sex">性别</string>
+    <string name="receiver_address">收货地址</string>
+    <string name="phone_num">手机号</string>
+    <string name="three_party">第三方账号授权</string>
+    <string name="change_password">修改密码</string>
+    <string name="title_activity_event_award">EventAwardActivity</string>
+    <string name="title_activity_event_exchange">EventExchangeActivity</string>
+
 </resources>

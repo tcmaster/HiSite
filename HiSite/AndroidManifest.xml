@@ -62,7 +62,7 @@
         </activity>
         <!-- 商品详情 -->
         <activity
-            android:name="com.android.tonight8.activity.GoodsDetailActivity"
+            android:name="com.android.tonight8.activity.event.GoodsDetailActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
@@ -76,6 +76,14 @@
         <activity
             android:name="com.android.tonight8.activity.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
+        </activity>
+        <activity
+            android:name="com.android.tonight8.activity.event.EventAwardActivity"
+            android:label="@string/title_activity_event_award" >
+        </activity>
+        <activity
+            android:name="com.android.tonight8.activity.event.EventExchangeActivity"
+            android:label="@string/title_activity_event_exchange" >
         </activity>
     </application>
 
