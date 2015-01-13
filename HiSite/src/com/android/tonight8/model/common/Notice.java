@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:通知对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Notice extends BaseModel {
+public class Notice implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 通知id */
@@ -54,7 +54,8 @@ public class Notice extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Notice [id=" + id + ", content=" + content + ", date=" + date + ", time=" + time + "]";
+		return "Notice [id=" + id + ", content=" + content + ", date=" + date
+				+ ", time=" + time + "]";
 	}
 
 }

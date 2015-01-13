@@ -1,13 +1,13 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 活动对象
  * 
  * @author LiXiaoSong
  */
-public class Event extends BaseModel {
+public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 活动id */
 	public int id;

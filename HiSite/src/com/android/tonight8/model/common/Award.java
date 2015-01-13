@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:中奖对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Award extends BaseModel {
+public class Award implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 中奖id */
@@ -44,7 +44,8 @@ public class Award extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Award [id=" + id + ", code=" + code + ", exchangeStatus=" + exchangeStatus + "]";
+		return "Award [id=" + id + ", code=" + code + ", exchangeStatus="
+				+ exchangeStatus + "]";
 	}
 
 }

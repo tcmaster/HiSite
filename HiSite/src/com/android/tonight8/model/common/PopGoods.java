@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 活动海报
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @author LiXiaoSong
  * 
  */
-public class PopGoods extends BaseModel {
+public class PopGoods implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 活动海报奖品名称 */
 	public String popGoodsName;

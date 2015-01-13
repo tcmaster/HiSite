@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 
@@ -9,7 +9,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class City extends BaseModel {
+public class City implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 城市名称 */

@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:活动用户报名对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Apply extends BaseModel {
+public class Apply implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 报名记录id */

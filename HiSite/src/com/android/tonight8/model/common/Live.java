@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 活动对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @author LiXiaoSong
  * 
  */
-public class Live extends BaseModel {
+public class Live implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 活动图片 */

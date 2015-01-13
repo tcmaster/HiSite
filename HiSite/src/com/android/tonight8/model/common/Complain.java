@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:投诉对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Complain extends BaseModel {
+public class Complain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 投诉id */
@@ -54,7 +54,8 @@ public class Complain extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Complain [id=" + id + ", type=" + type + ", content=" + content + ", contactContent=" + contactContent + "]";
+		return "Complain [id=" + id + ", type=" + type + ", content=" + content
+				+ ", contactContent=" + contactContent + "]";
 	}
 
 }

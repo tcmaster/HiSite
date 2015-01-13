@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:评论对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Comment extends BaseModel {
+public class Comment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 评论id */
@@ -64,7 +64,8 @@ public class Comment extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", content=" + content + ", date=" + date + ", time=" + time + ", replyTo=" + replyTo + "]";
+		return "Comment [id=" + id + ", content=" + content + ", date=" + date
+				+ ", time=" + time + ", replyTo=" + replyTo + "]";
 	}
 
 }

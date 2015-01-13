@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description: 第三方账号对象
@@ -8,14 +8,14 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class ThirdPartyAccount extends BaseModel {
+public class ThirdPartyAccount implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 第三方账号类型 */
 	public int type;
 	/** 第三方账号账号 */
 	public String account;
-	/** 第三方账号访问地址 */
+	/** 第三方账号访问地址（微博url，微信公众号地址） */
 	public String url;
 	/** 是否授权 */
 	public boolean isGrant;
@@ -64,7 +64,9 @@ public class ThirdPartyAccount extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "ThirdPartyAccount [type=" + type + ", account=" + account + ", url=" + url + ", isGrant=" + isGrant + ", grantCode=" + grantCode + "]";
+		return "ThirdPartyAccount [type=" + type + ", account=" + account
+				+ ", url=" + url + ", isGrant=" + isGrant + ", grantCode="
+				+ grantCode + "]";
 	}
 
 }

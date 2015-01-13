@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 商家对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @author LiXiaoSong
  * 
  */
-public class Org extends BaseModel {
+public class Org implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 商家id */

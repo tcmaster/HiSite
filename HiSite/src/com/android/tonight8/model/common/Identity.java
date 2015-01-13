@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:商家身份对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Identity extends BaseModel {
+public class Identity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 商家身份类型 */
@@ -54,7 +54,8 @@ public class Identity extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Identity [type=" + type + ", code=" + code + ", photoFront=" + photoFront + ", photoReverse=" + photoReverse + "]";
+		return "Identity [type=" + type + ", code=" + code + ", photoFront="
+				+ photoFront + ", photoReverse=" + photoReverse + "]";
 	}
 
 }

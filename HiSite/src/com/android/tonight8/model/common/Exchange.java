@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 
@@ -9,7 +9,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Exchange extends BaseModel {
+public class Exchange implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 兑奖id */
@@ -55,7 +55,8 @@ public class Exchange extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Exchange [id=" + id + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + "]";
+		return "Exchange [id=" + id + ", method=" + method + ", address="
+				+ address + ", orgAll=" + orgAll + "]";
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:咨询对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Consult extends BaseModel {
+public class Consult implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 咨询id */
@@ -74,7 +74,9 @@ public class Consult extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Consult [id=" + id + ", rid=" + rid + ", content=" + content + ", date=" + date + ", time=" + time + ", replyTo=" + replyTo + "]";
+		return "Consult [id=" + id + ", rid=" + rid + ", content=" + content
+				+ ", date=" + date + ", time=" + time + ", replyTo=" + replyTo
+				+ "]";
 	}
 
 }

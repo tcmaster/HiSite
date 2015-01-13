@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * 
@@ -9,7 +9,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Coupon extends BaseModel {
+public class Coupon implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 券id */
@@ -145,7 +145,13 @@ public class Coupon extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", code=" + code + ", useStatus=" + useStatus + ", provideType=" + provideType + ", provideNum=" + provideNum + ", provideAll=" + provideAll + ", value=" + value + ", content=" + content + ", dateRangeStart=" + dateRangeStart + ", dateRangeEnd=" + dateRangeEnd + ", templatePic=" + templatePic + ", publishTime=" + publishTime + ", quickMark=" + quickMark + "]";
+		return "Coupon [id=" + id + ", code=" + code + ", useStatus="
+				+ useStatus + ", provideType=" + provideType + ", provideNum="
+				+ provideNum + ", provideAll=" + provideAll + ", value="
+				+ value + ", content=" + content + ", dateRangeStart="
+				+ dateRangeStart + ", dateRangeEnd=" + dateRangeEnd
+				+ ", templatePic=" + templatePic + ", publishTime="
+				+ publishTime + ", quickMark=" + quickMark + "]";
 	}
 
 }

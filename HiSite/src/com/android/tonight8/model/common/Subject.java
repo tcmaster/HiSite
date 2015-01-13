@@ -1,6 +1,6 @@
 package com.android.tonight8.model.common;
 
-import com.android.tonight8.model.BaseModel;
+import java.io.Serializable;
 
 /**
  * @Description:话题对象
@@ -8,7 +8,7 @@ import com.android.tonight8.model.BaseModel;
  * @copyright @HiSite
  * @Date:2015-1-13
  */
-public class Subject extends BaseModel {
+public class Subject implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 话题id */
@@ -54,7 +54,8 @@ public class Subject extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", content=" + content + ", date=" + date + ", time=" + time + "]";
+		return "Subject [id=" + id + ", content=" + content + ", date=" + date
+				+ ", time=" + time + "]";
 	}
 
 }
