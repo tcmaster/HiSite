@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
-import com.android.tonight8.Storage.DBUtil;
+import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.utils.MD5Utils;
 import com.baidu.location.BDLocation;
