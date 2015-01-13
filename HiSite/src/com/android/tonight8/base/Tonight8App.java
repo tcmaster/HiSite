@@ -13,8 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
-import com.android.tonight8.R.id;
-import com.android.tonight8.R.layout;
+import com.android.tonight8.Storage.DBUtil;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.utils.MD5Utils;
 import com.baidu.location.BDLocation;
@@ -53,6 +52,8 @@ public class Tonight8App extends Application {
 		// 初始化百度地图
 		SDKInitializer.initialize(getApplicationContext());
 		initDeviceParams();
+		// 初始化数据库
+		DBUtil.initDB(this);
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 	}
@@ -64,7 +65,8 @@ public class Tonight8App extends Application {
 	 */
 	public void initDeviceParams() {
 		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+		TelephonyManager tm = (TelephonyManager) this
+				.getSystemService(TELEPHONY_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		AppConstants.dpi = dm.densityDpi + "";// 设备分辨率
@@ -73,12 +75,17 @@ public class Tonight8App extends Application {
 		AppConstants.imei = tm.getDeviceId();// 设备imei码
 		AppConstants.os_version = android.os.Build.VERSION.SDK_INT + "";// 操作系统版本号
 		try {
-			AppConstants.version = getPackageManager().getPackageInfo(PACKAGE_NAME, 0).versionCode + "";// 应用版本
+			AppConstants.version = getPackageManager().getPackageInfo(
+					PACKAGE_NAME, 0).versionCode
+					+ "";// 应用版本
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
-		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei + AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
+		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version
+				+ AppConstants.device_type + AppConstants.imei
+				+ AppConstants.dpi + AppConstants.os_version
+				+ AppConstants.phone_model + "keleping");
 		LocationFunction lcf = new LocationFunction(this);
 		lcf.beginLocation(new BDLocationListener() {
 
