@@ -29,7 +29,7 @@ public class DBUtil {
 	 *            确定是哪个表
 	 * @return
 	 */
-	public <T> List<T> getData(Class<T> clazz) {
+	public static <T> List<T> getData(Class<T> clazz) {
 		List<T> result = null;
 		try {
 			result = utils.findAll(clazz);
@@ -48,7 +48,7 @@ public class DBUtil {
 	 *            查询子句
 	 * @return
 	 */
-	public <T> List<T> getData(Class<T> clazz, String expr) {
+	public static <T> List<T> getData(Class<T> clazz, String expr) {
 		List<T> result = null;
 		try {
 			result = utils.findAll(Selector.from(clazz).expr(expr));
@@ -64,7 +64,7 @@ public class DBUtil {
 	 * @param entity
 	 *            存入的实体
 	 */
-	public void addData(Object entity) {
+	public static void addData(Object entity) {
 		try {
 			utils.save(entity);
 		} catch (DbException e) {
@@ -78,7 +78,7 @@ public class DBUtil {
 	 * @param entities
 	 *            批量增加的数据
 	 */
-	public void addData(List<Object> entities) {
+	public static void addData(List<Object> entities) {
 		try {
 			utils.saveAll(entities);
 		} catch (DbException e) {
@@ -96,7 +96,7 @@ public class DBUtil {
 	 * @param updateColumnNames
 	 *            要更新哪一列
 	 */
-	public void updateData(Object entity, WhereBuilder builder,
+	public static void updateData(Object entity, WhereBuilder builder,
 			String... updateColumnNames) {
 		try {
 			utils.update(entity, builder, updateColumnNames);
@@ -111,7 +111,7 @@ public class DBUtil {
 	 * @param entities
 	 *            要删除的数据实体
 	 */
-	public void deleteData(List<Object> entities) {
+	public static void deleteData(List<Object> entities) {
 		try {
 			utils.deleteAll(entities);
 		} catch (DbException e) {
