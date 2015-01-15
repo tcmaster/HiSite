@@ -13,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.R.anim;
-import com.android.tonight8.R.id;
-import com.android.tonight8.R.layout;
 import com.lidroid.xutils.ViewUtils;
 
 public class BaseActivity extends FragmentActivity {
@@ -69,15 +66,18 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: PengGuoHua
 	 * @date:2014-10-31
 	 */
-	protected void startActivityForResultAndAnima(Intent intent, int requestCode, Activity parentActivity) {
+	protected void startActivityForResultAndAnima(Intent intent,
+			int requestCode, Activity parentActivity) {
 		if (intent != null) {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivityForResult(intent, requestCode);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivityForResult(intent, requestCode);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -99,10 +99,12 @@ public class BaseActivity extends FragmentActivity {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivity(intent);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivity(intent);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -113,7 +115,9 @@ public class BaseActivity extends FragmentActivity {
 	public void useCustomerActionBar() {
 		if (mActionBar == null) {
 			mActionBar = getActionBar();
-			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
+			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP
+					| ActionBar.DISPLAY_SHOW_TITLE
+					| ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
 			mActionBar.setCustomView(R.layout.layout_actionbar);
 			mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 			View view = mActionBar.getCustomView();

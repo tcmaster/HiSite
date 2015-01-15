@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.adapter.HiLiveAdapter;
 import com.android.tonight8.model.live.LiveSubjectModel;
 
 /**
@@ -23,7 +22,7 @@ public class HiLiveFragment extends Fragment {
 
 	private View rootView;
 	private ListView lv_hiLive;
-	private HiLiveAdapter hiLiveAdapter;
+	// private HiLiveAdapter hiLiveAdapter;
 	private List<LiveSubjectModel> liveSubjectModels;
 
 	/** 创建一个静态的实例 */
@@ -33,13 +32,15 @@ public class HiLiveFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (rootView != null) {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_hi_live, container, false);
+		rootView = inflater
+				.inflate(R.layout.fragment_hi_live, container, false);
 		lv_hiLive = (ListView) rootView.findViewById(R.id.lv_hiLive);
 		liveSubjectModels = new ArrayList<LiveSubjectModel>();
 
@@ -47,8 +48,8 @@ public class HiLiveFragment extends Fragment {
 			LiveSubjectModel liveSubjectModel = new LiveSubjectModel();
 			liveSubjectModels.add(liveSubjectModel);
 		}
-		hiLiveAdapter = new HiLiveAdapter(getActivity(), liveSubjectModels);
-		lv_hiLive.setAdapter(hiLiveAdapter);
+		// hiLiveAdapter = new HiLiveAdapter(getActivity(), liveSubjectModels);
+		// lv_hiLive.setAdapter(hiLiveAdapter);
 		return rootView;
 	}
 }

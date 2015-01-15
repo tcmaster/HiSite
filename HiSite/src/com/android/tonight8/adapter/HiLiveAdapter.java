@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.HiLiveGalleryAdapter.OnItemClickLitener;
+import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.model.live.LiveSubjectModel;
 
@@ -46,50 +47,64 @@ public class HiLiveAdapter extends BaseListAdapter<LiveSubjectModel> {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = mInflater.inflate(R.layout.adapter_hilive, null);
-			holder.tv_title_hilive = (TextView) convertView.findViewById(R.id.tv_title_hilive);
-			holder.tv_place_time = (TextView) convertView.findViewById(R.id.tv_place_time);
-			holder.iv_camera_icon = (ImageView) convertView.findViewById(R.id.iv_camera_icon);
-			holder.vp_adapter_hilive = (ViewPager) convertView.findViewById(R.id.vp_adapter_hilive);
-			holder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.rv_recyclerview_horizontal);
-			holder.tv_share = (TextView) convertView.findViewById(R.id.tv_share);
-			holder.cb_subject = (CheckBox) convertView.findViewById(R.id.cb_subject);
-			holder.lv_subject = (ListView) convertView.findViewById(R.id.lv_subject);
+			holder.tv_title_hilive = (TextView) convertView
+					.findViewById(R.id.tv_title_hilive);
+			holder.tv_place_time = (TextView) convertView
+					.findViewById(R.id.tv_place_time);
+			holder.iv_camera_icon = (ImageView) convertView
+					.findViewById(R.id.iv_camera_icon);
+			holder.vp_adapter_hilive = (ViewPager) convertView
+					.findViewById(R.id.vp_adapter_hilive);
+			holder.mRecyclerView = (RecyclerView) convertView
+					.findViewById(R.id.rv_recyclerview_horizontal);
+			holder.tv_share = (TextView) convertView
+					.findViewById(R.id.tv_share);
+			holder.cb_subject = (CheckBox) convertView
+					.findViewById(R.id.cb_subject);
+			holder.lv_subject = (ListView) convertView
+					.findViewById(R.id.lv_subject);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		holder.cb_subject.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		holder.cb_subject
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+					@Override
+					public void onCheckedChanged(CompoundButton arg0,
+							boolean arg1) {
 
-				if (arg1) {
-					list = mValues.get(position).getComments();
-					List<String> mDatas = new ArrayList<String>();
-					pagerAdapter = new MyPagerAdapter(mContext, mDatas);
-					viewpager.setAdapter(pagerAdapter);
-					viewpager.setCurrentItem(index);
+						if (arg1) {
+							list = mValues.get(position).getComments();
+							List<String> mDatas = new ArrayList<String>();
+							pagerAdapter = new MyPagerAdapter(mContext, mDatas);
+							viewpager.setAdapter(pagerAdapter);
+							viewpager.setCurrentItem(index);
 
-					LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-					linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-					holder.mRecyclerView.setLayoutManager(linearLayoutManager);
-					holder.mRecyclerView.setAdapter(mAdapter);
-					mAdapter.setOnItemClickLitener(new OnItemClickLitener() {
+							LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+									mContext);
+							linearLayoutManager
+									.setOrientation(LinearLayoutManager.HORIZONTAL);
+							holder.mRecyclerView
+									.setLayoutManager(linearLayoutManager);
+							holder.mRecyclerView.setAdapter(mAdapter);
+							mAdapter.setOnItemClickLitener(new OnItemClickLitener() {
 
-						@Override
-						public void onItemClick(View view, int position1) {
-							Toast.makeText(mContext, position1 + "", Toast.LENGTH_SHORT).show();
-							// mImg.setImageResource(mDatas.get(position));
-							viewpager.setCurrentItem(position);
+								@Override
+								public void onItemClick(View view, int position1) {
+									Toast.makeText(mContext, position1 + "",
+											Toast.LENGTH_SHORT).show();
+									// mImg.setImageResource(mDatas.get(position));
+									viewpager.setCurrentItem(position);
+								}
+							});
+						} else {
+							list = null;
 						}
-					});
-				} else {
-					list = null;
-				}
-				holder.lv_subject.setAdapter(subjectListAdapter);
-			}
-		});
+						holder.lv_subject.setAdapter(subjectListAdapter);
+					}
+				});
 
 		return convertView;
 	}

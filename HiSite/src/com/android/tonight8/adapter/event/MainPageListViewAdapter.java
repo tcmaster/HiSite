@@ -1,17 +1,21 @@
 /**
  * 2014-12-25
  */
-package com.android.tonight8.adapter;
+package com.android.tonight8.adapter.event;
 
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.event.EventAwardActivity;
+import com.android.tonight8.adapter.BaseListAdapter;
 
 /**
  * @Description:
@@ -34,16 +38,36 @@ public class MainPageListViewAdapter extends BaseListAdapter<String> {
 			convertView = mInflater.inflate(R.layout.item_home_lv, null, false);
 			holder = new ViewHolder();
 			holder.iv_bpic = (ImageView) convertView.findViewById(R.id.iv_bpic);
-			holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
-			holder.tv_location = (TextView) convertView.findViewById(R.id.tv_location);
-			holder.tv_company = (TextView) convertView.findViewById(R.id.tv_company);
-			holder.tv_prize = (TextView) convertView.findViewById(R.id.tv_prize);
-			holder.tv_count = (TextView) convertView.findViewById(R.id.tv_count);
-			holder.tv_redpacket = (TextView) convertView.findViewById(R.id.tv_redpacket);
-			holder.tv_signup_count = (TextView) convertView.findViewById(R.id.tv_signup_count);
-			holder.ll_win = (LinearLayout) convertView.findViewById(R.id.ll_win);
-			holder.ll_comment = (LinearLayout) convertView.findViewById(R.id.ll_comment);
-			holder.ll_apply = (LinearLayout) convertView.findViewById(R.id.ll_apply);
+			holder.tv_title = (TextView) convertView
+					.findViewById(R.id.tv_title);
+			holder.tv_location = (TextView) convertView
+					.findViewById(R.id.tv_location);
+			holder.tv_company = (TextView) convertView
+					.findViewById(R.id.tv_company);
+			holder.tv_prize = (TextView) convertView
+					.findViewById(R.id.tv_prize);
+			holder.tv_count = (TextView) convertView
+					.findViewById(R.id.tv_count);
+			holder.tv_redpacket = (TextView) convertView
+					.findViewById(R.id.tv_redpacket);
+			holder.tv_signup_count = (TextView) convertView
+					.findViewById(R.id.tv_signup_count);
+			holder.ll_win = (LinearLayout) convertView
+					.findViewById(R.id.ll_win);
+			holder.ll_comment = (LinearLayout) convertView
+					.findViewById(R.id.ll_comment);
+			holder.ll_apply = (LinearLayout) convertView
+					.findViewById(R.id.ll_apply);
+			holder.ll_win.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					Intent intent = new Intent(mContext,
+							EventAwardActivity.class);
+					mContext.startActivity(intent);
+
+				}
+			});
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
