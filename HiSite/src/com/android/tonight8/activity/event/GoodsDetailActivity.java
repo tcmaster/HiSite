@@ -6,29 +6,22 @@ package com.android.tonight8.activity.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.AboutUsActivity;
-import com.android.tonight8.adapter.AllPrizeLocationAdapter;
-import com.android.tonight8.adapter.GoodLeftAdapter;
-import com.android.tonight8.adapter.GoodRightAdapter;
+import com.android.tonight8.adapter.event.GoodLeftAdapter;
+import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.utils.DialogUtils;
-import com.android.tonight8.utils.DialogUtils.ListDialogInterface;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -95,6 +88,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		setContentView(R.layout.activity_goods_detail);
 		super.onCreate(savedInstanceState);
 		initHeaderView();
+		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
 		initData();
 	}
 
@@ -191,28 +185,8 @@ public class GoodsDetailActivity extends BaseActivity implements
 	 * @date:2015-1-8
 	 */
 	private void doWatchAllPrizeLocation() {
-		DialogUtils.showListDialog(this, DialogUtils.TYPE_SIMPLE_LIST,
-				new ListDialogInterface() {
-
-					@Override
-					public void getListView(ListView lv_list,
-							final AlertDialog dlg) {
-						List<String> testData = new ArrayList<String>();
-						testData.add("");
-						testData.add("");
-						testData.add("");
-						lv_list.setAdapter(new AllPrizeLocationAdapter(
-								GoodsDetailActivity.this, testData));
-						lv_list.setOnItemClickListener(new OnItemClickListener() {
-
-							@Override
-							public void onItemClick(AdapterView<?> parent,
-									View view, int position, long id) {
-								dlg.dismiss();
-							}
-						});
-					}
-				});
+		Intent intent = new Intent(this, EventExchangeActivity.class);
+		startActivity(intent);
 	}
 
 }

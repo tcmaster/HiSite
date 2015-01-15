@@ -58,7 +58,7 @@ public class ForgetIDOrPwdActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_forgotid_main);
-		useCustomerActionBar();
+		getActionBarBase("忘记id");
 		forgottype = getIntent().getIntExtra("forgottype", 0);
 		if (forgottype == 0) {
 			ll_password.setVisibility(View.GONE);

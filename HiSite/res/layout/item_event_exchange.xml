@@ -29,7 +29,7 @@
             style="@style/match_width"
             android:text="@string/app_name"
             android:textColor="@color/red"
-            android:textSize="@dimen/middleTextSize" />
+            android:textSize="@dimen/smallTextSize" />
 
         <LinearLayout
             style="@style/match_width"
@@ -39,7 +39,7 @@
                 style="@style/wrap"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
                 android:id="@+id/tv_nearby_good"
@@ -47,7 +47,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
         </LinearLayout>
         <LinearLayout
             style="@style/match_width"
@@ -57,7 +57,7 @@
                 style="@style/wrap"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
                 android:id="@+id/tv_telephone"
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
         </LinearLayout>
         <LinearLayout
             style="@style/match_width"
@@ -75,7 +75,7 @@
                 style="@style/wrap"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
                 android:id="@+id/tv_get_goods_way"
@@ -83,7 +83,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
         </LinearLayout>
     </LinearLayout>
 

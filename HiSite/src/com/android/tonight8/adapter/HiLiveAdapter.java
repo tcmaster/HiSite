@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.model.live.LiveSubjectModel;
 
@@ -89,13 +90,12 @@ public class HiLiveAdapter extends BaseListAdapter<LiveSubjectModel> {
 		// }
 		// });
 		// 话题列表
+
 		holder.cb_subject
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
 					@Override
 					public void onCheckedChanged(CompoundButton arg0,
 							boolean arg1) {
-
 						if (arg1) {
 							// list = mValues.get(position).getComments();
 							list = new ArrayList<Comment>();
@@ -112,8 +112,8 @@ public class HiLiveAdapter extends BaseListAdapter<LiveSubjectModel> {
 						} else {
 							holder.lv_subject.setVisibility(View.GONE);
 						}
-
 					}
+
 				});
 
 		return convertView;
