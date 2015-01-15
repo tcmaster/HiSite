@@ -31,21 +31,21 @@
         </ImageView>
     </RelativeLayout>
 
-    <RelativeLayout style="@style/match_width" >
+    <FrameLayout style="@style/match_width" >
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_adapter_hilive"
             android:layout_width="fill_parent"
             android:layout_height="150dip" />
-    </RelativeLayout>
+    </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_recyclerview_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#FF0000"
-        android:scrollbars="none" />
+<!--     <android.support.v7.widget.RecyclerView -->
+<!--         android:id="@+id/rv_recyclerview_horizontal" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="120dp" -->
+<!--         android:layout_gravity="bottom" -->
+<!--         android:background="#FF0000" -->
+<!--         android:scrollbars="none" /> -->
 
     <RelativeLayout style="@style/match_width" >
 
@@ -70,8 +70,7 @@
 
     <ListView
         android:id="@+id/lv_subject"
-        style="@style/match_width"
-        android:visibility="gone" >
+        style="@style/match_width" >
     </ListView>
 
 </LinearLayout>

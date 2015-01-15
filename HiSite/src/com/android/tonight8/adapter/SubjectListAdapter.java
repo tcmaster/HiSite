@@ -41,6 +41,7 @@ public class SubjectListAdapter extends BaseListAdapter<Comment> {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		bmUtils.display(holder.iv_subject_head, "");
+		holder.tv_subject_date.setText(mValues.get(position).getDate());
 
 		return convertView;
 	}
