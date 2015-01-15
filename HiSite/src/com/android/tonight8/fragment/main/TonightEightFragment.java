@@ -158,13 +158,8 @@ public class TonightEightFragment extends Fragment {
 	}
 
 	private void initActionBar() {
-		bA.useCustomerActionBar();
-		bA.getLeftText().setVisibility(View.INVISIBLE);
-		bA.getArrow().setVisibility(View.INVISIBLE);
-		bA.getLogo().setVisibility(View.INVISIBLE);
-		bA.getActionTitle().setText("今晚8点");
-		bA.getTitleRight().setText("北京");
-		bA.getRightText().setVisibility(View.GONE);
+		bA.getActionBarSpeical("今晚8点", R.drawable.ic_launcher, false, true,
+				null);
 	}
 
 	/**
