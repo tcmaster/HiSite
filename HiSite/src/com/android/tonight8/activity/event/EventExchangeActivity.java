@@ -52,6 +52,7 @@ public class EventExchangeActivity extends BaseActivity {
 		setContentView(R.layout.activity_event_award_or_exchange);
 		super.onCreate(savedInstanceState);
 		initHeaderView();
+		getActionBarBase("中奖名单");
 		initData();
 	}
 

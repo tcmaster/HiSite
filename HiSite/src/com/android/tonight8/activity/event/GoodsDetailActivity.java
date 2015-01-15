@@ -88,6 +88,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		setContentView(R.layout.activity_goods_detail);
 		super.onCreate(savedInstanceState);
 		initHeaderView();
+		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
 		initData();
 	}
 
