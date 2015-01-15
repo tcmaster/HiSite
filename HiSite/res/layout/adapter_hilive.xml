@@ -39,6 +39,14 @@
             android:layout_height="150dip" />
     </RelativeLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_recyclerview_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#FF0000"
+        android:scrollbars="none" />
+
     <RelativeLayout style="@style/match_width" >
 
         <TextView
@@ -49,14 +57,21 @@
             android:text="分享" >
         </TextView>
 
-        <TextView
-            android:id="@+id/tv_comment"
+        <CheckBox
+            android:id="@+id/cb_subject"
             style="@style/wrap"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/tv_share"
+            android:button="@null"
             android:drawableLeft="@drawable/ic_launcher"
             android:gravity="center"
             android:text="评论" />
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_subject"
+        style="@style/match_width"
+        android:visibility="gone" >
+    </ListView>
 
 </LinearLayout>
