@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width" >
+
+    <LinearLayout
+        style="@style/wrap"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_added_time"
+            style="@style/wrap"
+            android:layout_marginRight="5dp"
+            android:text="@string/app_name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_apply_count"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_pop_goods_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        style="@style/wrap"
+        android:layout_alignTop="@id/iv_pop_goods_pic"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/iv_pop_goods_pic"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_event_name"
+            style="@style/wrap"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/bigTextSize" />
+
+        <LinearLayout
+            style="@style/wrap"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:background="@color/black"
+                android:text="@string/publish"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallTextSize" />
+
+            <TextView
+                android:id="@+id/tv_org_name"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wrap"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/award"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize" />
+
+            <TextView
+                android:id="@+id/tv_pop_goods"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wrap"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/award_count"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize" />
+
+            <TextView
+                android:id="@+id/tv_provide_num"
+                style="@style/wrap"
+                android:layout_marginLeft="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize" />
+		</LinearLayout>
+            <LinearLayout
+                style="@style/wrap"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="@string/coupon"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/smallTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_coupon"
+                    style="@style/wrap"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/smallTextSize" />
+            </LinearLayout>
+        </LinearLayout>
+
+</RelativeLayout>

@@ -63,6 +63,10 @@
     <string name="shopdetail_email">邮箱地址</string>
     <string name="shopdetail_id">证号</string>
     <string name="shopdetail_password">密码</string>
+    <!-- 中奖名单 -->
+    <string name="publish">发布</string>
+    <string name="award">奖品:</string>
+    <string name="award_count">中奖名单:</string>
 
     <!-- 主办方资料 -->
     <string name="company_name">公司名称</string>
