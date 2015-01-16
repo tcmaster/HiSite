@@ -32,15 +32,13 @@ public class HiLiveFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (rootView != null) {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater
-				.inflate(R.layout.fragment_hi_live, container, false);
+		rootView = inflater.inflate(R.layout.fragment_hi_live, container, false);
 		lv_hiLive = (ListView) rootView.findViewById(R.id.lv_hiLive);
 		liveSubjectModels = new ArrayList<LiveSubjectModel>();
 

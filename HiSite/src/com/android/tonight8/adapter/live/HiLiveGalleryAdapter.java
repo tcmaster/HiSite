@@ -1,4 +1,4 @@
-package com.android.tonight8.adapter;
+package com.android.tonight8.adapter.live;
 
 import java.util.List;
 

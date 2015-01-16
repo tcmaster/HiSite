@@ -1,4 +1,4 @@
-package com.android.tonight8.adapter;
+package com.android.tonight8.adapter.live;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.model.common.Comment;
 import com.lidroid.xutils.BitmapUtils;
 
