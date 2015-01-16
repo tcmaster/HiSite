@@ -39,13 +39,13 @@
             android:layout_height="150dip" />
     </FrameLayout>
 
-<!--     <android.support.v7.widget.RecyclerView -->
-<!--         android:id="@+id/rv_recyclerview_horizontal" -->
-<!--         android:layout_width="match_parent" -->
-<!--         android:layout_height="120dp" -->
-<!--         android:layout_gravity="bottom" -->
-<!--         android:background="#FF0000" -->
-<!--         android:scrollbars="none" /> -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_recyclerview_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom"
+        android:background="#FF0000"
+        android:scrollbars="none" />
 
     <RelativeLayout style="@style/match_width" >
 

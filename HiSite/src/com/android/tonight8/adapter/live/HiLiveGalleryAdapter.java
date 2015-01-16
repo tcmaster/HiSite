@@ -3,6 +3,7 @@ package com.android.tonight8.adapter.live;
 import java.util.List;
 
 import com.android.tonight8.R;
+import com.lidroid.xutils.BitmapUtils;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -27,11 +28,13 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 	}
 
 	private LayoutInflater mInflater;
-	private List<Integer> mDatas;
+	private List<String> mDatas;
+	private BitmapUtils bmUtils;
 
-	public HiLiveGalleryAdapter(Context context, List<Integer> datats) {
+	public HiLiveGalleryAdapter(Context context, List<String> datats) {
 		mInflater = LayoutInflater.from(context);
 		mDatas = datats;
+		bmUtils = new BitmapUtils(context);
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,6 +49,9 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 
 	@Override
 	public int getItemCount() {
+		if (mDatas == null) {
+			return 0;
+		}
 		return mDatas.size();
 	}
 
@@ -60,8 +66,7 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 
 	@Override
 	public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
-		viewHolder.mImg.setImageResource(mDatas.get(i));
-
+		bmUtils.display(viewHolder.mImg, mDatas.get(i));
 		if (mOnItemClickLitener != null) {
 			viewHolder.itemView.setOnClickListener(new OnClickListener() {
 

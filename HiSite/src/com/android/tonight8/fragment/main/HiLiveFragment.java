@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.adapter.live.HiLiveAdapter;
 import com.android.tonight8.model.live.LiveSubjectModel;
 
 /**
@@ -22,7 +23,7 @@ public class HiLiveFragment extends Fragment {
 
 	private View rootView;
 	private ListView lv_hiLive;
-	// private HiLiveAdapter hiLiveAdapter;
+	private HiLiveAdapter hiLiveAdapter;
 	private List<LiveSubjectModel> liveSubjectModels;
 
 	/** 创建一个静态的实例 */
@@ -46,8 +47,8 @@ public class HiLiveFragment extends Fragment {
 			LiveSubjectModel liveSubjectModel = new LiveSubjectModel();
 			liveSubjectModels.add(liveSubjectModel);
 		}
-		// hiLiveAdapter = new HiLiveAdapter(getActivity(), liveSubjectModels);
-		// lv_hiLive.setAdapter(hiLiveAdapter);
+		hiLiveAdapter = new HiLiveAdapter(getActivity(), liveSubjectModels);
+		lv_hiLive.setAdapter(hiLiveAdapter);
 		return rootView;
 	}
 }
