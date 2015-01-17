@@ -30,6 +30,18 @@ public class Org extends EntityBase {
 	@Column(column = "coordinate")
 	@NotNull
 	public String coordinate;
+	/** 省份编码 */
+	@Column(column = "provinceCode")
+	@NotNull
+	public String provinceCode;
+	/** 城市编码 */
+	@Column(column = "cityCode")
+	@NotNull
+	public String cityCode;
+	/** 地区编码 */
+	@Column(column = "areaCode")
+	@NotNull
+	public String areaCode;
 	/** 商家地址 */
 	@Column(column = "address")
 	@NotNull
@@ -56,6 +68,12 @@ public class Org extends EntityBase {
 	/** 商家企业营业执照证件编号 */
 	@Column(column = "paperCode")
 	public String paperCode;
+	/** 身份类型 */
+	@Column(column = "identit0yType")
+	public int identit0yType;
+	/** 身份编码 */
+	@Column(column = "identityCode")
+	public String identityCode;
 
 	public String getName() {
 		return name;
@@ -153,13 +171,57 @@ public class Org extends EntityBase {
 		this.paperCode = paperCode;
 	}
 
+	public String getProvinceCode() {
+		return provinceCode;
+	}
+
+	public void setProvinceCode(String provinceCode) {
+		this.provinceCode = provinceCode;
+	}
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public int getIdentit0yType() {
+		return identit0yType;
+	}
+
+	public void setIdentit0yType(int identit0yType) {
+		this.identit0yType = identit0yType;
+	}
+
+	public String getIdentityCode() {
+		return identityCode;
+	}
+
+	public void setIdentityCode(String identityCode) {
+		this.identityCode = identityCode;
+	}
+
 	@Override
 	public String toString() {
 		return "Org [name=" + name + ", intro=" + intro + ", logo=" + logo
-				+ ", pic=" + pic + ", coordinate=" + coordinate + ", address="
-				+ address + ", telphone=" + telphone + ", email=" + email
+				+ ", pic=" + pic + ", coordinate=" + coordinate
+				+ ", provinceCode=" + provinceCode + ", cityCode=" + cityCode
+				+ ", areaCode=" + areaCode + ", address=" + address
+				+ ", telphone=" + telphone + ", email=" + email
 				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
 				+ contactMobilPhone + ", paperPhoto=" + paperPhoto
-				+ ", paperCode=" + paperCode + "]";
+				+ ", paperCode=" + paperCode + ", identit0yType="
+				+ identit0yType + ", identityCode=" + identityCode + "]";
 	}
+
 }

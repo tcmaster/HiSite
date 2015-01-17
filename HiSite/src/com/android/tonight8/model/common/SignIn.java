@@ -18,6 +18,8 @@ public class SignIn implements Serializable {
 	public String time;
 	/** 图片大小 */
 	public String size;
+	/** 用户对象 */
+	public User user;
 
 	public long getId() {
 		return id;

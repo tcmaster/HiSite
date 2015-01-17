@@ -47,6 +47,8 @@ public class Event implements Serializable {
 	public boolean isCouponNoneAward;
 	/** 话题数量 */
 	public int subjectCount;
+	/** 签到数量*/
+	public int signInCount;
 
 	public int getId() {
 		return id;
