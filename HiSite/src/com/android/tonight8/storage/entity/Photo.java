@@ -40,4 +40,10 @@ public class Photo extends EntityBase {
 	public void setSize(String size) {
 		this.size = size;
 	}
+
+	@Override
+	public String toString() {
+		return "Photo [subject=" + subject + ", user=" + user + ", url=" + url
+				+ ", size=" + size + "]";
+	}
 }

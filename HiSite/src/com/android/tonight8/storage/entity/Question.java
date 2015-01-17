@@ -64,6 +64,13 @@ public class Question extends EntityBase{
 	public void setIsReply(int isReply) {
 		this.isReply = isReply;
 	}
+
+	@Override
+	public String toString() {
+		return "Question [user=" + user + ", org=" + org + ", content="
+				+ content + ", date=" + date + ", time=" + time + ", isReply="
+				+ isReply + "]";
+	}
 	
 
 }

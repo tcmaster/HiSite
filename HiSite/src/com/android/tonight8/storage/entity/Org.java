@@ -152,4 +152,14 @@ public class Org extends EntityBase {
 	public void setPaperCode(String paperCode) {
 		this.paperCode = paperCode;
 	}
+
+	@Override
+	public String toString() {
+		return "Org [name=" + name + ", intro=" + intro + ", logo=" + logo
+				+ ", pic=" + pic + ", coordinate=" + coordinate + ", address="
+				+ address + ", telphone=" + telphone + ", email=" + email
+				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
+				+ contactMobilPhone + ", paperPhoto=" + paperPhoto
+				+ ", paperCode=" + paperCode + "]";
+	}
 }

@@ -50,4 +50,11 @@ public class PopGoods extends EntityBase {
 	public void setPopGoodsPrice(int popGoodsPrice) {
 		this.popGoodsPrice = popGoodsPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "PopGoods [event=" + event + ", popGoodsName=" + popGoodsName
+				+ ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice="
+				+ popGoodsPrice + "]";
+	}
 }
