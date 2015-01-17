@@ -19,6 +19,10 @@ public class Complain implements Serializable {
 	public String content;
 	/** 联系方式内容 */
 	public String contactContent;
+	/** 投诉日期 */
+	public String date;
+	/** 投诉时间 */
+	public String time;
 
 	public int getId() {
 		return id;
@@ -52,10 +56,27 @@ public class Complain implements Serializable {
 		this.contactContent = contactContent;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	@Override
 	public String toString() {
 		return "Complain [id=" + id + ", type=" + type + ", content=" + content
-				+ ", contactContent=" + contactContent + "]";
+				+ ", contactContent=" + contactContent + ", date=" + date
+				+ ", time=" + time + "]";
 	}
 
 }
