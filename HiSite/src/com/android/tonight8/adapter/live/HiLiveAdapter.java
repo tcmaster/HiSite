@@ -73,19 +73,28 @@ public class HiLiveAdapter extends BaseListAdapter<LiveSubjectModel> {
 		linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 		holder.mRecyclerView.setLayoutManager(linearLayoutManager);
 		galleryData = new ArrayList<String>();
-		mDatas.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
-		mDatas.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
-		mDatas.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
-		mDatas.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
+		galleryData.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
+		galleryData.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
+		galleryData.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
+		galleryData.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
+		galleryData.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
+		galleryData.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
+		galleryData.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
 		mAdapter = new HiLiveGalleryAdapter(mContext, galleryData);
 		holder.mRecyclerView.setAdapter(mAdapter);
 		mAdapter.setOnItemClickLitener(new OnItemClickLitener() {
 
 			@Override
 			public void onItemClick(View view, int position1) {
-				Toast.makeText(mContext, position1 + "", Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, position+"  "+position1 + " ", Toast.LENGTH_SHORT).show();
 				// mImg.setImageResource(mDatas.get(position));
-				holder.vp_adapter_hilive.setCurrentItem(position);
+				holder.vp_adapter_hilive.setTag(position);
+				holder.vp_adapter_hilive.setCurrentItem(position1);
 			}
 		});
 		// 话题列表

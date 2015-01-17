@@ -68,9 +68,9 @@
             android:text="评论" />
     </RelativeLayout>
 
-    <ListView
+    <com.android.tonight8.view.ListViewForScrollView
         android:id="@+id/lv_subject"
         style="@style/match_width" >
-    </ListView>
+    </com.android.tonight8.view.ListViewForScrollView>
 
 </LinearLayout>
