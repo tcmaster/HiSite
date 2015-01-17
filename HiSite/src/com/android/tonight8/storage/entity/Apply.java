@@ -11,11 +11,43 @@ import com.lidroid.xutils.db.annotation.Table;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-@Table(name = "appl=y")
+@Table(name = "apply")
 public class Apply extends EntityBase {
-	/***/
-	@Column(column = "rid")
+	/** 引用外键Event id */
+	@Foreign(column = "rid", foreign = "id")
+	private Event event;
+	/** 引用外键User id */
+	@Foreign(column = "uid", foreign = "id")
+	private User user;
+	/** 日期 */
+	@Column(column = "date")
 	@NotNull()
-	@Foreign(column="rid",foreign="")
-	private 
+	private String date;
+	/** 时间 */
+	@Column(column = "time")
+	@NotNull()
+	private String time;
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	@Override
+	public String toString() {
+		return "Apply [event=" + event + ", user=" + user + ", date=" + date
+				+ ", time=" + time + "]";
+	}
+
 }
