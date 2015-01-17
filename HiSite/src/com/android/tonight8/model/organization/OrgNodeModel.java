@@ -1,57 +1,65 @@
 package com.android.tonight8.model.organization;
 
 import com.android.tonight8.model.BaseModel;
-import com.android.tonight8.model.common.Area;
 import com.android.tonight8.model.common.Bind;
-import com.android.tonight8.model.common.City;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Regional;
 
 /**
  * 商家经销商
  */
-public class OrgNodeModel extends BaseModel{
-	
+public class OrgNodeModel extends BaseModel {
+
 	private static final long serialVersionUID = 1L;
-	/** 商家对象*/
+	/** 商家对象 */
 	public Org org;
-	/** 省份对象*/
+	/** 省份对象 */
 	public Regional province;
-	/** 城市对象*/
-	public City city;
-	/** 地区对象*/
-	public Area area;
-	/** 绑定对象*/
+	/** 城市对象 */
+	public Regional city;
+	/** 地区对象 */
+	public Regional area;
+	/** 绑定对象 */
 	public Bind bind;
+
 	public Org getOrg() {
 		return org;
 	}
+
 	public void setOrg(Org org) {
 		this.org = org;
 	}
+
 	public Regional getProvince() {
 		return province;
 	}
+
 	public void setProvince(Regional province) {
 		this.province = province;
 	}
-	public City getCity() {
+
+	public Regional getCity() {
 		return city;
 	}
-	public void setCity(City city) {
+
+	public void setCity(Regional city) {
 		this.city = city;
 	}
-	public Area getArea() {
+
+	public Regional getArea() {
 		return area;
 	}
-	public void setArea(Area area) {
+
+	public void setArea(Regional area) {
 		this.area = area;
 	}
+
 	public Bind getBind() {
 		return bind;
 	}
+
 	public void setBind(Bind bind) {
 		this.bind = bind;
 	}
-	
+
 }
