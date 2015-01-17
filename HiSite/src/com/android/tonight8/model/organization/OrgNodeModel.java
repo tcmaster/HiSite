@@ -5,7 +5,7 @@ import com.android.tonight8.model.common.Area;
 import com.android.tonight8.model.common.Bind;
 import com.android.tonight8.model.common.City;
 import com.android.tonight8.model.common.Org;
-import com.android.tonight8.model.common.Province;
+import com.android.tonight8.model.common.Regional;
 
 /**
  * 商家经销商
@@ -16,7 +16,7 @@ public class OrgNodeModel extends BaseModel{
 	/** 商家对象*/
 	public Org org;
 	/** 省份对象*/
-	public Province province;
+	public Regional province;
 	/** 城市对象*/
 	public City city;
 	/** 地区对象*/
@@ -29,10 +29,10 @@ public class OrgNodeModel extends BaseModel{
 	public void setOrg(Org org) {
 		this.org = org;
 	}
-	public Province getProvince() {
+	public Regional getProvince() {
 		return province;
 	}
-	public void setProvince(Province province) {
+	public void setProvince(Regional province) {
 		this.province = province;
 	}
 	public City getCity() {
