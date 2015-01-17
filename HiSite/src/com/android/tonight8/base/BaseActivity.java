@@ -227,14 +227,14 @@ public class BaseActivity extends FragmentActivity {
 	 */
 	public void getActionBarBase(String title) {
 		useCustomerActionBar();
-		getLeftText().setVisibility(View.INVISIBLE);
-		getLogo().setVisibility(View.INVISIBLE);
-		getRightText().setVisibility(View.INVISIBLE);
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
 		getArrow().setVisibility(View.VISIBLE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.INVISIBLE);
-		getImageRight().setVisibility(View.INVISIBLE);
+		getTitleRight().setVisibility(View.GONE);
+		getImageRight().setVisibility(View.GONE);
 
 	}
 
@@ -252,13 +252,13 @@ public class BaseActivity extends FragmentActivity {
 	public void getActionBarNormal(String title, int res,
 			OnClickListener rightClick) {
 		useCustomerActionBar();
-		getLeftText().setVisibility(View.INVISIBLE);
-		getLogo().setVisibility(View.INVISIBLE);
-		getRightText().setVisibility(View.INVISIBLE);
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
 		getArrow().setVisibility(View.VISIBLE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.INVISIBLE);
+		getTitleRight().setVisibility(View.GONE);
 		getImageRight().setVisibility(View.VISIBLE);
 		getImageRight().setImageResource(res);
 		getImageRight().setOnClickListener(rightClick);
@@ -279,13 +279,13 @@ public class BaseActivity extends FragmentActivity {
 	public void getActionBarNoReturn(String title, int res,
 			OnClickListener rightClick) {
 		useCustomerActionBar();
-		getLeftText().setVisibility(View.INVISIBLE);
-		getLogo().setVisibility(View.INVISIBLE);
-		getRightText().setVisibility(View.INVISIBLE);
-		getArrow().setVisibility(View.INVISIBLE);
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
+		getArrow().setVisibility(View.GONE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.INVISIBLE);
+		getTitleRight().setVisibility(View.GONE);
 		getImageRight().setVisibility(View.VISIBLE);
 		getImageRight().setImageResource(res);
 		getImageRight().setOnClickListener(rightClick);
@@ -310,26 +310,26 @@ public class BaseActivity extends FragmentActivity {
 	public TextView getActionBarSpeical(String title, int res, boolean hasLeft,
 			boolean hasSpeical, OnClickListener rightClick) {
 		useCustomerActionBar();
-		getLeftText().setVisibility(View.INVISIBLE);
-		getLogo().setVisibility(View.INVISIBLE);
-		getRightText().setVisibility(View.INVISIBLE);
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
 		if (hasLeft)
 			getArrow().setVisibility(View.VISIBLE);
 		else
-			getArrow().setVisibility(View.INVISIBLE);
+			getArrow().setVisibility(View.GONE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
 		if (hasSpeical)
 			getTitleRight().setVisibility(View.VISIBLE);
 		else
-			getTitleRight().setVisibility(View.INVISIBLE);
+			getTitleRight().setVisibility(View.GONE);
 
 		if (res != -1) {
 			getImageRight().setVisibility(View.VISIBLE);
 			getImageRight().setImageResource(res);
 			getImageRight().setOnClickListener(rightClick);
 		} else
-			getImageRight().setVisibility(View.INVISIBLE);
+			getImageRight().setVisibility(View.GONE);
 
 		return getTitleRight();
 	}

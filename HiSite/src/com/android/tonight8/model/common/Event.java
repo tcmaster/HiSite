@@ -45,6 +45,8 @@ public class Event implements Serializable {
 	public boolean cityAll;
 	/** 活动没中奖用户是否发放券 */
 	public boolean isCouponNoneAward;
+	/** 话题数量 */
+	public int subjectCount;
 
 	public int getId() {
 		return id;
@@ -188,6 +190,14 @@ public class Event implements Serializable {
 
 	public void setCouponNoneAward(boolean isCouponNoneAward) {
 		this.isCouponNoneAward = isCouponNoneAward;
+	}
+
+	public int getSubjectCount() {
+		return subjectCount;
+	}
+
+	public void setSubjectCount(int subjectCount) {
+		this.subjectCount = subjectCount;
 	}
 
 	@Override

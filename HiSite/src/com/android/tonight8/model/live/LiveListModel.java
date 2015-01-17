@@ -2,7 +2,7 @@ package com.android.tonight8.model.live;
 
 import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.model.common.Event;
-import com.android.tonight8.model.common.Live;
+import com.android.tonight8.model.common.SignIn;
 import com.android.tonight8.model.common.Org;
 
 /**
@@ -17,7 +17,7 @@ public class LiveListModel extends BaseModel {
 	/** 商家对象*/
 	public Org org;
 	/** 现场对象*/
-	public Live live;
+	public SignIn live;
 
 	public Event getEvent() {
 		return event;
@@ -35,11 +35,11 @@ public class LiveListModel extends BaseModel {
 		this.org = org;
 	}
 
-	public Live getLive() {
+	public SignIn getLive() {
 		return live;
 	}
 
-	public void setLive(Live live) {
+	public void setLive(SignIn live) {
 		this.live = live;
 	}
 
