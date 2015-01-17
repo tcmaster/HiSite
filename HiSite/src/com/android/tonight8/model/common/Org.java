@@ -174,13 +174,13 @@ public class Org implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Org [id=" + id + ", name=" + name + ", description="
-				+ description + ", logo=" + logo + ", pic=" + pic
-				+ ", coordinate=" + coordinate + ", distance=" + distance
-				+ ", address=" + address + ", telphone=" + telphone
-				+ ", email=" + email + ", contactPerson=" + contactPerson
-				+ ", contactMobilPhone=" + contactMobilPhone + ", password="
-				+ password + ", registValidateCode=" + registValidateCode
+		return "Org [id=" + id + ", name=" + name + ", intro=" + intro
+				+ ", logo=" + logo + ", pic=" + pic + ", coordinate="
+				+ coordinate + ", distance=" + distance + ", address="
+				+ address + ", telphone=" + telphone + ", email=" + email
+				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
+				+ contactMobilPhone + ", password=" + password
+				+ ", registValidateCode=" + registValidateCode
 				+ ", paperPhoto=" + paperPhoto + ", paperCode=" + paperCode
 				+ "]";
 	}
