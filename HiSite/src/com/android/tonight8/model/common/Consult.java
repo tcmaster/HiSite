@@ -13,8 +13,6 @@ public class Consult implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 咨询id */
 	public long id;
-	/** 回复引用的咨询id */
-	public long rid;
 	/** 咨询内容 */
 	public String content;
 	/** 咨询日期 */
@@ -23,6 +21,8 @@ public class Consult implements Serializable {
 	public String time;
 	/** 对谁回复的用户名称 */
 	public String replyTo;
+	/** 回复引用id */
+	public long rid;
 
 	public long getId() {
 		return id;
@@ -30,14 +30,6 @@ public class Consult implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getRid() {
-		return rid;
-	}
-
-	public void setRid(long rid) {
-		this.rid = rid;
 	}
 
 	public String getContent() {

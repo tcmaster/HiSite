@@ -20,8 +20,8 @@ import android.widget.AdapterView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.event.GoodsDetailActivity;
-import com.android.tonight8.adapter.MainPageListViewAdapter;
-import com.android.tonight8.adapter.MyPagerAdapter;
+import com.android.tonight8.adapter.event.MainPageListViewAdapter;
+import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.view.PointLinearlayout;
@@ -57,13 +57,15 @@ public class TonightEightFragment extends Fragment {
 
 	// ***************************生命周期***********************************//
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (rootView != null) {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container, false);
+		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container,
+				false);
 		ViewUtils.inject(this, rootView);
 		initHeader();
 		return rootView;
@@ -94,11 +96,6 @@ public class TonightEightFragment extends Fragment {
 		super.onDestroy();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.support.v4.app.Fragment#onResume()
-	 */
 	@Override
 	public void onStart() {
 		if (cFunction != null)
@@ -106,11 +103,6 @@ public class TonightEightFragment extends Fragment {
 		super.onResume();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.support.v4.app.Fragment#onStop()
-	 */
 	@Override
 	public void onStop() {
 		if (cFunction != null)
@@ -144,16 +136,18 @@ public class TonightEightFragment extends Fragment {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(), 5, new Handler() {
+		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(),
+				5, new Handler() {
 
-			@Override
-			public void handleMessage(Message msg) {
-				vp_show_img.setCurrentItem(msg.what);
-				super.handleMessage(msg);
-			}
-		});
+					@Override
+					public void handleMessage(Message msg) {
+						vp_show_img.setCurrentItem(msg.what);
+						super.handleMessage(msg);
+					}
+				});
 		cFunction.start();// 开始轮播
-		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), data));
+		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(),
+				data));
 	}
 
 	/** 创建一个静态的实例 */
@@ -164,13 +158,8 @@ public class TonightEightFragment extends Fragment {
 	}
 
 	private void initActionBar() {
-		bA.useCustomerActionBar();
-		bA.getLeftText().setVisibility(View.INVISIBLE);
-		bA.getArrow().setVisibility(View.INVISIBLE);
-		bA.getLogo().setVisibility(View.INVISIBLE);
-		bA.getActionTitle().setText("今晚8点");
-		bA.getTitleRight().setText("北京");
-		bA.getRightText().setVisibility(View.GONE);
+		bA.getActionBarSpeical("今晚8点", R.drawable.ic_launcher, false, true,
+				null);
 	}
 
 	/**
@@ -182,15 +171,18 @@ public class TonightEightFragment extends Fragment {
 	 * @date:2015-1-9
 	 */
 	private void initHeader() {
-		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) getActivity()
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.header_home_page, null, false);
 		vp_show_img = (ViewPager) view.findViewById(R.id.vp_scan_img);
-		ll_point_container = (PointLinearlayout) view.findViewById(R.id.ll_point_container);
+		ll_point_container = (PointLinearlayout) view
+				.findViewById(R.id.ll_point_container);
 		lv_item_container.addExtraHeaderView(view);
 	}
 
 	@OnItemClick(R.id.lv_show_detail)
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
 		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
 		startActivity(intent);
 	}

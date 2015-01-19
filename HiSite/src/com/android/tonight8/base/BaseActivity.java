@@ -13,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.R.anim;
-import com.android.tonight8.R.id;
-import com.android.tonight8.R.layout;
 import com.lidroid.xutils.ViewUtils;
 
 public class BaseActivity extends FragmentActivity {
@@ -69,15 +66,18 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: PengGuoHua
 	 * @date:2014-10-31
 	 */
-	protected void startActivityForResultAndAnima(Intent intent, int requestCode, Activity parentActivity) {
+	protected void startActivityForResultAndAnima(Intent intent,
+			int requestCode, Activity parentActivity) {
 		if (intent != null) {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivityForResult(intent, requestCode);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivityForResult(intent, requestCode);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -99,10 +99,12 @@ public class BaseActivity extends FragmentActivity {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivity(intent);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivity(intent);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -110,10 +112,12 @@ public class BaseActivity extends FragmentActivity {
 	/**
 	 * 要使用自定义actionBar，必须调用这个方法
 	 */
-	public void useCustomerActionBar() {
+	private void useCustomerActionBar() {
 		if (mActionBar == null) {
 			mActionBar = getActionBar();
-			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
+			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP
+					| ActionBar.DISPLAY_SHOW_TITLE
+					| ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
 			mActionBar.setCustomView(R.layout.layout_actionbar);
 			mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 			View view = mActionBar.getCustomView();
@@ -143,7 +147,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public TextView getLeftText() {
+	private TextView getLeftText() {
 		return tv_left;
 	}
 
@@ -155,7 +159,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public TextView getRightText() {
+	private TextView getRightText() {
 		return tv_right;
 	}
 
@@ -167,7 +171,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public ImageView getLogo() {
+	private ImageView getLogo() {
 		return iv_logo;
 	}
 
@@ -179,43 +183,154 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public ImageView getArrow() {
+	private ImageView getArrow() {
 		return iv_arrow;
 	}
 
 	/**
 	 * @Description:得到actionBar的标题
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public TextView getActionTitle() {
+	private TextView getActionTitle() {
 		return tv_title;
 	}
 
 	/**
 	 * @Description:得到title右边的文字
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public TextView getTitleRight() {
+	private TextView getTitleRight() {
 		return tv_title_right;
 	}
 
 	/**
 	 * @Description:得到actionBar右边的图片
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	public ImageView getImageRight() {
+	private ImageView getImageRight() {
 		return iv_right;
+	}
+
+	// 对外公开的获取actionBar的方法
+	/**
+	 * @Description:获取最基本的actionBar，仅有左边返回按钮以及标题
+	 * @param title
+	 *            标题内容
+	 * @author: LiXiaoSong
+	 * @date:2015-01-15
+	 */
+	public void getActionBarBase(String title) {
+		useCustomerActionBar();
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
+		getArrow().setVisibility(View.VISIBLE);
+		getActionTitle().setVisibility(View.VISIBLE);
+		getActionTitle().setText(title);
+		getTitleRight().setVisibility(View.GONE);
+		getImageRight().setVisibility(View.GONE);
+
+	}
+
+	/**
+	 * @Description:获取常规actionBar,有左边的按钮，中间的标题以及右边的图片
+	 * @param title
+	 *            标题内容
+	 * @param res
+	 *            右边图片的资源
+	 * @param rightclick
+	 *            右边图片的点击事件
+	 * @author: LiXiaoSong
+	 * @date:2015-01-15
+	 */
+	public void getActionBarNormal(String title, int res,
+			OnClickListener rightClick) {
+		useCustomerActionBar();
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
+		getArrow().setVisibility(View.VISIBLE);
+		getActionTitle().setVisibility(View.VISIBLE);
+		getActionTitle().setText(title);
+		getTitleRight().setVisibility(View.GONE);
+		getImageRight().setVisibility(View.VISIBLE);
+		getImageRight().setImageResource(res);
+		getImageRight().setOnClickListener(rightClick);
+
+	}
+
+	/**
+	 * @Description:获取无返回键的actionBar，含有中间的标题以及右边的图片
+	 * @param title
+	 *            标题内容
+	 * @param res
+	 *            右边图片的资源
+	 * @param rightclick
+	 *            右边图片的点击事件
+	 * @author: LiXiaoSong
+	 * @date:2015-01-15
+	 */
+	public void getActionBarNoReturn(String title, int res,
+			OnClickListener rightClick) {
+		useCustomerActionBar();
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
+		getArrow().setVisibility(View.GONE);
+		getActionTitle().setVisibility(View.VISIBLE);
+		getActionTitle().setText(title);
+		getTitleRight().setVisibility(View.GONE);
+		getImageRight().setVisibility(View.VISIBLE);
+		getImageRight().setImageResource(res);
+		getImageRight().setOnClickListener(rightClick);
+	}
+
+	/**
+	 * @Description: 
+	 *               获取特殊的actionBar,如果hasLeft为null，左边的返回将隐藏，如果hasSpeical为false，返回的标题旁边的内容将隐藏
+	 *               ，图片资源文件如果传入-1，将不显示
+	 * @param title
+	 *            标题内容
+	 * @param res
+	 *            右边图片的资源文件
+	 * @param hasLeft
+	 *            是否有左边的返回按钮
+	 * @param hasSpeical
+	 *            是否有标题旁边的内容
+	 * @param rightClick
+	 *            右边的点击事件
+	 * @return 返回标题旁边的内容
+	 */
+	public TextView getActionBarSpeical(String title, int res, boolean hasLeft,
+			boolean hasSpeical, OnClickListener rightClick) {
+		useCustomerActionBar();
+		getLeftText().setVisibility(View.GONE);
+		getLogo().setVisibility(View.GONE);
+		getRightText().setVisibility(View.GONE);
+		if (hasLeft)
+			getArrow().setVisibility(View.VISIBLE);
+		else
+			getArrow().setVisibility(View.GONE);
+		getActionTitle().setVisibility(View.VISIBLE);
+		getActionTitle().setText(title);
+		if (hasSpeical)
+			getTitleRight().setVisibility(View.VISIBLE);
+		else
+			getTitleRight().setVisibility(View.GONE);
+
+		if (res != -1) {
+			getImageRight().setVisibility(View.VISIBLE);
+			getImageRight().setImageResource(res);
+			getImageRight().setOnClickListener(rightClick);
+		} else
+			getImageRight().setVisibility(View.GONE);
+
+		return getTitleRight();
 	}
 }

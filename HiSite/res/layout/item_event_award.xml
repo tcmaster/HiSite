@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:orientation="vertical" >
-    
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_user_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical" >
+
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/red"
+                android:textSize="@dimen/smallTextSize" />
+
+            <TextView
+                android:id="@+id/tv_apply_time"
+                style="@style/match_width"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize"
+                android:gravity="right" />
+        </LinearLayout>
+        <LinearLayout 
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+            <TextView
+                style="@style/wrap"
+                android:text="@string/get_award_nearby"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:id="@+id/tv_exchange_address"
+                style="@style/match_width"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize"
+                android:gravity="left" />
+        </LinearLayout>
+        <LinearLayout 
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+            <TextView
+                style="@style/wrap"
+                android:text="@string/get_award_time"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:id="@+id/tv_exchange_time_range"
+                style="@style/match_width"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize"
+                android:gravity="left" />
+        </LinearLayout>
+        <LinearLayout 
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+            <TextView
+                style="@style/wrap"
+                android:text="@string/get_award_phone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:id="@+id/tv_mobile_phone"
+                style="@style/match_width"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize"
+                android:gravity="left" />
+        </LinearLayout>
+        <LinearLayout 
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+            <TextView
+                style="@style/wrap"
+                android:text="@string/get_award_way"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallTextSize"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:id="@+id/tv_exchange_method"
+                style="@style/match_width"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize"
+                android:gravity="left"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

@@ -28,8 +28,8 @@
 
     <ImageView
         android:id="@+id/iv_pop_goods_pic"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="25dp"
         android:layout_marginLeft="20dp"
@@ -61,7 +61,7 @@
                 android:background="@color/black"
                 android:text="@string/publish"
                 android:textColor="@color/white"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_org_name"
@@ -69,7 +69,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,7 +80,7 @@
                 style="@style/wrap"
                 android:text="@string/award"
                 android:textColor="@color/black"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_pop_goods"
@@ -88,7 +88,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +99,7 @@
                 style="@style/wrap"
                 android:text="@string/award_count"
                 android:textColor="@color/black"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_provide_num"
@@ -107,7 +107,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/app_name"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/smallTextSize" />
+                android:textSize="@dimen/middleTextSize" />
 		</LinearLayout>
             <LinearLayout
                 style="@style/wrap"
@@ -117,7 +117,7 @@
                     style="@style/wrap"
                     android:text="@string/coupon"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/smallTextSize" />
+                    android:textSize="@dimen/middleTextSize" />
 
                 <TextView
                     android:id="@+id/tv_coupon"
@@ -125,7 +125,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="@string/app_name"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/smallTextSize" />
+                    android:textSize="@dimen/middleTextSize" />
             </LinearLayout>
         </LinearLayout>
 

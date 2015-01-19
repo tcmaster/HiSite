@@ -1,8 +1,9 @@
-package com.android.tonight8.adapter;
+package com.android.tonight8.adapter.live;
 
 import java.util.List;
 
 import com.android.tonight8.R;
+import com.android.tonight8.adapter.BaseListAdapter;
 
 import android.content.Context;
 import android.view.View;

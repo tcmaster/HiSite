@@ -1,7 +1,7 @@
 /**
  * 2014-12-25
  */
-package com.android.tonight8.adapter;
+package com.android.tonight8.adapter.event;
 
 import java.util.List;
 

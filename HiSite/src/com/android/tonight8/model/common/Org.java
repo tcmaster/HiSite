@@ -16,7 +16,7 @@ public class Org implements Serializable {
 	/** 商家名称 */
 	public String name;
 	/** 商家简介 */
-	public String description;
+	public String intro;
 	/** 商家logo图片文件地址 */
 	public String logo;
 	/** 商家头像图片文件地址 */
@@ -60,12 +60,12 @@ public class Org implements Serializable {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getIntro() {
+		return intro;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 
 	public String getLogo() {
@@ -174,13 +174,13 @@ public class Org implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Org [id=" + id + ", name=" + name + ", description="
-				+ description + ", logo=" + logo + ", pic=" + pic
-				+ ", coordinate=" + coordinate + ", distance=" + distance
-				+ ", address=" + address + ", telphone=" + telphone
-				+ ", email=" + email + ", contactPerson=" + contactPerson
-				+ ", contactMobilPhone=" + contactMobilPhone + ", password="
-				+ password + ", registValidateCode=" + registValidateCode
+		return "Org [id=" + id + ", name=" + name + ", intro=" + intro
+				+ ", logo=" + logo + ", pic=" + pic + ", coordinate="
+				+ coordinate + ", distance=" + distance + ", address="
+				+ address + ", telphone=" + telphone + ", email=" + email
+				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
+				+ contactMobilPhone + ", password=" + password
+				+ ", registValidateCode=" + registValidateCode
 				+ ", paperPhoto=" + paperPhoto + ", paperCode=" + paperCode
 				+ "]";
 	}

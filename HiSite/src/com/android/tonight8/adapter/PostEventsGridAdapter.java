@@ -21,6 +21,7 @@ public class PostEventsGridAdapter extends BaseListAdapter {
 			holder = new Viewholder();
 			convertView = mInflater.inflate(R.layout.adapter_postevents_grid, null);
 			holder.tv_grid_title = (TextView) convertView.findViewById(R.id.tv_grid_title);
+			convertView.setTag(holder);
 		} else {
 			holder = (Viewholder) convertView.getTag();
 		}

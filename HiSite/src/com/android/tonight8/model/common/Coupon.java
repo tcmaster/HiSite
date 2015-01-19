@@ -13,31 +13,31 @@ public class Coupon implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 券id */
-	long id;
+	public long id;
 	/** 券编号 */
-	String code;
+	public String code;
 	/** 券使用状态 */
-	boolean useStatus;
+	public boolean useStatus;
 	/** 券发放类型 */
-	int provideType;
+	public int provideType;
 	/** 券发放数量 */
-	int provideNum;
+	public int provideNum;
 	/** 券发放报名者都有 */
-	boolean provideAll;
+	public boolean provideAll;
 	/** 券价值 */
-	int value;
+	public int value;
 	/** 券内容 */
-	String content;
+	public String content;
 	/** 券有效开始日期 */
-	String dateRangeStart;
+	public String dateRangeStart;
 	/** 券有效结束日期 */
-	String dateRangeEnd;
+	public String dateRangeEnd;
 	/** 券模版图片 */
-	String templatePic;
+	public String templatePic;
 	/** 券发放时间 */
-	String publishTime;
+	public String publishTime;
 	/** 券二维码信息 */
-	QuickMark quickMark;
+	public QuickMark quickMark;
 
 	public long getId() {
 		return id;

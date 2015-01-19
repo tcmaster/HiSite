@@ -67,6 +67,10 @@
     <string name="publish">发布</string>
     <string name="award">奖品:</string>
     <string name="award_count">中奖名单:</string>
+    <string name="get_award_nearby">就近兑奖:</string>
+    <string name="get_award_time">兑奖时间:</string>
+    <string name="get_award_phone">联系电话:</string>
+    <string name="get_award_way">兑奖方式:</string>
 
     <!-- 主办方资料 -->
     <string name="company_name">公司名称</string>

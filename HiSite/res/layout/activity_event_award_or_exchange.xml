@@ -6,5 +6,4 @@
 	<com.android.tonight8.view.XListView 
 	    style="@style/match_width"
 	    android:id="@+id/lv_award_or_exchange"/>
-
 </LinearLayout>
