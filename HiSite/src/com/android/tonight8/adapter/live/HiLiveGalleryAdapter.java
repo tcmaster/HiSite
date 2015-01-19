@@ -2,12 +2,6 @@ package com.android.tonight8.adapter.live;
 
 import java.util.List;
 
-import com.android.tonight8.R;
-import com.android.tonight8.base.AppConstants;
-import com.android.tonight8.utils.Utils;
-import com.lidroid.xutils.BitmapUtils;
-
-import android.R.integer;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +12,17 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdapter.ViewHolder> {
+import com.android.tonight8.R;
+import com.android.tonight8.base.AppConstants;
+import com.android.tonight8.utils.Utils;
+import com.lidroid.xutils.BitmapUtils;
+
+/**
+ * @author liuzhao
+ * @date 2015-1-19 hi现场底部头像数据适配器
+ */
+public class HiLiveGalleryAdapter extends
+		RecyclerView.Adapter<HiLiveGalleryAdapter.ViewHolder> {
 
 	public interface OnItemClickLitener {
 
@@ -32,6 +36,7 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 	}
 
 	private LayoutInflater mInflater;
+	/** 头像的下载地址 */
 	private List<String> mDatas;
 	private BitmapUtils bmUtils;
 	private Context context;
@@ -65,12 +70,18 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-		View view = mInflater.inflate(R.layout.adapter_index_gallery_item, viewGroup, false);
+		View view = mInflater.inflate(R.layout.adapter_index_gallery_item,
+				viewGroup, false);
 		ViewHolder viewHolder = new ViewHolder(view);
-		viewHolder.rl_ivparent = (RelativeLayout) view.findViewById(R.id.rl_ivparent);
-		viewHolder.mImg = (ImageView) view.findViewById(R.id.id_index_gallery_item_image);
-		int margin = context.getResources().getDimensionPixelSize(R.dimen.tonight_iv_margin);
+		viewHolder.rl_ivparent = (RelativeLayout) view
+				.findViewById(R.id.rl_ivparent);
+		viewHolder.mImg = (ImageView) view
+				.findViewById(R.id.id_index_gallery_item_image);
+		int margin = context.getResources().getDimensionPixelSize(
+				R.dimen.tonight_iv_margin);
+		// 误差
 		int margin_error = Utils.dip2px(context, ivCount * margin);
+		// 每张图片的宽度
 		int iv_with = (AppConstants.widthPx - margin_error) / ivCount;
 		LayoutParams params = viewHolder.mImg.getLayoutParams();
 		params.height = iv_with;
@@ -96,4 +107,3 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 	}
 
 }
-
