@@ -71,7 +71,7 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 		viewHolder.mImg = (ImageView) view.findViewById(R.id.id_index_gallery_item_image);
 		int margin = context.getResources().getDimensionPixelSize(R.dimen.tonight_iv_margin);
 		int margin_error = Utils.dip2px(context, ivCount * margin);
-		int iv_with = (AppConstants.widthPx - margin_error) / 8;
+		int iv_with = (AppConstants.widthPx - margin_error) / ivCount;
 		LayoutParams params = viewHolder.mImg.getLayoutParams();
 		params.height = iv_with;
 		params.width = iv_with;
@@ -96,3 +96,4 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 	}
 
 }
+
