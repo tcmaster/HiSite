@@ -21,6 +21,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.mapapi.SDKInitializer;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.util.LogUtils;
 
 public class Tonight8App extends Application {
 
@@ -56,6 +57,14 @@ public class Tonight8App extends Application {
 		DBUtil.initDB(this);
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
+		DisplayMetrics dm = new DisplayMetrics();
+		dm = getResources().getDisplayMetrics();
+		float density = dm.density; // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+		int densityDPI = dm.densityDpi; // 屏幕密度（每寸像素：120/160/240/320）
+		AppConstants.widthPx = dm.widthPixels; // 屏幕宽（dip）
+		AppConstants.heightPx = dm.heightPixels; // 屏幕宽（dip）
+		LogUtils.i(AppConstants.widthPx + "");
+		LogUtils.i(AppConstants.heightPx + "");
 	}
 
 	/**
@@ -65,8 +74,7 @@ public class Tonight8App extends Application {
 	 */
 	public void initDeviceParams() {
 		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-		TelephonyManager tm = (TelephonyManager) this
-				.getSystemService(TELEPHONY_SERVICE);
+		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		AppConstants.dpi = dm.densityDpi + "";// 设备分辨率
@@ -75,17 +83,12 @@ public class Tonight8App extends Application {
 		AppConstants.imei = tm.getDeviceId();// 设备imei码
 		AppConstants.os_version = android.os.Build.VERSION.SDK_INT + "";// 操作系统版本号
 		try {
-			AppConstants.version = getPackageManager().getPackageInfo(
-					PACKAGE_NAME, 0).versionCode
-					+ "";// 应用版本
+			AppConstants.version = getPackageManager().getPackageInfo(PACKAGE_NAME, 0).versionCode + "";// 应用版本
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
-		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version
-				+ AppConstants.device_type + AppConstants.imei
-				+ AppConstants.dpi + AppConstants.os_version
-				+ AppConstants.phone_model + "keleping");
+		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei + AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
 		LocationFunction lcf = new LocationFunction(this);
 		lcf.beginLocation(new BDLocationListener() {
 

@@ -3,14 +3,18 @@ package com.android.tonight8.adapter.live;
 import java.util.List;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.AppConstants;
+import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.BitmapUtils;
 
+import android.R.integer;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -30,10 +34,14 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 	private LayoutInflater mInflater;
 	private List<String> mDatas;
 	private BitmapUtils bmUtils;
+	private Context context;
+	/** 头像图片张数 */
+	private int ivCount = 8;
 
 	public HiLiveGalleryAdapter(Context context, List<String> datats) {
 		mInflater = LayoutInflater.from(context);
 		mDatas = datats;
+		this.context = context;
 		bmUtils = new BitmapUtils(context);
 	}
 
@@ -61,6 +69,13 @@ public class HiLiveGalleryAdapter extends RecyclerView.Adapter<HiLiveGalleryAdap
 		ViewHolder viewHolder = new ViewHolder(view);
 		viewHolder.rl_ivparent = (RelativeLayout) view.findViewById(R.id.rl_ivparent);
 		viewHolder.mImg = (ImageView) view.findViewById(R.id.id_index_gallery_item_image);
+		int margin = context.getResources().getDimensionPixelSize(R.dimen.tonight_iv_margin);
+		int margin_error = Utils.dip2px(context, ivCount * margin);
+		int iv_with = (AppConstants.widthPx - margin_error) / 8;
+		LayoutParams params = viewHolder.mImg.getLayoutParams();
+		params.height = iv_with;
+		params.width = iv_with;
+		viewHolder.mImg.setLayoutParams(params);
 		return viewHolder;
 	}
 

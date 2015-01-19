@@ -1,13 +1,16 @@
 <resources>
-	<!-- 本dimens均以1280 * 720 为默认屏幕 -->
+
+    <!-- 本dimens均以1280 * 720 为默认屏幕 -->
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-	<dimen name="common_margin_left">10dp</dimen>
-	<dimen name="smallTextSize">12sp</dimen>
-	<dimen name="middleTextSize">14sp</dimen>
-	<dimen name="bigTextSize">16sp</dimen>
-	<!-- 我的账号用到的相关dimen -->
-	<!-- 上部高度 -->
-	<dimen name="myaccount_top_height">180dp</dimen>
+    <dimen name="common_margin_left">10dp</dimen>
+    <dimen name="smallTextSize">12sp</dimen>
+    <dimen name="middleTextSize">14sp</dimen>
+    <dimen name="bigTextSize">16sp</dimen>
+    <!-- 我的账号用到的相关dimen -->
+    <!-- 上部高度 -->
+    <dimen name="myaccount_top_height">180dp</dimen>
+    <dimen name="tonight_iv_margin">5dp</dimen>
+
 </resources>

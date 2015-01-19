@@ -41,24 +41,32 @@
 
     <LinearLayout
         style="@style/match_width"
+        android:layout_gravity="center_vertical"
         android:orientation="horizontal" >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_recyclerview_horizontal"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="#FF0000"
             android:scrollbars="none" />
 
         <TextView
             android:id="@+id/tv_subjectcount"
             style="@style/wrap"
-            android:text="12" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tonight_iv_margin"
+            android:background="@color/red_sys"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <RelativeLayout style="@style/match_width" >
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/tv_share"
@@ -71,8 +79,6 @@
         <CheckBox
             android:id="@+id/cb_subject"
             style="@style/wrap"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/tv_share"
             android:button="@null"
             android:drawableLeft="@drawable/ic_launcher"
             android:gravity="center"
@@ -80,12 +86,11 @@
 
         <TextView
             android:id="@+id/tv_signInCount"
-            style="@style/wrap"
-            android:layout_toRightOf="@+id/cb_subject"
+            style="@style/match_height"
             android:gravity="center"
             android:text="12"
             android:textColor="@color/red" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.android.tonight8.view.ListViewForScrollView
         android:id="@+id/lv_subject"
