@@ -5,8 +5,11 @@ package com.android.tonight8.storage.event;
 
 import java.util.List;
 
+import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.event.EventRecommendModel;
 import com.android.tonight8.storage.DBUtil;
+import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.EventRecommendEntity;
 import com.android.tonight8.storage.entity.PopGoodsEntity;
 
@@ -23,10 +26,9 @@ public class RecommendDBController {
 		recommend.setId(model.id);
 		recommend.setName(model.name);
 		PopGoodsEntity goods = new PopGoodsEntity();
-		goods.setId(model.popGoods.id);
-		goods.setPopGoodsName(model.popGoods.popGoodsName);
-		goods.setPopGoodsPic(model.popGoods.popGoodsPic);
-		goods.setPopGoodsPrice(model.popGoods.popGoodsPrice);
+		EventEntity eventEntity = new EventEntity();
+		DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods,goods);
+		//DBUtil.copyData(Event.class, EventEntity.class,model., t2)
 		recommend.popGoods = goods;
 		// 这里的goods缺少rid
 		DBUtil.addData(recommend);
@@ -41,13 +43,16 @@ public class RecommendDBController {
 			EventRecommendEntity recommend = data.get(0);
 			model.id = recommend.getId();
 			model.name = recommend.getName();
-			com.android.tonight8.model.common.PopGoods goods = new com.android.tonight8.model.common.PopGoods();
-			goods.id = recommend.popGoods.getId();
-			goods.popGoodsName = recommend.popGoods.getPopGoodsName();
-			goods.popGoodsPic = recommend.popGoods.getPopGoodsPic();
-			goods.popGoodsPrice = recommend.popGoods.getPopGoodsPrice();
+			PopGoods goods = new PopGoods();
+			DBUtil.copyData(PopGoodsEntity.class,PopGoods.class,recommend.popGoods,goods);
 			model.popGoods = goods;
 		}
 		return model;
+	}
+	public void update(){
+		
+	}
+	public void delete(){
+		
 	}
 }

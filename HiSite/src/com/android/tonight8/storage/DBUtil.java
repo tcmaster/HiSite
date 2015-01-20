@@ -1,6 +1,7 @@
 package com.android.tonight8.storage;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
@@ -135,9 +136,13 @@ public class DBUtil {
 	 * @date:2015-1-20
 	 */
 	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
-		Field[] fields1 = clazz1.getDeclaredFields();
-		Field[] fields2 = clazz2.getDeclaredFields();
+		Field[] fields1 = getDeclaedFields(clazz1);
+		Field[] fields2 = getDeclaedFields(clazz2);
+		clazz1.getSuperclass();
 		for (int i = 0; i < fields1.length; i++) {
+			if(fields1[i].getName().equals("serialVersionUID")){
+				continue;
+			}
 			for (int j = 0; j < fields2.length; j++) {
 				Field f1 = fields1[i];
 				Field f2 = fields2[j];
@@ -155,4 +160,17 @@ public class DBUtil {
 			}
 		}
 	}
+	private static <T> Field[] getDeclaedFields(Class<T> clazz){
+		Field [] first = clazz.getDeclaredFields();
+		Field [] second = clazz.getSuperclass().getDeclaredFields();
+		return concat(first, second);
+	}
+	/**
+	 * 合并两个数组
+	 */
+	public static <T> T[] concat(T[] first, T[] second) {
+		  T[] result = Arrays.copyOf(first, first.length + second.length);
+		  System.arraycopy(second, 0, result, first.length, second.length);
+		  return result;
+		}         
 }
