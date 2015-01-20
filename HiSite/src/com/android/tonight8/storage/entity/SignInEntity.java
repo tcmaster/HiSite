@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 签到
  */
 @Table(name = "signin")
-public class SignIn {
+public class SignInEntity {
 	/** 活动时间 */
 	@NotNull
 	@Column(column = "time")

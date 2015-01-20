@@ -9,15 +9,16 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class EventRecommend extends EntityBase {
+public class EventRecommendEntity extends EntityBaseEntity {
+
 	/** 活动推荐名称 */
 	@Column(column = "name")
 	@NotNull()
 	private String name;
 	@Foreign(column = "rid", foreign = "id")
-	private Event event;
+	private EventEntity event;
 	@Foreign(column = "popId", foreign = "id")
-	private PopGoods popGoods;
+	public PopGoodsEntity popGoods;
 
 	public String getName() {
 		return name;
@@ -29,8 +30,7 @@ public class EventRecommend extends EntityBase {
 
 	@Override
 	public String toString() {
-		return "EventRecommend [name=" + name + ", event=" + event
-				+ ", popGoods=" + popGoods + "]";
+		return "EventRecommend [name=" + name + ", event=" + event + ", popGoods=" + popGoods + "]";
 	}
 
 }

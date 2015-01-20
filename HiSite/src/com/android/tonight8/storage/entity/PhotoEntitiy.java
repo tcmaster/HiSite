@@ -11,19 +11,20 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "photo")
-public class Photo extends EntityBase {
+public class PhotoEntitiy extends EntityBaseEntity {
+
 	/** 话题 */
 	@Foreign(column = "rid", foreign = "id")
-	private Subject subject;
+	private SubjectEntity subject;
 	/** 用户 */
 	@Foreign(column = "uid", foreign = "id")
-	private User user;
+	private UserEntity user;
 	/** 话题图片文件地址 */
 	@Column(column = "url")
-	public String url;
+	private String url;
 	/** 话题图片文件宽高 */
 	@Column(column = "size")
-	public String size;
+	private String size;
 
 	public String getUrl() {
 		return url;
@@ -43,7 +44,6 @@ public class Photo extends EntityBase {
 
 	@Override
 	public String toString() {
-		return "Photo [subject=" + subject + ", user=" + user + ", url=" + url
-				+ ", size=" + size + "]";
+		return "Photo [subject=" + subject + ", user=" + user + ", url=" + url + ", size=" + size + "]";
 	}
 }

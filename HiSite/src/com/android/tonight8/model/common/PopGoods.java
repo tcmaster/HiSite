@@ -9,13 +9,24 @@ import java.io.Serializable;
  * 
  */
 public class PopGoods implements Serializable {
+
 	private static final long serialVersionUID = 1L;
+	/** 海报id */
+	public long id;
 	/** 活动海报奖品名称 */
 	public String popGoodsName;
 	/** 活动海报奖品图片文件地址 */
 	public String popGoodsPic;
 	/** 活动海报奖品价格 */
 	public int popGoodsPrice;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getPopGoodsName() {
 		return popGoodsName;
@@ -43,8 +54,7 @@ public class PopGoods implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PopGoods [popGoodsName=" + popGoodsName + ", popGoodsPic="
-				+ popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + "]";
+		return "PopGoods [popGoodsName=" + popGoodsName + ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + "]";
 	}
 
 }

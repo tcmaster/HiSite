@@ -1,5 +1,6 @@
 package com.android.tonight8.storage;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import android.content.Context;
@@ -16,6 +17,7 @@ import com.lidroid.xutils.exception.DbException;
  * 
  */
 public class DBUtil {
+
 	private static DbUtils utils;
 
 	public static void initDB(Context context) {
@@ -96,8 +98,7 @@ public class DBUtil {
 	 * @param updateColumnNames
 	 *            要更新哪一列
 	 */
-	public static void updateData(Object entity, WhereBuilder builder,
-			String... updateColumnNames) {
+	public static void updateData(Object entity, WhereBuilder builder, String... updateColumnNames) {
 		try {
 			utils.update(entity, builder, updateColumnNames);
 		} catch (DbException e) {
@@ -116,6 +117,42 @@ public class DBUtil {
 			utils.deleteAll(entities);
 		} catch (DbException e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 * @Description:将对象一中名称和类型相同的数值赋值给类型二的对象（必须保证同名的对象的类型也相同）
+	 * @param clazz1
+	 *            对象一的类型
+	 * @param clazz2
+	 *            对象二的类型
+	 * @param t1
+	 *            对象一
+	 * @param t2
+	 *            对象二
+	 * @author: LiXiaoSong
+	 * @date:2015-1-20
+	 */
+	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
+		Field[] fields1 = clazz1.getDeclaredFields();
+		Field[] fields2 = clazz2.getDeclaredFields();
+		for (int i = 0; i < fields1.length; i++) {
+			for (int j = 0; j < fields2.length; j++) {
+				Field f1 = fields1[i];
+				Field f2 = fields2[j];
+				f1.setAccessible(true);
+				f2.setAccessible(true);
+				if (f1.getName().equals(f2.getName())) {// 两个变量名称相同，可以进行赋值
+					try {
+						f2.set(t2, f1.get(t1));
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		}
 	}
 }

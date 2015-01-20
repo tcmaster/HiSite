@@ -9,6 +9,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,6 +23,8 @@ import com.android.tonight8.activity.AboutUsActivity;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.storage.DBUtil;
+import com.android.tonight8.storage.entity.PhotoEntitiy;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -31,8 +34,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @copyright @tonight8
  * @Date:2014-12-29
  */
-public class GoodsDetailActivity extends BaseActivity implements
-		OnClickListener {
+public class GoodsDetailActivity extends BaseActivity implements OnClickListener {
 
 	// ***************************控件成员***********************************//
 	// headerView 的成员
@@ -89,6 +91,14 @@ public class GoodsDetailActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		initHeaderView();
 		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
+		// 测试
+		PhotoEntitiy photo = new PhotoEntitiy();
+		photo.setSize("100");
+		photo.setUrl("ddakdkakdks");
+		photo.setId(339);
+		com.android.tonight8.model.common.Photo photo2 = new com.android.tonight8.model.common.Photo();
+		DBUtil.copyData(PhotoEntitiy.class, com.android.tonight8.model.common.Photo.class, photo, photo2);
+		Log.v("lixiaosong", photo2.toString());
 		initData();
 	}
 
@@ -138,8 +148,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		tv_tab_left = (Button) view.findViewById(R.id.btn_choice_award);
 		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
 		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
-		tv_see_prize_location = (TextView) view
-				.findViewById(R.id.tv_see_location);
+		tv_see_prize_location = (TextView) view.findViewById(R.id.tv_see_location);
 		tv_tab_left.setOnClickListener(this);
 		tv_tab_right.setOnClickListener(this);
 		ll_company.setOnClickListener(this);

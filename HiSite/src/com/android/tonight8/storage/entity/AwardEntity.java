@@ -4,7 +4,7 @@ import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
 
-public class Award extends EntityBase {
+public class AwardEntity extends EntityBaseEntity {
 	/** 中奖号码 */
 	@NotNull()
 	@Column(column = "code")
@@ -14,9 +14,9 @@ public class Award extends EntityBase {
 	@Column(column = "exchangeStatus", defaultValue = "0")
 	public int exchangeStatus;
 	@Foreign(column = "rid", foreign = "id")
-	Event event;
+	EventEntity event;
 	@Foreign(column = "uid", foreign = "id")
-	User user;
+	UserEntity user;
 
 	public String getCode() {
 		return code;

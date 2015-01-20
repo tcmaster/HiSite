@@ -7,10 +7,10 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author liuzhao
  * @date 2015-1-17
  */
-public class Parent extends EntityBase {
+public class ParentEntity extends EntityBaseEntity {
 	/** */
 	@Foreign(column = "oid", foreign = "id")
-	private Org org;
+	private OrgEntity org;
 	/** */
 	@NotNull
 	private int rid;

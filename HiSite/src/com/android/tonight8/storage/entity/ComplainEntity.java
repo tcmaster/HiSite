@@ -5,31 +5,44 @@ import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
- * @Description:评论表
+ * 
+ * @Description:投诉表
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class Comment extends EntityBase {
-	/** 评论内容 */
+public class ComplainEntity extends EntityBaseEntity {
+	/** 投诉类型 */
+	@Column(column = "type")
+	@NotNull()
+	private int type;
+	/** 投诉内容 */
 	@Column(column = "content")
 	@NotNull()
 	private String content;
-	/** 评论创建日期 */
+	/** 联系方式内容 */
+	@Column(column = "contactContent")
+	@NotNull()
+	private String contactContent;
+	/** 投诉日期 */
 	@Column(column = "date")
 	@NotNull()
 	private String date;
-	/** 评论创建时间 */
+	/** 投诉时间 */
 	@Column(column = "time")
 	@NotNull()
 	private String time;
-	/** 对谁回复的用户名称 */
-	@Column(column = "replyTo")
-	@NotNull()
-	private String replyTo;
 	@Foreign(column = "rid", foreign = "id")
-	private Subject subject;
+	EventEntity event;
 	@Foreign(column = "uid", foreign = "id")
-	private User user;
+	UserEntity user;
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	public String getContent() {
 		return content;
@@ -37,6 +50,14 @@ public class Comment extends EntityBase {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getContactContent() {
+		return contactContent;
+	}
+
+	public void setContactContent(String contactContent) {
+		this.contactContent = contactContent;
 	}
 
 	public String getDate() {
@@ -55,19 +76,12 @@ public class Comment extends EntityBase {
 		this.time = time;
 	}
 
-	public String getReplyTo() {
-		return replyTo;
-	}
-
-	public void setReplyTo(String replyTo) {
-		this.replyTo = replyTo;
-	}
-
 	@Override
 	public String toString() {
-		return "Comment [content=" + content + ", date=" + date + ", time="
-				+ time + ", replyTo=" + replyTo + ", subject=" + subject
-				+ ", user=" + user + "]";
+		return "Complain [type=" + type + ", content=" + content
+				+ ", contactContent=" + contactContent + ", date=" + date
+				+ ", time=" + time + ", event=" + event + ", user=" + user
+				+ "]";
 	}
 
 }

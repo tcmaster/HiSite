@@ -10,22 +10,23 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 活动海报
  */
 @Table(name = "popgoods")
-public class PopGoods extends EntityBase {
+public class PopGoodsEntity extends EntityBaseEntity {
+
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
-	private Event event;
+	private EventEntity event;
 	/** 活动海报奖品名称 */
 	@NotNull
 	@Column(column = "popGoodsName")
-	public String popGoodsName;
+	private String popGoodsName;
 	/** 活动海报奖品图片文件地址 */
 	@NotNull
 	@Column(column = "popGoodsPic")
-	public String popGoodsPic;
+	private String popGoodsPic;
 	/** 活动海报奖品价格 */
 	@NotNull
 	@Column(column = "popGoodsPrice")
-	public int popGoodsPrice;
+	private int popGoodsPrice;
 
 	public String getPopGoodsName() {
 		return popGoodsName;
@@ -53,8 +54,6 @@ public class PopGoods extends EntityBase {
 
 	@Override
 	public String toString() {
-		return "PopGoods [event=" + event + ", popGoodsName=" + popGoodsName
-				+ ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice="
-				+ popGoodsPrice + "]";
+		return "PopGoods [event=" + event + ", popGoodsName=" + popGoodsName + ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + "]";
 	}
 }

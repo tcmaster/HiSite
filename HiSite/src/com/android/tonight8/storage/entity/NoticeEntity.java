@@ -6,29 +6,28 @@ import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
+ * 通知
+ * 
  * @author liuzhao
- * @date 2015-1-17 话题
+ * @date 2015-1-17
  */
-@Table(name = "subject")
-public class Subject extends EntityBase {
-	/** 活动 */
-	@Foreign(column = "rid", foreign = "id")
-	private Event event;
-	/** 用户 */
-	@Foreign(column = "uid", foreign = "id")
-	private User user;
-	/** 话题内容 */
+@Table(name="notice")
+public class NoticeEntity extends EntityBaseEntity {
+	/** 通知内容 */
+	@NotNull
 	@Column(column = "content")
+	public String content;
+	/** 通知日期 */
 	@NotNull
-	private String content;
-	/** 话题创建日期 */
 	@Column(column = "date")
+	public String date;
+	/** 通知时间 */
 	@NotNull
-	private String date;
-	/** 话题创建时间 */
 	@Column(column = "time")
-	@NotNull
-	private String time;
+	public String time;
+	/** 商家 */
+	@Foreign(column = "rid", foreign = "id")
+	private OrgEntity org;
 
 	public String getContent() {
 		return content;
@@ -54,10 +53,18 @@ public class Subject extends EntityBase {
 		this.time = time;
 	}
 
-	@Override
-	public String toString() {
-		return "Subject [event=" + event + ", user=" + user + ", content="
-				+ content + ", date=" + date + ", time=" + time + "]";
+	public OrgEntity getOrg() {
+		return org;
 	}
 
+	public void setOrg(OrgEntity org) {
+		this.org = org;
+	}
+
+	@Override
+	public String toString() {
+		return "Notice [content=" + content + ", date=" + date + ", time="
+				+ time + ", org=" + org + "]";
+	}
+	
 }

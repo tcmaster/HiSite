@@ -9,7 +9,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 用户
  */
 @Table(name = "user")
-public class User extends EntityBase {
+public class UserEntity extends EntityBaseEntity {
 	/** 用户名称 */
 	@Column(column = "name")
 	private String name;

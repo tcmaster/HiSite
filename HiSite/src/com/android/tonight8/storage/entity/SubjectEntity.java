@@ -6,27 +6,37 @@ import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
- * 
- * @Description:
- * @author LiXiaoSong
- * @date 2015-1-17
+ * @author liuzhao
+ * @date 2015-1-17 话题
  */
-@Table(name = "apply")
-public class Apply extends EntityBase {
-	/** 引用外键Event id */
+@Table(name = "subject")
+public class SubjectEntity extends EntityBaseEntity {
+	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
-	private Event event;
-	/** 引用外键User id */
+	private EventEntity event;
+	/** 用户 */
 	@Foreign(column = "uid", foreign = "id")
-	private User user;
-	/** 日期 */
+	private UserEntity user;
+	/** 话题内容 */
+	@Column(column = "content")
+	@NotNull
+	private String content;
+	/** 话题创建日期 */
 	@Column(column = "date")
-	@NotNull()
+	@NotNull
 	private String date;
-	/** 时间 */
+	/** 话题创建时间 */
 	@Column(column = "time")
-	@NotNull()
+	@NotNull
 	private String time;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public String getDate() {
 		return date;
@@ -46,8 +56,8 @@ public class Apply extends EntityBase {
 
 	@Override
 	public String toString() {
-		return "Apply [event=" + event + ", user=" + user + ", date=" + date
-				+ ", time=" + time + "]";
+		return "Subject [event=" + event + ", user=" + user + ", content="
+				+ content + ", date=" + date + ", time=" + time + "]";
 	}
 
 }

@@ -9,7 +9,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class Exchange extends EntityBase {
+public class ExchangeEntity extends EntityBaseEntity {
 	/** 兑奖方式 */
 	@Column(column = "method", defaultValue = "0")
 	@NotNull()
@@ -21,7 +21,7 @@ public class Exchange extends EntityBase {
 	@Column(column = "orgAll", defaultValue = "0")
 	private boolean orgAll;
 	@Foreign(column = "rid", foreign = "id")
-	private Event event;
+	private EventEntity event;
 
 	public boolean isMethod() {
 		return method;

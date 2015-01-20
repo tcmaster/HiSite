@@ -3,31 +3,33 @@ package com.android.tonight8.storage.entity;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
-import com.lidroid.xutils.db.annotation.Table;
 
 /**
- * 通知
- * 
- * @author liuzhao
+ * @Description:咨询表
+ * @author LiXiaoSong
  * @date 2015-1-17
  */
-@Table(name="notice")
-public class Notice extends EntityBase {
-	/** 通知内容 */
-	@NotNull
+public class ConsultEntity extends EntityBaseEntity {
+	/** 咨询内容 */
 	@Column(column = "content")
+	@NotNull()
 	public String content;
-	/** 通知日期 */
-	@NotNull
+	/** 咨询日期 */
 	@Column(column = "date")
+	@NotNull()
 	public String date;
-	/** 通知时间 */
-	@NotNull
+	/** 咨询时间 */
 	@Column(column = "time")
+	@NotNull()
 	public String time;
-	/** 商家 */
+	/** 对谁回复的用户名称 */
+	@Column(column = "replyTo")
+	@NotNull()
+	public String replyTo;
 	@Foreign(column = "rid", foreign = "id")
-	private Org org;
+	EventEntity event;
+	@Foreign(column = "uid", foreign = "id")
+	UserEntity user;
 
 	public String getContent() {
 		return content;
@@ -53,18 +55,19 @@ public class Notice extends EntityBase {
 		this.time = time;
 	}
 
-	public Org getOrg() {
-		return org;
+	public String getReplyTo() {
+		return replyTo;
 	}
 
-	public void setOrg(Org org) {
-		this.org = org;
+	public void setReplyTo(String replyTo) {
+		this.replyTo = replyTo;
 	}
 
 	@Override
 	public String toString() {
-		return "Notice [content=" + content + ", date=" + date + ", time="
-				+ time + ", org=" + org + "]";
+		return "Consult [content=" + content + ", date=" + date + ", time="
+				+ time + ", replyTo=" + replyTo + ", event=" + event
+				+ ", user=" + user + "]";
 	}
-	
+
 }

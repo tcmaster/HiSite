@@ -9,7 +9,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "org")
-public class Org extends EntityBase {
+public class OrgEntity extends EntityBaseEntity {
 	/** 商家名称 */
 	@Column(column = "name")
 	@NotNull

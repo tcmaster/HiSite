@@ -8,17 +8,18 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class EntityBase {
+public class EntityBaseEntity {
+
 	/** 主键id，不可自增长且不为空 */
 	@NoAutoIncrement()
 	@NotNull()
-	protected int id;
+	public long id;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 }
