@@ -7,12 +7,15 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.model.live.LiveCommentModel;
 import com.android.tonight8.model.live.LiveListModel;
 import com.android.tonight8.utils.Utils;
+import com.android.tonight8.view.SharePopupWindow;
 
 /**
  * @author liuzhao hi现场的数据适配器
@@ -42,10 +46,20 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 	private int index = 0;
 	/** 头像图片张数 */
 	private int ivCount = 8;
+	private PopupWindow popWindow;
 
 	public HiLiveAdapter(Context context, List<LiveListModel> values) {
 		super(context, values);
+		popWindow = new SharePopupWindow(context, onItemsClick);
 	}
+
+	private OnClickListener onItemsClick = new OnClickListener() {
+
+		@Override
+		public void onClick(View arg0) {
+			popWindow.dismiss();
+		}
+	};
 
 	@Override
 	protected View getItemView(View convertView, final int position) {
@@ -128,6 +142,13 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 				holder.vp_adapter_hilive.setCurrentItem(position1);
 			}
 		});
+		holder.tv_share.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				popWindow.showAtLocation(arg0.getRootView(), Gravity.BOTTOM, 0, 0);
+			}
+		});
 		// 话题列表
 		holder.cb_subject
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -141,11 +162,12 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 							listComment = new ArrayList<LiveCommentModel>();
 							for (int i = 0; i < 5; i++) {
 								LiveCommentModel liveCommentModel = new LiveCommentModel();
-								Comment comment= new Comment();
-								comment.content="很好很好！！！！！";
-								comment.date="2012-12-12";
-								comment.time="12:12:12";
+								Comment comment = new Comment();
+								comment.content = "很好很好！！！！！";
+								comment.date = "2012-12-12";
+								comment.time = "12:12:12";
 								liveCommentModel.setComment(comment);
+								listComment.add(liveCommentModel);
 							}
 							subjectListAdapter = new LiveListCommentAdapter(
 									mContext, listComment);
