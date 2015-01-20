@@ -3,8 +3,10 @@ package com.android.tonight8.view;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.PopupWindow;
@@ -45,28 +47,28 @@ public class SharePopupWindow extends PopupWindow {
 		// 设置PopupWindow弹出窗体可点击
 		this.setFocusable(true);
 		// 设置PopupWindow弹出窗体动画效果
-		// this.setAnimationStyle(R.style.AnimBottom);
+		this.setAnimationStyle(R.style.AnimBottom);
 		// 实例化一个ColorDrawable颜色为半透明
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		// 设置PopupWindow弹出窗体的背景
 		this.setBackgroundDrawable(dw);
 		// 设置点击窗口外边窗口消失
 		this.setOutsideTouchable(true);
-		// // mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
-		// mMenuView.setOnTouchListener(new OnTouchListener() {
-		//
-		// public boolean onTouch(View v, MotionEvent event) {
-		//
-		// int height = mMenuView.findViewById(R.id.pop_layout).getTop();
-		// int y = (int) event.getY();
-		// if (event.getAction() == MotionEvent.ACTION_UP) {
-		// if (y < height) {
-		// dismiss();
-		// }
-		// }
-		// return true;
-		// }
-		// });
+		// mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
+		mMenuView.setOnTouchListener(new OnTouchListener() {
+
+			public boolean onTouch(View v, MotionEvent event) {
+
+				int height = mMenuView.findViewById(R.id.pop_layout).getTop();
+				int y = (int) event.getY();
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					if (y < height) {
+						dismiss();
+					}
+				}
+				return true;
+			}
+		});
 
 	}
 

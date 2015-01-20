@@ -25,6 +25,7 @@ import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.adapter.live.HiLiveGalleryAdapter.OnItemClickLitener;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.model.common.Comment;
+import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveCommentModel;
 import com.android.tonight8.model.live.LiveListModel;
 import com.android.tonight8.utils.Utils;
@@ -146,7 +147,8 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onClick(View arg0) {
-				popWindow.showAtLocation(arg0.getRootView(), Gravity.BOTTOM, 0, 0);
+				popWindow.showAtLocation(arg0.getRootView(), Gravity.BOTTOM, 0,
+						0);
 			}
 		});
 		// 话题列表
@@ -166,7 +168,11 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 								comment.content = "很好很好！！！！！";
 								comment.date = "2012-12-12";
 								comment.time = "12:12:12";
+								User user = new User();
+								user.pic = "http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg";
+								user.name = "晓松";
 								liveCommentModel.setComment(comment);
+								liveCommentModel.setUser(user);
 								listComment.add(liveCommentModel);
 							}
 							subjectListAdapter = new LiveListCommentAdapter(
