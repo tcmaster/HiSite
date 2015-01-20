@@ -23,6 +23,7 @@ import com.android.tonight8.activity.AboutUsActivity;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.model.common.Photo;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.PhotoEntitiy;
 import com.android.tonight8.view.XListView;
@@ -96,8 +97,8 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		photo.setSize("100");
 		photo.setUrl("ddakdkakdks");
 		photo.setId(339);
-		com.android.tonight8.model.common.Photo photo2 = new com.android.tonight8.model.common.Photo();
-		DBUtil.copyData(PhotoEntitiy.class, com.android.tonight8.model.common.Photo.class, photo, photo2);
+		Photo photo2 = new Photo();
+		DBUtil.copyData(PhotoEntitiy.class, Photo.class, photo, photo2);
 		Log.v("lixiaosong", photo2.toString());
 		initData();
 	}
