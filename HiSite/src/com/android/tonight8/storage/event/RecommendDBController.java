@@ -3,6 +3,9 @@
  */
 package com.android.tonight8.storage.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.event.EventRecommendModel;
 import com.android.tonight8.storage.DBUtil;
@@ -24,22 +27,26 @@ public class RecommendDBController {
 	 * @param model
 	 *            数据
 	 */
-	public void saveData(EventRecommendModel model) {
-		EventRecommendEntity entity = new EventRecommendEntity();
-		// 查询是否有该活动，有的话，更新数据
-		EventEntity hasEvent = DBUtil.getDataFirst(EventEntity.class, "id = " + model.getId());
-		PopGoodsEntity hasPopGoods = DBUtil.getDataFirst(PopGoodsEntity.class, "id = " + model.popGoods.id);
-		PopGoodsEntity popGoodsEntity = null;
-		if (hasPopGoods == null) {
+	public void insertData(List<EventRecommendModel> models) {
+		List<EventRecommendEntity> entities = new ArrayList<EventRecommendEntity>();
+		List<PopGoodsEntity> pEntities = new ArrayList<PopGoodsEntity>();
+		for (int i = 0; i < models.size(); i++) {
+			EventRecommendEntity entity = new EventRecommendEntity();
+			EventRecommendModel model = models.get(i);
+			// 查询是否有该活动，有的话，更新数据
+			EventEntity hasEvent = DBUtil.getDataFirst(EventEntity.class, "id = " + model.getId());
+			PopGoodsEntity popGoodsEntity = null;
 			popGoodsEntity = new PopGoodsEntity();
 			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods, popGoodsEntity);
-		}
-		DBUtil.copyData(EventRecommendModel.class, EventRecommendEntity.class, model, entity);
-		entity.popGoods = popGoodsEntity;
-		if (hasEvent != null)
+			popGoodsEntity.event = hasEvent;
+			pEntities.add(popGoodsEntity);
+			DBUtil.copyData(EventRecommendModel.class, EventRecommendEntity.class, model, entity);
+			entity.popGoods = popGoodsEntity;
 			entity.popGoods.event = hasEvent;
-		DBUtil.addData(popGoodsEntity);
-		DBUtil.addData(entity);
+			entities.add(entity);
+		}
+		DBUtil.saveOrUpdateAll(pEntities);
+		DBUtil.addDataAll(entities);
 	}
 
 	/**
@@ -47,19 +54,27 @@ public class RecommendDBController {
 	 *            获取活动推荐数据
 	 * @return 返回的数据
 	 */
-	public EventRecommendModel getData(long id) {
-		EventRecommendModel model = new EventRecommendModel();
-		EventRecommendEntity entity = DBUtil.getDataFirst(EventRecommendEntity.class, "id = " + id);
-		if (entity != null) {
-			PopGoods goods = new PopGoods();
-			DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, entity.popGoods, goods);
-			model.popGoods = goods;
-			DBUtil.copyData(EventRecommendEntity.class, EventRecommendModel.class, entity, model);
+	public List<EventRecommendModel> selectData() {
+		List<EventRecommendModel> models = new ArrayList<EventRecommendModel>();
+		List<EventRecommendEntity> entities = DBUtil.getData(EventRecommendEntity.class);
+		if (entities != null) {
+			for (int i = 0; i < entities.size(); i++) {
+				EventRecommendEntity entity = entities.get(i);
+				EventRecommendModel model = new EventRecommendModel();
+				if (entity != null) {
+					PopGoods goods = new PopGoods();
+					DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, entity.popGoods, goods);
+					model.popGoods = goods;
+					DBUtil.copyData(EventRecommendEntity.class, EventRecommendModel.class, entity, model);
+					models.add(model);
+				}
+			}
 		}
-		return model;
+		return models;
 	}
 
 	/**
+	 * 更新
 	 * 
 	 * @param model
 	 * @param id
@@ -68,7 +83,18 @@ public class RecommendDBController {
 
 	}
 
+	/**
+	 * @Description:删除推荐活动数据，根据id值删除，若id为-1，则删除所有条目
+	 * @param id
+	 *            要删除的id值
+	 * @author: LiXiaoSong
+	 * @date:2015-1-21
+	 */
 	public void delete(long id) {
-
+		if (id == -1) {
+			DBUtil.deleteData(EventRecommendEntity.class);
+		} else {
+			DBUtil.deleteData(EventRecommendEntity.class, id);
+		}
 	}
 }

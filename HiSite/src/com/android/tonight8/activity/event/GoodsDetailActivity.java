@@ -102,9 +102,12 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		popGoods.popGoodsPic = "idiafjag.jpg";
 		popGoods.popGoodsPrice = 232423;
 		model.popGoods = popGoods;
-		EventStorage.getRecommandsDBController().saveData(model);
-		EventRecommendModel model2 = EventStorage.getRecommandsDBController().getData(model.id);
-		Log.v("test", model2.toString());
+		List<EventRecommendModel> models = new ArrayList<EventRecommendModel>();
+		models.add(model);
+		EventStorage.getRecommandsDBController().insertData(models);
+		EventStorage.getRecommandsDBController().delete(model.id);
+		List<EventRecommendModel> models2 = EventStorage.getRecommandsDBController().selectData();
+		Log.v("test", models2.toString());
 		initData();
 	}
 

@@ -101,7 +101,7 @@ public class DBUtil {
 	 * @param entities
 	 *            批量增加的数据
 	 */
-	public static void addData(List<Object> entities) {
+	public static void addDataAll(List<?> entities) {
 		try {
 			utils.saveAll(entities);
 		} catch (DbException e) {
@@ -128,14 +128,50 @@ public class DBUtil {
 	}
 
 	/**
-	 * 删除数据
+	 * 插入或更新数据(没有该数据则插入，有则更新)，单条
+	 */
+	public static void saveOrUpdate(Object entity) {
+		try {
+			utils.saveOrUpdate(entity);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 插入或更新数据(没有该数据则插入，有则更新),多条
+	 */
+	public static void saveOrUpdateAll(List<?> entities) {
+		try {
+			utils.saveOrUpdateAll(entities);
+		} catch (DbException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 删除某条数据
 	 * 
 	 * @param entities
 	 *            要删除的数据实体
+	 * @param id
+	 *            要删除的id值
 	 */
-	public static void deleteData(List<Object> entities) {
+	public static <T> void deleteData(Class<T> clazz, Object id) {
 		try {
-			utils.deleteAll(entities);
+			utils.deleteById(clazz, id);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 删除所有数据
+	 */
+	public static <T> void deleteData(Class<T> clazz) {
+		try {
+			utils.deleteAll(clazz);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
