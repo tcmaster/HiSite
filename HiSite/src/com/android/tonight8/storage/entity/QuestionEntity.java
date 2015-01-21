@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 问题询问
  */
 @Table(name = "question")
-public class QuestionEntity extends EntityBaseEntity{
+public class QuestionEntity extends BaseEntity{
 	/** */
 	@Foreign(column = "uid", foreign = "id")
 	private UserEntity user;

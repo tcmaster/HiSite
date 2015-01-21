@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 第三方账号
  */
 @Table(name = "thirdpartyaccount")
-public class ThirdPartyAccountEntity extends EntityBaseEntity {
+public class ThirdPartyAccountEntity extends BaseEntity {
 	/** 引用外键 user_id*/
 	@Foreign(column = "rid", foreign = "id")
 	private UserEntity user;

@@ -3,13 +3,16 @@ package com.android.tonight8.storage.entity;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
+import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @Description:兑奖表
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class ExchangeEntity extends EntityBaseEntity {
+@Table(name = "exchange")
+public class ExchangeEntity extends BaseEntity {
+
 	/** 兑奖方式 */
 	@Column(column = "method", defaultValue = "0")
 	@NotNull()
@@ -21,7 +24,7 @@ public class ExchangeEntity extends EntityBaseEntity {
 	@Column(column = "orgAll", defaultValue = "0")
 	private boolean orgAll;
 	@Foreign(column = "rid", foreign = "id")
-	private EventEntity event;
+	public EventEntity event;
 
 	public boolean isMethod() {
 		return method;
@@ -49,8 +52,7 @@ public class ExchangeEntity extends EntityBaseEntity {
 
 	@Override
 	public String toString() {
-		return "Exchange [method=" + method + ", address=" + address
-				+ ", orgAll=" + orgAll + ", event=" + event + "]";
+		return "Exchange [method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", event=" + event + "]";
 	}
 
 }

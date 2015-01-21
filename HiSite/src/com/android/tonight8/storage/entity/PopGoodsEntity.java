@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 活动海报
  */
 @Table(name = "popgoods")
-public class PopGoodsEntity extends EntityBaseEntity {
+public class PopGoodsEntity extends BaseEntity {
 
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")

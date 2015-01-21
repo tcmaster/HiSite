@@ -7,12 +7,13 @@ import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * 
- * @Description:
+ * @Description: 报名实体
  * @author LiXiaoSong
  * @date 2015-1-17
  */
 @Table(name = "apply")
-public class ApplyEntity extends EntityBaseEntity {
+public class ApplyEntity extends BaseEntity {
+
 	/** 引用外键Event id */
 	@Foreign(column = "rid", foreign = "id")
 	private EventEntity event;
@@ -46,8 +47,7 @@ public class ApplyEntity extends EntityBaseEntity {
 
 	@Override
 	public String toString() {
-		return "Apply [event=" + event + ", user=" + user + ", date=" + date
-				+ ", time=" + time + "]";
+		return "Apply [event=" + event + ", user=" + user + ", date=" + date + ", time=" + time + "]";
 	}
 
 }

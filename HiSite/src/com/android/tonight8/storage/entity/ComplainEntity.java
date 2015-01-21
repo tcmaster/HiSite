@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class ComplainEntity extends EntityBaseEntity {
+public class ComplainEntity extends BaseEntity {
 	/** 投诉类型 */
 	@Column(column = "type")
 	@NotNull()

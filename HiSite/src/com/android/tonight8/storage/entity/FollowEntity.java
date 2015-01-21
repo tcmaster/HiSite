@@ -7,7 +7,7 @@ import com.lidroid.xutils.db.annotation.Foreign;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class FollowEntity extends EntityBaseEntity {
+public class FollowEntity extends BaseEntity {
 	@Foreign(column = "rid", foreign = "id")
 	private UserEntity user;
 	@Foreign(column = "oid", foreign = "id")

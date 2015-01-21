@@ -11,7 +11,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "event_recommend")
-public class EventRecommendEntity extends EntityBaseEntity {
+public class EventRecommendEntity extends BaseEntity {
 
 	/** 活动推荐名称 */
 	@Column(column = "name")

@@ -10,7 +10,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 话题
  */
 @Table(name = "subject")
-public class SubjectEntity extends EntityBaseEntity {
+public class SubjectEntity extends BaseEntity {
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
 	private EventEntity event;

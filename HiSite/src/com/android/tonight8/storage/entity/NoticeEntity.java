@@ -12,7 +12,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name="notice")
-public class NoticeEntity extends EntityBaseEntity {
+public class NoticeEntity extends BaseEntity {
 	/** 通知内容 */
 	@NotNull
 	@Column(column = "content")

@@ -6,8 +6,8 @@ import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /** 活动实体 */
-@Table(name = "event_entity")
-public class EventEntity extends EntityBaseEntity {
+@Table(name = "event")
+public class EventEntity extends BaseEntity {
 
 	/** 活动名称 */
 	@Column(column = "name")
@@ -78,7 +78,7 @@ public class EventEntity extends EntityBaseEntity {
 	@NotNull()
 	private int subjectCount;
 	@Foreign(column = "rid", foreign = "id")
-	private OrgEntity org;
+	public OrgEntity org;
 
 	public String getName() {
 		return name;

@@ -4,7 +4,7 @@ import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
 
-public class AwardEntity extends EntityBaseEntity {
+public class AwardEntity extends BaseEntity {
 	/** 中奖号码 */
 	@NotNull()
 	@Column(column = "code")
