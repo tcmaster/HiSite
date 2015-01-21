@@ -3,13 +3,16 @@ package com.android.tonight8.storage.entity;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
+import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @Description：活动推荐表
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class EventRecommendEntity extends EntityBaseEntity{
+@Table(name = "event_recommend")
+public class EventRecommendEntity extends EntityBaseEntity {
+
 	/** 活动推荐名称 */
 	@Column(column = "name")
 	@NotNull()
@@ -26,6 +29,7 @@ public class EventRecommendEntity extends EntityBaseEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	@Override
 	public String toString() {
 		return "EventRecommend [name=" + name + ", event=" + event + ", popGoods=" + popGoods + "]";

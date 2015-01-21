@@ -3,9 +3,12 @@ package com.android.tonight8.storage.entity;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
+import com.lidroid.xutils.db.annotation.Table;
 
 /** 活动实体 */
+@Table(name = "event_entity")
 public class EventEntity extends EntityBaseEntity {
+
 	/** 活动名称 */
 	@Column(column = "name")
 	@NotNull()
@@ -19,23 +22,23 @@ public class EventEntity extends EntityBaseEntity {
 	@NotNull()
 	private String timeRangeStart;
 	/** 活动举办结束时间 */
-	@Column(column = "timeRangeEnd")
+	@Column(column = "timeRangeEnd", defaultValue = "0")
 	@NotNull()
 	private String timeRangeEnd;
 	/** 活动举办开始时间的时间戳 */
-	@Column(column = "timeStamp")
+	@Column(column = "timeStamp", defaultValue = "0")
 	@NotNull()
 	private long timeStamp;
 	/** 活动距离 */
-	@Column(column = "distance")
+	@Column(column = "distance", defaultValue = "0")
 	@NotNull()
 	private float distance;
 	/** 活动上架时间 */
-	@Column(column = "publishTime")
+	@Column(column = "publishTime", defaultValue = "0")
 	@NotNull()
 	private String publishTime;
 	/** 活动规则 */
-	@Column(column = "ruleDesc")
+	@Column(column = "ruleDesc", defaultValue = "no rule")
 	@NotNull()
 	private String ruleDesc;
 	/** 活动中奖状态 */
@@ -43,7 +46,7 @@ public class EventEntity extends EntityBaseEntity {
 	@NotNull()
 	private boolean winningStatus;
 	/** 活动中奖名额 */
-	@Column(column = "winningLimit")
+	@Column(column = "winningLimit", defaultValue = "0")
 	@NotNull()
 	private int winningLimit;
 	/** 活动奖品统计数 */
@@ -215,16 +218,7 @@ public class EventEntity extends EntityBaseEntity {
 
 	@Override
 	public String toString() {
-		return "Event [name=" + name + ", status=" + status
-				+ ", timeRangeStart=" + timeRangeStart + ", timeRangeEnd="
-				+ timeRangeEnd + ", timeStamp=" + timeStamp + ", distance="
-				+ distance + ", publishTime=" + publishTime + ", ruleDesc="
-				+ ruleDesc + ", winningStatus=" + winningStatus
-				+ ", winningLimit=" + winningLimit + ", goodsCount="
-				+ goodsCount + ", applyCount=" + applyCount + ", consultCount="
-				+ consultCount + ", awardCount=" + awardCount + ", cityAll="
-				+ cityAll + ", isCouponNoneAward=" + isCouponNoneAward
-				+ ", subjectCount=" + subjectCount + ", org=" + org + "]";
+		return "Event [name=" + name + ", status=" + status + ", timeRangeStart=" + timeRangeStart + ", timeRangeEnd=" + timeRangeEnd + ", timeStamp=" + timeStamp + ", distance=" + distance + ", publishTime=" + publishTime + ", ruleDesc=" + ruleDesc + ", winningStatus=" + winningStatus + ", winningLimit=" + winningLimit + ", goodsCount=" + goodsCount + ", applyCount=" + applyCount + ", consultCount=" + consultCount + ", awardCount=" + awardCount + ", cityAll=" + cityAll + ", isCouponNoneAward=" + isCouponNoneAward + ", subjectCount=" + subjectCount + ", org=" + org + "]";
 	}
 
 }

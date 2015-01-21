@@ -60,13 +60,17 @@ public class DBUtil {
 		}
 		return result;
 	}
+
 	/**
 	 * 查询某条数据
-	 * @param clazz 什么表
-	 * @param expr 查询子句
+	 * 
+	 * @param clazz
+	 *            什么表
+	 * @param expr
+	 *            查询子句
 	 * @return 返回的子集
 	 */
-	public static <T> T getDataFirst(Class<T> clazz,String expr){
+	public static <T> T getDataFirst(Class<T> clazz, String expr) {
 		T t = null;
 		try {
 			t = utils.findFirst(Selector.from(clazz).expr(expr));
@@ -74,7 +78,7 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 		return t;
-		
+
 	}
 
 	/**
@@ -115,8 +119,7 @@ public class DBUtil {
 	 * @param updateColumnNames
 	 *            要更新哪一列
 	 */
-	public static void updateData(Object entity, WhereBuilder builder,
-			String... updateColumnNames) {
+	public static void updateData(Object entity, WhereBuilder builder, String... updateColumnNames) {
 		try {
 			utils.update(entity, builder, updateColumnNames);
 		} catch (DbException e) {
@@ -152,8 +155,7 @@ public class DBUtil {
 	 * @author: LiXiaoSong
 	 * @date:2015-1-20
 	 */
-	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2,
-			T1 t1, T2 t2) {
+	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
 		Field[] fields1 = getDeclaedFields(clazz1);
 		Field[] fields2 = getDeclaedFields(clazz2);
 		for (int i = 0; i < fields1.length; i++) {
@@ -165,7 +167,7 @@ public class DBUtil {
 				Field f2 = fields2[j];
 				f1.setAccessible(true);
 				f2.setAccessible(true);
-				if (f1.getName().equals(f2.getName())) {// 两个变量名称相同，可以进行赋值
+				if (f1.getName().equals(f2.getName()) && f1.getType().getSimpleName().equals(f2.getType().getSimpleName())) {// 两个变量名称相同，可以进行赋值
 					try {
 						f2.set(t2, f1.get(t1));
 					} catch (IllegalAccessException e) {
@@ -178,6 +180,14 @@ public class DBUtil {
 		}
 	}
 
+	/**
+	 * @Description:得到父类和本类的所有成员变量类
+	 * @param clazz
+	 *            确定是什么类
+	 * @return
+	 * @author: LiXiaoSong
+	 * @date:2015-1-21
+	 */
 	private static <T> Field[] getDeclaedFields(Class<T> clazz) {
 		Field[] first = clazz.getDeclaredFields();
 		Field[] second = clazz.getSuperclass().getDeclaredFields();

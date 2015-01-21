@@ -23,9 +23,9 @@ import com.android.tonight8.activity.AboutUsActivity;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.common.Photo;
-import com.android.tonight8.storage.DBUtil;
-import com.android.tonight8.storage.entity.PhotoEntitiy;
+import com.android.tonight8.model.common.PopGoods;
+import com.android.tonight8.model.event.EventRecommendModel;
+import com.android.tonight8.storage.event.EventStorage;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -93,13 +93,18 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		initHeaderView();
 		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
 		// 测试
-		PhotoEntitiy photo = new PhotoEntitiy();
-		photo.setSize("100");
-		photo.setUrl("ddakdkakdks");
-		photo.setId(339);
-		Photo photo2 = new Photo();
-		DBUtil.copyData(PhotoEntitiy.class, Photo.class, photo, photo2);
-		Log.v("lixiaosong", photo2.toString());
+		EventRecommendModel model = new EventRecommendModel();
+		model.id = 224214;
+		model.name = "kakdka";
+		PopGoods popGoods = new PopGoods();
+		popGoods.id = 23143;
+		popGoods.popGoodsName = "dsadkak";
+		popGoods.popGoodsPic = "idiafjag.jpg";
+		popGoods.popGoodsPrice = 232423;
+		model.popGoods = popGoods;
+		EventStorage.getRecommandsDBController().saveData(model);
+		EventRecommendModel model2 = EventStorage.getRecommandsDBController().getData(model.id);
+		Log.v("test", model2.toString());
 		initData();
 	}
 

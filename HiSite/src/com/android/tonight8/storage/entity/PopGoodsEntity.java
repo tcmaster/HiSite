@@ -11,9 +11,10 @@ import com.lidroid.xutils.db.annotation.Table;
  */
 @Table(name = "popgoods")
 public class PopGoodsEntity extends EntityBaseEntity {
+
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
-	private EventEntity event;
+	public EventEntity event;
 	/** 活动海报奖品名称 */
 	@NotNull
 	@Column(column = "popGoodsName")
