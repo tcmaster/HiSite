@@ -9,71 +9,72 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "org")
-public class OrgEntity extends EntityBaseEntity {
+public class OrgEntity extends BaseEntity {
+
 	/** 商家名称 */
 	@Column(column = "name")
 	@NotNull
-	public String name;
+	private String name;
 	/** 商家简介 */
 	@NotNull
 	@Column(column = "intro")
-	public String intro;
+	private String intro;
 	/** 商家logo图片文件地址 */
 	@NotNull
 	@Column(column = "logo")
-	public String logo;
+	private String logo;
 	/** 商家头像图片文件地址 */
 	@Column(column = "pic")
 	@NotNull
-	public String pic;
+	private String pic;
 	/** 商家所地地理坐标 */
 	@Column(column = "coordinate")
 	@NotNull
-	public String coordinate;
+	private String coordinate;
 	/** 省份编码 */
 	@Column(column = "provinceCode")
 	@NotNull
-	public String provinceCode;
+	private String provinceCode;
 	/** 城市编码 */
 	@Column(column = "cityCode")
 	@NotNull
-	public String cityCode;
+	private String cityCode;
 	/** 地区编码 */
 	@Column(column = "areaCode")
 	@NotNull
-	public String areaCode;
+	private String areaCode;
 	/** 商家地址 */
 	@Column(column = "address")
 	@NotNull
-	public String address;
+	private String address;
 	/** 商家固定电话 */
 	@Column(column = "telphone")
 	@NotNull
-	public String telphone;
+	private String telphone;
 	/** 商家邮箱 */
 	@NotNull
 	@Column(column = "email")
-	public String email;
+	private String email;
 	/** 商家联系人 */
 	@NotNull
 	@Column(column = "contactPerson")
-	public String contactPerson;
+	private String contactPerson;
 	/** 商家联系手机 */
 	@NotNull
 	@Column(column = "contactMobilPhone")
-	public String contactMobilPhone;
+	private String contactMobilPhone;
 	/** 商家企业证件照图片文件地址 */
 	@Column(column = "paperPhoto")
-	public String paperPhoto;
+	private String paperPhoto;
 	/** 商家企业营业执照证件编号 */
 	@Column(column = "paperCode")
-	public String paperCode;
+	private String paperCode;
 	/** 身份类型 */
 	@Column(column = "identit0yType")
-	public int identit0yType;
+	private int identit0yType;
 	/** 身份编码 */
 	@Column(column = "identityCode")
-	public String identityCode;
+	private String identityCode;
 
 	public String getName() {
 		return name;
@@ -213,15 +214,7 @@ public class OrgEntity extends EntityBaseEntity {
 
 	@Override
 	public String toString() {
-		return "Org [name=" + name + ", intro=" + intro + ", logo=" + logo
-				+ ", pic=" + pic + ", coordinate=" + coordinate
-				+ ", provinceCode=" + provinceCode + ", cityCode=" + cityCode
-				+ ", areaCode=" + areaCode + ", address=" + address
-				+ ", telphone=" + telphone + ", email=" + email
-				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
-				+ contactMobilPhone + ", paperPhoto=" + paperPhoto
-				+ ", paperCode=" + paperCode + ", identit0yType="
-				+ identit0yType + ", identityCode=" + identityCode + "]";
+		return "Org [name=" + name + ", intro=" + intro + ", logo=" + logo + ", pic=" + pic + ", coordinate=" + coordinate + ", provinceCode=" + provinceCode + ", cityCode=" + cityCode + ", areaCode=" + areaCode + ", address=" + address + ", telphone=" + telphone + ", email=" + email + ", contactPerson=" + contactPerson + ", contactMobilPhone=" + contactMobilPhone + ", paperPhoto=" + paperPhoto + ", paperCode=" + paperCode + ", identit0yType=" + identit0yType + ", identityCode=" + identityCode + "]";
 	}
 
 }

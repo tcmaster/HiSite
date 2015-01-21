@@ -3,13 +3,16 @@ package com.android.tonight8.storage.entity;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
+import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @Description:优惠券表
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class CouponEntity extends EntityBaseEntity {
+@Table(name = "coupon")
+public class CouponEntity extends BaseEntity {
+
 	/** 券编号 */
 	@Column(column = "code")
 	@NotNull()
@@ -55,7 +58,7 @@ public class CouponEntity extends EntityBaseEntity {
 	@NotNull()
 	private String publishTime;
 	@Foreign(column = "rid", foreign = "id")
-	EventEntity event;
+	public EventEntity event;
 
 	public String getCode() {
 		return code;
@@ -147,12 +150,6 @@ public class CouponEntity extends EntityBaseEntity {
 
 	@Override
 	public String toString() {
-		return "Coupon [code=" + code + ", useStatus=" + useStatus
-				+ ", provideType=" + provideType + ", provideNum=" + provideNum
-				+ ", provideAll=" + provideAll + ", value=" + value
-				+ ", content=" + content + ", dateRangeStart=" + dateRangeStart
-				+ ", dateRangeEnd=" + dateRangeEnd + ", templatePic="
-				+ templatePic + ", publishTime=" + publishTime + ", event="
-				+ event + "]";
+		return "Coupon [code=" + code + ", useStatus=" + useStatus + ", provideType=" + provideType + ", provideNum=" + provideNum + ", provideAll=" + provideAll + ", value=" + value + ", content=" + content + ", dateRangeStart=" + dateRangeStart + ", dateRangeEnd=" + dateRangeEnd + ", templatePic=" + templatePic + ", publishTime=" + publishTime + ", event=" + event + "]";
 	}
 }

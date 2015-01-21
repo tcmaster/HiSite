@@ -1,7 +1,6 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
-import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
@@ -10,7 +9,8 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 签到
  */
 @Table(name = "signin")
-public class SignInEntity {
+public class SignInEntity extends BaseEntity {
+
 	/** 活动时间 */
 	@NotNull
 	@Column(column = "time")

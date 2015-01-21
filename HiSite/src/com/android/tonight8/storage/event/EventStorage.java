@@ -5,7 +5,7 @@ import java.lang.ref.SoftReference;
 public class EventStorage {
 
 	/** 活动推荐控制类对象 */
-	private static SoftReference<RecommendDBController> rdc = new SoftReference<RecommendDBController>(new RecommendDBController());
+	private static SoftReference<RecommendNativeController> rdc = new SoftReference<RecommendNativeController>(new RecommendNativeController());
 
 	/**
 	 * @Description:获取活动推荐数据
@@ -13,9 +13,9 @@ public class EventStorage {
 	 * @author: LiXiaoSong
 	 * @date:2015-1-20
 	 */
-	public static RecommendDBController getRecommandsDBController() {
+	public static RecommendNativeController getRecommandsDBController() {
 		if (rdc.get() == null) {
-			rdc = new SoftReference<RecommendDBController>(new RecommendDBController());
+			rdc = new SoftReference<RecommendNativeController>(new RecommendNativeController());
 		}
 		return rdc.get();
 	}

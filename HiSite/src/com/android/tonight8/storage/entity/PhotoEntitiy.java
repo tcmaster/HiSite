@@ -11,7 +11,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "photo")
-public class PhotoEntitiy extends EntityBaseEntity {
+public class PhotoEntitiy extends BaseEntity {
 
 	/** 话题 */
 	@Foreign(column = "rid", foreign = "id")

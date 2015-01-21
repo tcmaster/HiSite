@@ -8,7 +8,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class EntityBaseEntity {
+public class BaseEntity {
 
 	/** 主键id，不可自增长且不为空 */
 	@NoAutoIncrement()

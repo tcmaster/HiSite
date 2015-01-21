@@ -8,7 +8,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class RegionalEntity extends EntityBaseEntity {
+public class RegionalEntity extends BaseEntity {
 	/** 区域名称 */
 	@NotNull()
 	@Column(column = "name")

@@ -19,7 +19,7 @@ import com.android.tonight8.storage.entity.PopGoodsEntity;
  * @copyright @HiSite
  * @Date:2015-1-20
  */
-public class RecommendDBController {
+public class RecommendNativeController {
 
 	/**
 	 * 保存活动推荐数据

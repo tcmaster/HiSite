@@ -9,7 +9,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @author LiXiaoSong
  * @date 2015-1-17
  */
-public class CommentEntity extends EntityBaseEntity {
+public class CommentEntity extends BaseEntity {
 	/** 评论内容 */
 	@Column(column = "content")
 	@NotNull()
