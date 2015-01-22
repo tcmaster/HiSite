@@ -9,7 +9,6 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,9 +22,6 @@ import com.android.tonight8.activity.AboutUsActivity;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.common.PopGoods;
-import com.android.tonight8.model.event.EventRecommendModel;
-import com.android.tonight8.storage.event.EventStorage;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -92,22 +88,6 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		initHeaderView();
 		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
-		// 测试
-		EventRecommendModel model = new EventRecommendModel();
-		model.id = 224214;
-		model.name = "kakdka";
-		PopGoods popGoods = new PopGoods();
-		popGoods.id = 23143;
-		popGoods.popGoodsName = "dsadkak";
-		popGoods.popGoodsPic = "idiafjag.jpg";
-		popGoods.popGoodsPrice = 232423;
-		model.popGoods = popGoods;
-		List<EventRecommendModel> models = new ArrayList<EventRecommendModel>();
-		models.add(model);
-		EventStorage.getRecommandsDBController().insertData(models);
-		EventStorage.getRecommandsDBController().delete(model.id);
-		List<EventRecommendModel> models2 = EventStorage.getRecommandsDBController().selectData();
-		Log.v("test", models2.toString());
 		initData();
 	}
 
