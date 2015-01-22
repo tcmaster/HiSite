@@ -66,9 +66,7 @@ public class Consult implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Consult [id=" + id + ", rid=" + rid + ", content=" + content
-				+ ", date=" + date + ", time=" + time + ", replyTo=" + replyTo
-				+ "]";
+		return "Consult [id=" + id + ", rid=" + rid + ", content=" + content + ", date=" + date + ", time=" + time + ", replyTo=" + replyTo + "]";
 	}
 
 }
