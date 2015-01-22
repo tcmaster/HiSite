@@ -19,7 +19,7 @@ import com.android.tonight8.storage.entity.UserEntity;
  * @author:LiuZhao
  * @Date:2015年1月22日
  */
-public class LiveSubjectsReadController {
+public class LiveSubjectsNativeController {
 
 	public void InsertData(List<LiveSubjectModel> listModel) {
 		List<SubjectEntity> eventEntities = new ArrayList<SubjectEntity>();

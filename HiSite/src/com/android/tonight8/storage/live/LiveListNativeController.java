@@ -30,42 +30,40 @@ public class LiveListNativeController {
 		List<EventEntity> eventEntities = new ArrayList<EventEntity>();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		List<SignInEntity> signLists = new ArrayList<SignInEntity>();
-		List<UserEntity> userEntities = new ArrayList<UserEntity>();
+		// List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
 
 			// 查询是否有该活动
-			EventEntity hasEventEvent = DBUtil.getDataFirst(EventEntity.class, "id = " + listModel.get(i).getEvent().getId());
 			EventEntity eventEntity = new EventEntity();
-			DBUtil.copyData(Event.class, EventEntity.class, listModel.get(i).getEvent(), eventEntity);
-			eventEntity = hasEventEvent;
+			DBUtil.copyData(Event.class, EventEntity.class, listModel.get(i)
+					.getEvent(), eventEntity);
 			eventEntities.add(eventEntity);
 
-			OrgEntity hasOrgEvent = DBUtil.getDataFirst(OrgEntity.class, "id = " + listModel.get(i).getOrg().getId());
 			OrgEntity orgEntity = new OrgEntity();
-			DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).getOrg(), orgEntity);
-			orgEntity = hasOrgEvent;
+			DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i)
+					.getOrg(), orgEntity);
 			orgEntities.add(orgEntity);
 
 			for (int j = 0; j < listModel.get(i).getSignIn().size(); j++) {
-
-				SignInEntity hasSignInEvent = DBUtil.getDataFirst(SignInEntity.class, "id = " + listModel.get(i).getSignIn().get(j).id);
 				SignInEntity signInEntity = new SignInEntity();
-				DBUtil.copyData(SignIn.class, SignInEntity.class, listModel.get(i).getSignIn().get(j), signInEntity);
-				signInEntity = hasSignInEvent;
+				DBUtil.copyData(SignIn.class, SignInEntity.class, listModel
+						.get(i).getSignIn().get(j), signInEntity);
 				signLists.add(signInEntity);
 
 			}
-			UserEntity hasUserEntity = DBUtil.getDataFirst(UserEntity.class, "id = " + listModel.get(i).getOrg().getId());
-			UserEntity userEntity = new UserEntity();
-			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).getUser(), userEntity);
-			userEntity = hasUserEntity;
-			userEntities.add(userEntity);
+			// UserEntity hasUserEntity = DBUtil.getDataFirst(UserEntity.class,
+			// "id = " + listModel.get(i).getOrg().getId());
+			// UserEntity userEntity = new UserEntity();
+			// DBUtil.copyData(User.class, UserEntity.class,
+			// listModel.get(i).getUser(), userEntity);
+			// userEntity = hasUserEntity;
+			// userEntities.add(userEntity);
 		}
 		// 存到数据库中
 		DBUtil.saveOrUpdate(eventEntities);
 		DBUtil.saveOrUpdate(orgEntities);
 		DBUtil.saveOrUpdate(signLists);
-		DBUtil.saveOrUpdate(userEntities);
+		// DBUtil.saveOrUpdate(userEntities);
 	}
 
 	/**
@@ -77,7 +75,8 @@ public class LiveListNativeController {
 
 	public List<LiveListModel> SelectData() {
 		List<LiveListModel> listModels = new ArrayList<LiveListModel>();
-		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class, "order by timeStamp desc");
+		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class,
+				"order by timeStamp desc");
 		if (eventEntities == null) {
 			return null;
 		}
@@ -97,11 +96,13 @@ public class LiveListNativeController {
 			// 签到
 			List<SignIn> listSignIn = new ArrayList<SignIn>();
 			List<SignInEntity> listSignInEntities = new ArrayList<SignInEntity>();
-			listSignInEntities = DBUtil.getData(SignInEntity.class, "eid = " + eventEntity.getId());
+			listSignInEntities = DBUtil.getData(SignInEntity.class, "eid = "
+					+ eventEntity.getId());
 			for (int j = 0; j < listSignInEntities.size(); j++) {
 				SignIn signIn = new SignIn();
 				SignInEntity signInEntity = listSignInEntities.get(j);
-				DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
+				DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity,
+						signIn);
 				listSignIn.add(signIn);
 			}
 			listModel.setSignIn(listSignIn);
