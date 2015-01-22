@@ -7,6 +7,7 @@ import com.lidroid.xutils.db.annotation.Table;
 /**
  * @author liuzhao
  * @date 2015-1-17
+ * 商家数据库表
  */
 @Table(name = "org")
 public class OrgEntity extends BaseEntity {
