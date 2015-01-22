@@ -5,7 +5,7 @@ import java.lang.ref.SoftReference;
 public class EventStorage {
 
 	/** 活动推荐本地控制类对象 */
-	private static SoftReference<RecommendNativeController> rdc = new SoftReference<RecommendNativeController>(new RecommendNativeController());
+	private static SoftReference<EventRecommendNativeController> rdc = new SoftReference<EventRecommendNativeController>(new EventRecommendNativeController());
 
 	/** 活动列表本地控制类对象 */
 	private static SoftReference<EventListNativeController> elc = new SoftReference<EventListNativeController>(new EventListNativeController());
@@ -16,9 +16,9 @@ public class EventStorage {
 	 * @author: LiXiaoSong
 	 * @date:2015-1-20
 	 */
-	public static RecommendNativeController getRecommandsNativeController() {
+	public static EventRecommendNativeController getRecommandsNativeController() {
 		if (rdc.get() == null) {
-			rdc = new SoftReference<RecommendNativeController>(new RecommendNativeController());
+			rdc = new SoftReference<EventRecommendNativeController>(new EventRecommendNativeController());
 		}
 		return rdc.get();
 	}

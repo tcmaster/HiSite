@@ -69,4 +69,22 @@ public class EventConsultsNativeController {
 		}
 		return models;
 	}
+
+	/**
+	 * @Description:写入活动咨询/活动咨询回复数据
+	 * @param eventid
+	 *            活动id
+	 * @author: LiXiaoSong
+	 * @date:2015-1-22
+	 */
+	public void insertConsult(EventConsultModel model) {
+		ConsultEntity consultEntity = new ConsultEntity();
+		UserEntity userEntity = new UserEntity();
+		DBUtil.copyData(Consult.class, ConsultEntity.class, model.consult, consultEntity);
+		DBUtil.copyData(User.class, UserEntity.class, model.user, userEntity);
+		consultEntity.event = DBUtil.getDataFirst(EventEntity.class, "id = " + model.consult.rid);
+		consultEntity.user = userEntity;
+		DBUtil.saveOrUpdate(consultEntity);
+		DBUtil.saveOrUpdate(userEntity);
+	}
 }
