@@ -1,6 +1,7 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
+import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
@@ -22,6 +23,13 @@ public class SignInEntity extends BaseEntity {
 	/** 图片大小 */
 	@Column(column = "size")
 	private String size;
+	// 新加的
+	/** 用户 */
+	@Foreign(column = "rid", foreign = "id")
+	public UserEntity user;
+	/** 活动 */
+	@Foreign(column = "eid", foreign = "id")
+	public EventEntity event;
 
 	@Override
 	public String toString() {
