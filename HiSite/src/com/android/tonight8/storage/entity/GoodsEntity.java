@@ -10,6 +10,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @date 2015-1-17
  */
 public class GoodsEntity extends BaseEntity {
+
 	/** 活动奖品名称 */
 	@Column(column = "name")
 	@NotNull()
@@ -27,7 +28,7 @@ public class GoodsEntity extends BaseEntity {
 	@NotNull()
 	private int price;
 	@Foreign(column = "rid", foreign = "id")
-	private EventEntity event;
+	public EventEntity event;
 
 	public String getName() {
 		return name;
@@ -63,8 +64,7 @@ public class GoodsEntity extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Goods [name=" + name + ", pic=" + pic + ", size=" + size
-				+ ", price=" + price + ", event=" + event + "]";
+		return "Goods [name=" + name + ", pic=" + pic + ", size=" + size + ", price=" + price + ", event=" + event + "]";
 	}
 
 }

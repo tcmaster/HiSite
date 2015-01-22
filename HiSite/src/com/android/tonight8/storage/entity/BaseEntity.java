@@ -13,7 +13,7 @@ public class BaseEntity {
 	/** 主键id，不可自增长且不为空 */
 	@NoAutoIncrement()
 	@NotNull()
-	public long id;
+	private long id;
 
 	public long getId() {
 		return id;

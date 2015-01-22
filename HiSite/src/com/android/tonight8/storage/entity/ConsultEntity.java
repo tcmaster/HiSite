@@ -10,26 +10,27 @@ import com.lidroid.xutils.db.annotation.NotNull;
  * @date 2015-1-17
  */
 public class ConsultEntity extends BaseEntity {
+
 	/** 咨询内容 */
 	@Column(column = "content")
 	@NotNull()
-	public String content;
+	private String content;
 	/** 咨询日期 */
 	@Column(column = "date")
 	@NotNull()
-	public String date;
+	private String date;
 	/** 咨询时间 */
 	@Column(column = "time")
 	@NotNull()
-	public String time;
+	private String time;
 	/** 对谁回复的用户名称 */
 	@Column(column = "replyTo")
 	@NotNull()
-	public String replyTo;
+	private String replyTo;
 	@Foreign(column = "rid", foreign = "id")
-	EventEntity event;
+	public EventEntity event;
 	@Foreign(column = "uid", foreign = "id")
-	UserEntity user;
+	public UserEntity user;
 
 	public String getContent() {
 		return content;
@@ -65,9 +66,7 @@ public class ConsultEntity extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Consult [content=" + content + ", date=" + date + ", time="
-				+ time + ", replyTo=" + replyTo + ", event=" + event
-				+ ", user=" + user + "]";
+		return "Consult [content=" + content + ", date=" + date + ", time=" + time + ", replyTo=" + replyTo + ", event=" + event + ", user=" + user + "]";
 	}
 
 }
