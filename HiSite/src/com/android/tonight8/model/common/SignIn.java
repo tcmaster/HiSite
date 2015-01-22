@@ -3,7 +3,7 @@ package com.android.tonight8.model.common;
 import java.io.Serializable;
 
 /**
- * 活动对象
+ * 签到对象
  * 
  * @author LiXiaoSong
  * 
@@ -55,8 +55,7 @@ public class SignIn implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SignIn [id=" + id + ", pic=" + pic + ", time=" + time
-				+ ", size=" + size + "]";
+		return "SignIn [id=" + id + ", pic=" + pic + ", time=" + time + ", size=" + size + "]";
 	}
 
 }

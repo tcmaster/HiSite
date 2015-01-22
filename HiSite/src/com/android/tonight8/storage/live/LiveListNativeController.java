@@ -19,8 +19,13 @@ import com.android.tonight8.storage.entity.UserEntity;
  * @author:LiuZhao
  * @Date:2015年1月21日
  */
-public class LiveListDBController {
+public class LiveListNativeController {
 
+	/**
+	 * @Description:插入数据
+	 * @param listModel
+	 * @date:2015年1月22日
+	 */
 	public void InsertData(List<LiveListModel> listModel) {
 		List<EventEntity> eventEntities = new ArrayList<EventEntity>();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
@@ -28,7 +33,7 @@ public class LiveListDBController {
 		List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
 
-			// 查询是否有该活动，有的话，更新数据
+			// 查询是否有该活动
 			EventEntity hasEventEvent = DBUtil.getDataFirst(EventEntity.class, "id = " + listModel.get(i).getEvent().getId());
 			EventEntity eventEntity = new EventEntity();
 			DBUtil.copyData(Event.class, EventEntity.class, listModel.get(i).getEvent(), eventEntity);
@@ -56,13 +61,57 @@ public class LiveListDBController {
 			userEntity = hasUserEntity;
 			userEntities.add(userEntity);
 		}
+		// 存到数据库中
 		DBUtil.saveOrUpdate(eventEntities);
 		DBUtil.saveOrUpdate(orgEntities);
 		DBUtil.saveOrUpdate(signLists);
 		DBUtil.saveOrUpdate(userEntities);
 	}
 
-	public void SelectData(String id) {
-		
+	/**
+	 * @Description:查询现场列表数据
+	 * @return
+	 * @author: LiuZhao
+	 * @date:2015年1月22日
+	 */
+
+	public List<LiveListModel> SelectData() {
+		List<LiveListModel> listModels = new ArrayList<LiveListModel>();
+		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class, "order by timeStamp desc");
+		if (eventEntities == null) {
+			return null;
+		}
+		for (int i = 0; i < eventEntities.size(); i++) {
+			LiveListModel listModel = new LiveListModel();
+			// 活动
+			Event event = new Event();
+			EventEntity eventEntity = new EventEntity();
+			eventEntity = eventEntities.get(i);
+			DBUtil.copyData(EventEntity.class, Event.class, eventEntity, event);
+			listModel.setEvent(event);
+			// 商家
+			Org org = new Org();
+			OrgEntity orgEntity = eventEntity.org;
+			DBUtil.copyData(OrgEntity.class, Org.class, orgEntity, org);
+			listModel.setOrg(org);
+			// 签到
+			List<SignIn> listSignIn = new ArrayList<SignIn>();
+			List<SignInEntity> listSignInEntities = new ArrayList<SignInEntity>();
+			listSignInEntities = DBUtil.getData(SignInEntity.class, "eid = " + eventEntity.getId());
+			for (int j = 0; j < listSignInEntities.size(); j++) {
+				SignIn signIn = new SignIn();
+				SignInEntity signInEntity = listSignInEntities.get(j);
+				DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
+				listSignIn.add(signIn);
+			}
+			listModel.setSignIn(listSignIn);
+
+		}
+		return listModels;
+
+	}
+
+	public void DeleteAll() {
+
 	}
 }
