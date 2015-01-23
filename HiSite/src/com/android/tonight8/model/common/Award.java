@@ -44,8 +44,7 @@ public class Award implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Award [id=" + id + ", code=" + code + ", exchangeStatus="
-				+ exchangeStatus + "]";
+		return "Award [id=" + id + ", code=" + code + ", exchangeStatus=" + exchangeStatus + "]";
 	}
 
 }

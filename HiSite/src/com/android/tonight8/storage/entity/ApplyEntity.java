@@ -14,12 +14,6 @@ import com.lidroid.xutils.db.annotation.Table;
 @Table(name = "apply")
 public class ApplyEntity extends BaseEntity {
 
-	/** 引用外键Event id */
-	@Foreign(column = "rid", foreign = "id")
-	private EventEntity event;
-	/** 引用外键User id */
-	@Foreign(column = "uid", foreign = "id")
-	private UserEntity user;
 	/** 日期 */
 	@Column(column = "date")
 	@NotNull()
@@ -28,6 +22,12 @@ public class ApplyEntity extends BaseEntity {
 	@Column(column = "time")
 	@NotNull()
 	private String time;
+	/** 引用外键Event id */
+	@Foreign(column = "rid", foreign = "id")
+	public EventEntity event;
+	/** 引用外键User id */
+	@Foreign(column = "uid", foreign = "id")
+	public UserEntity user;
 
 	public String getDate() {
 		return date;

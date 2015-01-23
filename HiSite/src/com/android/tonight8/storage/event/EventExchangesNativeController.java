@@ -6,58 +6,68 @@ package com.android.tonight8.storage.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.tonight8.model.common.Apply;
-import com.android.tonight8.model.common.Award;
 import com.android.tonight8.model.common.Exchange;
-import com.android.tonight8.model.event.EventAwardModel;
+import com.android.tonight8.model.common.Org;
+import com.android.tonight8.model.event.EventExchangeModel;
 import com.android.tonight8.storage.DBUtil;
-import com.android.tonight8.storage.entity.ApplyEntity;
-import com.android.tonight8.storage.entity.AwardEntity;
+import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.ExchangeEntity;
+import com.android.tonight8.storage.entity.OrgEntity;
 
 /**
- * @Description:
+ * @Description: 活动开奖地址
  * @author:LiXiaoSong
- * @see:
- * @since:
  * @copyright @HiSite
  * @Date:2015-1-22
  */
 public class EventExchangesNativeController {
 
 	/**
-	 * @Description: 活动中奖名单列表存入
+	 * @Description: 存储活动开奖地址列表
 	 * @param models
+	 *            活动实体
+	 * @param eventId
+	 *            活动id
 	 * @author: LiXiaoSong
-	 * @date:2015-1-22
+	 * @date:2015-1-23
 	 */
-	public void insertData(List<EventAwardModel> models) {
-		List<AwardEntity> awardEntities = new ArrayList<AwardEntity>();
-		List<ApplyEntity> applyEntities = new ArrayList<ApplyEntity>();
+	public void insertData(List<EventExchangeModel> models, long eventId) {
 		List<ExchangeEntity> exchangeEntities = new ArrayList<ExchangeEntity>();
+		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + eventId);
+		OrgEntity orgEntity = new OrgEntity();
+		DBUtil.copyData(Org.class, OrgEntity.class, models.get(0).getOrg(), orgEntity);
 		for (int i = 0; i < models.size(); i++) {
-			AwardEntity awardEntity = new AwardEntity();
-			ApplyEntity applyEntity = new ApplyEntity();
 			ExchangeEntity exchangeEntity = new ExchangeEntity();
-			DBUtil.copyData(Award.class, AwardEntity.class, models.get(i).award, awardEntity);
-			DBUtil.copyData(Apply.class, ApplyEntity.class, models.get(i).apply, applyEntity);
 			DBUtil.copyData(Exchange.class, ExchangeEntity.class, models.get(i).exchange, exchangeEntity);
-
+			exchangeEntity.event = eventEntity;
+			exchangeEntity.event.org = orgEntity;
+			exchangeEntities.add(exchangeEntity);
 		}
-		DBUtil.saveOrUpdate(awardEntities);
-		DBUtil.saveOrUpdate(applyEntities);
-		DBUtil.saveOrUpdate(exchangeEntities);
+		DBUtil.saveOrUpdateAll(exchangeEntities);
+		DBUtil.saveOrUpdate(orgEntity);
 	}
 
 	/**
-	 * @Description: 活动中奖名单列表取出
-	 * @param models
+	 * @Description: 得到活动开奖地址列表
+	 * @param eventId
+	 *            活动id
+	 * @return 开奖列表
 	 * @author: LiXiaoSong
-	 * @date:2015-1-22
+	 * @date:2015-1-23
 	 */
-	public List<EventAwardModel> selectData(long eventid) {
-		List<EventAwardModel> models = new ArrayList<EventAwardModel>();
-
+	public List<EventExchangeModel> selectData(long eventId) {
+		List<EventExchangeModel> models = new ArrayList<EventExchangeModel>();
+		List<ExchangeEntity> exchangeEntities = DBUtil.getData(ExchangeEntity.class, "rid = " + eventId);
+		for (int i = 0; i < exchangeEntities.size(); i++) {
+			EventExchangeModel model = new EventExchangeModel();
+			Exchange exchange = new Exchange();
+			Org org = new Org();
+			DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntities.get(i), exchange);
+			DBUtil.copyData(OrgEntity.class, Org.class, exchangeEntities.get(i).event.org, org);
+			model.exchange = exchange;
+			model.org = org;
+			models.add(model);
+		}
 		return models;
 	}
 }
