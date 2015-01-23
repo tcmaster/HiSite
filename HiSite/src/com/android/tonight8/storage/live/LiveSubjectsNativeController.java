@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.tonight8.model.common.Comment;
-import com.android.tonight8.model.common.Event;
-import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Photo;
+import com.android.tonight8.model.common.Subject;
+import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveSubjectModel;
 import com.android.tonight8.storage.DBUtil;
-import com.android.tonight8.storage.entity.EventEntity;
-import com.android.tonight8.storage.entity.OrgEntity;
+import com.android.tonight8.storage.entity.CommentEntity;
+import com.android.tonight8.storage.entity.PhotoEntitiy;
 import com.android.tonight8.storage.entity.SubjectEntity;
 import com.android.tonight8.storage.entity.UserEntity;
 
@@ -23,24 +23,86 @@ public class LiveSubjectsNativeController {
 
 	public void InsertData(List<LiveSubjectModel> listModel) {
 		List<SubjectEntity> eventEntities = new ArrayList<SubjectEntity>();
-		List<Photo> listPhotos = new ArrayList<Photo>();
-		List<Comment> listComments = new ArrayList<Comment>();
+		List<PhotoEntitiy> listPhotoEntitiys = new ArrayList<PhotoEntitiy>();
+		List<CommentEntity> listCommentEntities = new ArrayList<CommentEntity>();
 		List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
-
-			// // 查询是否有该活动
-			// EventEntity hasEventEvent = DBUtil.getDataFirst(EventEntity.class, "id = " +
-			// listModel.get(i).getEvent().getId());
-			// EventEntity eventEntity = new EventEntity();
-			// DBUtil.copyData(Event.class, EventEntity.class, listModel.get(i).getEvent(), eventEntity);
-			// eventEntity = hasEventEvent;
-			// eventEntities.add(eventEntity);
+			// 话题
+			SubjectEntity subjectEntity = new SubjectEntity();
+			DBUtil.copyData(Subject.class, SubjectEntity.class, listModel.get(i).getSubject(), subjectEntity);
+			eventEntities.add(subjectEntity);
+			// 照片的数量
+			int photoCount = listModel.get(i).getPhotos().size();
+			List<Photo> listPhoto = listModel.get(i).getPhotos();
+			for (int j = 0; j < photoCount; j++) {
+				PhotoEntitiy photoEntitiy = new PhotoEntitiy();
+				DBUtil.copyData(Photo.class, PhotoEntitiy.class, listPhoto.get(j), photoEntitiy);
+				listPhotoEntitiys.add(photoEntitiy);
+			}
+			// 评论的数量
+			int commentCount = listModel.get(i).getComments().size();
+			List<Comment> comments = listModel.get(i).getComments();
+			for (int j = 0; j < commentCount; j++) {
+				CommentEntity commentEntity = new CommentEntity();
+				DBUtil.copyData(Comment.class, CommentEntity.class, comments.get(j), commentEntity);
+				listCommentEntities.add(commentEntity);
+			}
+			// 用户
+			UserEntity userEntity = new UserEntity();
+			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).getUser(), userEntity);
 
 		}
 		// 存到数据库中
 		DBUtil.saveOrUpdate(eventEntities);
-		DBUtil.saveOrUpdate(listPhotos);
-		DBUtil.saveOrUpdate(listComments);
+		DBUtil.saveOrUpdate(listPhotoEntitiys);
+		DBUtil.saveOrUpdate(listCommentEntities);
 		DBUtil.saveOrUpdate(userEntities);
+	}
+
+	/**
+	 * @Description:查询话题的列表数据
+	 * @return
+	 * @date:2015年1月23日 话题id
+	 */
+	public List<LiveSubjectModel> SelectData(List<String> list) {
+		List<LiveSubjectModel> liveSubjectModels = new ArrayList<LiveSubjectModel>();
+		for (int j = 0; j < list.size(); j++) {
+			LiveSubjectModel model = new LiveSubjectModel();
+			Subject subject = new Subject();
+			List<Photo> listPhotos = new ArrayList<Photo>();
+			List<Comment> listComments = new ArrayList<Comment>();
+			User user = new User();
+			// 话题
+			SubjectEntity subjectEntity = DBUtil.getDataFirst(SubjectEntity.class, "id = " + list.get(j));
+			DBUtil.copyData(SubjectEntity.class, Subject.class, subjectEntity, subject);
+			// 图片
+			List<PhotoEntitiy> photoEntitiy = DBUtil.getData(PhotoEntitiy.class, "rid = " + list.get(j));
+			if (photoEntitiy != null) {
+				for (int i = 0; i < photoEntitiy.size(); i++) {
+					Photo photos = new Photo();
+					DBUtil.copyData(PhotoEntitiy.class, Photo.class, photoEntitiy.get(i), photos);
+					listPhotos.add(photos);
+				}
+			}
+			// 评论
+			List<CommentEntity> commentEntitiys = DBUtil.getData(CommentEntity.class, "rid = " + list.get(j));
+			if (commentEntitiys != null) {
+				for (int i = 0; i < commentEntitiys.size(); i++) {
+					Comment comment = new Comment();
+					DBUtil.copyData(CommentEntity.class, Comment.class, commentEntitiys.get(i), comment);
+					listComments.add(comment);
+				}
+			}
+			// 用户
+			DBUtil.copyData(UserEntity.class, User.class, subjectEntity.user, user);
+
+			model.setSubject(subject);
+			model.setPhotos(listPhotos);
+			model.setComments(listComments);
+			model.setUser(user);
+			liveSubjectModels.add(model);
+		}
+		return liveSubjectModels;
+
 	}
 }

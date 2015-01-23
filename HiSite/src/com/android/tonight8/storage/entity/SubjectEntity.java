@@ -13,10 +13,10 @@ import com.lidroid.xutils.db.annotation.Table;
 public class SubjectEntity extends BaseEntity {
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
-	private EventEntity event;
+	public EventEntity event;
 	/** 用户 */
 	@Foreign(column = "uid", foreign = "id")
-	private UserEntity user;
+	public UserEntity user;
 	/** 话题内容 */
 	@Column(column = "content")
 	@NotNull

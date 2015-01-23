@@ -27,9 +27,9 @@ public class CommentEntity extends BaseEntity {
 	@NotNull()
 	private String replyTo;
 	@Foreign(column = "rid", foreign = "id")
-	private SubjectEntity subject;
+	public SubjectEntity subject;
 	@Foreign(column = "uid", foreign = "id")
-	private UserEntity user;
+	public UserEntity user;
 
 	public String getContent() {
 		return content;
