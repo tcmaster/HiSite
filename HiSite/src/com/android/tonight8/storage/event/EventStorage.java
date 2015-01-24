@@ -1,7 +1,12 @@
 package com.android.tonight8.storage.event;
 
 import java.lang.ref.SoftReference;
-
+/**
+ * @Descripton 活动本地存储模块
+ * @author LiXiaoSong
+ * @2015-1-24
+ * @Tonight8
+ */
 public class EventStorage {
 
 	/** 活动推荐本地控制类对象 */

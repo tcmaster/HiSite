@@ -76,6 +76,9 @@ public class OrgEntity extends BaseEntity {
 	/** 身份编码 */
 	@Column(column = "identityCode")
 	private String identityCode;
+	/**该商家的某个兑奖对象*/
+	@Column(column = "exchangeId")
+	private String exchangeId;
 
 	public String getName() {
 		return name;

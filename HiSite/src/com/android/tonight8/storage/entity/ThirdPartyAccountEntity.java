@@ -11,9 +11,6 @@ import com.lidroid.xutils.db.annotation.Table;
  */
 @Table(name = "thirdpartyaccount")
 public class ThirdPartyAccountEntity extends BaseEntity {
-	/** 引用外键 user_id*/
-	@Foreign(column = "rid", foreign = "id")
-	private UserEntity user;
 	/** 第三方账号类型 */
 	@NotNull
 	@Column(column = "type")
@@ -31,6 +28,9 @@ public class ThirdPartyAccountEntity extends BaseEntity {
 	/** 授权码 */
 	@Column(column = "grantCode")
 	private String grantCode;
+	/** 引用外键 user_id*/
+	@Foreign(column = "rid", foreign = "id")
+	public UserEntity user;
 	public int getType() {
 		return type;
 	}

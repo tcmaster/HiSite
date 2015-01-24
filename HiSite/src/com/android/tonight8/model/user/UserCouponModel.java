@@ -12,16 +12,16 @@ public class UserCouponModel extends BaseModel {
 	/** */
 	private static final long serialVersionUID = 1L;
 	/** 优惠券对象 */
-	public Coupon Coupon;
+	public Coupon coupon;
 	/** 商家对象 */
 	public Org org;
 
 	public Coupon getCoupon() {
-		return Coupon;
+		return coupon;
 	}
 
 	public void setCoupon(Coupon coupon) {
-		Coupon = coupon;
+		coupon = coupon;
 	}
 
 	public Org getOrg() {
