@@ -145,7 +145,6 @@ public class DBUtil {
 		try {
 			utils.saveOrUpdateAll(entities);
 		} catch (DbException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

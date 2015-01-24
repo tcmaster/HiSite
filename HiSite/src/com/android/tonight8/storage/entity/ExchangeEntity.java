@@ -1,5 +1,8 @@
 package com.android.tonight8.storage.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.NotNull;
@@ -25,6 +28,9 @@ public class ExchangeEntity extends BaseEntity {
 	private boolean orgAll;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
+	/** 活动商家，临时（可能会更改）*/
+	@Foreign(column = "oid",foreign="exchangeId")
+	public List<OrgEntity> orgs = new ArrayList<OrgEntity>();
 
 	public boolean isMethod() {
 		return method;

@@ -11,27 +11,27 @@ import com.lidroid.xutils.db.annotation.Table;
  */
 @Table(name = "question")
 public class QuestionEntity extends BaseEntity{
-	/** */
-	@Foreign(column = "uid", foreign = "id")
-	private UserEntity user;
-	/** */
-	@Foreign(column = "oid", foreign = "id")
-	private OrgEntity org;
 	/** 询问内容 */
 	@Column(column = "content")
 	@NotNull
-	public String content;
+	private String content;
 	/** 询问日期 */
 	@Column(column = "date")
 	@NotNull
-	public String date;
+	private String date;
 	/** 询问时间 */
 	@Column(column = "time")
 	@NotNull
-	public String time;
+	private String time;
 	/** 是否是回复记录 */
 	@Column(column = "isReply", defaultValue = "0")
-	public int isReply;
+	private int isReply;
+	/** */
+	@Foreign(column = "uid", foreign = "id")
+	public UserEntity user;
+	/** */
+	@Foreign(column = "oid", foreign = "id")
+	public OrgEntity org;
 
 	public String getContent() {
 		return content;
