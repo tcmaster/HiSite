@@ -29,14 +29,16 @@ public class LiveSubjectsNativeController {
 		for (int i = 0; i < listModel.size(); i++) {
 			// 话题
 			SubjectEntity subjectEntity = new SubjectEntity();
-			DBUtil.copyData(Subject.class, SubjectEntity.class, listModel.get(i).getSubject(), subjectEntity);
+			DBUtil.copyData(Subject.class, SubjectEntity.class, listModel
+					.get(i).getSubject(), subjectEntity);
 			eventEntities.add(subjectEntity);
 			// 照片的数量
 			int photoCount = listModel.get(i).getPhotos().size();
 			List<Photo> listPhoto = listModel.get(i).getPhotos();
 			for (int j = 0; j < photoCount; j++) {
 				PhotoEntitiy photoEntitiy = new PhotoEntitiy();
-				DBUtil.copyData(Photo.class, PhotoEntitiy.class, listPhoto.get(j), photoEntitiy);
+				DBUtil.copyData(Photo.class, PhotoEntitiy.class,
+						listPhoto.get(j), photoEntitiy);
 				listPhotoEntitiys.add(photoEntitiy);
 			}
 			// 评论的数量
@@ -44,18 +46,20 @@ public class LiveSubjectsNativeController {
 			List<Comment> comments = listModel.get(i).getComments();
 			for (int j = 0; j < commentCount; j++) {
 				CommentEntity commentEntity = new CommentEntity();
-				DBUtil.copyData(Comment.class, CommentEntity.class, comments.get(j), commentEntity);
+				DBUtil.copyData(Comment.class, CommentEntity.class,
+						comments.get(j), commentEntity);
 				listCommentEntities.add(commentEntity);
 			}
 			// 用户
 			UserEntity userEntity = new UserEntity();
-			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).getUser(), userEntity);
+			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i)
+					.getUser(), userEntity);
 
 		}
 		// 存到数据库中
 		DBUtil.saveOrUpdate(eventEntities);
-		DBUtil.saveOrUpdate(listPhotoEntitiys);
-		DBUtil.saveOrUpdate(listCommentEntities);
+		DBUtil.saveOrUpdateAll(listPhotoEntitiys);
+		DBUtil.saveOrUpdateAll(listCommentEntities);
 		DBUtil.saveOrUpdate(userEntities);
 	}
 
@@ -64,38 +68,52 @@ public class LiveSubjectsNativeController {
 	 * @return
 	 * @date:2015年1月23日 话题id
 	 */
-	public List<LiveSubjectModel> SelectData(List<String> list) {
+	public List<LiveSubjectModel> SelectData() {
 		List<LiveSubjectModel> liveSubjectModels = new ArrayList<LiveSubjectModel>();
+		// 话题（根据话题id降序排列）
+		List<SubjectEntity> list = DBUtil.getData(SubjectEntity.class,
+				"order by id desc");
+		if (list == null) {
+			return null;
+		}
 		for (int j = 0; j < list.size(); j++) {
-			LiveSubjectModel model = new LiveSubjectModel();
+
 			Subject subject = new Subject();
 			List<Photo> listPhotos = new ArrayList<Photo>();
 			List<Comment> listComments = new ArrayList<Comment>();
 			User user = new User();
 			// 话题
-			SubjectEntity subjectEntity = DBUtil.getDataFirst(SubjectEntity.class, "id = " + list.get(j));
-			DBUtil.copyData(SubjectEntity.class, Subject.class, subjectEntity, subject);
+			DBUtil.copyData(SubjectEntity.class, Subject.class, list.get(j),
+					subject);
 			// 图片
-			List<PhotoEntitiy> photoEntitiy = DBUtil.getData(PhotoEntitiy.class, "rid = " + list.get(j));
+			List<PhotoEntitiy> photoEntitiy = DBUtil.getData(
+					PhotoEntitiy.class, "rid = " + list.get(j).getId()
+							+ " and uid = " + list.get(j).user.getId());
 			if (photoEntitiy != null) {
 				for (int i = 0; i < photoEntitiy.size(); i++) {
 					Photo photos = new Photo();
-					DBUtil.copyData(PhotoEntitiy.class, Photo.class, photoEntitiy.get(i), photos);
+					DBUtil.copyData(PhotoEntitiy.class, Photo.class,
+							photoEntitiy.get(i), photos);
 					listPhotos.add(photos);
 				}
 			}
 			// 评论
-			List<CommentEntity> commentEntitiys = DBUtil.getData(CommentEntity.class, "rid = " + list.get(j));
+			List<CommentEntity> commentEntitiys = DBUtil.getData(
+					CommentEntity.class, "rid = " + list.get(j).getId()
+							+ " and uid = " + list.get(j).user.getId());
 			if (commentEntitiys != null) {
 				for (int i = 0; i < commentEntitiys.size(); i++) {
 					Comment comment = new Comment();
-					DBUtil.copyData(CommentEntity.class, Comment.class, commentEntitiys.get(i), comment);
+					DBUtil.copyData(CommentEntity.class, Comment.class,
+							commentEntitiys.get(i), comment);
 					listComments.add(comment);
 				}
 			}
 			// 用户
-			DBUtil.copyData(UserEntity.class, User.class, subjectEntity.user, user);
+			DBUtil.copyData(UserEntity.class, User.class, list.get(j).user,
+					user);
 
+			LiveSubjectModel model = new LiveSubjectModel();
 			model.setSubject(subject);
 			model.setPhotos(listPhotos);
 			model.setComments(listComments);
