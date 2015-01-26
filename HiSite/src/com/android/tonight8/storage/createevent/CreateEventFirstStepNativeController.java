@@ -13,13 +13,13 @@ import com.android.tonight8.model.createevent.CreateEventModel;
  * @date 2015-1-24
  */
 public class CreateEventFirstStepNativeController {
-	private String STORE_NAME = "CREATE_EVENT";
+
+	private String STORE_NAME = "CreateEventFirst";
 	private SharedPreferences preference;
 
 	public CreateEventFirstStepNativeController(Context context) {
 		super();
-		preference = context.getSharedPreferences(STORE_NAME,
-				Context.MODE_PRIVATE);
+		preference = context.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
 
 	}
 
@@ -40,6 +40,7 @@ public class CreateEventFirstStepNativeController {
 		editor.putString("goods_pic", goods.pic);
 		editor.putInt("goods_price", goods.price);
 		editor.putInt("event_winningLimit", event.winningLimit);
+		editor.putString("event_ruleDesc", event.ruleDesc);
 		editor.commit();
 		return;
 	}
@@ -55,13 +56,13 @@ public class CreateEventFirstStepNativeController {
 		Goods goods = new Goods();
 		event.setName(preference.getString("event_name", ""));
 		event.setPublishTime(preference.getString("event_publishTime", ""));
-		event.setTimeRangeStart(preference
-				.getString("event_timeRangeStart", ""));
+		event.setTimeRangeStart(preference.getString("event_timeRangeStart", ""));
 		event.setTimeRangeEnd(preference.getString("event_timeRangeEnd", ""));
 		goods.setName(preference.getString("goods_name", ""));
 		goods.setPic(preference.getString("goods_pic", ""));
 		goods.setPrice(preference.getInt("goods_price", 0));
 		event.setWinningLimit(preference.getInt("event_winningLimit", 0));
+		event.setRuleDesc(preference.getString("event_ruleDesc", ""));
 		createEventModel.setEvent(event);
 		return createEventModel;
 	}

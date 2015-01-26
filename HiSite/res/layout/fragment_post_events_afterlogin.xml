@@ -64,9 +64,9 @@
                 android:textSize="12sp" />
         </RelativeLayout>
 
-        <GridView
+        <com.android.tonight8.view.GridViewForScrollView
             android:id="@+id/gv_postevents_main"
-            style="@style/match_width"
+            style="@style/match"
             android:numColumns="3" />
 
         <RelativeLayout

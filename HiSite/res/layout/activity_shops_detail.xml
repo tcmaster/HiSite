@@ -73,6 +73,7 @@
 
         <RelativeLayout
             style="@style/match_width"
+            android:visibility="gone"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 

@@ -27,7 +27,7 @@ public class NoticeEntity extends BaseEntity {
 	public String time;
 	/** 商家 */
 	@Foreign(column = "rid", foreign = "id")
-	private OrgEntity org;
+	public OrgEntity org;
 
 	public String getContent() {
 		return content;
@@ -51,14 +51,6 @@ public class NoticeEntity extends BaseEntity {
 
 	public void setTime(String time) {
 		this.time = time;
-	}
-
-	public OrgEntity getOrg() {
-		return org;
-	}
-
-	public void setOrg(OrgEntity org) {
-		this.org = org;
 	}
 
 	@Override

@@ -55,7 +55,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.android.tonight8.activity.ShopRegisterActivity"
+            android:name="com.android.tonight8.activity.createevent.OrgRegisterActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >

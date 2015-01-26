@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.model.common.Org;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -13,7 +15,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @author LiuZhao
  * @Date2014-12-29 下午10:53:32
  */
-public class ShopsDetailActivity extends BaseActivity {
+public class OrgDetailActivity extends BaseActivity {
 
 	/** 名称 */
 	@ViewInject(R.id.tv_shop_name_value)
@@ -27,9 +29,9 @@ public class ShopsDetailActivity extends BaseActivity {
 	/** 商家id */
 	@ViewInject(R.id.tv_shop_id_value)
 	private TextView tv_shop_id_value;
-	/** 二维码 */
-	@ViewInject(R.id.iv_two_dimension)
-	private ImageView iv_two_dimension;
+	// /** 二维码 */
+	// @ViewInject(R.id.iv_two_dimension)
+	// private ImageView iv_two_dimension;
 	/** 地区 */
 	@ViewInject(R.id.tv_place_value)
 	private TextView tv_place_value;
@@ -48,13 +50,29 @@ public class ShopsDetailActivity extends BaseActivity {
 	/** 密码 */
 	@ViewInject(R.id.tv_password_value)
 	private TextView tv_password_value;
-	/** 密码修改*/
+	/** 密码修改 */
 	@ViewInject(R.id.tv_pwd_change_value)
 	private TextView tv_pwd_change_value;
+	/** 商家实体 */
+	private Org org;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shops_detail);
+		initData();
+	}
+
+	private void initData() {
+		org = new Org();
+		tv_shop_name_value.setText(org.name);
+		Tonight8App.getSelf().bitmapUtils.display(iv_up_flag, org.logo);
+		tv_shop_id_value.setText(org.id);
+		tv_place_value.setText(org.address);
+		tv_personname_value.setText(org.contactPerson);
+		tv_phone_value.setText(org.contactMobilPhone);
+		tv_email_value.setText(org.email);
+		tv_id_value.setText(org.paperCode);
+		tv_id_value.setText(org.password);
 	}
 }

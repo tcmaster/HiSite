@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +17,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @author:LiuZhao
  * @Date:2014年12月25日
  */
-public class ShopRegisterActivity extends BaseActivity {
+public class OrgRegisterActivity extends BaseActivity {
 
 	/** 注册的手机号 */
 	@ViewInject(R.id.et_phone_register)

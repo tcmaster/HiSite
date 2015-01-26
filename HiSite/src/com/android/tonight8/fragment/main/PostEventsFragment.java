@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.ForgetIDOrPwdActivity;
+import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
+import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -41,21 +44,31 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 	/** 忘记密码 */
 	@ViewInject(R.id.tv_forgot_pwd)
 	private TextView tv_forgot_pwd;
-	/** 商店头像 */
+	/** 商家头像 */
 	@ViewInject(R.id.iv_postevents_title)
 	private ImageView iv_postevents_title;
-	/** 商店名称 */
+	/** 商家名称 */
 	@ViewInject(R.id.tv_shopname)
 	private TextView tv_shopname;
-	/** 商店状态 */
+	/** 商家id */
+	@ViewInject(R.id.tv_shop_id)
+	private TextView tv_shop_id;
+	/** 商家状态 */
 	@ViewInject(R.id.tv_shop_state)
 	private TextView tv_shop_state;
-	/** 商店地点 */
+	/** 商家地点 */
 	@ViewInject(R.id.tv_postevents_place)
 	private TextView tv_postevents_place;
+	/** 页面主菜单 */
+	@ViewInject(R.id.gv_postevents_main)
+	private GridView gv_postevents_main;
+	/** 二维码 */
+	@ViewInject(R.id.iv_two_dimension)
+	private ImageView iv_two_dimension;
 
 	/** 是否登录 */
 	private boolean isLogin = true;
+	private PostEventsGridAdapter gridAdapter;
 
 	/** 创建一个静态的实例 */
 	public static PostEventsFragment newInstance() {
@@ -82,7 +95,12 @@ public class PostEventsFragment extends Fragment implements OnClickListener {
 			tv_shopname.setText("可乐屏新一代餐饮系统");
 			tv_shop_state.setText("发布：12 关注：15");
 			tv_postevents_place.setText("北京 朝阳区");
-		}else {
+			gridAdapter = new PostEventsGridAdapter(getActivity());
+			gv_postevents_main.setAdapter(gridAdapter);
+			gridAdapter.notifyDataSetChanged();
+			tv_shop_id.setText("21131243");
+			QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
+		} else {
 			btn_shop_login.setOnClickListener(this);
 			btn_shop_register.setOnClickListener(this);
 		}
