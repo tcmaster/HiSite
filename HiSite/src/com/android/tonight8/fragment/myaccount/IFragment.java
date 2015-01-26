@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -47,6 +48,7 @@ public class IFragment extends MyAccountBaseFragment {
 	@ViewInject(R.id.layout_setting)
 	private View layout_setting;
 	/** 客服热线 */
+	@ViewInject(R.id.rl_phone)
 	private RelativeLayout rl_phone;
 
 	@Override
@@ -57,19 +59,20 @@ public class IFragment extends MyAccountBaseFragment {
 			return v_rootView;
 		}
 		v_rootView = inflater.inflate(R.layout.fragment_i, container, false);
-		ViewUtils.inject(getActivity(), v_rootView);
+		ViewUtils.inject(this, v_rootView);
 		initDatas();
 		return v_rootView;
 	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		((BaseActivity) getActivity()).getActionBarNormal("我", R.drawable.ic_launcher, null);
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	public IFragment newInstance() {
+	public static IFragment newInstance() {
 		IFragment fg = new IFragment();
-		setHasOptionsMenu(true);
+		fg.setHasOptionsMenu(true);
 		return fg;
 	}
 

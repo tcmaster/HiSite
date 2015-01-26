@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.event;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -80,7 +80,6 @@ public class AboutUsActivity extends BaseActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// getMenuInflater().inflate(R.menu.about_us, menu);
 		return true;
 	}
 	// ***************************子方法***********************************//

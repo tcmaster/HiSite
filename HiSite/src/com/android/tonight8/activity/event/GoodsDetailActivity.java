@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.AboutUsActivity;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;

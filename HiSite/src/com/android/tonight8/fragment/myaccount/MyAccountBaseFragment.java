@@ -3,7 +3,7 @@
  */
 package com.android.tonight8.fragment.myaccount;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +36,8 @@ public class MyAccountBaseFragment extends Fragment {
 	 * @date:2015-1-12
 	 */
 	protected void setTextAndContent(View includeView, int leftRes, int leftLogo, String rightPoint, String rightText) {
+		if (includeView == null)
+			return;
 		ImageView iv_left = (ImageView) includeView.findViewById(R.id.iv_left_icon);
 		TextView tv_left = (TextView) includeView.findViewById(R.id.tv_left_text);
 		TextView tv_right = (TextView) includeView.findViewById(R.id.tv_right_text);
@@ -45,7 +47,7 @@ public class MyAccountBaseFragment extends Fragment {
 		else
 			tv_left.setText(leftRes);
 		if (StringUtils.isNullOrEmpty(rightPoint))
-			tv_right_point.setVisibility(View.INVISIBLE);
+			tv_right_point.setVisibility(View.GONE);
 		else
 			tv_right_point.setText(rightPoint);
 		if (leftLogo <= 0)
@@ -53,7 +55,7 @@ public class MyAccountBaseFragment extends Fragment {
 		else
 			iv_left.setImageResource(leftLogo);
 		if (StringUtils.isNullOrEmpty(rightText))
-			tv_right.setVisibility(View.INVISIBLE);
+			tv_right.setVisibility(View.GONE);
 		else
 			tv_right.setText(rightText);
 	}

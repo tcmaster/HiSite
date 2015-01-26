@@ -20,6 +20,7 @@ import com.android.tonight8.storage.entity.UserEntity;
  * @Tonight8
  */
 public class UserQuestionsNativeController {
+
 	/**
 	 * 存储用户询问列表数据
 	 * 
@@ -33,12 +34,9 @@ public class UserQuestionsNativeController {
 			QuestionEntity questionEntity = new QuestionEntity();
 			UserEntity userEntity = new UserEntity();
 			OrgEntity orgEntity = new OrgEntity();
-			DBUtil.copyData(Question.class, QuestionEntity.class,
-					models.get(i).question, questionEntity);
-			DBUtil.copyData(User.class, UserEntity.class, models.get(i).user,
-					userEntity);
-			DBUtil.copyData(Org.class, OrgEntity.class, models.get(i).org,
-					orgEntity);
+			DBUtil.copyData(Question.class, QuestionEntity.class, models.get(i).question, questionEntity);
+			DBUtil.copyData(User.class, UserEntity.class, models.get(i).user, userEntity);
+			DBUtil.copyData(Org.class, OrgEntity.class, models.get(i).org, orgEntity);
 			questionEntity.user = userEntity;
 			questionEntity.org = orgEntity;
 			questionEntities.add(questionEntity);
@@ -57,19 +55,15 @@ public class UserQuestionsNativeController {
 	 */
 	public List<UserQuestionModel> selectData(long userId) {
 		List<UserQuestionModel> models = new ArrayList<UserQuestionModel>();
-		List<QuestionEntity> questionEntities = DBUtil.getData(
-				QuestionEntity.class, "uid = " + userId);
+		List<QuestionEntity> questionEntities = DBUtil.getData(QuestionEntity.class, "uid = " + userId);
 		for (int i = 0; i < questionEntities.size(); i++) {
 			UserQuestionModel model = new UserQuestionModel();
 			Org org = new Org();
 			Question question = new Question();
 			User user = new User();
-			DBUtil.copyData(QuestionEntity.class, Question.class,
-					questionEntities.get(i), question);
-			DBUtil.copyData(OrgEntity.class, Org.class,
-					questionEntities.get(i).org, org);
-			DBUtil.copyData(UserEntity.class, User.class,
-					questionEntities.get(i).user, user);
+			DBUtil.copyData(QuestionEntity.class, Question.class, questionEntities.get(i), question);
+			DBUtil.copyData(OrgEntity.class, Org.class, questionEntities.get(i).org, org);
+			DBUtil.copyData(UserEntity.class, User.class, questionEntities.get(i).user, user);
 			model.question = question;
 			model.org = org;
 			model.user = user;
@@ -78,12 +72,16 @@ public class UserQuestionsNativeController {
 		return models;
 	}
 
+	/**
+	 * 写入用户询问数据
+	 * 
+	 * @date:2015-1-26
+	 */
 	public void insertData(UserQuestionModel model) {
 		QuestionEntity questionEntity = new QuestionEntity();
 		UserEntity userEntity = new UserEntity();
 		OrgEntity orgEntity = new OrgEntity();
-		DBUtil.copyData(Question.class, QuestionEntity.class, model.question,
-				questionEntity);
+		DBUtil.copyData(Question.class, QuestionEntity.class, model.question, questionEntity);
 		DBUtil.copyData(User.class, UserEntity.class, model.user, userEntity);
 		DBUtil.copyData(Org.class, OrgEntity.class, model.org, orgEntity);
 		questionEntity.user = userEntity;
