@@ -1,17 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width"
+    android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/iv_background"
-        style="@style/match"
-        android:layout_gravity="center"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
-	<LinearLayout 
-	    style="@style/match"
-	    android:orientation="vertical"
-	    android:background="@color/transparent">
-	    
-	</LinearLayout>
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:background="@color/gray"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/wrap"
+                android:layout_marginLeft="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/match_width"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_com_name"
+            style="@style/wrap"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
+
+        <!-- 这个item的位置需要自定义 -->
+
+        <TextView
+            android:id="@+id/tv_money"
+            style="@style/wrap"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/superHugeTextSize" />
+
+        <TextView
+            android:id="@+id/tv_valid"
+            style="@style/wrap"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_encode_no"
+            style="@style/wrap"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </RelativeLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ll_quickmark"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_quickmark"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_quickmark"
+                style="@style/wrap"
+                android:gravity="center"
+                android:text="@string/coupon_quick_mark"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <View style="@style/line_full_vertical" />
+
+        <LinearLayout
+            android:id="@+id/ll_award_location"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_award_location"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_award_location"
+                style="@style/wrap"
+                android:gravity="center"
+                android:text="@string/coupon_award_location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+</LinearLayout>

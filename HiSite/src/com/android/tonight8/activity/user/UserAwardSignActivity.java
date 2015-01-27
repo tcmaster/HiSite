@@ -15,7 +15,6 @@ import com.android.tonight8.base.BaseActivity;
  * @Date:2015-1-27
  */
 public class UserAwardSignActivity extends BaseActivity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_user_award_sign);

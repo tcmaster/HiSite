@@ -115,4 +115,7 @@
     <string name="sign_photo_prompt">上传照片</string>
     <!-- 奖品签收 -->
 	<string name="sign_award">确认签收</string>
+	<!-- 用户优惠券包 -->
+	<string name="coupon_quick_mark">券二维码</string>
+	<string name="coupon_award_location">兑奖地点</string>
 </resources>

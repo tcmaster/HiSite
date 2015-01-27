@@ -16,7 +16,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class UserAwardListActivity extends BaseActivity {
 
 	/** 用户中奖码列表 */
-	@ViewInject(R.id.lv_award_list)
+	@ViewInject(R.id.lv_only_list)
 	private XListView lv_award_list;
 
 	@Override

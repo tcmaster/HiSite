@@ -8,6 +8,8 @@
     <dimen name="smallTextSize">12sp</dimen>
     <dimen name="middleTextSize">14sp</dimen>
     <dimen name="bigTextSize">16sp</dimen>
+    <dimen name="hugeTextSize">18sp</dimen>
+    <dimen name="superHugeTextSize">22sp</dimen>
     <!-- 我的账号用到的相关dimen -->
     <!-- 上部高度 -->
     <dimen name="myaccount_top_height">180dp</dimen>

@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.user.UserAwardListActivity;
+import com.android.tonight8.activity.user.UserCouponActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -73,17 +74,20 @@ public class IFragment extends MyAccountBaseFragment {
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	@OnClick({ R.id.layout_award_code })
+	@OnClick({ R.id.layout_award_code,R.id.layout_my_coupon })
 	public void onClick(View v) {
+		Intent intent = new Intent();
 		switch (v.getId()) {
 		case R.id.layout_award_code:
-			Intent intent = new Intent(getActivity(), UserAwardListActivity.class);
-			getActivity().startActivity(intent);
+			intent.setClass(getActivity(), UserAwardListActivity.class);
 			break;
-
+		case R.id.layout_my_coupon:
+			intent.setClass(getActivity(),UserCouponActivity.class);
+			break;
 		default:
 			break;
 		}
+		getActivity().startActivity(intent);
 	}
 
 	public static IFragment newInstance() {
