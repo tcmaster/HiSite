@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 
@@ -6,16 +6,14 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 
 /**
- * @Description:促销券使用
+ * @Description:活动地点设置
  * @author LiuZhao
- * @Date2014-12-29 下午11:30:50
+ * @Date2014-12-29 下午11:17:20
  */
-public class CouponToUseActivity extends BaseActivity {
-
+public class EventsPlaceSettingActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_coupon_touse);
+		setContentView(R.layout.activity_events_place_setting);
 	}
-
 }

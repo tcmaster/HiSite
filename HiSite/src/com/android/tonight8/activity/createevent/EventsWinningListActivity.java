@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 
@@ -6,16 +6,16 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 
 /**
- * @Description:发活动编辑页
+ * @Description:活动中奖名单
  * @author LiuZhao
- * @Date2014-12-29 下午11:11:24
+ * @Date2014-12-29 下午11:28:19
  */
-public class EventsEditActivity extends BaseActivity {
+public class EventsWinningListActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_events_edit);
+		setContentView(R.layout.activity_events_protocol);
 	}
 
 }

@@ -29,7 +29,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_org_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -54,7 +54,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_loginpwd"
+                android:id="@+id/et_org_loginpwd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -99,6 +99,7 @@
 
             <Button
                 android:id="@+id/btn_shop_login"
+                style="@style/ok_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="登  录"
@@ -106,6 +107,7 @@
 
             <Button
                 android:id="@+id/btn_shop_register"
+                style="@style/ok_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

@@ -12,7 +12,8 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.fragment.main.HiLiveFragment;
 import com.android.tonight8.fragment.main.MyAccountFragment;
-import com.android.tonight8.fragment.main.PostEventsFragment;
+import com.android.tonight8.fragment.main.OrgLoginFragment;
+import com.android.tonight8.fragment.main.PostEventMenuFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
 
 /**
@@ -31,6 +32,8 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 	private int switchid = 0;
 	/** 页面信息标题数组 */
 	private String[] titleArr = { "8点", "Hi现场", "发活动", "我" };
+	private boolean isLogin = false;
+	private FragmentTransaction fragmentTransaction;
 
 	@Override
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
@@ -40,7 +43,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		switchid = Integer.parseInt(mRadioButton.getTag().toString());
 		/* 设置跳转那个fragment页面 */
 		mFragment = fragmentManager.findFragmentByTag(titleArr[switchid]);
-		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+		fragmentTransaction = fragmentManager.beginTransaction();
 		switch (switchid) {
 		case 0:
 			mFragment = TonightEightFragment.newInstance();
@@ -49,7 +52,11 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 			mFragment = HiLiveFragment.newInstance();
 			break;
 		case 2:
-			mFragment = PostEventsFragment.newInstance();
+			if (isLogin) {
+				mFragment = PostEventMenuFragment.newInstance();
+			} else {
+				mFragment = OrgLoginFragment.newInstance();
+			}
 			break;
 		case 3:
 			mFragment = MyAccountFragment.newInstance();
@@ -75,6 +82,14 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		rg_mian.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
 
+	}
+
+	public void UpdateLoginedFragment(boolean logined) {
+		isLogin = logined;
+		fragmentTransaction = fragmentManager.beginTransaction();
+		mFragment = PostEventMenuFragment.newInstance();
+		fragmentTransaction.replace(R.id.tabcontent, mFragment, titleArr[switchid]);
+		fragmentTransaction.commitAllowingStateLoss();
 	}
 
 }

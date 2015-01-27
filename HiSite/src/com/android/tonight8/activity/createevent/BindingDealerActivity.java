@@ -1,4 +1,4 @@
-package com.android.tonight8.activity;
+package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 
@@ -6,15 +6,16 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 
 /**
- * @Description:已用券核销
+ * @Description:绑定经销商
  * @author LiuZhao
- * @Date2014-12-29 下午11:34:57
+ * @Date2014-12-29 下午11:32:23
  */
-public class CouponHaveUsedActivity extends BaseActivity {
+public class BindingDealerActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_coupon_haveused);
+		setContentView(R.layout.activity_bingding_dealer);
 	}
+
 }
