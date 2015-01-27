@@ -73,9 +73,9 @@
 
         <RelativeLayout
             style="@style/match_width"
-            android:visibility="gone"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/shoptext_left_style"
@@ -94,7 +94,7 @@
             </TextView>
 
             <ImageView
-                android:id="@+id/iv_two_dimension"
+                android:id="@+id/iv_twodimension"
                 style="@style/wrap"
                 android:layout_toLeftOf="@+id/tv_twodimension_change"
                 android:background="@drawable/ic_launcher"

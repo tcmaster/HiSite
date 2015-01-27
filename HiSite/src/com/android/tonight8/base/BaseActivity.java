@@ -48,7 +48,9 @@ public class BaseActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		if (mContext == this) {
+			super.onCreate(savedInstanceState);
+		}
 		ViewUtils.inject(this);
 	}
 

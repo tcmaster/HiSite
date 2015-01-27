@@ -8,6 +8,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.common.Org;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -54,7 +55,7 @@ public class OrgDetailActivity extends BaseActivity {
 	@ViewInject(R.id.tv_pwd_change_value)
 	private TextView tv_pwd_change_value;
 	/** 商家实体 */
-	private Org org;
+	private Org org = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +65,14 @@ public class OrgDetailActivity extends BaseActivity {
 	}
 
 	private void initData() {
+		ViewUtils.inject(this);
+		getActionBarBase("商家详情");
 		org = new Org();
-		tv_shop_name_value.setText(org.name);
+		org.name = "北京可乐屏";
+		org.id = 21225;
+		tv_shop_name_value.setText(org.getName());
 		Tonight8App.getSelf().bitmapUtils.display(iv_up_flag, org.logo);
-		tv_shop_id_value.setText(org.id);
+		tv_shop_id_value.setText(Integer.toString(org.id));
 		tv_place_value.setText(org.address);
 		tv_personname_value.setText(org.contactPerson);
 		tv_phone_value.setText(org.contactMobilPhone);
