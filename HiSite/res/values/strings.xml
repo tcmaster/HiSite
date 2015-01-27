@@ -65,12 +65,13 @@
     <string name="shopdetail_password">密码</string>
     <!-- 中奖名单 -->
     <string name="publish">发布</string>
-    <string name="award">奖品:</string>
-    <string name="award_count">中奖名单:</string>
-    <string name="get_award_nearby">就近兑奖:</string>
-    <string name="get_award_time">兑奖时间:</string>
-    <string name="get_award_phone">联系电话:</string>
-    <string name="get_award_way">兑奖方式:</string>
+    <string name="publish2">发布：</string>
+    <string name="award">奖品：</string>
+    <string name="award_count">中奖名额：</string>
+    <string name="get_award_nearby">就近兑奖：</string>
+    <string name="get_award_time">兑奖时间：</string>
+    <string name="get_award_phone">联系电话：</string>
+    <string name="get_award_way">兑奖方式：</string>
 
     <!-- 主办方资料 -->
     <string name="company_name">公司名称</string>
@@ -101,5 +102,17 @@
     <string name="change_password">修改密码</string>
     <string name="title_activity_event_award">EventAwardActivity</string>
     <string name="title_activity_event_exchange">EventExchangeActivity</string>
-
+    <!-- 中奖码列表 -->
+    <string name="award_no">中奖号码：</string>
+    <string name="value">价值：</string>
+    <string name="red_bag">红包：</string>
+    <string name="have_signin">已报名：</string>
+    <string name="consult">询问</string>
+    <string name="complain">举报/投诉</string>
+    <string name="sign">签收</string>
+    <string name="takephoto">拍照</string>
+    <string name="getphoto">从相册中选择</string>
+    <string name="sign_photo_prompt">上传照片</string>
+    <!-- 奖品签收 -->
+	<string name="sign_award">确认签收</string>
 </resources>

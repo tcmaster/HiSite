@@ -3,6 +3,7 @@
  */
 package com.android.tonight8.fragment.myaccount;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.user.UserAwardListActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:“我”页面底部内容的fragment
@@ -68,6 +71,19 @@ public class IFragment extends MyAccountBaseFragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		((BaseActivity) getActivity()).getActionBarNormal("我", R.drawable.ic_launcher, null);
 		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@OnClick({ R.id.layout_award_code })
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.layout_award_code:
+			Intent intent = new Intent(getActivity(), UserAwardListActivity.class);
+			getActivity().startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	public static IFragment newInstance() {
