@@ -9,7 +9,7 @@
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/my_account"
+            android:id="@+id/rl_org_account"
             style="@style/match_width"
             android:background="@color/white"
             android:padding="10dp" >
