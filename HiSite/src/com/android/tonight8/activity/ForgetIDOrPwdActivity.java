@@ -1,4 +1,4 @@
-package com.android.tonight8.activity.createevent;
+package com.android.tonight8.activity;
 
 import android.os.Bundle;
 import android.view.View;

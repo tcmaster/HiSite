@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/et_signin_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_circle_angle_rect"
+        android:hint="@string/app_name"
+        android:padding="5dp"
+        android:gravity="left|top"
+        android:textColor="@color/black"
+        android:textSize="@dimen/middleTextSize" />
+
+    <GridView
+        android:id="@+id/gv_sign_pic"
+        style="@style/match_width"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:numColumns="4"
+        android:stretchMode="columnWidth" />
+
+    <Button
+        android:id="@+id/btn_ensure_sign"
+        style="@style/match_width"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/sign_award" />
+
+</LinearLayout>

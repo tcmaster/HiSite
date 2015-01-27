@@ -9,7 +9,7 @@
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/rl_org_account"
+            android:id="@+id/my_account"
             style="@style/match_width"
             android:background="@color/white"
             android:padding="10dp" >
@@ -96,8 +96,7 @@
 
             <ImageView
                 android:id="@+id/iv_two_dimension"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                style="@style/wrap"
                 android:layout_below="@+id/tv_shop_id"
                 android:layout_toRightOf="@+id/tv_shop_id_title"
                 android:background="@drawable/ic_launcher" />

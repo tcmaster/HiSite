@@ -6,28 +6,26 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity;
-import com.android.tonight8.activity.createevent.OrgDetailActivity;
+import com.android.tonight8.activity.ForgetIDOrPwdActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:发布活动
  * @author:LiuZhao
  * @Date:2014年12月15日
  */
-public class PostEventsFragment extends Fragment {
+public class PostEventsFragment extends Fragment implements OnClickListener {
 
 	/** 主布局 */
 	private View rootView = null;
@@ -67,9 +65,6 @@ public class PostEventsFragment extends Fragment {
 	/** 二维码 */
 	@ViewInject(R.id.iv_two_dimension)
 	private ImageView iv_two_dimension;
-	/** 我的帐号通栏布局 */
-	@ViewInject(R.id.rl_org_account)
-	private RelativeLayout rl_org_account;
 
 	/** 是否登录 */
 	private boolean isLogin = true;
@@ -105,21 +100,16 @@ public class PostEventsFragment extends Fragment {
 			gridAdapter.notifyDataSetChanged();
 			tv_shop_id.setText("21131243");
 			QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
-
 		} else {
-
+			btn_shop_login.setOnClickListener(this);
+			btn_shop_register.setOnClickListener(this);
 		}
 	}
 
-	@OnClick({ R.id.rl_org_account, R.id.btn_shop_login, R.id.btn_shop_register, R.id.tv_forgot_id, R.id.tv_forgot_pwd })
+	@Override
 	public void onClick(View v) {
 		Intent intent = null;
 		switch (v.getId()) {
-
-		case R.id.rl_org_account:
-			intent = new Intent(getActivity(), OrgDetailActivity.class);
-			startActivity(intent);
-			break;
 		case R.id.btn_shop_login:
 
 			break;

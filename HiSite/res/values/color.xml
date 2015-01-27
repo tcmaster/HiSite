@@ -13,5 +13,6 @@
     <color name="half_white">#f2f2f2</color>
     <color name="white_gray">#dcdcdc</color>
     <color name="green">#029da1</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

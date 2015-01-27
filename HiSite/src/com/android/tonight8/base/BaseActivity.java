@@ -1,11 +1,18 @@
 package com.android.tonight8.base;
 
+import java.io.File;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -13,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 
 public class BaseActivity extends FragmentActivity {
@@ -38,6 +46,27 @@ public class BaseActivity extends FragmentActivity {
 	private ImageView iv_right;
 	/** 获取当前Activity的上下文对象 */
 	protected Context mContext;
+	// 标识位
+	/**
+	 * 图库
+	 */
+	protected static final int PICKPICTURE = 1;
+	/**
+	 * 相机
+	 */
+	protected static final int TAKEPHOTO = 2;
+	/**
+	 * 裁剪
+	 */
+	protected static final int CROP = 3;
+	// 默认裁剪的宽高
+	private static final int OUTPUT_X = 256;
+	private static final int OUTPUT_Y = 256;
+	/**
+	 * 
+	 * 照相时的临时文件名
+	 */
+	protected String tempName = "";
 
 	/**
 	 * 通过构造方法对上下文内容与全局的app初始化
@@ -48,9 +77,7 @@ public class BaseActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		if (mContext == this) {
-			super.onCreate(savedInstanceState);
-		}
+		super.onCreate(savedInstanceState);
 		ViewUtils.inject(this);
 	}
 
@@ -328,5 +355,61 @@ public class BaseActivity extends FragmentActivity {
 			getImageRight().setVisibility(View.GONE);
 
 		return getTitleRight();
+	}
+
+	/**
+	 * 裁剪照片
+	 * 
+	 * @author: LiXiaosong
+	 * @date:2014-10-8
+	 */
+	public void cropPicture(Uri uri) {
+		Intent intent = new Intent("com.android.camera.action.CROP");
+		intent.setDataAndType(uri, "image/*");
+		intent.putExtra("crop", "true");// 可裁剪
+		intent.putExtra("aspectX", 1);
+		intent.putExtra("aspectY", 1);
+		intent.putExtra("outputX", OUTPUT_X);
+		intent.putExtra("outputY", OUTPUT_Y);
+		intent.putExtra("scale", true);
+		intent.putExtra("return-data", false);// 若为false则表示不返回数据
+		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+		intent.putExtra("noFaceDetection", true);
+		startActivityForResult(intent, CROP);
+	}
+
+	/**
+	 * 从图库获取图片
+	 * 
+	 * @author: LiXiaosong
+	 * @date:2014-10-8
+	 */
+	public void getPhotoFromGallery() {
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_PICK);
+		intent.setType("image/*");
+		startActivityForResult(intent, PICKPICTURE);
+	}
+
+	/**
+	 * 拍照获取图片
+	 * 
+	 * @author: LiXiaosong
+	 * @date:2014-10-8
+	 */
+	public void getPhotoByTakePicture() {
+		String state = Environment.getExternalStorageState();
+		if (state.equals(Environment.MEDIA_MOUNTED)) {
+			tempName = System.currentTimeMillis() + ".jpg";
+			File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + File.separator + tempName);
+			Uri u = Uri.fromFile(file);
+			Log.v("lixiaosong", "我要往这里放照片" + file.getAbsolutePath());
+			Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+			getImageByCamera.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
+			getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, u);
+			startActivityForResult(getImageByCamera, TAKEPHOTO);
+		} else {
+			Utils.toast("未检测到SD卡，无法拍照获取图片");
+		}
 	}
 }

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        style="@style/match_width"
+        android:background="@color/green"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="10dp"
+            android:text="@string/award_no"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_award_no"
+            style="@style/wrap"
+            android:layout_marginLeft="5dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/match_width"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/match_width"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_pop_goods_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_alignTop="@id/iv_pop_goods_pic"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/iv_pop_goods_pic"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/match_width"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_event_name"
+                    style="@style/wrap"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/bigTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    style="@style/match_width"
+                    android:gravity="right"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/smallTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="@string/publish2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_org_name"
+                    style="@style/wrap"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="@string/award"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_pop_goods"
+                    style="@style/wrap"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_award_value"
+                    style="@style/match_width"
+                    android:gravity="right"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/smallTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="@string/award_count"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_provide_num"
+                    style="@style/wrap"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/match"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="@string/coupon"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_coupon"
+                    style="@style/wrap"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_have_apply"
+                    style="@style/match_width"
+                    android:gravity="right"
+                    android:text="@string/app_name"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/smallTextSize" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ll_consult"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_consult"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                style="@style/wrap"
+                android:gravity="center"
+                android:text="@string/consult"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_full_vertical"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_complain"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_complain"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                style="@style/wrap"
+                android:gravity="center"
+                android:text="@string/complain"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_full_vertical"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_sign"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_sign"
+                style="@style/wrap"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                style="@style/wrap"
+                android:gravity="center"
+                android:text="@string/sign"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_full_vertical"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <ListView
+        android:id="@+id/lv_commit"
+        style="@style/match_width" />
+
+</LinearLayout>
