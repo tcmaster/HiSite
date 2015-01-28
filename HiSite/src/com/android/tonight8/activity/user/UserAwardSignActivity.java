@@ -9,12 +9,13 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 
 /**
- * @Description: 用户中奖码签收界面
+ * @Description: 用户中奖码签收
  * @author:LiXiaoSong
  * @copyright @HiSite
  * @Date:2015-1-27
  */
 public class UserAwardSignActivity extends BaseActivity {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_user_award_sign);

@@ -38,7 +38,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="MarqqjAPAzHfxPxNUcAaNSWG" />
-		<!-- 主activity -->
+        <!-- 主activity -->
         <activity
             android:name="com.android.tonight8.activity.MainActivity"
             android:label="@string/app_name" >
@@ -72,7 +72,7 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
-		<!-- 关于我们-->
+        <!-- 关于我们 -->
         <activity
             android:name="com.android.tonight8.activity.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
@@ -86,17 +86,31 @@
             android:label="@string/title_activity_event_exchange" >
         </activity>
         <!-- 用户中奖码列表 -->
-        <activity android:name="com.android.tonight8.activity.user.UserAwardListActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name="com.android.tonight8.activity.user.UserAwardListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 用户中奖码签收 -->
-        <activity android:name="com.android.tonight8.activity.user.UserAwardSignActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name="com.android.tonight8.activity.user.UserAwardSignActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 用户优惠券包 -->
-        <activity android:name="com.android.tonight8.activity.user.UserCouponActivity"
+        <activity
+            android:name="com.android.tonight8.activity.user.UserCouponActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 用户兑奖地址列表 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserCouponExchangeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 用户参加过的抽奖活动 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserApplyHistoryActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop"/>
+            />
     </application>
 
 </manifest>

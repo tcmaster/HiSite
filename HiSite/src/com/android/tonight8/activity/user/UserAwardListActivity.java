@@ -9,7 +9,7 @@ import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
- * @Description:用户中奖码界面
+ * @Description:用户中奖码
  * @author LiXiaoSong
  * @date 2015-1-17
  */

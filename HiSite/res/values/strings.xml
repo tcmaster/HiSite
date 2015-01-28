@@ -16,6 +16,7 @@
     <string name="activityTheme">活动主题：</string>
     <string name="sponsor">主办方：</string>
     <string name="coupon">优惠券：</string>
+    <string name="have_apply">已报名：</string>
     <string name="couponCount">发放数量：</string>
     <string name="activityDetail">活动详情</string>
     <string name="activityAward">活动奖品：</string>
@@ -118,4 +119,6 @@
 	<!-- 用户优惠券包 -->
 	<string name="coupon_quick_mark">券二维码</string>
 	<string name="coupon_award_location">兑奖地点</string>
+	<!-- 用户抽奖历史 -->
+	<string name="delete">删除</string>
 </resources>

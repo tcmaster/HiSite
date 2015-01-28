@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.user.UserApplyHistoryActivity;
 import com.android.tonight8.activity.user.UserAwardListActivity;
 import com.android.tonight8.activity.user.UserCouponActivity;
 import com.android.tonight8.base.BaseActivity;
@@ -74,7 +75,7 @@ public class IFragment extends MyAccountBaseFragment {
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	@OnClick({ R.id.layout_award_code,R.id.layout_my_coupon })
+	@OnClick({ R.id.layout_award_code, R.id.layout_my_coupon, R.id.layout_lottery_activity })
 	public void onClick(View v) {
 		Intent intent = new Intent();
 		switch (v.getId()) {
@@ -82,7 +83,10 @@ public class IFragment extends MyAccountBaseFragment {
 			intent.setClass(getActivity(), UserAwardListActivity.class);
 			break;
 		case R.id.layout_my_coupon:
-			intent.setClass(getActivity(),UserCouponActivity.class);
+			intent.setClass(getActivity(), UserCouponActivity.class);
+			break;
+		case R.id.layout_lottery_activity:
+			intent.setClass(getActivity(), UserApplyHistoryActivity.class);
 			break;
 		default:
 			break;
