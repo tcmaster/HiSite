@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match_width"
-    android:gravity="center_vertical" >
+    android:background="@drawable/shape_gray_rect"
+    android:layout_margin="10dp" >
 
     <ImageView
         android:id="@+id/iv_com_logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:layout_centerVertical="true" />
 
     <LinearLayout
         style="@style/wrap"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/iv_com_logo"
-        android:gravity="center"
+        android:layout_centerVertical="true"
         android:orientation="vertical" >
 
         <TextView

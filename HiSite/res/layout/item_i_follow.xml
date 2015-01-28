@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width"
+    android:orientation="vertical" >
+    <include layout="@layout/item_coupon_exchange_list"
+        />
+	<TextView 
+	    android:id="@+id/tv_consult"
+	    style="@style/wrap"
+	    android:layout_gravity="right"
+	    android:text="@string/consult"
+	    android:textSize="@dimen/middleTextSize"
+	    android:textColor="@color/red"
+	    android:layout_marginRight="10dp"
+	    android:gravity="center_vertical"
+	    android:drawableLeft="@drawable/main_home_s"
+	    android:layout_marginBottom="5dp"/>
+	<ListView 
+	    android:id="@+id/lv_consult_content"
+	    style="@style/match_width"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"/>
+</LinearLayout>
