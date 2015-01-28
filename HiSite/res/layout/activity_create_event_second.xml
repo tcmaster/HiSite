@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="vertical"
+        android:padding="@dimen/common_margin_left" >
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="没中奖是否发券" />
+
+            <CheckBox
+                android:id="@+id/cb_ispost_coupon"
+                style="@style/wrap"
+                android:text="是" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="发券内容：" />
+
+            <EditText
+                android:id="@+id/et_coupon_content"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="价值：" />
+
+            <EditText
+                android:id="@+id/et_coupon_value"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="元" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="发券数量：" />
+
+            <RadioGroup
+                android:id="@+id/rg_coupon_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rb_registrator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="参与报名" />
+
+                <RadioButton
+                    android:id="@+id/rb_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="随机选" />
+
+                <EditText
+                    android:id="@+id/et_random_count"
+                    style="@style/et_comm_style"
+                    android:layout_weight="1" />
+
+                <TextView
+                    style="@style/shoptext_left_style"
+                    android:text="名" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="券有效期：" />
+
+            <EditText
+                android:id="@+id/et_coupon_startdate"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="—" />
+
+            <EditText
+                android:id="@+id/et_coupon_enddate"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
