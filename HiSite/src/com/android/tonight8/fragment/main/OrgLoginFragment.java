@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.ForgetIDOrPwdActivity;
 import com.android.tonight8.activity.MainActivity;
+import com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity;
 import com.android.tonight8.activity.createevent.OrgRegisterActivity;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.Utils;

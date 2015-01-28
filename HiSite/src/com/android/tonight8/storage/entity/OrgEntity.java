@@ -214,12 +214,12 @@ public class OrgEntity extends BaseEntity {
 		this.areaCode = areaCode;
 	}
 
-	public int getIdentit0yType() {
-		return identit0yType;
+	public int getIdentityType() {
+		return identityType;
 	}
 
-	public void setIdentit0yType(int identit0yType) {
-		this.identit0yType = identit0yType;
+	public void setIdentityType(int identityType) {
+		this.identityType = identityType;
 	}
 
 	public String getIdentityCode() {
@@ -230,9 +230,44 @@ public class OrgEntity extends BaseEntity {
 		this.identityCode = identityCode;
 	}
 
+	public String getExchangeId() {
+		return exchangeId;
+	}
+
+	public void setExchangeId(String exchangeId) {
+		this.exchangeId = exchangeId;
+	}
+
+	public String getIdentityPhotoFront() {
+		return identityPhotoFront;
+	}
+
+	public void setIdentityPhotoFront(String identityPhotoFront) {
+		this.identityPhotoFront = identityPhotoFront;
+	}
+
+	public String getIdentityPhotoReverse() {
+		return identityPhotoReverse;
+	}
+
+	public void setIdentityPhotoReverse(String identityPhotoReverse) {
+		this.identityPhotoReverse = identityPhotoReverse;
+	}
+
 	@Override
 	public String toString() {
-		return "Org [name=" + name + ", intro=" + intro + ", logo=" + logo + ", pic=" + pic + ", coordinate=" + coordinate + ", provinceCode=" + provinceCode + ", cityCode=" + cityCode + ", areaCode=" + areaCode + ", address=" + address + ", telphone=" + telphone + ", email=" + email + ", contactPerson=" + contactPerson + ", contactMobilPhone=" + contactMobilPhone + ", paperPhoto=" + paperPhoto + ", paperCode=" + paperCode + ", identit0yType=" + identit0yType + ", identityCode=" + identityCode + "]";
+		return "OrgEntity [name=" + name + ", intro=" + intro + ", logo="
+				+ logo + ", pic=" + pic + ", coordinate=" + coordinate
+				+ ", provinceCode=" + provinceCode + ", cityCode=" + cityCode
+				+ ", areaCode=" + areaCode + ", address=" + address
+				+ ", telphone=" + telphone + ", email=" + email
+				+ ", contactPerson=" + contactPerson + ", contactMobilPhone="
+				+ contactMobilPhone + ", paperPhoto=" + paperPhoto
+				+ ", paperCode=" + paperCode + ", identityType=" + identityType
+				+ ", identityCode=" + identityCode + ", exchangeId="
+				+ exchangeId + ", identityPhotoFront=" + identityPhotoFront
+				+ ", identityPhotoReverse=" + identityPhotoReverse + "]";
 	}
+
 
 }

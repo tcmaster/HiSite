@@ -17,7 +17,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * @Description:忘记ID页或密码页面
+ * @Description:忘记ID页或密码
  * @author:LiuZhao
  * @Date:2014年12月25日
  */
@@ -67,6 +67,7 @@ public class ForgetIDOrPwdActivity extends BaseActivity {
 		}
 
 		btn_findback.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				dealData();

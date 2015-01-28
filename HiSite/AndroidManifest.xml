@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.tonight8.activity.ForgetIDOrPwdActivity"
+            android:name="com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
