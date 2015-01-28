@@ -3,12 +3,10 @@ package com.android.tonight8.storage.createevent;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.android.tonight8.model.common.Event;
-import com.android.tonight8.model.common.Exchange;
-import com.android.tonight8.model.createevent.CreateEventModel;
+import com.android.tonight8.model.common.Coupon;
 
 /**
- * @Description:发活动第二步本地存储 活动地区和兑奖设置
+ * @Description:发活动第二步本地存储 发优惠券
  * @author:LiuZhao
  * @Date:2015年1月26日
  */
@@ -19,7 +17,8 @@ public class CreateEventSecondStepNativeController {
 
 	public CreateEventSecondStepNativeController(Context context) {
 		super();
-		preference = context.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
+		preference = context.getSharedPreferences(STORE_NAME,
+				Context.MODE_PRIVATE);
 
 	}
 
@@ -28,35 +27,36 @@ public class CreateEventSecondStepNativeController {
 	 * 
 	 * @param createEventModel
 	 */
-	public void SaveCreateEventSecondStep(CreateEventModel createEventModel) {
-		Exchange exChange = new Exchange();
-		Event event = createEventModel.event;
+	public void SaveCreateEventSecondStep(Coupon coupon) {
+
 		SharedPreferences.Editor editor = preference.edit();
-		editor.putBoolean("event_cityall", event.cityAll);
-		editor.putString("exchange_address", exChange.address);
-		editor.putBoolean("exchange_method", exChange.method);
-		editor.putBoolean("exchange_orgall", exChange.orgAll);
+		editor.putBoolean("coupon_provideall", coupon.provideAll);
+		editor.putString("coupon_content", coupon.content);
+		editor.putInt("coupon_providetype", coupon.provideType);
+		editor.putInt("coupon_value", coupon.value);
+		editor.putInt("coupon_providenum", coupon.provideNum);
+		editor.putString("coupon_daterangestart", coupon.dateRangeStart);
+		editor.putString("coupon_daterangeend", coupon.dateRangeEnd);
 		editor.commit();
 		return;
 	}
 
 	/**
-	 * 读取本地存储的发活动第一步信息
+	 * 读取本地存储
 	 * 
 	 * @return
 	 */
-	public CreateEventModel ReadCreateEventSecondStep() {
-		CreateEventModel createEventModel = new CreateEventModel();
-		Event event = new Event();
-		Exchange exChange = new Exchange();
-		event.setName(preference.getString("event_cityall", ""));
-		exChange.setAddress(preference.getString("exchange_address", ""));
-		exChange.setMethod(preference.getBoolean("exchange_method", true));
-		exChange.setOrgAll(preference.getBoolean("exchange_orgall", true));
-
-		createEventModel.setEvent(event);
-		createEventModel.setExchange(exChange);
-		return createEventModel;
+	public Coupon ReadCreateEventSecondStep() {
+		Coupon coupon = new Coupon();
+		coupon.setProvideAll(preference.getBoolean("coupon_provideall", true));
+		coupon.setContent(preference.getString("coupon_content", ""));
+		coupon.setProvideType(preference.getInt("coupon_providetype", 0));
+		coupon.setValue(preference.getInt("coupon_value", 0));
+		coupon.setProvideNum(preference.getInt("coupon_providenum", 0));
+		coupon.setDateRangeStart(preference.getString("coupon_daterangestart",
+				""));
+		coupon.setDateRangeEnd(preference.getString("coupon_daterangeend", ""));
+		return coupon;
 	}
 
 	/**

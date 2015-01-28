@@ -52,6 +52,7 @@
     <string name="two_dimension">二维码：</string>
     <string name="service_phone">客服热线：400&#8211;600&#8211;8935</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="up_popgoods_description">点击"+"上传奖品图片及描述</string>
 
     <!-- 商家资料 -->
     <string name="shopdetail_name">名称</string>
@@ -115,10 +116,11 @@
     <string name="getphoto">从相册中选择</string>
     <string name="sign_photo_prompt">上传照片</string>
     <!-- 奖品签收 -->
-	<string name="sign_award">确认签收</string>
-	<!-- 用户优惠券包 -->
-	<string name="coupon_quick_mark">券二维码</string>
-	<string name="coupon_award_location">兑奖地点</string>
-	<!-- 用户抽奖历史 -->
-	<string name="delete">删除</string>
+    <string name="sign_award">确认签收</string>
+    <!-- 用户优惠券包 -->
+    <string name="coupon_quick_mark">券二维码</string>
+    <string name="coupon_award_location">兑奖地点</string>
+    <!-- 用户抽奖历史 -->
+    <string name="delete">删除</string>
+
 </resources>

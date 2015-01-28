@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="vertical"
+        android:padding="@dimen/common_margin_left" >
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="活动主题：" />
+
+            <EditText
+                android:id="@+id/et_createevent_name"
+                style="@style/et_comm_style" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="计划上架：" />
+
+            <DatePicker
+                android:id="@+id/datePicker3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnersShown="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="活动日期：" />
+
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnersShown="true" />
+
+            <TextView
+                style="@style/wrap"
+                android:text="—" />
+
+            <DatePicker
+                android:id="@+id/datePicker2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnersShown="true" />
+        </LinearLayout>
+
+        <RelativeLayout style="@style/match" >
+
+            <TextView
+                android:id="@+id/tv_popgoods_temp"
+                style="@style/createeventtext_style"
+                android:text="奖       品：" />
+
+            <EditText
+                android:id="@+id/et_popGoodsName"
+                style="@style/et_comm_style"
+                android:layout_toRightOf="@+id/tv_popgoods_temp"
+                android:hint="请输入奖品内容" />
+
+            <TextView
+                android:id="@+id/tv_popgoods_description"
+                style="@style/createeventsmalltext_style"
+                android:layout_alignLeft="@+id/et_popGoodsName"
+                android:layout_below="@+id/et_popGoodsName"
+                android:text="@string/up_popgoods_description" />
+
+            <ImageView
+                android:id="@+id/iv_popgoods_temp"
+                style="@style/wrap"
+                android:layout_alignLeft="@+id/tv_popgoods_description"
+                android:layout_below="@+id/tv_popgoods_description"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_popgoods_price"
+                style="@style/createeventsmalltext_style"
+                android:layout_below="@+id/tv_popgoods_description"
+                android:layout_toRightOf="@+id/iv_popgoods_temp"
+                android:text="20" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="奖品价值：" />
+
+            <EditText
+                android:id="@+id/et_goods_value"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/wrap"
+                android:text="元" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="中奖名额：" />
+
+            <EditText
+                android:id="@+id/et_awardCount"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <RelativeLayout style="@style/match" >
+
+            <TextView
+                android:id="@+id/tv_goods_temp"
+                style="@style/createeventtext_style"
+                android:text="奖品详情：" />
+
+            <EditText
+                android:id="@+id/et_goodsName"
+                style="@style/et_comm_style"
+                android:layout_toRightOf="@+id/tv_goods_temp"
+                android:hint="请输入奖品内容" />
+
+            <TextView
+                android:id="@+id/tv_goods_description"
+                style="@style/createeventsmalltext_style"
+                android:layout_alignLeft="@+id/et_goodsName"
+                android:layout_below="@+id/et_goodsName"
+                android:text="@string/up_popgoods_description" />
+
+            <ImageView
+                android:id="@+id/iv_goods_temp"
+                style="@style/wrap"
+                android:layout_alignLeft="@+id/tv_goods_description"
+                android:layout_below="@+id/tv_goods_description"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                style="@style/createeventsmalltext_style"
+                android:layout_below="@+id/tv_goods_description"
+                android:layout_toRightOf="@+id/iv_goods_temp"
+                android:text="20" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/match"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/createeventtext_style"
+                android:text="活动规则：" />
+
+            <EditText
+                android:id="@+id/et_event_"
+                style="@style/et_comm_style"
+                android:maxLength="120"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

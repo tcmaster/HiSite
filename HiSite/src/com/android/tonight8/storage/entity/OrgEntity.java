@@ -9,6 +9,14 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  * 商家数据库表
  */
+/**
+ * @author asus
+ *
+ */
+/**
+ * @author asus
+ *
+ */
 @Table(name = "org")
 public class OrgEntity extends BaseEntity {
 
@@ -71,14 +79,20 @@ public class OrgEntity extends BaseEntity {
 	@Column(column = "paperCode")
 	private String paperCode;
 	/** 身份类型 */
-	@Column(column = "identit0yType")
-	private int identit0yType;
+	@Column(column = "identityType")
+	private int identityType;
 	/** 身份编码 */
 	@Column(column = "identityCode")
 	private String identityCode;
 	/**该商家的某个兑奖对象*/
 	@Column(column = "exchangeId")
 	private String exchangeId;
+	/** 商家身份证照正面图片文件地址 */
+	@Column(column = "identityPhotoFront")
+	private String identityPhotoFront;
+	/** 商家身份证照反面图片文件地址 */
+	@Column(column = "identityPhotoReverse")
+	private String identityPhotoReverse;
 
 	public String getName() {
 		return name;

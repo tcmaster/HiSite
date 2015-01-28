@@ -3,12 +3,8 @@ package com.android.tonight8.storage.organization;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Notice;
-import com.android.tonight8.model.common.Org;
-import com.android.tonight8.model.live.LiveDetailModel;
 import com.android.tonight8.storage.DBUtil;
-import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.NoticeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 
