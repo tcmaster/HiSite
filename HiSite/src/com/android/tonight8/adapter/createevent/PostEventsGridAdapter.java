@@ -13,7 +13,7 @@ import com.android.tonight8.R;
 public class PostEventsGridAdapter extends BaseAdapter {
 
 	private String[] strMenu = { "发布活动", "活动中奖管理", "促销券使用", " 绑定经销商", "已用券核销", " 用户反馈" };
-	private int[] intMenu = { R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher };
+	private int[] intMenu = { R.drawable.eventmenu_createevent, R.drawable.eventmenu_awardmanager, R.drawable.eventmenu_coupon_use, R.drawable.eventmenu_bind_agency, R.drawable.eventmenu_usedcoupon, R.drawable.eventmenu_userfeedback };
 	private Context context;
 	private LayoutInflater mLiInflater;
 

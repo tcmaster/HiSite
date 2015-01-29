@@ -21,6 +21,26 @@ public class Question implements Serializable {
 	public String time;
 	/** 是否是回复记录 */
 	public boolean isReply;
+	/** 用户外键 */
+	public boolean uid;
+	/** 商家外键 */
+	public boolean oid;
+
+	public boolean isUid() {
+		return uid;
+	}
+
+	public void setUid(boolean uid) {
+		this.uid = uid;
+	}
+
+	public boolean isOid() {
+		return oid;
+	}
+
+	public void setOid(boolean oid) {
+		this.oid = oid;
+	}
 
 	public long getId() {
 		return id;
@@ -65,7 +85,8 @@ public class Question implements Serializable {
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", content=" + content + ", date=" + date
-				+ ", time=" + time + ", isReply=" + isReply + "]";
+				+ ", time=" + time + ", isReply=" + isReply + ", uid=" + uid
+				+ ", oid=" + oid + "]";
 	}
 
 }

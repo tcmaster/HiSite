@@ -1,7 +1,6 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -9,67 +8,46 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  * 商家数据库表
  */
-/**
- * @author asus
- *
- */
-/**
- * @author asus
- *
- */
 @Table(name = "org")
 public class OrgEntity extends BaseEntity {
 
 	/** 商家名称 */
 	@Column(column = "name")
-	@NotNull
 	private String name;
 	/** 商家简介 */
-	@NotNull
 	@Column(column = "intro")
 	private String intro;
 	/** 商家logo图片文件地址 */
-	@NotNull
 	@Column(column = "logo")
 	private String logo;
 	/** 商家头像图片文件地址 */
 	@Column(column = "pic")
-	@NotNull
 	private String pic;
 	/** 商家所地地理坐标 */
 	@Column(column = "coordinate")
-	@NotNull
 	private String coordinate;
 	/** 省份编码 */
 	@Column(column = "provinceCode")
-	@NotNull
 	private String provinceCode;
 	/** 城市编码 */
 	@Column(column = "cityCode")
-	@NotNull
 	private String cityCode;
 	/** 地区编码 */
 	@Column(column = "areaCode")
-	@NotNull
 	private String areaCode;
 	/** 商家地址 */
 	@Column(column = "address")
-	@NotNull
 	private String address;
 	/** 商家固定电话 */
 	@Column(column = "telphone")
-	@NotNull
 	private String telphone;
 	/** 商家邮箱 */
-	@NotNull
 	@Column(column = "email")
 	private String email;
 	/** 商家联系人 */
-	@NotNull
 	@Column(column = "contactPerson")
 	private String contactPerson;
 	/** 商家联系手机 */
-	@NotNull
 	@Column(column = "contactMobilPhone")
 	private String contactMobilPhone;
 	/** 商家企业证件照图片文件地址 */
@@ -84,7 +62,7 @@ public class OrgEntity extends BaseEntity {
 	/** 身份编码 */
 	@Column(column = "identityCode")
 	private String identityCode;
-	/**该商家的某个兑奖对象*/
+	/** 该商家的某个兑奖对象 */
 	@Column(column = "exchangeId")
 	private String exchangeId;
 	/** 商家身份证照正面图片文件地址 */
@@ -268,6 +246,5 @@ public class OrgEntity extends BaseEntity {
 				+ exchangeId + ", identityPhotoFront=" + identityPhotoFront
 				+ ", identityPhotoReverse=" + identityPhotoReverse + "]";
 	}
-
 
 }

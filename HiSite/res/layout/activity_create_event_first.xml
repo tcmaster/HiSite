@@ -171,6 +171,7 @@
 
             <TextView
                 style="@style/createeventtext_style"
+                android:layout_height="match_parent"
                 android:gravity="top"
                 android:text="活动规则：" />
 

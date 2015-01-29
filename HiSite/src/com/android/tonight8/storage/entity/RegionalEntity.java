@@ -1,7 +1,6 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
-import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
  * @Description:区域表
@@ -10,19 +9,16 @@ import com.lidroid.xutils.db.annotation.NotNull;
  */
 public class RegionalEntity extends BaseEntity {
 	/** 区域名称 */
-	@NotNull()
+
 	@Column(column = "name")
 	public String name;
 	/** 区域编号 */
-	@NotNull()
 	@Column(column = "code")
 	public String code;
 	/** 区域所属父编码 */
-	@NotNull()
 	@Column(column = "pid", defaultValue = "0")
 	public int pid;
 	/** 区域级别（省，市，区） */
-	@NotNull()
 	@Column(column = "level")
 	public int level;
 

@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -10,26 +9,23 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 问题询问
  */
 @Table(name = "question")
-public class QuestionEntity extends BaseEntity{
+public class QuestionEntity extends BaseEntity {
 	/** 询问内容 */
 	@Column(column = "content")
-	@NotNull
 	private String content;
 	/** 询问日期 */
 	@Column(column = "date")
-	@NotNull
 	private String date;
 	/** 询问时间 */
 	@Column(column = "time")
-	@NotNull
 	private String time;
 	/** 是否是回复记录 */
 	@Column(column = "isReply", defaultValue = "0")
 	private int isReply;
-	/** */
+	/** 用户表外键 */
 	@Foreign(column = "uid", foreign = "id")
 	public UserEntity user;
-	/** */
+	/** 商家表外键 */
 	@Foreign(column = "oid", foreign = "id")
 	public OrgEntity org;
 
@@ -71,6 +67,5 @@ public class QuestionEntity extends BaseEntity{
 				+ content + ", date=" + date + ", time=" + time + ", isReply="
 				+ isReply + "]";
 	}
-	
 
 }

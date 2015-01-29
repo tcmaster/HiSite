@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -19,15 +18,12 @@ public class SubjectEntity extends BaseEntity {
 	public UserEntity user;
 	/** 话题内容 */
 	@Column(column = "content")
-	@NotNull
 	private String content;
 	/** 话题创建日期 */
 	@Column(column = "date")
-	@NotNull
 	private String date;
 	/** 话题创建时间 */
 	@Column(column = "time")
-	@NotNull
 	private String time;
 
 	public String getContent() {
