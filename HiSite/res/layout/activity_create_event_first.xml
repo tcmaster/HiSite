@@ -29,11 +29,9 @@
                 style="@style/createeventtext_style"
                 android:text="计划上架：" />
 
-            <DatePicker
-                android:id="@+id/datePicker3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnersShown="true" />
+            <EditText
+                android:id="@+id/et_planPublishTime"
+                style="@style/et_comm_style" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,21 +42,19 @@
                 style="@style/createeventtext_style"
                 android:text="活动日期：" />
 
-            <DatePicker
-                android:id="@+id/datePicker1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnersShown="true" />
+            <EditText
+                android:id="@+id/et_eventDateStart"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
 
             <TextView
                 style="@style/wrap"
                 android:text="—" />
 
-            <DatePicker
-                android:id="@+id/datePicker2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnersShown="true" />
+            <EditText
+                android:id="@+id/et_eventDateEnd"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <RelativeLayout style="@style/match" >
@@ -82,7 +78,7 @@
                 android:text="@string/up_popgoods_description" />
 
             <ImageView
-                android:id="@+id/iv_popgoods_temp"
+                android:id="@+id/iv_popgoods_add"
                 style="@style/wrap"
                 android:layout_alignLeft="@+id/tv_popgoods_description"
                 android:layout_below="@+id/tv_popgoods_description"
@@ -148,17 +144,23 @@
                 android:layout_below="@+id/et_goodsName"
                 android:text="@string/up_popgoods_description" />
 
+            <com.android.tonight8.view.ListViewForScrollView
+                android:id="@+id/lv_goodsAddList"
+                style="@style/match_width"
+                android:layout_alignLeft="@+id/tv_goods_description"
+                android:layout_below="@+id/tv_goods_description" />
+
             <ImageView
                 android:id="@+id/iv_goods_temp"
                 style="@style/wrap"
-                android:layout_alignLeft="@+id/tv_goods_description"
-                android:layout_below="@+id/tv_goods_description"
+                android:layout_alignLeft="@+id/lv_goodsAddList"
+                android:layout_below="@+id/lv_goodsAddList"
                 android:background="@drawable/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_goods_price"
                 style="@style/createeventsmalltext_style"
-                android:layout_below="@+id/tv_goods_description"
+                android:layout_below="@+id/lv_goodsAddList"
                 android:layout_toRightOf="@+id/iv_goods_temp"
                 android:text="20" />
         </RelativeLayout>
@@ -169,14 +171,22 @@
 
             <TextView
                 style="@style/createeventtext_style"
+                android:gravity="top"
                 android:text="活动规则：" />
 
             <EditText
                 android:id="@+id/et_event_"
                 style="@style/et_comm_style"
-                android:maxLength="120"
-                android:layout_weight="1" />
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:maxLength="120" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_createevent_first"
+            style="@style/ok_button_style"
+            android:text="下一步" >
+        </Button>
     </LinearLayout>
 
 </ScrollView>

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.CalendarView.OnDateChangeListener;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,11 +57,16 @@ public class DialogUtils {
 
 	}
 
+	/**
+	 * @Description:选择日期的对话框，默认日期是当前系统日期
+	 * @param activity
+	 * @param inputDate
+	 * @author: LiuZhao
+	 * @date:2015年1月29日
+	 */
+
 	public static void showSelectDateDialog(final Activity activity, final TextView inputDate) {
 		final Calendar calendar = Calendar.getInstance();
-		// initDateTime = calendar.get(Calendar.YEAR) + "年" + calendar.get(Calendar.MONTH) + "月" +
-		// calendar.get(Calendar.DAY_OF_MONTH) + "日 " + calendar.get(Calendar.HOUR_OF_DAY) + ":" +
-		// calendar.get(Calendar.MINUTE);
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.common_select_date);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
@@ -84,6 +91,36 @@ public class DialogUtils {
 						String initDateTime = datePicker.getYear() + "年" + month + "月" + datePicker.getDayOfMonth() + "日 ";
 						inputDate.setText(initDateTime);
 						cdlg.dismissDlg();
+					}
+				});
+			}
+		});
+		Utils.hideSoftKeyBoard(activity);
+		cdlg.showDlg();
+	}
+
+	/**
+	 * @Description:选择日历的对话框，默认日期是当前系统日期
+	 * @param activity
+	 * @param inputDate
+	 * @author: LiuZhao
+	 * @date:2015年1月29日
+	 */
+
+	public static void showSelectCalendarDialog(final Activity activity, final TextView inputDate) {
+		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.common_select_calendar);
+		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
+
+			@Override
+			public void getCustomerView(Window window, AlertDialog dlg) {
+				final CalendarView calendarView = (CalendarView) window.findViewById(R.id.calendarView_selected);
+
+				calendarView.setOnDateChangeListener(new OnDateChangeListener() {
+
+					@Override
+					public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+						String date = year + "年" + month + "月" + dayOfMonth + "日";
+						inputDate.setText(date);
 					}
 				});
 			}

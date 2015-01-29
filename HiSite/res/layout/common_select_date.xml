@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:singleLine="true"
-            android:text="取消" />
+            android:text="拍照" />
 
         <Button
             android:id="@+id/btn_ok"
@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:singleLine="true"
-            android:text="确定" />
+            android:text="相册" />
     </LinearLayout>
 
 </LinearLayout>

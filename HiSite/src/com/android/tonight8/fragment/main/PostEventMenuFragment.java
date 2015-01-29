@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -14,12 +15,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.createevent.BindAgencyActivity;
+import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
+import com.android.tonight8.activity.createevent.CouponToUseActivity;
+import com.android.tonight8.activity.createevent.CreatEventFirstActivity;
+import com.android.tonight8.activity.createevent.EventsWinningManageActivity;
 import com.android.tonight8.activity.createevent.OrgDetailActivity;
+import com.android.tonight8.activity.createevent.UserFeedbacktActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
+import com.android.tonight8.storage.organization.OrgLoginNativeController;
 import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.lidroid.xutils.view.annotation.event.OnItemClick;
 
 /**
  * @Description:发布活动
@@ -76,18 +85,46 @@ public class PostEventMenuFragment extends Fragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin, container, false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
-		initView();
+		initData();
 		return rootView;
 	}
 
-	private void initView() {
+	@OnItemClick(R.id.gv_postevents_main)
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		Intent intent = null;
+		switch (position) {
+		case 0:
+			intent = new Intent(getActivity(), CreatEventFirstActivity.class);
+			break;
+		case 1:
+			intent = new Intent(getActivity(), EventsWinningManageActivity.class);
+			break;
+		case 2:
+			intent = new Intent(getActivity(), CouponToUseActivity.class);
+			break;
+		case 3:
+			intent = new Intent(getActivity(), BindAgencyActivity.class);
+			break;
+		case 4:
+			intent = new Intent(getActivity(), CouponHaveUsedActivity.class);
+			break;
+		case 5:
+			intent = new Intent(getActivity(), UserFeedbacktActivity.class);
+			break;
+		default:
+			break;
+		}
+		startActivity(intent);
+	}
 
+	private void initData() {
+		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
+		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
 		tv_shopname.setText("可乐屏新一代餐饮系统");
 		tv_shop_state.setText("发布：12 关注：15");
 		tv_postevents_place.setText("北京 朝阳区");
 		gridAdapter = new PostEventsGridAdapter(getActivity());
 		gv_postevents_main.setAdapter(gridAdapter);
-		tv_shop_id.setText("21131243");
 		QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
 
 	}

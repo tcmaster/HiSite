@@ -1,113 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 发布活动登录之后的布局 -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match"
-    android:orientation="vertical" >
 
-    <LinearLayout
-        style="@style/match_width"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match" >
+
+    <ScrollView
+        android:id="@+id/sv_menu_temp"
+        style="@style/match"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:id="@+id/rl_org_account"
+        <LinearLayout
             style="@style/match_width"
-            android:background="@color/white"
-            android:padding="10dp" >
+            android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/iv_postevents_title"
-                android:layout_width="65dip"
-                android:layout_height="65dip"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_launcher" />
-
-            <ImageView
-                android:id="@+id/right_img1"
-                style="@style/wrap"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="14dip"
-                android:background="@drawable/towards_right_triangle" />
-
-            <TextView
-                android:id="@+id/tv_shopname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
-                android:layout_toRightOf="@+id/iv_postevents_title"
-                android:singleLine="true"
-                android:textColor="#333333"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_shop_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_shopname"
-                android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
-                android:layout_toRightOf="@+id/iv_postevents_title"
-                android:textColor="@color/base_header_red"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tv_postevents_place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_shop_state"
-                android:layout_marginLeft="15dip"
-                android:layout_marginTop="5dip"
-                android:layout_toRightOf="@+id/iv_postevents_title"
-                android:textColor="#333333"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <com.android.tonight8.view.GridViewForScrollView
-            android:id="@+id/gv_postevents_main"
-            style="@style/match"
-            android:numColumns="3" />
-
-        <RelativeLayout
-            style="@style/match_width"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
-
-            <TextView
-                android:id="@+id/tv_shop_id_title"
-                style="@style/wrap"
-                android:text="@string/shop_id"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_two_dimension_title"
-                style="@style/wrap"
-                android:layout_below="@+id/tv_shop_id_title"
-                android:text="@string/two_dimension"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_shop_id"
+            <RelativeLayout
+                android:id="@+id/rl_org_account"
                 style="@style/match_width"
-                android:layout_toRightOf="@+id/tv_shop_id_title"
-                android:textColor="@color/base_header_red"
-                android:textSize="14sp" />
+                android:background="@color/white"
+                android:padding="10dp" >
 
-            <ImageView
-                android:id="@+id/iv_two_dimension"
-                style="@style/wrap"
-                android:layout_below="@+id/tv_shop_id"
-                android:layout_toRightOf="@+id/tv_shop_id_title"
-                android:background="@drawable/ic_launcher" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_postevents_title"
+                    android:layout_width="65dip"
+                    android:layout_height="65dip"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_launcher" />
 
-        <TextView
-            style="@style/match_width"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/service_phone"
-            android:textSize="16sp" />
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/right_img1"
+                    style="@style/wrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="14dip"
+                    android:background="@drawable/towards_right_triangle" />
 
-</ScrollView>
+                <TextView
+                    android:id="@+id/tv_shopname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_toRightOf="@+id/iv_postevents_title"
+                    android:singleLine="true"
+                    android:textColor="#333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_shop_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_shopname"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_toRightOf="@+id/iv_postevents_title"
+                    android:textColor="@color/base_header_red"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_postevents_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_shop_state"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_toRightOf="@+id/iv_postevents_title"
+                    android:textColor="#333333"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <com.android.tonight8.view.GridViewForScrollView
+                android:id="@+id/gv_postevents_main"
+                style="@style/match_width"
+                android:numColumns="3" />
+
+            <RelativeLayout
+                android:id="@+id/rl_dimension_temp"
+                style="@style/match_width"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_shop_id_title"
+                    style="@style/wrap"
+                    android:text="@string/shop_id"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_two_dimension_title"
+                    style="@style/wrap"
+                    android:layout_below="@+id/tv_shop_id_title"
+                    android:text="@string/two_dimension"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_shop_id"
+                    style="@style/match_width"
+                    android:layout_toRightOf="@+id/tv_shop_id_title"
+                    android:textColor="@color/base_header_red"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_two_dimension"
+                    style="@style/wrap"
+                    android:layout_below="@+id/tv_shop_id"
+                    android:layout_toRightOf="@+id/tv_shop_id_title"
+                    android:background="@drawable/ic_launcher" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        style="@style/match_width"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_gray"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="@string/service_phone"
+        android:textSize="16sp" />
+
+</RelativeLayout>

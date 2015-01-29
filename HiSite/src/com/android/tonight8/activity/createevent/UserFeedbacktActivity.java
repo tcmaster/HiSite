@@ -10,7 +10,7 @@ import com.android.tonight8.base.BaseActivity;
  * @author LiuZhao
  * @Date2014-12-29 下午11:37:38
  */
-public class UserCommentActivity extends BaseActivity {
+public class UserFeedbacktActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

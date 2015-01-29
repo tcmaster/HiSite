@@ -48,18 +48,77 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 忘记商家ID或者密码 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 商家 注册 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.OrgRegisterActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 创建活动第一步 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CreatEventFirstActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 创建活动第二步 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CreateEventSecondActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 创建活动第三步 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CreateEventThirdActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 活动中奖管理 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.EventsWinningManageActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 促销券使用 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CouponToUseActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 绑定经销商 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.BindAgencyActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 已用券核销 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CouponHaveUsedActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 用户反馈 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.UserFeedbacktActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <!-- 商品详情 -->
         <activity
             android:name="com.android.tonight8.activity.event.GoodsDetailActivity"
@@ -109,14 +168,12 @@
         <activity
             android:name="com.android.tonight8.activity.user.UserApplyHistoryActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <!-- 用户关注的商家 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserFollowActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

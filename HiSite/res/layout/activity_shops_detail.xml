@@ -8,7 +8,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -25,7 +25,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -42,7 +42,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="10dp"
-                android:text="修改" >
+                android:text="修改"
+                android:textColor="@color/blue" >
             </TextView>
 
             <ImageView
@@ -55,7 +56,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -72,10 +73,10 @@
         </LinearLayout>
 
         <RelativeLayout
-            style="@style/match_width"
-            android:visibility="gone"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/shoptext_left_style"
@@ -102,7 +103,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -117,9 +118,24 @@
                 android:text="北京朝阳区" >
             </TextView>
         </LinearLayout>
-
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="@string/company_address" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_address_value"
+                style="@style/shoptext_style"
+                android:text="中核路1号" >
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -136,7 +152,7 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -153,7 +169,7 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -170,7 +186,7 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
@@ -187,7 +203,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            style="@style/match_width"
+            style="@style/ll_comm_style"
             android:orientation="horizontal" >
 
             <TextView
@@ -208,7 +224,8 @@
                 style="@style/wrap"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dp"
-                android:text="修改" >
+                android:text="修改"
+                android:textColor="@color/blue" >
             </TextView>
         </RelativeLayout>
     </LinearLayout>
