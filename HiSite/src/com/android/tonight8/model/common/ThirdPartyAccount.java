@@ -21,6 +21,26 @@ public class ThirdPartyAccount implements Serializable {
 	public boolean isGrant;
 	/** 授权码 */
 	public String grantCode;
+	/** 用户外键 */
+	public int uid;
+	/** 商家外键 */
+	public int oid;
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public int getOid() {
+		return oid;
+	}
+
+	public void setOid(int oid) {
+		this.oid = oid;
+	}
 
 	public int getType() {
 		return type;
@@ -66,7 +86,7 @@ public class ThirdPartyAccount implements Serializable {
 	public String toString() {
 		return "ThirdPartyAccount [type=" + type + ", account=" + account
 				+ ", url=" + url + ", isGrant=" + isGrant + ", grantCode="
-				+ grantCode + "]";
+				+ grantCode + ", uid=" + uid + ", oid=" + oid + "]";
 	}
 
 }

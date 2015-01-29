@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -13,22 +12,19 @@ import com.lidroid.xutils.db.annotation.Table;
 public class SignInEntity extends BaseEntity {
 
 	/** 活动时间 */
-	@NotNull
 	@Column(column = "time")
 	private String time;
 	/** 活动图片 */
-	@NotNull
 	@Column(column = "pic")
 	private String pic;
 	/** 图片大小 */
 	@Column(column = "size")
 	private String size;
-	// 新加的
 	/** 用户 */
-	@Foreign(column = "rid", foreign = "id")
+	@Foreign(column = "uid", foreign = "id")
 	public UserEntity user;
 	/** 活动 */
-	@Foreign(column = "eid", foreign = "id")
+	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
 
 	@Override

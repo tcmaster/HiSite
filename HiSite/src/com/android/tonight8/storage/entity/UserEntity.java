@@ -1,7 +1,6 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -21,7 +20,6 @@ public class UserEntity extends BaseEntity {
 	private String pic;
 	/** 用户手机 */
 	@Column(column = "mobilePhone")
-	@NotNull()
 	private String mobilePhone;
 	/** 用户邮箱 */
 	@Column(column = "email")
@@ -29,42 +27,55 @@ public class UserEntity extends BaseEntity {
 	/** 用户邮寄地址 */
 	@Column(column = "address")
 	private String address;
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getGender() {
 		return gender;
 	}
+
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
+
 	public String getPic() {
 		return pic;
 	}
+
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
+
 	public String getMobilePhone() {
 		return mobilePhone;
 	}
+
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", gender=" + gender + ", pic=" + pic

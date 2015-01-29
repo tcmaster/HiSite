@@ -19,6 +19,10 @@ public class Subject implements Serializable {
 	public String date;
 	/** 话题创建时间 */
 	public String time;
+	/** 活动外键 */
+	public long rid;
+	/** 用户外键 */
+	public int uid;
 
 	public long getId() {
 		return id;

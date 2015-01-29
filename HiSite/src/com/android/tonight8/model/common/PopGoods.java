@@ -11,21 +11,21 @@ import java.io.Serializable;
 public class PopGoods implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	/** 海报id */
-	public long id;
 	/** 活动海报奖品名称 */
 	public String popGoodsName;
 	/** 活动海报奖品图片文件地址 */
 	public String popGoodsPic;
 	/** 活动海报奖品价格 */
 	public int popGoodsPrice;
+	/** 活动外键 */
+	private long rid;
 
-	public long getId() {
-		return id;
+	public long getRid() {
+		return rid;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setRid(long rid) {
+		this.rid = rid;
 	}
 
 	public String getPopGoodsName() {
@@ -54,7 +54,9 @@ public class PopGoods implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PopGoods [popGoodsName=" + popGoodsName + ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + "]";
+		return "PopGoods [popGoodsName=" + popGoodsName + ", popGoodsPic="
+				+ popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + ", rid="
+				+ rid + "]";
 	}
 
 }
