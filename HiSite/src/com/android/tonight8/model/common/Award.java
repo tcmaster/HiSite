@@ -13,10 +13,14 @@ public class Award implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 中奖id */
 	public long id;
+	/** 中奖活动外键*/
+	public int rid;
+	/** 用户外键*/
+	public int uid;
 	/** 中奖号码 */
 	public String code;
-	/** 中奖兑奖状态 */
-	public int exchangeStatus;
+	/** 签到状态 */
+	public int signInStatus;
 
 	public long getId() {
 		return id;
@@ -24,6 +28,23 @@ public class Award implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 	public String getCode() {
@@ -34,17 +55,17 @@ public class Award implements Serializable {
 		this.code = code;
 	}
 
-	public int getExchangeStatus() {
-		return exchangeStatus;
+	public int getSignInStatus() {
+		return signInStatus;
 	}
 
-	public void setExchangeStatus(int exchangeStatus) {
-		this.exchangeStatus = exchangeStatus;
+	public void setSignInStatus(int signInStatus) {
+		this.signInStatus = signInStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Award [id=" + id + ", code=" + code + ", exchangeStatus=" + exchangeStatus + "]";
+		return "Award [id=" + id + ", code=" + code + ", exchangeStatus=" + signInStatus + "]";
 	}
 
 }

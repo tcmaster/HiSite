@@ -13,6 +13,10 @@ public class Complain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 投诉id */
 	public int id;
+	/** 活动外键 */
+	public int rid;
+	/** 用户外键 */
+	public int uid;
 	/** 投诉类型 */
 	public int type;
 	/** 投诉内容 */
@@ -30,6 +34,22 @@ public class Complain implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 	public int getType() {

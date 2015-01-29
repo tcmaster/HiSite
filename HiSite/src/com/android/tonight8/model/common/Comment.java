@@ -13,6 +13,10 @@ public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 评论id */
 	public long id;
+	/**评论的话题外键*/
+	public long rid;
+	/**评论的用户外键*/
+	public int uid;
 	/** 评论内容 */
 	public String content;
 	/** 评论创建日期 */
@@ -36,6 +40,23 @@ public class Comment implements Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+
+	public long getRid() {
+		return rid;
+	}
+
+	public void setRid(long rid) {
+		this.rid = rid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 	public String getDate() {
@@ -64,8 +85,10 @@ public class Comment implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", content=" + content + ", date=" + date
-				+ ", time=" + time + ", replyTo=" + replyTo + "]";
+		return "Comment [id=" + id + ", rid=" + rid + ", uid=" + uid
+				+ ", content=" + content + ", date=" + date + ", time=" + time
+				+ ", replyTo=" + replyTo + "]";
 	}
+
 
 }

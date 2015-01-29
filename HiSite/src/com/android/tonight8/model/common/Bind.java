@@ -11,51 +11,43 @@ import java.io.Serializable;
 public class Bind implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	/** bind的id值*/
+	public int id;
+	/**商家的id外键*/
+	public int rid;
 	/** 商家绑定状态 */
 	public boolean status;
 	/** 商家绑定日期 */
 	public String date;
-	/** 商家被绑定的父级商家id */
-	public int parentId;
-	/** 子级 */
-	public Child child;
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getRid() {
+		return rid;
+	}
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
 	public boolean isStatus() {
 		return status;
 	}
-
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
 	public String getDate() {
 		return date;
 	}
-
 	public void setDate(String date) {
 		this.date = date;
 	}
-
-	public int getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(int parentId) {
-		this.parentId = parentId;
-	}
-
-	public Child getChild() {
-		return child;
-	}
-
-	public void setChild(Child child) {
-		this.child = child;
-	}
-
 	@Override
 	public String toString() {
-		return "Bind [status=" + status + ", date=" + date + ", parentId="
-				+ parentId + ", child=" + child + "]";
+		return "Bind [id=" + id + ", rid=" + rid + ", status=" + status
+				+ ", date=" + date + "]";
 	}
-
+	
+	
 }
