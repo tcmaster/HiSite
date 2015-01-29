@@ -16,6 +16,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.user.UserApplyHistoryActivity;
 import com.android.tonight8.activity.user.UserAwardListActivity;
 import com.android.tonight8.activity.user.UserCouponActivity;
+import com.android.tonight8.activity.user.UserFollowActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -75,7 +76,7 @@ public class IFragment extends MyAccountBaseFragment {
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	@OnClick({ R.id.layout_award_code, R.id.layout_my_coupon, R.id.layout_lottery_activity })
+	@OnClick({ R.id.layout_award_code, R.id.layout_my_coupon, R.id.layout_lottery_activity, R.id.layout_business })
 	public void onClick(View v) {
 		Intent intent = new Intent();
 		switch (v.getId()) {
@@ -87,6 +88,9 @@ public class IFragment extends MyAccountBaseFragment {
 			break;
 		case R.id.layout_lottery_activity:
 			intent.setClass(getActivity(), UserApplyHistoryActivity.class);
+			break;
+		case R.id.layout_business:
+			intent.setClass(getActivity(), UserFollowActivity.class);
 			break;
 		default:
 			break;

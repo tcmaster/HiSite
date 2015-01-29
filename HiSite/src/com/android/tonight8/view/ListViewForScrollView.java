@@ -8,10 +8,8 @@ import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
- * @Description:
+ * @Description:与ScrollView嵌套使用的listView
  * @author:LiXiaoSong
- * @see:
- * @since:
  * @copyright @tonight8
  * @Date:2015-1-4
  */

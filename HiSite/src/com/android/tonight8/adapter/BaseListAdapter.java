@@ -25,9 +25,13 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 	protected List<T> mValues;
 	protected String mRemark;
 	protected LayoutInflater mInflater;
+
 	public BaseListAdapter(Context context) {
 		super();
+		mContext = context;
+		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
+
 	public BaseListAdapter(Context context, List<T> values) {
 		mContext = context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
