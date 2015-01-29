@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
  * 
@@ -13,23 +12,18 @@ import com.lidroid.xutils.db.annotation.NotNull;
 public class ComplainEntity extends BaseEntity {
 	/** 投诉类型 */
 	@Column(column = "type")
-	@NotNull()
 	private int type;
 	/** 投诉内容 */
 	@Column(column = "content")
-	@NotNull()
 	private String content;
 	/** 联系方式内容 */
 	@Column(column = "contactContent")
-	@NotNull()
 	private String contactContent;
 	/** 投诉日期 */
 	@Column(column = "date")
-	@NotNull()
 	private String date;
 	/** 投诉时间 */
 	@Column(column = "time")
-	@NotNull()
 	private String time;
 	@Foreign(column = "rid", foreign = "id")
 	EventEntity event;

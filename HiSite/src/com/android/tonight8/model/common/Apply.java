@@ -13,6 +13,10 @@ public class Apply implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 报名记录id */
 	public long id;
+	/**活动外键引用*/
+	public int rid;
+	/**用户外键引用*/
+	public int uid;
 	/** 用户报名日期 */
 	public String date;
 	/** 用户报名时间 */
@@ -24,6 +28,23 @@ public class Apply implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 	public String getDate() {

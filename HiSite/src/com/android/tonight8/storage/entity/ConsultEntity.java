@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
  * @Description:咨询表
@@ -13,20 +12,19 @@ public class ConsultEntity extends BaseEntity {
 
 	/** 咨询内容 */
 	@Column(column = "content")
-	@NotNull()
 	private String content;
 	/** 咨询日期 */
 	@Column(column = "date")
-	@NotNull()
 	private String date;
 	/** 咨询时间 */
 	@Column(column = "time")
-	@NotNull()
 	private String time;
 	/** 对谁回复的用户名称 */
 	@Column(column = "replyTo")
-	@NotNull()
 	private String replyTo;
+	/** */
+	@Column(column ="quoteId")
+	private int quoteId;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
 	@Foreign(column = "uid", foreign = "id")

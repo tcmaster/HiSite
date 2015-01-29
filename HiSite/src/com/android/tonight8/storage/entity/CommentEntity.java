@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
  * @Description:评论表
@@ -12,19 +11,15 @@ import com.lidroid.xutils.db.annotation.NotNull;
 public class CommentEntity extends BaseEntity {
 	/** 评论内容 */
 	@Column(column = "content")
-	@NotNull()
 	private String content;
 	/** 评论创建日期 */
 	@Column(column = "date")
-	@NotNull()
 	private String date;
 	/** 评论创建时间 */
 	@Column(column = "time")
-	@NotNull()
 	private String time;
 	/** 对谁回复的用户名称 */
 	@Column(column = "replyTo")
-	@NotNull()
 	private String replyTo;
 	@Foreign(column = "rid", foreign = "id")
 	public SubjectEntity subject;

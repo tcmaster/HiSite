@@ -14,6 +14,10 @@ public class Coupon implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 券id */
 	public long id;
+	/** 活动外键 */
+	public int rid;
+	/** 用户外键*/
+	public int uid;
 	/** 券编号 */
 	public String code;
 	/** 券使用状态 */
@@ -45,6 +49,22 @@ public class Coupon implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 	public String getCode() {
@@ -145,13 +165,15 @@ public class Coupon implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", code=" + code + ", useStatus="
-				+ useStatus + ", provideType=" + provideType + ", provideNum="
-				+ provideNum + ", provideAll=" + provideAll + ", value="
-				+ value + ", content=" + content + ", dateRangeStart="
-				+ dateRangeStart + ", dateRangeEnd=" + dateRangeEnd
-				+ ", templatePic=" + templatePic + ", publishTime="
-				+ publishTime + ", quickMark=" + quickMark + "]";
+		return "Coupon [id=" + id + ", rid=" + rid + ", uid=" + uid + ", code="
+				+ code + ", useStatus=" + useStatus + ", provideType="
+				+ provideType + ", provideNum=" + provideNum + ", provideAll="
+				+ provideAll + ", value=" + value + ", content=" + content
+				+ ", dateRangeStart=" + dateRangeStart + ", dateRangeEnd="
+				+ dateRangeEnd + ", templatePic=" + templatePic
+				+ ", publishTime=" + publishTime + ", quickMark=" + quickMark
+				+ "]";
 	}
+	
 
 }

@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -16,11 +15,9 @@ public class ApplyEntity extends BaseEntity {
 
 	/** 日期 */
 	@Column(column = "date")
-	@NotNull()
 	private String date;
 	/** 时间 */
 	@Column(column = "time")
-	@NotNull()
 	private String time;
 	/** 引用外键Event id */
 	@Foreign(column = "rid", foreign = "id")
