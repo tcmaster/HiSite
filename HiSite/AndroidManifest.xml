@@ -118,6 +118,13 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 商家资料 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.OrgDetailActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <!-- 商品详情 -->
         <activity

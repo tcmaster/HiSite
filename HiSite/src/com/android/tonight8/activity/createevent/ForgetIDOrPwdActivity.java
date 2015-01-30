@@ -53,12 +53,11 @@ public class ForgetIDOrPwdActivity extends BaseActivity {
 	/** 0:id 1:密码 */
 	private int forgottype = 0;
 
-	@OnClick(R.id.btn_findback)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_forgotid_main);
-		getActionBarBase("忘记id");
+		super.onCreate(savedInstanceState);
+		getActionBarBase("忘记ID");
 		forgottype = getIntent().getIntExtra("forgottype", 0);
 		if (forgottype == 0) {
 			ll_password.setVisibility(View.GONE);
@@ -66,13 +65,18 @@ public class ForgetIDOrPwdActivity extends BaseActivity {
 			ll_shop_id.setVisibility(View.GONE);
 		}
 
-		btn_findback.setOnClickListener(new OnClickListener() {
+	}
 
-			@Override
-			public void onClick(View v) {
-				dealData();
-			}
-		});
+	@OnClick(R.id.btn_findback)
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_findback:
+			dealData();
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	private void dealData() {

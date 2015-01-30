@@ -30,12 +30,12 @@
     <string name="signup">立即报名</string>
     <string name="havesignup">已经报名</string>
     <!-- 发活动 -->
-    <string name="email">邮&#160;&#160;箱：</string>
-    <string name="name">名&#160;&#160;称：</string>
-    <string name="phone">电&#160;&#160;话：</string>
-    <string name="shopid">I&#160;&#160;&#160;&#160;D：</string>
+    <string name="email">邮&#160;&#160;&#160;&#160;箱：</string>
+    <string name="name">名&#160;&#160;&#160;&#160;称：</string>
+    <string name="phone">电&#160;&#160;&#160;&#160;话：</string>
+    <string name="shopid">I&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;D：</string>
     <string name="findback">找&#160;&#160;&#160;&#160;回</string>
-    <string name="password">密&#160;&#160;码：</string>
+    <string name="password">密&#160;&#160;&#160;&#160;码：</string>
     <string name="identity">证件号：</string>
     <string name="input_id">请输入ID</string>
     <string name="input_personname">请输入企业全称或个人全名</string>
