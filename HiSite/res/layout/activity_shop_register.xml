@@ -56,10 +56,9 @@
 
             <Button
                 android:id="@+id/btn_code_register"
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/setting_btn_selector"
+                style="@style/ok_button_style"
                 android:padding="5dp"
                 android:text="@string/get_code"
                 android:textColor="@drawable/setting_text_selector"

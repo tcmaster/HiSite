@@ -2,6 +2,9 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
+import com.lidroid.xutils.db.annotation.Id;
+import com.lidroid.xutils.db.annotation.NoAutoIncrement;
+import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -11,7 +14,8 @@ import com.lidroid.xutils.db.annotation.Table;
  */
 @Table(name = "popgoods")
 public class PopGoodsEntity {
-
+	@Id()
+	private int id;
 	/** 活动海报奖品名称 */
 	@Column(column = "popGoodsName")
 	private String popGoodsName;

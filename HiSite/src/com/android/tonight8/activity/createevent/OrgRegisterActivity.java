@@ -2,7 +2,6 @@ package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -44,6 +43,7 @@ public class OrgRegisterActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shop_register);
+		getActionBarBase("商家注册");
 
 	}
 
@@ -56,6 +56,7 @@ public class OrgRegisterActivity extends BaseActivity {
 			String codeString = et_code_register.getText().toString();
 			String pwdString = et_setpwd.getText().toString();
 			String pwdAgainString = et_setpwd_again.getText().toString();
+			finish();
 			break;
 		case R.id.btn_code_register:
 			phoneString = et_phone_register.getText().toString();

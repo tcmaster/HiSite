@@ -9,7 +9,6 @@ import com.lidroid.xutils.db.annotation.Column;
  */
 public class RegionalEntity extends BaseEntity {
 	/** 区域名称 */
-
 	@Column(column = "name")
 	public String name;
 	/** 区域编号 */
