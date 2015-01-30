@@ -3,21 +3,21 @@
  */
 package com.android.tonight8.fragment.myaccount;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.utils.StringUtils;
 
 /**
- * @Description: 该fragment封装了一些我中所用到的特有的方法
+ * @Description: 该fragment封装了一些"我"中所用到的特有的方法
  * @author:LiXiaoSong
  * @copyright @HiSite
  * @Date:2015-1-12
  */
-public class MyAccountBaseFragment extends Fragment {
+public class MyAccountBaseFragment extends BaseFragment {
 
 	/**
 	 * 

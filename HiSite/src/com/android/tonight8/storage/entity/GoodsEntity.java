@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
  * @Description: 商品表
@@ -13,19 +12,15 @@ public class GoodsEntity extends BaseEntity {
 
 	/** 活动奖品名称 */
 	@Column(column = "name")
-	@NotNull()
 	private String name;
 	/** 活动奖品图片文件地址 */
 	@Column(column = "pic")
-	@NotNull()
 	private String pic;
 	/** 活动奖品图片宽高 */
 	@Column(column = "size")
-	@NotNull()
 	private String size;
 	/** 活动奖品价格 */
 	@Column(column = "price")
-	@NotNull()
 	private int price;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
@@ -61,10 +56,4 @@ public class GoodsEntity extends BaseEntity {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	@Override
-	public String toString() {
-		return "Goods [name=" + name + ", pic=" + pic + ", size=" + size + ", price=" + price + ", event=" + event + "]";
-	}
-
 }

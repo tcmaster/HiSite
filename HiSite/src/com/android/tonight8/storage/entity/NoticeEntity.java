@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -11,18 +10,16 @@ import com.lidroid.xutils.db.annotation.Table;
  * @author liuzhao
  * @date 2015-1-17
  */
-@Table(name="notice")
+@Table(name = "notice")
 public class NoticeEntity extends BaseEntity {
+
 	/** 通知内容 */
-	@NotNull
 	@Column(column = "content")
 	public String content;
 	/** 通知日期 */
-	@NotNull
 	@Column(column = "date")
 	public String date;
 	/** 通知时间 */
-	@NotNull
 	@Column(column = "time")
 	public String time;
 	/** 商家 */
@@ -55,8 +52,7 @@ public class NoticeEntity extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Notice [content=" + content + ", date=" + date + ", time="
-				+ time + ", org=" + org + "]";
+		return "Notice [content=" + content + ", date=" + date + ", time=" + time + ", org=" + org + "]";
 	}
-	
+
 }

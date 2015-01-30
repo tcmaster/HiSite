@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /** 活动实体 */
@@ -11,71 +10,54 @@ public class EventEntity extends BaseEntity {
 
 	/** 活动名称 */
 	@Column(column = "name")
-	@NotNull()
 	private String name;
 	/** 活动状态 */
-	@Column(column = "status", defaultValue = "0")
-	@NotNull()
+	@Column(column = "status")
 	private int status;
 	/** 活动举办开始时间 */
-	@Column(column = "timeRangeStart", defaultValue = "0")
-	@NotNull()
+	@Column(column = "timeRangeStart")
 	private String timeRangeStart;
 	/** 活动举办结束时间 */
-	@Column(column = "timeRangeEnd", defaultValue = "0")
-	@NotNull()
+	@Column(column = "timeRangeEnd")
 	private String timeRangeEnd;
 	/** 活动举办开始时间的时间戳 */
-	@Column(column = "timeStamp", defaultValue = "0")
-	@NotNull()
+	@Column(column = "timeStamp")
 	private long timeStamp;
 	/** 活动距离 */
-	@Column(column = "distance", defaultValue = "0")
-	@NotNull()
+	@Column(column = "distance")
 	private float distance;
 	/** 活动上架时间 */
-	@Column(column = "publishTime", defaultValue = "0")
-	@NotNull()
+	@Column(column = "publishTime")
 	private String publishTime;
 	/** 活动规则 */
-	@Column(column = "ruleDesc", defaultValue = "no rule")
-	@NotNull()
+	@Column(column = "ruleDesc")
 	private String ruleDesc;
 	/** 活动中奖状态 */
-	@Column(column = "winningStatus", defaultValue = "0")
-	@NotNull()
+	@Column(column = "winningStatus")
 	private boolean winningStatus;
 	/** 活动中奖名额 */
-	@Column(column = "winningLimit", defaultValue = "0")
-	@NotNull()
+	@Column(column = "winningLimit")
 	private int winningLimit;
 	/** 活动奖品统计数 */
-	@Column(column = "goodsCount", defaultValue = "0")
-	@NotNull()
+	@Column(column = "goodsCount")
 	private int goodsCount;
 	/** 活动报名统计数 */
-	@Column(column = "applyCount", defaultValue = "0")
-	@NotNull()
+	@Column(column = "applyCount")
 	private int applyCount;
 	/** 活动咨询统计数 */
-	@Column(column = "consultCount", defaultValue = "0")
-	@NotNull()
+	@Column(column = "consultCount")
 	private int consultCount;
 	/** 活动中奖用户数 */
-	@Column(column = "awardCount", defaultValue = "0")
-	@NotNull()
+	@Column(column = "awardCount")
 	private int awardCount;
 	/** 活动举办是否在所有城市 */
-	@Column(column = "cityAll", defaultValue = "0")
-	@NotNull()
+	@Column(column = "cityAll")
 	private boolean cityAll;
 	/** 活动没中奖用户是否发放券 */
-	@Column(column = "isCouponNoneAward", defaultValue = "0")
-	@NotNull()
+	@Column(column = "isCouponNoneAward")
 	private boolean isCouponNoneAward;
 	/** 话题数量 */
-	@Column(column = "subjectCount", defaultValue = "0")
-	@NotNull()
+	@Column(column = "subjectCount")
 	private int subjectCount;
 	@Foreign(column = "rid", foreign = "id")
 	public OrgEntity org;

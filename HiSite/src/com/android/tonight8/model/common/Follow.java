@@ -13,6 +13,10 @@ public class Follow implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 关注id */
 	public int id;
+	/** 用户外键 */
+	public int rid;
+	/** 商家外键 */
+	public int oid;
 
 	public int getId() {
 		return id;
@@ -22,9 +26,24 @@ public class Follow implements Serializable {
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "Follow [id=" + id + "]";
+	public int getRid() {
+		return rid;
 	}
 
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getOid() {
+		return oid;
+	}
+
+	public void setOid(int oid) {
+		this.oid = oid;
+	}
+
+	@Override
+	public String toString() {
+		return "Follow [id=" + id + ", rid=" + rid + ", oid=" + oid + "]";
+	}
 }

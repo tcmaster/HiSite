@@ -17,8 +17,7 @@ public class CreateEventSecondStepNativeController {
 
 	public CreateEventSecondStepNativeController(Context context) {
 		super();
-		preference = context.getSharedPreferences(STORE_NAME,
-				Context.MODE_PRIVATE);
+		preference = context.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
 
 	}
 
@@ -29,15 +28,6 @@ public class CreateEventSecondStepNativeController {
 	 */
 	public void SaveCreateEventSecondStep(Coupon coupon) {
 
-		SharedPreferences.Editor editor = preference.edit();
-		editor.putBoolean("coupon_provideall", coupon.provideAll);
-		editor.putString("coupon_content", coupon.content);
-		editor.putInt("coupon_providetype", coupon.provideType);
-		editor.putInt("coupon_value", coupon.value);
-		editor.putInt("coupon_providenum", coupon.provideNum);
-		editor.putString("coupon_daterangestart", coupon.dateRangeStart);
-		editor.putString("coupon_daterangeend", coupon.dateRangeEnd);
-		editor.commit();
 		return;
 	}
 
@@ -47,16 +37,7 @@ public class CreateEventSecondStepNativeController {
 	 * @return
 	 */
 	public Coupon ReadCreateEventSecondStep() {
-		Coupon coupon = new Coupon();
-		coupon.setProvideAll(preference.getBoolean("coupon_provideall", true));
-		coupon.setContent(preference.getString("coupon_content", ""));
-		coupon.setProvideType(preference.getInt("coupon_providetype", 0));
-		coupon.setValue(preference.getInt("coupon_value", 0));
-		coupon.setProvideNum(preference.getInt("coupon_providenum", 0));
-		coupon.setDateRangeStart(preference.getString("coupon_daterangestart",
-				""));
-		coupon.setDateRangeEnd(preference.getString("coupon_daterangeend", ""));
-		return coupon;
+		return null;
 	}
 
 	/**
