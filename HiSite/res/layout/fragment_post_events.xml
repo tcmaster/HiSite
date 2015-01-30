@@ -6,17 +6,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical" >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_header_events"
-            android:layout_width="fill_parent"
-            android:layout_height="150dip" />
+        <FrameLayout
+            android:id="@+id/fl_header_events"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_header_events"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent" />
+
+            <com.android.tonight8.view.PointLinearlayout
+                android:id="@+id/pll_point_container"
+                style="@style/match_width"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
@@ -77,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="忘记ID号?"
+                android:textColor="@color/blue"
                 android:textSize="16sp" />
 
             <TextView
@@ -85,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="忘记密码?"
+                android:textColor="@color/blue"
                 android:textSize="16sp" />
         </LinearLayout>
 

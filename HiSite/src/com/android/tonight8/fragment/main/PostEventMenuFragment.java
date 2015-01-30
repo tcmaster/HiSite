@@ -2,8 +2,6 @@ package com.android.tonight8.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +21,7 @@ import com.android.tonight8.activity.createevent.EventsWinningManageActivity;
 import com.android.tonight8.activity.createevent.OrgDetailActivity;
 import com.android.tonight8.activity.createevent.UserFeedbacktActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.storage.organization.OrgLoginNativeController;
 import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -35,13 +34,10 @@ import com.lidroid.xutils.view.annotation.event.OnItemClick;
  * @author:LiuZhao
  * @Date:2014年12月15日
  */
-public class PostEventMenuFragment extends Fragment {
+public class PostEventMenuFragment extends BaseFragment {
 
 	/** 主布局 */
 	private View rootView = null;
-	/** 滑动的图片viewpager控件 */
-	@ViewInject(R.id.vp_header_events)
-	private ViewPager viewPager;
 	/** 商家头像 */
 	@ViewInject(R.id.iv_postevents_title)
 	private ImageView iv_postevents_title;
@@ -114,7 +110,7 @@ public class PostEventMenuFragment extends Fragment {
 		default:
 			break;
 		}
-		startActivity(intent);
+		startActivityForAnima(intent, getActivity());
 	}
 
 	private void initData() {
@@ -136,7 +132,7 @@ public class PostEventMenuFragment extends Fragment {
 
 		case R.id.rl_org_account:
 			intent = new Intent(getActivity(), OrgDetailActivity.class);
-			startActivity(intent);
+			startActivityForAnima(intent, getActivity());
 			break;
 		}
 	}

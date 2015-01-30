@@ -12,21 +12,19 @@ import android.widget.ListView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.live.HiLiveAdapter;
-import com.android.tonight8.model.common.Comment;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.SignIn;
-import com.android.tonight8.model.common.Subject;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveListModel;
-import com.android.tonight8.model.live.LiveSubjectModel;
 
 /**
  * @Description:Hi现场
  * @author:LiuZhao
  * @Date:2014年12月15日
  */
-public class HiLiveFragment extends Fragment {
+public class HiLiveFragment extends BaseFragment {
 
 	private View rootView;
 	private ListView lv_hiLive;
