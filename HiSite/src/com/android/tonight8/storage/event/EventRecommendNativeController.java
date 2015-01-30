@@ -30,23 +30,24 @@ public class EventRecommendNativeController {
 	public void insertData(List<EventRecommendModel> models) {
 		List<EventRecommendEntity> entities = new ArrayList<EventRecommendEntity>();
 		List<PopGoodsEntity> pEntities = new ArrayList<PopGoodsEntity>();
+		List<EventEntity> eEntities = new ArrayList<EventEntity>();
 		for (int i = 0; i < models.size(); i++) {
-			EventRecommendEntity entity = new EventRecommendEntity();
+			EventRecommendEntity eventRecommendEntity = new EventRecommendEntity();
 			EventRecommendModel model = models.get(i);
-			// 查询是否有该活动，有的话，更新数据
-			EventEntity hasEvent = DBUtil.getDataFirst(EventEntity.class, "id = " + model.getId());
-			PopGoodsEntity popGoodsEntity = null;
-			popGoodsEntity = new PopGoodsEntity();
+			DBUtil.copyData(EventRecommendModel.class, EventRecommendEntity.class, model, eventRecommendEntity);
+			EventEntity eventEntity = new EventEntity();
+			eventEntity.setId(model.id);
+			PopGoodsEntity popGoodsEntity = new PopGoodsEntity();
 			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods, popGoodsEntity);
-			popGoodsEntity.event = hasEvent;
+			eventRecommendEntity.event = eventEntity;
+			eventRecommendEntity.popGoods = popGoodsEntity;
+			entities.add(eventRecommendEntity);
 			pEntities.add(popGoodsEntity);
-			DBUtil.copyData(EventRecommendModel.class, EventRecommendEntity.class, model, entity);
-			entity.popGoods = popGoodsEntity;
-			entity.popGoods.event = hasEvent;
-			entities.add(entity);
+			eEntities.add(eventEntity);
 		}
 		DBUtil.saveOrUpdateAll(pEntities);
-		DBUtil.addDataAll(entities);
+		DBUtil.saveOrUpdateAll(pEntities);
+		DBUtil.saveOrUpdateAll(eEntities);
 	}
 
 	/**

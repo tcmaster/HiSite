@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Context;
 
+import com.android.tonight8.storage.entity.BaseEntity;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
@@ -129,10 +130,23 @@ public class DBUtil {
 
 	/**
 	 * 插入或更新数据(没有该数据则插入，有则更新)，单条
+	 * 
+	 * 仅适用于继承BaseEntity的实体
+	 * 
+	 * @param updateColumns
+	 *            在更新的情况下，指定更新哪些行，如果参数为0，则代表所有行都更新
 	 */
-	public static void saveOrUpdate(Object entity) {
+	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, String... updateColumns) {
 		try {
-			utils.saveOrUpdate(entity);
+			long id = ((BaseEntity) myEntity).getId();
+			T entity = utils.findById(clazz, id);
+			if (entity != null)
+				// 有该条数据，更新
+				utils.update(myEntity, updateColumns);
+
+			else
+				// 不存在该条数据，插入
+				utils.save(myEntity);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
@@ -140,13 +154,38 @@ public class DBUtil {
 
 	/**
 	 * 插入或更新数据(没有该数据则插入，有则更新),多条
+	 * 
+	 * 仅适用于继承BaseEntity的实体
+	 * 
+	 * @param updateColumns
+	 *            在更新的情况下，指定更新哪些行，如果参数为0，则代表所有行都更新
 	 */
-	public static void saveOrUpdateAll(List<?> entities) {
+	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz, String... updateColumns) {
+		// 过程说明，遍历表中所有内容，进行查找是否有相对应的数据，若没有，则进行插入，若存在，则根据更新的列对该数据进行更新
 		try {
-			utils.saveOrUpdateAll(entities);
+			for (int i = 0; i < entities.size(); i++) {
+				long id = ((BaseEntity) entities.get(i)).getId();
+				T entity = utils.findById(clazz, id);
+				if (entity != null)
+					// 有该条数据，更新
+					utils.update(entities.get(i), updateColumns);
+
+				else
+					// 不存在该条数据，插入
+					utils.save(entities.get(i));
+
+			}
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void saveOrUpdateAll(List<?> entities) {
+
+	}
+
+	public static void saveOrUpdate(Object entity) {
+
 	}
 
 	/**

@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -15,7 +14,6 @@ public class EventRecommendEntity extends BaseEntity {
 
 	/** 活动推荐名称 */
 	@Column(column = "name")
-	@NotNull()
 	private String name;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
