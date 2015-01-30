@@ -3,12 +3,12 @@
  */
 package com.android.tonight8.fragment.myaccount;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.utils.StringUtils;
 
 /**
@@ -17,7 +17,7 @@ import com.android.tonight8.utils.StringUtils;
  * @copyright @HiSite
  * @Date:2015-1-12
  */
-public class MyAccountBaseFragment extends Fragment {
+public class MyAccountBaseFragment extends BaseFragment {
 
 	/**
 	 * 
