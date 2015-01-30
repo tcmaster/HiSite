@@ -11,6 +11,7 @@ import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.TimeCount;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:商家注册
@@ -43,27 +44,29 @@ public class OrgRegisterActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shop_register);
-		btn_register_ok.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				String phoneString = et_phone_register.getText().toString();
-				String codeString = et_code_register.getText().toString();
-				String pwdString = et_setpwd.getText().toString();
-				String pwdAgainString = et_setpwd_again.getText().toString();
+	}
+
+	@OnClick({ R.id.btn_register_ok, R.id.btn_code_register })
+	public void onClick(View v) {
+		String phoneString = null;
+		switch (v.getId()) {
+		case R.id.btn_register_ok:
+			phoneString = et_phone_register.getText().toString();
+			String codeString = et_code_register.getText().toString();
+			String pwdString = et_setpwd.getText().toString();
+			String pwdAgainString = et_setpwd_again.getText().toString();
+			break;
+		case R.id.btn_code_register:
+			phoneString = et_phone_register.getText().toString();
+			if (!StringUtils.phoneOrMobile(phoneString)) {
+				timeCount = new TimeCount(60000, 1000, btn_code_register);// 构造CountDownTimer对象
+				timeCount.start();
 			}
-		});
-		btn_code_register.setOnClickListener(new OnClickListener() {
+			break;
+		default:
+			break;
+		}
 
-			@Override
-			public void onClick(View v) {
-				String phoneString = et_phone_register.getText().toString();
-				if (!StringUtils.phoneOrMobile(phoneString)) {
-					timeCount = new TimeCount(60000, 1000, btn_code_register);// 构造CountDownTimer对象
-					timeCount.start();
-				}
-
-			}
-		});
 	}
 }
