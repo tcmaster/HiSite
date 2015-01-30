@@ -14,6 +14,8 @@ public class Exchange implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 兑奖id */
 	public int id;
+	/** 活动外键 */
+	public int rid;
 	/** 兑奖方式 */
 	public boolean method;
 	/** 兑奖指定地址 */
@@ -31,6 +33,14 @@ public class Exchange implements Serializable {
 
 	public boolean isMethod() {
 		return method;
+	}
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 
 	public void setMethod(boolean method) {
@@ -55,8 +65,7 @@ public class Exchange implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Exchange [id=" + id + ", method=" + method + ", address="
-				+ address + ", orgAll=" + orgAll + "]";
+		return "Exchange [id=" + id + ", rid=" + rid + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + "]";
 	}
 
 }

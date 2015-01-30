@@ -10,8 +10,10 @@ import java.io.Serializable;
 public class Goods implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	/** 活动id */
+	/** 活动奖品id */
 	public long id;
+	/** 活动外键 */
+	public int rid;
 	/** 活动奖品名称 */
 	public String name;
 	/** 活动奖品图片文件地址 */
@@ -61,10 +63,17 @@ public class Goods implements Serializable {
 		this.price = price;
 	}
 
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
 	@Override
 	public String toString() {
-		return "Goods [id=" + id + ", name=" + name + ", pic=" + pic
-				+ ", size=" + size + ", price=" + price + "]";
+		return "Goods [id=" + id + ", name=" + name + ", pic=" + pic + ", size=" + size + ", price=" + price + "]";
 	}
 
 }

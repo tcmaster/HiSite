@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author LiXiaoSong
  */
 public class Event implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	/** 活动id */
 	public int id;
@@ -15,8 +16,6 @@ public class Event implements Serializable {
 	public String name;
 	/** 活动状态 */
 	public int status;
-	/** 活动海报 */
-	public PopGoods popGoods;
 	/** 活动距离 */
 	public float distance;
 	/** 活动举办开始时间 */
@@ -47,8 +46,12 @@ public class Event implements Serializable {
 	public boolean isCouponNoneAward;
 	/** 话题数量 */
 	public int subjectCount;
-	/** 签到数量*/
+	/** 签到数量 */
 	public int signInCount;
+	/** 活动海报 */
+	public PopGoods popGoods;
+	/** 活动奖品 */
+	public Goods goods;
 
 	public int getId() {
 		return id;
@@ -72,14 +75,6 @@ public class Event implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public PopGoods getPopGoods() {
-		return popGoods;
-	}
-
-	public void setPopGoods(PopGoods popGoods) {
-		this.popGoods = popGoods;
 	}
 
 	public float getDistance() {
@@ -202,18 +197,33 @@ public class Event implements Serializable {
 		this.subjectCount = subjectCount;
 	}
 
+	public int getSignInCount() {
+		return signInCount;
+	}
+
+	public void setSignInCount(int signInCount) {
+		this.signInCount = signInCount;
+	}
+
+	public PopGoods getPopGoods() {
+		return popGoods;
+	}
+
+	public void setPopGoods(PopGoods popGoods) {
+		this.popGoods = popGoods;
+	}
+
+	public Goods getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
+
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", status=" + status
-				+ ", popGoods=" + popGoods + ", distance=" + distance
-				+ ", timeRangeStart=" + timeRangeStart + ", timeRangeEnd="
-				+ timeRangeEnd + ", timeStamp=" + timeStamp + ", publishTime="
-				+ publishTime + ", ruleDesc=" + ruleDesc + ", winningStatus="
-				+ winningStatus + ", winningLimit=" + winningLimit
-				+ ", goodsCount=" + goodsCount + ", applyCount=" + applyCount
-				+ ", consultCount=" + consultCount + ", awardCount="
-				+ awardCount + ", cityAll=" + cityAll + ", isCouponNoneAward="
-				+ isCouponNoneAward + "]";
+		return "Event [id=" + id + ", name=" + name + ", status=" + status + ", distance=" + distance + ", timeRangeStart=" + timeRangeStart + ", timeRangeEnd=" + timeRangeEnd + ", timeStamp=" + timeStamp + ", publishTime=" + publishTime + ", ruleDesc=" + ruleDesc + ", winningStatus=" + winningStatus + ", winningLimit=" + winningLimit + ", goodsCount=" + goodsCount + ", applyCount=" + applyCount + ", consultCount=" + consultCount + ", awardCount=" + awardCount + ", cityAll=" + cityAll + ", isCouponNoneAward=" + isCouponNoneAward + ", subjectCount=" + subjectCount + ", signInCount=" + signInCount + ", popGoods=" + popGoods + ", goods=" + goods + "]";
 	}
 
 }

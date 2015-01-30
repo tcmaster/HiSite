@@ -13,6 +13,8 @@ public class Notice implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 通知id */
 	public long id;
+	/** 商家引用 */
+	public int rid;
 	/** 通知内容 */
 	public String content;
 	/** 通知日期 */
@@ -26,6 +28,14 @@ public class Notice implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 
 	public String getContent() {
@@ -54,8 +64,7 @@ public class Notice implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Notice [id=" + id + ", content=" + content + ", date=" + date
-				+ ", time=" + time + "]";
+		return "Notice [id=" + id + ", rid=" + rid + ", content=" + content + ", date=" + date + ", time=" + time + "]";
 	}
 
 }
