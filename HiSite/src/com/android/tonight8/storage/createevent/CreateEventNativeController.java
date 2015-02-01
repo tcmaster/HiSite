@@ -37,19 +37,21 @@ public class CreateEventNativeController {
 	}
 
 	/**
-	 * @Description: 活动中奖名单列表取出
-	 * @param models
-	 * @author: LiXiaoSong
-	 * @date:2015-1-22
+	 * 查询发布的活动数据
+	 * @param id
+	 * @return
 	 */
 	public CreateEventModel selectData(String id) {
 		CreateEventModel createEventModel = new CreateEventModel();
 		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + id);
 		DBUtil.copyData(EventEntity.class, Event.class, eventEntity, createEventModel.event);
 
-		ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "id = " + id);
+		ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + id);
 		DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity, createEventModel.exchange);
-
+		
+		GoodsEntity goodsEntity = DBUtil.getDataFirst(GoodsEntity.class, "rid = " + id);
+		DBUtil.copyData(GoodsEntity.class, Goods.class, goodsEntity, createEventModel.goods);
+		
 		return createEventModel;
 	}
 
