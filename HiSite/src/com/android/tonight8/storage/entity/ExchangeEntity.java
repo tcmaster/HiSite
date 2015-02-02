@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
+import com.lidroid.xutils.db.annotation.Id;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -13,8 +14,11 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17
  */
 @Table(name = "exchange")
-public class ExchangeEntity extends BaseEntity {
+public class ExchangeEntity {
 
+	/***/
+	@Id
+	private int id;
 	/** 兑奖方式 */
 	@Column(column = "method")
 	private boolean method;
@@ -25,10 +29,18 @@ public class ExchangeEntity extends BaseEntity {
 	@Column(column = "orgAll")
 	private boolean orgAll;
 	@Foreign(column = "rid", foreign = "id")
-	public EventEntity event;
+	public OrgEntity org;
 	/** 活动商家，临时（可能会更改） */
 	@Foreign(column = "oid", foreign = "exchangeId")
 	public List<OrgEntity> orgs = new ArrayList<OrgEntity>();
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public boolean isMethod() {
 		return method;
@@ -56,7 +68,7 @@ public class ExchangeEntity extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Exchange [method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", event=" + event + "]";
+		return "ExchangeEntity [id=" + id + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", org=" + org + ", orgs=" + orgs + "]";
 	}
 
 }
