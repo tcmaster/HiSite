@@ -10,7 +10,7 @@ import com.android.tonight8.base.BaseActivity;
  * @author LiuZhao
  * @Date2014-12-29 下午11:28:19
  */
-public class EventsWinningListActivity extends BaseActivity {
+public class EventsAwardListActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

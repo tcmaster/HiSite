@@ -5,7 +5,6 @@ import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveCommentModel;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.CommentEntity;
-import com.android.tonight8.storage.entity.SubjectEntity;
 import com.android.tonight8.storage.entity.UserEntity;
 
 /**
@@ -20,40 +19,28 @@ public class LiveCommentNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(LiveCommentModel listModel, String userid,
-			String subjectid) {
+	public void InsertData(LiveCommentModel listModel) {
 
 		CommentEntity commentEntity = new CommentEntity();
-		DBUtil.copyData(Comment.class, CommentEntity.class,
-				listModel.getComment(), commentEntity);
-		SubjectEntity subjectEntity = DBUtil.getDataFirst(SubjectEntity.class,
-				"rid = " + subjectid);
-		UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "uid = "
-				+ userid);
-		commentEntity.subject = subjectEntity;
-		commentEntity.user = userEntity;
+		DBUtil.copyData(Comment.class, CommentEntity.class, listModel.getComment(), commentEntity);
 		// 存到数据库中
-		DBUtil.saveOrUpdate(commentEntity);
+		DBUtil.addData(commentEntity);
 
 	}
-
-	// 通过查询评论列表查询出来
-	/**
-	 * @param userid
-	 * @param subjectid
-	 * @return 查询数据
-	 */
-	public LiveCommentModel SelectData(String userid, String subjectid) {
-		LiveCommentModel liveCommentModel = new LiveCommentModel();
-		CommentEntity commentEntity = DBUtil.getDataFirst(CommentEntity.class,
-				"rid = " + subjectid + " and " + "uid = " + userid);
-		UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "uid = "
-				+ userid);
-		DBUtil.copyData(CommentEntity.class, Comment.class, commentEntity,
-				liveCommentModel.getComment());
-		DBUtil.copyData(UserEntity.class, User.class, userEntity,
-				liveCommentModel.getUser());
-		return liveCommentModel;
-
-	}
+	//
+	// // 通过查询评论列表查询出来
+	// /**
+	// * @param userid
+	// * @param subjectid
+	// * @return 查询数据
+	// */
+	// public LiveCommentModel SelectData(String userid, String subjectid) {
+	// LiveCommentModel liveCommentModel = new LiveCommentModel();
+	// CommentEntity commentEntity = DBUtil.getDataFirst(CommentEntity.class, "rid = " + subjectid + " and " +
+	// "uid = " + userid);
+	// UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "uid = " + userid);
+	// DBUtil.copyData(CommentEntity.class, Comment.class, commentEntity, liveCommentModel.getComment());
+	// DBUtil.copyData(UserEntity.class, User.class, userEntity, liveCommentModel.getUser());
+	// return liveCommentModel;
+	// }
 }

@@ -30,15 +30,15 @@
     <TextView
         android:id="@+id/tv_live_comment_date"
         style="@style/wrap"
-        android:layout_alignLeft="@+id/tv_live_comment_title"
+        android:layout_alignLeft="@+id/tv_live_comment_name"
         android:layout_below="@+id/tv_live_comment_content"
         android:text="2014-11-27 12:15:47" />
 
     <TextView
         android:id="@+id/tv_live_comment_content"
         style="@style/wrap"
-        android:layout_alignLeft="@+id/tv_live_comment_title"
-        android:layout_below="@+id/tv_live_comment_title"
+        android:layout_alignLeft="@+id/tv_live_comment_name"
+        android:layout_below="@+id/tv_live_comment_name"
         android:layout_centerVertical="true"
         android:text="阿文分为阿泰gear哇嘎嘎嘎尔sagaerwge额外发个rage让广发额外人噶人噶尔方法" />
 

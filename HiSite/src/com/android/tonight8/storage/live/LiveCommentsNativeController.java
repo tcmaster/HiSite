@@ -2,7 +2,6 @@ package com.android.tonight8.storage.live;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveCommentModel;
@@ -25,7 +24,6 @@ public class LiveCommentsNativeController {
 	public void InsertData(List<LiveCommentModel> listModel) {
 
 		for (int i = 0; i < listModel.size(); i++) {
-
 			CommentEntity commentEntity = new CommentEntity();
 			UserEntity userEntity = new UserEntity();
 			DBUtil.copyData(Comment.class, CommentEntity.class, listModel.get(i).getComment(), commentEntity);

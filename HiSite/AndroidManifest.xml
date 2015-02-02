@@ -85,7 +85,7 @@
         </activity>
         <!-- 活动中奖管理 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.EventsWinningManageActivity"
+            android:name="com.android.tonight8.activity.createevent.EventsAwardManageActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >

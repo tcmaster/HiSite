@@ -17,7 +17,7 @@ import com.android.tonight8.activity.createevent.BindAgencyActivity;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.CreatEventFirstActivity;
-import com.android.tonight8.activity.createevent.EventsWinningManageActivity;
+import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
 import com.android.tonight8.activity.createevent.OrgDetailActivity;
 import com.android.tonight8.activity.createevent.UserFeedbacktActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
@@ -93,7 +93,7 @@ public class PostEventMenuFragment extends BaseFragment {
 			intent = new Intent(getActivity(), CreatEventFirstActivity.class);
 			break;
 		case 1:
-			intent = new Intent(getActivity(), EventsWinningManageActivity.class);
+			intent = new Intent(getActivity(), EventsAwardManageActivity.class);
 			break;
 		case 2:
 			intent = new Intent(getActivity(), CouponToUseActivity.class);
