@@ -3,10 +3,12 @@ package com.android.tonight8.model.event;
 import java.util.List;
 
 import com.android.tonight8.model.BaseModel;
-import com.android.tonight8.model.common.Coupon;
+import com.android.tonight8.model.common.CouponProvide;
 import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.model.common.Org;
+import com.android.tonight8.model.common.PopGoods;
 
 /**
  * 活动详情
@@ -14,13 +16,18 @@ import com.android.tonight8.model.common.Org;
  * @author LiXiaoSong
  */
 public class EventDetailModel extends BaseModel {
+
 	private static final long serialVersionUID = 1L;
 	/** 活动 */
 	public Event event;
 	/** 商家 */
 	public Org org;
 	/** 优惠券 */
-	public Coupon coupon;
+	public CouponProvide couponProvide;
+	/** 兑换 */
+	public Exchange exchange;
+	/** 海报 */
+	public PopGoods popGoods;
 	/** 活动奖品 */
 	public List<Goods> goodses;
 
@@ -40,12 +47,28 @@ public class EventDetailModel extends BaseModel {
 		this.org = org;
 	}
 
-	public Coupon getCoupon() {
-		return coupon;
+	public CouponProvide getCouponProvide() {
+		return couponProvide;
 	}
 
-	public void setCoupon(Coupon coupon) {
-		this.coupon = coupon;
+	public void setCouponProvide(CouponProvide couponProvide) {
+		this.couponProvide = couponProvide;
+	}
+
+	public Exchange getExchange() {
+		return exchange;
+	}
+
+	public void setExchange(Exchange exchange) {
+		this.exchange = exchange;
+	}
+
+	public PopGoods getPopGoods() {
+		return popGoods;
+	}
+
+	public void setPopGoods(PopGoods popGoods) {
+		this.popGoods = popGoods;
 	}
 
 	public List<Goods> getGoodses() {
@@ -58,8 +81,7 @@ public class EventDetailModel extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "EventDetailModel [event=" + event + ", org=" + org
-				+ ", coupon=" + coupon + ", goodses=" + goodses + "]";
+		return "EventDetailModel [event=" + event + ", org=" + org + ", couponProvide=" + couponProvide + ", exchange=" + exchange + ", popGoods=" + popGoods + ", goodses=" + goodses + "]";
 	}
 
 }
