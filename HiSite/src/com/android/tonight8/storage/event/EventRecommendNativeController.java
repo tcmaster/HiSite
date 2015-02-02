@@ -6,12 +6,13 @@ package com.android.tonight8.storage.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.event.EventRecommendModel;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.EventEntity;
-import com.android.tonight8.storage.entity.EventRecommendEntity;
 import com.android.tonight8.storage.entity.PopGoodsEntity;
+import com.lidroid.xutils.db.sqlite.WhereBuilder;
 
 /**
  * @Description:活动推荐数据存取控制类
@@ -28,26 +29,20 @@ public class EventRecommendNativeController {
 	 *            数据
 	 */
 	public void insertData(List<EventRecommendModel> models) {
-		List<EventRecommendEntity> entities = new ArrayList<EventRecommendEntity>();
 		List<PopGoodsEntity> pEntities = new ArrayList<PopGoodsEntity>();
 		List<EventEntity> eEntities = new ArrayList<EventEntity>();
 		for (int i = 0; i < models.size(); i++) {
-			EventRecommendEntity eventRecommendEntity = new EventRecommendEntity();
 			EventRecommendModel model = models.get(i);
-			DBUtil.copyData(EventRecommendModel.class, EventRecommendEntity.class, model, eventRecommendEntity);
 			EventEntity eventEntity = new EventEntity();
-			eventEntity.setId(model.id);
 			PopGoodsEntity popGoodsEntity = new PopGoodsEntity();
 			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods, popGoodsEntity);
-			eventRecommendEntity.event = eventEntity;
-			eventRecommendEntity.popGoods = popGoodsEntity;
-			entities.add(eventRecommendEntity);
+			DBUtil.copyData(Event.class, EventEntity.class, model.event, eventEntity);
+			popGoodsEntity.event = eventEntity;
 			pEntities.add(popGoodsEntity);
 			eEntities.add(eventEntity);
+			DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=", eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
 		}
-		DBUtil.saveOrUpdateAll(pEntities);
-		DBUtil.saveOrUpdateAll(pEntities);
-		DBUtil.saveOrUpdateAll(eEntities);
+		DBUtil.saveOrUpdateAll(eEntities, EventEntity.class, "name");
 	}
 
 	/**
@@ -55,20 +50,19 @@ public class EventRecommendNativeController {
 	 *            获取活动推荐数据
 	 * @return 返回的数据
 	 */
-	public List<EventRecommendModel> selectData() {
+	public List<EventRecommendModel> selectData(long eventId) {
 		List<EventRecommendModel> models = new ArrayList<EventRecommendModel>();
-		List<EventRecommendEntity> entities = DBUtil.getData(EventRecommendEntity.class);
-		if (entities != null) {
-			for (int i = 0; i < entities.size(); i++) {
-				EventRecommendEntity entity = entities.get(i);
+		List<PopGoodsEntity> popGoodsEntities = DBUtil.getData(PopGoodsEntity.class, "rid = " + eventId);
+		if (popGoodsEntities != null) {
+			for (int i = 0; i < popGoodsEntities.size(); i++) {
 				EventRecommendModel model = new EventRecommendModel();
-				if (entity != null) {
-					PopGoods goods = new PopGoods();
-					DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, entity.popGoods, goods);
-					model.popGoods = goods;
-					DBUtil.copyData(EventRecommendEntity.class, EventRecommendModel.class, entity, model);
-					models.add(model);
-				}
+				PopGoods popGoods = new PopGoods();
+				Event event = new Event();
+				DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, popGoodsEntities.get(i), popGoods);
+				DBUtil.copyData(EventEntity.class, Event.class, popGoodsEntities.get(i).event, event);
+				model.event = event;
+				model.popGoods = popGoods;
+				models.add(model);
 			}
 		}
 		return models;
@@ -92,10 +86,6 @@ public class EventRecommendNativeController {
 	 * @date:2015-1-21
 	 */
 	public void delete(long id) {
-		if (id == -1) {
-			DBUtil.deleteData(EventRecommendEntity.class);
-		} else {
-			DBUtil.deleteData(EventRecommendEntity.class, id);
-		}
+
 	}
 }

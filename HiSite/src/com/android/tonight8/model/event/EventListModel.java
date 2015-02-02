@@ -1,22 +1,26 @@
 package com.android.tonight8.model.event;
 
 import com.android.tonight8.model.BaseModel;
-import com.android.tonight8.model.common.Coupon;
+import com.android.tonight8.model.common.CouponProvide;
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Org;
+import com.android.tonight8.model.common.PopGoods;
 
 /**
  * 活动开奖列表
  */
 public class EventListModel extends BaseModel {
+
 	private static final long serialVersionUID = 1L;
 	/** 活动 */
 	public Event event;
+	/** 活动海报 */
+	public PopGoods popGoods;
 	/** 商家 */
 	public Org org;
 	/** 优惠券 */
-	public Coupon coupon;
+	public CouponProvide couponProvide;
 	/** 兑奖 */
 	public Exchange exchange;
 
@@ -28,6 +32,14 @@ public class EventListModel extends BaseModel {
 		this.event = event;
 	}
 
+	public PopGoods getPopGoods() {
+		return popGoods;
+	}
+
+	public void setPopGoods(PopGoods popGoods) {
+		this.popGoods = popGoods;
+	}
+
 	public Org getOrg() {
 		return org;
 	}
@@ -36,12 +48,12 @@ public class EventListModel extends BaseModel {
 		this.org = org;
 	}
 
-	public Coupon getCoupon() {
-		return coupon;
+	public CouponProvide getCouponProvide() {
+		return couponProvide;
 	}
 
-	public void setCoupon(Coupon coupon) {
-		this.coupon = coupon;
+	public void setCouponProvide(CouponProvide couponProvide) {
+		this.couponProvide = couponProvide;
 	}
 
 	public Exchange getExchange() {
@@ -54,8 +66,7 @@ public class EventListModel extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "EventListModel [event=" + event + ", org=" + org + ", coupon="
-				+ coupon + ", exchange=" + exchange + "]";
+		return "EventListModel [event=" + event + ", popGoods=" + popGoods + ", org=" + org + ", couponProvide=" + couponProvide + ", exchange=" + exchange + "]";
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.android.tonight8.model.event;
 
 import com.android.tonight8.model.BaseModel;
+import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.PopGoods;
 
 /**
@@ -10,28 +11,18 @@ import com.android.tonight8.model.common.PopGoods;
  * 
  */
 public class EventRecommendModel extends BaseModel {
+
 	private static final long serialVersionUID = 1L;
-	/** 活动id */
-	public long id;
-	/** 活动名称 */
-	public String name;
+	public Event event;
 	/***/
 	public PopGoods popGoods;
 
-	public long getId() {
-		return id;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public PopGoods getPopGoods() {
@@ -44,8 +35,7 @@ public class EventRecommendModel extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "EventRecommendModel [id=" + id + ", name=" + name
-				+ ", popGoods=" + popGoods + "]";
+		return "EventRecommendModel [event=" + event + ", popGoods=" + popGoods + "]";
 	}
 
 }

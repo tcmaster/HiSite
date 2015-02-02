@@ -13,6 +13,7 @@ import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.ExchangeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
+import com.lidroid.xutils.db.sqlite.WhereBuilder;
 
 /**
  * @Description: 活动开奖地址
@@ -32,19 +33,17 @@ public class EventExchangesNativeController {
 	 * @date:2015-1-23
 	 */
 	public void insertData(List<EventExchangeModel> models, long eventId) {
-		List<ExchangeEntity> exchangeEntities = new ArrayList<ExchangeEntity>();
-		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + eventId);
-		OrgEntity orgEntity = new OrgEntity();
-		DBUtil.copyData(Org.class, OrgEntity.class, models.get(0).getOrg(), orgEntity);
+		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		for (int i = 0; i < models.size(); i++) {
 			ExchangeEntity exchangeEntity = new ExchangeEntity();
+			OrgEntity orgEntity = new OrgEntity();
 			DBUtil.copyData(Exchange.class, ExchangeEntity.class, models.get(i).exchange, exchangeEntity);
-			exchangeEntity.event = eventEntity;
-			exchangeEntity.event.org = orgEntity;
-			exchangeEntities.add(exchangeEntity);
+			DBUtil.copyData(Org.class, OrgEntity.class, models.get(i).org, orgEntity);
+			exchangeEntity.org = orgEntity;
+			DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class, WhereBuilder.b("rid", "=", orgEntity.getId()), "method", "address", "orgAll");
+			orgEntities.add(orgEntity);
 		}
-		DBUtil.saveOrUpdateAll(exchangeEntities);
-		DBUtil.saveOrUpdate(orgEntity);
+		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name", "address", "telphone", "distance");
 	}
 
 	/**
@@ -57,13 +56,14 @@ public class EventExchangesNativeController {
 	 */
 	public List<EventExchangeModel> selectData(long eventId) {
 		List<EventExchangeModel> models = new ArrayList<EventExchangeModel>();
-		List<ExchangeEntity> exchangeEntities = DBUtil.getData(ExchangeEntity.class, "rid = " + eventId);
+		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + eventId);
+		List<ExchangeEntity> exchangeEntities = DBUtil.getData(ExchangeEntity.class, "rid = " + eventEntity.org.getId());
 		for (int i = 0; i < exchangeEntities.size(); i++) {
 			EventExchangeModel model = new EventExchangeModel();
 			Exchange exchange = new Exchange();
 			Org org = new Org();
 			DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntities.get(i), exchange);
-			DBUtil.copyData(OrgEntity.class, Org.class, exchangeEntities.get(i).event.org, org);
+			DBUtil.copyData(OrgEntity.class, Org.class, exchangeEntities.get(i).org, org);
 			model.exchange = exchange;
 			model.org = org;
 			models.add(model);
