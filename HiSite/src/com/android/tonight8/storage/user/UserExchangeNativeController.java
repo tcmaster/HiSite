@@ -20,20 +20,22 @@ import com.android.tonight8.storage.entity.OrgEntity;
  * @Tonight8
  */
 public class UserExchangeNativeController {
+
 	/**
 	 * 存储用户中奖码兑换详情实体
+	 * 
 	 * @param models
 	 */
-	public void insertData(UserExchangeModel model){
+	public void insertData(UserExchangeModel model) {
 		ExchangeEntity exchangeEntity = new ExchangeEntity();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		EventEntity eventEntity = new EventEntity();
-		DBUtil.copyData(Exchange.class, ExchangeEntity.class,model.exchange,exchangeEntity);
-		DBUtil.copyData(Event.class, EventEntity.class,model.event,eventEntity);
-		exchangeEntity.event = eventEntity;
-		for(int i = 0;i < model.orgs.size();i++){
+		DBUtil.copyData(Exchange.class, ExchangeEntity.class, model.exchange, exchangeEntity);
+		DBUtil.copyData(Event.class, EventEntity.class, model.event, eventEntity);
+		// exchangeEntity.event = eventEntity;
+		for (int i = 0; i < model.orgs.size(); i++) {
 			OrgEntity orgEntity = new OrgEntity();
-			DBUtil.copyData(Org.class,OrgEntity.class,model.orgs.get(i),orgEntity);
+			DBUtil.copyData(Org.class, OrgEntity.class, model.orgs.get(i), orgEntity);
 			orgEntities.add(orgEntity);
 		}
 		exchangeEntity.orgs = orgEntities;
@@ -41,14 +43,18 @@ public class UserExchangeNativeController {
 		DBUtil.saveOrUpdate(eventEntity);
 		DBUtil.saveOrUpdateAll(orgEntities);
 	}
+
 	/**
 	 * 根据用户和活动获取用户中奖码兑换详情
-	 * @param eventId 活动id
-	 * @param userId 哪个用户(得不到，暂停）
+	 * 
+	 * @param eventId
+	 *            活动id
+	 * @param userId
+	 *            哪个用户(得不到，暂停）
 	 */
-	public UserExchangeModel selectData(long eventId,long userId){
+	public UserExchangeModel selectData(long eventId, long userId) {
 		UserExchangeModel model = new UserExchangeModel();
-		
+
 		return model;
 	}
 }

@@ -129,6 +129,22 @@ public class DBUtil {
 	}
 
 	/**
+	 * 按某列更新或插入单条数据
+	 */
+	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, WhereBuilder where, String... updateColumns) {
+		try {
+			T entity = utils.findFirst(Selector.from(clazz).where(where));
+			if (entity != null)
+				utils.update(myEntity, where, updateColumns);
+			else
+				utils.save(myEntity);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
 	 * 插入或更新数据(没有该数据则插入，有则更新)，单条
 	 * 
 	 * 仅适用于继承BaseEntity的实体
@@ -142,7 +158,7 @@ public class DBUtil {
 			T entity = utils.findById(clazz, id);
 			if (entity != null)
 				// 有该条数据，更新
-				utils.update(myEntity, updateColumns);
+				utils.update(myEntity, WhereBuilder.b("id", "=", id), updateColumns);
 
 			else
 				// 不存在该条数据，插入
@@ -168,7 +184,7 @@ public class DBUtil {
 				T entity = utils.findById(clazz, id);
 				if (entity != null)
 					// 有该条数据，更新
-					utils.update(entities.get(i), updateColumns);
+					utils.update(entities.get(i), WhereBuilder.b("id", "=", id), updateColumns);
 
 				else
 					// 不存在该条数据，插入
@@ -184,8 +200,8 @@ public class DBUtil {
 
 	}
 
-	public static void saveOrUpdate(Object entity) {
-
+	public static void saveOrUpdate(Object object) {
+		// 防报错
 	}
 
 	/**
@@ -199,6 +215,18 @@ public class DBUtil {
 	public static <T> void deleteData(Class<T> clazz, Object id) {
 		try {
 			utils.deleteById(clazz, id);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 条件删除数据
+	 * 
+	 */
+	public static <T> void deleteData(Class<T> clazz, String sql) {
+		try {
+			utils.delete(clazz, WhereBuilder.b().expr(sql));
 		} catch (DbException e) {
 			e.printStackTrace();
 		}

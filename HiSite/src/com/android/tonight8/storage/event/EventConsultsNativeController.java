@@ -42,8 +42,8 @@ public class EventConsultsNativeController {
 			consultEntities.add(consultEntity);
 			userEntities.add(userEntity);
 		}
-		DBUtil.saveOrUpdateAll(consultEntities);
-		DBUtil.saveOrUpdateAll(userEntities);
+		DBUtil.saveOrUpdateAll(consultEntities, ConsultEntity.class, "quoteId", "content", "date", "time", "replyTo");
+		DBUtil.saveOrUpdateAll(userEntities, UserEntity.class, "name", "pic");
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class EventConsultsNativeController {
 		DBUtil.copyData(User.class, UserEntity.class, model.user, userEntity);
 		consultEntity.event = DBUtil.getDataFirst(EventEntity.class, "id = " + model.consult.rid);
 		consultEntity.user = userEntity;
-		DBUtil.saveOrUpdate(consultEntity);
-		DBUtil.saveOrUpdate(userEntity);
+		DBUtil.saveOrUpdate(consultEntity, ConsultEntity.class, "quoteId", "content", "date", "time", "replyTo");
+		DBUtil.saveOrUpdate(userEntity, UserEntity.class, "name", "pic");
 	}
 }

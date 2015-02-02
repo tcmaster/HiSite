@@ -12,6 +12,8 @@ public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/** 活动id */
 	public int id;
+	/** 商家引用id */
+	public int rid;
 	/** 活动名称 */
 	public String name;
 	/** 活动状态 */
