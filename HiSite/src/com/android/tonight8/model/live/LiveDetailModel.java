@@ -2,6 +2,7 @@ package com.android.tonight8.model.live;
 
 import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Org;
 
 /**
@@ -14,6 +15,16 @@ public class LiveDetailModel extends BaseModel {
 	public Event event;
 	/** 商家对象 */
 	public Org org;
+	/** 兑奖对象*/
+	public Exchange exchange;
+
+	public Exchange getExchange() {
+		return exchange;
+	}
+
+	public void setExchange(Exchange exchange) {
+		this.exchange = exchange;
+	}
 
 	public Event getEvent() {
 		return event;

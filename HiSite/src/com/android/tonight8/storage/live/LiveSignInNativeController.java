@@ -21,10 +21,9 @@ public class LiveSignInNativeController {
 	public void InsertData(SignIn listModel) {
 
 		SignInEntity signInEntity = new SignInEntity();
-		DBUtil.copyData(SignIn.class, SignInEntity.class, listModel,
-				signInEntity);
+		DBUtil.copyData(SignIn.class, SignInEntity.class, listModel, signInEntity);
 		// 存到数据库中
-		DBUtil.saveOrUpdate(signInEntity);
+		DBUtil.saveOrUpdate(signInEntity, SignInEntity.class, "pic", "size", "rid", "uid");
 
 	}
 
@@ -35,10 +34,8 @@ public class LiveSignInNativeController {
 	 */
 	public SignIn SelectData(String userid, String eventid) {
 		SignIn signIn = new SignIn();
-		SignInEntity signInEntity = DBUtil.getDataFirst(SignInEntity.class,
-				"rid = " + userid + " and " + "eid = " + eventid);
-		UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "rid = "
-				+ userid);
+		SignInEntity signInEntity = DBUtil.getDataFirst(SignInEntity.class, "uid = " + userid + " and " + "rid = " + eventid);
+		UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "rid = " + userid);
 		DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
 		DBUtil.copyData(UserEntity.class, User.class, userEntity, signIn.user);
 		return signIn;

@@ -14,7 +14,7 @@ import com.android.tonight8.model.createevent.CreateEventModel;
  */
 public class CreateEventThirdStepNativeController {
 
-	private String STORE_NAME = "CREATE_EVENT_THIRD";
+	public static String STORE_NAME = "CREATE_EVENT";
 	private SharedPreferences preference;
 
 	public CreateEventThirdStepNativeController(Context context) {
@@ -28,7 +28,7 @@ public class CreateEventThirdStepNativeController {
 	 * 
 	 * @param createEventModel
 	 */
-	public void SaveCreateEventSecondStep(CreateEventModel createEventModel) {
+	public void saveCreateEventSecondStep(CreateEventModel createEventModel) {
 		Exchange exChange = new Exchange();
 		Event event = createEventModel.event;
 		SharedPreferences.Editor editor = preference.edit();
@@ -45,24 +45,29 @@ public class CreateEventThirdStepNativeController {
 	 * 
 	 * @return
 	 */
-	public CreateEventModel ReadCreateEventSecondStep() {
-		CreateEventModel createEventModel = new CreateEventModel();
+	public Event readCreateEventSecondStepEvent() {
 		Event event = new Event();
+		event.setCityAll(preference.getBoolean("event_cityall", false));
+		return event;
+	}
+
+	/**
+	 * 读取本地存储
+	 * 
+	 * @return
+	 */
+	public Exchange readCreateEventSecondStepExchange() {
 		Exchange exChange = new Exchange();
-		event.setName(preference.getString("event_cityall", ""));
 		exChange.setAddress(preference.getString("exchange_address", ""));
 		exChange.setMethod(preference.getBoolean("exchange_method", true));
 		exChange.setOrgAll(preference.getBoolean("exchange_orgall", true));
-
-		createEventModel.setEvent(event);
-		createEventModel.setExchange(exChange);
-		return createEventModel;
+		return exChange;
 	}
 
 	/**
 	 * 清空数据
 	 */
-	public void DeleteCreateEventSecondStep() {
+	public void deleteCreateEventSecondStep() {
 		SharedPreferences.Editor editor = preference.edit();
 		editor.clear();
 		editor.commit();

@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.SignIn;
+import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveListModel;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.EventEntity;
+import com.android.tonight8.storage.entity.ExchangeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 import com.android.tonight8.storage.entity.SignInEntity;
+import com.android.tonight8.storage.entity.UserEntity;
+import com.lidroid.xutils.db.sqlite.WhereBuilder;
 
 /**
  * @Description:现场列表数据存储控制类
@@ -28,6 +33,7 @@ public class LiveListNativeController {
 		List<EventEntity> eventEntities = new ArrayList<EventEntity>();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		List<SignInEntity> signLists = new ArrayList<SignInEntity>();
+		List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
 
 			// 查询是否有该活动
@@ -45,12 +51,22 @@ public class LiveListNativeController {
 				signLists.add(signInEntity);
 
 			}
+			for (int j = 0; j < listModel.get(i).getUser().size(); j++) {
+				UserEntity userEntity = new UserEntity();
+				DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).getUser().get(j), userEntity);
+				userEntities.add(userEntity);
+			}
+			// 兑奖表
+			ExchangeEntity exchangeEntity = new ExchangeEntity();
+			DBUtil.copyData(Exchange.class, ExchangeEntity.class, listModel.get(i).getExchange(), exchangeEntity);
+			DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class, WhereBuilder.b("rid", "=", orgEntity.getId()), "method", "address", "orgAll");
 
 		}
 		// 存到数据库中
-		DBUtil.saveOrUpdate(eventEntities);
-		DBUtil.saveOrUpdate(orgEntities);
-		DBUtil.saveOrUpdate(signLists);
+		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "signInCount", "subjectCount", "timeRangeStart", "timeRangeEnd");
+		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
+		DBUtil.saveOrUpdateAll(signLists, SignInEntity.class, "pic", "size", "time");
+		DBUtil.saveOrUpdateAll(userEntities, UserEntity.class, "name", "pic");
 	}
 
 	/**
@@ -80,17 +96,29 @@ public class LiveListNativeController {
 			OrgEntity orgEntity = eventEntity.org;
 			DBUtil.copyData(OrgEntity.class, Org.class, orgEntity, org);
 			listModel.setOrg(org);
-			// 签到
+			// 签到 用户
 			List<SignIn> listSignIn = new ArrayList<SignIn>();
+			List<User> listUsers = new ArrayList<User>();
 			List<SignInEntity> listSignInEntities = new ArrayList<SignInEntity>();
-			listSignInEntities = DBUtil.getData(SignInEntity.class, "eid = " + eventEntity.getId());
+			listSignInEntities = DBUtil.getData(SignInEntity.class, "rid = " + eventEntity.getId());
 			for (int j = 0; j < listSignInEntities.size(); j++) {
+				// 签到
 				SignIn signIn = new SignIn();
 				SignInEntity signInEntity = listSignInEntities.get(j);
 				DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
 				listSignIn.add(signIn);
+
+				// 用户
+				User user = new User();
+				DBUtil.copyData(UserEntity.class, User.class, signInEntity.user, user);
+				listUsers.add(user);
 			}
 			listModel.setSignIn(listSignIn);
+			// 兑奖券
+			Exchange exchange = new Exchange();
+			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, " rid = " + orgEntity.getId());
+			DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity, exchange);
+			listModel.setExchange(exchange);
 
 		}
 		return listModels;

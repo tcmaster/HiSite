@@ -22,17 +22,19 @@ public class LiveCommentsNativeController {
 	 * @date:2015年1月22日
 	 */
 	public void InsertData(List<LiveCommentModel> listModel) {
-
+		List<CommentEntity> commentEntities = new ArrayList<CommentEntity>();
+		List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
 			CommentEntity commentEntity = new CommentEntity();
 			UserEntity userEntity = new UserEntity();
-			DBUtil.copyData(Comment.class, CommentEntity.class, listModel.get(i).getComment(), commentEntity);
+			DBUtil.copyData(Comment.class, CommentEntity.class, listModel.get(i).comment, commentEntity);
 			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).user, userEntity);
-			// 存到数据库中
-			DBUtil.saveOrUpdate(commentEntity);
-			DBUtil.saveOrUpdate(userEntity);
+			commentEntities.add(commentEntity);
+			userEntities.add(userEntity);
 		}
-
+		// 存到数据库中
+		DBUtil.saveOrUpdateAll(commentEntities, CommentEntity.class, "content", "date", "time", "replyTo");
+		DBUtil.saveOrUpdateAll(userEntities, UserEntity.class, "name");
 	}
 
 	/**
@@ -46,7 +48,7 @@ public class LiveCommentsNativeController {
 
 	public List<LiveCommentModel> SelectData(String subjectId) {
 		List<LiveCommentModel> listModels = new ArrayList<LiveCommentModel>();
-		List<CommentEntity> commentlist = DBUtil.getData(CommentEntity.class, "id = " + subjectId);
+		List<CommentEntity> commentlist = DBUtil.getData(CommentEntity.class, "rid = " + subjectId);
 		if (commentlist == null) {
 			return null;
 		}

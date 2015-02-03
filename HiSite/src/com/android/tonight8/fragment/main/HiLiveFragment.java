@@ -65,7 +65,7 @@ public class HiLiveFragment extends BaseFragment {
 				signIns.add(signIn);
 			}
 			liveListModel.setSignIn(signIns);
-			liveListModel.setUser(user);
+			// liveListModel.setUser(user);
 			liveListModels.add(liveListModel);
 		}
 		hiLiveAdapter = new HiLiveAdapter(getActivity(), liveListModels);
