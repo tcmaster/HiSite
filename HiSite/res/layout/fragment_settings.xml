@@ -3,6 +3,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/tv_left_text"
+            style="@style/wrap"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <ImageView
+            android:id="@+id/iv_right_arrow"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_red_point_text"
+            style="@style/wrap"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@id/iv_right_arrow"
+            android:text="@string/app_name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/smallTextSize" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
+    <include
+        android:id="@+id/layout_account_authorization"
+        style="@style/wrap"
+        layout="@layout/include_settings_item" />
 
 </LinearLayout>

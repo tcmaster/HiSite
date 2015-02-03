@@ -14,5 +14,6 @@
     <!-- 上部高度 -->
     <dimen name="myaccount_top_height">180dp</dimen>
     <dimen name="tonight_iv_margin">5dp</dimen>
-
+    <!-- 设置和我的账号中，每个item的适当高度 -->
+	<dimen name="item_height_of_myaccount">50dp</dimen>
 </resources>
