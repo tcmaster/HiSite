@@ -1,5 +1,5 @@
-package com.android.tonight8.storage.live;
 
+package com.android.tonight8.storage.live;
 import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.CommentEntity;
@@ -24,3 +24,4 @@ public class LiveCommentReplyNativeController {
 	}
 
 }
+

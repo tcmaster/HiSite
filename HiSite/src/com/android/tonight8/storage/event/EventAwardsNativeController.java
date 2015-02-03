@@ -60,7 +60,7 @@ public class EventAwardsNativeController {
 			awardEntity.user = userEntity;
 			applyEntity.event = eventEntity;
 			applyEntity.user = userEntity;
-			exchangeEntity.org = orgEntity;
+			exchangeEntity.event = eventEntity;
 			eventEntity.org = orgEntity;
 			awardEntities.add(awardEntity);
 			applyEntities.add(applyEntity);
@@ -85,7 +85,6 @@ public class EventAwardsNativeController {
 	 */
 	public List<EventAwardModel> selectData(long eventId) {
 		List<EventAwardModel> models = new ArrayList<EventAwardModel>();
-		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + eventId);
 		List<AwardEntity> awardEntities = DBUtil.getData(AwardEntity.class, "rid = " + eventId);
 		for (int i = 0; i < awardEntities.size(); i++) {
 			EventAwardModel model = new EventAwardModel();
@@ -97,16 +96,15 @@ public class EventAwardsNativeController {
 			Org org = new Org();
 			AwardEntity awardEntity = awardEntities.get(i);
 			ApplyEntity applyEntity = DBUtil.getDataFirst(ApplyEntity.class, "uid = " + awardEntity.user.getId());
-			// exchange没法进行
+			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + eventId);
 			UserEntity userEntity = awardEntity.user;
 			EventEntity myEventEntity = awardEntity.event;
 			OrgEntity orgEntity = awardEntity.event.org;
 			DBUtil.copyData(AwardEntity.class, Award.class, awardEntity, award);
 			DBUtil.copyData(ApplyEntity.class, Apply.class, applyEntity, apply);
-			// exchange暂时没添加
-			// DBUtil.copyData(AwardEntity.class, Award.class, awardEntity,award);
+			DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity, exchange);
 			DBUtil.copyData(UserEntity.class, User.class, userEntity, user);
-			DBUtil.copyData(EventEntity.class, Event.class, eventEntity, event);
+			DBUtil.copyData(EventEntity.class, Event.class, myEventEntity, event);
 			DBUtil.copyData(OrgEntity.class, Org.class, orgEntity, org);
 			model.apply = apply;
 			model.award = award;

@@ -14,7 +14,7 @@ import com.android.tonight8.storage.entity.UserEntity;
 
 /**
  * 
- * @Descripton 用户询问本地存储控制类
+ * @Descripton 用户询问本地存储控制类(包括用户投诉录入)
  * @author LiXiaoSong
  * @2015-1-24
  * @Tonight8
@@ -43,9 +43,9 @@ public class UserQuestionsNativeController {
 			userEntities.add(userEntity);
 			orgEntities.add(orgEntity);
 		}
-		DBUtil.saveOrUpdateAll(questionEntities);
-		DBUtil.saveOrUpdateAll(userEntities);
-		DBUtil.saveOrUpdateAll(orgEntities);
+		DBUtil.saveOrUpdateAll(questionEntities, QuestionEntity.class, "content", "date", "time", "isReply", "uid", "oid");
+		DBUtil.saveOrUpdateAll(userEntities, UserEntity.class, "name", "pic");
+		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name", "pic");
 	}
 
 	/**
@@ -64,6 +64,8 @@ public class UserQuestionsNativeController {
 			DBUtil.copyData(QuestionEntity.class, Question.class, questionEntities.get(i), question);
 			DBUtil.copyData(OrgEntity.class, Org.class, questionEntities.get(i).org, org);
 			DBUtil.copyData(UserEntity.class, User.class, questionEntities.get(i).user, user);
+			question.oid = org.getId();
+			question.uid = user.getId();
 			model.question = question;
 			model.org = org;
 			model.user = user;
@@ -73,7 +75,7 @@ public class UserQuestionsNativeController {
 	}
 
 	/**
-	 * 写入用户询问数据
+	 * 写入用户询问数据(用户投诉录入)
 	 * 
 	 * @date:2015-1-26
 	 */
@@ -86,8 +88,8 @@ public class UserQuestionsNativeController {
 		DBUtil.copyData(Org.class, OrgEntity.class, model.org, orgEntity);
 		questionEntity.user = userEntity;
 		questionEntity.org = orgEntity;
-		DBUtil.saveOrUpdate(questionEntity);
-		DBUtil.saveOrUpdate(userEntity);
-		DBUtil.saveOrUpdate(orgEntity);
+		DBUtil.saveOrUpdate(questionEntity, QuestionEntity.class, "content", "date", "time", "isReply", "uid", "oid");
+		DBUtil.saveOrUpdate(userEntity, UserEntity.class, "name", "pic");
+		DBUtil.saveOrUpdate(orgEntity, OrgEntity.class, "name", "pic");
 	}
 }

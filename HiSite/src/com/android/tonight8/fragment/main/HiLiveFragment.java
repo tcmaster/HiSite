@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +59,7 @@ public class HiLiveFragment extends BaseFragment {
 			liveListModel.setOrg(org);
 			for (int j = 0; j < 5; j++) {
 				SignIn signIn = new SignIn();
-				signIn.user = user;
+				signIn.uid = 11032;
 				signIn.pic = "http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg";
 				signIns.add(signIn);
 			}

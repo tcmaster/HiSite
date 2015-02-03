@@ -27,18 +27,19 @@ public class LiveSignInNativeController {
 
 	}
 
-	/**
-	 * @param userid
-	 * @param subjectid
-	 * @return 查询数据
-	 */
-	public SignIn SelectData(String userid, String eventid) {
-		SignIn signIn = new SignIn();
-		SignInEntity signInEntity = DBUtil.getDataFirst(SignInEntity.class, "uid = " + userid + " and " + "rid = " + eventid);
-		UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "rid = " + userid);
-		DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
-		DBUtil.copyData(UserEntity.class, User.class, userEntity, signIn.user);
-		return signIn;
-
-	}
+	// /**
+	// * @param userid
+	// * @param subjectid
+	// * @return 查询数据
+	// */
+	// public SignIn SelectData(String userid, String eventid) {
+	// SignIn signIn = new SignIn();
+	// SignInEntity signInEntity = DBUtil.getDataFirst(SignInEntity.class, "uid = " + userid + " and " +
+	// "rid = " + eventid);
+	// UserEntity userEntity = DBUtil.getDataFirst(UserEntity.class, "rid = " + userid);
+	// DBUtil.copyData(SignInEntity.class, SignIn.class, signInEntity, signIn);
+	// DBUtil.copyData(UserEntity.class, User.class, userEntity, signIn.user);
+	// return signIn;
+	//
+	// }
 }

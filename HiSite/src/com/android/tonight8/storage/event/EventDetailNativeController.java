@@ -55,7 +55,7 @@ public class EventDetailNativeController {
 		popGoodsEntity.event = eventEntity;
 		eventEntity.org = orgEntity;
 		couponEntity.event = eventEntity;
-		exchangeEntity.org = orgEntity;
+		exchangeEntity.event = eventEntity;
 		popGoodsEntity.event = eventEntity;
 		for (int i = 0; i < goodses.size(); i++) {
 			GoodsEntity goodsEntity = new GoodsEntity();
