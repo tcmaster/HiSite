@@ -119,5 +119,9 @@
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
-
+    <!-- 设置与我的账号的item设置 -->
+	<style name="myAccountItem">
+	    <item name="android:layout_width">match_parent</item>
+	    <item name="android:layout_height">@dimen/item_height_of_myaccount</item>
+	</style>
 </resources>

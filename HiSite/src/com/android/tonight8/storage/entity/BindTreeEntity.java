@@ -2,11 +2,13 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
+import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @author liuzhao
  * @date 2015-1-17 商家绑定树
  */
+@Table(name="bindTree")
 public class BindTreeEntity extends BaseEntity {
 	/** 与商家绑定外键 */
 	@Foreign(column = "parentId", foreign = "id")
