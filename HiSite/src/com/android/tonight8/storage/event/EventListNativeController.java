@@ -50,7 +50,7 @@ public class EventListNativeController {
 			popGoodsEntity.event = eventEntity;
 			eventEntity.org = orgEntity;
 			couponEntity.event = eventEntity;
-			exchangeEntity.org = orgEntity;
+			exchangeEntity.event = eventEntity;
 			// 增加数据，加入表中
 			eventEntities.add(eventEntity);
 			orgEntities.add(orgEntity);
@@ -78,7 +78,7 @@ public class EventListNativeController {
 			EventEntity eventEntity = eventEntities.get(i);
 			OrgEntity orgEntity = eventEntity.org;
 			CouponProvideEntity couponEntity = DBUtil.getDataFirst(CouponProvideEntity.class, "rid = " + eventEntity.getId());
-			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + eventEntity.org.getId());
+			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + eventEntity.getId());
 			PopGoodsEntity popGoodsEntity = DBUtil.getDataFirst(PopGoodsEntity.class, "rid = " + eventEntity.getId());
 			Event event = new Event();
 			Org org = new Org();

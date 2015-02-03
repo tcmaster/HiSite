@@ -18,20 +18,10 @@ public class SignIn implements Serializable {
 	public String time;
 	/** 图片大小 */
 	public String size;
-	/** 用户对象 */
-	public User user;
 	/** 用户外键 */
 	public int uid;
 	/** 活动外键 */
 	public int rid;
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public int getUid() {
 		return uid;
@@ -83,9 +73,7 @@ public class SignIn implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SignIn [id=" + id + ", pic=" + pic + ", time=" + time
-				+ ", size=" + size + ", user=" + user + ", uid=" + uid
-				+ ", rid=" + rid + "]";
+		return "SignIn [id=" + id + ", pic=" + pic + ", time=" + time + ", size=" + size + ", uid=" + uid + ", rid=" + rid + "]";
 	}
 
 }

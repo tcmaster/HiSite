@@ -8,6 +8,7 @@ import com.lidroid.xutils.db.annotation.Id;
  * @author liuzhao 二维码 主键自增长
  */
 public class QuickMarkEntity {
+
 	@Id()
 	private int id;
 	/** 商家二维码编号 */
@@ -18,10 +19,10 @@ public class QuickMarkEntity {
 	private String photo;
 	/** 优惠券 */
 	@Foreign(column = "cid", foreign = "id")
-	public int cid;
+	public CouponEntity couponEntity;
 	/** 商家 */
 	@Foreign(column = "oid", foreign = "id")
-	public int oid;
+	public OrgEntity orgEntity;
 
 	public String getCode() {
 		return code;

@@ -8,10 +8,11 @@ import com.lidroid.xutils.db.annotation.Foreign;
  * @date 2015-1-17
  */
 public class FollowEntity extends BaseEntity {
+
 	@Foreign(column = "rid", foreign = "id")
-	private UserEntity user;
+	public UserEntity user;
 	@Foreign(column = "oid", foreign = "id")
-	private OrgEntity org;
+	public OrgEntity org;
 
 	@Override
 	public String toString() {

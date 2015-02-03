@@ -29,7 +29,7 @@ public class ExchangeEntity {
 	@Column(column = "orgAll")
 	private boolean orgAll;
 	@Foreign(column = "rid", foreign = "id")
-	public OrgEntity org;
+	public EventEntity event;
 	/** 活动商家，临时（可能会更改） */
 	@Foreign(column = "oid", foreign = "exchangeId")
 	public List<OrgEntity> orgs = new ArrayList<OrgEntity>();
@@ -68,7 +68,7 @@ public class ExchangeEntity {
 
 	@Override
 	public String toString() {
-		return "ExchangeEntity [id=" + id + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", org=" + org + ", orgs=" + orgs + "]";
+		return "ExchangeEntity [id=" + id + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", event=" + event + ", orgs=" + orgs + "]";
 	}
 
 }

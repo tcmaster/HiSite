@@ -22,23 +22,23 @@ public class Question implements Serializable {
 	/** 是否是回复记录 */
 	public boolean isReply;
 	/** 用户外键 */
-	public boolean uid;
+	public int uid;
 	/** 商家外键 */
-	public boolean oid;
+	public int oid;
 
-	public boolean isUid() {
+	public int getUid() {
 		return uid;
 	}
 
-	public void setUid(boolean uid) {
+	public void setUid(int uid) {
 		this.uid = uid;
 	}
 
-	public boolean isOid() {
+	public int getOid() {
 		return oid;
 	}
 
-	public void setOid(boolean oid) {
+	public void setOid(int oid) {
 		this.oid = oid;
 	}
 
@@ -84,9 +84,7 @@ public class Question implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", content=" + content + ", date=" + date
-				+ ", time=" + time + ", isReply=" + isReply + ", uid=" + uid
-				+ ", oid=" + oid + "]";
+		return "Question [id=" + id + ", content=" + content + ", date=" + date + ", time=" + time + ", isReply=" + isReply + ", uid=" + uid + ", oid=" + oid + "]";
 	}
 
 }
