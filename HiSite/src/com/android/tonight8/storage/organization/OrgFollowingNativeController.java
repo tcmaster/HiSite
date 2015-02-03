@@ -17,7 +17,7 @@ public class OrgFollowingNativeController {
 	public void SaveOrUpdateData(Follow model) {
 		FollowEntity followEntity = new FollowEntity();
 		DBUtil.copyData(Follow.class, FollowEntity.class, model, followEntity);
-		DBUtil.saveOrUpdate(followEntity);
+		DBUtil.saveOrUpdate(followEntity,FollowEntity.class,"rid","oid");
 	}
 
 	/**

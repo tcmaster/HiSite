@@ -18,13 +18,13 @@ import com.android.tonight8.storage.entity.OrgEntity;
 public class OrgNodesNativeController {
 
 	/**
-	 * @Description:绑定经销商
+	 * @Description:商家经销商列表
 	 * @param modle
 	 * @author: LiuZhao
 	 * @date:2015年2月2日
 	 */
 
-	public List<OrgNodeModel> SelectData(String orgId) {
+	public List<OrgNodeModel> selectData(String orgId) {
 		List<OrgNodeModel> list = new ArrayList<OrgNodeModel>();
 		List<BindEntity> listEntity = DBUtil.getData(BindEntity.class, " rid = " + orgId);
 		if (list != null) {

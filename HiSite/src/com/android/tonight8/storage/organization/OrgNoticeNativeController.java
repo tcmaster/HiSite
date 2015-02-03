@@ -6,7 +6,6 @@ import java.util.List;
 import com.android.tonight8.model.common.Notice;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.NoticeEntity;
-import com.android.tonight8.storage.entity.OrgEntity;
 
 /**
  * @Description:商家通知列表数据存储
@@ -20,19 +19,39 @@ public class OrgNoticeNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(List<Notice> listModel, String orgId) {
-		List<NoticeEntity> list = new ArrayList<NoticeEntity>();
-		OrgEntity orgEntity = DBUtil.getDataFirst(OrgEntity.class, " id = " + orgId);
-		for (int i = 0; i < listModel.size(); i++) {
+	public void savaOrUpdateData(List<Notice> listModel) {
+		List<NoticeEntity> noticeEntities = new ArrayList<NoticeEntity>();
+		for (int j = 0; j < listModel.size(); j++) {
 			NoticeEntity noticeEntity = new NoticeEntity();
-
-			DBUtil.copyData(Notice.class, NoticeEntity.class, listModel.get(i), noticeEntity);
-			noticeEntity.org = orgEntity;
-			list.add(noticeEntity);
+			DBUtil.copyData(Notice.class, NoticeEntity.class, listModel.get(j),
+					noticeEntity);
+			noticeEntities.add(noticeEntity);
 		}
 		// 存到数据库中
-		DBUtil.saveOrUpdateAll(list);
+		DBUtil.saveOrUpdateAll(noticeEntities, NoticeEntity.class);
 
+	}
+
+	/**
+	 * @Description:查询数据
+	 * @param listModel
+	 * @date:2015年1月22日
+	 */
+	public List<Notice> selectData(String orgId) {
+		List<Notice> notices = new ArrayList<Notice>();
+		List<NoticeEntity> noticeEntities = DBUtil.getData(NoticeEntity.class,
+				" rid = " + orgId);
+		if (noticeEntities == null) {
+			return null;
+		}
+		for (int i = 0; i < noticeEntities.size(); i++) {
+			Notice notice = new Notice();
+			DBUtil.copyData(NoticeEntity.class, Notice.class,
+					noticeEntities.get(i), notice);
+			notices.add(notice);
+		}
+
+		return notices;
 	}
 
 }
