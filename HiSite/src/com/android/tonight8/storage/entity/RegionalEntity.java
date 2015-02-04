@@ -1,13 +1,16 @@
 package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
+import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @Description:区域表
  * @author LiXiaoSong
  * @date 2015-1-17
  */
+@Table(name = "regional")
 public class RegionalEntity extends BaseEntity {
+
 	/** 区域名称 */
 	@Column(column = "name")
 	public String name;
@@ -55,8 +58,7 @@ public class RegionalEntity extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Regional [name=" + name + ", code=" + code + ", pid=" + pid
-				+ ", level=" + level + "]";
+		return "Regional [name=" + name + ", code=" + code + ", pid=" + pid + ", level=" + level + "]";
 	}
 
 }

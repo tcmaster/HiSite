@@ -11,14 +11,13 @@ import java.io.Serializable;
 public class Regional implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	public int id;
 	/** 区域名称 */
 	public String name;
 	/** 区域编号 */
 	public String code;
 	/** 区域所属父编码 */
 	public int pid;
-	/** 区域id */
-	public int id;
 
 	public String getName() {
 		return name;
@@ -54,8 +53,7 @@ public class Regional implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Province [name=" + name + ", code=" + code + ", pid=" + pid
-				+ ", id=" + id + "]";
+		return "Province [name=" + name + ", code=" + code + ", pid=" + pid + ", id=" + id + "]";
 	}
 
 }

@@ -169,6 +169,16 @@ public class DBUtil {
 	}
 
 	/**
+	 * @Description: 得到数据库工具对象，用于自订制操作
+	 * @return
+	 * @author: LiXiaoSong
+	 * @date:2015-2-4
+	 */
+	public static DbUtils getDB() {
+		return utils;
+	}
+
+	/**
 	 * 插入或更新数据(没有该数据则插入，有则更新),多条
 	 * 
 	 * 仅适用于继承BaseEntity的实体
@@ -196,8 +206,23 @@ public class DBUtil {
 		}
 	}
 
-	public static void saveOrUpdateAll(List<?> entities) {
+	public static void updateAll(List<?> entities, String... updateColumnNames) {
+		try {
+			utils.updateAll(entities, updateColumnNames);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public static void updateAll(List<?> entities, WhereBuilder builder, String... updateColumnNames) {
+		try {
+			utils.updateAll(entities, builder, updateColumnNames);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void saveOrUpdateAll(List<?> entities) {
 	}
 
 	public static void saveOrUpdate(Object object) {

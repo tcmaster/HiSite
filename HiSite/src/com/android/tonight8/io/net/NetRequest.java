@@ -1,7 +1,7 @@
 /**
  * 2014-12-26
  */
-package com.android.tonight8.net;
+package com.android.tonight8.io.net;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,6 +28,8 @@ public class NetRequest {
 
 	public static final String GET_METHOD = "get";
 	public static final String POST_METHOD = "method";
+	public static final String REQUEST_URL = "requesUrl";
+	public static final String METHOD = "method";
 
 	/**
 	 * @Description:多任务请求方法(用于请求多个任务)，每个map与同位置的callback一一对应(此方法不能上传大文件,参数必需均为String),在每个map中，必需传送含有"method"和"requesUrl"的字段
@@ -117,7 +119,6 @@ public class NetRequest {
 	public static <T> void postImageToServer(Map<String, String> param, RequestResult<T> callback, String fN, File file) {
 		HttpUtils httpUtils = new HttpUtils();
 		httpUtils.configTimeout(5000);
-		HttpMethod method = null;
 		String requestUrl = "";
 		Set<Map.Entry<String, String>> entry = param.entrySet();
 		Iterator<Map.Entry<String, String>> it = entry.iterator();
@@ -136,7 +137,7 @@ public class NetRequest {
 		httpUtils.send(HttpMethod.POST, requestUrl, callback);
 	}
 
-	public abstract class RequestResult<T> extends RequestCallBack<String> {
+	public abstract static class RequestResult<T> extends RequestCallBack<String> {
 
 		private Class<T> clazz;
 
