@@ -1,10 +1,8 @@
 package com.android.tonight8.storage.live;
 
 import com.android.tonight8.model.common.SignIn;
-import com.android.tonight8.model.common.User;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.SignInEntity;
-import com.android.tonight8.storage.entity.UserEntity;
 
 /**
  * @Description:现场签到数据存储
