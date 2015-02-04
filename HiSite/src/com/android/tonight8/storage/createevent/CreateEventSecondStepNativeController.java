@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.android.tonight8.model.common.CouponProvide;
-import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.Ready;
 
 /**
  * @Description:发活动第二步本地存储 发优惠券
@@ -13,7 +13,7 @@ import com.android.tonight8.model.common.Event;
  */
 public class CreateEventSecondStepNativeController {
 
-	public static String STORE_NAME = "CREATE_EVENT";
+	public static String STORE_NAME = "CREATE_EVENT_SECOND";
 	private SharedPreferences preference;
 
 	public CreateEventSecondStepNativeController(Context context) {
@@ -27,9 +27,9 @@ public class CreateEventSecondStepNativeController {
 	 * 
 	 * @param createEventModel
 	 */
-	public void saveCreateEventSecondStep(Event event, CouponProvide couponProvide) {
+	public void saveCreateEventSecondStep(Ready ready, CouponProvide couponProvide) {
 		SharedPreferences.Editor editor = preference.edit();
-		editor.putBoolean("event_isCouponNoneAward", event.isCouponNoneAward);
+		editor.putBoolean("event_isCouponNoneAward", ready.isCouponNoneAward);
 		editor.putString("couponProvide_content", couponProvide.content);
 		editor.putInt("couponProvide_type", couponProvide.type);
 		editor.putInt("couponProvide_value", couponProvide.value);
@@ -61,10 +61,10 @@ public class CreateEventSecondStepNativeController {
 	 * 
 	 * @return
 	 */
-	public Event readCreateEventSecondStepEvent() {
-		Event event = new Event();
-		event.setWinningStatus(preference.getBoolean("event_isCouponNoneAward", false));
-		return event;
+	public Ready readCreateEventSecondStepReady() {
+		Ready ready = new Ready();
+		ready.setIsCouponNoneAward(preference.getBoolean("event_isCouponNoneAward", false));
+		return ready;
 	}
 
 	/**

@@ -2,12 +2,11 @@ package com.android.tonight8.storage.createevent;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Goods;
+import com.android.tonight8.model.common.Ready;
 
 /**
  * 发活动第一步本地存储
@@ -17,7 +16,7 @@ import com.android.tonight8.model.common.Goods;
  */
 public class CreateEventFirstStepNativeController {
 
-	public static String STORE_NAME = "CREATE_EVENT";
+	public static String STORE_NAME = "CREATE_EVENT_FIRST";
 	private SharedPreferences preference;
 
 	public CreateEventFirstStepNativeController(Context context) {
@@ -31,13 +30,15 @@ public class CreateEventFirstStepNativeController {
 	 * 
 	 * @param createEventModel
 	 */
-	public void saveCreateEventFirstStep(Event event) {
+	public void saveCreateEventFirstStep(Ready ready, Event event) {
 
 		SharedPreferences.Editor editor = preference.edit();
 		editor.putString("event_name", event.name);
-		editor.putString("event_publishTime", event.publishTime);
-		editor.putString("event_timeRangeStart", event.timeRangeStart);
-		editor.putString("event_timeRangeEnd", event.timeRangeEnd);
+		editor.putString("ready_publishTime", ready.publishTime);
+		editor.putString("ready_liveDateStart", ready.liveDateStart);
+		editor.putString("ready_liveDateEnd", ready.liveDateEnd);
+		editor.putString("ready_liveTimeStart", ready.liveTimeStart);
+		editor.putString("ready_liveTimeEnd", ready.liveTimeEnd);
 		editor.putInt("event_winningLimit", event.winningLimit);
 		editor.putString("event_ruleDesc", event.ruleDesc);
 		editor.commit();
@@ -69,13 +70,28 @@ public class CreateEventFirstStepNativeController {
 	 * 
 	 * @return
 	 */
+	public Ready readCreateEventFirstStepReady() {
+		Ready ready = new Ready();
+		ready.setPublishTime(preference.getString("ready_publishTime", ""));
+		ready.setLiveDateStart(preference.getString("ready_liveDateStart", ""));
+		ready.setLiveDateEnd(preference.getString("ready_liveDateEnd", ""));
+		ready.setLiveTimeStart(preference.getString("ready_liveTimeStart", ""));
+		ready.setLiveTimeEnd(preference.getString("ready_liveTimeEnd", ""));
+		return ready;
+	}
+
+	/**
+	 * 读取本地存储的发活动第一步信息（活动）
+	 * 
+	 * @return
+	 */
 	public Event readCreateEventFirstStepEvent() {
 		Event event = new Event();
 		event.setName(preference.getString("event_name", ""));
-		event.setPublishTime(preference.getString("event_publishTime", ""));
-		event.setTimeRangeStart(preference.getString("event_timeRangeStart", ""));
-		event.setTimeRangeEnd(preference.getString("event_timeRangeEnd", ""));
-		event.setWinningLimit(preference.getInt("event_winningLimit", 0));
+		// event.setPublishTime(preference.getString("ready_publishTime", ""));
+		// event.setTimeRangeStart(preference.getString("event_timeRangeStart", ""));
+		// event.setTimeRangeEnd(preference.getString("event_timeRangeEnd", ""));
+		// event.setWinningLimit(preference.getInt("event_winningLimit", 0));
 		event.setRuleDesc(preference.getString("event_ruleDesc", ""));
 		return event;
 	}

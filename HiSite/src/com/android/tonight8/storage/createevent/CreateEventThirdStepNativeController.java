@@ -14,7 +14,7 @@ import com.android.tonight8.model.createevent.CreateEventModel;
  */
 public class CreateEventThirdStepNativeController {
 
-	public static String STORE_NAME = "CREATE_EVENT";
+	public static String STORE_NAME = "CREATE_EVENT_THIRD";
 	private SharedPreferences preference;
 
 	public CreateEventThirdStepNativeController(Context context) {
