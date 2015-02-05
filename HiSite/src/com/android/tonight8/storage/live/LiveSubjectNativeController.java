@@ -22,7 +22,7 @@ public class LiveSubjectNativeController {
 	 * @param liveSubjectModel
 	 * @param eventId
 	 */
-	public void InsertData(LiveSubjectModel liveSubjectModel, String eventId) {
+	public void insertData(LiveSubjectModel liveSubjectModel) {
 		// 话题
 		SubjectEntity subjectEntity = new SubjectEntity();
 		DBUtil.copyData(Subject.class, SubjectEntity.class, liveSubjectModel.getSubject(), subjectEntity);

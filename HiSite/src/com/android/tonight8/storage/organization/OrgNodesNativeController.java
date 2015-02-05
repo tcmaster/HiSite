@@ -11,7 +11,6 @@ import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.BindEntity;
 import com.android.tonight8.storage.entity.BindTreeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
-import com.baidu.android.bbalbs.common.a.c;
 
 /**
  * @Description:商家经销商列表

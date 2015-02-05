@@ -1,13 +1,11 @@
 package com.android.tonight8.storage.live;
 
 import com.android.tonight8.model.common.Event;
-import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.live.LiveDetailModel;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.EventEntity;
-import com.android.tonight8.storage.entity.ExchangeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 import com.android.tonight8.storage.entity.PopGoodsEntity;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
@@ -24,20 +22,17 @@ public class LiveDetailNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(LiveDetailModel listModel) {
+	public void insertData(LiveDetailModel listModel) {
 		EventEntity eventEntity = new EventEntity();
 		OrgEntity orgEntity = new OrgEntity();
 		PopGoodsEntity popGoodsEntity = new PopGoodsEntity();
-		ExchangeEntity exchangeEntity = new ExchangeEntity();
 		DBUtil.copyData(Event.class, EventEntity.class, listModel.getEvent(), eventEntity);
 		DBUtil.copyData(Org.class, OrgEntity.class, listModel.getOrg(), orgEntity);
 		DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, listModel.getEvent().popGoods, popGoodsEntity);
-		DBUtil.copyData(Exchange.class, ExchangeEntity.class, listModel.getExchange(), exchangeEntity);
 		// 存到数据库中
 		DBUtil.saveOrUpdate(eventEntity, EventEntity.class, "name", "distance", "timeRangeStart", "timeRangeEnd");
 		DBUtil.saveOrUpdate(orgEntity, OrgEntity.class, "name", "logo");
 		DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=", eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
-		DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class, WhereBuilder.b("rid", "=", orgEntity.getId()), "method", "address", "orgAll");
 	}
 
 	/**
@@ -46,7 +41,7 @@ public class LiveDetailNativeController {
 	 * @author: LiuZhao
 	 * @date:2015年1月22日
 	 */
-	public LiveDetailModel SelectData(String eventId) {
+	public LiveDetailModel selectData(String eventId) {
 		LiveDetailModel listModels = new LiveDetailModel();
 		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + eventId);
 		if (eventEntity == null) {

@@ -16,7 +16,7 @@ public class LiveCommentNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(Comment modle) {
+	public void insertData(Comment modle) {
 
 		CommentEntity commentEntity = new CommentEntity();
 		DBUtil.copyData(Comment.class, CommentEntity.class, modle,

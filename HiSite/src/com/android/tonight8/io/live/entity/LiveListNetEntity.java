@@ -8,13 +8,14 @@ package com.android.tonight8.io.live.entity;
  */
 public class LiveListNetEntity {
 
-	public ArrayLiveEventsData event_live_events;
+	private ArrayLiveEventsData arrayLiveEventsData;
 
-	public ArrayLiveEventsData getEvent_live_events() {
-		return event_live_events;
+	public ArrayLiveEventsData getArrayLiveEventsData() {
+		return arrayLiveEventsData;
 	}
 
-	public void setEvent_live_events(ArrayLiveEventsData event_live_events) {
-		this.event_live_events = event_live_events;
+	public void setArrayLiveEventsData(ArrayLiveEventsData arrayLiveEventsData) {
+		this.arrayLiveEventsData = arrayLiveEventsData;
 	}
+
 }

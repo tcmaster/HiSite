@@ -5,13 +5,13 @@ import java.util.List;
 import com.android.tonight8.model.live.LiveListModel;
 
 /**
- * @Description:活动列表的数据
+ * @Description:现场活动列表的数据
  * @author:LiuZhao
  * @Date:2015年2月5日
  */
 public class ArrayLiveEventsData {
 
-	public List<LiveListModel> event_live_events;
+	private List<LiveListModel> event_live_events;
 
 	public List<LiveListModel> getEvent_live_events() {
 		return event_live_events;

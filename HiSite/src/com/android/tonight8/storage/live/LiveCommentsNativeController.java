@@ -21,7 +21,7 @@ public class LiveCommentsNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(List<LiveCommentModel> listModel) {
+	public void insertData(List<LiveCommentModel> listModel) {
 		List<CommentEntity> commentEntities = new ArrayList<CommentEntity>();
 		List<UserEntity> userEntities = new ArrayList<UserEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
@@ -46,7 +46,7 @@ public class LiveCommentsNativeController {
 	 * @date:2015年1月23日
 	 */
 
-	public List<LiveCommentModel> SelectData(String subjectId) {
+	public List<LiveCommentModel> selectData(String subjectId) {
 		List<LiveCommentModel> listModels = new ArrayList<LiveCommentModel>();
 		List<CommentEntity> commentlist = DBUtil.getData(CommentEntity.class, "rid = " + subjectId);
 		if (commentlist == null) {
