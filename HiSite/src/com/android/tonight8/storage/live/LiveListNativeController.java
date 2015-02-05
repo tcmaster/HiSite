@@ -29,7 +29,7 @@ public class LiveListNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(List<LiveListModel> listModel) {
+	public void insertData(List<LiveListModel> listModel) {
 		List<EventEntity> eventEntities = new ArrayList<EventEntity>();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		List<SignInEntity> signLists = new ArrayList<SignInEntity>();
@@ -76,7 +76,7 @@ public class LiveListNativeController {
 	 * @date:2015年1月22日
 	 */
 
-	public List<LiveListModel> SelectData() {
+	public List<LiveListModel> selectData() {
 		List<LiveListModel> listModels = new ArrayList<LiveListModel>();
 		// 按照时间降序排列
 		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class, "order by timeStamp desc");
@@ -125,7 +125,7 @@ public class LiveListNativeController {
 
 	}
 
-	public void DeleteAll() {
+	public void deleteAll() {
 
 	}
 }

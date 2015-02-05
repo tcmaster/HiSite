@@ -113,7 +113,7 @@
         </activity>
         <!-- 用户反馈 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.UserFeedbacktActivity"
+            android:name="com.android.tonight8.activity.createevent.UserFeedbackActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >

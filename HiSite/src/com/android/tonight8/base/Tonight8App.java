@@ -51,7 +51,7 @@ public class Tonight8App extends Application {
 		super.onCreate();
 		toastMgr.builder.init(mApp);
 		// 初始化百度地图
-		SDKInitializer.initialize(getApplicationContext());
+//		SDKInitializer.initialize(getApplicationContext());
 		initDeviceParams();
 		// 初始化数据库
 		DBUtil.initDB(this);

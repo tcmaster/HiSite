@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.MainActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.adapter.live.HiLiveGalleryAdapter.OnItemClickLitener;
@@ -131,7 +132,7 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onClick(View arg0) {
-				popWindow.showAtLocation(arg0.getRootView(), Gravity.BOTTOM, 0, 0);
+				popWindow.showAtLocation(((MainActivity) mContext).getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
 			}
 		});
 		// 话题列表

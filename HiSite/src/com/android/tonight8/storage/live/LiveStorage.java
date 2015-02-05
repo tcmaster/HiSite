@@ -30,7 +30,7 @@ public class LiveStorage {
 			new LiveSubjectNativeController());
 
 	/** 获取现场列表数据存储控制类 */
-	public LiveListNativeController getLiveListDBController() {
+	public static LiveListNativeController getLiveListDBController() {
 		if (listControllerReference.get() == null) {
 			listControllerReference = new SoftReference<LiveListNativeController>(
 					new LiveListNativeController());
@@ -40,7 +40,7 @@ public class LiveStorage {
 	}
 
 	/** 获取现场详情数据存储控制类 */
-	public LiveDetailNativeController getLiveDetailDBController() {
+	public static LiveDetailNativeController getLiveDetailDBController() {
 		if (detailControllerReference.get() == null) {
 			detailControllerReference = new SoftReference<LiveDetailNativeController>(
 					new LiveDetailNativeController());
@@ -50,7 +50,7 @@ public class LiveStorage {
 	}
 
 	/** 获取评论列表录入数据存储控制类 */
-	public LiveCommentsNativeController getLiveCommentsController() {
+	public static LiveCommentsNativeController getLiveCommentsController() {
 		if (liveCommentsControllerReference.get() == null) {
 			liveCommentsControllerReference = new SoftReference<LiveCommentsNativeController>(
 					new LiveCommentsNativeController());
@@ -60,7 +60,7 @@ public class LiveStorage {
 	}
 
 	/** 获取评论录入数据存储控制类 */
-	public LiveCommentNativeController getLiveCommentNativeController() {
+	public static LiveCommentNativeController getLiveCommentNativeController() {
 		if (liveCommentControllerReference.get() == null) {
 			liveCommentControllerReference = new SoftReference<LiveCommentNativeController>(
 					new LiveCommentNativeController());
@@ -70,7 +70,7 @@ public class LiveStorage {
 	}
 
 	/** 获取现场签到数据存储控制类 */
-	public LiveSignInNativeController getLiveSignInNativeController() {
+	public static LiveSignInNativeController getLiveSignInNativeController() {
 		if (liveSignInControllerReference.get() == null) {
 			liveSignInControllerReference = new SoftReference<LiveSignInNativeController>(
 					new LiveSignInNativeController());
@@ -80,7 +80,7 @@ public class LiveStorage {
 	}
 
 	/** 获取现场话题列表录入数据存储控制类 */
-	public LiveSubjectsNativeController getLiveSubjectsNativeController() {
+	public static LiveSubjectsNativeController getLiveSubjectsNativeController() {
 		if (liveSubjectsControllerReference.get() == null) {
 			liveSubjectsControllerReference = new SoftReference<LiveSubjectsNativeController>(
 					new LiveSubjectsNativeController());
@@ -90,7 +90,7 @@ public class LiveStorage {
 	}
 
 	/** 获取现场话题录入数据存储控制类 */
-	public LiveSubjectNativeController getLiveSubjectNativeController() {
+	public static LiveSubjectNativeController getLiveSubjectNativeController() {
 		if (liveSubjectControllerReference.get() == null) {
 			liveSubjectControllerReference = new SoftReference<LiveSubjectNativeController>(
 					new LiveSubjectNativeController());

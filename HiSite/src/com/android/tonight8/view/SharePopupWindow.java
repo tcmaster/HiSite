@@ -24,24 +24,23 @@ public class SharePopupWindow extends PopupWindow {
 
 	public SharePopupWindow(Context context, OnClickListener itemsOnClick) {
 		super(context);
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mMenuView = inflater.inflate(R.layout.share_popupwindow, null);
 		btn_cancel = (Button) mMenuView.findViewById(R.id.btn_popwindow_cancle);
-		// // 取消按钮
-		// btn_cancel.setOnClickListener(new OnClickListener() {
-		//
-		// public void onClick(View v) {
-		// // 销毁弹出框
-		// dismiss();
-		// }
-		// });
+		// 取消按钮
+		btn_cancel.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// 销毁弹出框
+				dismiss();
+			}
+		});
 		// 设置按钮监听
 		btn_cancel.setOnClickListener(itemsOnClick);
 		// 设置PopupWindow的View
 		this.setContentView(mMenuView);
 		// 设置PopupWindow弹出窗体的宽
-		this.setWidth(LayoutParams.FILL_PARENT);
+		this.setWidth(LayoutParams.MATCH_PARENT);
 		// 设置PopupWindow弹出窗体的高
 		this.setHeight(LayoutParams.WRAP_CONTENT);
 		// 设置PopupWindow弹出窗体可点击
