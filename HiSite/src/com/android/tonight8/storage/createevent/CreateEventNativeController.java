@@ -9,7 +9,8 @@ import com.android.tonight8.model.common.Exchange;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.PopGoods;
-import com.android.tonight8.model.event.EventDetailModel;
+import com.android.tonight8.model.common.Ready;
+import com.android.tonight8.model.createevent.CreateEventModel;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.CouponProvideEntity;
 import com.android.tonight8.storage.entity.EventEntity;
@@ -29,7 +30,13 @@ public class CreateEventNativeController {
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void InsertData(EventDetailModel listModel) {
+	public void saveOrUpdateData(CreateEventModel listModel) {
+
+		Ready ready = listModel.ready;
+		listModel.event.setTimeRangeStart(ready.liveDateStart + " " + ready.liveTimeStart);
+		listModel.event.setTimeRangeEnd(ready.liveDateEnd + " " + ready.liveTimeEnd);
+		listModel.event.setCouponNoneAward(ready.isCouponNoneAward);
+		listModel.event.setPublishTime(ready.publishTime);
 
 		EventEntity eventEntity = new EventEntity();
 		DBUtil.copyData(Event.class, EventEntity.class, listModel.event, eventEntity);

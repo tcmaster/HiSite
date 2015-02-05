@@ -22,7 +22,7 @@ public class OrgNodeNativeController {
 		BindEntity bindEntity = new BindEntity();
 		DBUtil.copyData(Bind.class, BindEntity.class, modle, bindEntity);
 		// 存到数据库中
-		DBUtil.saveOrUpdate(bindEntity,BindEntity.class,"0");
+		DBUtil.saveOrUpdate(bindEntity,BindEntity.class);
 	}
 
 	/**

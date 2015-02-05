@@ -2,6 +2,7 @@ package com.android.tonight8.model.organization;
 
 import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.model.common.Bind;
+import com.android.tonight8.model.common.BindTree;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Regional;
 
@@ -21,6 +22,18 @@ public class OrgNodeModel extends BaseModel {
 	public Regional area;
 	/** 绑定对象 */
 	public Bind bind;
+	/** 商家绑定树对象 */
+	public BindTree bindTree;
+	
+	
+	public BindTree getBindTree() {
+		return bindTree;
+	}
+
+	
+	public void setBindTree(BindTree bindTree) {
+		this.bindTree = bindTree;
+	}
 
 	public Org getOrg() {
 		return org;
