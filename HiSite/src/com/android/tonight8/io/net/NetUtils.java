@@ -14,15 +14,16 @@ import com.android.tonight8.utils.Utils;
 public class NetUtils {
 
 	public static boolean checkResult(NetEntityBase base) {
-		if (base.status.equals("success")) {// 成功时的处理
+		switch (base.status) {
+		case 1:
 			return true;
-		} else if (base.status.equals("fail")) {// 失败时的处理
+		case 2:
 			Utils.toast(base.message);
 			return false;
-		} else if (base.status.equals("error")) {// 错误时的处理
+		case 3:
 			Utils.toast(base.message);
 			return false;
-		} else {
+		default:
 			return false;
 		}
 	}

@@ -1,5 +1,6 @@
 package com.android.tonight8.storage.entity;
 
+import com.lidroid.xutils.db.annotation.Id;
 import com.lidroid.xutils.db.annotation.NoAutoIncrement;
 import com.lidroid.xutils.db.annotation.NotNull;
 
@@ -11,6 +12,7 @@ import com.lidroid.xutils.db.annotation.NotNull;
 public class BaseEntity {
 
 	/** 主键id，不可自增长且不为空 */
+	@Id
 	@NoAutoIncrement()
 	@NotNull()
 	private long id;

@@ -11,6 +11,8 @@ package com.android.tonight8.io.net;
  */
 public class NetEntityBase {
 
-	public String status;
+	public String attachment_path;
+	public int status;
 	public String message;
+	public String data;
 }

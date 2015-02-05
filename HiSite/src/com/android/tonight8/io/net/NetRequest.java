@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -17,6 +18,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * @Description: 网络请求公共类
@@ -30,6 +32,7 @@ public class NetRequest {
 	public static final String POST_METHOD = "method";
 	public static final String REQUEST_URL = "requesUrl";
 	public static final String METHOD = "method";
+	public static final String BASE_URL = "http://180.150.179.226/activitys";
 
 	/**
 	 * @Description:多任务请求方法(用于请求多个任务)，每个map与同位置的callback一一对应(此方法不能上传大文件,参数必需均为String),在每个map中，必需传送含有"method"和"requesUrl"的字段
@@ -41,6 +44,7 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	public static <T> void doRequest(List<Map<String, String>> params, RequestResult<T>... callbacks) {
+		long start = System.currentTimeMillis();
 		HttpUtils httpUtils = new HttpUtils();
 		httpUtils.configTimeout(5000);
 		httpUtils.configRequestThreadPoolSize(callbacks.length);
@@ -53,7 +57,7 @@ public class NetRequest {
 			Iterator<Map.Entry<String, String>> it = entry.iterator();
 			RequestParams rP = new RequestParams("utf-8");
 			// 为各个参数添加必要头部
-			addHeader(rP);
+			// addHeader(rP);
 			// 这里需要增加若干基本参数
 			while (it.hasNext()) {
 				Map.Entry<String, String> kv = it.next();
@@ -64,13 +68,15 @@ public class NetRequest {
 						method = HttpMethod.POST;
 					continue;
 				}
-				if (kv.getKey().equals("requesUrl")) {
+				if (kv.getKey().equals(REQUEST_URL)) {
 					requestUrl = kv.getValue();
 					continue;
 				}
 				rP.addBodyParameter(kv.getKey(), kv.getValue());
 
 			}
+			long end = System.currentTimeMillis();
+			LogUtils.v((end - start) + "times");
 			httpUtils.send(method, requestUrl, rP, callback);
 		}
 	}
@@ -147,11 +153,24 @@ public class NetRequest {
 
 		@Override
 		public void onSuccess(ResponseInfo<String> arg0) {
-			T t = JsonUtils.parseJsonStr(arg0.result, clazz);// 解析好需要的实体
-			getData(t);
+			// 解析基本的网络实体
+			NetEntityBase base = getBaseJsonObject(arg0.result);
+			LogUtils.v(base.data);
+			T t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
+			getData(base, t);
 		}
 
-		public abstract void getData(T t);
+		private NetEntityBase getBaseJsonObject(String baseStr) {
+			NetEntityBase base = new NetEntityBase();
+			JSONObject object = JSONObject.parseObject(baseStr);
+			base.status = object.getInteger("status");
+			base.attachment_path = object.getString("attachment_path");
+			base.message = object.getString("message");
+			base.data = object.getJSONObject("data").toString();
+			return base;
+		}
+
+		public abstract void getData(NetEntityBase netEntityBase, T t);
 	}
 
 	private static void addHeader(RequestParams rP) {

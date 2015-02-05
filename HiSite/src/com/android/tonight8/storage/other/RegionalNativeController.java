@@ -27,13 +27,13 @@ public class RegionalNativeController {
 	public void insertData(List<Regional> models) {
 		// level分为3级，1级为省，2级为市，3级为区县
 		List<RegionalEntity> entities = new ArrayList<RegionalEntity>();
-		for (int i = 0; i < entities.size(); i++) {
+		for (int i = 0; i < models.size(); i++) {
 			Regional model = models.get(i);
 			RegionalEntity entity = new RegionalEntity();
 			DBUtil.copyData(Regional.class, RegionalEntity.class, model, entity);
 			entities.add(entity);
 		}
-		DBUtil.addDataAll(entities);// 存储省市区数据
+		DBUtil.saveOrUpdateAll(entities, RegionalEntity.class, "pid", "level", "name", "code");// 存储省市区数据
 		List<RegionalEntity> levelOne = DBUtil.getData(RegionalEntity.class, "pid = " + 0);// 查找所有省的数据,将level定为1
 		for (RegionalEntity e : levelOne)
 			e.level = 1;
@@ -46,5 +46,11 @@ public class RegionalNativeController {
 		for (RegionalEntity e : levelThree)
 			e.level = 3;
 		DBUtil.updateAll(levelThree, "level");// 更新县的级别
+	}
+
+	public List<RegionalEntity> testgetData() {
+		List<RegionalEntity> result = DBUtil.getData(RegionalEntity.class);
+		return result;
+
 	}
 }

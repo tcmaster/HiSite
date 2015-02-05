@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Regional implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	public int id;
+	public long id;
 	/** 区域名称 */
 	public String name;
 	/** 区域编号 */
@@ -43,11 +43,11 @@ public class Regional implements Serializable {
 		this.pid = pid;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

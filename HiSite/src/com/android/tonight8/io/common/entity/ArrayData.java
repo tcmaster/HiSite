@@ -3,6 +3,8 @@
  */
 package com.android.tonight8.io.common.entity;
 
+import java.util.ArrayList;
+
 import com.android.tonight8.model.common.Regional;
 
 /**
@@ -15,13 +17,13 @@ import com.android.tonight8.model.common.Regional;
  */
 public class ArrayData {
 
-	private Regional regional;
+	private ArrayList<Regional> regional;
 
-	public Regional getRegional() {
+	public ArrayList<Regional> getRegional() {
 		return regional;
 	}
 
-	public void setRegional(Regional regional) {
+	public void setRegional(ArrayList<Regional> regional) {
 		this.regional = regional;
 	}
 
@@ -29,5 +31,4 @@ public class ArrayData {
 	public String toString() {
 		return "ArrayData [regional=" + regional + "]";
 	}
-
 }

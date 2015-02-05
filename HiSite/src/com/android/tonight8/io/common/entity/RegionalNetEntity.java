@@ -3,9 +3,6 @@
  */
 package com.android.tonight8.io.common.entity;
 
-import java.util.List;
-
-import com.android.tonight8.io.net.NetEntityBase;
 
 /**
  * @Description: 省市区接口结构
@@ -13,15 +10,15 @@ import com.android.tonight8.io.net.NetEntityBase;
  * @copyright @HiSite
  * @Date:2015-2-4
  */
-public class RegionalNetEntity extends NetEntityBase {
+public class RegionalNetEntity {
 
-	private List<ArrayData> common_regional;
+	private ArrayData common_regional;
 
-	public List<ArrayData> getCommon_regional() {
+	public ArrayData getCommon_regional() {
 		return common_regional;
 	}
 
-	public void setCommon_regional(List<ArrayData> common_regional) {
+	public void setCommon_regional(ArrayData common_regional) {
 		this.common_regional = common_regional;
 	}
 

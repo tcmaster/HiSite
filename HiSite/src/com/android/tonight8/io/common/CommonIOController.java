@@ -3,19 +3,18 @@
  */
 package com.android.tonight8.io.common;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.android.tonight8.io.common.entity.ArrayData;
 import com.android.tonight8.io.common.entity.RegionalNetEntity;
+import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
-import com.android.tonight8.io.net.NetUtils;
 import com.android.tonight8.model.common.Regional;
 import com.android.tonight8.storage.other.RegionalStorage;
 import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * @Description: 公用io
@@ -25,7 +24,8 @@ import com.lidroid.xutils.exception.HttpException;
  */
 public class CommonIOController {
 
-	private static final String REGIONAL_URL = "";
+	private static final String REGIONAL = "/api/common/regional";
+	private static final String REGIONAL_URL = NetRequest.BASE_URL + REGIONAL;
 
 	/**
 	 * @Description:从接口中获取省市区数据，并进行处理
@@ -38,15 +38,13 @@ public class CommonIOController {
 		NetRequest.doGetRequest(params, new RequestResult<RegionalNetEntity>(RegionalNetEntity.class) {
 
 			@Override
-			public void getData(RegionalNetEntity t) {
-				if (NetUtils.checkResult(t)) {
-					List<ArrayData> data = t.getCommon_regional();
-					List<Regional> regionals = new ArrayList<Regional>();
-					for (int i = 0; i < data.size(); i++) {
-						regionals.add(data.get(i).getRegional());
-					}
+			public void getData(NetEntityBase base, RegionalNetEntity t) {
+				LogUtils.v("getData");
+				if (t != null) {
+					List<Regional> data = t.getCommon_regional().getRegional();
 					// 数据库存储逻辑
-					RegionalStorage.getRegionalNativeController().insertData(regionals);
+					RegionalStorage.getRegionalNativeController().insertData(data);
+					LogUtils.v(RegionalStorage.getRegionalNativeController().testgetData().toString());
 				} else {
 				}
 
@@ -54,6 +52,7 @@ public class CommonIOController {
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
+				LogUtils.v("fail");
 			}
 		});
 	}
