@@ -24,7 +24,6 @@ import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.function.CirculateFunction;
-import com.android.tonight8.io.common.CommonIOController;
 import com.android.tonight8.view.PointLinearlayout;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.ViewUtils;
@@ -145,7 +144,7 @@ public class TonightEightFragment extends Fragment {
 		});
 		cFunction.start();// 开始轮播
 		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), data));
-		CommonIOController.saveRegional();// 测试
+		// CommonIOController.saveRegional();// 测试
 	}
 
 	/** 创建一个静态的实例 */
