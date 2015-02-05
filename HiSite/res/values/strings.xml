@@ -115,6 +115,8 @@
     <string name="takephoto">拍照</string>
     <string name="getphoto">从相册中选择</string>
     <string name="sign_photo_prompt">上传照片</string>
+    <!-- 设置 -->
+    <string name="exit_login">退出登录</string>
     <!-- 奖品签收 -->
     <string name="sign_award">确认签收</string>
     <!-- 用户优惠券包 -->

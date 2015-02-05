@@ -1,70 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_left_text"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <TextView
+                android:id="@+id/tv_left_text"
+                style="@style/wrap"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+
+            <ImageView
+                android:id="@+id/iv_right_arrow"
+                style="@style/wrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_red_point_text"
+                style="@style/wrap"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="2dp"
+                android:layout_toLeftOf="@id/iv_right_arrow"
+                android:text="@string/app_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/smallTextSize" />
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/layout_account_authorization"
             style="@style/wrap"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/middleTextSize" />
+            layout="@layout/include_settings_item" />
 
-        <ImageView
-            android:id="@+id/iv_right_arrow"
+        <include
+            android:id="@+id/layout_feed_back"
             style="@style/wrap"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher" />
+            layout="@layout/include_settings_item" />
 
-        <TextView
-            android:id="@+id/tv_red_point_text"
+        <include
+            android:id="@+id/layout_clear_cache"
             style="@style/wrap"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="2dp"
-            android:layout_toLeftOf="@id/iv_right_arrow"
-            android:text="@string/app_name"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/smallTextSize" />
-    </RelativeLayout>
+            layout="@layout/include_settings_item" />
 
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
-    <include
-        android:id="@+id/layout_account_authorization"
-        style="@style/wrap"
-        layout="@layout/include_settings_item" />
+        <include
+            android:id="@+id/layout_version_update"
+            style="@style/wrap"
+            layout="@layout/include_settings_item" />
 
-</LinearLayout>
+        <include
+            android:id="@+id/layout_private_policy"
+            style="@style/wrap"
+            layout="@layout/include_settings_item" />
+
+        <include
+            android:id="@+id/layout_license"
+            style="@style/wrap"
+            layout="@layout/include_settings_item" />
+
+        <include
+            android:id="@+id/layout_rate_encourage"
+            style="@style/wrap"
+            layout="@layout/include_settings_item" />
+
+        <include
+            android:id="@+id/layout_about"
+            style="@style/wrap"
+            android:layout_marginBottom="20dp"
+            layout="@layout/include_settings_item" />
+        <Button
+            android:id="@+id/btn_exit_login"
+           	style="@style/match_width"
+           	android:text="@string/exit_login"
+           	android:background="@color/red"
+           	android:textSize="@dimen/middleTextSize"
+           	android:textColor="@color/white"
+           	android:layout_marginLeft="30dp"
+           	android:layout_marginRight="30dp"
+           	android:layout_marginBottom="20dp"
+           	/>
+    </LinearLayout>
+
+</ScrollView>

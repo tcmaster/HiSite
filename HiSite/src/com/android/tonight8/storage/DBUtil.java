@@ -11,6 +11,7 @@ import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * 数据库基类
@@ -159,7 +160,6 @@ public class DBUtil {
 			if (entity != null)
 				// 有该条数据，更新
 				utils.update(myEntity, WhereBuilder.b("id", "=", id), updateColumns);
-
 			else
 				// 不存在该条数据，插入
 				utils.save(myEntity);
@@ -195,11 +195,9 @@ public class DBUtil {
 				if (entity != null)
 					// 有该条数据，更新
 					utils.update(entities.get(i), WhereBuilder.b("id", "=", id), updateColumns);
-
 				else
 					// 不存在该条数据，插入
 					utils.save(entities.get(i));
-
 			}
 		} catch (DbException e) {
 			e.printStackTrace();
@@ -285,6 +283,10 @@ public class DBUtil {
 	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
 		Field[] fields1 = getDeclaedFields(clazz1);
 		Field[] fields2 = getDeclaedFields(clazz2);
+		if(t1 == null || t2 == null){
+			LogUtils.v("解析内容出错,类型1"+clazz1.getSimpleName() + "类型2"+ clazz2.getSimpleName());
+			return;
+		}
 		for (int i = 0; i < fields1.length; i++) {
 			if (fields1[i].getName().equals("serialVersionUID")) {
 				continue;
