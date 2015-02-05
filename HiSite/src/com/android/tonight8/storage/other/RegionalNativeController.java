@@ -9,6 +9,7 @@ import java.util.List;
 import com.android.tonight8.model.common.Regional;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.entity.RegionalEntity;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * @Description: 省市区数据本地控制类
@@ -24,7 +25,7 @@ public class RegionalNativeController {
 	 * @author: LiXiaoSong
 	 * @date:2015-2-4
 	 */
-	public void insertData(List<Regional> models) {
+	public void insertData(final List<Regional> models) {
 		// level分为3级，1级为省，2级为市，3级为区县
 		List<RegionalEntity> entities = new ArrayList<RegionalEntity>();
 		for (int i = 0; i < models.size(); i++) {
@@ -33,7 +34,10 @@ public class RegionalNativeController {
 			DBUtil.copyData(Regional.class, RegionalEntity.class, model, entity);
 			entities.add(entity);
 		}
+		long start = System.currentTimeMillis();
 		DBUtil.saveOrUpdateAll(entities, RegionalEntity.class, "pid", "level", "name", "code");// 存储省市区数据
+		long end = System.currentTimeMillis();
+		LogUtils.v((end - start) + "****************");
 		List<RegionalEntity> levelOne = DBUtil.getData(RegionalEntity.class, "pid = " + 0);// 查找所有省的数据,将level定为1
 		for (RegionalEntity e : levelOne)
 			e.level = 1;

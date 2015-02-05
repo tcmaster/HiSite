@@ -39,12 +39,12 @@ public class CommonIOController {
 
 			@Override
 			public void getData(NetEntityBase base, RegionalNetEntity t) {
-				LogUtils.v("getData");
+				LogUtils.v("getData" + "*************************************");
+				LogUtils.v(Thread.currentThread().getName() + "*************************************");
 				if (t != null) {
 					List<Regional> data = t.getCommon_regional().getRegional();
 					// 数据库存储逻辑
 					RegionalStorage.getRegionalNativeController().insertData(data);
-					LogUtils.v(RegionalStorage.getRegionalNativeController().testgetData().toString());
 				} else {
 				}
 
