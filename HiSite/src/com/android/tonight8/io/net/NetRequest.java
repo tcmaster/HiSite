@@ -13,6 +13,7 @@ import java.util.Set;
 import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
+import com.android.tonight8.utils.StringUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -172,7 +173,10 @@ public class NetRequest {
 				public void run() {
 					NetEntityBase base = getBaseJsonObject(arg0.result);
 					LogUtils.v(base.data);
-					T t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
+					T t = null;
+					if (!StringUtils.isNullOrEmpty(base.data)) {
+						t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
+					}
 					getData(base, t);
 				}
 			}).start();

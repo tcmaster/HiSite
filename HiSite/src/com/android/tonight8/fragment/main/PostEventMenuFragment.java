@@ -13,13 +13,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.createevent.BindAgencyActivity;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.CreatEventFirstActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
-import com.android.tonight8.activity.createevent.OrgDetailActivity;
-import com.android.tonight8.activity.createevent.UserFeedbackActivity;
+import com.android.tonight8.activity.org.BindAgencyActivity;
+import com.android.tonight8.activity.org.OrgDetailActivity;
+import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.storage.organization.OrgLoginNativeController;

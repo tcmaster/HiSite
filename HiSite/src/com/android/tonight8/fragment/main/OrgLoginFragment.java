@@ -22,8 +22,8 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.MainActivity;
-import com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity;
-import com.android.tonight8.activity.createevent.OrgRegisterActivity;
+import com.android.tonight8.activity.org.ForgetIDOrPwdActivity;
+import com.android.tonight8.activity.org.OrgRegisterActivity;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;

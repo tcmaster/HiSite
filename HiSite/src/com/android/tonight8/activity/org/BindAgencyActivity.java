@@ -1,4 +1,4 @@
-package com.android.tonight8.activity.createevent;
+package com.android.tonight8.activity.org;
 
 import android.os.Bundle;
 
