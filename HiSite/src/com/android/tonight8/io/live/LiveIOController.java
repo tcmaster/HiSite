@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.os.Handler;
+
 import com.android.tonight8.io.live.entity.LiveCommentsNetEntity;
 import com.android.tonight8.io.live.entity.LiveListNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
@@ -36,13 +38,13 @@ public class LiveIOController {
 	 * @Description：从接口中获取活动现场列表 2015-2-5下午8:36:39
 	 * @author liuzhao
 	 */
-	public static void liveListRead() {
+	public static void liveListRead(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_LIST_URL);
-		NetRequest.doGetRequest(params, new RequestResult<LiveListNetEntity>(LiveListNetEntity.class) {
+		NetRequest.doGetRequest(params, new RequestResult<LiveListNetEntity>(LiveListNetEntity.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, LiveListNetEntity t) {
+			public void getData(NetEntityBase netEntityBase, LiveListNetEntity t,Handler handler) {
 				if (t != null) {
 					List<LiveListModel> listModel = t.getArrayLiveEventsData().getEvent_live_events();
 					// 数据库存储逻辑
@@ -62,13 +64,13 @@ public class LiveIOController {
 	 * @Description：从接口中获取活动详情 2015-2-5下午8:59:19
 	 * @author liuzhao
 	 */
-	public static void liveDetailRead() {
+	public static void liveDetailRead(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_DETAIL_URL);
-		NetRequest.doGetRequest(params, new RequestResult<LiveDetailModel>(LiveDetailModel.class) {
+		NetRequest.doGetRequest(params, new RequestResult<LiveDetailModel>(LiveDetailModel.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, LiveDetailModel t) {
+			public void getData(NetEntityBase netEntityBase, LiveDetailModel t,Handler handler) {
 				if (t != null) {
 					// 数据库存储逻辑
 					LiveStorage.getLiveDetailDBController().insertData(t);
@@ -88,13 +90,13 @@ public class LiveIOController {
 	 * @date 2015-2-5下午9:02:29
 	 * @author liuzhao
 	 */
-	public static void liveSubjectsRead() {
+	public static void liveSubjectsRead(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_SUBJECT_URL);
-		NetRequest.doGetRequest(params, new RequestResult<LiveDetailModel>(LiveDetailModel.class) {
+		NetRequest.doGetRequest(params, new RequestResult<LiveDetailModel>(LiveDetailModel.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, LiveDetailModel t) {
+			public void getData(NetEntityBase netEntityBase, LiveDetailModel t,Handler handler) {
 				if (t != null) {
 					// 数据库存储逻辑
 					LiveStorage.getLiveDetailDBController().insertData(t);
@@ -142,13 +144,13 @@ public class LiveIOController {
 	 * @date 2015-2-5下午9:02:29
 	 * @author liuzhao
 	 */
-	public static void liveCommentsRead() {
+	public static void liveCommentsRead(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_COMMENT_URL);
-		NetRequest.doGetRequest(params, new RequestResult<LiveCommentsNetEntity>(LiveCommentsNetEntity.class) {
+		NetRequest.doGetRequest(params, new RequestResult<LiveCommentsNetEntity>(LiveCommentsNetEntity.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, LiveCommentsNetEntity t) {
+			public void getData(NetEntityBase netEntityBase, LiveCommentsNetEntity t,Handler handler) {
 				if (t != null) {
 					List<LiveCommentModel> listModel = t.getArrayLiveCommentsData().getEvent_live_subjects();
 					// // 数据库存储逻辑
@@ -169,13 +171,13 @@ public class LiveIOController {
 	 * @date 2015-2-5下午9:02:29
 	 * @author liuzhao
 	 */
-	public static void liveCommentWrite() {
+	public static void liveCommentWrite(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_COMMENT_WRITE_URL);
-		NetRequest.doPostRequest(params, new RequestResult<Comment>(Comment.class) {
+		NetRequest.doPostRequest(params, new RequestResult<Comment>(Comment.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, Comment t) {
+			public void getData(NetEntityBase netEntityBase, Comment t,Handler handler) {
 				if (NetUtils.checkResult(netEntityBase)) {
 					// 数据库存储逻辑
 					LiveStorage.getLiveCommentNativeController().insertData(t);
@@ -195,13 +197,13 @@ public class LiveIOController {
 	 * @date 2015-2-5下午9:02:29
 	 * @author liuzhao
 	 */
-	public static void liveCommentReplyWrite() {
+	public static void liveCommentReplyWrite(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, LIVE_COMMENT_WRITE_URL);
-		NetRequest.doPostRequest(params, new RequestResult<Comment>(Comment.class) {
+		NetRequest.doPostRequest(params, new RequestResult<Comment>(Comment.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, Comment t) {
+			public void getData(NetEntityBase netEntityBase, Comment t,Handler handler) {
 
 				if (NetUtils.checkResult(netEntityBase)) {
 					// // 数据库存储逻辑

@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.os.Handler;
+
 import com.android.tonight8.io.common.entity.RegionalNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
@@ -32,13 +34,13 @@ public class CommonIOController {
 	 * @author: LiXiaoSong
 	 * @date:2015-2-4
 	 */
-	public static void saveRegional() {
+	public static void saveRegional(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, REGIONAL_URL);
-		NetRequest.doGetRequest(params, new RequestResult<RegionalNetEntity>(RegionalNetEntity.class) {
+		NetRequest.doGetRequest(params, new RequestResult<RegionalNetEntity>(RegionalNetEntity.class,handler) {
 
 			@Override
-			public void getData(NetEntityBase base, RegionalNetEntity t) {
+			public void getData(NetEntityBase base, RegionalNetEntity t,Handler handler) {
 				LogUtils.v("getData" + "*************************************");
 				LogUtils.v(Thread.currentThread().getName() + "*************************************");
 				if (t != null) {

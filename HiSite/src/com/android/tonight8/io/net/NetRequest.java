@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import android.os.Handler;
+
 import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
@@ -159,8 +161,12 @@ public class NetRequest {
 	public abstract static class RequestResult<T> extends RequestCallBack<String> {
 
 		private Class<T> clazz;
-
-		public RequestResult(Class<T> clazz) {
+		private Handler handler;
+		/**
+		 * @param clazz 需要解析的实体类（如果解析完以后就是NetBaseEntity，则该类可为任何类型）
+		 * @param handler 主线程的handler（用于将数据传输给UI界面）
+		 */
+		public RequestResult(Class<T> clazz,final Handler handler) {
 			this.clazz = clazz;
 		}
 
@@ -177,7 +183,7 @@ public class NetRequest {
 					if (!StringUtils.isNullOrEmpty(base.data)) {
 						t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
 					}
-					getData(base, t);
+					getData(base, t,handler);
 				}
 			}).start();
 
@@ -193,7 +199,7 @@ public class NetRequest {
 			return base;
 		}
 
-		public abstract void getData(NetEntityBase netEntityBase, T t);
+		public abstract void getData(NetEntityBase netEntityBase, T t,Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {
