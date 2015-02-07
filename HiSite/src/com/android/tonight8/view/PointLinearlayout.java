@@ -61,7 +61,7 @@ public class PointLinearlayout extends LinearLayout {
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			iv.setLayoutParams(lp);
 			iv.setScaleType(ScaleType.FIT_XY);
-			iv.setImageResource(R.drawable.point_white);
+			iv.setImageResource(R.drawable.dialogue_gray);
 			list_iv.add(iv);
 			this.addView(iv, i);
 		}
@@ -78,9 +78,9 @@ public class PointLinearlayout extends LinearLayout {
 	public void changePoint(int pos) {
 		for (int i = 0; i < list_iv.size(); i++) {
 			if (i == pos)
-				list_iv.get(i).setImageResource(R.drawable.point_black);
+				list_iv.get(i).setImageResource(R.drawable.dialogue_red);
 			else
-				list_iv.get(i).setImageResource(R.drawable.point_white);
+				list_iv.get(i).setImageResource(R.drawable.dialogue_gray);
 		}
 	}
 }
