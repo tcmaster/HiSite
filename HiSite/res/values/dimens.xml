@@ -10,10 +10,21 @@
     <dimen name="bigTextSize">16sp</dimen>
     <dimen name="hugeTextSize">18sp</dimen>
     <dimen name="superHugeTextSize">22sp</dimen>
+    <!-- 统一的文字左边距 (无图)-->
+    <dimen name="text_left_margin">20dp</dimen>
+    <!-- 统一的文字右边距 (无图)-->
+    <dimen name="text_right_margin">20dp</dimen>
+    <!-- 文字与图片之间的距离 -->
+    <dimen name="drawable_padding">5dp</dimen>
+    <!-- 每个普通item据上下边距的距离 -->
+    <dimen name="topOrbottomPadding">10dp</dimen>
+    <!-- 两个item段落之间的边距 -->
+    <dimen name="margin_between_item">20dp</dimen>
     <!-- 我的账号用到的相关dimen -->
     <!-- 上部高度 -->
     <dimen name="myaccount_top_height">180dp</dimen>
     <dimen name="tonight_iv_margin">5dp</dimen>
     <!-- 设置和我的账号中，每个item的适当高度 -->
 	<dimen name="item_height_of_myaccount">50dp</dimen>
+	<!-- 收货地址相关 -->
 </resources>

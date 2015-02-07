@@ -44,9 +44,6 @@ public class IFragment extends MyAccountBaseFragment {
 	/** 我关注的商家 */
 	@ViewInject(R.id.layout_business)
 	private View layout_business;
-	/** 收货地址 */
-	@ViewInject(R.id.layout_address)
-	private View layout_address;
 	/** 投诉主办方 */
 	@ViewInject(R.id.layout_sponsor)
 	private View layout_sponsor;
@@ -109,7 +106,6 @@ public class IFragment extends MyAccountBaseFragment {
 		setTextAndContent(layout_my_coupon, R.string.my_coupon, R.drawable.ic_launcher, "23", "");
 		setTextAndContent(layout_lottery_activity, R.string.lottery_activity, R.drawable.ic_launcher, "33", "");
 		setTextAndContent(layout_business, R.string.business, R.drawable.ic_launcher, "15", "");
-		setTextAndContent(layout_address, R.string.address, R.drawable.ic_launcher, "", "方庄桥南路边所");
 		setTextAndContent(layout_sponsor, R.string.complain_sponsor, R.drawable.ic_launcher, "", "");
 		setTextAndContent(layout_setting, R.string.setting, R.drawable.ic_launcher, "", "");
 	}

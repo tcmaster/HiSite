@@ -124,5 +124,10 @@
     <string name="coupon_award_location">兑奖地点</string>
     <!-- 用户抽奖历史 -->
     <string name="delete">删除</string>
-
+    <!-- 用户收货地址 -->
+    <string name="my_receive_address">我的收货信息</string>
+    <string name="receiver_name">收货人姓名</string>
+    <string name="choice_province">选择省份</string>
+	<string name="detail_address">详细地址：</string>
+	<string name="save">保存</string>
 </resources>
