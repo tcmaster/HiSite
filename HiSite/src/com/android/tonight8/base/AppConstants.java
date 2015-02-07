@@ -32,5 +32,9 @@ public class AppConstants {
 	public static String latitude;
 	/** 定位得到的地址信息 */
 	public static String address;
+	//--------------------------分享用的全局变量--------------------
+	/** 微信分享支持的最低版本号(二进制编码)*/
+	public static final int TIMELINE_SUPPORTED_VERSION = 0x21020001;
+	
 
 }

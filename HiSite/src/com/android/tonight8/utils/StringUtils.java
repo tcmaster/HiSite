@@ -575,4 +575,14 @@ public class StringUtils {
 		}
 		return bigdec + "%";
 	}
+	/**
+	 * @Description：首字母转化为大写
+	 * @date 2015-2-7下午4:53:49
+	 * @author liuzhao
+	 */
+	public static String firstLetterToUpper(String str) {
+		char[] array = str.toCharArray();
+		array[0] -= 32;
+		return String.valueOf(array);
+	}
 }

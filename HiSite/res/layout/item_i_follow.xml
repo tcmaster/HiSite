@@ -13,7 +13,7 @@
 	    android:textColor="@color/red"
 	    android:layout_marginRight="10dp"
 	    android:gravity="center_vertical"
-	    android:drawableLeft="@drawable/main_home_s"
+	    android:drawableLeft="@drawable/question_red"
 	    android:layout_marginBottom="5dp"/>
 	<com.android.tonight8.view.ListViewForScrollView
 	    android:id="@+id/lv_consult_content"

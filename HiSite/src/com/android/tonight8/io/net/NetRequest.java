@@ -46,7 +46,8 @@ public class NetRequest {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static <T> void doRequest(final List<Map<String, String>> params, final RequestResult<T>... callbacks) {
+	public static <T> void doRequest(final List<Map<String, String>> params,
+			final RequestResult<T>... callbacks) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -95,7 +96,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
+	public static <T> void doGetRequest(Map<String, String> param,
+			RequestResult<T> callback) {
 		param.put("method", GET_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -108,7 +110,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
+	public static <T> void doPostRequest(Map<String, String> param,
+			RequestResult<T> callback) {
 		param.put("method", POST_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -130,7 +133,8 @@ public class NetRequest {
 	 * @copyright @tonight8
 	 * @Date:2014-12-29
 	 */
-	public static <T> void postImageToServer(final Map<String, String> param, final RequestResult<T> callback, final String fN, final File file) {
+	public static <T> void postImageToServer(final Map<String, String> param,
+			final RequestResult<T> callback, final String fN, final File file) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -158,15 +162,19 @@ public class NetRequest {
 
 	}
 
-	public abstract static class RequestResult<T> extends RequestCallBack<String> {
+	public abstract static class RequestResult<T> extends
+			RequestCallBack<String> {
 
 		private Class<T> clazz;
 		private Handler handler;
+
 		/**
-		 * @param clazz 需要解析的实体类（如果解析完以后就是NetBaseEntity，则该类可为任何类型）
-		 * @param handler 主线程的handler（用于将数据传输给UI界面）
+		 * @param clazz
+		 *            需要解析的实体类（如果解析完以后就是NetBaseEntity，则该类可为任何类型）
+		 * @param handler
+		 *            主线程的handler（用于将数据传输给UI界面）
 		 */
-		public RequestResult(Class<T> clazz,final Handler handler) {
+		public RequestResult(Class<T> clazz, final Handler handler) {
 			this.clazz = clazz;
 		}
 
@@ -183,7 +191,7 @@ public class NetRequest {
 					if (!StringUtils.isNullOrEmpty(base.data)) {
 						t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
 					}
-					getData(base, t,handler);
+					getData(base, t, handler);
 				}
 			}).start();
 
@@ -195,11 +203,40 @@ public class NetRequest {
 			base.status = object.getInteger("status");
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");
-			base.data = object.getJSONObject("data").toString();
+			base.data = getObjectToString(object.getJSONObject("data"));
 			return base;
 		}
 
-		public abstract void getData(NetEntityBase netEntityBase, T t,Handler handler);
+		private String getObjectToString(JSONObject jsonObject){
+			jsonObject.containsKey("");
+//			 Iterator it = obj.keys();  
+//			             while (it.hasNext()) {  
+//			                 String key = (String) it.next();  
+//			                 String value = obj.getString(key);  
+//			                 JSONArray array = obj.getJSONArray(key);  
+//			                 for(int i=0;i<array.length();i++){  
+//			                     JSONObject jsonobject = array.getJSONObject(i);  
+//			                     jsonobject.put("name", key);  
+//			                     jsonobject.put("exp", key+"="+jsonobject.getString("value"));  
+//			                    newArray.put(jsonobject);
+
+			long start = System.currentTimeMillis();
+			String tempJsonStr = "";
+//			if (!StringUtils.isNullOrEmpty(jsonStr)) {
+//				String[] tempJson = jsonStr.split("_");
+//				for (int i = 0; i < tempJson.length; i++) {
+//					jsonStr = StringUtils.firstLetterToUpper(tempJson[i]);
+//					tempJsonStr = tempJsonStr + jsonStr;
+//					// String.valueOf(jsonStr.charAt(0)).concat(jsonStr.substring(1));耗时太长
+//				}
+//
+//			}
+			long end = System.currentTimeMillis();
+			return tempJsonStr;
+		}
+
+		public abstract void getData(NetEntityBase netEntityBase, T t,
+				Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {
