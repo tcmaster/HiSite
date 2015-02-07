@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.fragment.main.HiLiveFragment;
@@ -15,13 +16,16 @@ import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
 import com.android.tonight8.fragment.main.PostEventMenuFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
+import com.android.tonight8.io.net.NetRequest;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * @Description:主界面
  * @author:LiuZhao
  * @Date:2014年12月17日
  */
-public class MainActivity extends BaseActivity implements OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements
+		OnCheckedChangeListener {
 
 	/** 界面下方四个按钮组 */
 	private RadioGroup rg_mian;
@@ -63,7 +67,8 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 			break;
 		}
 
-		fragmentTransaction.replace(R.id.tabcontent, mFragment, titleArr[switchid]);
+		fragmentTransaction.replace(R.id.tabcontent, mFragment,
+				titleArr[switchid]);
 		fragmentTransaction.commitAllowingStateLoss();
 	}
 
@@ -72,6 +77,11 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initView();
+		//测试下划线改为驼峰
+//		String jsonString = "{'sa_sa':[{'us_er':{'id':123,'na_me':'xiaoliu'},'use_r':{'id':123,'nam_e':'xiaoliu'}}]}";//json字符串
+//		JSONObject object = JSONObject.parseObject(jsonString);
+//		LogUtils.d("love you");
+//		LogUtils.d(NetRequest.getStringData(NetRequest.getObjectToString(object),object));
 	}
 
 	private void initView() {
@@ -88,7 +98,8 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		isLogin = logined;
 		fragmentTransaction = fragmentManager.beginTransaction();
 		mFragment = PostEventMenuFragment.newInstance();
-		fragmentTransaction.replace(R.id.tabcontent, mFragment, titleArr[switchid]);
+		fragmentTransaction.replace(R.id.tabcontent, mFragment,
+				titleArr[switchid]);
 		fragmentTransaction.commitAllowingStateLoss();
 	}
 
