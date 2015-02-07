@@ -9,7 +9,6 @@ import com.android.tonight8.io.event.entity.EventListNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
-import com.android.tonight8.storage.event.EventStorage;
 import com.lidroid.xutils.exception.HttpException;
 
 public class EventIOController {
@@ -25,7 +24,7 @@ public class EventIOController {
 			@Override
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t,Handler handler) {
-				EventStorage.getEventListNativeController().insertData(t.event_publish_events);
+				//EventStorage.getEventListNativeController().insertData(t.event_publish_events);
 			}
 
 			@Override

@@ -35,10 +35,6 @@
 
     <View style="@style/line_full" />
 
-    <include
-        android:id="@+id/layout_address"
-        style="@style/match_width"
-        layout="@layout/include_myaccount_item" />
 
     <View style="@style/line_full" />
 
