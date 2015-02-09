@@ -59,4 +59,30 @@ public class MyAccountBaseFragment extends BaseFragment {
 		else
 			tv_right.setText(rightText);
 	}
+
+	/**
+	 * @Description:设置“设置”界面的include项的文字
+	 * @param includeView
+	 *            要进行设置的视图
+	 * @param leftRes
+	 *            左边的文字
+	 * @param rightText
+	 *            右边的文字
+	 * @author: LiXiaoSong
+	 * @date:2015-2-6
+	 */
+	protected void setTextAndContent(View includeView, int leftRes, String rightText) {
+		if (includeView == null)
+			return;
+		TextView tv_left = (TextView) includeView.findViewById(R.id.tv_left_text);
+		TextView tv_right = (TextView) includeView.findViewById(R.id.tv_red_point_text);
+		if (leftRes < 0)
+			tv_left.setVisibility(View.INVISIBLE);
+		else
+			tv_left.setText(leftRes);
+		if (StringUtils.isNullOrEmpty(rightText))
+			tv_right.setVisibility(View.INVISIBLE);
+		else
+			tv_right.setText(rightText);
+	}
 }

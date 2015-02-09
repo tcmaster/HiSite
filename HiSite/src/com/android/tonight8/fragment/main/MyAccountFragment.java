@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.fragment.myaccount.IFragment;
 import com.android.tonight8.fragment.myaccount.PersonInfoFragment;
+import com.android.tonight8.fragment.myaccount.SettingsFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -47,11 +48,15 @@ public class MyAccountFragment extends Fragment {
 	/**
 	 * 附加资料fragment
 	 */
-	public IFragment iFragment;
+	private IFragment iFragment;
 	/**
 	 * 个人资料的fragment
 	 */
-	public PersonInfoFragment piFragment;
+	private PersonInfoFragment piFragment;
+	/**
+	 * 设置的fragment
+	 */
+	private SettingsFragment sFragment;
 
 	/**
 	 * 用来判断当前是哪个界面，false为附加资料，true为个人资料
@@ -80,9 +85,11 @@ public class MyAccountFragment extends Fragment {
 			if (which) {
 				ft.show(iFragment);
 				ft.hide(piFragment);
+				ft.hide(sFragment);
 			} else {
 				ft.show(piFragment);
 				ft.hide(iFragment);
+				ft.hide(sFragment);
 			}
 			which = !which;
 			ft.commit();
@@ -96,12 +103,15 @@ public class MyAccountFragment extends Fragment {
 	private void initDatas() {
 		iFragment = IFragment.newInstance();
 		piFragment = PersonInfoFragment.newInstance();
+		sFragment = SettingsFragment.newInstance();
 		FragmentManager fm = getChildFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.add(R.id.ll_fg_container, iFragment);
 		ft.add(R.id.ll_fg_container, piFragment);
+		ft.add(R.id.ll_fg_container, sFragment);
 		ft.show(iFragment);
 		ft.hide(piFragment);
+		ft.hide(sFragment);
 		ft.commit();
 	}
 
@@ -109,6 +119,17 @@ public class MyAccountFragment extends Fragment {
 	public static final MyAccountFragment newInstance() {
 		MyAccountFragment saFragment = new MyAccountFragment();
 		return saFragment;
+	}
+
+	/** 显示设置的fragment */
+	public void showSettingFragment() {
+		FragmentManager fm = getChildFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.show(sFragment);
+		ft.hide(piFragment);
+		ft.hide(iFragment);
+		ft.commit();
+		which = true;
 	}
 
 }
