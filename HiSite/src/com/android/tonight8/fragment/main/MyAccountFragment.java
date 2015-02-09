@@ -1,7 +1,6 @@
 package com.android.tonight8.fragment.main;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -12,8 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.fragment.myaccount.IFragment;
 import com.android.tonight8.fragment.myaccount.PersonInfoFragment;
+import com.android.tonight8.fragment.myaccount.SettingsFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -23,7 +24,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  * @author:LiXiaoSong
  * @Date:2014年12月15日
  */
-public class MyAccountFragment extends Fragment {
+public class MyAccountFragment extends BaseFragment {
 
 	// *********************视图成员****************************//
 	/** 根布局 */
@@ -47,16 +48,15 @@ public class MyAccountFragment extends Fragment {
 	/**
 	 * 附加资料fragment
 	 */
-	public IFragment iFragment;
+	private IFragment iFragment;
 	/**
 	 * 个人资料的fragment
 	 */
-	public PersonInfoFragment piFragment;
-
+	private PersonInfoFragment piFragment;
 	/**
-	 * 用来判断当前是哪个界面，false为附加资料，true为个人资料
+	 * 设置的fragment
 	 */
-	private boolean which = false;
+	private SettingsFragment sFragment;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,17 +75,8 @@ public class MyAccountFragment extends Fragment {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.iv_arrow:
-			FragmentManager fm = getChildFragmentManager();
-			FragmentTransaction ft = fm.beginTransaction();
-			if (which) {
-				ft.show(iFragment);
-				ft.hide(piFragment);
-			} else {
-				ft.show(piFragment);
-				ft.hide(iFragment);
-			}
-			which = !which;
-			ft.commit();
+			// 跳转到用户信息界面
+			showPersonInfoFragment();
 			break;
 
 		default:
@@ -96,12 +87,15 @@ public class MyAccountFragment extends Fragment {
 	private void initDatas() {
 		iFragment = IFragment.newInstance();
 		piFragment = PersonInfoFragment.newInstance();
+		sFragment = SettingsFragment.newInstance();
 		FragmentManager fm = getChildFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.add(R.id.ll_fg_container, iFragment);
 		ft.add(R.id.ll_fg_container, piFragment);
+		ft.add(R.id.ll_fg_container, sFragment);
 		ft.show(iFragment);
 		ft.hide(piFragment);
+		ft.hide(sFragment);
 		ft.commit();
 	}
 
@@ -109,6 +103,56 @@ public class MyAccountFragment extends Fragment {
 	public static final MyAccountFragment newInstance() {
 		MyAccountFragment saFragment = new MyAccountFragment();
 		return saFragment;
+	}
+
+	/** 显示设置的fragment */
+	public void showSettingFragment() {
+		FragmentManager fm = getChildFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.show(sFragment);
+		ft.hide(piFragment);
+		ft.hide(iFragment);
+		ft.commit();
+		iv_arrow.setVisibility(View.INVISIBLE);
+	}
+
+	/**
+	 * @Description:显示个人信息的fragment
+	 * @author: LiXiaoSong
+	 * @date:2015-2-9
+	 */
+	private void showPersonInfoFragment() {
+		FragmentManager fm = getChildFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.show(piFragment);
+		ft.hide(iFragment);
+		ft.hide(sFragment);
+		ft.commit();
+		iv_arrow.setVisibility(View.INVISIBLE);
+	}
+
+	/**
+	 * @Description:显示默认的fragment
+	 * @author: LiXiaoSong
+	 * @date:2015-2-9
+	 */
+	private void showIFragment() {
+		FragmentManager fm = getChildFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.show(iFragment);
+		ft.hide(piFragment);
+		ft.hide(sFragment);
+		ft.commit();
+		iv_arrow.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public boolean onBackPress() {
+		if (iFragment.isVisible())
+			return true;
+		else
+			showIFragment();
+		return false;
 	}
 
 }

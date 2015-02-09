@@ -117,6 +117,16 @@
     <string name="sign_photo_prompt">上传照片</string>
     <!-- 设置 -->
     <string name="exit_login">退出登录</string>
+    <string name="account_authorization">账号授权</string>
+    <string name="feed_back">意见反馈</string>
+    <string name="clear_cache">清理缓存</string>
+    <string name="version_update">版本更新</string>
+    <string name="private_policy">账号授权</string>
+    <string name="authorization">隐私说明</string>
+    <string name="license">许可协议</string>
+    <string name="rate_encourage">打分鼓励</string>
+    <string name="about">关于今晚8点</string>
+    <string name="get_message">接收消息</string>
     <!-- 奖品签收 -->
     <string name="sign_award">确认签收</string>
     <!-- 用户优惠券包 -->

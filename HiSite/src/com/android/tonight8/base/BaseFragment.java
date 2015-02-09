@@ -1,11 +1,11 @@
 package com.android.tonight8.base;
 
-import com.android.tonight8.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.android.tonight8.R;
 
 public class BaseFragment extends Fragment {
 
@@ -25,5 +25,18 @@ public class BaseFragment extends Fragment {
 				getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 			}
 		}
+	}
+
+	/**
+	 * @Description: 更新数据时调用， 子类如需要，则应重写
+	 * @author: LiXiaoSong
+	 * @date:2015-2-9
+	 */
+	public void updateData() {
+
+	}
+
+	public boolean onBackPress() {
+		return true;
 	}
 }

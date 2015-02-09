@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -23,6 +22,7 @@ import com.android.tonight8.activity.event.GoodsDetailActivity;
 import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.view.PointLinearlayout;
@@ -36,7 +36,7 @@ import com.lidroid.xutils.view.annotation.event.OnItemClick;
  * @author:LiXiaoSong
  * @Date:2014年12月15日
  */
-public class TonightEightFragment extends Fragment {
+public class TonightEightFragment extends BaseFragment {
 
 	// ***************************控件成员***********************************//
 	/** 根布局 */
@@ -156,7 +156,7 @@ public class TonightEightFragment extends Fragment {
 	}
 
 	private void initActionBar() {
-		bA.getActionBarSpeical("今晚8点", R.drawable.ic_launcher, false, true, null);
+		bA.getActionBarSpeical("今晚8点", R.drawable.m_action_right, false, true, null);
 	}
 
 	/**
