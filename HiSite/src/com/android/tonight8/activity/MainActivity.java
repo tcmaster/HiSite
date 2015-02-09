@@ -1,7 +1,6 @@
 package com.android.tonight8.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
@@ -10,6 +9,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.fragment.main.HiLiveFragment;
 import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 	private String[] titleArr = { "8点", "Hi现场", "发活动", "商家登陆", "我" };
 	private boolean isLogin = false;
 	private FragmentTransaction fragmentTransaction;
-	private Fragment[] fragments;// 本界面所用到的fragment（方便以后使用）
+	private BaseFragment[] fragments;// 本界面所用到的fragment（方便以后使用）
 
 	@Override
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 	}
 
 	private void initDatas() {
-		fragments = new Fragment[5];
+		fragments = new BaseFragment[5];
 		fragments[0] = TonightEightFragment.newInstance();
 		fragments[1] = HiLiveFragment.newInstance();
 		fragments[2] = PostEventMenuFragment.newInstance();
@@ -123,6 +123,23 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 				fragmentTransaction.hide(fragments[i]);
 		}
 		fragmentTransaction.commit();
+	}
+
+	@Override
+	public void onBackPressed() {
+		// 点击返回的逻辑，若在首页，则进行正常退出操作，若在其他页（除“我页”），则进行返回主页的操作，若在“我”页面，根据当前我页的状态进行返回操作
+		if (fragments[0].isVisible()) {
+			super.onBackPressed();
+			return;
+		}
+		if (fragments[4].isVisible()) {
+			if (fragments[4].onBackPress()) {
+			} else {
+				return;
+			}
+		}
+		// 其他情况下，返回首页
+		rg_mian.check(R.id.rb_main);
 	}
 
 }
