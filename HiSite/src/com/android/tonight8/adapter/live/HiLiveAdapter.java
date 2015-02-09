@@ -29,8 +29,8 @@ import com.android.tonight8.model.common.Comment;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveCommentModel;
 import com.android.tonight8.model.live.LiveListModel;
+import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.Utils;
-import com.android.tonight8.view.SharePopupWindow;
 
 /**
  * @author liuzhao hi现场的数据适配器
@@ -48,20 +48,10 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 	private int index = 0;
 	/** 头像图片张数 */
 	private int ivCount = 8;
-	private PopupWindow popWindow;
 
 	public HiLiveAdapter(Context context, List<LiveListModel> values) {
 		super(context, values);
-		popWindow = new SharePopupWindow(context, onItemsClick);
 	}
-
-	private OnClickListener onItemsClick = new OnClickListener() {
-
-		@Override
-		public void onClick(View arg0) {
-			popWindow.dismiss();
-		}
-	};
 
 	@Override
 	protected View getItemView(View convertView, final int position) {
@@ -132,7 +122,7 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onClick(View arg0) {
-				popWindow.showAtLocation(((MainActivity) mContext).getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
+			DialogUtils.showSelectShareDialog((MainActivity) mContext);
 			}
 		});
 		// 话题列表

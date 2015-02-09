@@ -81,6 +81,15 @@ public class BaseActivity extends FragmentActivity {
 		ViewUtils.inject(this);
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (Tonight8App.getSelf().mTencent!=null) {
+			Tonight8App.getSelf().mTencent.releaseResource();
+		}
+
+	}
+
 	/**
 	 * 启动activity带有动画切换
 	 * 
