@@ -32,7 +32,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="14dip"
-                    android:background="@drawable/towards_right_triangle" />
+                    android:background="@drawable/arrow_right" />
 
                 <TextView
                     android:id="@+id/tv_shopname"

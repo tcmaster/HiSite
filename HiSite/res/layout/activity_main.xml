@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/main_rb_bg"
+        android:background="@color/half_white"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 

@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 			doFragmentShow(4);
 			break;
 		}
-
 	}
 
 	@Override

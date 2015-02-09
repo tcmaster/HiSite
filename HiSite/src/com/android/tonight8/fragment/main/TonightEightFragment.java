@@ -145,7 +145,7 @@ public class TonightEightFragment extends Fragment {
 		});
 		cFunction.start();// 开始轮播
 		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), data));
-		EventIOController.eventsRead();// 测试
+		EventIOController.eventsRead(null);// 测试
 	}
 
 	/** 创建一个静态的实例 */
@@ -160,7 +160,6 @@ public class TonightEightFragment extends Fragment {
 	}
 
 	/**
-	 * 
 	 * @Description:初始化listView头部视图
 	 * @author: LiXiaoSong
 	 * @date:2015-1-9

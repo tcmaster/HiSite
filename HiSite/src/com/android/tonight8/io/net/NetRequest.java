@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+
+import android.os.Handler;
 
 import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
+import com.android.tonight8.utils.StringUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -43,7 +47,8 @@ public class NetRequest {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static <T> void doRequest(final List<Map<String, String>> params, final RequestResult<T>... callbacks) {
+	public static <T> void doRequest(final List<Map<String, String>> params,
+			final RequestResult<T>... callbacks) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -92,7 +97,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
+	public static <T> void doGetRequest(Map<String, String> param,
+			RequestResult<T> callback) {
 		param.put("method", GET_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -105,7 +111,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
+	public static <T> void doPostRequest(Map<String, String> param,
+			RequestResult<T> callback) {
 		param.put("method", POST_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -127,7 +134,8 @@ public class NetRequest {
 	 * @copyright @tonight8
 	 * @Date:2014-12-29
 	 */
-	public static <T> void postImageToServer(final Map<String, String> param, final RequestResult<T> callback, final String fN, final File file) {
+	public static <T> void postImageToServer(final Map<String, String> param,
+			final RequestResult<T> callback, final String fN, final File file) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -155,11 +163,19 @@ public class NetRequest {
 
 	}
 
-	public abstract static class RequestResult<T> extends RequestCallBack<String> {
+	public abstract static class RequestResult<T> extends
+			RequestCallBack<String> {
 
 		private Class<T> clazz;
+		private Handler handler;
 
-		public RequestResult(Class<T> clazz) {
+		/**
+		 * @param clazz
+		 *            需要解析的实体类（如果解析完以后就是NetBaseEntity，则该类可为任何类型）
+		 * @param handler
+		 *            主线程的handler（用于将数据传输给UI界面）
+		 */
+		public RequestResult(Class<T> clazz, final Handler handler) {
 			this.clazz = clazz;
 		}
 
@@ -172,8 +188,11 @@ public class NetRequest {
 				public void run() {
 					NetEntityBase base = getBaseJsonObject(arg0.result);
 					LogUtils.v(base.data);
-					T t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
-					getData(base, t);
+					T t = null;
+					if (!StringUtils.isNullOrEmpty(base.data)) {
+						t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
+					}
+					getData(base, t, handler);
 				}
 			}).start();
 
@@ -185,11 +204,15 @@ public class NetRequest {
 			base.status = object.getInteger("status");
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");
-			base.data = object.getJSONObject("data").toString();
+			newJsonkey = ""; // 下划线改为驼峰用到的
+			base.data = getStringData(
+					getObjectToString(object.getJSONObject("data")),
+					object.getJSONObject("data"));
 			return base;
 		}
 
-		public abstract void getData(NetEntityBase netEntityBase, T t);
+		public abstract void getData(NetEntityBase netEntityBase, T t,
+				Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {
@@ -201,4 +224,68 @@ public class NetRequest {
 		rP.addBodyParameter("phone_model", AppConstants.phone_model);
 		rP.addBodyParameter("auth_code", AppConstants.auth_code);
 	}
+
+	// --------------下划线改为驼峰用到的-------------
+	static String newJsonkey = "";
+	static String key1 = "";//
+
+	public static String getObjectToString(JSONObject jsonObject) {
+
+		Iterator<Entry<String, Object>> it = jsonObject.entrySet().iterator();
+		Set<String> keysey = jsonObject.keySet();
+		key1 = key1 + "," + keysey.toString();
+		while (it.hasNext()) {
+			Entry<String, Object> entiy = it.next();
+			String key = entiy.getKey();
+			Object value = entiy.getValue();
+			newJsonkey = newJsonkey + key + ",";
+
+			if (value instanceof Integer) {
+				// newJson = newJson + key;
+			} else if (value instanceof String) {
+				// newJson = newJson + key;
+			} else if (value instanceof List) {
+
+				JSONObject jsonObject2 = JSONObject
+						.parseObject(value.toString().substring(1,
+								value.toString().length() - 1));
+				Set<String> keysey2 = jsonObject2.keySet();
+				for (int i = 0; i < keysey2.size(); i++) {
+					getObjectToString(jsonObject2);
+				}
+
+			} else if (value instanceof JSONObject) {
+				getObjectToString((JSONObject) value);
+
+			}
+		}
+
+		return newJsonkey.substring(0, newJsonkey.length() - 1);
+	}
+
+	public static String getStringData(String jsonkey, JSONObject jsonObject) {
+		String jsonObjectString = jsonObject.toString();
+		String[] json = jsonkey.split(",");
+		for (int i = 0; i < json.length; i++) {
+			String word = getFirstLetterToUpper(json[i]);
+			jsonObjectString = jsonObjectString.replace(json[i], word);
+		}
+		return jsonObjectString;
+	}
+
+	public static String getFirstLetterToUpper(String keyStr) {
+		String tempJsonStr = "";
+		if (!StringUtils.isNullOrEmpty(keyStr) && keyStr.contains("_")) {
+			String[] tempJson = keyStr.split("_");
+			for (int i = 1; i < tempJson.length; i++) {
+				keyStr = StringUtils.firstLetterToUpper(tempJson[i]);
+				tempJsonStr = tempJson[0] + keyStr;
+			}
+		} else {
+			tempJsonStr = keyStr;
+		}
+		return tempJsonStr;
+	}
+	// --------------下划线改为驼峰用到的-------------
+
 }

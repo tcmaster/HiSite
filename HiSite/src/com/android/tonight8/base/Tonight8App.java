@@ -13,15 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
-import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.function.LocationFunction;
+import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.utils.MD5Utils;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.mapapi.SDKInitializer;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
-import com.lidroid.xutils.util.LogUtils;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 public class Tonight8App extends Application {
 
@@ -33,6 +34,9 @@ public class Tonight8App extends Application {
 	public BitmapDisplayConfig config;
 	/** 应用名称 */
 	public static final String PACKAGE_NAME = "com.android.tonight8";
+	private static final String WX_APP_ID = "";
+	/** IWXAPI是第三方APP与微信通信的接口 */
+	public IWXAPI wxApi;
 
 	public Tonight8App() {
 		/* 当前应用对像初始化 */
@@ -51,12 +55,15 @@ public class Tonight8App extends Application {
 		super.onCreate();
 		toastMgr.builder.init(mApp);
 		// 初始化百度地图
-//		SDKInitializer.initialize(getApplicationContext());
+		SDKInitializer.initialize(getApplicationContext());
 		initDeviceParams();
 		// 初始化数据库
 		DBUtil.initDB(this);
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
+		// 注册到微信
+		wxApi = WXAPIFactory.createWXAPI(this, WX_APP_ID);
+		wxApi.registerApp(WX_APP_ID);
 
 	}
 
@@ -67,7 +74,8 @@ public class Tonight8App extends Application {
 	 */
 	public void initDeviceParams() {
 		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+		TelephonyManager tm = (TelephonyManager) this
+				.getSystemService(TELEPHONY_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		AppConstants.dpi = dm.densityDpi + "";// 设备分辨率
@@ -76,12 +84,17 @@ public class Tonight8App extends Application {
 		AppConstants.imei = tm.getDeviceId();// 设备imei码
 		AppConstants.os_version = android.os.Build.VERSION.SDK_INT + "";// 操作系统版本号
 		try {
-			AppConstants.version = getPackageManager().getPackageInfo(PACKAGE_NAME, 0).versionCode + "";// 应用版本
+			AppConstants.version = getPackageManager().getPackageInfo(
+					PACKAGE_NAME, 0).versionCode
+					+ "";// 应用版本
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
-		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei + AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
+		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version
+				+ AppConstants.device_type + AppConstants.imei
+				+ AppConstants.dpi + AppConstants.os_version
+				+ AppConstants.phone_model + "keleping");
 		LocationFunction lcf = new LocationFunction(this);
 		lcf.beginLocation(new BDLocationListener() {
 

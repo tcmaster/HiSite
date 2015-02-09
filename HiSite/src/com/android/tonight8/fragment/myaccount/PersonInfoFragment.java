@@ -14,6 +14,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:个人资料信息Fragment
@@ -56,6 +57,17 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 		initDatas();
 		return v_rootView;
 	}
+	@OnClick({R.id.layout_receive_address})
+	public void  onClick(View v){
+		switch (v.getId()) {
+		case R.id.layout_receive_address:
+			processClickReceiveAddress();
+			break;
+
+		default:
+			break;
+		}
+	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -77,4 +89,11 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 		setTextAndContent(layout_authorization, R.string.three_party, R.drawable.arrow_down, "", "");
 		setTextAndContent(layout_change_psw, R.string.change_password, R.drawable.arrow_down, "", "");
 	}
+	/**
+	 * 点击收货地址时的处理
+	 */
+	private void processClickReceiveAddress(){
+		
+	}
+	
 }

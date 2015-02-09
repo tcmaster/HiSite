@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:background="@color/white_gray"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/match_width"
+        android:drawableLeft="@drawable/contact"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical|left"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:paddingLeft="@dimen/text_left_margin"
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:text="@string/my_receive_address" />
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingLeft="@dimen/text_left_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/receiver_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_receiver_name"
+            style="@style/match_width"
+            android:gravity="right|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingRight="@dimen/text_right_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingLeft="@dimen/text_left_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/phone_num"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/match_width"
+            android:gravity="right|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingRight="@dimen/text_right_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <View
+        style="@style/line_full"
+        android:layout_marginBottom="@dimen/margin_between_item" />
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingLeft="@dimen/text_left_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/choice_province"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_province"
+            style="@style/match_width"
+            android:gravity="right|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingRight="@dimen/text_right_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/wrap"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingLeft="@dimen/text_left_margin"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/detail_address"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <EditText
+            android:id="@+id/et_detail_address"
+            style="@style/match_width"
+            android:gravity="left"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingLeft="@dimen/text_left_margin"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_ok"
+        style="@style/match_width"
+        android:layout_marginLeft="@dimen/text_left_margin"
+        android:layout_marginRight="@dimen/text_right_margin"
+        android:background="@color/red_sys"
+        android:gravity="center"
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize" />
+
+</LinearLayout>
