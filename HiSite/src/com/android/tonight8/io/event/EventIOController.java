@@ -10,6 +10,7 @@ import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.util.LogUtils;
 
 public class EventIOController {
 
@@ -25,11 +26,13 @@ public class EventIOController {
 
 			@Override
 			public void getData(NetEntityBase netEntityBase, EventListNetEntity t, Handler handler) {
+				LogUtils.v(t.toString());
 				// EventStorage.getEventListNativeController().insertData(t.event_publish_events);
 			}
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
+				LogUtils.v("why");
 			}
 		});
 	}

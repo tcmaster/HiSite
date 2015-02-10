@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import android.os.Handler;
@@ -47,8 +46,7 @@ public class NetRequest {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static <T> void doRequest(final List<Map<String, String>> params,
-			final RequestResult<T>... callbacks) {
+	public static <T> void doRequest(final List<Map<String, String>> params, final RequestResult<T>... callbacks) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -65,7 +63,7 @@ public class NetRequest {
 					Iterator<Map.Entry<String, String>> it = entry.iterator();
 					RequestParams rP = new RequestParams("utf-8");
 					// 为各个参数添加必要头部
-					// addHeader(rP);
+					addHeader(rP);
 					// 这里需要增加若干基本参数
 					while (it.hasNext()) {
 						Map.Entry<String, String> kv = it.next();
@@ -80,7 +78,8 @@ public class NetRequest {
 							requestUrl = kv.getValue();
 							continue;
 						}
-						rP.addBodyParameter(kv.getKey(), kv.getValue());
+						// rP.addBodyParameter(kv.getKey(), kv.getValue());
+						rP.addQueryStringParameter(kv.getKey(), kv.getValue());
 
 					}
 					httpUtils.send(method, requestUrl, rP, callback);
@@ -97,8 +96,7 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doGetRequest(Map<String, String> param,
-			RequestResult<T> callback) {
+	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
 		param.put("method", GET_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -111,8 +109,7 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doPostRequest(Map<String, String> param,
-			RequestResult<T> callback) {
+	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
 		param.put("method", POST_METHOD);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		list.add(param);
@@ -134,8 +131,7 @@ public class NetRequest {
 	 * @copyright @tonight8
 	 * @Date:2014-12-29
 	 */
-	public static <T> void postImageToServer(final Map<String, String> param,
-			final RequestResult<T> callback, final String fN, final File file) {
+	public static <T> void postImageToServer(final Map<String, String> param, final RequestResult<T> callback, final String fN, final File file) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -155,6 +151,7 @@ public class NetRequest {
 						continue;
 					}
 					rP.addBodyParameter(kv.getKey(), kv.getValue());
+					// rP.addQueryStringParameter(kv.getKey(), kv.getValue());
 				}
 				rP.addBodyParameter(fN, file);
 				httpUtils.send(HttpMethod.POST, requestUrl, callback);
@@ -163,8 +160,7 @@ public class NetRequest {
 
 	}
 
-	public abstract static class RequestResult<T> extends
-			RequestCallBack<String> {
+	public abstract static class RequestResult<T> extends RequestCallBack<String> {
 
 		private Class<T> clazz;
 		private Handler handler;
@@ -204,88 +200,23 @@ public class NetRequest {
 			base.status = object.getInteger("status");
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");
-			newJsonkey = ""; // 下划线改为驼峰用到的
-			base.data = getStringData(
-					getObjectToString(object.getJSONObject("data")),
-					object.getJSONObject("data"));
+			base.data = object.getJSONObject("data").toJSONString();
+			// base.data = JsonUtils.getStringData(JsonUtils.getObjectToString(object.getJSONObject("data")),
+			// object.getJSONObject("data"));
 			return base;
 		}
 
-		public abstract void getData(NetEntityBase netEntityBase, T t,
-				Handler handler);
+		public abstract void getData(NetEntityBase netEntityBase, T t, Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {
-		rP.addBodyParameter("version", AppConstants.version);
-		rP.addBodyParameter("device_type", AppConstants.device_type);
-		rP.addBodyParameter("imei", AppConstants.imei);
-		rP.addBodyParameter("dpi", AppConstants.dpi);
-		rP.addBodyParameter("os_version", AppConstants.os_version);
-		rP.addBodyParameter("phone_model", AppConstants.phone_model);
-		rP.addBodyParameter("auth_code", AppConstants.auth_code);
+		rP.addQueryStringParameter("version", AppConstants.version);
+		rP.addQueryStringParameter("device_type", AppConstants.device_type);
+		rP.addQueryStringParameter("imei", AppConstants.imei);
+		rP.addQueryStringParameter("dpi", AppConstants.dpi);
+		rP.addQueryStringParameter("os_version", AppConstants.os_version);
+		rP.addQueryStringParameter("phone_model", AppConstants.phone_model);
+		rP.addQueryStringParameter("auth_code", AppConstants.auth_code);
 	}
-
-	// --------------下划线改为驼峰用到的-------------
-	static String newJsonkey = "";
-	static String key1 = "";//
-
-	public static String getObjectToString(JSONObject jsonObject) {
-
-		Iterator<Entry<String, Object>> it = jsonObject.entrySet().iterator();
-		Set<String> keysey = jsonObject.keySet();
-		key1 = key1 + "," + keysey.toString();
-		while (it.hasNext()) {
-			Entry<String, Object> entiy = it.next();
-			String key = entiy.getKey();
-			Object value = entiy.getValue();
-			newJsonkey = newJsonkey + key + ",";
-
-			if (value instanceof Integer) {
-				// newJson = newJson + key;
-			} else if (value instanceof String) {
-				// newJson = newJson + key;
-			} else if (value instanceof List) {
-
-				JSONObject jsonObject2 = JSONObject
-						.parseObject(value.toString().substring(1,
-								value.toString().length() - 1));
-				Set<String> keysey2 = jsonObject2.keySet();
-				for (int i = 0; i < keysey2.size(); i++) {
-					getObjectToString(jsonObject2);
-				}
-
-			} else if (value instanceof JSONObject) {
-				getObjectToString((JSONObject) value);
-
-			}
-		}
-
-		return newJsonkey.substring(0, newJsonkey.length() - 1);
-	}
-
-	public static String getStringData(String jsonkey, JSONObject jsonObject) {
-		String jsonObjectString = jsonObject.toString();
-		String[] json = jsonkey.split(",");
-		for (int i = 0; i < json.length; i++) {
-			String word = getFirstLetterToUpper(json[i]);
-			jsonObjectString = jsonObjectString.replace(json[i], word);
-		}
-		return jsonObjectString;
-	}
-
-	public static String getFirstLetterToUpper(String keyStr) {
-		String tempJsonStr = "";
-		if (!StringUtils.isNullOrEmpty(keyStr) && keyStr.contains("_")) {
-			String[] tempJson = keyStr.split("_");
-			for (int i = 1; i < tempJson.length; i++) {
-				keyStr = StringUtils.firstLetterToUpper(tempJson[i]);
-				tempJsonStr = tempJson[0] + keyStr;
-			}
-		} else {
-			tempJsonStr = keyStr;
-		}
-		return tempJsonStr;
-	}
-	// --------------下划线改为驼峰用到的-------------
 
 }
