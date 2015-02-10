@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+    <RadioGroup 
+        style="@style/match_width"
+        android:orientation="horizontal">
+        <RadioButton 
+            android:id="@+id/rb_furture_award"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:layout_weight="1"
+            android:text="@string/furture_award"
+            android:button="@null"
+            android:gravity="center"
+            />
+        <View style="@style/line_full_vertical"/>
+        <RadioButton 
+            android:id="@+id/rb_no_award"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:layout_weight="1"
+            android:text="@string/no_award"
+            android:button="@null"
+            android:gravity="center"/>
+        <View style="@style/line_full_vertical"/>
+        <RadioButton 
+            android:id="@+id/rb_achieve_award"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:layout_weight="1"
+            android:text="@string/achieve_award"
+            android:button="@null"
+            android:gravity="center"/>
+    </RadioGroup>
+    <com.android.tonight8.view.XListView
+        android:id="@+id/lv_only_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+	
+</LinearLayout>
