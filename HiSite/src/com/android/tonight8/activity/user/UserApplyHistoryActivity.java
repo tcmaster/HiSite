@@ -24,7 +24,7 @@ public class UserApplyHistoryActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_only_list);
+		setContentView(R.layout.activity_user_apply_history);
 		super.onCreate(savedInstanceState);
 		initDatas();
 	}

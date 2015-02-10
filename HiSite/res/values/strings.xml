@@ -111,6 +111,7 @@
     <string name="have_signin">已报名：</string>
     <string name="consult">询问</string>
     <string name="complain">举报/投诉</string>
+    <string name="present">转赠</string>
     <string name="sign">签收</string>
     <string name="takephoto">拍照</string>
     <string name="getphoto">从相册中选择</string>
@@ -134,6 +135,9 @@
     <string name="coupon_award_location">兑奖地点</string>
     <!-- 用户抽奖历史 -->
     <string name="delete">删除</string>
+    <string name="furture_award">待开奖</string>
+    <string name="no_award">未中奖</string>
+    <string name="achieve_award">已中奖</string>
     <!-- 用户收货地址 -->
     <string name="my_receive_address">我的收货信息</string>
     <string name="receiver_name">收货人姓名</string>

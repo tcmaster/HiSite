@@ -56,7 +56,7 @@ public class UserAwardListAdapter extends BaseListAdapter<UserAwardModel> {
 			holder.tv_coupon = (TextView) convertView.findViewById(R.id.tv_coupon);
 			holder.tv_have_apply = (TextView) convertView.findViewById(R.id.tv_have_apply);
 			holder.ll_consult = (LinearLayout) convertView.findViewById(R.id.ll_consult);
-			holder.ll_complain = (LinearLayout) convertView.findViewById(R.id.ll_complain);
+			holder.ll_present = (LinearLayout) convertView.findViewById(R.id.ll_present);
 			holder.ll_sign = (LinearLayout) convertView.findViewById(R.id.ll_sign);
 			holder.lv_commit = (ListView) convertView.findViewById(R.id.lv_commit);
 			holder.iv_consult = (ImageView) convertView.findViewById(R.id.iv_consult);
@@ -93,7 +93,7 @@ public class UserAwardListAdapter extends BaseListAdapter<UserAwardModel> {
 		TextView tv_coupon;// 优惠券
 		TextView tv_have_apply;// 报名数量
 		LinearLayout ll_consult;// 咨询
-		LinearLayout ll_complain;// 投诉
+		LinearLayout ll_present;// 转赠
 		LinearLayout ll_sign;// 签收
 		ListView lv_commit;// 评论列表
 		ImageView iv_consult;// 咨询图片
