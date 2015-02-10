@@ -33,9 +33,8 @@ public class CreateEventThirdStepNativeController {
 		Event event = createEventModel.event;
 		SharedPreferences.Editor editor = preference.edit();
 		editor.putBoolean("event_cityall", event.cityAll);
-		editor.putString("exchange_address", exChange.address);
+		editor.putInt("exchange_address", exChange.locationType);
 		editor.putBoolean("exchange_method", exChange.method);
-		editor.putBoolean("exchange_orgall", exChange.orgAll);
 		editor.commit();
 		return;
 	}
@@ -58,9 +57,8 @@ public class CreateEventThirdStepNativeController {
 	 */
 	public Exchange readCreateEventSecondStepExchange() {
 		Exchange exChange = new Exchange();
-		exChange.setAddress(preference.getString("exchange_address", ""));
+		exChange.setLocationType(preference.getInt("exchange_address", 0));
 		exChange.setMethod(preference.getBoolean("exchange_method", true));
-		exChange.setOrgAll(preference.getBoolean("exchange_orgall", true));
 		return exChange;
 	}
 

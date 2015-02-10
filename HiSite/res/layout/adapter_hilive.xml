@@ -27,17 +27,20 @@
             style="@style/wrap"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/ic_launcher" >
+            android:background="@drawable/camera_red" >
         </ImageView>
     </RelativeLayout>
 
-    <FrameLayout style="@style/match_width" >
+    <RelativeLayout style="@style/match_width" >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_adapter_hilive"
-            android:layout_width="fill_parent"
-            android:layout_height="150dip" />
-    </FrameLayout>
+        <FrameLayout style="@style/match_width" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_adapter_hilive"
+                android:layout_width="fill_parent"
+                android:layout_height="150dip" />
+        </FrameLayout>
+    </RelativeLayout>
 
     <LinearLayout
         style="@style/match_width"
@@ -71,7 +74,7 @@
         <TextView
             android:id="@+id/tv_share"
             style="@style/wrap"
-            android:drawableLeft="@drawable/ic_launcher"
+            android:drawableLeft="@drawable/share_gray"
             android:gravity="center"
             android:text="分享" >
         </TextView>
@@ -80,7 +83,7 @@
             android:id="@+id/cb_subject"
             style="@style/wrap"
             android:button="@null"
-            android:drawableLeft="@drawable/ic_launcher"
+            android:drawableLeft="@drawable/talk_gray"
             android:gravity="center"
             android:text="评论" />
 

@@ -1,7 +1,6 @@
 package com.android.tonight8.adapter.live;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -47,8 +46,6 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 	private int index = 0;
 	/** 头像图片张数 */
 	private int ivCount = 8;
-	/** 是否显示话题列表 */
-	private HashMap<Integer, Boolean> isShowSubjectList = new HashMap<Integer, Boolean>();
 
 	public HiLiveAdapter(Context context, List<LiveListModel> values) {
 		super(context, values);
@@ -123,16 +120,9 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onClick(View arg0) {
-				DialogUtils.showSelectShareDialog((MainActivity) mContext);
+			DialogUtils.showSelectShareDialog((MainActivity) mContext);
 			}
 		});
-		isShowSubjectList.put(position, liveListModel.isShowComment);
-		if (isShowSubjectList.get(position)) {
-			holder.lv_subject.setVisibility(View.VISIBLE);
-		} else {// 如果可以续借
-			holder.lv_subject.setVisibility(View.GONE);
-		}
-
 		// 话题列表
 		holder.cb_subject.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -141,7 +131,6 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 				holder.lv_subject.setTag(position);
 				// true展开话题
 				if (isChecked) {
-					mValues.get(position).isShowComment = true;
 					listComment = new ArrayList<LiveCommentModel>();
 					for (int i = 0; i < 5; i++) {
 						LiveCommentModel liveCommentModel = new LiveCommentModel();
@@ -160,7 +149,6 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 					holder.lv_subject.setAdapter(subjectListAdapter);
 					holder.lv_subject.setVisibility(View.VISIBLE);
 				} else {
-					mValues.get(position).isShowComment = false;
 					holder.lv_subject.setVisibility(View.GONE);
 				}
 			}

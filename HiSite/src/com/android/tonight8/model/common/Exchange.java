@@ -19,7 +19,7 @@ public class Exchange implements Serializable {
 	/** 兑奖指定地址 */
 	public String address;
 	/** 地址类型 */
-	public boolean locationType;
+	public int locationType;
 
 	public boolean isMethod() {
 		return method;
@@ -45,11 +45,11 @@ public class Exchange implements Serializable {
 		this.address = address;
 	}
 
-	public boolean isLocationType() {
+	public int getLocationType() {
 		return locationType;
 	}
 
-	public void setLocationType(boolean locationType) {
+	public void setLocationType(int locationType) {
 		this.locationType = locationType;
 	}
 
@@ -58,6 +58,6 @@ public class Exchange implements Serializable {
 		return "Exchange [rid=" + rid + ", method=" + method + ", address="
 				+ address + ", locationType=" + locationType + "]";
 	}
-	
+
 
 }

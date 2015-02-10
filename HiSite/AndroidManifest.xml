@@ -185,6 +185,12 @@
             android:name="com.android.tonight8.activity.user.EditReceiveAddressActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+       <!-- 用户协议页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.UserAgreementActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
         <!-- QQ分享需要注册的 -->
         <activity
             android:name="com.tencent.connect.common.AssistActivity"

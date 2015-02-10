@@ -29,10 +29,10 @@ public class LiveIOController {
 
 	private static final String LIVE_LIST_URL = NetRequest.BASE_URL + "";
 	private static final String LIVE_DETAIL_URL = NetRequest.BASE_URL + "";
-	private static final String LIVE_SUBJECT_URL = NetRequest.BASE_URL + "";
-	private static final String LIVE_SUBJECT_WRITE_URL = NetRequest.BASE_URL + "";
-	private static final String LIVE_COMMENT_URL = NetRequest.BASE_URL + "";
-	private static final String LIVE_COMMENT_WRITE_URL = NetRequest.BASE_URL + "";
+	private static final String LIVE_SUBJECT_URL = NetRequest.BASE_URL + "/api/scene/subject";
+	private static final String LIVE_SUBJECT_WRITE_URL = NetRequest.BASE_URL + "/api/scene/subject_write";
+	private static final String LIVE_COMMENT_URL = NetRequest.BASE_URL + "/api/scene/comments_list";
+	private static final String LIVE_COMMENT_WRITE_URL = NetRequest.BASE_URL + "/api/scene/comment_write";
 
 	/**
 	 * @Description：从接口中获取活动现场列表 2015-2-5下午8:36:39
