@@ -18,8 +18,8 @@ public class Exchange implements Serializable {
 	public boolean method;
 	/** 兑奖指定地址 */
 	public String address;
-	/** 兑奖是否是全部经销商地址 */
-	public boolean orgAll;
+	/** 地址类型 */
+	public boolean locationType;
 
 	public boolean isMethod() {
 		return method;
@@ -45,17 +45,19 @@ public class Exchange implements Serializable {
 		this.address = address;
 	}
 
-	public boolean isOrgAll() {
-		return orgAll;
+	public boolean isLocationType() {
+		return locationType;
 	}
 
-	public void setOrgAll(boolean orgAll) {
-		this.orgAll = orgAll;
+	public void setLocationType(boolean locationType) {
+		this.locationType = locationType;
 	}
 
 	@Override
 	public String toString() {
-		return "Exchange [rid=" + rid + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + "]";
+		return "Exchange [rid=" + rid + ", method=" + method + ", address="
+				+ address + ", locationType=" + locationType + "]";
 	}
+	
 
 }

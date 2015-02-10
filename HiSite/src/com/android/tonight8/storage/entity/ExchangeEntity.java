@@ -26,8 +26,8 @@ public class ExchangeEntity {
 	@Column(column = "address")
 	private String address;
 	/** 兑奖是否是全部经销商地址 */
-	@Column(column = "orgAll")
-	private boolean orgAll;
+	@Column(column = "locationType")
+	private int locationType;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
 	/** 活动商家，临时（可能会更改） */
@@ -58,17 +58,21 @@ public class ExchangeEntity {
 		this.address = address;
 	}
 
-	public boolean isOrgAll() {
-		return orgAll;
+	public int getLocationType() {
+		return locationType;
 	}
 
-	public void setOrgAll(boolean orgAll) {
-		this.orgAll = orgAll;
+	public void setLocationType(int locationType) {
+		this.locationType = locationType;
 	}
 
 	@Override
 	public String toString() {
-		return "ExchangeEntity [id=" + id + ", method=" + method + ", address=" + address + ", orgAll=" + orgAll + ", event=" + event + ", orgs=" + orgs + "]";
+		return "ExchangeEntity [id=" + id + ", method=" + method + ", address="
+				+ address + ", locationType=" + locationType + ", event="
+				+ event + ", orgs=" + orgs + "]";
 	}
+	
+	
 
 }
