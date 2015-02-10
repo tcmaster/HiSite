@@ -76,12 +76,12 @@
         style="@style/line_full"
         android:layout_marginBottom="@dimen/margin_between_item" />
 
-    <View style="@style/line_full" />
-
+	<View style="@style/line_full" />
     <LinearLayout
         style="@style/match_width"
         android:background="@color/white"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:id="@+id/layout_province" >
 
         <TextView
             style="@style/wrap"
@@ -104,7 +104,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/middleTextSize" />
     </LinearLayout>
-
+	<View style="@style/line_full" />
     <LinearLayout
         style="@style/match_width"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -120,7 +120,6 @@
             android:text="@string/detail_address"
             android:textColor="@color/black"
             android:textSize="@dimen/middleTextSize" />
-
         <EditText
             android:id="@+id/et_detail_address"
             style="@style/match_width"
@@ -131,9 +130,9 @@
             android:textColor="@color/black"
             android:textSize="@dimen/middleTextSize" />
     </LinearLayout>
-
+	<View style="@style/line_full" />
     <TextView
-        android:id="@+id/btn_ok"
+        android:id="@+id/tv_ok"
         style="@style/match_width"
         android:layout_marginLeft="@dimen/text_left_margin"
         android:layout_marginRight="@dimen/text_right_margin"

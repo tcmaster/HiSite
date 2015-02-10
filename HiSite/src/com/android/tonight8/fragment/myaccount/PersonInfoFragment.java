@@ -3,6 +3,7 @@
  */
 package com.android.tonight8.fragment.myaccount;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.user.EditReceiveAddressActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -57,8 +59,9 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 		initDatas();
 		return v_rootView;
 	}
-	@OnClick({R.id.layout_receive_address})
-	public void  onClick(View v){
+
+	@OnClick({ R.id.layout_receive_address })
+	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.layout_receive_address:
 			processClickReceiveAddress();
@@ -89,11 +92,13 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 		setTextAndContent(layout_authorization, R.string.three_party, R.drawable.arrow_down, "", "");
 		setTextAndContent(layout_change_psw, R.string.change_password, R.drawable.arrow_down, "", "");
 	}
+
 	/**
 	 * 点击收货地址时的处理
 	 */
-	private void processClickReceiveAddress(){
-		
+	private void processClickReceiveAddress() {
+		Intent intent = new Intent(getActivity(), EditReceiveAddressActivity.class);
+		startActivity(intent);
 	}
-	
+
 }

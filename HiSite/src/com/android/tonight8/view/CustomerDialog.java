@@ -17,6 +17,10 @@ public class CustomerDialog {
 	private int res;
 	private CustomerViewInterface listener;
 	private AlertDialog dlg;
+	/**
+	 * dialog的位置
+	 */
+	private int gravity = -200;
 
 	/**
 	 * 
@@ -33,7 +37,7 @@ public class CustomerDialog {
 	}
 
 	/**
-	 * 调用这个构�?�方法之后必须调用init方法
+	 * 调用这个构造方法之后必须调用init方法
 	 */
 	public CustomerDialog() {
 
@@ -57,12 +61,23 @@ public class CustomerDialog {
 		window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 		window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		window.setContentView(res);
+		if (-200 != gravity)
+			window.setGravity(gravity);
 		if (listener != null) {
 			listener.getCustomerView(window, dlg);
 		}
 	}
 
-	public void setDlgIfClick(boolean ifClick) {
+	/**
+	 * @Description:在showDlg之前调用，用于设置dialog的位置
+	 * @author: LiXiaoSong
+	 * @date:2015-2-9
+	 */
+	public void setLayoutGravity(int gravity) {
+		this.gravity = gravity;
+	}
+
+	public void setDismissIfClick(boolean ifClick) {
 		if (dlg != null) {
 			dlg.setCancelable(ifClick);
 			dlg.setCanceledOnTouchOutside(ifClick);
