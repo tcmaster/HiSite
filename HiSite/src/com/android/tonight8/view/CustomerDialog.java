@@ -3,6 +3,7 @@ package com.android.tonight8.view;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -20,7 +21,7 @@ public class CustomerDialog {
 	/**
 	 * dialog的位置
 	 */
-	private int gravity = -200;
+	public int gravity = -200;
 
 	/**
 	 * 

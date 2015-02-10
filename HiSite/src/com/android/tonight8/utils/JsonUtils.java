@@ -17,7 +17,7 @@ import com.lidroid.xutils.util.LogUtils;
  */
 public class JsonUtils {
 
-	static String newJsonkey = "";
+	public static String newJsonkey = "";
 	static String key1 = "";//
 
 	public static <T> T parseJsonStr(String jsonStr, Class<T> clazz) {
@@ -27,10 +27,10 @@ public class JsonUtils {
 	}
 
 	public static String getObjectToString(JSONObject jsonObject) {
-		newJsonkey = "";
+
 		Iterator<Entry<String, Object>> it = jsonObject.entrySet().iterator();
 		Set<String> keysey = jsonObject.keySet();
-		key1 = key1 + "," + keysey.toString();
+		key1 = key1 + "," + keysey.toString().replace("[", "").replace("]", "");
 		while (it.hasNext()) {
 			Entry<String, Object> entiy = it.next();
 			String key = entiy.getKey();
@@ -42,10 +42,16 @@ public class JsonUtils {
 			} else if (value instanceof String) {
 				// newJson = newJson + key;
 			} else if (value instanceof List) {
+				String str = value.toString().substring(1, value.toString().length() - 1);
+				if (str.contains("}},")) {
+					str = str.substring(0, str.indexOf("}},") + 2);
+				}
 
-				JSONObject jsonObject2 = JSONObject.parseObject(value.toString().substring(1, value.toString().length() - 1));
+				JSONObject jsonObject2 = JSONObject.parseObject(str);
 				Set<String> keysey2 = jsonObject2.keySet();
+				key1 = key1 + "," + keysey2.toString().replace("[", "").replace("]", "");
 				for (int i = 0; i < keysey2.size(); i++) {
+					newJsonkey = newJsonkey + key + ",";
 					getObjectToString(jsonObject2);
 				}
 
@@ -62,8 +68,21 @@ public class JsonUtils {
 		String jsonObjectString = jsonObject.toString();
 		String[] json = jsonkey.split(",");
 		for (int i = 0; i < json.length; i++) {
-			String word = getFirstLetterToUpper(json[i]);
-			jsonObjectString = jsonObjectString.replace(json[i], word);
+			if (json[i].contains("_")) {
+				String tempString = json[i];
+				String newStr = getFirstLetterToUpper(json[i]);
+				jsonObjectString = jsonObjectString.replace(tempString, newStr);
+			}
+		}
+		if (jsonObjectString.contains("_")) {
+			String tempString = "";
+			String[] tempJson = jsonObjectString.split("_");
+			for (int j = 1; j < tempJson.length; j++) {
+				String str1 = StringUtils.firstLetterToUpper(tempJson[j]);
+				tempString = tempString + str1;
+			}
+			tempString = tempJson[0] + tempString;
+			jsonObjectString = tempString;
 		}
 		return jsonObjectString;
 	}
@@ -74,8 +93,9 @@ public class JsonUtils {
 			String[] tempJson = keyStr.split("_");
 			for (int i = 1; i < tempJson.length; i++) {
 				keyStr = StringUtils.firstLetterToUpper(tempJson[i]);
-				tempJsonStr = tempJson[0] + keyStr;
+				tempJsonStr = tempJsonStr + keyStr;
 			}
+			tempJsonStr = tempJson[0] + tempJsonStr;
 		} else {
 			tempJsonStr = keyStr;
 		}

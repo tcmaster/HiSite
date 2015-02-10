@@ -11,6 +11,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -153,6 +155,14 @@ public class DialogUtils {
 				WindowManager.LayoutParams lp = window.getAttributes();
 				lp.gravity = Gravity.BOTTOM;
 				final GridView gv_share = (GridView) window.findViewById(R.id.gv_share);
+				final Button cancleButton = (Button) window.findViewById(R.id.btn_share_dialog_cancel);
+				cancleButton.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						cdlg.dismissDlg();
+					}
+				});
 				ShareAdapter shareAdapter = new ShareAdapter(activity);
 				gv_share.setAdapter(shareAdapter);
 				gv_share.setOnItemClickListener(new OnItemClickListener() {
@@ -161,13 +171,13 @@ public class DialogUtils {
 					public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 						switch (position) {
 						case 0:
-
+							SharedUtils.shareToQQOrQzone(activity, null, null, true);
 							break;
 						case 1:
-
+							SharedUtils.shareToWXOrFriends(activity, true);
 							break;
 						case 2:
-
+							SharedUtils.shareToWXOrFriends(activity, true);
 							break;
 						case 3:
 							SharedUtils.shareToWXOrFriends(activity, true);
@@ -181,6 +191,7 @@ public class DialogUtils {
 		});
 
 		Utils.hideSoftKeyBoard(activity);
+		cdlg.gravity =Gravity.BOTTOM;
 		cdlg.showDlg();
 	}
 }

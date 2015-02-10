@@ -26,6 +26,7 @@ public class LiveListModel extends BaseModel {
 	public List<User> user= new ArrayList<User>();
 	/** 兑奖对象 */
 	public Exchange exchange;
+	public boolean isShowComment = false;
 	
 	public Event getEvent() {
 		return event;

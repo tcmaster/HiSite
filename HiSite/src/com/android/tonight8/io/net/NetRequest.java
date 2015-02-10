@@ -200,9 +200,10 @@ public class NetRequest {
 			base.status = object.getInteger("status");
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");
-			base.data = object.getJSONObject("data").toJSONString();
-			// base.data = JsonUtils.getStringData(JsonUtils.getObjectToString(object.getJSONObject("data")),
-			// object.getJSONObject("data"));
+			// base.data = object.getJSONObject("data").toJSONString();
+			JsonUtils.newJsonkey = "";
+			String jsonkey = JsonUtils.getObjectToString(object.getJSONObject("data"));
+			base.data = JsonUtils.getStringData(jsonkey, object.getJSONObject("data"));
 			return base;
 		}
 
