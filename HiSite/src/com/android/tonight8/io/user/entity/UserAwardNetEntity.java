@@ -11,8 +11,6 @@ import com.android.tonight8.model.user.UserAwardModel;
 /**
  * @Description:
  * @author:LiXiaoSong
- * @see:
- * @since:
  * @copyright @HiSite
  * @Date:2015-2-11
  */
