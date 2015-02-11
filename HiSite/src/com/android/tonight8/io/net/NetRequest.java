@@ -183,7 +183,6 @@ public class NetRequest {
 				@Override
 				public void run() {
 					NetEntityBase base = getBaseJsonObject(arg0.result);
-					LogUtils.v(base.data);
 					T t = null;
 					if (!StringUtils.isNullOrEmpty(base.data)) {
 						t = JsonUtils.parseJsonStr(base.data, clazz);// 解析好需要的实体
@@ -202,7 +201,9 @@ public class NetRequest {
 			base.message = object.getString("message");
 			JsonUtils.newJsonkey = "";
 			String jsonkey = JsonUtils.getObjectToString(object.getJSONObject("data"));
+			LogUtils.v("ori is " + object.getJSONObject("data"));
 			base.data = JsonUtils.getStringData(jsonkey, object.getJSONObject("data"));
+			LogUtils.v("data is on parseFinish " + base.data);
 			return base;
 		}
 

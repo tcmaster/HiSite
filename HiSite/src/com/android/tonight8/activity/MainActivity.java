@@ -15,7 +15,6 @@ import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
 import com.android.tonight8.fragment.main.PostEventMenuFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
-import com.android.tonight8.io.event.EventIOController;
 
 /**
  * @Description:主界面
@@ -68,7 +67,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initDatas();
-		EventIOController.eventsRead(null);
 	}
 
 	private void initDatas() {
