@@ -12,7 +12,6 @@ import android.widget.ListView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.live.HiLiveAdapter;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.io.live.LiveIOController;
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.SignIn;
@@ -38,15 +37,13 @@ public class HiLiveFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (rootView != null) {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater
-				.inflate(R.layout.fragment_hi_live, container, false);
+		rootView = inflater.inflate(R.layout.fragment_hi_live, container, false);
 		lv_hiLive = (ListView) rootView.findViewById(R.id.lv_hiLive);
 		initData();
 		return rootView;
@@ -73,7 +70,7 @@ public class HiLiveFragment extends BaseFragment {
 			liveListModel.setSignIn(signIns);
 			liveListModels.add(liveListModel);
 		}
-		LiveIOController.liveListRead(null);
+		// LiveIOController.liveListRead(null);
 		hiLiveAdapter = new HiLiveAdapter(getActivity(), liveListModels);
 		lv_hiLive.setAdapter(hiLiveAdapter);
 	}
