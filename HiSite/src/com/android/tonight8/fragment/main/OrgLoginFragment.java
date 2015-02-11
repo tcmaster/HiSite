@@ -161,14 +161,14 @@ public class OrgLoginFragment extends BaseFragment {
 		case R.id.btn_shop_login:
 			String orgid = et_org_id.getText().toString();
 			String orgpwd = et_org_loginpwd.getText().toString();
-			if (StringUtils.isNullOrEmpty(orgid)) {
-				Utils.toast("请输入商家ID");
-				return;
-			}
-			if (StringUtils.isNullOrEmpty(orgpwd)) {
-				Utils.toast("请输入密码");
-				return;
-			}
+			// if (StringUtils.isNullOrEmpty(orgid)) {
+			// Utils.toast("请输入商家ID");
+			// return;
+			// }
+			// if (StringUtils.isNullOrEmpty(orgpwd)) {
+			// Utils.toast("请输入密码");
+			// return;
+			// }
 			mainActivity.UpdateLoginedFragment(true);
 			break;
 		case R.id.btn_shop_register:

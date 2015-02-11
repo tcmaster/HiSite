@@ -1,10 +1,12 @@
 package com.android.tonight8.adapter.createevent;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -12,12 +14,8 @@ import com.android.tonight8.R;
 
 public class PostEventsGridAdapter extends BaseAdapter {
 
-	private String[] strMenu = { "发布活动", "活动中奖管理", "促销券使用", " 绑定经销商", "已用券核销",
-			"兑奖地点管理", " 用户反馈", "退出后台" };
-	private int[] intMenu = { R.drawable.pencil_red_big,
-			R.drawable.star_red_big, R.drawable.avg_red, R.drawable.chain_big,
-			R.drawable.avg_red_ok, R.drawable.talk_red_big,
-			R.drawable.talk_red_big, R.drawable.talk_red_big };
+	private String[] strMenu = { "发布活动", "活动中奖管理", "促销券使用", " 绑定经销商", "已用券核销", "兑奖地点管理", " 用户反馈", "退出后台" };
+	private int[] intMenu = { R.drawable.pencil_red_big, R.drawable.star_red_big, R.drawable.avg_red, R.drawable.chain_big, R.drawable.avg_red_ok, R.drawable.talk_red_big, R.drawable.talk_red_big, R.drawable.talk_red_big };
 	private Context context;
 	private LayoutInflater mLiInflater;
 
@@ -29,7 +27,9 @@ public class PostEventsGridAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return strMenu.length;
+
+		return strMenu.length + 1;
+
 	}
 
 	@Override
@@ -47,20 +47,22 @@ public class PostEventsGridAdapter extends BaseAdapter {
 		ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = mLiInflater.inflate(R.layout.adapter_postevents_grid,
-					null, false);
-			holder.tv_grid_title = (TextView) convertView
-					.findViewById(R.id.tv_grid_title);
+			convertView = mLiInflater.inflate(R.layout.adapter_postevents_grid, null, false);
+			holder.tv_grid_title = (TextView) convertView.findViewById(R.id.tv_grid_title);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.tv_grid_title.setText(strMenu[position]);
-		Drawable drawable = context.getResources().getDrawable(
-				intMenu[position]);
-		drawable.setBounds(0, 0, drawable.getMinimumWidth(),
-				drawable.getMinimumWidth());
-		holder.tv_grid_title.setCompoundDrawables(null, drawable, null, null);
+		if (position < strMenu.length) {
+			holder.tv_grid_title.setText(strMenu[position]);
+			Drawable drawable = context.getResources().getDrawable(intMenu[position]);
+			int minimumWidth = context.getResources().getDrawable(intMenu[0]).getMinimumWidth();
+			drawable.setBounds(0, 0, minimumWidth, minimumWidth);
+			holder.tv_grid_title.setCompoundDrawables(null, drawable, null, null);
+		}else {
+			holder.tv_grid_title.setBackgroundColor(Color.WHITE);
+		}
+
 		return convertView;
 	}
 

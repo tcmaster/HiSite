@@ -55,18 +55,18 @@
 
     <style name="line_full">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1px</item>
+        <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/line_gray</item>
     </style>
 
     <style name="line_full_vertical">
-        <item name="android:layout_width">1px</item>
+        <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/line_gray</item>
     </style>
     <!-- 通用编辑框样式 -->
     <style name="et_comm_style" parent="match">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/middleTextSize</item>
         <item name="android:singleLine">true</item>
         <item name="android:gravity">center_vertical</item>
     </style>

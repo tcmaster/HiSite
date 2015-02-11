@@ -41,8 +41,8 @@ public class OrgRegisterActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shop_register);
+		super.onCreate(savedInstanceState);
 		getActionBarBase("商家注册");
 
 	}

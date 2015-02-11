@@ -115,7 +115,8 @@ public class PostEventMenuFragment extends BaseFragment {
 
 	private void initData() {
 		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
-		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
+//		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
+		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");
 		tv_shop_state.setText("发布：12 关注：15");
 		tv_postevents_place.setText("北京 朝阳区");
