@@ -7,7 +7,8 @@
     <ScrollView
         android:id="@+id/sv_menu_temp"
         style="@style/match"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:scrollbars="none" >
 
         <LinearLayout
             style="@style/match_width"
@@ -74,7 +75,7 @@
             <com.android.tonight8.view.GridViewForScrollView
                 android:id="@+id/gv_postevents_main"
                 style="@style/match_width"
-                android:background="@color/line_gray"
+                android:background="@color/white_gray"
                 android:fadingEdge="none"
                 android:horizontalSpacing="1dp"
                 android:numColumns="3"
@@ -84,12 +85,13 @@
             <View style="@style/line_full" />
 
             <RelativeLayout
-                android:background="@color/white"
                 android:id="@+id/rl_dimension_temp"
                 style="@style/match_width"
                 android:layout_marginBottom="60dp"
+                android:background="@color/white"
                 android:paddingLeft="@dimen/common_margin_left"
-                android:paddingRight="@dimen/common_margin_left" >
+                android:paddingRight="@dimen/common_margin_left"
+                android:paddingTop="@dimen/common_margin_left" >
 
                 <TextView
                     android:id="@+id/tv_shop_id_title"

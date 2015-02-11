@@ -6,7 +6,6 @@
     <TextView
         android:id="@+id/tv_grid_title"
         style="@style/match"
-        android:background="@drawable/seletor_white_to_gray"
         android:drawablePadding="@dimen/drawable_padding"
         android:gravity="center"
         android:padding="@dimen/margin_between_item"

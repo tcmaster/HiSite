@@ -1,5 +1,6 @@
 package com.android.tonight8.activity.createevent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -47,6 +48,7 @@ public class UserAgreementActivity extends BaseActivity {
 		if (!cb_agree.isChecked()) {
 			return;
 		}
+		startActivityForAnima(new Intent(UserAgreementActivity.this,CreatEventFirstActivity.class), null);
 
 	}
 

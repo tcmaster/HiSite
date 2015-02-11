@@ -28,9 +28,9 @@ public class EventsAwardManageActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_award_manage);
-		initData();
+		super.onCreate(savedInstanceState);
+		// initData();
 	}
 
 	private void initData() {
