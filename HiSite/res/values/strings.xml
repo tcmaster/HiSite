@@ -39,7 +39,7 @@
     <string name="shopid">ID&#160;&#160;&#160;&#160;&#160;号：</string>
     <string name="findback">找&#160;&#160;&#160;&#160;回</string>
     <string name="password">密&#160;&#160;&#160;&#160;码：</string>
-    <string name="auth_code">验&#160;证&#160;码：</string>
+    <string name="auth_code">验&#160;证&#160;码&#160;:</string>
     <string name="identity">证件号：</string>
     <string name="input_id">请输入ID</string>
     <string name="input_personname">请输入企业全称或个人全名</string>

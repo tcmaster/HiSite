@@ -12,6 +12,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.lidroid.xutils.view.annotation.event.OnCompoundButtonCheckedChange;
 
 /**
  * @Description：用户协议页面
@@ -30,7 +31,7 @@ public class UserAgreementActivity extends BaseActivity {
 	@ViewInject(R.id.btn_user_agreement)
 	private Button btn_user_agreement;
 	/** url地址 */
-	private String agreementUrl="www.baidu.com";
+	private String agreementUrl="http://www.baidu.com";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class UserAgreementActivity extends BaseActivity {
 
 	}
 
-	@OnClick(R.id.cb_agree)
+	@OnCompoundButtonCheckedChange(R.id.cb_agree)
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 
 	}

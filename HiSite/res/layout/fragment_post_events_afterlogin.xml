@@ -17,7 +17,7 @@
             <RelativeLayout
                 android:id="@+id/rl_org_account"
                 style="@style/match_width"
-                android:background="@color/white"
+                android:background="@drawable/seletor_white_to_gray"
                 android:padding="@dimen/common_margin_left" >
 
                 <ImageView
