@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+
+    <com.android.tonight8.view.WebViewForScrollView
+        android:id="@+id/wv_user_agreement"
+        style="@style/match"
+        android:layout_above="@+id/ll_bottom" />
 
     <LinearLayout
-        style="@style/match"
+        android:id="@+id/ll_bottom"
+        style="@style/match_width"
+        android:layout_alignParentBottom="true"
         android:orientation="vertical" >
-
-        <com.android.tonight8.view.WebViewForScrollView
-            android:id="@+id/wv_user_agreement"
-            style="@style/match" />
 
         <CheckBox
             android:id="@+id/cb_agree"
             style="@style/match_width"
-            android:layout_weight="1"
             android:padding="@dimen/common_margin_left"
             android:text="@string/user_agreement"
             android:textSize="@dimen/middleTextSize" />
@@ -21,9 +24,9 @@
         <Button
             android:id="@+id/btn_user_agreement"
             style="@style/ok_button_style"
-            android:layout_weight="1"
             android:text="@string/agree"
+            android:layout_marginBottom="2dp"
             android:textSize="@dimen/bigTextSize" />
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

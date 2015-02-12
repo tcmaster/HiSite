@@ -87,7 +87,6 @@
             <RelativeLayout
                 android:id="@+id/rl_dimension_temp"
                 style="@style/match_width"
-                android:layout_marginBottom="60dp"
                 android:background="@color/white"
                 android:paddingLeft="@dimen/common_margin_left"
                 android:paddingRight="@dimen/common_margin_left"
@@ -122,6 +121,13 @@
                     android:layout_marginTop="@dimen/common_margin_left"
                     android:layout_toRightOf="@+id/tv_shop_id_title" />
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_service_tele"
+                style="@style/match_width"
+                android:padding="@dimen/common_margin_left"
+                android:text="@string/service_phone"
+                android:textSize="@dimen/bigTextSize" />
         </LinearLayout>
     </ScrollView>
 
@@ -132,6 +138,7 @@
         android:gravity="center_horizontal"
         android:padding="@dimen/common_margin_left"
         android:text="@string/service_phone"
-        android:textSize="@dimen/bigTextSize" />
+        android:textSize="@dimen/bigTextSize"
+        android:visibility="gone" />
 
 </RelativeLayout>

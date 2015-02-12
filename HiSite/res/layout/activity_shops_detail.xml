@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:padding="10dp" >
+    android:padding="@dimen/common_margin_left" >
 
     <LinearLayout
         style="@style/match_width"
@@ -75,8 +75,7 @@
         <RelativeLayout
             style="@style/ll_orgdetail_style"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="gone" >
+            android:orientation="horizontal" >
 
             <TextView
                 style="@style/shoptext_left_style"
@@ -91,7 +90,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="10dp"
-                android:text="修改" >
+                android:text="修改"
+                android:textColor="@color/blue" >
             </TextView>
 
             <ImageView
@@ -118,6 +118,7 @@
                 android:text="北京朝阳区" >
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             style="@style/ll_orgdetail_style"
             android:layout_height="match_parent"
@@ -134,6 +135,7 @@
                 android:text="中核路1号" >
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             style="@style/ll_orgdetail_style"
             android:layout_height="match_parent"
@@ -225,10 +227,18 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="@dimen/common_margin_left"
                 android:text="修改"
-                android:textSize="@dimen/bigTextSize"
-                android:textColor="@color/blue" >
+                android:textColor="@color/blue"
+                android:textSize="@dimen/bigTextSize" >
             </TextView>
         </RelativeLayout>
+
+        <TextView
+            android:paddingTop="@dimen/common_margin_left"
+            style="@style/shoptext_left_style"
+            android:text="@string/org_more_info"
+            android:textColor="@color/red" >
+        </TextView>
+        <include layout="@layout/orginfo_add_more"/>
     </LinearLayout>
 
 </ScrollView>

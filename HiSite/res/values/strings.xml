@@ -66,11 +66,20 @@
     <string name="shopdetail_shopid">商家ID</string>
     <string name="shopdetail_twocode">二维码</string>
     <string name="shopdetail_place">地区</string>
-    <string name="shopdetail_person">联人</string>
+    <string name="shopdetail_person">联系人</string>
     <string name="shopdetail_phone">联系电话</string>
     <string name="shopdetail_email">邮箱地址</string>
     <string name="shopdetail_id">证号</string>
     <string name="shopdetail_password">密码</string>
+    <string name="org_more_info">完善商户资料</string>
+    <string name="org_about">简介</string>
+    <string name="website">网址</string>
+    <string name="email_name">邮箱</string>
+    <string name="weibo">微博</string>
+    <string name="weixinhao">微信号</string>
+    <string name="weixin_code">微信二维码</string>
+    <string name="other">其他</string>
+    <string name="org_change">修改</string>
     <!-- 中奖名单 -->
     <string name="publish">发布</string>
     <string name="publish2">发布：</string>
