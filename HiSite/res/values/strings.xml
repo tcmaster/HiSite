@@ -35,8 +35,8 @@
     <!-- 发活动 -->
     <string name="email">邮&#160;&#160;&#160;&#160;箱：</string>
     <string name="name">名&#160;&#160;&#160;&#160;称：</string>
-    <string name="phone">电&#160;&#160;&#160;&#160;&#160;&#160;话：</string>
-    <string name="shopid">I&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;D：</string>
+    <string name="phone">电&#160;&#160;&#160;&#160;话：</string>
+    <string name="shopid">ID&#160;&#160;&#160;&#160;&#160;号：</string>
     <string name="findback">找&#160;&#160;&#160;&#160;回</string>
     <string name="password">密&#160;&#160;&#160;&#160;码：</string>
     <string name="auth_code">验&#160;证&#160;码：</string>
@@ -152,5 +152,13 @@
     <string name="save">保存</string>
     <!-- 对话框取消 -->
     <string name="cancle">取消</string>
+    <!-- 商家注册 -->
+    <string name="register">注册</string>
+    <string name="login">登录</string>
+    <string name="auto_login">自动登录</string>
+    <string name="forgotid">忘记ID号？</string>
+    <string name="forgotpwd">忘记密码？</string>
+    <string name="input_orgid_hint">请输入商家ID</string>
+    <string name="input_pwd_hint">请输入密码</string>
 
 </resources>

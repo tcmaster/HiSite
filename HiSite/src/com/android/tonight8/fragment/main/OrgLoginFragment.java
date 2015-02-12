@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
@@ -27,8 +28,6 @@ import com.android.tonight8.activity.org.OrgRegisterActivity;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
-import com.android.tonight8.utils.StringUtils;
-import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.PointLinearlayout;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -96,6 +95,9 @@ public class OrgLoginFragment extends BaseFragment {
 	/** 头部轮播布局 */
 	@ViewInject(R.id.fl_header_events)
 	private FrameLayout frameLayout;
+	/** 自动登录*/
+	@ViewInject(R.id.cb_auto_login)
+	private CheckBox cb_auto_login;
 
 	/** 创建一个静态的实例 */
 	public static OrgLoginFragment newInstance() {

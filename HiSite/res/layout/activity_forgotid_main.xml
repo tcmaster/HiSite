@@ -7,22 +7,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="@dimen/common_margin_left" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
+                android:gravity="bottom"
                 android:text="@string/name"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_master_name"
@@ -32,19 +28,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
                 android:text="@string/identity"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_identity"
@@ -54,43 +44,29 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
                 android:text="@string/phone"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_phonenumber"
                 style="@style/et_comm_style"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:hint="@string/input_phone"
                 android:inputType="phone" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
                 android:text="@string/email"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -100,42 +76,30 @@
 
         <LinearLayout
             android:id="@+id/ll_password"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
                 android:text="@string/password"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_password"
                 style="@style/et_comm_style"
-                android:hint="@string/input_password"
+                android:hint="@string/input_pwd_hint"
                 android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_shop_id"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrap"
                 android:text="@string/shopid"
-                android:textSize="16sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <EditText
                 android:id="@+id/et_shop_id"
@@ -151,4 +115,5 @@
             android:text="@string/findback" >
         </Button>
     </LinearLayout>
+
 </ScrollView>

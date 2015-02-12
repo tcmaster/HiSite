@@ -23,89 +23,77 @@
             <com.android.tonight8.view.PointLinearlayout
                 android:id="@+id/pll_point_container"
                 style="@style/match_width"
+                android:layout_width="match_parent"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:orientation="horizontal" />
         </FrameLayout>
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/et_org_id"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/common_margin_left_long"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:gravity="center_vertical"
+            android:hint="@string/input_orgid_hint"
+            android:inputType="textPassword"
+            android:textSize="@dimen/middleTextSize" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="商家ID："
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/et_org_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:hint="请输入商家ID"
-                android:inputType="textPassword"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/et_org_loginpwd"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/common_margin_left_long"
+            android:layout_marginLeft="@dimen/common_margin_left_long"
+            android:layout_marginRight="@dimen/common_margin_left_long"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:gravity="center_vertical"
+            android:hint="@string/input_pwd_hint"
+            android:inputType="textPassword"
+            android:textSize="@dimen/middleTextSize" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="密    码："
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/et_org_loginpwd"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:hint="请输入密码"
-                android:inputType="textPassword"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:gravity="center"
             android:orientation="horizontal"
-            android:padding="@dimen/common_margin_left" >
+            android:paddingLeft="@dimen/common_margin_left_long"
+            android:paddingRight="@dimen/common_margin_left_long" >
 
-            <TextView
-                android:id="@+id/tv_forgot_id"
+            <CheckBox
+                android:id="@+id/cb_auto_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="忘记ID号?"
-                android:textColor="@color/blue"
+                android:text="@string/auto_login"
                 android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_forgot_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="忘记密码?"
-                android:textColor="@color/blue"
+                android:layout_alignBaseline="@+id/cb_auto_login"
+                android:layout_alignBottom="@+id/cb_auto_login"
+                android:layout_toLeftOf="@+id/tv_forgot_id"
+                android:gravity="right"
+                android:text="@string/forgotpwd"
+                android:textColor="@color/red"
                 android:textSize="@dimen/middleTextSize" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_forgot_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/cb_auto_login"
+                android:layout_alignBottom="@+id/cb_auto_login"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/margin_between_item"
+                android:text="@string/forgotid"
+                android:textColor="@color/red"
+                android:textSize="@dimen/middleTextSize" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,23 +101,21 @@
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:padding="@dimen/common_margin_left_long" >
+
+            <Button
+                android:id="@+id/btn_shop_register"
+                style="@style/button_style_white"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:text="@string/register" />
 
             <Button
                 android:id="@+id/btn_shop_login"
                 style="@style/ok_button_style"
+                android:layout_marginLeft="2dp"
                 android:layout_weight="1"
-                android:text="登  录"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/btn_shop_register"
-                style="@style/ok_button_style"
-                android:layout_marginLeft="@dimen/margin_between_item"
-                android:layout_weight="1"
-                android:text="注  册"
-                android:textSize="16sp" />
+                android:text="@string/login" />
         </LinearLayout>
     </LinearLayout>
 
