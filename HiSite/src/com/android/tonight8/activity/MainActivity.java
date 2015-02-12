@@ -94,7 +94,11 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
 	public void UpdateLoginedFragment(boolean logined) {
 		isLogin = logined;
-		doFragmentShow(3);
+		if (isLogin) {
+			doFragmentShow(2);
+		} else {
+			doFragmentShow(3);
+		}
 	}
 
 	/**

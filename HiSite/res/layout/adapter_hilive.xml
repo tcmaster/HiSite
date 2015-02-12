@@ -2,31 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/item_left_hilive"
+    android:paddingTop="@dimen/item_left_hilive" >
 
-    <RelativeLayout style="@style/match_width" >
+    <RelativeLayout
+        style="@style/match_width"
+        android:paddingLeft="@dimen/item_left_hilive"
+        android:paddingRight="@dimen/item_left_hilive" >
 
         <TextView
             android:id="@+id/tv_title_hilive"
             style="@style/wrap"
             android:text="小米手机免费大抽奖活动"
-            android:textSize="14sp" >
+            android:textSize="@dimen/middleTextSize" >
         </TextView>
 
         <TextView
             android:id="@+id/tv_place_time"
             style="@style/wrap"
             android:layout_below="@+id/tv_title_hilive"
-            android:paddingTop="5dp"
-            android:text="小米手机免费大抽奖活动"
-            android:textSize="12sp" >
+            android:paddingTop="@dimen/item_left_hilive"
+            android:text="北京"
+            android:textSize="@dimen/smallTextSize" >
         </TextView>
 
         <ImageView
             android:id="@+id/iv_camera_icon"
             style="@style/wrap"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
             android:background="@drawable/camera_red" >
         </ImageView>
     </RelativeLayout>
@@ -40,6 +45,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="150dip" />
         </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_hilive_right_arrow"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right" />
     </RelativeLayout>
 
     <LinearLayout
@@ -62,7 +74,7 @@
             android:layout_margin="@dimen/tonight_iv_margin"
             android:background="@color/red_sys"
             android:gravity="center"
-            android:text="12"
+            android:text="@dimen/middleTextSize"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -75,8 +87,10 @@
             android:id="@+id/tv_share"
             style="@style/wrap"
             android:drawableLeft="@drawable/share_gray"
+            android:drawablePadding="@dimen/drawable_padding"
             android:gravity="center"
-            android:text="分享" >
+            android:paddingLeft="@dimen/item_left_hilive"
+            android:text="@string/share" >
         </TextView>
 
         <CheckBox
@@ -84,14 +98,17 @@
             style="@style/wrap"
             android:button="@null"
             android:drawableLeft="@drawable/talk_gray"
+            android:drawablePadding="@dimen/drawable_padding"
             android:gravity="center"
-            android:text="评论" />
+            android:paddingLeft="@dimen/text_left_margin"
+            android:text="@string/comment" />
 
         <TextView
             android:id="@+id/tv_signInCount"
             style="@style/match_height"
             android:gravity="center"
-            android:text="12"
+            android:paddingLeft="@dimen/drawable_padding"
+            android:text="@dimen/middleTextSize"
             android:textColor="@color/red" />
     </LinearLayout>
 

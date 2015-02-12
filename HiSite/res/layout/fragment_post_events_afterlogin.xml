@@ -7,7 +7,8 @@
     <ScrollView
         android:id="@+id/sv_menu_temp"
         style="@style/match"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:scrollbars="none" >
 
         <LinearLayout
             style="@style/match_width"
@@ -17,7 +18,7 @@
                 android:id="@+id/rl_org_account"
                 style="@style/match_width"
                 android:background="@color/white"
-                android:padding="10dp" >
+                android:padding="@dimen/common_margin_left" >
 
                 <ImageView
                     android:id="@+id/iv_postevents_title"
@@ -31,7 +32,7 @@
                     style="@style/wrap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="14dip"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/arrow_right" />
 
                 <TextView
@@ -69,43 +70,57 @@
                     android:textSize="12sp" />
             </RelativeLayout>
 
+            <View style="@style/line_full" />
+
             <com.android.tonight8.view.GridViewForScrollView
                 android:id="@+id/gv_postevents_main"
                 style="@style/match_width"
-                android:numColumns="3" />
+                android:background="@color/white_gray"
+                android:fadingEdge="none"
+                android:horizontalSpacing="1dp"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:verticalSpacing="1dp" />
+
+            <View style="@style/line_full" />
 
             <RelativeLayout
                 android:id="@+id/rl_dimension_temp"
                 style="@style/match_width"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:layout_marginBottom="60dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/common_margin_left"
+                android:paddingRight="@dimen/common_margin_left"
+                android:paddingTop="@dimen/common_margin_left" >
 
                 <TextView
                     android:id="@+id/tv_shop_id_title"
                     style="@style/wrap"
                     android:text="@string/shop_id"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/bigTextSize" />
 
                 <TextView
                     android:id="@+id/tv_two_dimension_title"
                     style="@style/wrap"
                     android:layout_below="@+id/tv_shop_id_title"
+                    android:layout_marginTop="@dimen/common_margin_left"
                     android:text="@string/two_dimension"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/bigTextSize" />
 
                 <TextView
                     android:id="@+id/tv_shop_id"
                     style="@style/match_width"
                     android:layout_toRightOf="@+id/tv_shop_id_title"
                     android:textColor="@color/base_header_red"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/bigTextSize" />
 
                 <ImageView
                     android:id="@+id/iv_two_dimension"
-                    style="@style/wrap"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_below="@+id/tv_shop_id"
-                    android:layout_toRightOf="@+id/tv_shop_id_title"
-                    android:background="@drawable/ic_launcher" />
+                    android:layout_marginTop="@dimen/common_margin_left"
+                    android:layout_toRightOf="@+id/tv_shop_id_title" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
@@ -115,8 +130,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/line_gray"
         android:gravity="center_horizontal"
-        android:padding="10dp"
+        android:padding="@dimen/common_margin_left"
         android:text="@string/service_phone"
-        android:textSize="16sp" />
+        android:textSize="@dimen/bigTextSize" />
 
 </RelativeLayout>

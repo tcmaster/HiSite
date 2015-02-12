@@ -17,6 +17,7 @@ import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.CreatEventFirstActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
+import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.activity.org.BindAgencyActivity;
 import com.android.tonight8.activity.org.OrgDetailActivity;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
@@ -90,7 +91,7 @@ public class PostEventMenuFragment extends BaseFragment {
 		Intent intent = null;
 		switch (position) {
 		case 0:
-			intent = new Intent(getActivity(), CreatEventFirstActivity.class);
+			intent = new Intent(getActivity(), UserAgreementActivity.class);
 			break;
 		case 1:
 			intent = new Intent(getActivity(), EventsAwardManageActivity.class);
@@ -115,7 +116,8 @@ public class PostEventMenuFragment extends BaseFragment {
 
 	private void initData() {
 		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
-		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
+//		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
+		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");
 		tv_shop_state.setText("发布：12 关注：15");
 		tv_postevents_place.setText("北京 朝阳区");

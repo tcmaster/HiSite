@@ -1,5 +1,6 @@
 package com.android.tonight8.activity.createevent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -29,13 +30,13 @@ public class UserAgreementActivity extends BaseActivity {
 	@ViewInject(R.id.btn_user_agreement)
 	private Button btn_user_agreement;
 	/** url地址 */
-	private String agreementUrl;
+	private String agreementUrl="www.baidu.com";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_user_agreement);
 		super.onCreate(savedInstanceState);
-		// initData();
+		initData();
 	}
 
 	private void initData() {
@@ -44,6 +45,10 @@ public class UserAgreementActivity extends BaseActivity {
 
 	@OnClick(R.id.btn_user_agreement)
 	public void onClick(View arg0) {
+		if (!cb_agree.isChecked()) {
+			return;
+		}
+		startActivityForAnima(new Intent(UserAgreementActivity.this,CreatEventFirstActivity.class), null);
 
 	}
 
