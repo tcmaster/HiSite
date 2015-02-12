@@ -24,6 +24,9 @@ import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
+import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.event.EventIOController;
+import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.view.PointLinearlayout;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.ViewUtils;
@@ -54,6 +57,23 @@ public class TonightEightFragment extends BaseFragment {
 	private BaseActivity bA;
 	/** vp轮播功能 */
 	private CirculateFunction cFunction;
+	/** 本界面的数据更新handler */
+	private Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case HandlerConstants.Event.MAINPAGE_LIST:
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {
+					lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), (List<EventListModel>) msg.obj));
+				}
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
 
 	// ***************************生命周期***********************************//
 	@Override
@@ -143,7 +163,7 @@ public class TonightEightFragment extends BaseFragment {
 			}
 		});
 		cFunction.start();// 开始轮播
-		lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), data));
+		EventIOController.eventsRead(handler);
 	}
 
 	/** 创建一个静态的实例 */

@@ -4,9 +4,7 @@
 package com.android.tonight8.io.net;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -46,46 +44,42 @@ public class NetRequest {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static <T> void doRequest(final List<Map<String, String>> params, final RequestResult<T>... callbacks) {
+	public static <T> void doRequest(final Map<String, String> param, final RequestResult<T> callback) {
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				HttpUtils httpUtils = new HttpUtils();
 				httpUtils.configTimeout(5000);
-				httpUtils.configRequestThreadPoolSize(callbacks.length);
-				for (int i = 0; i < params.size(); i++) {
-					Map<String, String> param = params.get(i);// 各个参数
-					final RequestResult<T> callback = callbacks[i];// 对应的回调方法
-					HttpMethod method = null;
-					String requestUrl = "";
-					Set<Map.Entry<String, String>> entry = param.entrySet();
-					Iterator<Map.Entry<String, String>> it = entry.iterator();
-					RequestParams rP = new RequestParams("utf-8");
-					// 为各个参数添加必要头部
-					addHeader(rP);
-					// 这里需要增加若干基本参数
-					while (it.hasNext()) {
-						Map.Entry<String, String> kv = it.next();
-						if (kv.getKey().equals("method")) {
-							if (kv.getValue().equals(GET_METHOD))
-								method = HttpMethod.GET;
-							else if (kv.getValue().equals(POST_METHOD))
-								method = HttpMethod.POST;
-							continue;
-						}
-						if (kv.getKey().equals(REQUEST_URL)) {
-							requestUrl = kv.getValue();
-							continue;
-						}
-						// rP.addBodyParameter(kv.getKey(), kv.getValue());
-						rP.addQueryStringParameter(kv.getKey(), kv.getValue());
-
+				httpUtils.configRequestThreadPoolSize(5);
+				HttpMethod method = null;
+				String requestUrl = "";
+				Set<Map.Entry<String, String>> entry = param.entrySet();
+				Iterator<Map.Entry<String, String>> it = entry.iterator();
+				RequestParams rP = new RequestParams("utf-8");
+				// 为各个参数添加必要头部
+				addHeader(rP);
+				// 这里需要增加若干基本参数
+				while (it.hasNext()) {
+					Map.Entry<String, String> kv = it.next();
+					if (kv.getKey().equals("method")) {
+						if (kv.getValue().equals(GET_METHOD))
+							method = HttpMethod.GET;
+						else if (kv.getValue().equals(POST_METHOD))
+							method = HttpMethod.POST;
+						continue;
 					}
-					httpUtils.send(method, requestUrl, rP, callback);
-				}
+					if (kv.getKey().equals(REQUEST_URL)) {
+						requestUrl = kv.getValue();
+						continue;
+					}
+					// rP.addBodyParameter(kv.getKey(), kv.getValue());
+					rP.addQueryStringParameter(kv.getKey(), kv.getValue());
 
+				}
+				httpUtils.send(method, requestUrl, rP, callback);
 			}
+
 		}).start();
 
 	}
@@ -96,11 +90,23 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doGetRequest(Map<String, String> param, RequestResult<T> callback) {
-		param.put("method", GET_METHOD);
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		list.add(param);
-		doRequest(list, callback);
+	public static <T> void doGetRequest(final Map<String, String> param, final RequestResult<T> callback) {
+		// param.put("method", GET_METHOD);
+		// doRequest(param, callback);
+		// 测试，暂时未调用网络
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(1000);
+					callback.getData(null, null, callback.handler);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
 	}
 
 	/**
@@ -109,11 +115,9 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doPostRequest(Map<String, String> param, RequestResult<T> callback) {
+	public static <T> void doPostRequest(final Map<String, String> param, final RequestResult<T> callback) {
 		param.put("method", POST_METHOD);
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		list.add(param);
-		doRequest(list, callback);
+		doRequest(param, callback);
 	}
 
 	/**
@@ -171,7 +175,8 @@ public class NetRequest {
 		 * @param handler
 		 *            主线程的handler（用于将数据传输给UI界面）
 		 */
-		public RequestResult(Class<T> clazz, final Handler handler) {
+		public RequestResult(final Class<T> clazz, final Handler handler) {
+			this.handler = handler;
 			this.clazz = clazz;
 		}
 

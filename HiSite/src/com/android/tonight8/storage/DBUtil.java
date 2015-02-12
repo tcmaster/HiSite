@@ -283,8 +283,8 @@ public class DBUtil {
 	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
 		Field[] fields1 = getDeclaedFields(clazz1);
 		Field[] fields2 = getDeclaedFields(clazz2);
-		if(t1 == null || t2 == null){
-			LogUtils.v("解析内容出错,类型1"+clazz1.getSimpleName() + "类型2"+ clazz2.getSimpleName());
+		if (t1 == null || t2 == null) {
+			LogUtils.v("解析内容出错,类型1" + clazz1.getSimpleName() + "类型2" + clazz2.getSimpleName());
 			return;
 		}
 		for (int i = 0; i < fields1.length; i++) {

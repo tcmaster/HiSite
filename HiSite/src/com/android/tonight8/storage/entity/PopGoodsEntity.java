@@ -2,20 +2,16 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.Id;
-import com.lidroid.xutils.db.annotation.NoAutoIncrement;
-import com.lidroid.xutils.db.annotation.NotNull;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
  * @author liuzhao
- * @date 2015-1-17 活动海报
- * 主键是自增长的
+ * @date 2015-1-17 活动海报 主键是自增长的
  */
 @Table(name = "popgoods")
 public class PopGoodsEntity {
-	@Id()
-	private int id;
+
+	public int id;
 	/** 活动海报奖品名称 */
 	@Column(column = "popGoodsName")
 	private String popGoodsName;
@@ -28,6 +24,14 @@ public class PopGoodsEntity {
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getPopGoodsName() {
 		return popGoodsName;
@@ -55,8 +59,6 @@ public class PopGoodsEntity {
 
 	@Override
 	public String toString() {
-		return "PopGoods [event=" + event + ", popGoodsName=" + popGoodsName
-				+ ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice="
-				+ popGoodsPrice + "]";
+		return "PopGoods [event=" + event + ", popGoodsName=" + popGoodsName + ", popGoodsPic=" + popGoodsPic + ", popGoodsPrice=" + popGoodsPrice + "]";
 	}
 }

@@ -15,7 +15,7 @@ public class BaseEntity {
 	@Id
 	@NoAutoIncrement()
 	@NotNull()
-	private long id;
+	protected long id;
 
 	public long getId() {
 		return id;

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.activity.event.EventAwardActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.model.event.EventListModel;
 
 /**
  * @Description:
@@ -25,52 +26,45 @@ import com.android.tonight8.adapter.BaseListAdapter;
  * @copyright @tonight8
  * @Date:2014-12-25
  */
-public class MainPageListViewAdapter extends BaseListAdapter<String> {
+public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 
-	public MainPageListViewAdapter(Context context, List<String> values) {
+	public MainPageListViewAdapter(Context context, List<EventListModel> values) {
 		super(context, values);
 	}
 
 	@Override
 	protected View getItemView(View convertView, int position) {
 		ViewHolder holder = null;
+		EventListModel model = mValues.get(position);
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_home_lv, null, false);
 			holder = new ViewHolder();
 			holder.iv_bpic = (ImageView) convertView.findViewById(R.id.iv_bpic);
-			holder.tv_title = (TextView) convertView
-					.findViewById(R.id.tv_title);
-			holder.tv_location = (TextView) convertView
-					.findViewById(R.id.tv_location);
-			holder.tv_company = (TextView) convertView
-					.findViewById(R.id.tv_company);
-			holder.tv_prize = (TextView) convertView
-					.findViewById(R.id.tv_prize);
-			holder.tv_count = (TextView) convertView
-					.findViewById(R.id.tv_count);
-			holder.tv_redpacket = (TextView) convertView
-					.findViewById(R.id.tv_redpacket);
-			holder.tv_signup_count = (TextView) convertView
-					.findViewById(R.id.tv_signup_count);
-			holder.ll_win = (LinearLayout) convertView
-					.findViewById(R.id.ll_win);
-			holder.ll_comment = (LinearLayout) convertView
-					.findViewById(R.id.ll_comment);
-			holder.ll_apply = (LinearLayout) convertView
-					.findViewById(R.id.ll_apply);
+			holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+			holder.tv_location = (TextView) convertView.findViewById(R.id.tv_location);
+			holder.tv_company = (TextView) convertView.findViewById(R.id.tv_company);
+			holder.tv_prize = (TextView) convertView.findViewById(R.id.tv_prize);
+			holder.tv_count = (TextView) convertView.findViewById(R.id.tv_count);
+			holder.tv_redpacket = (TextView) convertView.findViewById(R.id.tv_redpacket);
+			holder.tv_signup_count = (TextView) convertView.findViewById(R.id.tv_signup_count);
+			holder.ll_win = (LinearLayout) convertView.findViewById(R.id.ll_win);
+			holder.ll_comment = (LinearLayout) convertView.findViewById(R.id.ll_comment);
+			holder.ll_apply = (LinearLayout) convertView.findViewById(R.id.ll_apply);
 			holder.ll_win.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
-					Intent intent = new Intent(mContext,
-							EventAwardActivity.class);
+					Intent intent = new Intent(mContext, EventAwardActivity.class);
 					mContext.startActivity(intent);
-
 				}
 			});
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
+		holder.tv_title.setText(model.event.name);
+		holder.tv_company.setText(model.org.name);
+		holder.tv_count.setText(model.event.awardCount + "");
+		// holder.tv_prize.setText(model.popGoods.popGoodsName+"");
 		return convertView;
 	}
 
