@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
-import com.android.tonight8.activity.createevent.CreatEventFirstActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
 import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.activity.org.BindAgencyActivity;

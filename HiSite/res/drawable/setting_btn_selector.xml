@@ -5,10 +5,10 @@
     <item android:state_enabled="true" android:state_focused="true" android:state_pressed="false"><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
             <!-- stroke：描边 -->
-            <stroke android:width="1dip" android:color="@color/base_header_red" />
+            <stroke android:width="1dip" android:color="@color/red" />
 
             <!-- 填充的颜色 -->
-            <solid android:color="@color/base_header_btnpressed_red" />
+            <solid android:color="@color/red" />
             <!-- 设置矩形的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="4dp" />
@@ -17,10 +17,10 @@
     <item android:state_enabled="true" android:state_pressed="true"><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
             <!-- stroke：描边 -->
-            <stroke android:width="1dip" android:color="@color/base_header_red" />
+            <stroke android:width="1dip" android:color="@color/red" />
 
             <!-- 填充的颜色 -->
-            <solid android:color="@color/base_header_btnpressed_red" />
+            <solid android:color="@color/red" />
             <!-- 设置矩形的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="4dp" />
@@ -29,10 +29,10 @@
     <item android:state_checked="true" android:state_enabled="true"><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
             <!-- stroke：描边 -->
-            <stroke android:width="1dip" android:color="@color/base_header_red" />
+            <stroke android:width="1dip" android:color="@color/red" />
 
             <!-- 填充的颜色 -->
-            <solid android:color="@color/base_header_btnpressed_red" />
+            <solid android:color="@color/red" />
             <!-- 设置矩形的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="4dp" />
@@ -41,10 +41,10 @@
     <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
             <!-- stroke：描边 -->
-            <stroke android:width="1dip" android:color="@color/base_header_red" />
+            <stroke android:width="1dip" android:color="@color/red_sys" />
 
             <!-- 填充的颜色 -->
-            <solid android:color="@color/base_header_red" />
+            <solid android:color="@color/red_sys" />
             <!-- 设置矩形的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="4dp" />

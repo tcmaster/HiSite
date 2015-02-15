@@ -20,6 +20,7 @@ import com.android.tonight8.view.CustomerDialog;
 import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.lidroid.xutils.view.annotation.event.OnTouch;
 
 /**
  * @author liuzhao 发活动第一步编辑
@@ -59,7 +60,14 @@ public class CreatEventFirstActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_create_event_first);
 		super.onCreate(savedInstanceState);
+		getActionBarBase("发活动");
 
+	}
+
+	@OnTouch(R.id.et_eventDateStart)
+	public void onTouch(View v) {
+		// Intent intent = new Intent(CreatEventFirstActivity.this, CalendarActivity.class);
+		// startActivityForAnima(intent, null);
 	}
 
 	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first })
@@ -92,7 +100,9 @@ public class CreatEventFirstActivity extends BaseActivity {
 			customerDialog.showDlg();
 			break;
 		case R.id.btn_createevent_first:
-			StorgeCurrentData();
+			// StorgeCurrentData();
+			Intent intent = new Intent(CreatEventFirstActivity.this, CalendarActivity.class);
+			startActivityForAnima(intent, null);
 			break;
 		default:
 			break;

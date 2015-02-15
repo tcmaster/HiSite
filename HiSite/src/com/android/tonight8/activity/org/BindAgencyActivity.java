@@ -14,8 +14,9 @@ public class BindAgencyActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bingding_agency);
+		super.onCreate(savedInstanceState);
+		getActionBarBase("经销商绑定");
 	}
 
 }

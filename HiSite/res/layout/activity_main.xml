@@ -23,6 +23,7 @@
             android:id="@+id/rb_main"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/main_home"
+            android:paddingTop="5dip"
             android:tag="0"
             android:text="8点" />
 
@@ -30,6 +31,7 @@
             android:id="@+id/rb_investlist"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/main_invest_list"
+            android:paddingTop="5dip"
             android:tag="1"
             android:text="Hi现场" />
 
@@ -37,6 +39,7 @@
             android:id="@+id/rb_account"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/main_myaccount"
+            android:paddingTop="5dip"
             android:tag="2"
             android:text="发活动" />
 
@@ -44,7 +47,7 @@
             android:id="@+id/rb_more"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/main_more"
-            android:paddingTop="15dip"
+            android:paddingTop="5dip"
             android:tag="3"
             android:text="我" />
     </RadioGroup>

@@ -27,8 +27,9 @@ public class UserFeedbackActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_feedback);
+		super.onCreate(savedInstanceState);
+		getActionBarBase("用户反馈");
 	}
 
 	private void initData() {
