@@ -73,15 +73,20 @@ public class CalendarView extends View implements View.OnTouchListener {
 		if (View.MeasureSpec.getMode(heightMeasureSpec) == View.MeasureSpec.EXACTLY) {
 			surface.height = View.MeasureSpec.getSize(heightMeasureSpec);
 		}
-		widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(surface.width, View.MeasureSpec.EXACTLY);
-		heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(surface.height, View.MeasureSpec.EXACTLY);
+		widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(surface.width,
+				View.MeasureSpec.EXACTLY);
+		heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(surface.height,
+				View.MeasureSpec.EXACTLY);
 		setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
 	@Override
-	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-		Log.d(TAG, "[onLayout] changed:" + (changed ? "new size" : "not change") + " left:" + left + " top:" + top + " right:" + right + " bottom:" + bottom);
+	protected void onLayout(boolean changed, int left, int top, int right,
+			int bottom) {
+		Log.d(TAG, "[onLayout] changed:"
+				+ (changed ? "new size" : "not change") + " left:" + left
+				+ " top:" + top + " right:" + right + " bottom:" + bottom);
 		if (changed) {
 			surface.init();
 		}
@@ -96,7 +101,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 		// 年月
 		String monthText = getYearAndmonth();
 		float textWidth = surface.monthPaint.measureText(monthText);
-		canvas.drawText(monthText, (surface.width - textWidth) / 2f, surface.monthHeight * 3 / 4f, surface.monthPaint);
+		canvas.drawText(monthText, (surface.width - textWidth) / 2f,
+				surface.monthHeight * 3 / 4f, surface.monthPaint);
 		// 上一月/下一月
 		canvas.drawPath(surface.preMonthBtnPath, surface.monthChangeBtnPaint);
 		canvas.drawPath(surface.nextMonthBtnPath, surface.monthChangeBtnPaint);
@@ -104,10 +110,15 @@ public class CalendarView extends View implements View.OnTouchListener {
 		float weekTextY = surface.monthHeight + surface.weekHeight * 3 / 4f;
 		// 星期背景
 		surface.cellBgPaint.setColor(surface.textColor);
-		canvas.drawRect(surface.weekHeight, surface.width, surface.weekHeight, surface.width, surface.cellBgPaint);
+		canvas.drawRect(surface.weekHeight, surface.width, surface.weekHeight,
+				surface.width, surface.cellBgPaint);
 		for (int i = 0; i < surface.weekText.length; i++) {
-			float weekTextX = i * surface.cellWidth + (surface.cellWidth - surface.weekPaint.measureText(surface.weekText[i])) / 2f;
-			canvas.drawText(surface.weekText[i], weekTextX, weekTextY, surface.weekPaint);
+			float weekTextX = i
+					* surface.cellWidth
+					+ (surface.cellWidth - surface.weekPaint
+							.measureText(surface.weekText[i])) / 2f;
+			canvas.drawText(surface.weekText[i], weekTextX, weekTextY,
+					surface.weekPaint);
 		}
 
 		// 计算日期
@@ -118,9 +129,11 @@ public class CalendarView extends View implements View.OnTouchListener {
 		// today index
 		int todayIndex = -1;
 		calendar.setTime(curDate);
-		String curYearAndMonth = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH);
+		String curYearAndMonth = calendar.get(Calendar.YEAR) + ""
+				+ calendar.get(Calendar.MONTH);
 		calendar.setTime(today);
-		String todayYearAndMonth = calendar.get(Calendar.YEAR) + "" + calendar.get(Calendar.MONTH);
+		String todayYearAndMonth = calendar.get(Calendar.YEAR) + ""
+				+ calendar.get(Calendar.MONTH);
 		if (curYearAndMonth.equals(todayYearAndMonth)) {
 			int todayNumber = calendar.get(Calendar.DAY_OF_MONTH);
 			todayIndex = curStartIndex + todayNumber - 1;
@@ -155,13 +168,18 @@ public class CalendarView extends View implements View.OnTouchListener {
 	 * @date:2015年2月25日
 	 */
 
-	private boolean isHaveDay(String[] dayStrings, int dateday) {
+	private boolean isHaveDay(String[] dayStrings, int day) {
 		try {
-
+			calendar.setTime(curDate);
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH) + 1;
 			if (dayStrings != null) {
 				for (int i = 0; i < dayStrings.length; i++) {
 					String[] dayArr = dayStrings[i].split("-");
-					if (Integer.valueOf(dayArr[0]) == Calendar.YEAR && Integer.valueOf(dayArr[1]) == Calendar.MONTH && Integer.valueOf(dayArr[2]) == dateday) {
+
+					if (Integer.valueOf(dayArr[0]) == year
+							&& Integer.valueOf(dayArr[1]) == month
+							&& Integer.valueOf(dayArr[2]) == day) {
 						return true;
 					}
 				}
@@ -228,8 +246,11 @@ public class CalendarView extends View implements View.OnTouchListener {
 		int x = getXByIndex(index);
 		int y = getYByIndex(index);
 		surface.datePaint.setColor(color);
-		float cellY = surface.monthHeight + surface.weekHeight + (y - 1) * surface.cellHeight + surface.cellHeight * 3 / 4f;
-		float cellX = (surface.cellWidth * (x - 1)) + (surface.cellWidth - surface.datePaint.measureText(text)) / 2f;
+		float cellY = surface.monthHeight + surface.weekHeight + (y - 1)
+				* surface.cellHeight + surface.cellHeight * 3 / 4f;
+		float cellX = (surface.cellWidth * (x - 1))
+				+ (surface.cellWidth - surface.datePaint.measureText(text))
+				/ 2f;
 		canvas.drawText(text, cellX, cellY, surface.datePaint);
 	}
 
@@ -244,8 +265,11 @@ public class CalendarView extends View implements View.OnTouchListener {
 		int y = getYByIndex(index);
 		surface.cellBgPaint.setColor(color);
 		float left = surface.cellWidth * (x - 1) + surface.borderWidth;
-		float top = surface.monthHeight + surface.weekHeight + (y - 1) * surface.cellHeight + surface.borderWidth;
-		canvas.drawRect(left, top, left + surface.cellWidth - surface.borderWidth, top + surface.cellHeight - surface.borderWidth, surface.cellBgPaint);
+		float top = surface.monthHeight + surface.weekHeight + (y - 1)
+				* surface.cellHeight + surface.borderWidth;
+		canvas.drawRect(left, top, left + surface.cellWidth
+				- surface.borderWidth, top + surface.cellHeight
+				- surface.borderWidth, surface.cellBgPaint);
 	}
 
 	private void drawDownOrSelectedBg(Canvas canvas) {
@@ -254,7 +278,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 			drawCellBg(canvas, downIndex, surface.cellDownColor);
 		}
 		// selected bg color
-		if (!selectedEndDate.before(showFirstDate) && !selectedStartDate.after(showLastDate)) {
+		if (!selectedEndDate.before(showFirstDate)
+				&& !selectedStartDate.after(showLastDate)) {
 			int[] section = new int[] { -1, -1 };
 			calendar.setTime(curDate);
 			calendar.add(Calendar.MONTH, -1);
@@ -275,7 +300,7 @@ public class CalendarView extends View implements View.OnTouchListener {
 				section[1] = 41;
 			}
 			for (int i = section[0]; i <= section[1]; i++) {
-				if (isHaveDay(selectData,i)) {
+				if (isHaveDay(selectData, i)) {
 					drawCellBg(canvas, i, color.red);
 				} else {
 					drawCellBg(canvas, i, surface.cellSelectedColor);
@@ -285,7 +310,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 		}
 	}
 
-	private void findSelectedIndex(int startIndex, int endIndex, Calendar calendar, int[] section) {
+	private void findSelectedIndex(int startIndex, int endIndex,
+			Calendar calendar, int[] section) {
 		for (int i = startIndex; i < endIndex; i++) {
 			calendar.set(Calendar.DAY_OF_MONTH, date[i]);
 			Date temp = calendar.getTime();
@@ -402,7 +428,9 @@ public class CalendarView extends View implements View.OnTouchListener {
 		// cell click down
 		if (y > surface.monthHeight + surface.weekHeight) {
 			int m = (int) (Math.floor(x / surface.cellWidth) + 1);
-			int n = (int) (Math.floor((y - (surface.monthHeight + surface.weekHeight)) / Float.valueOf(surface.cellHeight)) + 1);
+			int n = (int) (Math
+					.floor((y - (surface.monthHeight + surface.weekHeight))
+							/ Float.valueOf(surface.cellHeight)) + 1);
 			downIndex = (n - 1) * 7 + m - 1;
 			Log.d(TAG, "downIndex:" + downIndex);
 			calendar.setTime(curDate);
@@ -435,7 +463,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 						}
 						completed = true;
 						// 响应监听事件
-						onItemClickListener.OnItemClick(selectedStartDate, selectedEndDate, downDate);
+						onItemClickListener.OnItemClick(selectedStartDate,
+								selectedEndDate, downDate);
 					} else {
 						selectedStartDate = selectedEndDate = downDate;
 						completed = false;
@@ -443,7 +472,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 				} else {
 					selectedStartDate = selectedEndDate = downDate;
 					// 响应监听事件
-					onItemClickListener.OnItemClick(selectedStartDate, selectedEndDate, downDate);
+					onItemClickListener.OnItemClick(selectedStartDate,
+							selectedEndDate, downDate);
 				}
 				invalidate();
 			}
@@ -461,7 +491,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 	// 监听接口
 	public interface OnItemClickListener {
 
-		void OnItemClick(Date selectedStartDate, Date selectedEndDate, Date downDate);
+		void OnItemClick(Date selectedStartDate, Date selectedEndDate,
+				Date downDate);
 	}
 
 	/**
@@ -553,7 +584,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 			preMonthBtnPath.rLineTo(0, btnHeight);
 			preMonthBtnPath.close();
 			nextMonthBtnPath = new Path();
-			nextMonthBtnPath.moveTo(width - monthChangeWidth / 2f, monthHeight / 2f);
+			nextMonthBtnPath.moveTo(width - monthChangeWidth / 2f,
+					monthHeight / 2f);
 			nextMonthBtnPath.rLineTo(-btnHeight / 2f, -btnHeight / 2f);
 			nextMonthBtnPath.rLineTo(0, btnHeight);
 			nextMonthBtnPath.close();
