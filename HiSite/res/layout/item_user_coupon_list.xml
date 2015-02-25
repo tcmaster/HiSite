@@ -29,7 +29,8 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/middleTextSize"
+                />
 
             <TextView
                 android:id="@+id/tv_time"

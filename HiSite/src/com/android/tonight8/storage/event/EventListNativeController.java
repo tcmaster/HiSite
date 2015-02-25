@@ -57,6 +57,8 @@ public class EventListNativeController {
 			exchangeEntities.add(exchangeEntity);
 			// DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=",
 			// eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
+			// DBUtil.saveOrUpdate(exchangeEntity,ExchangeEntity.class,WhereBuilder.b("rid","=",eventEntity.getId()),"method",
+			// "address", "orgAll");
 		}
 		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "applyCount", "consultCount");
 		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
