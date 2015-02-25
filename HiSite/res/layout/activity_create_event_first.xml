@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match"
-    android:layout_height="match_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
 
     <LinearLayout
         style="@style/match_width"
-        android:orientation="vertical"
-        android:padding="@dimen/common_margin_left" >
+        android:layout_width="match_parent"
+        android:orientation="vertical" >
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"
@@ -22,12 +24,13 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"
-                android:text="计划上架：" />
+                android:text="上架日期：" />
 
             <EditText
                 android:id="@+id/et_planPublishTime"
@@ -35,8 +38,9 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"
@@ -57,7 +61,13 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <RelativeLayout style="@style/match" >
+        <View
+            style="@style/line_full"
+            android:layout_height="@dimen/topOrbottomPadding" />
+
+        <RelativeLayout
+            style="@style/match_width"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 android:id="@+id/tv_popgoods_temp"
@@ -93,8 +103,9 @@
         </RelativeLayout>
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"
@@ -111,8 +122,9 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"
@@ -124,7 +136,9 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <RelativeLayout style="@style/match" >
+        <RelativeLayout
+            style="@style/match_width"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 android:id="@+id/tv_goods_temp"
@@ -166,8 +180,9 @@
         </RelativeLayout>
 
         <LinearLayout
-            style="@style/match"
-            android:orientation="horizontal" >
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
 
             <TextView
                 style="@style/createeventtext_style"

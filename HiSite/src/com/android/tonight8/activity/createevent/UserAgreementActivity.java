@@ -18,7 +18,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lidroid.xutils.view.annotation.event.OnCompoundButtonCheckedChange;
 
 /**
- * @Description：用户协议页面
+ * @Description：活动协议页面
  * @date 2015-2-10下午10:06:18
  * @author liuzhao
  */
@@ -39,6 +39,7 @@ public class UserAgreementActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_user_agreement);
+		getActionBarBase("活动协议");
 		super.onCreate(savedInstanceState);
 		initData();
 	}

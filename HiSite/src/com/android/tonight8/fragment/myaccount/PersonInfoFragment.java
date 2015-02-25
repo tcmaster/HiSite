@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.user.EditReceiveAddressActivity;
+import com.android.tonight8.activity.user.UserAddressActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -97,7 +97,7 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 	 * 点击收货地址时的处理
 	 */
 	private void processClickReceiveAddress() {
-		Intent intent = new Intent(getActivity(), EditReceiveAddressActivity.class);
+		Intent intent = new Intent(getActivity(), UserAddressActivity.class);
 		startActivity(intent);
 	}
 

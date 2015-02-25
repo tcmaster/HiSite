@@ -50,14 +50,14 @@
         </activity>
         <!-- 忘记商家ID或者密码 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.ForgetIDOrPwdActivity"
+            android:name="com.android.tonight8.activity.org.ForgetIDOrPwdActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <!-- 商家 注册 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.OrgRegisterActivity"
+            android:name="com.android.tonight8.activity.org.OrgRegisterActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
@@ -99,7 +99,7 @@
         </activity>
         <!-- 绑定经销商 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.BindAgencyActivity"
+            android:name="com.android.tonight8.activity.org.BindAgencyActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
@@ -113,14 +113,14 @@
         </activity>
         <!-- 用户反馈 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.UserFeedbackActivity"
+            android:name="com.android.tonight8.activity.org.UserFeedbackActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <!-- 商家资料 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.OrgDetailActivity"
+            android:name="com.android.tonight8.activity.org.OrgDetailActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
@@ -176,11 +176,50 @@
             android:name="com.android.tonight8.activity.user.UserApplyHistoryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.android.tonight8.activity.user.UserAddressActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            />
         <!-- 用户关注的商家 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserFollowActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.android.tonight8.activity.user.EditReceiveAddressActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+       <!-- 用户协议页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.UserAgreementActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+               <!-- 用户协议页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.CalendarActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- QQ分享需要注册的 -->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- QQ分享需要注册的QQ认证页 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent你的AppId" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
