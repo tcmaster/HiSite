@@ -1,8 +1,5 @@
 package com.android.tonight8.storage.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.Id;
@@ -30,9 +27,6 @@ public class ExchangeEntity {
 	private int locationType;
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
-	/** 活动商家，临时（可能会更改） */
-	@Foreign(column = "oid", foreign = "exchangeId")
-	public List<OrgEntity> orgs = new ArrayList<OrgEntity>();
 
 	public int getId() {
 		return id;
@@ -68,11 +62,7 @@ public class ExchangeEntity {
 
 	@Override
 	public String toString() {
-		return "ExchangeEntity [id=" + id + ", method=" + method + ", address="
-				+ address + ", locationType=" + locationType + ", event="
-				+ event + ", orgs=" + orgs + "]";
+		return "ExchangeEntity [id=" + id + ", method=" + method + ", address=" + address + ", locationType=" + locationType + ", event=" + event + "]";
 	}
-	
-	
 
 }

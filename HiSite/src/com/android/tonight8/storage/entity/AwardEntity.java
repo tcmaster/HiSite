@@ -4,6 +4,12 @@ import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
 import com.lidroid.xutils.db.annotation.Table;
 
+/**
+ * @Description:领奖
+ * @author:LiXiaoSong
+ * @copyright @HiSite
+ * @Date:2015-2-25
+ */
 @Table(name = "award")
 public class AwardEntity extends BaseEntity {
 
