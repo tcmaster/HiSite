@@ -1,5 +1,6 @@
 package com.android.tonight8.view;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -38,7 +39,7 @@ public class CalendarView extends View implements View.OnTouchListener {
 	private boolean completed = false; // 为false表示只选择了开始日期，true表示结束日期也选择了
 	private boolean isSelectMore = false;
 	/** 选中的日期 */
-	private int[] selectData;
+	private String[] selectData;
 	// 给控件设置监听事件
 	private OnItemClickListener onItemClickListener;
 
@@ -144,15 +145,30 @@ public class CalendarView extends View implements View.OnTouchListener {
 		super.onDraw(canvas);
 	}
 
-	private boolean isHaveDay(int[] dayStrings, int drawDay) {
-		if (dayStrings != null) {
-			for (int i = 0; i < dayStrings.length; i++) {
-				if (drawDay == dayStrings[i]) {
-					return true;
+	/**
+	 * @Description:
+	 * @param dayStrings
+	 *            yyyy-MM-dd
+	 * @param drawDay
+	 * @return
+	 * @author: LiuZhao
+	 * @date:2015年2月25日
+	 */
+
+	private boolean isHaveDay(String[] dayStrings, int dateday) {
+		try {
+
+			if (dayStrings != null) {
+				for (int i = 0; i < dayStrings.length; i++) {
+					String[] dayArr = dayStrings[i].split("-");
+					if (Integer.valueOf(dayArr[0]) == Calendar.YEAR && Integer.valueOf(dayArr[1]) == Calendar.MONTH && Integer.valueOf(dayArr[2]) == dateday) {
+						return true;
+					}
 				}
 			}
+		} catch (Exception e) {
+			return false;
 		}
-
 		return false;
 	}
 
@@ -259,9 +275,9 @@ public class CalendarView extends View implements View.OnTouchListener {
 				section[1] = 41;
 			}
 			for (int i = section[0]; i <= section[1]; i++) {
-				if (isHaveDay(selectData, i)) {
+				if (isHaveDay(selectData,i)) {
 					drawCellBg(canvas, i, color.red);
-				}else {
+				} else {
 					drawCellBg(canvas, i, surface.cellSelectedColor);
 				}
 
@@ -354,7 +370,7 @@ public class CalendarView extends View implements View.OnTouchListener {
 	/**
 	 * @Description:选中其他天
 	 */
-	public void setSelectedOtherDay(int[] selectData) {
+	public void setSelectedOtherDay(String[] selectData) {
 		this.selectData = selectData;
 	}
 

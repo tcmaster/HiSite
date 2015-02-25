@@ -20,7 +20,7 @@ public class CalendarActivity extends BaseActivity {
 	/** */
 	@ViewInject(R.id.cv_select_calendar)
 	private CalendarView cv_select_calendar;
-	private int[] selectData = { 5, 11, 18, 22, 23 };
+	private String[] selectData = { "2015-2-25","2015-2-23","2015-2-18","2014-12-25", "2015-03-25", "2015-4-25", "2015-2-15", "2015-2-2" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
