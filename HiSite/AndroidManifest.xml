@@ -176,6 +176,11 @@
             android:name="com.android.tonight8.activity.user.UserApplyHistoryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.android.tonight8.activity.user.UserAddressActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            />
         <!-- 用户关注的商家 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserFollowActivity"

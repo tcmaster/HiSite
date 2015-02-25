@@ -20,6 +20,12 @@ import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+/**
+ * @Description:编辑收货地址界面
+ * @author:LiXiaoSong
+ * @copyright @HiSite
+ * @Date:2015-2-25
+ */
 public class EditReceiveAddressActivity extends BaseActivity {
 
 	/** 收货人姓名 */
