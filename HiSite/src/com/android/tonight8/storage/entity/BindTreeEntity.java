@@ -2,7 +2,6 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.Id;
 import com.lidroid.xutils.db.annotation.Table;
 
 /**
@@ -10,10 +9,7 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 商家绑定树
  */
 @Table(name = "bindTree")
-public class BindTreeEntity {
-	/** 自增长主键 */
-	@Id()
-	private long id;
+public class BindTreeEntity extends BaseDefaultEntity{
 	/** 与商家绑定外键 */
 	@Foreign(column = "parentId", foreign = "id")
 	private OrgEntity org1;

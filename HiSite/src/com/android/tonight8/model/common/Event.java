@@ -11,7 +11,7 @@ public class Event implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 活动id */
-	public int id;
+	public long id;
 	/** 商家引用id */
 	public int rid;
 	/** 活动名称 */
@@ -55,12 +55,20 @@ public class Event implements Serializable {
 	/** 活动奖品 */
 	public Goods goods;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 
 	public String getName() {

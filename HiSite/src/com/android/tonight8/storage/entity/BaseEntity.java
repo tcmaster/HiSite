@@ -5,7 +5,7 @@ import com.lidroid.xutils.db.annotation.NoAutoIncrement;
 import com.lidroid.xutils.db.annotation.NotNull;
 
 /**
- * @Description:
+ * @Description:用于非自增长的主键表
  * @author LiXiaoSong
  * @date 2015-1-17
  */

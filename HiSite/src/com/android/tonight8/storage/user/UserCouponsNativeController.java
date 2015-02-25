@@ -88,7 +88,7 @@ public class UserCouponsNativeController {
 				coupon.rid = (int) couponEntity.event.getId();
 				coupon.uid = (int) couponEntity.user.getId();
 				couponProvide.rid = (int) couponEntity.event.getId();
-				quickMark.cid = (int) coupon.getId();
+				quickMark.cid = coupon.getId();
 				quickMark.oid = org.getId();
 				model.coupon = coupon;
 				model.couponProvide = couponProvide;

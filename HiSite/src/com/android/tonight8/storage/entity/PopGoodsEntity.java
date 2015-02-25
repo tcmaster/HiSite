@@ -9,9 +9,8 @@ import com.lidroid.xutils.db.annotation.Table;
  * @date 2015-1-17 活动海报 主键是自增长的
  */
 @Table(name = "popgoods")
-public class PopGoodsEntity {
+public class PopGoodsEntity extends BaseDefaultEntity{
 
-	public int id;
 	/** 活动海报奖品名称 */
 	@Column(column = "popGoodsName")
 	private String popGoodsName;
@@ -24,14 +23,6 @@ public class PopGoodsEntity {
 	/** 活动 */
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getPopGoodsName() {
 		return popGoodsName;

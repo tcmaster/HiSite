@@ -16,7 +16,7 @@ public class Follow implements Serializable {
 	/** 用户外键 */
 	public int rid;
 	/** 商家外键 */
-	public int oid;
+	public long oid;
 
 	public int getId() {
 		return id;
@@ -34,7 +34,7 @@ public class Follow implements Serializable {
 		this.rid = rid;
 	}
 
-	public int getOid() {
+	public long getOid() {
 		return oid;
 	}
 

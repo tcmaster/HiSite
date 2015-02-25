@@ -18,6 +18,7 @@ import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.ExchangeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 import com.android.tonight8.storage.entity.PopGoodsEntity;
+import com.lidroid.xutils.db.sqlite.WhereBuilder;
 
 /**
  * @Description:开奖列表本地数据控制
@@ -55,13 +56,14 @@ public class EventListNativeController {
 			orgEntities.add(orgEntity);
 			couponProvideEntities.add(couponEntity);
 			exchangeEntities.add(exchangeEntity);
-			// DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=",
-			// eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
+			DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=",
+			eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
+			DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class,WhereBuilder.b("rid","=",eventEntity.getId()),
+					"method", "address", "orgAll");
 		}
 		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "applyCount", "consultCount");
 		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
 		DBUtil.saveOrUpdateAll(couponProvideEntities, CouponProvideEntity.class, "type", "provideNum", "provideAll");
-		// DBUtil.saveOrUpdateAll(exchangeEntities, ExchangeEntity.class, "method", "address", "orgAll");
 	}
 
 	/**

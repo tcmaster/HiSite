@@ -2,15 +2,12 @@ package com.android.tonight8.storage.entity;
 
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Foreign;
-import com.lidroid.xutils.db.annotation.Id;
 
 /**
  * @author liuzhao 二维码 主键自增长
  */
-public class QuickMarkEntity {
+public class QuickMarkEntity extends BaseDefaultEntity{
 
-	@Id()
-	private int id;
 	/** 商家二维码编号 */
 	@Column(column = "code")
 	private String code;

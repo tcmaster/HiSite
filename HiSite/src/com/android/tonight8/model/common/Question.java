@@ -22,11 +22,11 @@ public class Question implements Serializable {
 	/** 是否是回复记录 */
 	public boolean isReply;
 	/** 用户外键 */
-	public int uid;
+	public long uid;
 	/** 商家外键 */
-	public int oid;
+	public long oid;
 
-	public int getUid() {
+	public long getUid() {
 		return uid;
 	}
 
@@ -34,7 +34,7 @@ public class Question implements Serializable {
 		this.uid = uid;
 	}
 
-	public int getOid() {
+	public long getOid() {
 		return oid;
 	}
 

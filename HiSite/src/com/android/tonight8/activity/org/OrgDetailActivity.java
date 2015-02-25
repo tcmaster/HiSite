@@ -71,7 +71,7 @@ public class OrgDetailActivity extends BaseActivity {
 		org = new Org();
 		tv_shop_name_value.setText(org.name);
 		Tonight8App.getSelf().bitmapUtils.display(iv_up_flag, org.logo);
-		tv_shop_id_value.setText(org.id);
+		tv_shop_id_value.setText(org.id+"");
 		tv_address_value.setText(org.address);
 		tv_personname_value.setText(org.contactPerson);
 		tv_phone_value.setText(org.contactMobilPhone);

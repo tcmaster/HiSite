@@ -12,7 +12,7 @@ public class Org implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/** 商家id */
-	public int id;
+	public long id;
 	/** 商家名称 */
 	public String name;
 	/** 商家简介 */
@@ -44,11 +44,11 @@ public class Org implements Serializable {
 	/** 商家企业营业执照证件编号 */
 	public String paperCode;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

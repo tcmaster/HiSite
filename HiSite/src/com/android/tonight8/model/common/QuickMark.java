@@ -16,9 +16,9 @@ public class QuickMark implements Serializable {
 	/** 商家二维码图片文件地址 */
 	public String photo;
 	/** 优惠券 */
-	public int cid;
+	public long cid;
 	/** 商家外键 */
-	public int oid;
+	public long oid;
 
 	public String getCode() {
 		return code;
