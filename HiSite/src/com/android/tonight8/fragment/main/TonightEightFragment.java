@@ -64,8 +64,14 @@ public class TonightEightFragment extends BaseFragment {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case HandlerConstants.Event.MAINPAGE_LIST:
-				if (msg.arg1 == HandlerConstants.RESULT_OK) {
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 					lv_item_container.setAdapter(new MainPageListViewAdapter(getActivity(), (List<EventListModel>) msg.obj));
+				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {// 网络数据开始
+
+				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {// 出错处理
+
+				} else if (msg.arg1 == HandlerConstants.NETWORK_END) {// 网络数据获取完毕
+
 				}
 				break;
 

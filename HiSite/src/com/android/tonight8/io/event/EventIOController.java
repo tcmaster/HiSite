@@ -40,6 +40,9 @@ public class EventIOController {
 		params.put(NetRequest.REQUEST_URL, EVENT_LIST_URL);
 		params.put("user.coordinate", "39.9,116.3");
 		params.put("city.code", "1");
+		Message message = handler.obtainMessage();
+		message.what = HandlerConstants.Event.MAINPAGE_LIST;
+		message.arg1 = HandlerConstants.NETWORK_BEGIN;
 		NetRequest.doGetRequest(params, new RequestResult<EventListNetEntity>(EventListNetEntity.class, handler) {
 
 			@Override
