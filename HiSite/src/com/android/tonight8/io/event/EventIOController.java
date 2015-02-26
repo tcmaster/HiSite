@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.os.Handler;
-import android.os.Message;
 
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.entity.EventListNetEntity;
@@ -35,19 +34,16 @@ public class EventIOController {
 	 * @author: LiXiaoSong
 	 * @date:2015-2-12
 	 */
-	public static void eventsRead(final Handler handler) {
+	public static void eventsRead(final Handler handler,final int ...attachments) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, EVENT_LIST_URL);
 		params.put("user.coordinate", "39.9,116.3");
 		params.put("city.code", "1");
-		Message message = handler.obtainMessage();
-		message.what = HandlerConstants.Event.MAINPAGE_LIST;
-		message.arg1 = HandlerConstants.NETWORK_BEGIN;
+		HandlerConstants.sendMessage(handler, null, HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.NETWORK_BEGIN, attachments[0]);
 		NetRequest.doGetRequest(params, new RequestResult<EventListNetEntity>(EventListNetEntity.class, handler) {
 
 			@Override
 			public void getData(NetEntityBase netEntityBase, EventListNetEntity t, Handler handler) {
-				EventListNetEntity testData = new EventListNetEntity();
 				ArrayList<EventListModel> lists = new ArrayList<EventListModel>();
 				for (int i = 0; i < 10; i++) {
 					EventListModel model = new EventListModel();
@@ -81,16 +77,13 @@ public class EventIOController {
 					lists.add(model);
 				}
 				EventStorage.getEventListNativeController().insertData(lists);
-				Message msg = handler.obtainMessage();
-				msg.obj = EventStorage.getEventListNativeController().selectData();
-				msg.arg1 = HandlerConstants.RESULT_OK;
-				msg.what = HandlerConstants.Event.MAINPAGE_LIST;
-				handler.sendMessage(msg);
+				HandlerConstants.sendMessage(handler,EventStorage.getEventListNativeController().selectData(attachments[1],attachments[2]),HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.RESULT_OK, attachments[0]);
 			}
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
 				LogUtils.v("why");
+				HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.RESULT_FAIL,attachments[0]);
 			}
 		});
 	}

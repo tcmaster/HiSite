@@ -67,6 +67,23 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 		// holder.tv_prize.setText(model.popGoods.popGoodsName+"");
 		return convertView;
 	}
+	/**
+	 * 增加数据源
+	 * @param models
+	 */
+	public void addData(List<EventListModel> models){
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
+	/**
+	 * 重置数据源
+	 * @param models
+	 */
+	public void initData(List<EventListModel> models){
+		mValues.clear();
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
 
 	private class ViewHolder {
 

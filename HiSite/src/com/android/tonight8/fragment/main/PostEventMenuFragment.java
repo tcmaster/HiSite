@@ -23,7 +23,6 @@ import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.storage.organization.OrgLoginNativeController;
-import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -122,7 +121,7 @@ public class PostEventMenuFragment extends BaseFragment {
 		tv_postevents_place.setText("北京 朝阳区");
 		gridAdapter = new PostEventsGridAdapter(getActivity());
 		gv_postevents_main.setAdapter(gridAdapter);
-		QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
+		//QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
 
 	}
 

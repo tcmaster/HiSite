@@ -61,6 +61,18 @@ public class DBUtil {
 		}
 		return result;
 	}
+	/**
+	 * 查询若干条数据，列表用
+	 */
+	public static <T> List<T> getData(Class<T> clazz,int limit,int offset){
+		List<T> result = null;
+		try {
+			result = utils.findAll(Selector.from(clazz).limit(limit).offset(offset).orderBy("id",true));
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	/**
 	 * 查询某条数据

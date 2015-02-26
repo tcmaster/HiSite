@@ -78,13 +78,16 @@ public class EventListNativeController {
 	 * @Description: 获取所有的活动列表，暂时按活动开始时间戳排序
 	 * @return 排序好的数据
 	 * @author: LiXiaoSong
+	 * @param count显示多少条记录
+	 * @param offset 跳过多少条记录
+	 * 
 	 * @date:2015-1-21
 	 */
-	public List<EventListModel> selectData() {
+	public List<EventListModel> selectData(int count,int offset) {
 		TestUtils utils = new TestUtils();
 		utils.testTimeBegin();
 		List<EventListModel> models = new ArrayList<EventListModel>();
-		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class);
+		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class,count,offset);
 		for (int i = 0; i < eventEntities.size(); i++) {
 			EventListModel model = new EventListModel();
 			EventEntity eventEntity = eventEntities.get(i);

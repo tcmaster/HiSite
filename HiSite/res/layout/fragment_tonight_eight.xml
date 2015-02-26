@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:orientation="vertical"  >
+    android:orientation="vertical" >
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true" />
+
     <com.android.tonight8.view.XListView
         android:id="@+id/lv_show_detail"
         style="@style/match"
-        android:scrollbars="none"
-        />
+        android:scrollbars="none" />
 
-</LinearLayout>
+</RelativeLayout>

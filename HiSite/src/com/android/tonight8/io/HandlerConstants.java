@@ -3,6 +3,9 @@
  */
 package com.android.tonight8.io;
 
+import android.os.Handler;
+import android.os.Message;
+
 /**
  * @Description:
  * @author:LiXiaoSong
@@ -24,6 +27,22 @@ public class HandlerConstants {
 
 		public static final int MAINPAGE_TOP = 1;// 首页上部
 		public static final int MAINPAGE_LIST = 2;// 首页列表
+	}
+	/**
+	 * @param 发送一条handler消息
+	 * @param handler 发送消息的handler
+	 * @param obj 要发送的数据(没有的话，传null即可）
+	 * @param what 向哪个内容发送
+	 * @param arg1   当前发送的状态（开始，结束，网络状况良好，较差）
+	 * @param arg2   附加信息
+	 */
+	public static void sendMessage(Handler handler,Object obj,int what,int arg1,int arg2){
+		Message msg = handler.obtainMessage();
+		msg.what = what;
+		msg.arg1 = arg1;
+		msg.arg2 = arg2;
+		msg.obj = obj;
+		handler.sendMessage(msg);
 	}
 
 }
