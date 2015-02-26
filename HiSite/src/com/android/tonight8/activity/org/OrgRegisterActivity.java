@@ -1,11 +1,13 @@
 package com.android.tonight8.activity.org;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.createevent.AuthenticationActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.TimeCount;
@@ -56,6 +58,7 @@ public class OrgRegisterActivity extends BaseActivity {
 			String codeString = et_code_register.getText().toString();
 			String pwdString = et_setpwd.getText().toString();
 			String pwdAgainString = et_setpwd_again.getText().toString();
+			startActivityForAnima(new Intent(OrgRegisterActivity.this, AuthenticationActivity.class), null);
 			finish();
 			break;
 		case R.id.btn_code_register:

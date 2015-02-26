@@ -14,7 +14,7 @@
 
             <TextView
                 style="@style/wrap"
-                android:text="电       话:"
+                android:text="手       机:"
                 android:textSize="@dimen/bigTextSize" />
 
             <EditText
