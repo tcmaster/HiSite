@@ -4,11 +4,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/iv_header"
-        style="@style/wrap"
-        android:background="@drawable/ic_launcher" >
-    </ImageView>
+    <RelativeLayout
+        style="@style/match_width"
+        android:layout_height="300dp" >
+
+        <TextView
+            android:id="@+id/tv_popGoodsName"
+            style="@style/match_width"
+            android:padding="@dimen/common_margin_left"
+            android:text="活动名称" />
+
+        <TextView
+            android:id="@+id/tv_popGoodsprice"
+            style="@style/match_width"
+            android:layout_below="@+id/tv_popGoodsName"
+            android:padding="@dimen/common_margin_left"
+            android:text="活动价格" />
+        <ImageView
+            android:id="@+id/iv_popgoods_pic"
+            style="@style/match"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_launcher" >
+        </ImageView>
+        <ImageView
+            android:id="@+id/iv_org_header"
+            style="@style/wrap"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:background="@drawable/ic_launcher" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_temptitle"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:id="@+id/tv_orgname"
+            style="@style/wrap"
+            android:layout_above="@+id/tv_temptitle"
+            android:layout_toLeftOf="@+id/iv_org_header"
+            android:paddingRight="@dimen/common_margin_left"
+            android:text="商家名称" />
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/lv_foot_detail"

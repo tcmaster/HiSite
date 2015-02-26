@@ -24,7 +24,8 @@ public class LiveDetailAdapter extends BaseListAdapter<LiveDetailModel> {
 	protected View getItemView(View convertView, int position) {
 		ViewHolder holder = null;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.adapter_list_detail, null, false);
+			convertView = mInflater.inflate(R.layout.adapter_list_detail, null,
+					false);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();

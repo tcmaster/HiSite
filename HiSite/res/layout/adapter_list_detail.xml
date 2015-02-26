@@ -2,7 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="horizontal"
+    android:padding="@dimen/common_margin_left" >
+
+    <ImageView
+        android:id="@+id/iv_subject_head_icon"
+        style="@style/wrap"
+        android:background="@drawable/ic_launcher" >
+    </ImageView>
+
+    <RelativeLayout style="@style/match_width" >
+
+        <TextView
+            android:id="@+id/tv_subjectadapter_title"
+            style="@style/wrap"
+            android:text="小新+"
+            android:textColor="@color/red_sys" />
+
+        <TextView
+            android:id="@+id/tv_subjectadapter_content"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_subjectadapter_title"
+            android:text="非常萨嘎额无人过问of姐啊诶如果eawfawegaewggsgewagaewrg"
+            android:textColor="@color/black" />
+
+        <GridView
+            android:id="@+id/gv_popgoodpic"
+            style="@style/match_width"
+            android:layout_below="@+id/tv_subjectadapter_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/tv_subjectadapter_placetime"
+            style="@style/wrap"
+            android:layout_below="@+id/gv_popgoodpic"
+            android:text="北京丰台科技园   15分钟前"
+            android:textColor="@color/half_black" />
+
+        <Button
+            android:id="@+id/btn_reply"
+            style="@style/wrap"
+            android:layout_alignBottom="@+id/tv_subjectadapter_placetime"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/gv_popgoodpic"
+            android:background="@drawable/setting_btn_selector"
+            android:text="回复"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize" />
+    </RelativeLayout>
 
 </LinearLayout>
