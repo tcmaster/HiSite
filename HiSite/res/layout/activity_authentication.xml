@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/rg_authentication"
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
+
+            <RadioButton
+                android:id="@+id/rb_company"
+                style="@style/match_width"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:background="@drawable/auth_rg_left_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="我是企业"
+                android:textColor="@drawable/setting_text_selector" />
+
+            <RadioButton
+                android:id="@+id/rb_person"
+                style="@style/match_width"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:background="@drawable/auth_rg_right_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="我是个人"
+                android:textColor="@drawable/setting_text_selector" />
+        </RadioGroup>
+
+        <View
+            style="@style/match_width"
+            android:layout_height="@dimen/common_margin_left"
+            android:background="@color/white_gray" />
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公司名称:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_companyname"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所在地区:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_area"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地        址:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_address"
+                style="@style/et_comm_style"
+                android:layout_weight="1"
+                android:ems="10" >
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_auth_person"
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联  系  人:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_person"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="电        话:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_phone"
+                style="@style/et_comm_style"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/common_margin_left"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邮        箱:"
+                android:textSize="@dimen/bigTextSize" />
+
+            <EditText
+                android:id="@+id/et_auth_email"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <View
+            style="@style/match_width"
+            android:layout_height="@dimen/common_margin_left"
+            android:layout_marginBottom="@dimen/common_margin_left"
+            android:background="@color/white_gray" />
+
+        <Button
+            android:id="@+id/btn_auth_ok"
+            style="@style/ok_button_style"
+            android:text="下一步" >
+        </Button>
+    </LinearLayout>
+
+</ScrollView>

@@ -44,7 +44,7 @@
     <string name="input_id">请输入ID</string>
     <string name="input_personname">请输入企业全称或个人全名</string>
     <string name="input_identity">请输入执照或身份证号</string>
-    <string name="input_phone">请输入电话号码</string>
+    <string name="input_phone">请输入手机号码</string>
     <string name="input_email">请输入邮箱地址</string>
     <string name="input_password">密&#160;&#160;&#160;&#160;&#160;&#160;&#160;码:</string>
     <string name="input_code">请输入验证码</string>
