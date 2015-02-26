@@ -12,11 +12,9 @@
         <ImageView
             android:id="@+id/iv_bpic"
             style="@style/wrap"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_margin="@dimen/common_margin_small"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/label_genuine" />
 
         <LinearLayout
             android:id="@+id/ll_right"
@@ -109,7 +107,8 @@
                 android:layout_height="25dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/star_red_small"
+                android:layout_marginRight="@dimen/drawable_padding" />
 
             <TextView
                 android:id="@+id/tv_win"
@@ -131,7 +130,8 @@
                 android:layout_height="25dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/talk_red"
+                android:layout_marginRight="@dimen/drawable_padding" />
 
             <TextView
                 android:id="@+id/tv_comment"
@@ -153,7 +153,8 @@
                 android:layout_height="25dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/speople_red"
+                android:layout_marginRight="@dimen/drawable_padding" />
 
             <TextView
                 android:id="@+id/tv_apply"

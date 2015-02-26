@@ -174,7 +174,7 @@ public class TonightEightFragment extends BaseFragment {
 	}
 
 	private void initActionBar() {
-		bA.getActionBarSpeical("今晚8点", R.drawable.m_action_right, false, true, null);
+		bA.getActionBarSpeical("今晚8点", R.drawable.m_action_right, false, true, null).setText("北京");
 	}
 
 	/**

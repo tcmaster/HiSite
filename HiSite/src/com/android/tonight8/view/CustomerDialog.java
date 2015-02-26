@@ -21,7 +21,7 @@ public class CustomerDialog {
 	/**
 	 * dialog的位置
 	 */
-	public int gravity = -200;
+	public int gravity = Gravity.CENTER;
 
 	/**
 	 * 
@@ -62,7 +62,7 @@ public class CustomerDialog {
 		window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 		window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		window.setContentView(res);
-		if (-200 != gravity)
+		if (Gravity.CENTER != gravity)
 			window.setGravity(gravity);
 		if (listener != null) {
 			listener.getCustomerView(window, dlg);

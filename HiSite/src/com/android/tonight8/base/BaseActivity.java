@@ -84,7 +84,7 @@ public class BaseActivity extends FragmentActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		if (Tonight8App.getSelf().mTencent!=null) {
+		if (Tonight8App.getSelf().mTencent != null) {
 			Tonight8App.getSelf().mTencent.releaseResource();
 		}
 
@@ -234,7 +234,7 @@ public class BaseActivity extends FragmentActivity {
 	}
 
 	/**
-	 * @Description:得到title右边的文字
+	 * @Description:得到标题右边的文字
 	 * @return
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25

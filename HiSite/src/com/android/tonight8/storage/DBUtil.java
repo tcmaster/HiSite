@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.content.Context;
 
-import com.android.tonight8.storage.entity.BaseEntity;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
@@ -134,15 +133,10 @@ public class DBUtil {
 	 */
 	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, WhereBuilder where, String... updateColumns) {
 		try {
-			T entity = utils.findFirst(Selector.from(clazz).where(where));
-			if (entity != null)
-				utils.update(myEntity, where, updateColumns);
-			else
-				utils.save(myEntity);
+			utils.saveOrUpdate(myEntity, where, updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -155,14 +149,7 @@ public class DBUtil {
 	 */
 	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, String... updateColumns) {
 		try {
-			long id = ((BaseEntity) myEntity).getId();
-			T entity = utils.findById(clazz, id);
-			if (entity != null)
-				// 有该条数据，更新
-				utils.update(myEntity, WhereBuilder.b("id", "=", id), updateColumns);
-			else
-				// 不存在该条数据，插入
-				utils.save(myEntity);
+			utils.saveOrUpdate(myEntity, null, updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
@@ -187,18 +174,16 @@ public class DBUtil {
 	 *            在更新的情况下，指定更新哪些行，如果参数为0，则代表所有行都更新
 	 */
 	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz, String... updateColumns) {
-		// 过程说明，遍历表中所有内容，进行查找是否有相对应的数据，若没有，则进行插入，若存在，则根据更新的列对该数据进行更新
 		try {
-			for (int i = 0; i < entities.size(); i++) {
-				long id = ((BaseEntity) entities.get(i)).getId();
-				T entity = utils.findById(clazz, id);
-				if (entity != null)
-					// 有该条数据，更新
-					utils.update(entities.get(i), WhereBuilder.b("id", "=", id), updateColumns);
-				else
-					// 不存在该条数据，插入
-					utils.save(entities.get(i));
-			}
+			utils.saveOrUpdateAll(entities, WhereBuilder.b(), updateColumns);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz, List<WhereBuilder> builders, String... updateColumns) {
+		try {
+			utils.saveOrUpdateAll(entities, builders, updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}

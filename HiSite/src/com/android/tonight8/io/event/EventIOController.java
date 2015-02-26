@@ -53,11 +53,11 @@ public class EventIOController {
 					Org org = new Org();
 					CouponProvide couponProvide = new CouponProvide();
 					Exchange exchange = new Exchange();
-					couponProvide.id = (long)(12342 * Math.random());
+					couponProvide.id = (long) (12342 + i);
 					couponProvide.type = 1;
-					couponProvide.provideNum = (int)(1000 * Math.random());
+					couponProvide.provideNum = (int) (1000 * Math.random());
 					couponProvide.provideAll = false;
-					event.id = (int) (122935 * Math.random());
+					event.id = (int) (122935 + i);
 					event.name = "中英文花式奖品" + ((int) (Math.random() * 2394));
 					event.distance = (float) (Math.random() * 11);
 					event.applyCount = (int) Math.random() * 2000;
@@ -65,7 +65,7 @@ public class EventIOController {
 					popGoods.popGoodsName = "神之海报" + (int) (Math.random() * 199);
 					popGoods.popGoodsPic = imgs[(int) (Math.random() * 8)];
 					popGoods.popGoodsPrice = (int) (Math.random() * 888);
-					org.id = (int) (Math.random() * 100);
+					org.id = i;
 					org.name = "龙翔控股科技发展公司" + Math.random() * 5;
 					exchange.method = false;
 					exchange.address = "ddkafkkdkfkd";

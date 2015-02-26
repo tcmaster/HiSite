@@ -34,10 +34,6 @@
         layout="@layout/include_myaccount_item" />
 
     <View style="@style/line_full" />
-
-
-    <View style="@style/line_full" />
-
     <include
         android:id="@+id/layout_sponsor"
         style="@style/match_width"

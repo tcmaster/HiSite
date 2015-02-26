@@ -18,6 +18,7 @@ import com.android.tonight8.storage.entity.EventEntity;
 import com.android.tonight8.storage.entity.ExchangeEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 import com.android.tonight8.storage.entity.PopGoodsEntity;
+import com.android.tonight8.utils.TestUtils;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 
 /**
@@ -29,10 +30,15 @@ import com.lidroid.xutils.db.sqlite.WhereBuilder;
 public class EventListNativeController {
 
 	public void insertData(List<EventListModel> models) {
+		TestUtils utils = new TestUtils();
+		utils.testTimeBegin();
 		List<EventEntity> eventEntities = new ArrayList<EventEntity>();
 		List<OrgEntity> orgEntities = new ArrayList<OrgEntity>();
 		List<CouponProvideEntity> couponProvideEntities = new ArrayList<CouponProvideEntity>();
 		List<ExchangeEntity> exchangeEntities = new ArrayList<ExchangeEntity>();
+		List<PopGoodsEntity> popGoodsEntities = new ArrayList<PopGoodsEntity>();
+		List<WhereBuilder> exchangeBuilders = new ArrayList<WhereBuilder>();
+		List<WhereBuilder> popGoodsBuilders = new ArrayList<WhereBuilder>();
 		for (int i = 0; i < models.size(); i++) {
 			EventListModel model = models.get(i);
 			EventEntity eventEntity = new EventEntity();
@@ -56,14 +62,16 @@ public class EventListNativeController {
 			orgEntities.add(orgEntity);
 			couponProvideEntities.add(couponEntity);
 			exchangeEntities.add(exchangeEntity);
-			DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=",
-			eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
-			DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class,WhereBuilder.b("rid","=",eventEntity.getId()),
-					"method", "address", "orgAll");
+			popGoodsEntities.add(popGoodsEntity);
+			popGoodsBuilders.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
+			exchangeBuilders.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
 		}
-		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "applyCount", "consultCount");
+		DBUtil.saveOrUpdateAll(popGoodsEntities, PopGoodsEntity.class, popGoodsBuilders, "popGoodsName", "popGoodsPic", "popGoodsPrice", "rid");
+		DBUtil.saveOrUpdateAll(exchangeEntities, ExchangeEntity.class, exchangeBuilders, "method", "address", "orgAll", "rid");
+		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "applyCount", "consultCount", "rid");
 		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
-		DBUtil.saveOrUpdateAll(couponProvideEntities, CouponProvideEntity.class, "type", "provideNum", "provideAll");
+		DBUtil.saveOrUpdateAll(couponProvideEntities, CouponProvideEntity.class, "type", "provideNum", "provideAll", "rid");
+		utils.testTimeEnd("存数据");
 	}
 
 	/**
@@ -73,6 +81,8 @@ public class EventListNativeController {
 	 * @date:2015-1-21
 	 */
 	public List<EventListModel> selectData() {
+		TestUtils utils = new TestUtils();
+		utils.testTimeBegin();
 		List<EventListModel> models = new ArrayList<EventListModel>();
 		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class);
 		for (int i = 0; i < eventEntities.size(); i++) {
@@ -99,6 +109,7 @@ public class EventListNativeController {
 			model.popGoods = popGoods;
 			models.add(model);
 		}
+		utils.testTimeEnd("取数据");
 		return models;
 	}
 
