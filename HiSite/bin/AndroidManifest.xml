@@ -179,8 +179,7 @@
         <activity
             android:name="com.android.tonight8.activity.user.UserAddressActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <!-- 用户关注的商家 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserFollowActivity"
@@ -190,14 +189,24 @@
             android:name="com.android.tonight8.activity.user.EditReceiveAddressActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-       <!-- 用户协议页面 -->
+        <!-- 用户协议页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.UserAgreementActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-               <!-- 用户协议页面 -->
+        <!-- 用户协议页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.CalendarActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 认证页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 认证陈功页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.AuthSuccessActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
