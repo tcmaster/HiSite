@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <EditText
+        android:id="@+id/et_user_id"
+        style="@style/match_width"
+        android:layout_margin="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/user_account_init"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <EditText
+        android:id="@+id/et_user_loginpwd"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_left_long"
+        android:layout_marginLeft="@dimen/common_margin_left_long"
+        android:layout_marginRight="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+    <EditText
+        android:id="@+id/et_user_loginpwd_retry"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_left_long"
+        android:layout_marginLeft="@dimen/common_margin_left_long"
+        android:layout_marginRight="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+	
+</LinearLayout>
