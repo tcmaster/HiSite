@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/et_user_id"
+        style="@style/match_width"
+        android:layout_margin="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/user_account_init"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <EditText
+        android:id="@+id/et_user_loginpwd"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_left_long"
+        android:layout_marginLeft="@dimen/common_margin_left_long"
+        android:layout_marginRight="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin_left_long"
+        android:paddingRight="@dimen/common_margin_left_long" >
+
+        <CheckBox
+            android:id="@+id/cb_auto_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auto_login"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_three_party_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_auto_login"
+            android:layout_alignBottom="@+id/cb_auto_login"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/margin_between_item"
+            android:text="@string/three_party_login"
+            android:textColor="@color/red"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_forgot_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_auto_login"
+            android:layout_alignBottom="@+id/cb_auto_login"
+            android:layout_toLeftOf="@id/tv_three_party_login"
+            android:gravity="right"
+            android:text="@string/forgotpwd"
+            android:textColor="@color/red"
+            android:textSize="@dimen/middleTextSize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left_long" >
+
+        <Button
+            android:id="@+id/btn_shop_register"
+            style="@style/button_style_white"
+            android:layout_weight="1"
+            android:text="@string/register" />
+
+        <Button
+            android:id="@+id/btn_shop_login"
+            style="@style/ok_button_style"
+            android:layout_weight="1"
+            android:text="@string/login" />
+    </LinearLayout>
+</LinearLayout>
