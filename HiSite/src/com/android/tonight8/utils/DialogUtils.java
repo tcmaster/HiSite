@@ -73,38 +73,22 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectDateDialog(final Activity activity, final TextView inputDate) {
-		final Calendar calendar = Calendar.getInstance();
-		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.common_select_date);
-		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
-
-			@Override
-			public void getCustomerView(Window window, AlertDialog dlg) {
-				final DatePicker datePicker = (DatePicker) window.findViewById(R.id.datepicker);
-				calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
-				Button btn_cancel = (Button) window.findViewById(R.id.btn_cancel);
-				Button btn_ok = (Button) window.findViewById(R.id.btn_ok);
-				btn_cancel.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						cdlg.dismissDlg();
-					}
-				});
-				btn_ok.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						String month = String.valueOf(datePicker.getMonth() + 1);
-						String initDateTime = datePicker.getYear() + "年" + month + "月" + datePicker.getDayOfMonth() + "日 ";
-						inputDate.setText(initDateTime);
-						cdlg.dismissDlg();
-					}
-				});
-			}
-		});
-		Utils.hideSoftKeyBoard(activity);
+	public static void showSelectPicDialog(final Activity activity,ButtonOnClick listener) {
+		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_select_pic);
 		cdlg.showDlg();
+	}
+
+	public static abstract class ButtonOnClick implements CustomerViewInterface {
+
+		@Override
+		public void getCustomerView(Window window, AlertDialog dlg) {
+			Button btn_left = (Button) window.findViewById(R.id.btn_left);// 找到listView
+			Button btn_right = (Button) window.findViewById(R.id.btn_right);
+			getButton(btn_left, btn_right, dlg);
+		}
+
+		public abstract void getButton(Button leftButton, Button rightButton, final AlertDialog dlg);
+
 	}
 
 	/**
@@ -191,7 +175,7 @@ public class DialogUtils {
 		});
 
 		Utils.hideSoftKeyBoard(activity);
-		cdlg.gravity =Gravity.BOTTOM;
+		cdlg.gravity = Gravity.BOTTOM;
 		cdlg.showDlg();
 	}
 }

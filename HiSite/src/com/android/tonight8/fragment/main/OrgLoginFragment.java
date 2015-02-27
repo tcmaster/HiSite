@@ -95,7 +95,7 @@ public class OrgLoginFragment extends BaseFragment {
 	/** 头部轮播布局 */
 	@ViewInject(R.id.fl_header_events)
 	private FrameLayout frameLayout;
-	/** 自动登录*/
+	/** 自动登录 */
 	@ViewInject(R.id.cb_auto_login)
 	private CheckBox cb_auto_login;
 
@@ -154,6 +154,27 @@ public class OrgLoginFragment extends BaseFragment {
 			}
 		});
 		cFunction.start();// 开始轮播
+	}
+
+	@Override
+	public void onDestroy() {
+		if (cFunction != null)
+			cFunction.stop();// 结束轮播
+		super.onDestroy();
+	}
+
+	@Override
+	public void onStart() {
+		if (cFunction != null)
+			cFunction.resume();
+		super.onResume();
+	}
+
+	@Override
+	public void onStop() {
+		if (cFunction != null)
+			cFunction.pause();
+		super.onStop();
 	}
 
 	@OnClick({ R.id.btn_shop_login, R.id.btn_shop_register, R.id.tv_forgot_id, R.id.tv_forgot_pwd })

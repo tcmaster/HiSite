@@ -66,10 +66,10 @@ public class CreateEventSecondActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.et_coupon_startdate:
-			DialogUtils.showSelectDateDialog(CreateEventSecondActivity.this, tv_coupon_startdate);
+
 			break;
 		case R.id.et_coupon_enddate:
-			DialogUtils.showSelectDateDialog(CreateEventSecondActivity.this, tv_coupon_startdate);
+
 			break;
 		default:
 			break;

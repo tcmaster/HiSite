@@ -204,6 +204,11 @@
             android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 认证陈功页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.AuthSuccessActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <!-- QQ分享需要注册的 -->
         <activity

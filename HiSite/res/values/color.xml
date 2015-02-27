@@ -15,5 +15,8 @@
     <color name="green">#029da1</color>
     <color name="transparent">#00000000</color>
     <color name="blue">#0000FF</color>
+    <!-- 橙色 -->
+    <color name="orange">#FF8000</color>
+    
 
 </resources>

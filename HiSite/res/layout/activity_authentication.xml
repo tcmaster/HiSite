@@ -9,7 +9,7 @@
         android:orientation="vertical" >
 
         <RadioGroup
-            android:id="@+id/rg_authentication"
+            android:id="@+id/rg_auth_type"
             style="@style/match_width"
             android:orientation="horizontal"
             android:padding="@dimen/common_margin_left" >
@@ -24,7 +24,7 @@
                 android:checked="true"
                 android:gravity="center"
                 android:text="我是企业"
-                android:textColor="@drawable/setting_text_selector" />
+                android:textColor="@drawable/seletor_blacktowhite" />
 
             <RadioButton
                 android:id="@+id/rb_person"
@@ -36,7 +36,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="我是个人"
-                android:textColor="@drawable/setting_text_selector" />
+                android:textColor="@drawable/seletor_blacktowhite" />
         </RadioGroup>
 
         <View
@@ -75,7 +75,15 @@
                 android:textSize="@dimen/bigTextSize" />
 
             <EditText
-                android:id="@+id/et_auth_area"
+                android:id="@+id/et_auth_area1"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+            <EditText
+                android:id="@+id/et_auth_area2"
+                style="@style/et_comm_style"
+                android:layout_weight="1" />
+            <EditText
+                android:id="@+id/et_auth_area3"
                 style="@style/et_comm_style"
                 android:layout_weight="1" />
         </LinearLayout>
