@@ -19,8 +19,8 @@ import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.storage.event.EventStorage;
+import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.util.LogUtils;
 
 public class EventIOController {
 
@@ -34,12 +34,12 @@ public class EventIOController {
 	 * @author: LiXiaoSong
 	 * @date:2015-2-12
 	 */
-	public static void eventsRead(final Handler handler,final int ...attachments) {
+	public static void eventsRead(final Handler handler, final int... attachments) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, EVENT_LIST_URL);
 		params.put("user.coordinate", "39.9,116.3");
 		params.put("city.code", "1");
-		HandlerConstants.sendMessage(handler, null, HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.NETWORK_BEGIN, attachments[0]);
+		HandlerConstants.sendMessage(handler, null, HandlerConstants.Event.MAINPAGE_LIST, HandlerConstants.NETWORK_BEGIN, attachments[0]);
 		NetRequest.doGetRequest(params, new RequestResult<EventListNetEntity>(EventListNetEntity.class, handler) {
 
 			@Override
@@ -77,13 +77,13 @@ public class EventIOController {
 					lists.add(model);
 				}
 				EventStorage.getEventListNativeController().insertData(lists);
-				HandlerConstants.sendMessage(handler,EventStorage.getEventListNativeController().selectData(attachments[1],attachments[2]),HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.RESULT_OK, attachments[0]);
+				HandlerConstants.sendMessage(handler, EventStorage.getEventListNativeController().selectData(attachments[1], attachments[2]), HandlerConstants.Event.MAINPAGE_LIST, HandlerConstants.RESULT_OK, attachments[0]);
 			}
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
-				LogUtils.v("why");
-				HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.MAINPAGE_LIST,HandlerConstants.RESULT_FAIL,attachments[0]);
+				Utils.toast("网络异常");
+				HandlerConstants.sendMessage(handler, null, HandlerConstants.Event.MAINPAGE_LIST, HandlerConstants.RESULT_FAIL, attachments[0]);
 			}
 		});
 	}

@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        style="@style/match_height"
+        style="@style/match"
         android:layout_centerInParent="true" >
 
         <TextView
@@ -72,7 +72,8 @@
             android:layout_marginRight="@dimen/drawable_padding"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="@dimen/middleTextSize" />
+            android:textSize="@dimen/middleTextSize"
+            />
 
         <ImageView
             android:id="@+id/rightimg"
