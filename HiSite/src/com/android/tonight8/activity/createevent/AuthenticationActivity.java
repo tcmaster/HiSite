@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -13,7 +14,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.lidroid.xutils.view.annotation.event.OnRadioGroupCheckedChange;
+import com.lidroid.xutils.view.annotation.event.OnCompoundButtonCheckedChange;
 
 /**
  * @Description:认证页面
@@ -55,30 +56,31 @@ public class AuthenticationActivity extends BaseActivity {
 	/** 确定按钮下一步 */
 	@ViewInject(R.id.btn_auth_ok)
 	private Button btn_auth_ok;
+	/** true个人 false公司 */
+	private boolean isPerson = false;
 
-	@OnRadioGroupCheckedChange(R.id.rg_auth_type)
-	public void onCheckedChanged(RadioGroup arg0, int arg1) {
-
-		/* 处理被单击的按钮 */
-		RadioButton mRadioButton = (RadioButton) arg0.findViewById(arg1);
-		int switchid = Integer.parseInt(mRadioButton.getTag().toString());
-
-		switch (switchid) {
-		// 公司认证
-		case 0:
+	@OnCompoundButtonCheckedChange({ R.id.rb_company, R.id.rb_person })
+	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+		switch (arg0.getId()) {
+		case R.id.rb_company:
+			isPerson = false;
 			ll_auth_person.setVisibility(View.VISIBLE);
 			break;
-		// 个人认证
-		case 1:
+		case R.id.rb_person:
+			isPerson = true;
 			ll_auth_person.setVisibility(View.GONE);
 			break;
-
+		default:
+			break;
 		}
+
 	}
 
 	@OnClick(R.id.btn_auth_ok)
-	public void onClick() {
-		startActivityForAnima(new Intent(AuthenticationActivity.this, AuthSuccessActivity.class), null);
+	public void onClick(View v) {
+		Intent intent = new Intent(AuthenticationActivity.this, AuthPicActivity.class);
+		intent.putExtra("isPerson", isPerson);
+		startActivityForAnima(intent, null);
 	}
 
 	@Override

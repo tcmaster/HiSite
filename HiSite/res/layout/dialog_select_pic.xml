@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/tv_dilog_selectpic_title"
         style="@style/match_width"
+        android:padding="@dimen/common_margin_left"
+        android:text="选择照片"
         android:textSize="@dimen/hugeTextSize" />
 
     <LinearLayout

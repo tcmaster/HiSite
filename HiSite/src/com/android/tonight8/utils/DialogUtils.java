@@ -75,6 +75,7 @@ public class DialogUtils {
 
 	public static void showSelectPicDialog(final Activity activity,ButtonOnClick listener) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_select_pic);
+		cdlg.setOnCustomerViewCreated(listener);
 		cdlg.showDlg();
 	}
 
