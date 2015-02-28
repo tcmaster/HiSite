@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/auto_login"
-            android:textSize="@dimen/middleTextSize" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_three_party_login"
@@ -49,10 +49,10 @@
             android:layout_alignBaseline="@+id/cb_auto_login"
             android:layout_alignBottom="@+id/cb_auto_login"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/margin_between_item"
+            android:layout_marginLeft="@dimen/common_margin_small"
             android:text="@string/three_party_login"
             android:textColor="@color/red"
-            android:textSize="@dimen/middleTextSize" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_forgot_pwd"
@@ -64,7 +64,7 @@
             android:gravity="right"
             android:text="@string/forgotpwd"
             android:textColor="@color/red"
-            android:textSize="@dimen/middleTextSize" />
+            android:textSize="@dimen/smallTextSize" />
     </RelativeLayout>
 
     <LinearLayout

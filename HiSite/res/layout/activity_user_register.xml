@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <EditText
+        android:id="@+id/et_user_id"
+        style="@style/match_width"
+        android:layout_margin="@dimen/common_margin_left"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/user_account_init"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <EditText
+        android:id="@+id/et_user_loginpwd"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_left"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginRight="@dimen/common_margin_left"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+    <EditText
+        android:id="@+id/et_user_loginpwd_retry"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_left"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginRight="@dimen/common_margin_left"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint_retry"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+    <LinearLayout 
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginRight="@dimen/common_margin_left"
+        >
+    <EditText 
+        android:id="@+id/et_verify_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:hint="@string/input_code"
+        android:layout_weight="2"
+        />
+    <Button
+        android:id="@+id/btn_verify_code"
+        style="@style/ok_button_style"
+        android:layout_width="0dp"
+        android:text="@string/get_code"
+        android:textSize="@dimen/smallTextSize"
+        android:layout_weight="1"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        />
+    </LinearLayout>
+	
+</LinearLayout>
