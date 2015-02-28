@@ -7,11 +7,11 @@
     <dimen name="common_margin_left">10dp</dimen>
     <dimen name="common_margin_left_long">20dp</dimen>
     <dimen name="common_margin_small">5dp</dimen>
-    <dimen name="smallTextSize">12sp</dimen>
-    <dimen name="middleTextSize">14sp</dimen>
-    <dimen name="bigTextSize">16sp</dimen>
-    <dimen name="hugeTextSize">18sp</dimen>
-    <dimen name="superHugeTextSize">22sp</dimen>
+    <dimen name="smallTextSize">14sp</dimen>
+    <dimen name="middleTextSize">16sp</dimen>
+    <dimen name="bigTextSize">18sp</dimen>
+    <dimen name="hugeTextSize">20sp</dimen>
+    <dimen name="superHugeTextSize">24sp</dimen>
     <!-- 统一的文字左边距 (无图) -->
     <dimen name="text_left_margin">20dp</dimen>
     <!-- 统一的文字右边距 (无图) -->

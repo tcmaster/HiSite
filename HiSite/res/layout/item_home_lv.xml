@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
+    android:layout_margin="@dimen/common_margin_small"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/ll_top"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal" >
-		<FrameLayout style="@style/wrap">
-        <ImageView
-            android:id="@+id/iv_bpic"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_margin="@dimen/common_margin_small"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitXY" />
-        <ImageView
-            android:id="@+id/iv_bg"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_margin="@dimen/common_margin_small"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/label_genuine"
-            android:scaleType="fitXY" />
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/common_margin_small" >
+
+        <FrameLayout style="@style/wrap"
+            android:layout_marginRight="@dimen/common_margin_small"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_bpic"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_bg"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/label_genuine" />
         </FrameLayout>
 
         <LinearLayout
             android:id="@+id/ll_right"
-            style="@style/match"
+            style="@style/match_width"
+            android:layout_marginBottom="@dimen/common_margin_small"
             android:gravity="center_vertical"
             android:orientation="vertical" >
 
@@ -41,7 +47,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:text="@string/app_name"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/middleTextSize" />
 
                 <TextView
                     android:id="@+id/tv_location"
@@ -50,7 +56,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:text="@string/app_name"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/middleTextSize" />
             </RelativeLayout>
 
             <TextView
@@ -58,21 +64,21 @@
                 style="@style/wrap"
                 android:layout_marginLeft="10dp"
                 android:text="@string/app_name"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_prize"
                 style="@style/wrap"
                 android:layout_marginLeft="10dp"
                 android:text="@string/app_name"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 android:id="@+id/tv_count"
                 style="@style/wrap"
                 android:layout_marginLeft="10dp"
                 android:text="@string/app_name"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
 
             <RelativeLayout style="@style/match_width" >
 
@@ -83,7 +89,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:text="@string/app_name"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/middleTextSize" />
 
                 <TextView
                     android:id="@+id/tv_signup_count"
@@ -92,21 +98,24 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:text="@string/app_name"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/middleTextSize" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         android:id="@+id/ll_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        style="@style/match_width"
         android:baselineAligned="false"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:id="@+id/ll_win"
-            style="@style/match_height"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal" >
@@ -115,21 +124,25 @@
                 android:id="@+id/iv_win"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginRight="@dimen/drawable_padding"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/star_red_small"
-                android:layout_marginRight="@dimen/drawable_padding" />
+                android:src="@drawable/star_red_small" />
 
             <TextView
                 android:id="@+id/tv_win"
                 style="@style/wrap"
                 android:text="@string/win"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
+
+        <View style="@style/line_full_vertical" />
 
         <LinearLayout
             android:id="@+id/ll_comment"
-            style="@style/match_height"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal" >
@@ -138,21 +151,25 @@
                 android:id="@+id/iv_comment"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginRight="@dimen/drawable_padding"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/talk_red"
-                android:layout_marginRight="@dimen/drawable_padding" />
+                android:src="@drawable/talk_red" />
 
             <TextView
                 android:id="@+id/tv_comment"
                 style="@style/wrap"
                 android:text="@string/app_name"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
+
+        <View style="@style/line_full_vertical" />
 
         <LinearLayout
             android:id="@+id/ll_apply"
-            style="@style/match_height"
+            style="@style/wrap"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal" >
@@ -161,16 +178,16 @@
                 android:id="@+id/iv_apply"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginRight="@dimen/drawable_padding"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/speople_red"
-                android:layout_marginRight="@dimen/drawable_padding" />
+                android:src="@drawable/speople_red" />
 
             <TextView
                 android:id="@+id/tv_apply"
                 style="@style/wrap"
                 android:text="@string/signin"
-                android:textSize="12sp" />
+                android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
     </LinearLayout>
 
