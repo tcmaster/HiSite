@@ -8,13 +8,23 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal" >
-
+		<FrameLayout style="@style/wrap">
         <ImageView
             android:id="@+id/iv_bpic"
-            style="@style/wrap"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_margin="@dimen/common_margin_small"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/label_genuine" />
+            android:scaleType="fitXY" />
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="@dimen/common_margin_small"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/label_genuine"
+            android:scaleType="fitXY" />
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/ll_right"

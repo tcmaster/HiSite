@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        style="@style/match_height"
+        style="@style/match"
         android:layout_centerInParent="true" >
 
         <TextView

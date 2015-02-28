@@ -17,6 +17,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.event.EventAwardActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.model.event.EventListModel;
+import com.lidroid.xutils.BitmapUtils;
 
 /**
  * @Description:
@@ -28,8 +29,11 @@ import com.android.tonight8.model.event.EventListModel;
  */
 public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 
+	private BitmapUtils bmUtils;
+
 	public MainPageListViewAdapter(Context context, List<EventListModel> values) {
 		super(context, values);
+		bmUtils = new BitmapUtils(mContext);
 	}
 
 	@Override
@@ -64,22 +68,29 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 		holder.tv_title.setText(model.event.name);
 		holder.tv_company.setText(model.org.name);
 		holder.tv_count.setText(model.event.awardCount + "");
+		holder.tv_signup_count.setText(model.event.applyCount + "");
 		// holder.tv_prize.setText(model.popGoods.popGoodsName+"");
+		bmUtils.display(holder.iv_bpic, model.popGoods.popGoodsPic);
+		((TextView) holder.ll_comment.findViewById(R.id.tv_comment)).setText(model.event.consultCount + "");
 		return convertView;
 	}
+
 	/**
 	 * 增加数据源
+	 * 
 	 * @param models
 	 */
-	public void addData(List<EventListModel> models){
+	public void addData(List<EventListModel> models) {
 		mValues.addAll(models);
 		notifyDataSetChanged();
 	}
+
 	/**
 	 * 重置数据源
+	 * 
 	 * @param models
 	 */
-	public void initData(List<EventListModel> models){
+	public void initData(List<EventListModel> models) {
 		mValues.clear();
 		mValues.addAll(models);
 		notifyDataSetChanged();
