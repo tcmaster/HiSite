@@ -17,6 +17,7 @@
             <RadioButton
                 android:id="@+id/rb_company"
                 style="@style/match_width"
+                android:padding="@dimen/common_margin_left"
                 android:layout_marginLeft="@dimen/common_margin_left"
                 android:layout_weight="1"
                 android:background="@drawable/auth_rg_left_selector"
@@ -29,6 +30,7 @@
             <RadioButton
                 android:id="@+id/rb_person"
                 style="@style/match_width"
+                android:padding="@dimen/common_margin_left"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/common_margin_left"
                 android:layout_weight="1"
