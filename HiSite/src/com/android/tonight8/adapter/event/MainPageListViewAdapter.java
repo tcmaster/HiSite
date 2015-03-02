@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.event.EventAwardActivity;
+import com.android.tonight8.activity.user.UserLoginActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.model.event.EventListModel;
+import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.BitmapUtils;
 
 /**
@@ -54,14 +56,6 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 			holder.ll_win = (LinearLayout) convertView.findViewById(R.id.ll_win);
 			holder.ll_comment = (LinearLayout) convertView.findViewById(R.id.ll_comment);
 			holder.ll_apply = (LinearLayout) convertView.findViewById(R.id.ll_apply);
-			holder.ll_win.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
-					Intent intent = new Intent(mContext, EventAwardActivity.class);
-					mContext.startActivity(intent);
-				}
-			});
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
@@ -71,6 +65,23 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 		holder.tv_signup_count.setText(model.event.applyCount + "");
 		// holder.tv_prize.setText(model.popGoods.popGoodsName+"");
 		bmUtils.display(holder.iv_bpic, model.popGoods.popGoodsPic);
+		holder.ll_win.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(mContext, EventAwardActivity.class);
+				mContext.startActivity(intent);
+			}
+		});
+		holder.ll_apply.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Utils.toast("您还没有进行登陆，请登陆后在进行操作");
+				Intent intent = new Intent(mContext, UserLoginActivity.class);
+				mContext.startActivity(intent);
+			}
+		});
 		((TextView) holder.ll_comment.findViewById(R.id.tv_comment)).setText(model.event.consultCount + "");
 		return convertView;
 	}

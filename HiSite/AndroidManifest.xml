@@ -199,6 +199,16 @@
             android:name="com.android.tonight8.activity.createevent.CalendarActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 用户登录界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserLoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <!-- 用户注册界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserRegisterActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
         <!-- 认证页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"

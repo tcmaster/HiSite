@@ -78,8 +78,8 @@
         <item name="android:background">@drawable/setting_btn_selector</item>
         <item name="android:paddingBottom">6dp</item>
         <item name="android:paddingTop">6dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">@dimen/common_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/common_margin_left</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/smallTextSize</item>
     </style>
