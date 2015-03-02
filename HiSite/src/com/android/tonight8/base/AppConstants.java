@@ -35,5 +35,10 @@ public class AppConstants {
 	// --------------------------分享用的全局变量--------------------
 	/** 微信分享支持的最低版本号(二进制编码) */
 	public static final int TIMELINE_SUPPORTED_VERSION = 0x21020001;
+	
+	/** 根目录 */
+	public static final String ROOT_DIR_PATH = "/tonight8/res";
+	/** 缓存目录 */
+	public static final String CACHE_DIR_PATH = ROOT_DIR_PATH + "/cache";
 
 }

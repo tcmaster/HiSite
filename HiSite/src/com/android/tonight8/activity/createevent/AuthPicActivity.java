@@ -1,5 +1,6 @@
 package com.android.tonight8.activity.createevent;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 import android.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,9 +18,10 @@ import android.widget.RelativeLayout;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.DialogUtils.ButtonOnClick;
-import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -81,65 +84,75 @@ public class AuthPicActivity extends BaseActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		getWindow().getDecorView().invalidate();
 		if (resultCode != RESULT_OK) {
 			return;
 		}
+		File tempFile = new File(Environment.getExternalStorageDirectory() + "/Camera/", tempName);
 
 		switch (imageType) {
 
 		case 0: // 0营业执照
 			if (requestCode == PICKPICTURE) {
-				Uri selectedImage = data.getData();
-				cropPicture(selectedImage);
+				cropPicture(data.getData());
 			} else if (requestCode == TAKEPHOTO) {
-
+				cropPicture(Uri.fromFile(tempFile));
 			} else if (requestCode == CROP) {
+
+				Uri cropImageUri = data.getData();
+				// 图片解析成Bitmap对象
+				Bitmap bitmap = null;
 				try {
-					Uri cropImageUri = data.getData();
-					// 图片解析成Bitmap对象
-					Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
-					iv_org_license.setImageBitmap(bitmap); // 将剪裁后照片显示出来
+					bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+				} finally {
+					bitmap.recycle();
 				}
+				licensePicPath = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap);
+				Tonight8App.getSelf().bitmapUtils.display(iv_org_license, licensePicPath);
 			}
 
 			break;
 
 		case 1: // 1身份证前面
 			if (requestCode == PICKPICTURE) {
-				Uri selectedImage = data.getData();
-				cropPicture(selectedImage);
+				cropPicture(data.getData());
 			} else if (requestCode == TAKEPHOTO) {
-
+				cropPicture(Uri.fromFile(tempFile));
 			} else if (requestCode == CROP) {
+				Uri cropImageUri = data.getData();
+				// 图片解析成Bitmap对象
+				Bitmap bitmap = null;
 				try {
-					Uri cropImageUri = data.getData();
-					// 图片解析成Bitmap对象
-					Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
-					iv_identity_front.setImageBitmap(bitmap); // 将剪裁后照片显示出来
+					bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+				} finally {
+					bitmap.recycle();
 				}
+				idFrontPicPath = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap);
+				Tonight8App.getSelf().bitmapUtils.display(iv_identity_front, idFrontPicPath);
 			}
 			break;
 		case 2: // 2身份证后面
 			if (requestCode == PICKPICTURE) {
-				Uri selectedImage = data.getData();
-				cropPicture(selectedImage);
+				cropPicture(data.getData());
 			} else if (requestCode == TAKEPHOTO) {
-
+				cropPicture(Uri.fromFile(tempFile));
 			} else if (requestCode == CROP) {
+				Uri cropImageUri = data.getData();
+				// 图片解析成Bitmap对象
+				Bitmap bitmap = null;
 				try {
-					Uri cropImageUri = data.getData();
-					idReversePicPath = cropImageUri.getPath();
-					LogUtils.d("身份证反面的路径" + idReversePicPath);
-					// 图片解析成Bitmap对象
-					Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
-					iv_identity_reverse.setImageBitmap(bitmap); // 将剪裁后照片显示出来
+					bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+				} finally {
+					bitmap.recycle();
 				}
+				idReversePicPath = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap);
+				Tonight8App.getSelf().bitmapUtils.display(iv_identity_reverse, idReversePicPath);
 			}
 			break;
 		default:
