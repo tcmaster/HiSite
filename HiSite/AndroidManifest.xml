@@ -48,9 +48,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 忘记商家ID或者密码 -->
+        <!-- 忘记商家密码 -->
         <activity
-            android:name="com.android.tonight8.activity.org.ForgetIDOrPwdActivity"
+            android:name="com.android.tonight8.activity.org.OrgForgotPwdActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 忘记商家ID -->
+        <activity
+            android:name="com.android.tonight8.activity.org.OrgForgotIDActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
@@ -203,12 +210,12 @@
         <activity
             android:name="com.android.tonight8.activity.user.UserLoginActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!-- 用户注册界面 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserRegisterActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!-- 认证页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"
