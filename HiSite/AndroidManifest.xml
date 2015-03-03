@@ -69,6 +69,14 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 商家消息列表 -->
+        <activity
+            android:name="com.android.tonight8.activity.org.OrgMessageListActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <!-- 创建活动第一步 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.CreatEventFirstActivity"
@@ -218,17 +226,17 @@
             android:screenOrientation="portrait" />
         <!-- 认证页面 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"
+            android:name="com.android.tonight8.activity.org.AuthenticationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- 认证成功页面 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.AuthSuccessActivity"
+            android:name="com.andrcom.android.tonight8.activity.org.AuthSuccessActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- 认证上传图片页面 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.AuthPicActivity"
+            android:name="com.android.tonight8.activity.org.AuthPicActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>

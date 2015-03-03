@@ -3,9 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
+    <ImageView
+        style="@style/wrap"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/common_margin_left_long"
+        android:background="@drawable/ic_launcher"
+        android:text="我知道了" />
+
+    <TextView
+        style="@style/match_width"
+        android:padding="@dimen/common_margin_left_long"
+        android:text="@string/auth_success"
+        android:textSize="@dimen/middleTextSize" />
+
     <Button
         android:id="@+id/ok_auth_success"
         style="@style/ok_button_style"
-        android:text="我知道了"/>
+        android:text="我知道了" />
 
 </LinearLayout>
