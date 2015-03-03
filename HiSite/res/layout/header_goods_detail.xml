@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
-    <FrameLayout style="@style/match_width" >
+    <FrameLayout style="@style/match_width"
+        >
 
         <ImageView
             android:id="@+id/iv_commodity_img"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/popgoodsHeight"
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
@@ -20,46 +23,47 @@
             style="@style/wrap"
             android:layout_gravity="left|top"
             android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/middleTextSize" />
 
         <TextView
             android:id="@+id/tv_fg_right_top"
             style="@style/wrap"
             android:layout_gravity="right|top"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/topOrbottomPadding"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/middleTextSize" />
 
         <TextView
             android:id="@+id/tv_fg_right_bottom"
             style="@style/wrap"
             android:layout_gravity="right|bottom"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginRight="@dimen/topOrbottomPadding"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/middleTextSize" />
     </FrameLayout>
 
     <View style="@style/line_full" />
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:layout_marginLeft="@dimen/common_margin_left"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal"
+        >
 
         <TextView
             style="@style/wrap"
             android:text="@string/toOpenAward"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/hour"
@@ -84,14 +88,14 @@
             android:padding="2dp"
             android:text="@string/defaultTime"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             style="@style/wrap"
             android:padding="2dp"
             android:text="@string/minute"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/second"
@@ -100,39 +104,40 @@
             android:padding="2dp"
             android:text="@string/defaultTime"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             style="@style/wrap"
             android:padding="2dp"
             android:text="@string/second"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/signup_Count"
             style="@style/match_width"
             android:gravity="right|center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/common_margin_left"
             android:text="@string/defaultTime"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <View style="@style/line_full" />
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal"
+        >
 
         <TextView
             style="@style/wrap"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/activityTheme"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_theme"
@@ -146,16 +151,17 @@
     <LinearLayout
         android:id="@+id/ll_company"
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal"
+        >
 
         <TextView
             style="@style/wrap"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/sponsor"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_company"
@@ -168,50 +174,79 @@
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" >
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        >
 
         <TextView
             style="@style/wrap"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/coupon"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_coupon"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_coupleCount"
             style="@style/match_width"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/common_margin_left"
             android:gravity="right"
             android:text="@string/couponCount"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <View style="@style/line_full" />
 
-    <TextView
+    <RelativeLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="@dimen/common_margin_left"
-        android:layout_marginTop="5dp"
-        android:text="@string/activityDetail"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        >
+
+        <TextView
+            style="@style/wrap"
+            android:id="@+id/tv_one_of_exchange"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_centerVertical="true"
+            android:text="@string/activityLocation"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_see_location"
+            style="@style/wrap"
+            android:gravity="right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left"
+            android:text="@string/app_name"
+            android:textSize="@dimen/smallTextSize" />
+    </RelativeLayout>
 
     <View style="@style/line_full" />
-
+    <TextView
+        android:id="@+id/tv_activity_rules"
+        style="@style/match_width"
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:paddingLeft="@dimen/common_margin_left"
+        android:text="@string/activityRule"
+        />
+	<!--  
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
         android:orientation="horizontal" >
 
         <TextView
@@ -219,19 +254,19 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/activityAward"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_activity_detail"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:orientation="horizontal" >
 
         <TextView
@@ -239,19 +274,19 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/couponCount"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_goods_count"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:orientation="horizontal" >
 
         <TextView
@@ -259,19 +294,19 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/activityTime"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_activity_time"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:orientation="horizontal" >
 
         <TextView
@@ -279,27 +314,19 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/activityLocation"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_activity_location"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tv_see_location"
-            style="@style/match_width"
-            android:gravity="right"
-            android:paddingRight="10dp"
-            android:text="@string/app_name"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:orientation="horizontal" >
 
         <TextView
@@ -307,37 +334,38 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/activityRule"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_activity_rule"
             style="@style/wrap"
             android:text="@string/app_name"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
-
+	-->
     <View style="@style/line_full" />
 
     <View
         style="@style/line_full"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="@dimen/topOrbottomPaddingLong" />
 
     <LinearLayout
         style="@style/match_width"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+        android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
+        android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/btn_choice_award"
             style="@style/wrap"
             android:layout_weight="1"
+            android:background="@null"
             android:gravity="center"
             android:text="@string/awardIntroduce"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:background="@null" />
+            android:textSize="@dimen/smallTextSize" />
 
         <View style="@style/line_full_vertical" />
 
@@ -345,11 +373,11 @@
             android:id="@+id/btn_choice_activity_q"
             style="@style/wrap"
             android:layout_weight="1"
+            android:background="@null"
             android:gravity="center"
             android:text="@string/activityQ"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:background="@null" />
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <View style="@style/line_full" />

@@ -7,6 +7,7 @@
     <dimen name="common_margin_left">10dp</dimen>
     <dimen name="common_margin_left_long">20dp</dimen>
     <dimen name="common_margin_small">5dp</dimen>
+    <dimen name="more_smallTextSize">12sp</dimen>
     <dimen name="smallTextSize">14sp</dimen>
     <dimen name="middleTextSize">16sp</dimen>
     <dimen name="bigTextSize">18sp</dimen>
@@ -20,6 +21,10 @@
     <dimen name="drawable_padding">5dp</dimen>
     <!-- 每个普通item据上下边距的距离 -->
     <dimen name="topOrbottomPadding">10dp</dimen>
+    <!-- 上下边距，短-->
+    <dimen name="topOrBottomPaddingSmall">5dp</dimen>
+   	<!-- 上下边距，长 -->
+    <dimen name="topOrbottomPaddingLong">20dp</dimen>
     <!-- 两个item段落之间的边距 -->
     <dimen name="margin_between_item">20dp</dimen>
     <!-- 我的账号用到的相关dimen -->
@@ -33,5 +38,8 @@
     <dimen name="item_left_hilive">5dp</dimen>
     <!-- hi现场用户头像最大宽高 -->
     <dimen name="user_headpic_minheight">45dp</dimen>
+    <!-- 活动详情相关 -->
+    <!-- 海报高度 -->
+    <dimen name="popgoodsHeight">300dp</dimen>
 
 </resources>

@@ -89,6 +89,7 @@
     <string name="get_award_time">兑奖时间：</string>
     <string name="get_award_phone">联系电话：</string>
     <string name="get_award_way">兑奖方式：</string>
+    <string name="see_exchange_location">查看兑奖地点</string>
 
     <!-- 主办方资料 -->
     <string name="company_name">公司名称</string>

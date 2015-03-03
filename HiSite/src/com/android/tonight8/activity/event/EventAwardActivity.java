@@ -22,24 +22,19 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  */
 public class EventAwardActivity extends BaseActivity {
+
 	// ***************************控件成员***********************************//
 	// 头部内容
 	/** 活动名称 */
 	private TextView tv_event_name;
-	/** 奖品相关 */
-	private TextView tv_pop_goods;
-	/** 奖品图片 */
-	private ImageView iv_pop_goods_pic;
-	/** 中奖名额 */
-	private TextView tv_provide_num;
-	/** 优惠券 */
-	private TextView tv_coupon;
-	/** 报名数量 */
-	private TextView tv_apply_count;
+	/** 奖品海报 */
+	private ImageView iv_popgoods_icon;
 	/** 公司名称 */
 	private TextView tv_org_name;
-	/** 上架时间 */
-	private TextView tv_added_time;
+	/** 附加信息 */
+	private TextView tv_info;
+	/** 奖品价值 */
+	private TextView tv_value;
 
 	// 头部内容end
 	/** 中奖名单列表 */
@@ -59,15 +54,7 @@ public class EventAwardActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initHeaderView() {
-		View view = (View) LayoutInflater.from(this).inflate(
-				R.layout.header_award_or_exchange, null);
-		tv_event_name = (TextView) view.findViewById(R.id.tv_event_name);
-		tv_pop_goods = (TextView) view.findViewById(R.id.tv_pop_goods);
-		iv_pop_goods_pic = (ImageView) view.findViewById(R.id.iv_pop_goods_pic);
-		tv_provide_num = (TextView) view.findViewById(R.id.tv_provide_num);
-		tv_coupon = (TextView) view.findViewById(R.id.tv_coupon);
-		tv_org_name = (TextView) view.findViewById(R.id.tv_org_name);
-		tv_added_time = (TextView) view.findViewById(R.id.tv_added_time);
+		View view = (View) LayoutInflater.from(this).inflate(R.layout.header_award_or_exchange, null);
 		lv_award.addExtraHeaderView(view);
 	}
 

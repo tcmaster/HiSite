@@ -1,132 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match_width" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        style="@style/wrap"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popgoodsHeight" >
 
-        <TextView
-            android:id="@+id/tv_added_time"
-            style="@style/wrap"
-            android:layout_marginRight="5dp"
-            android:text="@string/app_name"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/middleTextSize" />
+        <ImageView
+            android:id="@+id/iv_popgoods_icon"
+            style="@style/match"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
 
-        <TextView
-            android:id="@+id/tv_apply_count"
-            style="@style/wrap"
-            android:text="@string/app_name"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/middleTextSize" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_pop_goods_pic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher" />
-
-    <LinearLayout
-        style="@style/wrap"
-        android:layout_alignTop="@id/iv_pop_goods_pic"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@id/iv_pop_goods_pic"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/tv_event_name"
-            style="@style/wrap"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/bigTextSize" />
-
-        <LinearLayout
-            style="@style/wrap"
-            android:orientation="horizontal" >
+        <RelativeLayout
+            style="@style/match_width"
+            android:layout_gravity="bottom"
+            android:background="@color/trans_white"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingTop="@dimen/topOrbottomPadding" >
 
             <TextView
+                android:id="@+id/tv_event_name"
                 style="@style/wrap"
-                android:background="@color/black"
-                android:text="@string/publish"
-                android:textColor="@color/white"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
                 android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_com_name_prompt"
+                style="@style/wrap"
+                android:layout_alignLeft="@id/tv_event_name"
+                android:layout_below="@id/tv_event_name"
+                android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+                android:background="@color/black"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
                 android:id="@+id/tv_org_name"
                 style="@style/wrap"
-                android:layout_marginLeft="5dp"
+                android:layout_below="@id/tv_event_name"
+                android:layout_marginLeft="@dimen/common_margin_small"
+                android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+                android:layout_toRightOf="@id/tv_com_name_prompt"
                 android:text="@string/app_name"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/wrap"
-            android:orientation="horizontal" >
+                android:textColor="@color/red_sys"
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
+                android:id="@+id/tv_info"
                 style="@style/wrap"
-                android:text="@string/award"
+                android:layout_alignLeft="@id/tv_com_name_prompt"
+                android:layout_below="@id/tv_com_name_prompt"
+                android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+                android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/smallTextSize" />
 
             <TextView
-                android:id="@+id/tv_pop_goods"
+                android:id="@+id/tv_value"
                 style="@style/wrap"
-                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_margin_left_long"
                 android:text="@string/app_name"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/wrap"
-            android:orientation="horizontal" >
-
-            <TextView
-                style="@style/wrap"
-                android:text="@string/award_count"
                 android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
+                android:textSize="@dimen/hugeTextSize" />
+        </RelativeLayout>
+    </FrameLayout>
 
-            <TextView
-                android:id="@+id/tv_provide_num"
-                style="@style/wrap"
-                android:layout_marginLeft="5dp"
-                android:text="@string/app_name"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
-		</LinearLayout>
-            <LinearLayout
-                style="@style/wrap"
-                android:orientation="horizontal" >
+    <LinearLayout
+        style="@style/match_width"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:paddingTop="@dimen/topOrbottomPadding" >
 
-                <TextView
-                    style="@style/wrap"
-                    android:text="@string/coupon"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/middleTextSize" />
+        <TextView
+            android:id="@+id/tv_exchange_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
 
-                <TextView
-                    android:id="@+id/tv_coupon"
-                    style="@style/wrap"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/app_name"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/middleTextSize" />
-            </LinearLayout>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_exchange_way"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_see_exchange_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:layout_weight="1"
+            android:background="@drawable/setting_btn_selector"
+            android:drawableLeft="@drawable/search_white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/topOrBottomPaddingSmall"
+            android:paddingTop="@dimen/topOrBottomPaddingSmall"
+            android:text="@string/see_exchange_location"
+            android:textColor="@color/white"
+            android:textSize="@dimen/more_smallTextSize" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_award_count"
+        style="@style/match"
+        android:background="@color/red_sys"
+        android:gravity="center"
+        android:paddingBottom="@dimen/topOrBottomPaddingSmall"
+        android:paddingTop="@dimen/topOrBottomPaddingSmall"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize" />
+
+</LinearLayout>

@@ -37,7 +37,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="MarqqjAPAzHfxPxNUcAaNSWG" />
+            android:value="ofsgRgzkBB6tqYfuleWths3s" />
         <!-- 主activity -->
         <activity
             android:name="com.android.tonight8.activity.MainActivity"
@@ -225,6 +225,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 兑奖地址位置显示页面 -->
+        <activity 
+            android:name="com.android.tonight8.activity.event.ExchangeLocationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <!-- QQ分享需要注册的 -->
         <activity
