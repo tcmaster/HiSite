@@ -23,7 +23,8 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.MainActivity;
-import com.android.tonight8.activity.org.ForgetIDOrPwdActivity;
+import com.android.tonight8.activity.org.OrgForgotIDActivity;
+import com.android.tonight8.activity.org.OrgForgotPwdActivity;
 import com.android.tonight8.activity.org.OrgRegisterActivity;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseFragment;
@@ -199,13 +200,11 @@ public class OrgLoginFragment extends BaseFragment {
 			startActivityForAnima(intent, getActivity());
 			break;
 		case R.id.tv_forgot_id:
-			intent = new Intent(getActivity(), ForgetIDOrPwdActivity.class);
-			intent.putExtra("forgottype", 0);
+			intent = new Intent(getActivity(), OrgForgotIDActivity.class);
 			startActivityForAnima(intent, getActivity());
 			break;
 		case R.id.tv_forgot_pwd:
-			intent = new Intent(getActivity(), ForgetIDOrPwdActivity.class);
-			intent.putExtra("forgottype", 1);
+			intent = new Intent(getActivity(), OrgForgotPwdActivity.class);
 			startActivityForAnima(intent, getActivity());
 			break;
 		default:

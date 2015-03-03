@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/common_margin_left" >
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:gravity="bottom"
+                android:text="@string/name"
+                android:textSize="@dimen/middleTextSize" />
+
+            <EditText
+                android:id="@+id/et_master_name"
+                style="@style/et_comm_style"
+                android:hint="@string/input_personname"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/identity"
+                android:textSize="@dimen/middleTextSize" />
+
+            <EditText
+                android:id="@+id/et_identity"
+                style="@style/et_comm_style"
+                android:hint="@string/input_identity"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/phone"
+                android:textSize="@dimen/middleTextSize" />
+
+            <EditText
+                android:id="@+id/et_phonenumber"
+                style="@style/et_comm_style"
+                android:hint="@string/input_phone"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/email"
+                android:textSize="@dimen/middleTextSize" />
+
+            <EditText
+                android:id="@+id/et_email"
+                style="@style/et_comm_style"
+                android:hint="@string/input_email" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_id"
+            style="@style/ll_comm_style"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="@string/shopid"
+                android:textSize="@dimen/middleTextSize" />
+
+            <EditText
+                android:id="@+id/et_shop_id"
+                style="@style/et_comm_style"
+                android:hint="@string/input_id"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_findback"
+            style="@style/ok_button_style"
+            android:layout_marginTop="20dp"
+            android:text="@string/findback" >
+        </Button>
+    </LinearLayout>
+
+</ScrollView>

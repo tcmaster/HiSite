@@ -1,4 +1,4 @@
-package com.android.tonight8.activity.createevent;
+package com.android.tonight8.activity.org;
 
 import java.io.File;
 import java.io.FileNotFoundException;
