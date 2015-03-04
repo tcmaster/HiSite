@@ -81,7 +81,7 @@
         <item name="android:layout_marginLeft">@dimen/common_margin_left</item>
         <item name="android:layout_marginRight">@dimen/common_margin_left</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/smallTextSize</item>
+        <item name="android:textSize">@dimen/middleTextSize</item>
     </style>
         <!-- 白色Button style -->
     <style name="button_style_white">
@@ -92,7 +92,7 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/middleTextSize</item>
     </style>
     <!-- 商家资料的 左侧文本style -->
     <style name="shoptext_left_style" parent="wrap">
@@ -107,6 +107,7 @@
     <!-- 发活动通用线性布局条目样式 -->
     <style name="ll_comm_style" parent="match_width">
         <item name="android:gravity">bottom</item>
+        <item name="android:padding">@dimen/common_margin_small</item>
     </style>
     <!-- 商家资料样式 -->
     <style name="ll_orgdetail_style" parent="match_width">

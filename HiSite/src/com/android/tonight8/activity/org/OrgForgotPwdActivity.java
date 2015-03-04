@@ -50,7 +50,6 @@ public class OrgForgotPwdActivity extends BaseActivity {
 		setContentView(R.layout.activity_org_forgotpwd);
 		super.onCreate(savedInstanceState);
 		getActionBarBase("忘记密码");
-		ll_password.setVisibility(View.GONE);
 
 	}
 

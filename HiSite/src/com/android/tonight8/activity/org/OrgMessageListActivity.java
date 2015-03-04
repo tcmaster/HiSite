@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.org.MessageListAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.common.Notice;
+import com.android.tonight8.io.org.OrgIOController;
+import com.android.tonight8.model.common.Message;
+import com.android.tonight8.storage.org.OrgLoginNativeController;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -23,7 +26,16 @@ public class OrgMessageListActivity extends BaseActivity {
 	@ViewInject(R.id.lv_only_list)
 	private XListView lv_only_list;
 	private MessageListAdapter listAdapter;
-	private List<Notice> list;
+	private List<Message> list;
+	public static Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			super.handleMessage(msg);
+
+		}
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +46,14 @@ public class OrgMessageListActivity extends BaseActivity {
 	}
 
 	private void initData() {
-		list = new ArrayList<Notice>();
+		list = new ArrayList<Message>();
 		listAdapter = new MessageListAdapter(mContext, list);
 		lv_only_list.setAdapter(listAdapter);
+		OrgLoginNativeController orgLoginNativeController = new OrgLoginNativeController(mContext);
+		String orgid = orgLoginNativeController.getOrgLoginInfo();
+		if (orgid != null) {
+			OrgIOController.OrgMessageListRead(handler, orgid);
+		}
+
 	}
 }

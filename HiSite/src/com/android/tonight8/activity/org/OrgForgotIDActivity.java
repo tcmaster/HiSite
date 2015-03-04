@@ -1,6 +1,8 @@
 package com.android.tonight8.activity.org;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +11,9 @@ import android.widget.LinearLayout;
 import com.android.tonight8.R;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.org.OrgIOController;
+import com.android.tonight8.model.common.Org;
 import com.android.tonight8.utils.CheckId;
 import com.android.tonight8.utils.StringUtils;
 import com.android.tonight8.utils.Utils;
@@ -43,6 +48,33 @@ public class OrgForgotIDActivity extends BaseActivity {
 	/** id */
 	@ViewInject(R.id.et_shop_id)
 	private EditText et_shop_id;
+	/** 商家信息 */
+	private Org org;
+	public static Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+			switch (msg.arg1) {
+			case HandlerConstants.RESULT_OK:
+
+				break;
+			case HandlerConstants.NETWORK_BEGIN:
+
+				break;
+			case HandlerConstants.NETWORK_END:
+
+				break;
+			case HandlerConstants.RESULT_FAIL:
+
+				break;
+			default:
+				break;
+			}
+		}
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +88,9 @@ public class OrgForgotIDActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_findback:
-			dealData();
+			if (dealData() && org != null) {
+				OrgIOController.OrgFrogotIdWrite(handler, org);
+			}
 			break;
 		default:
 			break;
@@ -64,22 +98,28 @@ public class OrgForgotIDActivity extends BaseActivity {
 
 	}
 
-	private void dealData() {
+	private boolean dealData() {
 		String master_name = et_master_name.getText().toString();
 		String identity = et_identity.getText().toString();
 		String phonenumber = et_phonenumber.getText().toString();
 		String email = et_email.getText().toString();
 		if (!new CheckId(identity).validate()) {
 			Utils.toast("请输入正确身份证号");
-			return;
+			return false;
 		}
 		if (!StringUtils.phoneOrMobile(phonenumber)) {
 			Utils.toast("请输入正确电话号码");
-			return;
+			return false;
 		}
 		if (!StringUtils.matchRegular(email, AppConstants.strEMAIL)) {
 			Utils.toast("请输入正确邮箱地址");
-			return;
+			return false;
 		}
+		org = new Org();
+		org.name = master_name;
+		org.paperCode = identity;
+		org.telphone = phonenumber;
+		org.email = email;
+		return true;
 	}
 }

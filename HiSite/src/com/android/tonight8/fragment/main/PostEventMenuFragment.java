@@ -22,7 +22,7 @@ import com.android.tonight8.activity.org.OrgDetailActivity;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.storage.organization.OrgLoginNativeController;
+import com.android.tonight8.storage.org.OrgLoginNativeController;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;

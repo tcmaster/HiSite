@@ -10,11 +10,11 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.base.Tonight8App;
-import com.android.tonight8.model.common.Notice;
+import com.android.tonight8.model.common.Message;
 
-public class MessageListAdapter extends BaseListAdapter<Notice> {
+public class MessageListAdapter extends BaseListAdapter<Message> {
 
-	public MessageListAdapter(Context context, List<Notice> values) {
+	public MessageListAdapter(Context context, List<Message> values) {
 		super(context, values);
 
 	}
@@ -34,13 +34,17 @@ public class MessageListAdapter extends BaseListAdapter<Notice> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Notice notice = mValues.get(position);
-		holder.tv_message_type.setText("官方");
-		holder.tv_message_type.setText("商家");
-		// holder.tv_message_title.setText(notice.get);
-		// holder.tv_message_content.setText(notice.get);
-		// holder.tv_message_datetime.setText(notice.get);
-		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic, notice.get);
+		Message message = mValues.get(position);
+		if ("1".equals(message.getType())) {
+			holder.tv_message_type.setText("官方");
+		} else {
+			holder.tv_message_type.setText("商家");
+		}
+
+		holder.tv_message_title.setText(message.getTitle());
+		holder.tv_message_content.setText(message.getContent());
+		holder.tv_message_datetime.setText(message.getDate() + message.getTime());
+		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic, message.get);
 		return convertView;
 	}
 

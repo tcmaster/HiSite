@@ -1,4 +1,4 @@
-package com.android.tonight8.storage.organization;
+package com.android.tonight8.storage.org;
 
 import com.android.tonight8.model.common.Question;
 import com.android.tonight8.storage.DBUtil;

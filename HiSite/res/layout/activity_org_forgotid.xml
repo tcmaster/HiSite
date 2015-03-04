@@ -23,8 +23,7 @@
             <EditText
                 android:id="@+id/et_master_name"
                 style="@style/et_comm_style"
-                android:hint="@string/input_personname"
-                android:inputType="textPassword" />
+                android:hint="@string/input_personname" />
         </LinearLayout>
 
         <LinearLayout
@@ -40,7 +39,7 @@
                 android:id="@+id/et_identity"
                 style="@style/et_comm_style"
                 android:hint="@string/input_identity"
-                android:inputType="number" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -71,6 +70,7 @@
             <EditText
                 android:id="@+id/et_email"
                 style="@style/et_comm_style"
+                android:inputType="textEmailAddress"
                 android:hint="@string/input_email" />
         </LinearLayout>
 
