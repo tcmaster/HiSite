@@ -15,6 +15,8 @@ import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.io.net.NetUtils;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.organization.OrgMessageModel;
+import com.android.tonight8.storage.org.OrgMessageNativeController;
+import com.android.tonight8.storage.org.OrgStorage;
 import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.exception.HttpException;
 
@@ -62,7 +64,7 @@ public class OrgIOController {
 
 		});
 	}
-	
+
 	/**
 	 * @Description:商家消息列表
 	 * @param handler
@@ -71,18 +73,19 @@ public class OrgIOController {
 	 * @date:2015年3月4日
 	 */
 
-	public static void OrgMessageListRead(final Handler handler,String id) {
+	public static void OrgMessageListRead(final Handler handler, String id) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, ORG_FORGOTID_URL);
 		params.put("org.id", id);
 		HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.NETWORK_BEGIN, 0);
-		NetRequest.doPostRequest(params, new RequestResult<Org>(Org.class, handler) {
+		NetRequest.doGetRequest(params, new RequestResult<OrgMessageModel>(OrgMessageModel.class, handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, Org t, Handler handler) {
+			public void getData(NetEntityBase netEntityBase, OrgMessageModel t, Handler handler) {
 
 				if (NetUtils.checkResult(netEntityBase)) {
 					Utils.toast(netEntityBase.message);
+					// OrgStorage.getOrgMessageController().saveOrUpdateData();
 					HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.RESULT_OK, 0);
 				}
 			}

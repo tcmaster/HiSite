@@ -3,23 +3,18 @@
  */
 package com.android.tonight8.utils;
 
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
-import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,7 +68,7 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectPicDialog(final Activity activity,ButtonOnClick listener) {
+	public static void showSelectPicDialog(final Activity activity, ButtonOnClick listener) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_select_pic);
 		cdlg.setOnCustomerViewCreated(listener);
 		cdlg.showDlg();
@@ -130,53 +125,28 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectShareDialog(final Activity activity) {
+	public static void showSelectShareDialog(final Activity activity, ShareListener listener) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_share_grid);
-		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
-
-			@Override
-			public void getCustomerView(Window window, AlertDialog dlg) {
-				window = dlg.getWindow();
-				WindowManager.LayoutParams lp = window.getAttributes();
-				lp.gravity = Gravity.BOTTOM;
-				final GridView gv_share = (GridView) window.findViewById(R.id.gv_share);
-				final Button cancleButton = (Button) window.findViewById(R.id.btn_share_dialog_cancel);
-				cancleButton.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						cdlg.dismissDlg();
-					}
-				});
-				ShareAdapter shareAdapter = new ShareAdapter(activity);
-				gv_share.setAdapter(shareAdapter);
-				gv_share.setOnItemClickListener(new OnItemClickListener() {
-
-					@Override
-					public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-						switch (position) {
-						case 0:
-							SharedUtils.shareToQQOrQzone(activity, null, null, true);
-							break;
-						case 1:
-							SharedUtils.shareToWXOrFriends(activity, true);
-							break;
-						case 2:
-							SharedUtils.shareToWXOrFriends(activity, true);
-							break;
-						case 3:
-							SharedUtils.shareToWXOrFriends(activity, true);
-							break;
-						default:
-							break;
-						}
-					}
-				});
-			}
-		});
-
+		cdlg.setOnCustomerViewCreated(listener);
+		cdlg.showDlg();
 		Utils.hideSoftKeyBoard(activity);
 		cdlg.gravity = Gravity.BOTTOM;
 		cdlg.showDlg();
+	}
+
+	public static abstract class ShareListener implements CustomerViewInterface {
+
+		@Override
+		public void getCustomerView(Window window, final AlertDialog cdlg) {
+			window = cdlg.getWindow();
+			WindowManager.LayoutParams lp = window.getAttributes();
+			lp.gravity = Gravity.BOTTOM;
+			final GridView gv_share = (GridView) window.findViewById(R.id.gv_share);
+			final Button cancleButton = (Button) window.findViewById(R.id.btn_share_dialog_cancel);
+			getShareGridview(gv_share, cancleButton, cdlg);
+		}
+
+		public abstract void getShareGridview(GridView shareGridview, Button cancleButton, final AlertDialog cdlg);
+
 	}
 }

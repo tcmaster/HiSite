@@ -8,7 +8,8 @@
         style="@style/match"
         android:drawablePadding="@dimen/drawable_padding"
         android:gravity="center"
-        android:padding="@dimen/margin_between_item"
+        android:singleLine="true"
+        android:padding="@dimen/common_margin_left"
         android:textSize="@dimen/middleTextSize" />
 
 </RelativeLayout>

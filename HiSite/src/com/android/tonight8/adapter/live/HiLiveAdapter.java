@@ -3,6 +3,7 @@ package com.android.tonight8.adapter.live;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,8 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 import com.android.tonight8.R;
 import com.android.tonight8.activity.MainActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.adapter.createevent.ShareAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.adapter.live.HiLiveGalleryAdapter.OnItemClickLitener;
 import com.android.tonight8.base.AppConstants;
@@ -28,6 +32,7 @@ import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.live.LiveCommentModel;
 import com.android.tonight8.model.live.LiveListModel;
 import com.android.tonight8.utils.DialogUtils;
+import com.android.tonight8.utils.DialogUtils.ShareListener;
 import com.android.tonight8.utils.Utils;
 
 /**
@@ -120,7 +125,7 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onClick(View arg0) {
-			DialogUtils.showSelectShareDialog((MainActivity) mContext);
+				DialogUtils.showSelectShareDialog((MainActivity) mContext, shareListener);
 			}
 		});
 		// 话题列表
@@ -182,4 +187,14 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 		TextView tv_signInCount;
 
 	}
+
+	private ShareListener shareListener = new ShareListener() {
+
+		@Override
+		public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
+			ShareAdapter shareAdapter = new ShareAdapter(mContext);
+			shareGridview.setAdapter(shareAdapter);
+
+		}
+	};
 }

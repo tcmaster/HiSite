@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.org.MessageListAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.org.OrgIOController;
 import com.android.tonight8.model.common.Message;
 import com.android.tonight8.storage.org.OrgLoginNativeController;
@@ -27,12 +28,28 @@ public class OrgMessageListActivity extends BaseActivity {
 	private XListView lv_only_list;
 	private MessageListAdapter listAdapter;
 	private List<Message> list;
+
 	public static Handler handler = new Handler() {
 
 		@Override
 		public void handleMessage(android.os.Message msg) {
-			super.handleMessage(msg);
+			switch (msg.arg1) {
+			case HandlerConstants.RESULT_OK:
 
+				break;
+			case HandlerConstants.NETWORK_BEGIN:
+
+				break;
+			case HandlerConstants.NETWORK_END:
+
+				break;
+			case HandlerConstants.RESULT_FAIL:
+
+				break;
+			default:
+				break;
+			}
+			super.handleMessage(msg);
 		}
 
 	};
