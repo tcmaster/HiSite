@@ -9,12 +9,13 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
-import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.common.Message;
+import com.android.tonight8.model.event.EventListModel;
+import com.android.tonight8.model.organization.OrgMessageModel;
 
-public class MessageListAdapter extends BaseListAdapter<Message> {
+public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
 
-	public MessageListAdapter(Context context, List<Message> values) {
+	public MessageListAdapter(Context context, List<OrgMessageModel> values) {
 		super(context, values);
 
 	}
@@ -34,7 +35,7 @@ public class MessageListAdapter extends BaseListAdapter<Message> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Message message = mValues.get(position);
+		Message message = mValues.get(position).getMessage();
 		if ("1".equals(message.getType())) {
 			holder.tv_message_type.setText("官方");
 		} else {
@@ -47,7 +48,26 @@ public class MessageListAdapter extends BaseListAdapter<Message> {
 		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic, message.get);
 		return convertView;
 	}
+	/**
+	 * 增加数据源
+	 * 
+	 * @param models
+	 */
+	public void addData(List<OrgMessageModel> models) {
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
 
+	/**
+	 * 重置数据源
+	 * 
+	 * @param models
+	 */
+	public void initData(List<OrgMessageModel> models) {
+		mValues.clear();
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
 	private class ViewHolder {
 
 		/** 消息类型 */
