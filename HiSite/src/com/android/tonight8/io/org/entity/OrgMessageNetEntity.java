@@ -11,14 +11,14 @@ import com.android.tonight8.model.organization.OrgMessageModel;
  */
 public class OrgMessageNetEntity {
 
-	public ArrayList<OrgMessageModel> orgMessageModels;
+	public ArrayList<OrgMessageModel> org_messages;
 
-	public ArrayList<OrgMessageModel> getOrgMessageModels() {
-		return orgMessageModels;
+	public ArrayList<OrgMessageModel> getOrg_messages() {
+		return org_messages;
 	}
 
-	public void setOrgMessageModels(ArrayList<OrgMessageModel> orgMessageModels) {
-		this.orgMessageModels = orgMessageModels;
+	public void setOrg_messages(ArrayList<OrgMessageModel> org_messages) {
+		this.org_messages = org_messages;
 	}
 
 }

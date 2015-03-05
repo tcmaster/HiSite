@@ -7,12 +7,14 @@
     <TextView
         android:id="@+id/tv_pulishtime"
         style="@style/match_width"
+        android:layout_marginBottom="@dimen/common_margin_small"
         android:background="@color/half_white" />
 
     <TextView
         android:id="@+id/tv_event_name"
         style="@style/wrap"
         android:layout_below="@+id/tv_pulishtime"
+        android:layout_marginBottom="@dimen/common_margin_small"
         android:layout_toRightOf="@+id/iv_event_headpic"
         android:text="小米公司免费送手机" />
 
@@ -46,6 +48,8 @@
         android:id="@+id/tv_event_plan_time"
         style="@style/wrap"
         android:layout_below="@+id/tv_goods_name"
+        android:layout_marginBottom="@dimen/common_margin_small"
+        android:layout_marginTop="@dimen/common_margin_small"
         android:layout_toRightOf="@+id/iv_event_headpic"
         android:text="活动时间:2015-01-12至2015-12-12" />
 
@@ -77,7 +81,7 @@
             android:id="@+id/btn_awardlist"
             style="@style/ok_button_style"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="28dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="查看中奖名单"
@@ -89,6 +93,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerVertical="true"
+        android:layout_margin="@dimen/common_margin_small"
         android:background="@drawable/ic_launcher" />
 
 </RelativeLayout>
