@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match" >
+
     <com.android.tonight8.view.XListView
-        style="@style/match"
         android:id="@+id/lv_goods_detail"
-        android:scrollbars="none"
-        />
+        style="@style/match"
+        android:scrollbars="none" />
+
     <LinearLayout
         style="@style/match_width"
+        android:layout_gravity="bottom"
         android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom" >
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btn_commit"
+        <ImageButton
+            android:id="@+id/ibtn_commit"
             style="@style/wrap"
-            android:layout_weight="1"
-            android:text="@string/commit"
-            android:textColor="@color/red"
-            android:textSize="12sp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/dialogue_red"
+            android:contentDescription="@string/app_name" />
 
         <Button
             android:id="@+id/btn_signup"
-            style="@style/wrap"
-            android:layout_weight="9"
-            android:background="@color/red"
-            android:text="@string/signup"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            style="@style/ok_button_style"
+            android:text="@string/signup" />
     </LinearLayout>
 
 </FrameLayout>

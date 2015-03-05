@@ -35,6 +35,14 @@ public class EventAwardActivity extends BaseActivity {
 	private TextView tv_info;
 	/** 奖品价值 */
 	private TextView tv_value;
+	/** 兑奖时间 */
+	private TextView tv_exchange_time;
+	/** 兑奖方式 */
+	private TextView tv_exchange_way;
+	/** 查看兑奖地址 */
+	private TextView tv_see_exchange_location;
+	/** 中奖人数显示 */
+	private TextView tv_award_count;
 
 	// 头部内容end
 	/** 中奖名单列表 */
@@ -55,6 +63,21 @@ public class EventAwardActivity extends BaseActivity {
 	// ***************************子方法***********************************//
 	private void initHeaderView() {
 		View view = (View) LayoutInflater.from(this).inflate(R.layout.header_award_or_exchange, null);
+		tv_event_name = (TextView) view.findViewById(R.id.tv_event_name);
+		iv_popgoods_icon = (ImageView) view.findViewById(R.id.iv_popgoods_icon);
+		tv_org_name = (TextView) view.findViewById(R.id.tv_org_name);
+		tv_info = (TextView) view.findViewById(R.id.tv_info);
+		tv_value = (TextView) view.findViewById(R.id.tv_value);
+		tv_exchange_time = (TextView) view.findViewById(R.id.tv_exchange_time);
+		tv_exchange_way = (TextView) view.findViewById(R.id.tv_exchange_way);
+		tv_see_exchange_location = (TextView) view.findViewById(R.id.tv_see_exchange_location);
+		tv_award_count = (TextView) view.findViewById(R.id.tv_award_count);
+		tv_event_name.setText("小米公司免费送手机");
+		tv_org_name.setText("北京俏江南国贸店");
+		tv_info.setText("红米note/限量5部/已有457人报名");
+		tv_value.setText("¥699");
+		tv_exchange_time.setText("兑奖时间:2015-02-20至03-15");
+		tv_exchange_way.setText("兑奖方式:到店领取");
 		lv_award.addExtraHeaderView(view);
 	}
 

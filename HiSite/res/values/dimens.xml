@@ -41,5 +41,8 @@
     <!-- 活动详情相关 -->
     <!-- 海报高度 -->
     <dimen name="popgoodsHeight">300dp</dimen>
+    <!-- 评论dialog -->
+    <!-- 评论按钮的高度 -->
+    <dimen name="commit_btn_height">30dp</dimen>
 
 </resources>

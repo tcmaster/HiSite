@@ -3,23 +3,19 @@
  */
 package com.android.tonight8.utils;
 
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
-import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,7 +69,7 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectPicDialog(final Activity activity,ButtonOnClick listener) {
+	public static void showSelectPicDialog(final Activity activity, ButtonOnClick listener) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_select_pic);
 		cdlg.setOnCustomerViewCreated(listener);
 		cdlg.showDlg();
@@ -177,6 +173,37 @@ public class DialogUtils {
 
 		Utils.hideSoftKeyBoard(activity);
 		cdlg.gravity = Gravity.BOTTOM;
+		cdlg.showDlg();
+	}
+
+	/**
+	 * @Description:
+	 * @param activity
+	 * @param init
+	 * @author: LiXiaoSong
+	 * @date:2015-3-4
+	 */
+	public static void showCommitDialog(Activity activity, final String init) {
+		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dlg_commit);
+		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
+
+			@Override
+			public void getCustomerView(Window window, AlertDialog dlg) {
+				EditText et_commit = (EditText) window.findViewById(R.id.et_commit);
+				Button btn_commit_ok = (Button) window.findViewById(R.id.btn_commit_ok);
+				et_commit.setHint(init);
+				btn_commit_ok.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Utils.toast("评论已提交");
+					}
+				});
+
+			}
+		});
+		cdlg.setDismissIfClick(true);
+		cdlg.setLayoutGravity(Gravity.BOTTOM);
 		cdlg.showDlg();
 	}
 }
