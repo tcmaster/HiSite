@@ -4,6 +4,7 @@
 package com.android.tonight8.io.org;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.os.Handler;
@@ -13,9 +14,9 @@ import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.io.net.NetUtils;
+import com.android.tonight8.io.org.entity.OrgMessageNetEntity;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.organization.OrgMessageModel;
-import com.android.tonight8.storage.org.OrgMessageNativeController;
 import com.android.tonight8.storage.org.OrgStorage;
 import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.exception.HttpException;
@@ -27,7 +28,10 @@ import com.lidroid.xutils.exception.HttpException;
  */
 public class OrgIOController {
 
+	/** 商家忘记ID接口 */
 	private static String ORG_FORGOTID_URL = NetRequest.BASE_URL;
+	/** 商家消息列表接口 */
+	private static String ORG_MESSAGE_LIST_URL = NetRequest.BASE_URL;
 
 	/**
 	 * @Description:商家忘记密码
@@ -73,26 +77,28 @@ public class OrgIOController {
 	 * @date:2015年3月4日
 	 */
 
-	public static void OrgMessageListRead(final Handler handler, String id) {
+	public static void OrgMessageListRead(final Handler handler, final String orgId, final int... attachments) {
 		Map<String, String> params = new HashMap<String, String>();
-		params.put(NetRequest.REQUEST_URL, ORG_FORGOTID_URL);
-		params.put("org.id", id);
-		HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.NETWORK_BEGIN, 0);
-		NetRequest.doGetRequest(params, new RequestResult<OrgMessageModel>(OrgMessageModel.class, handler) {
+		params.put(NetRequest.REQUEST_URL, ORG_MESSAGE_LIST_URL);
+		params.put("org.id", orgId);
+		HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.NETWORK_BEGIN, attachments[0]);
+		NetRequest.doGetRequest(params, new RequestResult<OrgMessageNetEntity>(OrgMessageNetEntity.class, handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, OrgMessageModel t, Handler handler) {
+			public void getData(NetEntityBase netEntityBase, OrgMessageNetEntity t, Handler handler) {
 
 				if (NetUtils.checkResult(netEntityBase)) {
 					Utils.toast(netEntityBase.message);
-					// OrgStorage.getOrgMessageController().saveOrUpdateData();
-					HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.RESULT_OK, 0);
+					OrgStorage.getOrgMessageController().saveOrUpdateData(t.getOrgMessageModels());
+					List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId, attachments[1], attachments[2]);
+					HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_OK, 0);
 				}
 			}
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
-				HandlerConstants.sendMessage(handler, null, 0, HandlerConstants.RESULT_FAIL, 0);
+				List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId, attachments[1], attachments[2]);
+				HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_FAIL, 0);
 			}
 
 		});

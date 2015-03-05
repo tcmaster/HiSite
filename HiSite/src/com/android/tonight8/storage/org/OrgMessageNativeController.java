@@ -44,7 +44,7 @@ public class OrgMessageNativeController {
 
 	/**
 	 * @Description:查询数据
-	 * @param userid
+	 * @param orgid
 	 * @param limit
 	 * @param offset
 	 * @return
@@ -52,9 +52,9 @@ public class OrgMessageNativeController {
 	 * @date:2015年3月4日
 	 */
 
-	public List<OrgMessageModel> selectData(String id, String limit, String offset) {
+	public List<OrgMessageModel> selectData(String orgid, int limit, int offset) {
 		List<OrgMessageModel> listModels = new ArrayList<OrgMessageModel>();
-		List<MessageEntity> messageEntities = DBUtil.getData(MessageEntity.class, " id = " + id + "limit " + limit + " offset " + offset + " order by date,time desc");
+		List<MessageEntity> messageEntities = DBUtil.getData(MessageEntity.class, limit, offset);
 		if (messageEntities != null) {
 			for (int j = 0; j < messageEntities.size(); j++) {
 				OrgMessageModel model = new OrgMessageModel();
