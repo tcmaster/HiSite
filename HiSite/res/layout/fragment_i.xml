@@ -48,34 +48,38 @@
 
     <View
         style="@style/line_full"
-        android:layout_marginTop="10dp" />
+        />
 
     <RelativeLayout
         style="@style/match_width"
-        android:id="@+id/rl_phone" >
+        android:id="@+id/rl_phone"
+        android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        >
 
         <ImageView
             android:id="@+id/iv_phone_icon"
             style="@style/wrap"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_marginLeft="@dimen/common_margin_left_long"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/phone"
+            />
 
         <TextView
             android:id="@+id/tv_top_text"
             style="@style/wrap"
             android:layout_alignTop="@id/iv_phone_icon"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="@dimen/drawable_padding"
             android:layout_toRightOf="@id/iv_phone_icon"
             android:text="@string/cs_phonenum"
-            android:textColor="@color/black"
+            android:textColor="@color/red_sys"
             android:textSize="@dimen/middleTextSize" />
         <TextView
             android:id="@+id/tv_bottom_text"
             style="@style/wrap"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="@dimen/drawable_padding"
             android:layout_toRightOf="@id/iv_phone_icon"
             android:text="@string/cs_hot_line"
             android:textColor="@color/black"
@@ -87,7 +91,7 @@
             style="@style/wrap"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/common_margin_left"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_launcher" />
     </RelativeLayout>

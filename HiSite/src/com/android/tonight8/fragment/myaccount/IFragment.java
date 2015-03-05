@@ -106,11 +106,11 @@ public class IFragment extends MyAccountBaseFragment {
 	}
 
 	private void initDatas() {
-		setTextAndContent(layout_award_code, R.string.award_code, R.drawable.ic_launcher, "21", "");
-		setTextAndContent(layout_my_coupon, R.string.my_coupon, R.drawable.ic_launcher, "23", "");
-		setTextAndContent(layout_lottery_activity, R.string.lottery_activity, R.drawable.ic_launcher, "33", "");
-		setTextAndContent(layout_business, R.string.business, R.drawable.ic_launcher, "15", "");
-		setTextAndContent(layout_sponsor, R.string.complain_sponsor, R.drawable.ic_launcher, "", "");
-		setTextAndContent(layout_setting, R.string.setting, R.drawable.ic_launcher, "", "");
+		setTextAndContent(layout_award_code, R.string.award_code, R.drawable.star_red_middle, "21", "");
+		setTextAndContent(layout_my_coupon, R.string.my_coupon, R.drawable.avg_red_small, "23", "");
+		setTextAndContent(layout_lottery_activity, R.string.lottery_activity, R.drawable.clock_red_small, "33", "");
+		setTextAndContent(layout_business, R.string.business, R.drawable.house, "15", "");
+		setTextAndContent(layout_sponsor, R.string.complain_sponsor, R.drawable.safety_red_big, "", "");
+		setTextAndContent(layout_setting, R.string.setting, R.drawable.settings_red, "", "");
 	}
 }

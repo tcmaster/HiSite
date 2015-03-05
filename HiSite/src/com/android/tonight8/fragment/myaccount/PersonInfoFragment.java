@@ -86,9 +86,9 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 
 	private void initDatas() {
 		setTextAndContent(layout_nickname, R.string.nick_name, R.drawable.arrow_down, "", "小新");
-		setTextAndContent(layout_sex, R.string.sex, R.drawable.arrow_down, "", "男");
+		setTextAndContent(layout_sex, R.string.sex, R.drawable.sex, "", "男");
 		setTextAndContent(layout_receive_address, R.string.receiver_address, R.drawable.arrow_down, "", "北京市房山区丰台");
-		setTextAndContent(layout_nickname_phone_num, R.string.phone_num, R.drawable.arrow_down, "", "18600416253");
+		setTextAndContent(layout_nickname_phone_num, R.string.phone_num, R.drawable.phone, "", "18600416253");
 		setTextAndContent(layout_authorization, R.string.three_party, R.drawable.arrow_down, "", "");
 		setTextAndContent(layout_change_psw, R.string.change_password, R.drawable.arrow_down, "", "");
 	}

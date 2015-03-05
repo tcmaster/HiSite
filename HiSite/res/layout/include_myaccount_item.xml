@@ -9,6 +9,8 @@
         android:src="@drawable/ic_launcher"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:paddingTop="@dimen/topOrBottomPaddingSmall"
+        android:paddingBottom="@dimen/topOrBottomPaddingSmall"
         />
 	<TextView
 	    style="@style/wrap"
