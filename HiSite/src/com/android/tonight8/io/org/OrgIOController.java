@@ -3,6 +3,7 @@
  */
 package com.android.tonight8.io.org;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,17 +88,36 @@ public class OrgIOController {
 			@Override
 			public void getData(NetEntityBase netEntityBase, OrgMessageNetEntity t, Handler handler) {
 
-				if (NetUtils.checkResult(netEntityBase)) {
+				if (netEntityBase != null && NetUtils.checkResult(netEntityBase)) {
 					Utils.toast(netEntityBase.message);
-					OrgStorage.getOrgMessageController().saveOrUpdateData(t.getOrgMessageModels());
-					List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId, attachments[1], attachments[2]);
-					HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_OK, 0);
+					// OrgStorage.getOrgMessageController().saveOrUpdateData(t.getOrgMessageModels());
+					// List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId,
+					// attachments[1], attachments[2]);
+					List<OrgMessageModel> list = new ArrayList<OrgMessageModel>();
+					for (int i = 0; i < 20; i++) {
+						OrgMessageModel orgMessageModel = new OrgMessageModel();
+						list.add(orgMessageModel);
+					}
+					HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_OK, attachments[0]);
+				}else {
+					List<OrgMessageModel> list = new ArrayList<OrgMessageModel>();
+					for (int i = 0; i < 20; i++) {
+						OrgMessageModel orgMessageModel = new OrgMessageModel();
+						list.add(orgMessageModel);
+					}
+					HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_OK, attachments[0]);
 				}
 			}
 
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
-				List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId, attachments[1], attachments[2]);
+				// List<OrgMessageModel> list = OrgStorage.getOrgMessageController().selectData(orgId,
+				// attachments[1], attachments[2]);
+				List<OrgMessageModel> list = new ArrayList<OrgMessageModel>();
+				for (int i = 0; i < 20; i++) {
+					OrgMessageModel orgMessageModel = new OrgMessageModel();
+					list.add(orgMessageModel);
+				}
 				HandlerConstants.sendMessage(handler, list, 0, HandlerConstants.RESULT_FAIL, 0);
 			}
 

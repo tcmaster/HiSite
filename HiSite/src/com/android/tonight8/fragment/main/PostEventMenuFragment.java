@@ -1,9 +1,13 @@
 package com.android.tonight8.fragment.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -13,14 +17,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.MainActivity;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
 import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.activity.org.BindAgencyActivity;
 import com.android.tonight8.activity.org.OrgDetailActivity;
+import com.android.tonight8.activity.org.OrgMessageListActivity;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.storage.org.OrgLoginNativeController;
 import com.lidroid.xutils.ViewUtils;
@@ -68,10 +75,12 @@ public class PostEventMenuFragment extends BaseFragment {
 	@ViewInject(R.id.et_org_loginpwd)
 	private EditText et_org_loginpwd;
 	private PostEventsGridAdapter gridAdapter;
+	private BaseActivity baseActivity;
 
 	/** 创建一个静态的实例 */
 	public static PostEventMenuFragment newInstance() {
 		PostEventMenuFragment peFragment = new PostEventMenuFragment();
+		peFragment.setHasOptionsMenu(true);
 		return peFragment;
 	}
 
@@ -80,8 +89,28 @@ public class PostEventMenuFragment extends BaseFragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin, container, false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
+
 		initData();
 		return rootView;
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		baseActivity = (BaseActivity) activity;
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		baseActivity.getActionBarNormal("发活动", R.drawable.ic_launcher, new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(baseActivity, OrgMessageListActivity.class);
+				startActivityForAnima(intent, baseActivity);
+			}
+		});
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@OnItemClick(R.id.gv_postevents_main)
@@ -114,14 +143,14 @@ public class PostEventMenuFragment extends BaseFragment {
 
 	private void initData() {
 		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
-//		tv_shop_id.setText(orgLogin.getOrgLoginInfo());
+		// tv_shop_id.setText(orgLogin.getOrgLoginInfo());
 		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");
 		tv_shop_state.setText("发布：12 关注：15");
 		tv_postevents_place.setText("北京 朝阳区");
 		gridAdapter = new PostEventsGridAdapter(getActivity());
 		gv_postevents_main.setAdapter(gridAdapter);
-		//QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
+		// QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
 
 	}
 

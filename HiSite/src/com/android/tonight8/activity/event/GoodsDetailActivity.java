@@ -24,7 +24,6 @@ import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.DialogUtils;
-import com.android.tonight8.utils.DialogUtils.ShareListener;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -116,18 +115,18 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initData() {
-		getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				DialogUtils.showSelectShareDialog(GoodsDetailActivity.this, new ShareListener() {
-
-					@Override
-					public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
-					}
-				});
-			}
-		});
+//		getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				DialogUtils.showSelectShareDialog(GoodsDetailActivity.this, new ShareListener() {
+//
+//					@Override
+//					public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
+//					}
+//				});
+//			}
+//		});
 		adapter_left = new GoodLeftAdapter(this, initTestData());
 		adapter_right = new GoodRightAdapter(this, initTestData());
 		lv_goods_detail.setAdapter(adapter_left);

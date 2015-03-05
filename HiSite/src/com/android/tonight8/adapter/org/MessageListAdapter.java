@@ -36,11 +36,11 @@ public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Message message = mValues.get(position).getMessage();
-		if ("1".equals(message.getType())) {
-			holder.tv_message_type.setText("官方");
-		} else {
-			holder.tv_message_type.setText("商家");
-		}
+		 if ("1".equals(message.getType())) {
+		 holder.tv_message_type.setText("官方");
+		 } else {
+		 holder.tv_message_type.setText("商家");
+		 }
 
 		holder.tv_message_title.setText(message.getTitle());
 		holder.tv_message_content.setText(message.getContent());
@@ -48,6 +48,7 @@ public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
 		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic, message.get);
 		return convertView;
 	}
+
 	/**
 	 * 增加数据源
 	 * 
@@ -68,6 +69,7 @@ public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
 		mValues.addAll(models);
 		notifyDataSetChanged();
 	}
+
 	private class ViewHolder {
 
 		/** 消息类型 */
