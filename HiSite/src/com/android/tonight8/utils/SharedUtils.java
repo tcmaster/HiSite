@@ -39,7 +39,7 @@ public class SharedUtils {
 	 * @date:2015年2月9日
 	 */
 	 
-	public static void shareToWXOrFriends(Context context, boolean isFriends) {
+	public static void shareToWXOrFriends(Context context,ShareThirdEntity shareThirdEntity, boolean isFriends) {
 		if (isSupportFriendsShare()) {
 			String text = "share our application";
 			WXTextObject textObj = new WXTextObject();
