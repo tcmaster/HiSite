@@ -37,8 +37,9 @@
                 android:layout_alignLeft="@id/tv_event_name"
                 android:layout_below="@id/tv_event_name"
                 android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+                android:padding="1dp"
                 android:background="@color/black"
-                android:text="@string/app_name"
+                android:text="@string/publish"
                 android:textColor="@color/white"
                 android:textSize="@dimen/smallTextSize" />
 

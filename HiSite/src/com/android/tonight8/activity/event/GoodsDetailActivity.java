@@ -21,8 +21,10 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:商品详情界面
@@ -30,7 +32,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @copyright @tonight8
  * @Date:2014-12-29
  */
-public class GoodsDetailActivity extends BaseActivity implements OnClickListener {
+public class GoodsDetailActivity extends BaseActivity {
 
 	// ***************************控件成员***********************************//
 	// headerView 的成员
@@ -70,6 +72,12 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 	/** 本页面的listView */
 	@ViewInject(R.id.lv_goods_detail)
 	private XListView lv_goods_detail;
+	/** 评论 */
+	@ViewInject(R.id.ibtn_commit)
+	private ImageView ibtn_commit;
+	/** 提交报名 */
+	@ViewInject(R.id.btn_signup)
+	private Button btn_signup;
 
 	// ***************************其他成员***********************************//
 	/** 左边的数据源 */
@@ -86,24 +94,17 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		setContentView(R.layout.activity_goods_detail);
 		super.onCreate(savedInstanceState);
 		initHeaderView();
-		getActionBarNormal("活动详情", R.drawable.ic_launcher, null);
 		initData();
 	}
 
-	@Override
+	@OnClick({ R.id.ibtn_commit, R.id.btn_signup })
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_choice_award:
-			doChangeFA();
+		case R.id.ibtn_commit:
+			DialogUtils.showCommitDialog(this, "请输入评论");
 			break;
-		case R.id.btn_choice_activity_q:
-			doChangeFB();
-			break;
-		case R.id.ll_company:
-			doJumpCompany();
-			break;
-		case R.id.tv_see_location:
-			doWatchAllPrizeLocation();
+		case R.id.btn_signup:
+
 			break;
 		default:
 			break;
@@ -112,6 +113,13 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 
 	// ***************************子方法***********************************//
 	private void initData() {
+		getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				DialogUtils.showSelectShareDialog(GoodsDetailActivity.this);
+			}
+		});
 		adapter_left = new GoodLeftAdapter(this, initTestData());
 		adapter_right = new GoodRightAdapter(this, initTestData());
 		lv_goods_detail.setAdapter(adapter_left);
@@ -137,11 +145,35 @@ public class GoodsDetailActivity extends BaseActivity implements OnClickListener
 		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
 		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
 		tv_see_prize_location = (TextView) view.findViewById(R.id.tv_see_location);
-		tv_tab_left.setOnClickListener(this);
-		tv_tab_right.setOnClickListener(this);
-		ll_company.setOnClickListener(this);
-		tv_see_prize_location.setOnClickListener(this);
+		OnClickListener listener = new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				switch (v.getId()) {
+				case R.id.btn_choice_award:
+					doChangeFA();
+					break;
+				case R.id.btn_choice_activity_q:
+					doChangeFB();
+					break;
+				case R.id.ll_company:
+					doJumpCompany();
+					break;
+				case R.id.tv_see_location:
+					doWatchAllPrizeLocation();
+					break;
+				default:
+					break;
+				}
+
+			}
+		};
+		tv_tab_left.setOnClickListener(listener);
+		tv_tab_right.setOnClickListener(listener);
+		ll_company.setOnClickListener(listener);
+		tv_see_prize_location.setOnClickListener(listener);
 		lv_goods_detail.addExtraHeaderView(view);
+
 	}
 
 	/**

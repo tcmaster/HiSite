@@ -10,17 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.adapter.createevent.ShareAdapter;
 import com.android.tonight8.view.CustomerDialog;
 import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 
@@ -147,6 +145,36 @@ public class DialogUtils {
 		}
 
 		public abstract void getShareGridview(GridView shareGridview, Button cancleButton, final AlertDialog cdlg);
+	}
 
+	/**
+	 * @Description:
+	 * @param activity
+	 * @param init
+	 * @author: LiXiaoSong
+	 * @date:2015-3-4
+	 */
+	public static void showCommitDialog(Activity activity, final String init) {
+		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dlg_commit);
+		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
+
+			@Override
+			public void getCustomerView(Window window, AlertDialog dlg) {
+				EditText et_commit = (EditText) window.findViewById(R.id.et_commit);
+				Button btn_commit_ok = (Button) window.findViewById(R.id.btn_commit_ok);
+				et_commit.setHint(init);
+				btn_commit_ok.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Utils.toast("评论已提交");
+					}
+				});
+
+			}
+		});
+		cdlg.setDismissIfClick(true);
+		cdlg.setLayoutGravity(Gravity.BOTTOM);
+		cdlg.showDlg();
 	}
 }

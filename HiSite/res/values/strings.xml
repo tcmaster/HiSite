@@ -32,6 +32,8 @@
     <!-- Hi现场 -->
     <string name="share">分享</string>
     <string name="comment">评论</string>
+    <string name="submit">提交</string>
+    <string name="inputinit">请输入评论</string>
     <!-- 发活动 -->
     <string name="email">邮&#160;&#160;&#160;&#160;箱：</string>
     <string name="name">名&#160;&#160;&#160;&#160;称：</string>
