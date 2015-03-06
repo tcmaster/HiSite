@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.model.common.Question;
 import com.android.tonight8.model.user.UserFollowModel;
 import com.android.tonight8.view.ListViewForScrollView;
@@ -55,37 +56,35 @@ public class UserFollowAdapter extends BaseListAdapter<UserFollowModel> {
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		ViewHolder holder = null;
 		final int pos = position;
 		// UserFollowModel model = mValues.get(position);
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_i_follow, null);
-			holder = new ViewHolder();
-			holder.iv_com_logo = (ImageView) convertView.findViewById(R.id.iv_com_logo);
-			holder.tv_com_distance = (TextView) convertView.findViewById(R.id.tv_com_distance);
-			holder.tv_com_phone = (TextView) convertView.findViewById(R.id.tv_com_phone);
-			holder.tv_com_location = (TextView) convertView.findViewById(R.id.tv_com_location);
-			holder.tv_com_name = (TextView) convertView.findViewById(R.id.tv_com_name);
-			holder.tv_consult = (TextView) convertView.findViewById(R.id.tv_consult);
-			holder.lv_consult_content = (ListViewForScrollView) convertView.findViewById(R.id.lv_consult_content);
-			// 添加一个空的适配器
-			holder.lv_consult_content.setAdapter(new UserFollowConsultContentAdapter(mContext));
-			convertView.setTag(holder);
-		} else
-			holder = (ViewHolder) convertView.getTag();
+
+		}
+		ImageView iv_com_logo = ViewHolder.get(convertView, R.id.iv_com_logo);// 公司图片
+		TextView tv_com_name = ViewHolder.get(convertView, R.id.tv_com_name);// 公司名称
+		TextView tv_com_location = ViewHolder.get(convertView, R.id.tv_com_location); // 公司地址
+		TextView tv_com_phone = ViewHolder.get(convertView, R.id.tv_com_phone);// 公司电话
+		TextView tv_com_distance = ViewHolder.get(convertView, R.id.tv_com_distance);// 公司距离
+		TextView tv_consult = ViewHolder.get(convertView, R.id.tv_consult);// 询问
+		ListViewForScrollView lv_consult_content = ViewHolder.get(convertView, R.id.lv_consult_content);// 询问列表
+		// 添加一个空的适配器
+		lv_consult_content.setAdapter(new UserFollowConsultContentAdapter(mContext));
 		if (isHideInfos.get(position))
-			holder.lv_consult_content.setVisibility(View.VISIBLE);
+			lv_consult_content.setVisibility(View.VISIBLE);
 		else
-			holder.lv_consult_content.setVisibility(View.GONE);
-		final ListView lv_consult_content = holder.lv_consult_content;
-		lv_consult_content.setTag(position);// 绑定当前布局位置，用于检测该布局是否被重用
-		holder.tv_consult.setOnClickListener(new OnClickListener() {
+			lv_consult_content.setVisibility(View.GONE);
+
+		final ListView lv = lv_consult_content;
+		lv.setTag(position);// 绑定当前布局位置，用于检测该布局是否被重用
+		tv_consult.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				if (isHideInfos.get(pos)) {
 					// 显示的话，点击后对该视图进行隐藏
-					lv_consult_content.setVisibility(View.GONE);
+					lv.setVisibility(View.GONE);
 					isHideInfos.set(pos, false);
 				} else {
 					// 之前隐藏的话，点击获取最新数据，进行显示
@@ -93,23 +92,12 @@ public class UserFollowAdapter extends BaseListAdapter<UserFollowModel> {
 					datas.add(new Question());
 					datas.add(new Question());
 					datas.add(new Question());
-					((UserFollowConsultContentAdapter) lv_consult_content.getAdapter()).bindData(datas);
-					lv_consult_content.setVisibility(View.VISIBLE);
+					((UserFollowConsultContentAdapter) lv.getAdapter()).bindData(datas);
+					lv.setVisibility(View.VISIBLE);
 					isHideInfos.set(pos, true);
 				}
 			}
 		});
 		return convertView;
-	}
-
-	private class ViewHolder {
-
-		ImageView iv_com_logo;// 公司图片
-		TextView tv_com_name;// 公司名称
-		TextView tv_com_location; // 公司地址
-		TextView tv_com_phone;// 公司电话
-		TextView tv_com_distance;// 公司距离
-		TextView tv_consult;// 询问
-		ListViewForScrollView lv_consult_content;// 询问内容列表
 	}
 }

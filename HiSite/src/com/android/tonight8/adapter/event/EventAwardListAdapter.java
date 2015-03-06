@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.view.View;
+
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.model.manageevent.ManageAwardModel;
@@ -22,20 +23,10 @@ public class EventAwardListAdapter extends BaseListAdapter<ManageAwardModel> {
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		ViewHolder viewHolder = new ViewHolder();
 		if (convertView == null) {
-			convertView = mInflater.inflate(
-					R.layout.adapter_event_award_list_item, null, false);
-
-			convertView.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
+			convertView = mInflater.inflate(R.layout.adapter_event_award_list_item, null, false);
 		}
 
 		return convertView;
-	}
-
-	private class ViewHolder {
-
 	}
 }

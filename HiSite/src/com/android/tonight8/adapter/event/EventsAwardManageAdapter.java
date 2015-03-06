@@ -16,29 +16,18 @@ import com.android.tonight8.model.event.EventAwardModel;
  */
 public class EventsAwardManageAdapter extends BaseListAdapter<EventAwardModel> {
 
-	public EventsAwardManageAdapter(Context context,
-			List<EventAwardModel> values) {
+	public EventsAwardManageAdapter(Context context, List<EventAwardModel> values) {
 		super(context, values);
 
 	}
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		ViewHolder viewHolder = new ViewHolder();
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.adapter_event_award_item,
-					null, false);
-
-			convertView.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
+			convertView = mInflater.inflate(R.layout.adapter_event_award_item, null, false);
 		}
 
 		return convertView;
-	}
-
-	private class ViewHolder {
-
 	}
 
 }

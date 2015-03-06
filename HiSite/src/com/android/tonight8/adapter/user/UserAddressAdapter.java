@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.activity.user.EditReceiveAddressActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.model.common.User;
 
 /**
@@ -30,18 +31,14 @@ public class UserAddressAdapter extends BaseListAdapter<User> {
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		ViewHolder holder = null;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_user_address, null);
-			holder = new ViewHolder();
-			holder.tv_address = (TextView) convertView.findViewById(R.id.tv_address);
-			holder.tv_name_and_phone = (TextView) convertView.findViewById(R.id.tv_name_and_phone);
-			holder.tv_edit = (TextView) convertView.findViewById(R.id.tv_edit);
-			holder.tv_delete = (TextView) convertView.findViewById(R.id.tv_delete);
-			convertView.setTag(holder);
-		} else
-			holder = (ViewHolder) convertView.getTag();
-		holder.tv_edit.setOnClickListener(new OnClickListener() {
+		}
+		TextView tv_name_and_phone = ViewHolder.get(convertView, R.id.tv_name_and_phone);// 用户的姓名和电话
+		TextView tv_address = ViewHolder.get(convertView, R.id.tv_address);// 用户的地址
+		TextView tv_edit = ViewHolder.get(convertView, R.id.tv_edit);// 编辑按钮
+		TextView tv_delete = ViewHolder.get(convertView, R.id.tv_delete);// 删除按钮
+		tv_edit.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -51,13 +48,4 @@ public class UserAddressAdapter extends BaseListAdapter<User> {
 		});
 		return convertView;
 	}
-
-	private class ViewHolder {
-
-		TextView tv_name_and_phone;// 用户的姓名和电话
-		TextView tv_address;// 用户的地址
-		TextView tv_edit;// 编辑按钮
-		TextView tv_delete;// 删除按钮
-	}
-
 }

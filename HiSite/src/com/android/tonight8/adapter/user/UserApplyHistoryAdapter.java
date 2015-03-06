@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.model.user.UserApplyHistoryModel;
 
 /**
@@ -34,40 +35,20 @@ public class UserApplyHistoryAdapter extends BaseListAdapter<UserApplyHistoryMod
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		ViewHolder holder = null;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_apply_histroy, null);
-			holder = new ViewHolder();
-			holder.tv_event_name = (TextView) convertView.findViewById(R.id.tv_event_name);
-			holder.tv_location = (TextView) convertView.findViewById(R.id.tv_location);
-			holder.tv_org_name = (TextView) convertView.findViewById(R.id.tv_org_name);
-			holder.tv_pop_goods = (TextView) convertView.findViewById(R.id.tv_pop_goods);
-			holder.iv_pop_goods_pic = (ImageView) convertView.findViewById(R.id.iv_pop_goods_pic);
-			holder.tv_award_value = (TextView) convertView.findViewById(R.id.tv_award_value);
-			holder.tv_provide_num = (TextView) convertView.findViewById(R.id.tv_provide_num);
-			holder.tv_coupon = (TextView) convertView.findViewById(R.id.tv_coupon);
-			holder.tv_have_apply = (TextView) convertView.findViewById(R.id.tv_have_apply);
-			holder.iv_pop_goods_pic_left_top = (ImageView) convertView.findViewById(R.id.iv_pop_goods_pic_left_top);
-			holder.btn_delete = (Button) convertView.findViewById(R.id.btn_delete);
-			convertView.setTag(holder);
-		} else
-			holder = (ViewHolder) convertView.getTag();
+		}
+		ImageView iv_pop_goods_pic = ViewHolder.get(convertView, R.id.iv_pop_goods_pic);// 奖品图片
+		TextView tv_event_name = ViewHolder.get(convertView, R.id.tv_event_name);// 活动名称
+		TextView tv_location = ViewHolder.get(convertView, R.id.tv_location);// 位置
+		TextView tv_org_name = ViewHolder.get(convertView, R.id.tv_org_name);// 发布公司名称
+		TextView tv_pop_goods = ViewHolder.get(convertView, R.id.tv_pop_goods);// 奖品内容
+		TextView tv_award_value = ViewHolder.get(convertView, R.id.tv_award_value);// 奖品价值
+		TextView tv_provide_num = ViewHolder.get(convertView, R.id.tv_provide_num);// 中奖名额
+		TextView tv_coupon = ViewHolder.get(convertView, R.id.tv_coupon);// 优惠券
+		TextView tv_have_apply = ViewHolder.get(convertView, R.id.tv_have_apply);// 报名数量
+		ImageView iv_pop_goods_pic_left_top = ViewHolder.get(convertView, R.id.iv_pop_goods_pic_left_top);// 是否中奖的图片
+		Button btn_delete = ViewHolder.get(convertView, R.id.btn_delete);// 删除按钮
 		return convertView;
 	}
-
-	private class ViewHolder {
-
-		ImageView iv_pop_goods_pic;// 奖品图片
-		TextView tv_event_name;// 活动名称
-		TextView tv_location;// 位置
-		TextView tv_org_name;// 发布公司名称
-		TextView tv_pop_goods;// 奖品内容
-		TextView tv_award_value;// 奖品价值
-		TextView tv_provide_num;// 中奖名额
-		TextView tv_coupon;// 优惠券
-		TextView tv_have_apply;// 报名数量
-		ImageView iv_pop_goods_pic_left_top;// 是否中奖的图片
-		Button btn_delete;// 删除按钮
-	}
-
 }
