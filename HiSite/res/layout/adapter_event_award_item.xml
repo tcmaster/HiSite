@@ -84,7 +84,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/btn_awardlist"
+            android:id="@+id/tv_awardlist"
             style="@style/wrap"
             android:layout_width="wrap_content"
             android:background="@drawable/setting_btn_selector"

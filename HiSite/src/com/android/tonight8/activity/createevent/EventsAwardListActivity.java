@@ -14,7 +14,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 /**
  * @Description:活动中奖名单
  * @author LiuZhao
- * @Date2014-12-29 下午11:28:19
+ * @Date 2014-12-29 下午11:28:19
  */
 public class EventsAwardListActivity extends BaseActivity {
 

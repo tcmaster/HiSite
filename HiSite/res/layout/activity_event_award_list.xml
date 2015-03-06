@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            android:id="@+id/tv_awardlist_date"
+            style="@style/match_width"
+            android:layout_marginBottom="@dimen/common_margin_small"
+            android:gravity="right"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:text="上架时间:2014-12-01"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_award_event_name"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_awardlist_date"
+            android:layout_marginBottom="@dimen/common_margin_small"
+            android:layout_toRightOf="@+id/iv_event_headpic"
+            android:text="小米公司免费送手机" />
+
+        <TextView
+            android:id="@+id/tv_award_goods_name"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_award_event_name"
+            android:layout_toRightOf="@+id/iv_event_headpic"
+            android:text="红米note4" />
+
+        <TextView
+            android:id="@+id/tv_award_goods_count"
+            style="@style/wrap"
+            android:layout_alignBaseline="@+id/tv_award_goods_name"
+            android:layout_alignBottom="@+id/tv_award_goods_name"
+            android:layout_toRightOf="@+id/tv_award_goods_name"
+            android:paddingLeft="5dp"
+            android:text="共5布"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/tv_award_goods_pricevalue"
+            style="@style/wrap"
+            android:layout_alignBaseline="@+id/tv_award_goods_count"
+            android:layout_alignBottom="@+id/tv_award_goods_count"
+            android:layout_toRightOf="@+id/tv_award_goods_count"
+            android:paddingLeft="5dp"
+            android:text="价值:699元/部" />
+
+        <TextView
+            android:id="@+id/tv_award_event_plan_time"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_award_goods_name"
+            android:layout_marginBottom="@dimen/common_margin_small"
+            android:layout_marginTop="@dimen/common_margin_small"
+            android:layout_toRightOf="@+id/iv_event_headpic"
+            android:text="活动时间:2015-01-12至2015-12-12" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_below="@+id/tv_award_event_plan_time"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:layout_toRightOf="@+id/iv_event_headpic"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/shoptext_left_style"
+                android:text="中奖名额："
+                android:textSize="@dimen/smallTextSize" />
+
+            <TextView
+                android:id="@+id/tv_award_event_count"
+                style="@style/shoptext_left_style"
+                android:text="5"
+                android:textColor="@color/red"
+                android:textSize="@dimen/smallTextSize" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_event_headpic"
+            android:layout_width="@dimen/popGoodsUserPhotoWidth"
+            android:layout_height="@dimen/popGoodsUserPhotoWidth"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/common_margin_small"
+            android:background="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+    <com.android.tonight8.view.XListView
+        android:id="@+id/lv_event_awardlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
