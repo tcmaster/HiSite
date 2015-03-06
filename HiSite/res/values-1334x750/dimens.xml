@@ -1,48 +1,39 @@
 <resources>
-
-    <!-- 本dimens均以1280 * 720 为默认屏幕 -->
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="common_margin_left">10dp</dimen>
-    <dimen name="common_margin_left_long">20dp</dimen>
-    <dimen name="common_margin_small">5dp</dimen>
-    <dimen name="more_smallTextSize">12sp</dimen>
-    <dimen name="smallTextSize">14sp</dimen>
-    <dimen name="middleTextSize">16sp</dimen>
-    <dimen name="bigTextSize">18sp</dimen>
-    <dimen name="hugeTextSize">20sp</dimen>
-    <dimen name="superHugeTextSize">24sp</dimen>
-    <!-- 统一的文字左边距 (无图) -->
-    <dimen name="text_left_margin">20dp</dimen>
-    <!-- 统一的文字右边距 (无图) -->
-    <dimen name="text_right_margin">20dp</dimen>
-    <!-- 文字与图片之间的距离 -->
-    <dimen name="drawable_padding">5dp</dimen>
-    <!-- 每个普通item据上下边距的距离 -->
-    <dimen name="topOrbottomPadding">10dp</dimen>
-    <!-- 上下边距，短-->
-    <dimen name="topOrBottomPaddingSmall">5dp</dimen>
-   	<!-- 上下边距，长 -->
-    <dimen name="topOrbottomPaddingLong">20dp</dimen>
-    <!-- 两个item段落之间的边距 -->
-    <dimen name="margin_between_item">20dp</dimen>
-    <!-- 我的账号用到的相关dimen -->
-    <!-- 上部高度 -->
-    <dimen name="myaccount_top_height">180dp</dimen>
-    <dimen name="tonight_iv_margin">5dp</dimen>
-    <!-- 设置和我的账号中，每个item的适当高度 -->
-    <dimen name="item_height_of_myaccount">50dp</dimen>
-    <!-- 收货地址相关 -->
-    <!-- hi现场文字左右边距 -->
-    <dimen name="item_left_hilive">5dp</dimen>
-    <!-- hi现场用户头像最大宽高 -->
-    <dimen name="user_headpic_minheight">45dp</dimen>
-    <!-- 活动详情相关 -->
-    <!-- 海报高度 -->
-    <dimen name="popgoodsHeight">300dp</dimen>
-    <!-- 评论dialog -->
-    <!-- 评论按钮的高度 -->
-    <dimen name="commit_btn_height">30dp</dimen>
-
+	<!-- 系数为1 -->
+	<!-- 用户商家头像图片宽 -->
+	<dimen name="org_head_width">64px</dimen>
+	<!-- 用户商家头像图片高 -->
+	<dimen name="org_head_height">64px</dimen>
+	<!-- 商家logo图片宽 -->
+	<dimen name="logo_width">137px</dimen>
+	<!-- 商家logo图片高 -->
+	<dimen name="logo_height">137px</dimen>
+	<!-- 活动开奖 - 推荐活动 -海报奖品图片宽 -->
+	<dimen name="popgoodsImgwidth">750px</dimen>
+	<!-- 活动开奖 - 推荐活动 -海报奖品图片高 -->
+	<dimen name="popgoodsImgHeight">264px</dimen>
+	<!-- 活动开奖列表，海报奖品缩略图片宽 -->
+	<dimen name="popgoodsImgThumbWidth">226px</dimen>
+	<!-- 活动开奖列表，海报奖品缩略图片高 -->
+	<dimen name="popgoodsImgThumbHeight">181px</dimen>
+	<!-- 活动海报详情，海报奖品图片宽-->
+	<dimen name="popgoodsDetailPopgoodsWidth">750px</dimen>
+	<!-- 活动海报详情，海报奖品图片高 -->
+	<dimen name="popgoodsDetailPopgoodsHeight">378px</dimen>
+	<!--  活动开奖详情 - 奖品介绍图片宽 
+	<dimen name="popgoodDetailAwardIntroWidth"></dimen>
+	活动开奖详情 - 奖品介绍图片高 
+	<dimen name="popgoodDetailAwardIntroHeight"></dimen>-->
+	<!-- 我-用户头像图片宽 -->
+	<dimen name="popGoodsUserPhotoWidth">99px</dimen>
+	<!-- 我-用户头像图片高 -->
+	<dimen name="popGoodsUserPhotoHeight">99px</dimen>
+	<!-- 我-中奖码 签到签收效果图宽
+	<dimen name="userSignUpWidth"></dimen>
+	我-中奖码 签到签收效果图高 
+	<dimen name="userSignUpHeight"></dimen>-->
+	<!-- 我-优惠券宽 -->
+	<dimen name="couponWidth">326px</dimen>
+	<!-- 我-优惠券高 -->
+	<dimen name="couponHeight">326px</dimen>
 </resources>

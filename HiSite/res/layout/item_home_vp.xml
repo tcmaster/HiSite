@@ -6,7 +6,8 @@
 
     <ImageView
         android:id="@+id/iv_mplay"
-        style="@style/match"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popgoodsImgHeight"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
         android:src="@drawable/ic_launcher" />

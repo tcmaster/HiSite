@@ -7,6 +7,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class MyPagerAdapter extends PagerAdapter {
 		 */
 		ImageView iv = (ImageView) view.findViewById(R.id.iv_mplay);
 		bmUtils.display(iv, dataSource.get(position));
+		Log.v("test", iv.getLayoutParams().height + "");
 		container.addView(view);
 		return view;
 	}

@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.event.GoodsDetailActivity;
 import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
+import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
@@ -81,7 +83,7 @@ public class TonightEightFragment extends BaseFragment {
 							lv_item_container.setPullLoadEnable(false);
 						else
 							lv_item_container.setPullLoadEnable(true);
-						adapter = new MainPageListViewAdapter(getActivity(),data);
+						adapter = new MainPageListViewAdapter(getActivity(), data);
 						lv_item_container.setAdapter(adapter);
 					} else if (msg.arg2 == REFRESH) {
 						List<EventListModel> data = (List<EventListModel>) msg.obj;
@@ -130,15 +132,13 @@ public class TonightEightFragment extends BaseFragment {
 
 	// ***************************生命周期***********************************//
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (rootView != null) {
 			/* 已存在空的view */
 			return rootView;
 		}
-		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container,
-				false);
+		rootView = inflater.inflate(R.layout.fragment_tonight_eight, container, false);
 		ViewUtils.inject(this, rootView);
 		initHeader();
 		return rootView;
@@ -160,6 +160,7 @@ public class TonightEightFragment extends BaseFragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		initActionBar();
 		super.onCreateOptionsMenu(menu, inflater);
+		Log.v("test", "height is + " + AppConstants.heightPx + " width is " + AppConstants.widthPx);
 	}
 
 	@Override
@@ -210,35 +211,31 @@ public class TonightEightFragment extends BaseFragment {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(),
-				5, new Handler() {
+		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(), 5, new Handler() {
 
-					@Override
-					public void handleMessage(Message msg) {
-						vp_show_img.setCurrentItem(msg.what);
-						super.handleMessage(msg);
-					}
-				});
+			@Override
+			public void handleMessage(Message msg) {
+				vp_show_img.setCurrentItem(msg.what);
+				super.handleMessage(msg);
+			}
+		});
 		cFunction.start();// 开始轮播
-		EventIOController.eventsRead(handler, INIT, ITEM_COUNT, current
-				* ITEM_COUNT);
+		EventIOController.eventsRead(handler, INIT, ITEM_COUNT, current * ITEM_COUNT);
 		lv_item_container.setXListViewListener(new IXListViewListener() {// 设置上拉下拉事件
 
-					@Override
-					public void onRefresh() {
-						current = 0;// 回归0页
-						lv_item_container.setPullLoadEnable(true);
-						EventIOController.eventsRead(handler, REFRESH,
-								ITEM_COUNT, current * ITEM_COUNT);
-					}
+			@Override
+			public void onRefresh() {
+				current = 0;// 回归0页
+				lv_item_container.setPullLoadEnable(true);
+				EventIOController.eventsRead(handler, REFRESH, ITEM_COUNT, current * ITEM_COUNT);
+			}
 
-					@Override
-					public void onLoadMore() {
-						current++;
-						EventIOController.eventsRead(handler, LOAD_MORE,
-								ITEM_COUNT, current * ITEM_COUNT);
-					}
-				});
+			@Override
+			public void onLoadMore() {
+				current++;
+				EventIOController.eventsRead(handler, LOAD_MORE, ITEM_COUNT, current * ITEM_COUNT);
+			}
+		});
 	}
 
 	/** 创建一个静态的实例 */
@@ -249,8 +246,7 @@ public class TonightEightFragment extends BaseFragment {
 	}
 
 	private void initActionBar() {
-		bA.getActionBarSpeical("今晚8点", R.drawable.m_action_right, false, true,
-				null).setText("北京");
+		bA.getActionBarSpeical("今晚8点", R.drawable.m_action_right, false, true, null).setText("北京");
 	}
 
 	/**
@@ -259,18 +255,15 @@ public class TonightEightFragment extends BaseFragment {
 	 * @date:2015-1-9
 	 */
 	private void initHeader() {
-		LayoutInflater inflater = (LayoutInflater) getActivity()
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.header_home_page, null, false);
 		vp_show_img = (ViewPager) view.findViewById(R.id.vp_scan_img);
-		ll_point_container = (PointLinearlayout) view
-				.findViewById(R.id.ll_point_container);
+		ll_point_container = (PointLinearlayout) view.findViewById(R.id.ll_point_container);
 		lv_item_container.addExtraHeaderView(view);
 	}
 
 	@OnItemClick(R.id.lv_show_detail)
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
 		startActivity(intent);
 	}
