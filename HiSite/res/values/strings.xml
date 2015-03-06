@@ -92,7 +92,7 @@
     <string name="get_award_phone">联系电话：</string>
     <string name="get_award_way">兑奖方式：</string>
     <string name="see_exchange_location">查看兑奖地点</string>
-
+    <string name="contact">和ta联系</string>
     <!-- 主办方资料 -->
     <string name="company_name">公司名称</string>
     <string name="company_introduce">简介</string>

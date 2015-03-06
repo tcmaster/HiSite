@@ -7,6 +7,8 @@
     <TextView
         android:id="@+id/tv_pulishtime"
         style="@style/match_width"
+        android:paddingLeft="@dimen/common_margin_left"
+        android:text="发布时间:2014-12-01 12:31"
         android:layout_marginBottom="@dimen/common_margin_small"
         android:background="@color/half_white" />
 
@@ -56,6 +58,7 @@
     <LinearLayout
         style="@style/match_width"
         android:layout_below="@+id/tv_event_plan_time"
+        android:layout_marginRight="@dimen/common_margin_left"
         android:layout_toRightOf="@+id/iv_event_headpic"
         android:orientation="horizontal" >
 
@@ -63,28 +66,31 @@
             android:id="@+id/tv_event_comment_count"
             style="@style/shoptext_left_style"
             android:layout_weight="1"
-            android:text="飞洒" />
+            android:text="评论:26"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_event_signup_count"
             style="@style/shoptext_left_style"
             android:layout_weight="1"
-            android:text="飞洒" />
+            android:text="报名:325"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_event_award_count"
             style="@style/shoptext_left_style"
             android:layout_weight="1"
-            android:text="飞洒" />
+            android:text="中奖:50"
+            android:textSize="@dimen/smallTextSize" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_awardlist"
-            style="@style/ok_button_style"
+            style="@style/wrap"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:background="@drawable/setting_btn_selector"
+            android:padding="3dp"
             android:text="查看中奖名单"
+            android:textColor="@color/white"
             android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
