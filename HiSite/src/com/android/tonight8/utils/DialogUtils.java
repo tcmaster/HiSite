@@ -127,14 +127,6 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	/**
-	 * @Description:分享的对话框
-	 * @param activity
-	 * @param inputDate
-	 * @author: LiuZhao
-	 * @date:2015年1月29日
-	 */
-
 	public static void showSelectShareDialog(final Activity activity, final ShareThirdEntity shareThirdEntity) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_share_grid);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {

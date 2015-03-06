@@ -6,7 +6,6 @@ package com.android.tonight8.activity.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -115,18 +113,19 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initData() {
-//		getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				DialogUtils.showSelectShareDialog(GoodsDetailActivity.this, new ShareListener() {
-//
-//					@Override
-//					public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
-//					}
-//				});
-//			}
-//		});
+		// getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// DialogUtils.showSelectShareDialog(GoodsDetailActivity.this, new ShareListener() {
+		//
+		// @Override
+		// public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
+		// }
+		// });
+		// }
+		// });
+
 		adapter_left = new GoodLeftAdapter(this, initTestData());
 		adapter_right = new GoodRightAdapter(this, initTestData());
 		lv_goods_detail.setAdapter(adapter_left);
