@@ -19,8 +19,8 @@ public class Question implements Serializable {
 	public String date;
 	/** 询问时间 */
 	public String time;
-	/** 是否是回复记录 */
-	public boolean isReply;
+	/** 被回复的问题id*/
+	public boolean toId;
 	/** 用户外键 */
 	public long uid;
 	/** 商家外键 */
@@ -74,17 +74,13 @@ public class Question implements Serializable {
 		this.time = time;
 	}
 
-	public boolean isReply() {
-		return isReply;
+	public boolean isToid() {
+		return toId;
 	}
 
-	public void setReply(boolean isReply) {
-		this.isReply = isReply;
+	public void setToid(boolean toId) {
+		this.toId = toId;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [id=" + id + ", content=" + content + ", date=" + date + ", time=" + time + ", isReply=" + isReply + ", uid=" + uid + ", oid=" + oid + "]";
-	}
 
 }

@@ -1,5 +1,6 @@
 package com.android.tonight8.activity.createevent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.EventsAwardManageAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.io.HandlerConstants;
-import com.android.tonight8.model.event.EventAwardModel;
+import com.android.tonight8.model.manageevent.ManageAwardEventModel;
 import com.android.tonight8.view.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -24,7 +25,7 @@ public class EventsAwardManageActivity extends BaseActivity {
 	private XListView lv_only_list;
 	/** 活动中奖管理数据适配器 */
 	private EventsAwardManageAdapter listAdapter;
-	private List<EventAwardModel> list;
+	private List<ManageAwardEventModel> list;
 	/** 当前展示的页数 */
 	private int current = 0;
 	/** 每页显示的条数 */
@@ -43,7 +44,7 @@ public class EventsAwardManageActivity extends BaseActivity {
 			case HandlerConstants.RESULT_OK:
 				if (msg.obj == null)
 					return;
-				List<EventAwardModel> data = (List<EventAwardModel>) msg.obj;
+				List<ManageAwardEventModel> data = (List<ManageAwardEventModel>) msg.obj;
 				if (msg.arg2 == INIT) {
 					if (data == null || data.size() < ITEM_COUNT)
 						lv_only_list.setPullLoadEnable(false);
@@ -71,7 +72,7 @@ public class EventsAwardManageActivity extends BaseActivity {
 
 				break;
 			case HandlerConstants.RESULT_FAIL:
-				List<EventAwardModel> datafail = (List<EventAwardModel>) msg.obj;
+				List<ManageAwardEventModel> datafail = (List<ManageAwardEventModel>) msg.obj;
 				listAdapter.addData(datafail);
 				break;
 			default:
@@ -81,14 +82,24 @@ public class EventsAwardManageActivity extends BaseActivity {
 		}
 
 	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_only_list);
 		super.onCreate(savedInstanceState);
-		// initData();
+		getActionBarBase("活动中奖管理");
+		initData();
 	}
 
 	private void initData() {
+		list = new ArrayList<ManageAwardEventModel>();
+		for (int i = 0; i < 10; i++) {
+			ManageAwardEventModel model = new ManageAwardEventModel();
+			list.add(model);
+		}
+		listAdapter = new EventsAwardManageAdapter(mContext, list);
+		lv_only_list.setPullLoadEnable(true);
+		lv_only_list.setAdapter(listAdapter);
 
 	}
 

@@ -21,7 +21,7 @@ public class QuestionEntity extends BaseEntity {
 	private String time;
 	/** 是否是回复记录 */
 	@Column(column = "isReply", defaultValue = "0")
-	private int isReply;
+	private int toId;
 	/** 用户表外键 */
 	@Foreign(column = "uid", foreign = "id")
 	public UserEntity user;
@@ -53,19 +53,13 @@ public class QuestionEntity extends BaseEntity {
 		this.time = time;
 	}
 
-	public int getIsReply() {
-		return isReply;
+	public int getToId() {
+		return toId;
 	}
 
-	public void setIsReply(int isReply) {
-		this.isReply = isReply;
+	public void setToId(int toId) {
+		this.toId = toId;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [user=" + user + ", org=" + org + ", content="
-				+ content + ", date=" + date + ", time=" + time + ", isReply="
-				+ isReply + "]";
-	}
 
 }

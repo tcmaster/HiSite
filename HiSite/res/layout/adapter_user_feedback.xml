@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="@dimen/common_margin_left" >
 
     <ImageView
         android:id="@+id/iv_comment_head_icon"
-        style="@style/wrap"
+        android:layout_width="@dimen/popGoodsUserPhotoWidth"
+        android:layout_height="@dimen/popGoodsUserPhotoWidth"
+        android:layout_gravity="center_vertical"
         android:background="@drawable/ic_launcher" >
     </ImageView>
 
@@ -41,7 +43,7 @@
             android:textColor="@color/half_black" />
 
         <Button
-            android:id="@+id/btn_reply"
+            android:id="@+id/btn_feedback_reply"
             style="@style/wrap"
             android:layout_alignBottom="@+id/tv_commentadapter_placetime"
             android:layout_alignParentRight="true"

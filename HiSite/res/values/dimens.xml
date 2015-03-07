@@ -21,9 +21,9 @@
     <dimen name="drawable_padding">5dp</dimen>
     <!-- 每个普通item据上下边距的距离 -->
     <dimen name="topOrbottomPadding">10dp</dimen>
-    <!-- 上下边距，短-->
+    <!-- 上下边距，短 -->
     <dimen name="topOrBottomPaddingSmall">5dp</dimen>
-   	<!-- 上下边距，长 -->
+    <!-- 上下边距，长 -->
     <dimen name="topOrbottomPaddingLong">20dp</dimen>
     <!-- 两个item段落之间的边距 -->
     <dimen name="margin_between_item">20dp</dimen>
@@ -44,5 +44,9 @@
     <!-- 评论dialog -->
     <!-- 评论按钮的高度 -->
     <dimen name="commit_btn_height">30dp</dimen>
+    <!-- 对话框按钮的高度 -->
+    <dimen name="dialog_btn_height">35dp</dimen>
+    <!-- 通用编辑框的高度 -->
+    <dimen name="et_comm_height">40dp</dimen>
 
 </resources>

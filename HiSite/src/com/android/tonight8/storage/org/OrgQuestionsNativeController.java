@@ -57,13 +57,13 @@ public class OrgQuestionsNativeController {
 	 *            跳过几条
 	 * @return
 	 */
-	public List<OrgQuestionModel> SelectData(Boolean isReply, String limit,
+	public List<OrgQuestionModel> SelectData(int toId, String limit,
 			String offset) {
 		List<OrgQuestionModel> lisModels = new ArrayList<OrgQuestionModel>();
 
 		// 在question.isReply请求参数值为假，则查看最近10条未回复用户的询问内容，为真则查看已回复的询问记录
 		List<QuestionEntity> listQuestionEntities = DBUtil.getData(
-				QuestionEntity.class, " isReply = " + isReply + "limit "
+				QuestionEntity.class, " toId = " + toId + "limit "
 						+ limit + " offset " + offset
 						+ " order by date,time desc");
 		if (listQuestionEntities != null) {

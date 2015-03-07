@@ -14,17 +14,18 @@ import com.android.tonight8.activity.createevent.EventsAwardListActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.event.EventAwardModel;
+import com.android.tonight8.model.manageevent.ManageAwardEventModel;
 
 /**
  * @Description:活动中奖管理数据适配器
  * @author:LiuZhao
  * @Date:2015年2月2日
  */
-public class EventsAwardManageAdapter extends BaseListAdapter<EventAwardModel> {
+public class EventsAwardManageAdapter extends
+		BaseListAdapter<ManageAwardEventModel> {
 
 	public EventsAwardManageAdapter(Context context,
-			List<EventAwardModel> values) {
+			List<ManageAwardEventModel> values) {
 		super(context, values);
 
 	}
@@ -33,10 +34,11 @@ public class EventsAwardManageAdapter extends BaseListAdapter<EventAwardModel> {
 
 		@Override
 		public void onClick(View arg0) {
-			int pos = (Integer) arg0.getTag();
+			// int pos = (Integer) arg0.getTag();
 			Intent intent = new Intent(mContext, EventsAwardListActivity.class);
 			((EventsAwardManageActivity) mContext).startActivity(intent);
-			((EventsAwardManageActivity) mContext).overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+			((EventsAwardManageActivity) mContext).overridePendingTransition(
+					R.anim.push_left_in, R.anim.push_left_out);
 
 		}
 	};
@@ -77,7 +79,7 @@ public class EventsAwardManageAdapter extends BaseListAdapter<EventAwardModel> {
 	 * 
 	 * @param models
 	 */
-	public void addData(List<EventAwardModel> models) {
+	public void addData(List<ManageAwardEventModel> models) {
 		mValues.addAll(models);
 		notifyDataSetChanged();
 	}
@@ -87,7 +89,7 @@ public class EventsAwardManageAdapter extends BaseListAdapter<EventAwardModel> {
 	 * 
 	 * @param models
 	 */
-	public void initData(List<EventAwardModel> models) {
+	public void initData(List<ManageAwardEventModel> models) {
 		mValues.clear();
 		mValues.addAll(models);
 		notifyDataSetChanged();

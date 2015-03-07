@@ -13,12 +13,12 @@
         <FrameLayout
             android:id="@+id/fl_header_events"
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="wrap_content" >
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_header_events"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="@dimen/popgoodsImgHeight" />
 
             <com.android.tonight8.view.PointLinearlayout
                 android:id="@+id/pll_point_container"
