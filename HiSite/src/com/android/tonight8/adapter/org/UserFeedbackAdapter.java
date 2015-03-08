@@ -13,6 +13,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
+import com.android.tonight8.model.organization.OrgMessageModel;
 import com.android.tonight8.model.organization.OrgQuestionModel;
 import com.android.tonight8.utils.DialogUtils;
 
@@ -59,4 +60,24 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 		return convertView;
 	}
 
+	/**
+	 * 增加数据源
+	 * 
+	 * @param models
+	 */
+	public void addData(List<OrgQuestionModel> models) {
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 重置数据源
+	 * 
+	 * @param models
+	 */
+	public void initData(List<OrgQuestionModel> models) {
+		mValues.clear();
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
 }

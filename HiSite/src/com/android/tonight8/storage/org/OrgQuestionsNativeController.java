@@ -30,21 +30,31 @@ public class OrgQuestionsNativeController {
 			DBUtil.copyData(Question.class, QuestionEntity.class,
 					listModel.get(i).question, questionEntity);
 			questionlist.add(questionEntity);
+			if (listModel.get(i).user == null) {
+				UserEntity userEntity = new UserEntity();
+				DBUtil.copyData(User.class, UserEntity.class,
+						listModel.get(i).user, userEntity);
+				userlist.add(userEntity);
 
-			UserEntity userEntity = new UserEntity();
-			DBUtil.copyData(User.class, UserEntity.class,
-					listModel.get(i).user, userEntity);
-			userlist.add(userEntity);
+			}
+			if (listModel.get(i).org == null) {
+				OrgEntity orgEntity = new OrgEntity();
+				DBUtil.copyData(Org.class, OrgEntity.class,
+						listModel.get(i).org, orgEntity);
+				orglist.add(orgEntity);
 
-			OrgEntity orgEntity = new OrgEntity();
-			DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org,
-					orgEntity);
-			orglist.add(orgEntity);
+			}
+
 		}
 		// 存到数据库中
 		DBUtil.saveOrUpdateAll(questionlist, QuestionEntity.class);
-		DBUtil.saveOrUpdateAll(userlist, UserEntity.class, "name", "pic");
-		DBUtil.saveOrUpdateAll(orglist, OrgEntity.class, "name", "pic");
+		if (userlist != null && userlist.size() != 0) {
+			DBUtil.saveOrUpdateAll(userlist, UserEntity.class, "name", "pic");
+		}
+		if (orglist != null && orglist.size() != 0) {
+			DBUtil.saveOrUpdateAll(orglist, OrgEntity.class, "name", "pic");
+		}
+
 	}
 
 	/**
@@ -57,15 +67,21 @@ public class OrgQuestionsNativeController {
 	 *            跳过几条
 	 * @return
 	 */
-	public List<OrgQuestionModel> SelectData(int toId, String limit,
+	public List<OrgQuestionModel> SelectData(String toId, String limit,
 			String offset) {
 		List<OrgQuestionModel> lisModels = new ArrayList<OrgQuestionModel>();
-
+		List<QuestionEntity> listQuestionEntities;
 		// 在question.isReply请求参数值为假，则查看最近10条未回复用户的询问内容，为真则查看已回复的询问记录
-		List<QuestionEntity> listQuestionEntities = DBUtil.getData(
-				QuestionEntity.class, " toId = " + toId + "limit "
-						+ limit + " offset " + offset
-						+ " order by date,time desc");
+		if (toId == null) {
+			listQuestionEntities = DBUtil.getData(QuestionEntity.class,
+					"limit " + limit + " offset " + offset
+							+ " order by date,time desc");
+		} else {
+			listQuestionEntities = DBUtil.getData(QuestionEntity.class,
+					"limit " + limit + " offset " + offset
+							+ " order by date,time desc");
+		}
+
 		if (listQuestionEntities != null) {
 			for (int j = 0; j < listQuestionEntities.size(); j++) {
 				OrgQuestionModel model = new OrgQuestionModel();
@@ -75,14 +91,18 @@ public class OrgQuestionsNativeController {
 				model.setQuestion(question);
 
 				User user = new User();
-				DBUtil.copyData(UserEntity.class, User.class,
-						listQuestionEntities.get(j).user, user);
-				model.setUser(user);
+				if (listQuestionEntities.get(j).user != null) {
+					DBUtil.copyData(UserEntity.class, User.class,
+							listQuestionEntities.get(j).user, user);
+					model.setUser(user);
+				}
 
-				Org org = new Org();
-				DBUtil.copyData(OrgEntity.class, Org.class,
-						listQuestionEntities.get(j).org, org);
-				model.setOrg(org);
+				if (listQuestionEntities.get(j).org != null) {
+					Org org = new Org();
+					DBUtil.copyData(OrgEntity.class, Org.class,
+							listQuestionEntities.get(j).org, org);
+					model.setOrg(org);
+				}
 			}
 
 		}

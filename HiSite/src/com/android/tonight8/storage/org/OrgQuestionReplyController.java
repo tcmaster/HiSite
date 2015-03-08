@@ -19,7 +19,7 @@ public class OrgQuestionReplyController {
 		DBUtil.copyData(Question.class, QuestionEntity.class, model,
 				questionEntity);
 		DBUtil.saveOrUpdate(questionEntity, ConsultEntity.class, "oid",
-				"content", "isReply");
+				"content", "toId");
 	}
 
 	// /**
