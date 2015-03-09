@@ -20,7 +20,7 @@ public class Question implements Serializable {
 	/** 询问时间 */
 	public String time;
 	/** 被回复的问题id*/
-	public boolean toId;
+	public int toId;
 	/** 用户外键 */
 	public long uid;
 	/** 商家外键 */
@@ -74,11 +74,13 @@ public class Question implements Serializable {
 		this.time = time;
 	}
 
-	public boolean isToid() {
+	
+	public int getToId() {
 		return toId;
 	}
 
-	public void setToid(boolean toId) {
+	
+	public void setToId(int toId) {
 		this.toId = toId;
 	}
 

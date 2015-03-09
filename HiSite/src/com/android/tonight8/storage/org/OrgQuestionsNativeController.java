@@ -3,6 +3,8 @@ package com.android.tonight8.storage.org;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
+
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Question;
 import com.android.tonight8.model.common.User;
@@ -16,31 +18,31 @@ import com.android.tonight8.storage.entity.UserEntity;
  * @author liuzhao 商家询问列表
  */
 public class OrgQuestionsNativeController {
+
 	/**
 	 * @Description:插入数据
 	 * @param listModel
 	 * @date:2015年1月22日
 	 */
-	public void SaveOrUpdateData(List<OrgQuestionModel> listModel) {
+	public void saveOrUpdateData(List<OrgQuestionModel> listModel, int orgId, long uid, long oid) {
 		List<QuestionEntity> questionlist = new ArrayList<QuestionEntity>();
 		List<UserEntity> userlist = new ArrayList<UserEntity>();
 		List<OrgEntity> orglist = new ArrayList<OrgEntity>();
 		for (int i = 0; i < listModel.size(); i++) {
 			QuestionEntity questionEntity = new QuestionEntity();
-			DBUtil.copyData(Question.class, QuestionEntity.class,
-					listModel.get(i).question, questionEntity);
+			questionEntity.setOrgId(orgId);
+			DBUtil.copyData(Question.class, QuestionEntity.class, listModel.get(i).question, questionEntity);
 			questionlist.add(questionEntity);
+
 			if (listModel.get(i).user == null) {
 				UserEntity userEntity = new UserEntity();
-				DBUtil.copyData(User.class, UserEntity.class,
-						listModel.get(i).user, userEntity);
+				DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).user, userEntity);
 				userlist.add(userEntity);
 
 			}
 			if (listModel.get(i).org == null) {
 				OrgEntity orgEntity = new OrgEntity();
-				DBUtil.copyData(Org.class, OrgEntity.class,
-						listModel.get(i).org, orgEntity);
+				DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org, orgEntity);
 				orglist.add(orgEntity);
 
 			}
@@ -67,40 +69,27 @@ public class OrgQuestionsNativeController {
 	 *            跳过几条
 	 * @return
 	 */
-	public List<OrgQuestionModel> SelectData(String toId, String limit,
-			String offset) {
+	public List<OrgQuestionModel> selectData(int orgId, int toId, int limit, int offset) {
 		List<OrgQuestionModel> lisModels = new ArrayList<OrgQuestionModel>();
 		List<QuestionEntity> listQuestionEntities;
-		// 在question.isReply请求参数值为假，则查看最近10条未回复用户的询问内容，为真则查看已回复的询问记录
-		if (toId == null) {
-			listQuestionEntities = DBUtil.getData(QuestionEntity.class,
-					"limit " + limit + " offset " + offset
-							+ " order by date,time desc");
-		} else {
-			listQuestionEntities = DBUtil.getData(QuestionEntity.class,
-					"limit " + limit + " offset " + offset
-							+ " order by date,time desc");
-		}
+		listQuestionEntities = DBUtil.getData(QuestionEntity.class, " orgId = " + orgId + " toId = " + toId + " limit " + limit + " offset " + offset + " order by date,time desc");
 
 		if (listQuestionEntities != null) {
 			for (int j = 0; j < listQuestionEntities.size(); j++) {
 				OrgQuestionModel model = new OrgQuestionModel();
 				Question question = new Question();
-				DBUtil.copyData(QuestionEntity.class, Question.class,
-						listQuestionEntities.get(j), question);
+				DBUtil.copyData(QuestionEntity.class, Question.class, listQuestionEntities.get(j), question);
 				model.setQuestion(question);
 
 				User user = new User();
 				if (listQuestionEntities.get(j).user != null) {
-					DBUtil.copyData(UserEntity.class, User.class,
-							listQuestionEntities.get(j).user, user);
+					DBUtil.copyData(UserEntity.class, User.class, listQuestionEntities.get(j).user, user);
 					model.setUser(user);
 				}
 
 				if (listQuestionEntities.get(j).org != null) {
 					Org org = new Org();
-					DBUtil.copyData(OrgEntity.class, Org.class,
-							listQuestionEntities.get(j).org, org);
+					DBUtil.copyData(OrgEntity.class, Org.class, listQuestionEntities.get(j).org, org);
 					model.setOrg(org);
 				}
 			}

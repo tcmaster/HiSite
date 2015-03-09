@@ -14,6 +14,9 @@ import com.android.tonight8.utils.Utils;
 public class NetUtils {
 
 	public static boolean checkResult(NetEntityBase base) {
+		if (base == null) {
+			return false;
+		}
 		switch (base.status) {
 		case 1:
 			return true;
