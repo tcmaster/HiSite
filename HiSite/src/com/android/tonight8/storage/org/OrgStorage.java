@@ -14,6 +14,8 @@ public class OrgStorage {
 	private static SoftReference<OrgFollowingNativeController> orgFollowingReference = new SoftReference<OrgFollowingNativeController>(new OrgFollowingNativeController());
 	/** 商家消息列表数据存储控制类 */
 	private static SoftReference<OrgMessageNativeController> orgMessageReference = new SoftReference<OrgMessageNativeController>(new OrgMessageNativeController());
+	/** 商家问题存储控制类 */
+	private static SoftReference<OrgQuestionsNativeController> orgQuestionReference = new SoftReference<OrgQuestionsNativeController>(new OrgQuestionsNativeController());
 
 	/** 获取绑定经销商数据存储控制类 */
 	public static OrgCertificateNativeController getOrgCertificateController() {
@@ -42,4 +44,12 @@ public class OrgStorage {
 
 	}
 
+	/** 获取商家问题存储控制类 */
+	public static OrgQuestionsNativeController getOrgQuestionController() {
+		if (orgQuestionReference.get() == null) {
+			orgQuestionReference = new SoftReference<OrgQuestionsNativeController>(new OrgQuestionsNativeController());
+		}
+		return orgQuestionReference.get();
+
+	}
 }
