@@ -39,7 +39,8 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 
 		@Override
 		public void onClick(View arg0) {
-			int pos = (Integer) arg0.getTag();
+			TextView view = (TextView) arg0;
+			int pos = (Integer) view.getTag();
 			// mValues.get(pos).getQuestion().getId();
 			// mValues.get(pos).getQuestion().getContent();
 			// mValues.get(pos).getOrg().getId();

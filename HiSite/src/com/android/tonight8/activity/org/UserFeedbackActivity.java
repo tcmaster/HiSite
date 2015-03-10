@@ -10,7 +10,9 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.org.UserFeedbackAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Question;
+import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.organization.OrgQuestionModel;
 import com.android.tonight8.storage.org.OrgStorage;
 import com.android.tonight8.view.XListView;
@@ -106,14 +108,24 @@ public class UserFeedbackActivity extends BaseActivity {
 			question.setContent("官方二个如果");
 			question.setId(i);
 			question.setToId(0);
+			User user = new User();
+			user.name = "测试用户1";
+			user.id = 1111;
+			user.pic="http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
+			Org org = new Org();
+			org.id = 2222;
+			org.pic="http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
+			org.name = "商家用户1";
 			if (i % 2 == 0) {
 				question.setToId(i);
 			}
 			model.setQuestion(question);
+			model.setOrg(org);
+			model.setUser(user);
 			list.add(model);
 		}
-		// OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123);
-		list = OrgStorage.getOrgQuestionController().selectData(123, 0, current, ITEM_COUNT * current);
+		// OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123, 11, 21);
+		// list = OrgStorage.getOrgQuestionController().selectData(123, 0, current, ITEM_COUNT * current);
 
 		listAdapter = new UserFeedbackAdapter(mContext, list);
 		lv_only_list.setAdapter(listAdapter);

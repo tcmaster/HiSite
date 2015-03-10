@@ -2,9 +2,6 @@ package com.android.tonight8.storage.org;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.R.integer;
-
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Question;
 import com.android.tonight8.model.common.User;
@@ -31,31 +28,33 @@ public class OrgQuestionsNativeController {
 		for (int i = 0; i < listModel.size(); i++) {
 			QuestionEntity questionEntity = new QuestionEntity();
 			questionEntity.setOrgId(orgId);
+			questionEntity.user = userlist.get(i);
+			questionEntity.org = orglist.get(i);
 			DBUtil.copyData(Question.class, QuestionEntity.class, listModel.get(i).question, questionEntity);
 			questionlist.add(questionEntity);
 
-			if (listModel.get(i).user == null) {
-				UserEntity userEntity = new UserEntity();
-				DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).user, userEntity);
-				userlist.add(userEntity);
-
-			}
-			if (listModel.get(i).org == null) {
-				OrgEntity orgEntity = new OrgEntity();
-				DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org, orgEntity);
-				orglist.add(orgEntity);
-
-			}
+//			if (listModel.get(i).user == null) {
+//				UserEntity userEntity = new UserEntity();
+//				DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).user, userEntity);
+//				userlist.add(userEntity);
+//
+//			}
+//			if (listModel.get(i).org == null) {
+//				OrgEntity orgEntity = new OrgEntity();
+//				DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org, orgEntity);
+//				orglist.add(orgEntity);
+//
+//			}
 
 		}
 		// 存到数据库中
 		DBUtil.saveOrUpdateAll(questionlist, QuestionEntity.class);
-		if (userlist != null && userlist.size() != 0) {
-			DBUtil.saveOrUpdateAll(userlist, UserEntity.class, "name", "pic");
-		}
-		if (orglist != null && orglist.size() != 0) {
-			DBUtil.saveOrUpdateAll(orglist, OrgEntity.class, "name", "pic");
-		}
+//		if (userlist != null && userlist.size() != 0) {
+//			DBUtil.saveOrUpdateAll(userlist, UserEntity.class, "name", "pic");
+//		}
+//		if (orglist != null && orglist.size() != 0) {
+//			DBUtil.saveOrUpdateAll(orglist, OrgEntity.class, "name", "pic");
+//		}
 
 	}
 
