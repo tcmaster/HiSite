@@ -2,24 +2,35 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match" >
 
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center" />
+
     <com.android.tonight8.view.XListView
         android:id="@+id/lv_goods_detail"
         style="@style/match"
         android:scrollbars="none" />
 
     <LinearLayout
+        android:id="@+id/ll_bottom"
         style="@style/match_width"
         android:layout_gravity="bottom"
-        android:layout_margin="5dp"
+        android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:padding="5dp"
+        >
 
         <ImageButton
             android:id="@+id/ibtn_commit"
             style="@style/wrap"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/dialogue_red"
-            android:contentDescription="@string/app_name" />
+            android:src="@drawable/dialogue_red" />
 
         <Button
             android:id="@+id/btn_signup"

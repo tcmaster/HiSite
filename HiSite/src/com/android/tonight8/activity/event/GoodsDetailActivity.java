@@ -4,25 +4,31 @@
 package com.android.tonight8.activity.event;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.model.event.EventDetailModel;
 import com.android.tonight8.utils.DialogUtils;
+import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.XListView;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -78,14 +84,57 @@ public class GoodsDetailActivity extends BaseActivity {
 	/** 提交报名 */
 	@ViewInject(R.id.btn_signup)
 	private Button btn_signup;
+	/** 等待框 */
+	@ViewInject(R.id.pb_loading)
+	private ProgressBar pb_loading;
+	@ViewInject(R.id.ll_bottom)
+	private LinearLayout ll_bottom;
 
 	// ***************************其他成员***********************************//
-	/** 左边的数据源 */
-	/** 右边的数据源 */
 	/** 左边的适配器 */
 	private GoodLeftAdapter adapter_left;
 	/** 右边的适配器 */
 	private GoodRightAdapter adapter_right;
+	/** 图片下载工具 */
+	private BitmapUtils utils;
+	/**
+	 * 本界面的数据更新handler
+	 */
+	@SuppressLint("HandlerLeak")
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case HandlerConstants.Event.EVENT_DETAIL:
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {
+					pb_loading.setVisibility(View.INVISIBLE);
+					ll_bottom.setVisibility(View.VISIBLE);
+					lv_goods_detail.setVisibility(View.VISIBLE);
+					EventDetailModel source = (EventDetailModel) msg.obj;
+					adapter_left = new GoodLeftAdapter(
+							GoodsDetailActivity.this, source.goodses);
+					adapter_right = new GoodRightAdapter(
+							GoodsDetailActivity.this, new ArrayList<String>());
+					tv_event_name.setText(source.event.name);
+					tv_pop_goods_name.setText(source.popGoods.popGoodsName);
+					utils.display(iv_pop_goods_pic, source.popGoods.popGoodsPic);
+					tv_pop_goods_price.setText(source.popGoods.popGoodsPrice);
+					tv_apply_count.setText(source.event.applyCount + "人");
+					tv_org_name.setText(source.org.name);
+				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
+					Utils.toast("网络异常");
+				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {
+					pb_loading.setVisibility(View.VISIBLE);
+					ll_bottom.setVisibility(View.INVISIBLE);
+					lv_goods_detail.setVisibility(View.INVISIBLE);
+				}
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
 
 	// ***************************生命周期,回调方法***********************************//
 
@@ -113,30 +162,16 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initData() {
-		// getActionBarNormal("活动详情", R.drawable.ic_launcher, new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// DialogUtils.showSelectShareDialog(GoodsDetailActivity.this, new ShareListener() {
-		//
-		// @Override
-		// public void getShareGridview(GridView shareGridview, Button cancleButton, AlertDialog cdlg) {
-		// }
-		// });
-		// }
-		// });
+		utils = new BitmapUtils(this);
+		getActionBarNormal("活动详情", R.drawable.ic_launcher,
+				new OnClickListener() {
 
-		adapter_left = new GoodLeftAdapter(this, initTestData());
-		adapter_right = new GoodRightAdapter(this, initTestData());
-		lv_goods_detail.setAdapter(adapter_left);
-	}
-
-	private List<String> initTestData() {// 测试数据
-		List<String> test = new ArrayList<String>();
-		test.add("");
-		test.add("");
-		test.add("");
-		return test;
+					@Override
+					public void onClick(View v) {
+						DialogUtils.showSelectShareDialog(
+								GoodsDetailActivity.this, null);
+					}
+				});
 	}
 
 	/**
@@ -150,7 +185,8 @@ public class GoodsDetailActivity extends BaseActivity {
 		tv_tab_left = (Button) view.findViewById(R.id.btn_choice_award);
 		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
 		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
-		tv_see_prize_location = (TextView) view.findViewById(R.id.tv_see_location);
+		tv_see_prize_location = (TextView) view
+				.findViewById(R.id.tv_see_location);
 		OnClickListener listener = new OnClickListener() {
 
 			@Override

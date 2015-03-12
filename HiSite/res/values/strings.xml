@@ -180,6 +180,8 @@
     <!-- 用户注册 -->
     <string name="user_account_init">请输入手机号/邮箱</string>
     <string name="three_party_login">第三方账号登录</string>
+    <!-- 用户转赠 -->
+    <string name="search_from_contacts">从通讯录查询</string>
     <string name="title_activity_user_forget_password">UserForgetPasswordActivity</string>
     <!-- 修改密码 -->
     <string name="old_password">旧密码</string>

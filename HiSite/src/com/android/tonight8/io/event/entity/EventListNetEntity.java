@@ -2,6 +2,7 @@ package com.android.tonight8.io.event.entity;
 
 import java.util.ArrayList;
 
+import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.model.event.EventListModel;
 
 /**
@@ -10,7 +11,7 @@ import com.android.tonight8.model.event.EventListModel;
  * @2015-2-5
  * @Tonight8
  */
-public class EventListNetEntity {
+public class EventListNetEntity extends NetEntityBase{
 
 	public ArrayList<EventListModel> eventPublishEvents;
 

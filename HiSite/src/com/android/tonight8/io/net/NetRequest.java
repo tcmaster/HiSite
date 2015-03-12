@@ -102,7 +102,6 @@ public class NetRequest {
 					Thread.sleep(1000);
 					callback.getData(null, null, callback.handler);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
