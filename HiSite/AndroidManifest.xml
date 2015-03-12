@@ -209,6 +209,11 @@
             android:name="com.android.tonight8.activity.createevent.UserAgreementActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 用户转赠界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserSwitchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 用户协议页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.CalendarActivity"
@@ -241,10 +246,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <!-- 兑奖地址位置显示页面 -->
-        <activity 
+        <activity
             android:name="com.android.tonight8.activity.event.ExchangeLocationActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!-- QQ分享需要注册的 -->
         <activity

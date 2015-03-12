@@ -24,9 +24,12 @@ public class HandlerConstants {
 
 	// ---------------------------handler发送的标识（确定发给谁）--------
 	public static interface Event {// 活动相关
-
-		public static final int MAINPAGE_TOP = 1;// 首页上部
-		public static final int MAINPAGE_LIST = 2;// 首页列表
+		/**首页上部*/
+		public static final int MAINPAGE_TOP = 1; 
+		/**首页列表*/
+		public static final int MAINPAGE_LIST = 2;
+		/**详情部分*/
+		public static final int EVENT_DETAIL = 3;
 	}
 
 

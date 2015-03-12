@@ -15,15 +15,12 @@ public class Exchange implements Serializable {
 	/** 活动外键 */
 	public int rid;
 	/** 兑奖方式 */
-	public boolean method;
+	public int method;
 	/** 兑奖指定地址 */
 	public String address;
 	/** 地址类型 */
 	public int locationType;
 
-	public boolean isMethod() {
-		return method;
-	}
 
 	public int getRid() {
 		return rid;
@@ -32,8 +29,13 @@ public class Exchange implements Serializable {
 	public void setRid(int rid) {
 		this.rid = rid;
 	}
+	
 
-	public void setMethod(boolean method) {
+	public int getMethod() {
+		return method;
+	}
+
+	public void setMethod(int method) {
 		this.method = method;
 	}
 

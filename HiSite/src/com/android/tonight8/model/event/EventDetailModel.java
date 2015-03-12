@@ -6,6 +6,8 @@ import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.model.common.CouponProvide;
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Exchange;
+import com.android.tonight8.model.common.ExchangeAddress;
+import com.android.tonight8.model.common.ExchangeCity;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.PopGoods;
@@ -30,6 +32,11 @@ public class EventDetailModel extends BaseModel {
 	public PopGoods popGoods;
 	/** 活动奖品 */
 	public List<Goods> goodses;
+	/** 活动城市*/
+	public List<ExchangeCity> exchangeCities;
+	/** 城市下的活动地址*/
+	public List<ExchangeAddress> exchangeAddresses;
+	
 
 	public Event getEvent() {
 		return event;
@@ -78,10 +85,32 @@ public class EventDetailModel extends BaseModel {
 	public void setGoodses(List<Goods> goodses) {
 		this.goodses = goodses;
 	}
+	
+	public List<ExchangeCity> getExchangeCities() {
+		return exchangeCities;
+	}
+
+	public void setExchangeCities(List<ExchangeCity> exchangeCities) {
+		this.exchangeCities = exchangeCities;
+	}
+
+	public List<ExchangeAddress> getExchangeAddresses() {
+		return exchangeAddresses;
+	}
+
+	public void setExchangeAddresses(List<ExchangeAddress> exchangeAddresses) {
+		this.exchangeAddresses = exchangeAddresses;
+	}
 
 	@Override
 	public String toString() {
-		return "EventDetailModel [event=" + event + ", org=" + org + ", couponProvide=" + couponProvide + ", exchange=" + exchange + ", popGoods=" + popGoods + ", goodses=" + goodses + "]";
+		return "EventDetailModel [event=" + event + ", org=" + org
+				+ ", couponProvide=" + couponProvide + ", exchange=" + exchange
+				+ ", popGoods=" + popGoods + ", goodses=" + goodses
+				+ ", exchangeCities=" + exchangeCities + ", exchangeAddresses="
+				+ exchangeAddresses + "]";
 	}
+
+	
 
 }

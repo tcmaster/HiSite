@@ -13,7 +13,7 @@ import com.lidroid.xutils.db.annotation.Table;
 public class ExchangeEntity extends BaseDefaultEntity{
 	/** 兑奖方式 */
 	@Column(column = "method")
-	private boolean method;
+	private int method;
 	/** 兑奖指定地址 */
 	@Column(column = "address")
 	private String address;
@@ -23,11 +23,11 @@ public class ExchangeEntity extends BaseDefaultEntity{
 	@Foreign(column = "rid", foreign = "id")
 	public EventEntity event;
 
-	public boolean isMethod() {
+	public int getMethod() {
 		return method;
 	}
 
-	public void setMethod(boolean method) {
+	public void setMethod(int method) {
 		this.method = method;
 	}
 
