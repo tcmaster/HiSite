@@ -12,10 +12,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.parser.deserializer.StringFieldDeserializer;
 import com.android.tonight8.R;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.utils.MD5Utils;
+import com.baidu.android.bbalbs.common.a.a;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.mapapi.SDKInitializer;
@@ -61,18 +63,18 @@ public class Tonight8App extends Application {
 		super.onCreate();
 		toastMgr.builder.init(mApp);
 		// 初始化百度地图
-		SDKInitializer.initialize(getApplicationContext());
+		// SDKInitializer.initialize(getApplicationContext());
 		initDeviceParams();
 		// 初始化数据库
 		DBUtil.initDB(this);
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
-//		// 注册到微信
-//		wxApi = WXAPIFactory.createWXAPI(this, WX_APP_ID);
-//		wxApi.registerApp(WX_APP_ID);
-//		// Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
-//		// 其中APP_ID是分配给第三方应用的appid，类型为String。
-//		mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
+		// // 注册到微信
+		// wxApi = WXAPIFactory.createWXAPI(this, WX_APP_ID);
+		// wxApi.registerApp(WX_APP_ID);
+		// // Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
+		// // 其中APP_ID是分配给第三方应用的appid，类型为String。
+		// mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
 
 	}
 

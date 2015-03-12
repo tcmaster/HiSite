@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="@dimen/common_margin_left" >
 
     <ImageView
-        android:id="@+id/iv_comment_head_icon"
-        style="@style/wrap"
-        android:background="@drawable/ic_launcher" >
-    </ImageView>
+        android:id="@+id/iv_userback_head_icon"
+        android:layout_width="@dimen/popGoodsUserPhotoWidth"
+        android:layout_height="@dimen/popGoodsUserPhotoWidth"
+        android:background="@drawable/ic_launcher" />
 
     <RelativeLayout style="@style/match_width" >
 
         <TextView
-            android:id="@+id/tv_commentadapter_title"
+            android:id="@+id/tv_userback_name"
             style="@style/wrap"
             android:text="小新+"
             android:textColor="@color/red_sys" />
 
         <TextView
-            android:id="@+id/tv_commentadapter_date"
+            android:id="@+id/tv_userback_date"
             style="@style/wrap"
             android:layout_alignParentRight="true"
             android:text="2014-11-27"
             android:textColor="@color/half_black" />
 
         <TextView
-            android:id="@+id/tv_commentadapter_content"
+            android:id="@+id/tv_userback_content"
             style="@style/wrap"
-            android:layout_below="@+id/tv_commentadapter_title"
+            android:layout_below="@+id/tv_userback_name"
+            android:paddingBottom="@dimen/common_margin_small"
+            android:paddingTop="@dimen/common_margin_small"
             android:text="非常萨嘎额无人过问of姐啊诶如果eawfawegaewggsgewagaewrg"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/tv_commentadapter_placetime"
+            android:id="@+id/tv_userback_placetime"
             style="@style/wrap"
-            android:layout_below="@+id/tv_commentadapter_content"
+            android:layout_below="@+id/tv_userback_content"
             android:text="北京丰台科技园   15分钟前"
             android:textColor="@color/half_black" />
 
-        <Button
-            android:id="@+id/btn_reply"
+        <ListView
+            android:id="@+id/lv_org_quesition_reply"
+            style="@style/match_width"
+            android:layout_below="@+id/tv_userback_placetime" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_feedback_reply"
             style="@style/wrap"
-            android:layout_alignBottom="@+id/tv_commentadapter_placetime"
+            android:layout_alignBottom="@+id/tv_userback_placetime"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv_commentadapter_content"
+            android:layout_below="@+id/tv_userback_content"
             android:background="@drawable/setting_btn_selector"
+            android:paddingLeft="@dimen/common_margin_small"
+            android:paddingRight="@dimen/common_margin_small"
             android:text="回复"
             android:textColor="@color/white"
             android:textSize="@dimen/smallTextSize" />

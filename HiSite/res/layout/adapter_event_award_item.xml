@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/common_margin_small"
     android:orientation="vertical" >
 
     <TextView
@@ -10,7 +11,7 @@
         android:paddingLeft="@dimen/common_margin_left"
         android:text="发布时间:2014-12-01 12:31"
         android:layout_marginBottom="@dimen/common_margin_small"
-        android:background="@color/half_white" />
+        android:background="@color/white_gray" />
 
     <TextView
         android:id="@+id/tv_event_name"

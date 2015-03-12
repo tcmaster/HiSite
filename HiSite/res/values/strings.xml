@@ -118,6 +118,7 @@
     <string name="sex">性别</string>
     <string name="receiver_address">收货地址</string>
     <string name="phone_num">手机号</string>
+    <string name="phone_num_2">手机号：</string>
     <string name="three_party">第三方账号授权</string>
     <string name="change_password">修改密码</string>
     <string name="title_activity_event_award">EventAwardActivity</string>
@@ -181,5 +182,11 @@
     <string name="three_party_login">第三方账号登录</string>
     <!-- 用户转赠 -->
     <string name="search_from_contacts">从通讯录查询</string>
+    <string name="title_activity_user_forget_password">UserForgetPasswordActivity</string>
+    <!-- 修改密码 -->
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="ensure_password">确认新密码</string>
+    <string name="loading">获取中</string>
 
 </resources>

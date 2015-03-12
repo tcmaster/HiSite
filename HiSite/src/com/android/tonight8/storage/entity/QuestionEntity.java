@@ -10,6 +10,9 @@ import com.lidroid.xutils.db.annotation.Table;
  */
 @Table(name = "question")
 public class QuestionEntity extends BaseEntity {
+	/** 登录的商家Id */
+	@Column(column = "orgId")
+	private int orgId;
 	/** 询问内容 */
 	@Column(column = "content")
 	private String content;
@@ -20,14 +23,25 @@ public class QuestionEntity extends BaseEntity {
 	@Column(column = "time")
 	private String time;
 	/** 是否是回复记录 */
-	@Column(column = "isReply", defaultValue = "0")
-	private int isReply;
+	@Column(column = "toId", defaultValue = "0")
+	private int toId;
 	/** 用户表外键 */
 	@Foreign(column = "uid", foreign = "id")
 	public UserEntity user;
 	/** 商家表外键 */
 	@Foreign(column = "oid", foreign = "id")
 	public OrgEntity org;
+
+
+	
+	public int getOrgId() {
+		return orgId;
+	}
+
+	
+	public void setOrgId(int orgId) {
+		this.orgId = orgId;
+	}
 
 	public String getContent() {
 		return content;
@@ -53,19 +67,13 @@ public class QuestionEntity extends BaseEntity {
 		this.time = time;
 	}
 
-	public int getIsReply() {
-		return isReply;
+	public int getToId() {
+		return toId;
 	}
 
-	public void setIsReply(int isReply) {
-		this.isReply = isReply;
+	public void setToId(int toId) {
+		this.toId = toId;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [user=" + user + ", org=" + org + ", content="
-				+ content + ", date=" + date + ", time=" + time + ", isReply="
-				+ isReply + "]";
-	}
 
 }

@@ -69,7 +69,7 @@
         <item name="android:textSize">@dimen/middleTextSize</item>
         <item name="android:singleLine">true</item>
         <item name="android:gravity">bottom</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">@dimen/et_comm_height</item>
     </style>
     <!-- 确定Button style -->
     <style name="ok_button_style">
@@ -86,12 +86,12 @@
         <!-- 白色Button style -->
     <style name="button_style_white">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_height">@dimen/dialog_btn_height</item>
         <item name="android:background">@drawable/btn_white_selector</item>
         <item name="android:paddingBottom">6dp</item>
         <item name="android:paddingTop">6dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">@dimen/common_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/common_margin_left</item>
         <item name="android:textSize">@dimen/middleTextSize</item>
     </style>
     <!-- 商家资料的 左侧文本style -->

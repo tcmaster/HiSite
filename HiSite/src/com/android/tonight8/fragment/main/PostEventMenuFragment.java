@@ -21,6 +21,7 @@ import com.android.tonight8.activity.MainActivity;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;
+import com.android.tonight8.activity.createevent.EventsPlaceManageActivity;
 import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.activity.org.BindAgencyActivity;
 import com.android.tonight8.activity.org.OrgDetailActivity;
@@ -30,6 +31,7 @@ import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.storage.org.OrgLoginNativeController;
+import com.android.tonight8.utils.QRCodeUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -75,7 +77,7 @@ public class PostEventMenuFragment extends BaseFragment {
 	@ViewInject(R.id.et_org_loginpwd)
 	private EditText et_org_loginpwd;
 	private PostEventsGridAdapter gridAdapter;
-	private BaseActivity baseActivity;
+	private MainActivity baseActivity;
 
 	/** 创建一个静态的实例 */
 	public static PostEventMenuFragment newInstance() {
@@ -85,9 +87,11 @@ public class PostEventMenuFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin, container, false);
+		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin,
+				container, false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
 
 		initData();
@@ -97,24 +101,27 @@ public class PostEventMenuFragment extends BaseFragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		baseActivity = (BaseActivity) activity;
+		baseActivity = (MainActivity) activity;
 	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		baseActivity.getActionBarNormal("发活动", R.drawable.ic_launcher, new OnClickListener() {
+		baseActivity.getActionBarNormal("发活动", R.drawable.ic_launcher,
+				new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent(baseActivity, OrgMessageListActivity.class);
-				startActivityForAnima(intent, baseActivity);
-			}
-		});
+					@Override
+					public void onClick(View arg0) {
+						Intent intent = new Intent(baseActivity,
+								OrgMessageListActivity.class);
+						startActivityForAnima(intent, baseActivity);
+					}
+				});
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@OnItemClick(R.id.gv_postevents_main)
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+			long arg3) {
 		Intent intent = null;
 		switch (position) {
 		case 0:
@@ -133,7 +140,13 @@ public class PostEventMenuFragment extends BaseFragment {
 			intent = new Intent(getActivity(), CouponHaveUsedActivity.class);
 			break;
 		case 5:
+			intent = new Intent(getActivity(), EventsPlaceManageActivity.class);
+			break;
+		case 6:
 			intent = new Intent(getActivity(), UserFeedbackActivity.class);
+			break;
+		case 7:
+			baseActivity.UpdateLoginedFragment(false);
 			break;
 		default:
 			break;
@@ -142,7 +155,8 @@ public class PostEventMenuFragment extends BaseFragment {
 	}
 
 	private void initData() {
-		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
+		OrgLoginNativeController orgLogin = new OrgLoginNativeController(
+				getActivity());
 		// tv_shop_id.setText(orgLogin.getOrgLoginInfo());
 		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");
@@ -150,7 +164,8 @@ public class PostEventMenuFragment extends BaseFragment {
 		tv_postevents_place.setText("北京 朝阳区");
 		gridAdapter = new PostEventsGridAdapter(getActivity());
 		gv_postevents_main.setAdapter(gridAdapter);
-		// QRCodeUtils.createQRImage(tv_shop_id.getText().toString(), iv_two_dimension);
+		QRCodeUtils.createQRImage(tv_shop_id.getText().toString(),
+				iv_two_dimension);
 
 	}
 

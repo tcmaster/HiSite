@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_radius_corners"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_height="@dimen/et_comm_height"
+        android:layout_margin="@dimen/common_margin_left"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_express_company"
+            style="@style/wrap"
+            android:layout_gravity="bottom"
+            android:text="快递公司："
+            android:textSize="@dimen/middleTextSize" />
+
+        <EditText
+            android:id="@+id/et_express_companyname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="顺丰快递"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_height="@dimen/et_comm_height"
+        android:layout_margin="@dimen/common_margin_left"
+        android:layout_marginBottom="@dimen/common_margin_left"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_express"
+            style="@style/wrap"
+            android:layout_gravity="bottom"
+            android:text="快递单号："
+            android:textSize="@dimen/middleTextSize" />
+
+        <EditText
+            android:id="@+id/et_express_NO"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="23456789"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_sendaward_left"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_btn_height"
+            android:layout_weight="1"
+            android:background="@drawable/seletor_bottom_corner_left"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/cancle"/>
+
+        <View style="@style/line_full_vertical" />
+
+        <Button
+            android:id="@+id/btn_sendaward_right"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_btn_height"
+            android:layout_weight="1"
+            android:background="@drawable/seletor_bottom_corner_right"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/save"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -24,6 +24,8 @@
     <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
     </uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" >
+    </uses-permission>
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -147,6 +149,12 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 兑奖地点管理 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.EventsPlaceManageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.baidu.location.f"
@@ -250,7 +258,11 @@
             android:name="com.android.tonight8.activity.event.ExchangeLocationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-
+        <!-- 兑奖列表显示页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.EventsAwardListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- QQ分享需要注册的 -->
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
@@ -269,6 +281,10 @@
 
                 <data android:scheme="tencent你的AppId" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
+            android:label="@string/title_activity_user_forget_password" >
         </activity>
     </application>
 
