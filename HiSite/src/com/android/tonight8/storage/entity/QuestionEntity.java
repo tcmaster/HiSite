@@ -12,7 +12,7 @@ import com.lidroid.xutils.db.annotation.Table;
 public class QuestionEntity extends BaseEntity {
 	/** 登录的商家Id */
 	@Column(column = "orgId")
-	private int orgId;
+	private long orgId;
 	/** 询问内容 */
 	@Column(column = "content")
 	private String content;
@@ -23,8 +23,8 @@ public class QuestionEntity extends BaseEntity {
 	@Column(column = "time")
 	private String time;
 	/** 是否是回复记录 */
-	@Column(column = "toId", defaultValue = "0")
-	private int toId;
+	@Column(column = "toId")
+	private long toId;
 	/** 用户表外键 */
 	@Foreign(column = "uid", foreign = "id")
 	public UserEntity user;
@@ -34,12 +34,12 @@ public class QuestionEntity extends BaseEntity {
 
 
 	
-	public int getOrgId() {
+	public long getOrgId() {
 		return orgId;
 	}
 
 	
-	public void setOrgId(int orgId) {
+	public void setOrgId(long orgId) {
 		this.orgId = orgId;
 	}
 
@@ -67,11 +67,11 @@ public class QuestionEntity extends BaseEntity {
 		this.time = time;
 	}
 
-	public int getToId() {
+	public long getToId() {
 		return toId;
 	}
 
-	public void setToId(int toId) {
+	public void setToId(long toId) {
 		this.toId = toId;
 	}
 

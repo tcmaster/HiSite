@@ -39,44 +39,59 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 
 		@Override
 		public void onClick(View arg0) {
-			TextView view = (TextView) arg0;
-			int pos = (Integer) view.getTag();
+			TextView tv = (TextView)arg0;
+			Integer pos = (Integer) tv.getTag();
 			// mValues.get(pos).getQuestion().getId();
 			// mValues.get(pos).getQuestion().getContent();
 			// mValues.get(pos).getOrg().getId();
-			DialogUtils.showCommitDialog((UserFeedbackActivity) mContext, "给**用户回复");
-			// OrgIOController.OrgOrgQuestionsReply(handler, questionId, content, orgId, attachments);
+			DialogUtils.showCommitDialog((UserFeedbackActivity) mContext,
+					"给**用户回复");
+			// OrgIOController.OrgOrgQuestionsReply(handler, questionId,
+			// content, orgId, attachments);
 		}
 	};
 
 	@Override
 	protected View getItemView(View convertView, int position) {
 		if (convertView == null)
-			convertView = mInflater.inflate(R.layout.adapter_user_feedback, null);
-		ImageView iv_comment_head_icon = ViewHolder.get(convertView, R.id.iv_comment_head_icon);
-		TextView tv_userback_name = ViewHolder.get(convertView, R.id.tv_userback_name);
-		TextView tv_userback_date = ViewHolder.get(convertView, R.id.tv_userback_date);
-		TextView tv_userback_content = ViewHolder.get(convertView, R.id.tv_userback_content);
-		TextView tv_userback_placetime = ViewHolder.get(convertView, R.id.tv_userback_placetime);
-		TextView tv_feedback_reply = ViewHolder.get(convertView, R.id.tv_feedback_reply);
+			convertView = mInflater.inflate(R.layout.adapter_user_feedback,
+					null);
+		ImageView iv_comment_head_icon = ViewHolder.get(convertView,
+				R.id.iv_comment_head_icon);
+		TextView tv_userback_name = ViewHolder.get(convertView,
+				R.id.tv_userback_name);
+		TextView tv_userback_date = ViewHolder.get(convertView,
+				R.id.tv_userback_date);
+		TextView tv_userback_content = ViewHolder.get(convertView,
+				R.id.tv_userback_content);
+		TextView tv_userback_placetime = ViewHolder.get(convertView,
+				R.id.tv_userback_placetime);
+		TextView tv_feedback_reply = ViewHolder.get(convertView,
+				R.id.tv_feedback_reply);
 		tv_feedback_reply.setOnClickListener(replyListener);
 
-		ListView lv_org_quesition_reply = ViewHolder.get(convertView, R.id.lv_org_quesition_reply);
+		ListView lv_org_quesition_reply = ViewHolder.get(convertView,
+				R.id.lv_org_quesition_reply);
 		OrgQuestionModel model = mValues.get(position);
-		List<OrgQuestionModel> list2 = OrgStorage.getOrgQuestionController().selectData(123, model.getQuestion().getToId(), 0, 0);
-		UserFeedbackAdapter listAdapter = new UserFeedbackAdapter(mContext, list2);
+		List<OrgQuestionModel> list2 = OrgStorage.getOrgQuestionController()
+				.selectData(123, model.getQuestion().getToId(), 0, 0);
+		UserFeedbackAdapter listAdapter = new UserFeedbackAdapter(mContext,
+				list2);
 		lv_org_quesition_reply.setAdapter(listAdapter);
 
 		if (model.getOrg() != null) {
-			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon, model.getOrg().logo);
+			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon,
+					model.getOrg().logo);
 			tv_userback_name.setText(model.getOrg().name);
 		} else if (model.getUser() != null) {
-			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon, model.getUser().pic);
+			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon,
+					model.getUser().pic);
 			tv_userback_name.setText(model.getUser().name);
 		}
 		tv_userback_date.setText(model.getQuestion().date);
 		tv_userback_content.setText(model.getQuestion().content);
-		// tv_userback_placetime.setText(DateTimeUtils.getUpdateDate(new Date(model.getQuestion().getDate() +
+		// tv_userback_placetime.setText(DateTimeUtils.getUpdateDate(new
+		// Date(model.getQuestion().getDate() +
 		// model.getQuestion().getTime())));
 		return convertView;
 	}

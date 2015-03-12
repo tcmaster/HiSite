@@ -95,8 +95,10 @@ public class UserFeedbackActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		getActionBarBase("用户反馈");
 
-		// String orgId = new OrgLoginNativeController(mContext).getOrgLoginInfo();
-		// OrgIOController.OrgQuestionsRead(handler, "123", current, ITEM_COUNT * current);
+		// String orgId = new
+		// OrgLoginNativeController(mContext).getOrgLoginInfo();
+		// OrgIOController.OrgQuestionsRead(handler, "123", current, ITEM_COUNT
+		// * current);
 		initData();
 	}
 
@@ -108,24 +110,30 @@ public class UserFeedbackActivity extends BaseActivity {
 			question.setContent("官方二个如果");
 			question.setId(i);
 			question.setToId(0);
-			User user = new User();
-			user.name = "测试用户1";
-			user.id = 1111;
-			user.pic="http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
-			Org org = new Org();
-			org.id = 2222;
-			org.pic="http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
-			org.name = "商家用户1";
+			question.setUid(1111);
+			question.setOid(2222);
+
 			if (i % 2 == 0) {
+				Org org = new Org();
+				org.id = 2222;
+				org.pic = "http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
+				org.name = "商家用户1";
 				question.setToId(i);
+				model.setOrg(org);
+			} else {
+				User user = new User();
+				user.name = "测试用户1";
+				user.id = 1111;
+				user.pic = "http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg";
+				model.setUser(user);
 			}
 			model.setQuestion(question);
-			model.setOrg(org);
-			model.setUser(user);
+
 			list.add(model);
 		}
-		// OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123, 11, 21);
-		// list = OrgStorage.getOrgQuestionController().selectData(123, 0, current, ITEM_COUNT * current);
+		OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123);
+		list = OrgStorage.getOrgQuestionController().selectData(123, 0,
+				current, ITEM_COUNT * current);
 
 		listAdapter = new UserFeedbackAdapter(mContext, list);
 		lv_only_list.setAdapter(listAdapter);
