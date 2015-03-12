@@ -164,8 +164,8 @@ public class PostEventMenuFragment extends BaseFragment {
 		tv_postevents_place.setText("北京 朝阳区");
 		gridAdapter = new PostEventsGridAdapter(getActivity());
 		gv_postevents_main.setAdapter(gridAdapter);
-		QRCodeUtils.createQRImage(tv_shop_id.getText().toString(),
-				iv_two_dimension);
+		// QRCodeUtils.createQRImage(tv_shop_id.getText().toString(),
+		// iv_two_dimension);
 
 	}
 
