@@ -171,7 +171,6 @@ public class DialogUtils {
 				});
 			}
 		});
-		cdlg.showDlg();
 		Utils.hideSoftKeyBoard(activity);
 		cdlg.gravity = Gravity.BOTTOM;
 		cdlg.showDlg();
