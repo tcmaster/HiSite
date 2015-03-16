@@ -67,6 +67,10 @@ public class BaseActivity extends FragmentActivity {
 	 * 照相时的临时文件名
 	 */
 	protected String tempName = "";
+	/** 下拉刷新标识 */
+	protected final int REFRESH = 1;
+	/** 上拉加载标识 */
+	protected final int LOAD_MORE = 2;
 
 	/**
 	 * 通过构造方法对上下文内容与全局的app初始化
@@ -104,15 +108,18 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: PengGuoHua
 	 * @date:2014-10-31
 	 */
-	protected void startActivityForResultAndAnima(Intent intent, int requestCode, Activity parentActivity) {
+	protected void startActivityForResultAndAnima(Intent intent,
+			int requestCode, Activity parentActivity) {
 		if (intent != null) {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivityForResult(intent, requestCode);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivityForResult(intent, requestCode);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -134,10 +141,12 @@ public class BaseActivity extends FragmentActivity {
 			parentActivity = getParent();
 			if (parentActivity != null) {
 				parentActivity.startActivity(intent);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivity(intent);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}
@@ -148,7 +157,9 @@ public class BaseActivity extends FragmentActivity {
 	private void useCustomerActionBar() {
 		if (mActionBar == null) {
 			mActionBar = getActionBar();
-			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
+			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP
+					| ActionBar.DISPLAY_SHOW_TITLE
+					| ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
 			mActionBar.setCustomView(R.layout.layout_actionbar);
 			mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 			View view = mActionBar.getCustomView();
@@ -285,7 +296,8 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2015-01-15
 	 */
-	public void getActionBarNormal(String title, int res, OnClickListener rightClick) {
+	public void getActionBarNormal(String title, int res,
+			OnClickListener rightClick) {
 		useCustomerActionBar();
 		getLeftText().setVisibility(View.GONE);
 		getLogo().setVisibility(View.GONE);
@@ -311,7 +323,8 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2015-01-15
 	 */
-	public void getActionBarNoReturn(String title, int res, OnClickListener rightClick) {
+	public void getActionBarNoReturn(String title, int res,
+			OnClickListener rightClick) {
 		useCustomerActionBar();
 		getLeftText().setVisibility(View.GONE);
 		getLogo().setVisibility(View.GONE);
@@ -326,7 +339,8 @@ public class BaseActivity extends FragmentActivity {
 	}
 
 	/**
-	 * @Description: 获取特殊的actionBar,如果hasLeft为null，左边的返回将隐藏，如果hasSpeical为false，返回的标题旁边的内容将隐藏
+	 * @Description: 
+	 *               获取特殊的actionBar,如果hasLeft为null，左边的返回将隐藏，如果hasSpeical为false，返回的标题旁边的内容将隐藏
 	 *               ，图片资源文件如果传入-1，将不显示
 	 * @param title
 	 *            标题内容
@@ -340,7 +354,8 @@ public class BaseActivity extends FragmentActivity {
 	 *            右边的点击事件
 	 * @return 返回标题旁边的内容
 	 */
-	public TextView getActionBarSpeical(String title, int res, boolean hasLeft, boolean hasSpeical, OnClickListener rightClick) {
+	public TextView getActionBarSpeical(String title, int res, boolean hasLeft,
+			boolean hasSpeical, OnClickListener rightClick) {
 		useCustomerActionBar();
 		getLeftText().setVisibility(View.GONE);
 		getLogo().setVisibility(View.GONE);
@@ -410,10 +425,13 @@ public class BaseActivity extends FragmentActivity {
 		String state = Environment.getExternalStorageState();
 		if (state.equals(Environment.MEDIA_MOUNTED)) {
 			tempName = System.currentTimeMillis() + ".jpg";
-			File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + File.separator + tempName);
+			File file = new File(Environment.getExternalStoragePublicDirectory(
+					Environment.DIRECTORY_DCIM).getAbsolutePath()
+					+ File.separator + tempName);
 			Uri u = Uri.fromFile(file);
 			Log.v("lixiaosong", "我要往这里放照片" + file.getAbsolutePath());
-			Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+			Intent getImageByCamera = new Intent(
+					"android.media.action.IMAGE_CAPTURE");
 			getImageByCamera.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
 			getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, u);
 			startActivityForResult(getImageByCamera, TAKEPHOTO);

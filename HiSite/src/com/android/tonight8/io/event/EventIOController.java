@@ -8,12 +8,14 @@ import java.util.Map;
 import android.os.Handler;
 
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.event.entity.EventConsultListEntity;
 import com.android.tonight8.io.event.entity.EventDetailNetEntity;
 import com.android.tonight8.io.event.entity.EventListNetEntity;
 import com.android.tonight8.io.event.entity.EventRecommendNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
+import com.android.tonight8.model.common.Consult;
 import com.android.tonight8.model.common.CouponProvide;
 import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Exchange;
@@ -22,6 +24,8 @@ import com.android.tonight8.model.common.ExchangeCity;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.PopGoods;
+import com.android.tonight8.model.common.User;
+import com.android.tonight8.model.event.EventConsultModel;
 import com.android.tonight8.model.event.EventDetailModel;
 import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.storage.event.EventStorage;
@@ -34,6 +38,8 @@ public class EventIOController {
 			+ "/api/index/index";
 	private static final String EVENT_RECOMMAND_URL = NetRequest.BASE_URL + "";
 	private static final String EVENT_DETAIL_URL = NetRequest.BASE_URL + "";
+	private static final String EVENT_EVENT_PUBLISH_CONSULTS = NetRequest.BASE_URL
+			+ "";
 	private static String[] imgs = {
 			"http://img4.imgtn.bdimg.com/it/u=2352711400,4289515900&fm=11&gp=0.jpg",
 			"http://img4.imgtn.bdimg.com/it/u=3923171974,2721923014&fm=21&gp=0.jpg",
@@ -66,7 +72,7 @@ public class EventIOController {
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t, Handler handler) {
 				ArrayList<EventListModel> lists = new ArrayList<EventListModel>();
-				for (int i = 0; i < 100; i++) {
+				for (int i = 0; i < 10; i++) {
 					EventListModel model = new EventListModel();
 					Event event = new Event();
 					PopGoods popGoods = new PopGoods();
@@ -208,6 +214,7 @@ public class EventIOController {
 							goods.name = "dkkwd";
 							goods.pic = imgs[(int) (Math.random() * 8)];
 							goods.size = "1800,500";
+							goodses.add(goods);
 						}
 						model.event = event;
 						model.couponProvide = couponProvide;
@@ -227,6 +234,48 @@ public class EventIOController {
 						HandlerConstants.sendMessage(handler, null,
 								HandlerConstants.Event.EVENT_DETAIL,
 								HandlerConstants.RESULT_FAIL, 0);
+					}
+				});
+	}
+
+	public static void eventConsultsRead(final Handler handler,
+			int... attachments) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(NetRequest.REQUEST_URL, EVENT_EVENT_PUBLISH_CONSULTS);
+		HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.EVENT_DETAIL_CONSULT,HandlerConstants.NETWORK_BEGIN,0);
+		NetRequest.doGetRequest(params,
+				new RequestResult<EventConsultListEntity>(
+						EventConsultListEntity.class, handler) {
+
+					@Override
+					public void getData(NetEntityBase netEntityBase,
+							EventConsultListEntity t, Handler handler) {
+						List<EventConsultModel> models = new ArrayList<EventConsultModel>();
+						for (int i = 0; i < 5; i++) {
+							EventConsultModel model = new EventConsultModel();
+							Consult consult = new Consult();
+							consult.content = "我想知道为何量子力学是否能解决一切的终极问题";
+							consult.date = "2015年3月20日";
+							consult.id = (int) (Math.random() * 100);
+							consult.time = "12点50分";
+							User user = new User();
+							user.name = "董大师";
+							user.pic = imgs[(int) (Math.random() * 8)];
+							model.consult = consult;
+							model.user = user;
+							models.add(model);
+							HandlerConstants
+									.sendMessage(
+											handler,
+											models,
+											HandlerConstants.Event.EVENT_DETAIL_CONSULT,
+											HandlerConstants.RESULT_OK, 0);
+						}
+					}
+
+					@Override
+					public void onFailure(HttpException error, String msg) {
+						HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.EVENT_DETAIL_CONSULT,HandlerConstants.RESULT_FAIL,0);
 					}
 				});
 	}

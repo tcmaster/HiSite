@@ -30,6 +30,8 @@ public class HandlerConstants {
 		public static final int MAINPAGE_LIST = 2;
 		/**详情部分*/
 		public static final int EVENT_DETAIL = 3;
+		/**详情部分右下咨询*/
+		public static final int EVENT_DETAIL_CONSULT = 4;
 	}
 
 

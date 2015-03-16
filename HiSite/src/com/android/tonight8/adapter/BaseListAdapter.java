@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.lidroid.xutils.BitmapUtils;
+
 /**
  * @Description: 关于listview的适配器基类
  * @author:LiXiaoSong
@@ -25,29 +27,36 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 	protected List<T> mValues;
 	protected String mRemark;
 	protected LayoutInflater mInflater;
+	protected BitmapUtils bmUtils;
 
 	public BaseListAdapter(Context context) {
 		super();
 		mContext = context;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mInflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		bmUtils = new BitmapUtils(context);
 	}
 
 	public BaseListAdapter(Context context, List<T> values) {
 		mContext = context;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mInflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mValues = values;
+		bmUtils = new BitmapUtils(context);
 	}
 
 	public BaseListAdapter(Context context, List<T> values, String remark) {
 		mContext = context;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mInflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mValues = values;
 		mRemark = remark;
 	}
 
 	public BaseListAdapter(Context context, List<T> values, Handler handler) {
 		mContext = context;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mInflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mValues = values;
 	}
 

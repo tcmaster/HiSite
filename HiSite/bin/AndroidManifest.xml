@@ -24,6 +24,8 @@
     <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
     </uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" >
+    </uses-permission>
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -37,7 +39,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="MarqqjAPAzHfxPxNUcAaNSWG" />
+            android:value="ofsgRgzkBB6tqYfuleWths3s" />
         <!-- 主activity -->
         <activity
             android:name="com.android.tonight8.activity.MainActivity"
@@ -48,9 +50,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 忘记商家ID或者密码 -->
+        <!-- 忘记商家密码 -->
         <activity
-            android:name="com.android.tonight8.activity.org.ForgetIDOrPwdActivity"
+            android:name="com.android.tonight8.activity.org.OrgForgotPwdActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 忘记商家ID -->
+        <activity
+            android:name="com.android.tonight8.activity.org.OrgForgotIDActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
@@ -62,6 +71,14 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 商家消息列表 -->
+        <activity
+            android:name="com.android.tonight8.activity.org.OrgMessageListActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <!-- 创建活动第一步 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.CreatEventFirstActivity"
@@ -132,6 +149,12 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 兑奖地点管理 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.EventsPlaceManageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.baidu.location.f"
@@ -194,22 +217,52 @@
             android:name="com.android.tonight8.activity.createevent.UserAgreementActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 用户转赠界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserSwitchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 用户协议页面 -->
         <activity
             android:name="com.android.tonight8.activity.createevent.CalendarActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 用户登录界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserLoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 用户注册界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.UserRegisterActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 认证页面 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.AuthenticationActivity"
+            android:name="com.android.tonight8.activity.org.AuthenticationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-        <!-- 认证陈功页面 -->
+        <!-- 认证成功页面 -->
         <activity
-            android:name="com.android.tonight8.activity.createevent.AuthSuccessActivity"
+            android:name="com.andrcom.android.tonight8.activity.org.AuthSuccessActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-
+        <!-- 认证上传图片页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.org.AuthPicActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 兑奖地址位置显示页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.event.ExchangeLocationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 兑奖列表显示页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.EventsAwardListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- QQ分享需要注册的 -->
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
@@ -228,6 +281,10 @@
 
                 <data android:scheme="tencent你的AppId" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
+            android:label="@string/title_activity_user_forget_password" >
         </activity>
     </application>
 

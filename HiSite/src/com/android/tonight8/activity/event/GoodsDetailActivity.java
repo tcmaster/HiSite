@@ -3,13 +3,21 @@
  */
 package com.android.tonight8.activity.event;
 
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,11 +32,15 @@ import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.event.EventIOController;
+import com.android.tonight8.model.event.EventConsultModel;
 import com.android.tonight8.model.event.EventDetailModel;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.XListView;
+import com.android.tonight8.view.XListView.IXListViewListener;
 import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -58,18 +70,12 @@ public class GoodsDetailActivity extends BaseActivity {
 	private ImageView iv_pop_goods_pic;
 	/** 奖品价值 */
 	private TextView tv_pop_goods_price;
-	/** 小时低位 */
-	private TextView tv_count_hour_low;
-	/** 小时高位 */
-	private TextView tv_count_hour_high;
-	/** 分钟低位 */
-	private TextView tv_count_minute_low;
-	/** 分钟高位 */
-	private TextView tv_count_minute_high;
-	/** 秒低位 */
-	private TextView tv_count_second_low;
-	/** 秒高位 */
-	private TextView tv_count_second_high;
+	/** 小时 */
+	private TextView tv_count_hour;
+	/** 分钟 */
+	private TextView tv_count_minute;
+	/** 秒 */
+	private TextView tv_count_second;
 	/** 报名人数 */
 	private TextView tv_apply_count;
 	/** 主办方名称 */
@@ -91,17 +97,30 @@ public class GoodsDetailActivity extends BaseActivity {
 	private LinearLayout ll_bottom;
 
 	// ***************************其他成员***********************************//
+	/** 当前的位置是左边 */
+	private static final int LEFT = 1;
+	/** 当前的位置是右边 */
+	private static final int RIGHT = 2;
 	/** 左边的适配器 */
 	private GoodLeftAdapter adapter_left;
 	/** 右边的适配器 */
 	private GoodRightAdapter adapter_right;
 	/** 图片下载工具 */
 	private BitmapUtils utils;
+	/** 该变量用来标记当前展示的是左边还是右边 */
+	private int flag = LEFT;
+	/** 该变量用来标记当前的行为是下拉刷新还是上拉加载 */
+	private int flag2 = REFRESH;
+	/** 该标记用于确定当前是否点击了tab按钮 */
+	private boolean flag3 = false;
+	/** 该标记用于本界面的倒计时，如果为false，则倒计时停止 */
+	private boolean flag4 = true;
 	/**
 	 * 本界面的数据更新handler
 	 */
 	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
+		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -114,22 +133,46 @@ public class GoodsDetailActivity extends BaseActivity {
 					adapter_left = new GoodLeftAdapter(
 							GoodsDetailActivity.this, source.goodses);
 					adapter_right = new GoodRightAdapter(
-							GoodsDetailActivity.this, new ArrayList<String>());
+							GoodsDetailActivity.this,
+							new ArrayList<EventConsultModel>());
 					tv_event_name.setText(source.event.name);
 					tv_pop_goods_name.setText(source.popGoods.popGoodsName);
 					utils.display(iv_pop_goods_pic, source.popGoods.popGoodsPic);
-					tv_pop_goods_price.setText(source.popGoods.popGoodsPrice);
+					tv_pop_goods_price.setText(source.popGoods.popGoodsPrice
+							+ "");
 					tv_apply_count.setText(source.event.applyCount + "人");
 					tv_org_name.setText(source.org.name);
+					lv_goods_detail.setAdapter(adapter_left);
+					lv_goods_detail.stopRefresh();
+					beginCountDown("2015-03-16 18:59:59");// 倒计时开始
 				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
 					Utils.toast("网络异常");
+					lv_goods_detail.stopRefresh();
 				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {
 					pb_loading.setVisibility(View.VISIBLE);
 					ll_bottom.setVisibility(View.INVISIBLE);
 					lv_goods_detail.setVisibility(View.INVISIBLE);
 				}
+				lv_goods_detail.setPullLoadEnable(false);
 				break;
+			case HandlerConstants.Event.EVENT_DETAIL_CONSULT:
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {
+					if (flag2 == REFRESH) {
+						adapter_right
+								.updateData((List<EventConsultModel>) msg.obj);
+						lv_goods_detail.stopRefresh();
+					} else {
+						adapter_right
+								.addData((List<EventConsultModel>) msg.obj);
+						lv_goods_detail.stopLoadMore();
+					}
+				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
 
+				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {
+
+				}
+				scrollListView();
+				break;
 			default:
 				break;
 			}
@@ -160,6 +203,12 @@ public class GoodsDetailActivity extends BaseActivity {
 		}
 	}
 
+	@Override
+	protected void onDestroy() {
+		flag4 = false;// 倒计时结束
+		super.onDestroy();
+	}
+
 	// ***************************子方法***********************************//
 	private void initData() {
 		utils = new BitmapUtils(this);
@@ -172,6 +221,29 @@ public class GoodsDetailActivity extends BaseActivity {
 								GoodsDetailActivity.this, null);
 					}
 				});
+		EventIOController.eventDetailRead(handler);
+		lv_goods_detail.setXListViewListener(new IXListViewListener() {
+
+			@Override
+			public void onRefresh() {
+				lv_goods_detail.setPullLoadEnable(true);
+				flag2 = REFRESH;
+				if (flag == LEFT) {
+					EventIOController.eventDetailRead(handler);
+				} else if (flag == RIGHT) {
+					EventIOController.eventConsultsRead(handler);
+				}
+			}
+
+			@Override
+			public void onLoadMore() {
+				if (flag == RIGHT) {
+					flag2 = LOAD_MORE;
+					EventIOController.eventConsultsRead(handler);
+				}
+
+			}
+		});
 	}
 
 	/**
@@ -185,6 +257,16 @@ public class GoodsDetailActivity extends BaseActivity {
 		tv_tab_left = (Button) view.findViewById(R.id.btn_choice_award);
 		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
 		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
+		tv_event_name = (TextView) view.findViewById(R.id.tv_theme);
+		tv_pop_goods_name = (TextView) view.findViewById(R.id.tv_fg_left_top);
+		iv_pop_goods_pic = (ImageView) view.findViewById(R.id.iv_commodity_img);
+		tv_pop_goods_price = (TextView) view
+				.findViewById(R.id.tv_fg_right_bottom);
+		tv_count_hour = (TextView) view.findViewById(R.id.tv_hour);
+		tv_count_minute = (TextView) view.findViewById(R.id.tv_minute);
+		tv_count_second = (TextView) view.findViewById(R.id.tv_second);
+		tv_apply_count = (TextView) view.findViewById(R.id.tv_apply_count);
+		tv_org_name = (TextView) view.findViewById(R.id.tv_company);
 		tv_see_prize_location = (TextView) view
 				.findViewById(R.id.tv_see_location);
 		OnClickListener listener = new OnClickListener() {
@@ -224,7 +306,11 @@ public class GoodsDetailActivity extends BaseActivity {
 	 * @date:2015-1-8
 	 */
 	private void doChangeFA() {
+		flag = LEFT;
+		flag3 = true;
+		lv_goods_detail.setPullLoadEnable(false);
 		lv_goods_detail.setAdapter(adapter_left);
+		scrollListView();
 	}
 
 	/**
@@ -233,7 +319,11 @@ public class GoodsDetailActivity extends BaseActivity {
 	 * @date:2015-1-8
 	 */
 	private void doChangeFB() {
+		flag = RIGHT;
+		flag3 = true;
+		lv_goods_detail.setPullLoadEnable(true);
 		lv_goods_detail.setAdapter(adapter_right);
+		EventIOController.eventConsultsRead(handler);
 	}
 
 	/**
@@ -260,4 +350,79 @@ public class GoodsDetailActivity extends BaseActivity {
 		startActivity(intent);
 	}
 
+	/**
+	 * 当点击tab按钮时，将listview滑动到listView第一个item的位置
+	 */
+	private void scrollListView() {
+		if (flag3) {
+			lv_goods_detail.post(new Runnable() {
+
+				@Override
+				public void run() {
+					LogUtils.v("已经进入");
+					if (lv_goods_detail.getAdapter().getCount() != 0)
+						lv_goods_detail.setSelection(2);// 有两个头部，所以首个item的位置是2
+					flag3 = false;
+				}
+			});
+		}
+	}
+
+	/**
+	 * 启动本页面的倒计时
+	 */
+	@SuppressLint("HandlerLeak")
+	private void beginCountDown(String time) {
+		final Handler countDownHandler = new Handler() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void handleMessage(Message msg) {
+				long time = (Long) msg.obj;
+				if (time < 0) {
+					tv_count_hour.setText("00");
+					tv_count_minute.setText("00");
+					tv_count_second.setText("00");
+					flag4 = false;
+					return;
+				}
+				Date date = new Date(time);
+				SimpleDateFormat format = new SimpleDateFormat("HH时mm分ss秒");
+				tv_count_hour.setText(format.format(date));
+			}
+		};
+
+		try {
+			SimpleDateFormat format = new SimpleDateFormat(
+					"yyyy-MM-dd HH:mm:ss");
+			Date date = format.parse(time);
+			final long needTimeMillis = date.getTime();
+			final long currentTimeMillis = System.currentTimeMillis();
+			if (needTimeMillis - currentTimeMillis > 0) {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						long timeMillis = needTimeMillis - currentTimeMillis;
+
+						try {
+							while (flag4) {
+								Message msg = countDownHandler.obtainMessage();
+								Thread.sleep(1000);
+								timeMillis = timeMillis - 1000;
+								msg.obj = timeMillis;
+								countDownHandler.sendMessage(msg);
+							}
+
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}).start();
+			}
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+	}
 }

@@ -7,19 +7,15 @@ import java.util.List;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
+import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.model.common.Goods;
+import com.lidroid.xutils.BitmapUtils;
 
-/**
- * @Description:
- * @author:LiXiaoSong
- * @see:
- * @since:
- * @copyright @tonight8
- * @Date:2015-1-4
- */
 public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 
 	public GoodLeftAdapter(Context context, List<Goods> values) {
@@ -28,9 +24,17 @@ public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 
 	@Override
 	protected View getItemView(View convertView, int position) {
+		Goods goods = mValues.get(position);
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.item_fg_goods_detail_left, null, false);
+			convertView = mInflater.inflate(R.layout.item_fg_goods_detail_left,
+					null, false);
 		}
+		ImageView iv_activity_img = ViewHolder.get(convertView,
+				R.id.iv_activity_img);
+		TextView tv_goods_info = ViewHolder
+				.get(convertView, R.id.tv_goods_info);
+		bmUtils.display(iv_activity_img, goods.pic);
+		tv_goods_info.setText(goods.name + " 价格：" + goods.price + "元");
 		return convertView;
 	}
 
@@ -40,7 +44,6 @@ public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 	public void addData(List<Goods> data) {
 		mValues.addAll(data);
 		notifyDataSetChanged();
-
 	}
 
 	/**

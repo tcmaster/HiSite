@@ -8,7 +8,10 @@ import android.support.v4.app.Fragment;
 import com.android.tonight8.R;
 
 public class BaseFragment extends Fragment {
-
+	/** 下拉刷新标识 */
+	protected final int REFRESH = 1;
+	/** 上拉加载标识 */
+	protected final int LOAD_MORE = 2;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
