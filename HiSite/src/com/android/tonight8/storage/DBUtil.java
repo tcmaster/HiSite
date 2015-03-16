@@ -61,13 +61,15 @@ public class DBUtil {
 		}
 		return result;
 	}
+
 	/**
 	 * 查询若干条数据，列表用
 	 */
-	public static <T> List<T> getData(Class<T> clazz,int limit,int offset){
+	public static <T> List<T> getData(Class<T> clazz, int limit, int offset) {
 		List<T> result = null;
 		try {
-			result = utils.findAll(Selector.from(clazz).limit(limit).offset(offset).orderBy("id",true));
+			result = utils.findAll(Selector.from(clazz).limit(limit)
+					.offset(offset).orderBy("id", true));
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
@@ -132,7 +134,8 @@ public class DBUtil {
 	 * @param updateColumnNames
 	 *            要更新哪一列
 	 */
-	public static void updateData(Object entity, WhereBuilder builder, String... updateColumnNames) {
+	public static void updateData(Object entity, WhereBuilder builder,
+			String... updateColumnNames) {
 		try {
 			utils.update(entity, builder, updateColumnNames);
 		} catch (DbException e) {
@@ -143,7 +146,8 @@ public class DBUtil {
 	/**
 	 * 按某列更新或插入单条数据
 	 */
-	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, WhereBuilder where, String... updateColumns) {
+	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz,
+			WhereBuilder where, String... updateColumns) {
 		try {
 			utils.saveOrUpdate(myEntity, where, updateColumns);
 		} catch (DbException e) {
@@ -159,9 +163,10 @@ public class DBUtil {
 	 * @param updateColumns
 	 *            在更新的情况下，指定更新哪些行，如果参数为0，则代表所有行都更新
 	 */
-	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz, String... updateColumns) {
+	public static <T> void saveOrUpdate(Object myEntity, Class<T> clazz,
+			String... updateColumns) {
 		try {
-			utils.saveOrUpdate(myEntity, null, updateColumns);
+			utils.saveOrUpdateNoTransaction(myEntity, null, updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
@@ -185,17 +190,42 @@ public class DBUtil {
 	 * @param updateColumns
 	 *            在更新的情况下，指定更新哪些行，如果参数为0，则代表所有行都更新
 	 */
-	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz, String... updateColumns) {
+	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz,
+			String... updateColumns) {
 		try {
-			utils.saveOrUpdateAll(entities, WhereBuilder.b(), updateColumns);
+			utils.saveOrUpdateAllNoTransaction(entities, WhereBuilder.b(),
+					updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz, List<WhereBuilder> builders, String... updateColumns) {
+	/**
+	 * 开启事务
+	 */
+	public static void beginTransation() {
+		utils.beginBatTransaction();
+	}
+
+	/**
+	 * 设置事务成功
+	 */
+	public static void setTransactionSuccessful() {
+		utils.setBatTransactionSuccessful();
+	}
+
+	/**
+	 * 结束事务
+	 */
+	public static void endTransation() {
+		utils.endBatTransactionSuccessful();
+	}
+
+	public static <T> void saveOrUpdateAll(List<T> entities, Class<T> clazz,
+			List<WhereBuilder> builders, String... updateColumns) {
 		try {
-			utils.saveOrUpdateAll(entities, builders, updateColumns);
+			utils.saveOrUpdateAllNoTransaction(entities, builders,
+					updateColumns);
 		} catch (DbException e) {
 			e.printStackTrace();
 		}
@@ -209,7 +239,8 @@ public class DBUtil {
 		}
 	}
 
-	public static void updateAll(List<?> entities, WhereBuilder builder, String... updateColumnNames) {
+	public static void updateAll(List<?> entities, WhereBuilder builder,
+			String... updateColumnNames) {
 		try {
 			utils.updateAll(entities, builder, updateColumnNames);
 		} catch (DbException e) {
@@ -277,11 +308,13 @@ public class DBUtil {
 	 * @author: LiXiaoSong
 	 * @date:2015-1-20
 	 */
-	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2, T1 t1, T2 t2) {
+	public static <T1, T2> void copyData(Class<T1> clazz1, Class<T2> clazz2,
+			T1 t1, T2 t2) {
 		Field[] fields1 = getDeclaedFields(clazz1);
 		Field[] fields2 = getDeclaedFields(clazz2);
 		if (t1 == null || t2 == null) {
-			LogUtils.v("解析内容出错,类型1" + clazz1.getSimpleName() + "类型2" + clazz2.getSimpleName());
+			LogUtils.v("解析内容出错,类型1" + clazz1.getSimpleName() + "类型2"
+					+ clazz2.getSimpleName());
 			return;
 		}
 		for (int i = 0; i < fields1.length; i++) {
@@ -293,7 +326,9 @@ public class DBUtil {
 				Field f2 = fields2[j];
 				f1.setAccessible(true);
 				f2.setAccessible(true);
-				if (f1.getName().equals(f2.getName()) && f1.getType().getSimpleName().equals(f2.getType().getSimpleName())) {// 两个变量名称相同，可以进行赋值
+				if (f1.getName().equals(f2.getName())
+						&& f1.getType().getSimpleName()
+								.equals(f2.getType().getSimpleName())) {// 两个变量名称相同，可以进行赋值
 					try {
 						f2.set(t2, f1.get(t1));
 					} catch (IllegalAccessException e) {
