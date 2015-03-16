@@ -134,4 +134,9 @@
 	    <item name="android:layout_width">match_parent</item>
 	    <item name="android:layout_height">@dimen/item_height_of_myaccount</item>
 	</style>
+	<!-- 用户头像固定宽高 -->
+	<style name="user_photo">
+	    <item name="android:layout_width">@dimen/user_headpic_minheight</item>
+	    <item name="android:layout_height">@dimen/user_headpic_minheight</item>
+	</style>
 </resources>

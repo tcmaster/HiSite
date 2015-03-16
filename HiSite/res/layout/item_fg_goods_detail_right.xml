@@ -4,8 +4,9 @@
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp" >
     <ImageView 
-        style="@style/wrap"
+        style="@style/user_photo"
         android:id="@+id/iv_photo"
+        android:scaleType="fitXY"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentLeft="true"

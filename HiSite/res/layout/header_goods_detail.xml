@@ -66,7 +66,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/hour"
+            android:id="@+id/tv_hour"
             style="@style/wrap"
             android:background="@color/black"
             android:padding="2dp"
@@ -82,7 +82,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/minute"
+            android:id="@+id/tv_minute"
             style="@style/wrap"
             android:background="@color/black"
             android:padding="2dp"
@@ -98,7 +98,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/second"
+            android:id="@+id/tv_second"
             style="@style/wrap"
             android:background="@color/black"
             android:padding="2dp"
@@ -114,7 +114,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/signup_Count"
+            android:id="@+id/tv_apply_count"
             style="@style/match_width"
             android:gravity="right|center_vertical"
             android:paddingRight="@dimen/common_margin_left"
