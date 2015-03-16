@@ -16,11 +16,11 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.GoodsImageListAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.model.common.Event;
+import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.view.CustomerDialog;
 import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.lidroid.xutils.view.annotation.event.OnTouch;
 
 /**
  * @author liuzhao 发活动第一步编辑
@@ -29,7 +29,7 @@ public class CreatEventFirstActivity extends BaseActivity {
 
 	/** 活动主题 */
 	@ViewInject(R.id.et_createevent_name)
-	private EditText et_createevent_name;
+	private TextView et_createevent_name;
 	/** 计划上架日期 */
 	@ViewInject(R.id.et_planPublishTime)
 	private EditText et_planPublishTime;
@@ -48,6 +48,16 @@ public class CreatEventFirstActivity extends BaseActivity {
 	/** 增加活动照片列表 */
 	@ViewInject(R.id.lv_goodsAddList)
 	private ListView lv_goodsAddList;
+	/** 上架日期 */
+	@ViewInject(R.id.iv_selected_PublishDate)
+	private ImageView iv_selected_PublishDate;
+	/** 举办开始日期 */
+	@ViewInject(R.id.iv_selected_DateStart)
+	private ImageView iv_selected_DateStart;
+	/** 举办结束日期 */
+	@ViewInject(R.id.iv_selected_DateEnd)
+	private ImageView iv_selected_DateEnd;
+
 	/** 下一步 */
 	@ViewInject(R.id.btn_createevent_first)
 	private Button btn_createevent_first;
@@ -64,46 +74,62 @@ public class CreatEventFirstActivity extends BaseActivity {
 
 	}
 
-	@OnTouch(R.id.et_eventDateStart)
-	public void onTouch(View v) {
-		// Intent intent = new Intent(CreatEventFirstActivity.this, CalendarActivity.class);
-		// startActivityForAnima(intent, null);
-	}
-
-	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first })
+	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first,
+			R.id.iv_selected_PublishDate,R.id.iv_selected_DateStart,R.id.iv_selected_DateEnd })
 	public void OnClick(View v) {
 		switch (v.getId()) {
 		case R.id.iv_popgoods_add:
-			CustomerDialog customerDialog = new CustomerDialog(CreatEventFirstActivity.this, R.layout.dialog_select_pic);
-			customerDialog.setOnCustomerViewCreated(new CustomerViewInterface() {
-
-				@Override
-				public void getCustomerView(Window window, AlertDialog dlg) {
-					Button leftButton = (Button) window.findViewById(R.id.btn_left);
-					Button rightButton = (Button) window.findViewById(R.id.btn_right);
-					leftButton.setOnClickListener(new OnClickListener() {
+			CustomerDialog customerDialog = new CustomerDialog(
+					CreatEventFirstActivity.this, R.layout.dialog_select_pic);
+			customerDialog
+					.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 						@Override
-						public void onClick(View arg0) {
-							getPhotoByTakePicture();
-						}
-					});
-					rightButton.setOnClickListener(new OnClickListener() {
+						public void getCustomerView(Window window,
+								AlertDialog dlg) {
+							Button leftButton = (Button) window
+									.findViewById(R.id.btn_left);
+							Button rightButton = (Button) window
+									.findViewById(R.id.btn_right);
+							leftButton
+									.setOnClickListener(new OnClickListener() {
 
-						@Override
-						public void onClick(View arg0) {
-							getPhotoFromGallery();
+										@Override
+										public void onClick(View arg0) {
+											getPhotoByTakePicture();
+										}
+									});
+							rightButton
+									.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View arg0) {
+											getPhotoFromGallery();
+										}
+									});
 						}
 					});
-				}
-			});
 			customerDialog.showDlg();
 			break;
 		case R.id.btn_createevent_first:
 			// StorgeCurrentData();
-			Intent intent = new Intent(CreatEventFirstActivity.this, CalendarActivity.class);
+			Intent intent = new Intent(CreatEventFirstActivity.this,
+					CalendarActivity.class);
 			startActivityForAnima(intent, null);
 			break;
+		case R.id.iv_selected_PublishDate:
+			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
+					et_planPublishTime);
+			break;
+		case R.id.iv_selected_DateStart:
+			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
+					et_eventDateStart);
+			break;
+		case R.id.iv_selected_DateEnd:
+			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
+					et_eventDateEnd);
+			break;
+
 		default:
 			break;
 		}

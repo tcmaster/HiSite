@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.android.tonight8.R;
+import com.android.tonight8.base.AppConstants;
 
 /**
  * @Description:分享的数据适配器
@@ -16,8 +17,8 @@ import com.android.tonight8.R;
  */
 public class ShareAdapter extends BaseAdapter {
 
-	private String[] strMenu = { "QQ空间", "QQ好友", "微信好友", " 朋友圈" };
-	private int[] intMenu = { R.drawable.appwx_logo, R.drawable.appwx_logo, R.drawable.appwx_logo, R.drawable.appwx_logo };
+	private String[] strMenu = { "QQ空间", "QQ好友", "微信好友", "朋友圈" };
+	private int[] intMenu = { R.drawable.share_qq_zone, R.drawable.share_cqq, R.drawable.share_wx, R.drawable.share_wx_friend };
 	private Context context;
 	private LayoutInflater mLiInflater;
 
@@ -55,7 +56,7 @@ public class ShareAdapter extends BaseAdapter {
 		}
 		holder.tv_grid_title.setText(strMenu[position]);
 		Drawable drawable = context.getResources().getDrawable(intMenu[position]);
-		drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumWidth());
+		drawable.setBounds(0, 0, AppConstants.widthPx/6, AppConstants.widthPx/6);
 		holder.tv_grid_title.setCompoundDrawables(null, drawable, null, null);
 		return convertView;
 	}

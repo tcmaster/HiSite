@@ -100,8 +100,11 @@ public class SharedUtils {
 		bundle.putString(QQShare.SHARE_TO_QQ_SUMMARY, shareThirdEntity.summary);
 		bundle.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, shareThirdEntity.shareType);
 		bundle.putInt(QQShare.SHARE_TO_QQ_EXT_INT, mExtarFlag);
-
-		Tonight8App.getSelf().mTencent.shareToQQ(activity, bundle, qqShareListener);
+		if (isToQQqzone) {
+			Tonight8App.getSelf().mTencent.shareToQzone(activity, bundle, qqShareListener);
+		} else {
+			Tonight8App.getSelf().mTencent.shareToQQ(activity, bundle, qqShareListener);
+		}
 
 	}
 

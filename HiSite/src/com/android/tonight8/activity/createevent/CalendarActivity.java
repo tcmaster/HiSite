@@ -6,8 +6,8 @@ import android.os.Bundle;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.view.CalendarView;
-import com.android.tonight8.view.CalendarView.OnItemClickListener;
+import com.android.tonight8.view.MyCalendarView;
+import com.android.tonight8.view.MyCalendarView.OnMyItemClickListener;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -19,21 +19,22 @@ public class CalendarActivity extends BaseActivity {
 
 	/** */
 	@ViewInject(R.id.cv_select_calendar)
-	private CalendarView cv_select_calendar;
+	private MyCalendarView cv_select_calendar;
 	private String[] selectData = { "2015-2-25","2015-2-23","2015-2-18","2014-12-25", "2015-03-25", "2015-4-25", "2015-2-15", "2015-2-2" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_select_calendar);
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState); 
 		cv_select_calendar.setSelectMore(false);
 		cv_select_calendar.setSelectedOtherDay(selectData);
-		cv_select_calendar.setOnItemClickListener(new OnItemClickListener() {
-
+		cv_select_calendar.setOnItemClickListener(new OnMyItemClickListener() {
+			
 			@Override
-			public void OnItemClick(Date selectedStartDate, Date selectedEndDate, Date downDate) {
+			public void OnItemClick(Date selectedStartDate, Date selectedEndDate,
+					Date downDate) {
 				// TODO Auto-generated method stub
-
+				
 			}
 		});
 	}

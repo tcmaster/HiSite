@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.android.tonight8.view.CalendarView
+    <com.android.tonight8.view.MyCalendarView
         android:id="@+id/cv_select_calendar"
-        style="@style/match_width" >
-    </com.android.tonight8.view.CalendarView>
+        style="@style/match_width" />
+
 
 </LinearLayout>

@@ -6,9 +6,8 @@
     android:layout_marginRight="@dimen/common_margin_left"
     android:orientation="vertical" >
 
-    <CalendarView
+    <com.android.tonight8.view.MyCalendarView
         android:id="@+id/calendarView_selected"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/match_width" />
 
 </LinearLayout>

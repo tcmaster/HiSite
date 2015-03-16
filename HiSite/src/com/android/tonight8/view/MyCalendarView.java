@@ -1,10 +1,7 @@
 package com.android.tonight8.view;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import com.android.tonight8.R.color;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,11 +15,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.android.tonight8.R.color;
+
 /**
  * 日历控件 功能：获得点选的日期区间（可多选）
  * 
  */
-public class CalendarView extends View implements View.OnTouchListener {
+public class MyCalendarView extends View implements View.OnTouchListener {
 
 	private final static String TAG = "anCalendar";
 	private Date selectedStartDate;
@@ -38,17 +37,17 @@ public class CalendarView extends View implements View.OnTouchListener {
 	private int curStartIndex, curEndIndex; // 当前显示的日历起始的索引
 	private boolean completed = false; // 为false表示只选择了开始日期，true表示结束日期也选择了
 	private boolean isSelectMore = false;
-	/** 选中的日期 */
+	/** 开始加载选中的日期 */
 	private String[] selectData;
-	// 给控件设置监听事件
-	private OnItemClickListener onItemClickListener;
+	/** 给控件设置监听事件 */
+	private OnMyItemClickListener onItemClickListener;
 
-	public CalendarView(Context context) {
+	public MyCalendarView(Context context) {
 		super(context);
 		init();
 	}
 
-	public CalendarView(Context context, AttributeSet attrs) {
+	public MyCalendarView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
@@ -484,12 +483,12 @@ public class CalendarView extends View implements View.OnTouchListener {
 	}
 
 	// 给控件设置监听事件
-	public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+	public void setOnItemClickListener(OnMyItemClickListener onItemClickListener) {
 		this.onItemClickListener = onItemClickListener;
 	}
 
 	// 监听接口
-	public interface OnItemClickListener {
+	public interface OnMyItemClickListener {
 
 		void OnItemClick(Date selectedStartDate, Date selectedEndDate,
 				Date downDate);
@@ -599,4 +598,5 @@ public class CalendarView extends View implements View.OnTouchListener {
 			cellBgPaint.setColor(cellSelectedColor);
 		}
 	}
+
 }

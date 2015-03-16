@@ -9,7 +9,7 @@
         android:drawablePadding="@dimen/drawable_padding"
         android:gravity="center"
         android:singleLine="true"
-        android:padding="@dimen/common_margin_left"
-        android:textSize="@dimen/middleTextSize" />
+        android:padding="@dimen/common_margin_small"
+        android:textSize="@dimen/smallTextSize" />
 
 </RelativeLayout>

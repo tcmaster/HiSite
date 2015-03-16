@@ -16,11 +16,16 @@
 
             <TextView
                 style="@style/createeventtext_style"
+                android:layout_height="match_parent"
                 android:text="活动主题：" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_createevent_name"
-                style="@style/et_comm_style" />
+                style="@style/et_comm_style"
+                android:drawableLeft="@drawable/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="请输入活动主题"
+                android:textColor="@color/red" />
         </LinearLayout>
 
         <LinearLayout
@@ -34,7 +39,15 @@
 
             <EditText
                 android:id="@+id/et_planPublishTime"
-                style="@style/et_comm_style" />
+                style="@style/et_comm_style"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:editable="false" />
+
+            <ImageView
+                android:id="@+id/iv_selected_PublishDate"
+                style="@style/wrap"
+                android:background="@drawable/ic_launcher" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,12 +57,19 @@
 
             <TextView
                 style="@style/createeventtext_style"
-                android:text="活动日期：" />
+                android:text="举办日期：" />
 
             <EditText
                 android:id="@+id/et_eventDateStart"
                 style="@style/et_comm_style"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="false"
+                android:editable="false" />
+
+            <ImageView
+                android:id="@+id/iv_selected_DateStart"
+                style="@style/wrap"
+                android:background="@drawable/ic_launcher" />
 
             <TextView
                 style="@style/wrap"
@@ -58,7 +78,14 @@
             <EditText
                 android:id="@+id/et_eventDateEnd"
                 style="@style/et_comm_style"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clickable="false"
+                android:editable="false" />
+
+            <ImageView
+                android:id="@+id/iv_selected_DateEnd"
+                style="@style/wrap"
+                android:background="@drawable/ic_launcher" />
         </LinearLayout>
 
         <View
@@ -74,32 +101,21 @@
                 style="@style/createeventtext_style"
                 android:text="奖       品：" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_popGoodsName"
                 style="@style/et_comm_style"
                 android:layout_toRightOf="@+id/tv_popgoods_temp"
-                android:hint="请输入奖品内容" />
-
-            <TextView
-                android:id="@+id/tv_popgoods_description"
-                style="@style/createeventsmalltext_style"
-                android:layout_alignLeft="@+id/et_popGoodsName"
-                android:layout_below="@+id/et_popGoodsName"
-                android:text="@string/up_popgoods_description" />
+                android:drawableLeft="@drawable/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="请输入奖品内容"
+                android:textColor="@color/red" />
 
             <ImageView
                 android:id="@+id/iv_popgoods_add"
                 style="@style/wrap"
-                android:layout_alignLeft="@+id/tv_popgoods_description"
-                android:layout_below="@+id/tv_popgoods_description"
+                android:layout_below="@+id/et_popGoodsName"
+                android:layout_toRightOf="@+id/tv_popgoods_temp"
                 android:background="@drawable/ic_launcher" />
-
-            <TextView
-                android:id="@+id/tv_popgoods_price"
-                style="@style/createeventsmalltext_style"
-                android:layout_below="@+id/tv_popgoods_description"
-                android:layout_toRightOf="@+id/iv_popgoods_temp"
-                android:text="20" />
         </RelativeLayout>
 
         <LinearLayout
@@ -118,22 +134,19 @@
 
             <TextView
                 style="@style/wrap"
-                android:text="元" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/match_width"
-            android:orientation="horizontal"
-            android:padding="@dimen/common_margin_left" >
+                android:text="元"
+                android:textSize="@dimen/middleTextSize" />
 
             <TextView
                 style="@style/createeventtext_style"
+                android:paddingLeft="@dimen/common_margin_left"
                 android:text="中奖名额：" />
 
             <EditText
                 android:id="@+id/et_awardCount"
                 style="@style/et_comm_style"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:inputType="number" />
         </LinearLayout>
 
         <RelativeLayout
@@ -143,7 +156,7 @@
             <TextView
                 android:id="@+id/tv_goods_temp"
                 style="@style/createeventtext_style"
-                android:text="奖品详情：" />
+                android:text="详       情：" />
 
             <EditText
                 android:id="@+id/et_goodsName"
@@ -151,18 +164,11 @@
                 android:layout_toRightOf="@+id/tv_goods_temp"
                 android:hint="请输入奖品内容" />
 
-            <TextView
-                android:id="@+id/tv_goods_description"
-                style="@style/createeventsmalltext_style"
-                android:layout_alignLeft="@+id/et_goodsName"
-                android:layout_below="@+id/et_goodsName"
-                android:text="@string/up_popgoods_description" />
-
             <com.android.tonight8.view.ListViewForScrollView
                 android:id="@+id/lv_goodsAddList"
                 style="@style/match_width"
-                android:layout_alignLeft="@+id/tv_goods_description"
-                android:layout_below="@+id/tv_goods_description" />
+                android:layout_alignLeft="@+id/et_goodsName"
+                android:layout_below="@+id/et_goodsName" />
 
             <ImageView
                 android:id="@+id/iv_goods_temp"
@@ -170,13 +176,6 @@
                 android:layout_alignLeft="@+id/lv_goodsAddList"
                 android:layout_below="@+id/lv_goodsAddList"
                 android:background="@drawable/ic_launcher" />
-
-            <TextView
-                android:id="@+id/tv_goods_price"
-                style="@style/createeventsmalltext_style"
-                android:layout_below="@+id/lv_goodsAddList"
-                android:layout_toRightOf="@+id/iv_goods_temp"
-                android:text="20" />
         </RelativeLayout>
 
         <LinearLayout
@@ -187,15 +186,17 @@
             <TextView
                 style="@style/createeventtext_style"
                 android:layout_height="match_parent"
-                android:gravity="top"
                 android:text="活动规则：" />
 
-            <EditText
-                android:id="@+id/et_event_"
+            <TextView
+                android:id="@+id/et_createevent_rule"
                 style="@style/et_comm_style"
-                android:layout_height="100dp"
                 android:layout_weight="1"
-                android:maxLength="120" />
+                android:drawableLeft="@drawable/ic_launcher"
+                android:gravity="center_vertical"
+                android:maxLength="120"
+                android:text="请输入奖品内容"
+                android:textColor="@color/red" />
         </LinearLayout>
 
         <Button

@@ -15,7 +15,8 @@ public class DateTimeUtils {
 	 * @throws Exception
 	 */
 	public static String getUpdateDate(Date date) {
-		SimpleDateFormat DATA_FORMAT_ENYYMMDD = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+		SimpleDateFormat DATA_FORMAT_ENYYMMDD = new SimpleDateFormat(
+				"yyyy-MM-dd", Locale.getDefault());
 		Calendar calendar = Calendar.getInstance();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
@@ -23,13 +24,20 @@ public class DateTimeUtils {
 			return DATA_FORMAT_ENYYMMDD.format(date);
 		} else if (calendar.get(Calendar.MONTH) - cal.get(Calendar.MONTH) > 0) {
 			return DATA_FORMAT_ENYYMMDD.format(date);
-		} else if (calendar.get(Calendar.DAY_OF_MONTH) - cal.get(Calendar.DAY_OF_MONTH) > 6) {
+		} else if (calendar.get(Calendar.DAY_OF_MONTH)
+				- cal.get(Calendar.DAY_OF_MONTH) > 6) {
 			return DATA_FORMAT_ENYYMMDD.format(date);
-		} else if ((calendar.get(Calendar.DAY_OF_MONTH) - cal.get(Calendar.DAY_OF_MONTH) > 0) && (calendar.get(Calendar.DAY_OF_MONTH) - cal.get(Calendar.DAY_OF_MONTH) < 6)) {
-			int i = calendar.get(Calendar.HOUR_OF_DAY) - cal.get(Calendar.HOUR_OF_DAY);
+		} else if ((calendar.get(Calendar.DAY_OF_MONTH)
+				- cal.get(Calendar.DAY_OF_MONTH) > 0)
+				&& (calendar.get(Calendar.DAY_OF_MONTH)
+						- cal.get(Calendar.DAY_OF_MONTH) < 6)) {
+			int i = calendar.get(Calendar.HOUR_OF_DAY)
+					- cal.get(Calendar.HOUR_OF_DAY);
 			return i + "天前";
-		} else if (calendar.get(Calendar.HOUR_OF_DAY) - cal.get(Calendar.HOUR_OF_DAY) > 0) {
-			int i = calendar.get(Calendar.HOUR_OF_DAY) - cal.get(Calendar.HOUR_OF_DAY);
+		} else if (calendar.get(Calendar.HOUR_OF_DAY)
+				- cal.get(Calendar.HOUR_OF_DAY) > 0) {
+			int i = calendar.get(Calendar.HOUR_OF_DAY)
+					- cal.get(Calendar.HOUR_OF_DAY);
 			return i + "小时前";
 		} else if (calendar.get(Calendar.MINUTE) - cal.get(Calendar.MINUTE) > 0) {
 			int i = calendar.get(Calendar.MINUTE) - cal.get(Calendar.MINUTE);
@@ -42,5 +50,19 @@ public class DateTimeUtils {
 		} else {
 			return DATA_FORMAT_ENYYMMDD.format(date);
 		}
+	}
+
+	/**
+	 * 将短时间格式时间转换为字符串 yyyy-MM-dd
+	 * 
+	 * @param dateDate
+	 * @param k
+	 * @return
+	 */
+	public static String dateToStr(Date dateDate) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd",
+				Locale.getDefault());
+		String dateString = formatter.format(dateDate);
+		return dateString;
 	}
 }
