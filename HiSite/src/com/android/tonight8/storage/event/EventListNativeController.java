@@ -47,11 +47,15 @@ public class EventListNativeController {
 			ExchangeEntity exchangeEntity = new ExchangeEntity();
 			PopGoodsEntity popGoodsEntity = new PopGoodsEntity();
 			// 数据存储
-			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods, popGoodsEntity);
-			DBUtil.copyData(Event.class, EventEntity.class, model.event, eventEntity);
+			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class,
+					model.popGoods, popGoodsEntity);
+			DBUtil.copyData(Event.class, EventEntity.class, model.event,
+					eventEntity);
 			DBUtil.copyData(Org.class, OrgEntity.class, model.org, orgEntity);
-			DBUtil.copyData(CouponProvide.class, CouponProvideEntity.class, model.couponProvide, couponEntity);
-			DBUtil.copyData(Exchange.class, ExchangeEntity.class, model.exchange, exchangeEntity);
+			DBUtil.copyData(CouponProvide.class, CouponProvideEntity.class,
+					model.couponProvide, couponEntity);
+			DBUtil.copyData(Exchange.class, ExchangeEntity.class,
+					model.exchange, exchangeEntity);
 			// 外键连接
 			popGoodsEntity.event = eventEntity;
 			eventEntity.org = orgEntity;
@@ -63,14 +67,29 @@ public class EventListNativeController {
 			couponProvideEntities.add(couponEntity);
 			exchangeEntities.add(exchangeEntity);
 			popGoodsEntities.add(popGoodsEntity);
-			popGoodsBuilders.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
-			exchangeBuilders.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
+			popGoodsBuilders
+					.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
+			exchangeBuilders
+					.add(WhereBuilder.b("rid", "=", eventEntity.getId()));
 		}
-		DBUtil.saveOrUpdateAll(popGoodsEntities, PopGoodsEntity.class, popGoodsBuilders, "popGoodsName", "popGoodsPic", "popGoodsPrice", "rid");
-		DBUtil.saveOrUpdateAll(exchangeEntities, ExchangeEntity.class, exchangeBuilders, "method", "address", "orgAll", "rid");
-		DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name", "distance", "applyCount", "consultCount", "rid");
-		DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
-		DBUtil.saveOrUpdateAll(couponProvideEntities, CouponProvideEntity.class, "type", "provideNum", "provideAll", "rid");
+		try {
+			DBUtil.beginTransation();
+			DBUtil.saveOrUpdateAll(popGoodsEntities, PopGoodsEntity.class,
+					popGoodsBuilders, "popGoodsName", "popGoodsPic",
+					"popGoodsPrice", "rid");
+			DBUtil.saveOrUpdateAll(exchangeEntities, ExchangeEntity.class,
+					exchangeBuilders, "method", "address", "orgAll", "rid");
+			DBUtil.saveOrUpdateAll(eventEntities, EventEntity.class, "name",
+					"distance", "applyCount", "consultCount", "rid");
+			DBUtil.saveOrUpdateAll(orgEntities, OrgEntity.class, "name");
+			DBUtil.saveOrUpdateAll(couponProvideEntities,
+					CouponProvideEntity.class, "type", "provideNum",
+					"provideAll", "rid");
+			DBUtil.setTransactionSuccessful();
+		} finally {
+			DBUtil.endTransation();
+		}
+
 		utils.testTimeEnd("存数据");
 	}
 
@@ -79,22 +98,27 @@ public class EventListNativeController {
 	 * @return 排序好的数据
 	 * @author: LiXiaoSong
 	 * @param count显示多少条记录
-	 * @param offset 跳过多少条记录
+	 * @param offset
+	 *            跳过多少条记录
 	 * 
 	 * @date:2015-1-21
 	 */
-	public List<EventListModel> selectData(int count,int offset) {
+	public List<EventListModel> selectData(int count, int offset) {
 		TestUtils utils = new TestUtils();
 		utils.testTimeBegin();
 		List<EventListModel> models = new ArrayList<EventListModel>();
-		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class,count,offset);
+		List<EventEntity> eventEntities = DBUtil.getData(EventEntity.class,
+				count, offset);
 		for (int i = 0; i < eventEntities.size(); i++) {
 			EventListModel model = new EventListModel();
 			EventEntity eventEntity = eventEntities.get(i);
 			OrgEntity orgEntity = eventEntity.org;
-			CouponProvideEntity couponEntity = DBUtil.getDataFirst(CouponProvideEntity.class, "rid = " + eventEntity.getId());
-			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + eventEntity.getId());
-			PopGoodsEntity popGoodsEntity = DBUtil.getDataFirst(PopGoodsEntity.class, "rid = " + eventEntity.getId());
+			CouponProvideEntity couponEntity = DBUtil.getDataFirst(
+					CouponProvideEntity.class, "rid = " + eventEntity.getId());
+			ExchangeEntity exchangeEntity = DBUtil.getDataFirst(
+					ExchangeEntity.class, "rid = " + eventEntity.getId());
+			PopGoodsEntity popGoodsEntity = DBUtil.getDataFirst(
+					PopGoodsEntity.class, "rid = " + eventEntity.getId());
 			Event event = new Event();
 			Org org = new Org();
 			CouponProvide couponProvide = new CouponProvide();
@@ -102,9 +126,12 @@ public class EventListNativeController {
 			PopGoods popGoods = new PopGoods();
 			DBUtil.copyData(EventEntity.class, Event.class, eventEntity, event);
 			DBUtil.copyData(OrgEntity.class, Org.class, orgEntity, org);
-			DBUtil.copyData(CouponProvideEntity.class, CouponProvide.class, couponEntity, couponProvide);
-			DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity, exchange);
-			DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, popGoodsEntity, popGoods);
+			DBUtil.copyData(CouponProvideEntity.class, CouponProvide.class,
+					couponEntity, couponProvide);
+			DBUtil.copyData(ExchangeEntity.class, Exchange.class,
+					exchangeEntity, exchange);
+			DBUtil.copyData(PopGoodsEntity.class, PopGoods.class,
+					popGoodsEntity, popGoods);
 			model.event = event;
 			model.org = org;
 			model.couponProvide = couponProvide;

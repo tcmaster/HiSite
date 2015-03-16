@@ -66,7 +66,7 @@ public class EventIOController {
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t, Handler handler) {
 				ArrayList<EventListModel> lists = new ArrayList<EventListModel>();
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 100; i++) {
 					EventListModel model = new EventListModel();
 					Event event = new Event();
 					PopGoods popGoods = new PopGoods();
