@@ -4,7 +4,7 @@
  * @author Maxwin
  * @description XListView's header
  */
-package com.android.tonight8.view;
+package com.android.tonight8.view.xlistview;
 
 import android.content.Context;
 import android.util.AttributeSet;

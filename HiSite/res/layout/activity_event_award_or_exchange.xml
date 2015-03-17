@@ -3,7 +3,7 @@
     style="@style/match"
     tools:context=".EventAwardActivity"
     android:orientation="vertical" >
-	<com.android.tonight8.view.XListView 
+	<com.android.tonight8.view.xlistview.XListView 
 	    style="@style/match_width"
 	    android:id="@+id/lv_award_or_exchange"
 	    android:scrollbars="none"/>

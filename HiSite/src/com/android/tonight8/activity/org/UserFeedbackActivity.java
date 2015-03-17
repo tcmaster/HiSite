@@ -15,7 +15,7 @@ import com.android.tonight8.model.common.Question;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.organization.OrgQuestionModel;
 import com.android.tonight8.storage.org.OrgStorage;
-import com.android.tonight8.view.XListView;
+import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**

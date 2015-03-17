@@ -1,4 +1,4 @@
-package com.android.tonight8.view;
+package com.android.tonight8.view.xlistview;
 
 /**
  * @file XFooterView.java

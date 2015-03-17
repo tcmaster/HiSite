@@ -9,7 +9,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center" />
 
-    <com.android.tonight8.view.XListView
+    <com.android.tonight8.view.xlistview.XListView
         android:id="@+id/lv_goods_detail"
         style="@style/match"
         android:scrollbars="none" />

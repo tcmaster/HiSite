@@ -6,7 +6,7 @@
  * @description An ListView support (a) Pull down to refresh, (b) Pull up to load more.
  * 		Implement IXListViewListener, and see stopRefresh() / stopLoadMore().
  */
-package com.android.tonight8.view;
+package com.android.tonight8.view.xlistview;
 
 import java.util.Date;
 

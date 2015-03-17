@@ -10,7 +10,7 @@ import com.android.tonight8.adapter.event.EventsAwardManageAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.model.manageevent.ManageAwardEventModel;
-import com.android.tonight8.view.XListView;
+import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**

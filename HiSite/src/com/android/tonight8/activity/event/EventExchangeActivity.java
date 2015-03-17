@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.EventExchangeAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.view.XListView;
+import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnItemClick;
 

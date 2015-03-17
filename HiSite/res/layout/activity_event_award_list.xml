@@ -91,7 +91,7 @@
             android:background="@drawable/ic_launcher" />
     </RelativeLayout>
 
-    <com.android.tonight8.view.XListView
+    <com.android.tonight8.view.xlistview.XListView
         android:id="@+id/lv_event_awardlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

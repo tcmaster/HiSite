@@ -12,8 +12,8 @@ import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.org.OrgIOController;
 import com.android.tonight8.model.organization.OrgMessageModel;
 import com.android.tonight8.storage.org.OrgLoginNativeController;
-import com.android.tonight8.view.XListView;
-import com.android.tonight8.view.XListView.IXListViewListener;
+import com.android.tonight8.view.xlistview.XListView;
+import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**

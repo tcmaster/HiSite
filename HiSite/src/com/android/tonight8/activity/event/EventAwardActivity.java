@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.EventAwardAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.view.XListView;
+import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
