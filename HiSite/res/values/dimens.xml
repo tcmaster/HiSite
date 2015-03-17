@@ -12,7 +12,10 @@
     <dimen name="middleTextSize">16sp</dimen>
     <dimen name="bigTextSize">18sp</dimen>
     <dimen name="hugeTextSize">20sp</dimen>
+    <dimen name="pinyinTextSize">30sp</dimen>
     <dimen name="superHugeTextSize">24sp</dimen>
+    <!-- sideBar的宽度 -->
+    <dimen name="sideBarWidth">40dp</dimen>
     <!-- 统一的文字左边距 (无图) -->
     <dimen name="text_left_margin">20dp</dimen>
     <!-- 统一的文字右边距 (无图) -->

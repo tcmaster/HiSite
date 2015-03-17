@@ -15,13 +15,15 @@ import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
 import com.android.tonight8.fragment.main.PostEventMenuFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
+import com.android.tonight8.storage.DBUtil;
 
 /**
  * @Description:主界面
  * @author:LiXiaoSong
  * @Date:2014年12月17日
  */
-public class MainActivity extends BaseActivity implements OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements
+		OnCheckedChangeListener {
 
 	/** 界面下方四个按钮组 */
 	private RadioGroup rg_mian;
@@ -67,6 +69,12 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initDatas();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		DBUtil.close();// 关闭数据库
 	}
 
 	private void initDatas() {

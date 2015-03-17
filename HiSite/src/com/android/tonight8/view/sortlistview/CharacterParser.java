@@ -1,7 +1,10 @@
 package com.android.tonight8.view.sortlistview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Java����ת��Ϊƴ��
+ * Java汉字转化为拼音
  * 
  */
 public class CharacterParser {
@@ -116,7 +119,7 @@ public class CharacterParser {
 		this.resource = resource;
 	}
 
-	/** * ����ת��ASCII�� * * @param chs * @return */
+	/** * 汉字转成ASCII码 * * @param chs * @return */
 	private int getChsAscii(String chs) {
 		int asc = 0;
 		try {
@@ -140,7 +143,7 @@ public class CharacterParser {
 		return asc;
 	}
 
-	/** * ���ֽ��� * * @param str * @return */
+	/** * 单字解析 * * @param str * @return */
 	public String convert(String str) {
 		String result = null;
 		int ascii = getChsAscii(str);
@@ -157,7 +160,7 @@ public class CharacterParser {
 		return result;
 	}
 
-	/** * ������� * * @param chs * @return */
+	/** * 词组解析 * * @param chs * @return */
 	public String getSelling(String chs) {
 		String key, value;
 		buffer = new StringBuilder();
@@ -178,6 +181,28 @@ public class CharacterParser {
 
 	public String getSpelling() {
 		return this.getSelling(this.getResource());
+	}
+
+	public List<SortModel> filledData(String[] data) {
+		List<SortModel> mSortList = new ArrayList<SortModel>();
+		for (int i = 0; i < data.length; i++) {
+			SortModel sortModel = new SortModel();
+			sortModel.setName(data[i]);
+			// 汉字转换成拼音
+			String pinyin = getSelling(data[i]);
+			String sortString = pinyin.substring(0, 1).toUpperCase();
+
+			// 正则表达式，判断首字母是否是英文字母
+			if (sortString.matches("[A-Z]")) {
+				sortModel.setSortLetters(sortString.toUpperCase());
+			} else {
+				sortModel.setSortLetters("#");
+			}
+
+			mSortList.add(sortModel);
+		}
+		return mSortList;
+
 	}
 
 }

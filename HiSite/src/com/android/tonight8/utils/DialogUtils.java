@@ -3,12 +3,15 @@
  */
 package com.android.tonight8.utils;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.renderscript.Sampler;
+import android.content.Context;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -19,6 +22,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.ShareAdapter;
@@ -27,6 +32,12 @@ import com.android.tonight8.view.CustomerDialog;
 import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 import com.android.tonight8.view.MyCalendarView;
 import com.android.tonight8.view.MyCalendarView.OnMyItemClickListener;
+import com.android.tonight8.view.sortlistview.CharacterParser;
+import com.android.tonight8.view.sortlistview.PinyinComparator;
+import com.android.tonight8.view.sortlistview.SideBar;
+import com.android.tonight8.view.sortlistview.SideBar.OnTouchingLetterChangedListener;
+import com.android.tonight8.view.sortlistview.SortAdapter;
+import com.android.tonight8.view.sortlistview.SortModel;
 import com.lidroid.xutils.util.LogUtils;
 
 /**
@@ -236,5 +247,41 @@ public class DialogUtils {
 		cdlg.setDismissIfClick(true);
 		cdlg.setLayoutGravity(Gravity.BOTTOM);
 		cdlg.showDlg();
+	}
+
+	/**
+	 * 
+	 */
+	public static void showRegionalDialog(Context context, int width,
+			int height, View dropDownView) {
+		View contentView = LayoutInflater.from(context).inflate(
+				R.layout.dlg_regional_search, null);
+		PopupWindow popupWindow = new PopupWindow(contentView, width, height);
+		popupWindow.showAsDropDown(dropDownView, 0, 20);// 这里的y轴便宜不太准确，后续需要精确计算
+		final ListView lv_regional_search = (ListView) contentView
+				.findViewById(R.id.lv_regional_search);
+		SideBar sb_right = (SideBar) contentView.findViewById(R.id.sb_right);
+		TextView tv_pinyin = (TextView) contentView
+				.findViewById(R.id.tv_pinyin);
+		sb_right.setTextView(tv_pinyin);
+		// 测试数据
+		String[] data = new String[] { "北京", "天津", "河北", "法国", "安徽", "内蒙古",
+				"印度", "尼泊尔", "英国", "土耳其", "西班牙", "北京", "天津", "河北", "法国", "安徽",
+				"内蒙古", "印度", "尼泊尔", "英国", "土耳其", "西班牙", "北京", "天津", "河北", "法国",
+				"安徽", "内蒙古", "印度", "尼泊尔", "英国", "土耳其", "西班牙" };
+		final CharacterParser parser = CharacterParser.getInstance();
+		List<SortModel> models = parser.filledData(data);
+		final SortAdapter adapter = new SortAdapter(context, models);
+		PinyinComparator comparator = new PinyinComparator();
+		Collections.sort(models, comparator);// 按拼音牌序
+		lv_regional_search.setAdapter(adapter);
+		sb_right.setOnTouchingLetterChangedListener(new OnTouchingLetterChangedListener() {
+
+			@Override
+			public void onTouchingLetterChanged(String s) {
+				lv_regional_search.setSelection(adapter
+						.getPositionForSection((int) s.getBytes()[0]));
+			}
+		});
 	}
 }
