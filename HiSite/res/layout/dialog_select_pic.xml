@@ -18,15 +18,15 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btn_left"
+            android:id="@+id/btn_pic_left"
             style="@style/ok_button_style"
             android:layout_weight="1"
             android:gravity="center"
             android:singleLine="true"
-            android:text="从相册选取" />
+            android:text="相册" />
 
         <Button
-            android:id="@+id/btn_right"
+            android:id="@+id/btn_pic_right"
             style="@style/ok_button_style"
             android:layout_weight="1"
             android:gravity="center"

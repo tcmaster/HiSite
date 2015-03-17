@@ -53,7 +53,8 @@
         <LinearLayout
             style="@style/match_width"
             android:orientation="horizontal"
-            android:padding="@dimen/common_margin_left" >
+            android:padding="@dimen/common_margin_left"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/createeventtext_style"
@@ -158,23 +159,28 @@
                 style="@style/createeventtext_style"
                 android:text="详       情：" />
 
-            <EditText
-                android:id="@+id/et_goodsName"
-                style="@style/et_comm_style"
-                android:layout_toRightOf="@+id/tv_goods_temp"
-                android:hint="请输入奖品内容" />
-
             <com.android.tonight8.view.ListViewForScrollView
                 android:id="@+id/lv_goodsAddList"
                 style="@style/match_width"
-                android:layout_alignLeft="@+id/et_goodsName"
-                android:layout_below="@+id/et_goodsName" />
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@+id/tv_goods_temp" >
+            </com.android.tonight8.view.ListViewForScrollView>
+
+            <TextView
+                android:id="@+id/et_goodsName"
+                style="@style/et_comm_style"
+                android:layout_alignLeft="@+id/lv_goodsAddList"
+                android:layout_below="@+id/lv_goodsAddList"
+                android:drawableLeft="@drawable/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="请输入奖品内容"
+                android:textColor="@color/red" />
 
             <ImageView
                 android:id="@+id/iv_goods_temp"
                 style="@style/wrap"
                 android:layout_alignLeft="@+id/lv_goodsAddList"
-                android:layout_below="@+id/lv_goodsAddList"
+                android:layout_below="@+id/et_goodsName"
                 android:background="@drawable/ic_launcher" />
         </RelativeLayout>
 

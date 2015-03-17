@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.ShareAdapter;
+import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.utils.SharedUtils.ShareThirdEntity;
 import com.android.tonight8.view.CustomerDialog;
 import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
@@ -88,25 +89,41 @@ public class DialogUtils {
 	 */
 
 	public static void showSelectPicDialog(final Activity activity,
-			ButtonOnClick listener) {
+			final int requestCodeGallery, final int requestCodeTakePicture) {
 		final CustomerDialog cdlg = new CustomerDialog(activity,
 				R.layout.dialog_select_pic);
-		cdlg.setOnCustomerViewCreated(listener);
+
+		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
+
+			@Override
+			public void getCustomerView(Window window, final AlertDialog dlg) {
+				Button btn_left = (Button) window
+						.findViewById(R.id.btn_pic_left);
+				Button btn_right = (Button) window
+						.findViewById(R.id.btn_pic_right);
+				btn_left.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						((BaseActivity) activity)
+								.getPhotoFromGallery(requestCodeGallery);
+						dlg.dismiss();
+
+					}
+				});
+				btn_right.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						((BaseActivity) activity)
+								.getPhotoByTakePicture(requestCodeTakePicture);
+						dlg.dismiss();
+					}
+				});
+			}
+		});
+		// cdlg.setOnCustomerViewCreated(listener);
 		cdlg.showDlg();
-	}
-
-	public static abstract class ButtonOnClick implements CustomerViewInterface {
-
-		@Override
-		public void getCustomerView(Window window, AlertDialog dlg) {
-			Button btn_left = (Button) window.findViewById(R.id.btn_left);// 找到listView
-			Button btn_right = (Button) window.findViewById(R.id.btn_right);
-			getButton(btn_left, btn_right, dlg);
-		}
-
-		public abstract void getButton(Button leftButton, Button rightButton,
-				final AlertDialog dlg);
-
 	}
 
 	/**

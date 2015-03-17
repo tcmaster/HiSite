@@ -47,18 +47,14 @@ public class BaseActivity extends FragmentActivity {
 	/** 获取当前Activity的上下文对象 */
 	protected Context mContext;
 	// 标识位
-	/**
-	 * 图库
-	 */
+	/** 图库 */
 	protected static final int PICKPICTURE = 1;
-	/**
-	 * 相机
-	 */
+	/** 相机 */
 	protected static final int TAKEPHOTO = 2;
-	/**
-	 * 裁剪
-	 */
+	/** 裁剪 */
 	protected static final int CROP = 3;
+	/** 文本 */
+	protected static final int TEXTEDIT = 4;
 	// 默认裁剪的宽高
 	private static final int OUTPUT_X = 256;
 	private static final int OUTPUT_Y = 256;
@@ -390,7 +386,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaosong
 	 * @date:2014-10-8
 	 */
-	public void cropPicture(Uri uri) {
+	public void cropPicture(Uri uri,int requestCode) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");// 可裁剪
@@ -402,7 +398,7 @@ public class BaseActivity extends FragmentActivity {
 		intent.putExtra("return-data", false);// 若为false则表示不返回数据
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 		intent.putExtra("noFaceDetection", true);
-		startActivityForResult(intent, CROP);
+		startActivityForResult(intent, requestCode);
 	}
 
 	/**
@@ -411,11 +407,11 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaosong
 	 * @date:2014-10-8
 	 */
-	public void getPhotoFromGallery() {
+	public void getPhotoFromGallery(int requestCode) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_PICK);
 		intent.setType("image/*");
-		startActivityForResult(intent, PICKPICTURE);
+		startActivityForResult(intent, requestCode);
 	}
 
 	/**
@@ -424,7 +420,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaosong
 	 * @date:2014-10-8
 	 */
-	public void getPhotoByTakePicture() {
+	public void getPhotoByTakePicture(int requestCode) {
 		String state = Environment.getExternalStorageState();
 		if (state.equals(Environment.MEDIA_MOUNTED)) {
 			tempName = System.currentTimeMillis() + ".jpg";
@@ -437,7 +433,7 @@ public class BaseActivity extends FragmentActivity {
 					"android.media.action.IMAGE_CAPTURE");
 			getImageByCamera.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
 			getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, u);
-			startActivityForResult(getImageByCamera, TAKEPHOTO);
+			startActivityForResult(getImageByCamera, requestCode);
 		} else {
 			Utils.toast("未检测到SD卡，无法拍照获取图片");
 		}

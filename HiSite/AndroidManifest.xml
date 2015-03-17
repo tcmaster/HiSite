@@ -286,6 +286,11 @@
             android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
             android:label="@string/title_activity_user_forget_password" >
         </activity>
+        <!-- 文本编辑页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.TextEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

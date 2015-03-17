@@ -1,11 +1,17 @@
 package com.android.tonight8.activity.createevent;
 
-import android.app.AlertDialog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,10 +21,11 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.GoodsImageListAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.common.Goods;
+import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.utils.DialogUtils;
-import com.android.tonight8.view.CustomerDialog;
-import com.android.tonight8.view.CustomerDialog.CustomerViewInterface;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -57,6 +64,15 @@ public class CreatEventFirstActivity extends BaseActivity {
 	/** 举办结束日期 */
 	@ViewInject(R.id.iv_selected_DateEnd)
 	private ImageView iv_selected_DateEnd;
+	/** 奖品名称 */
+	@ViewInject(R.id.et_goodsName)
+	private TextView et_goodsName;
+	/** 奖品图片 */
+	@ViewInject(R.id.iv_goods_temp)
+	private ImageView iv_goods_temp;
+	/** 活动规则文本 */
+	@ViewInject(R.id.et_createevent_rule)
+	private TextView et_createevent_rule;
 
 	/** 下一步 */
 	@ViewInject(R.id.btn_createevent_first)
@@ -65,84 +81,175 @@ public class CreatEventFirstActivity extends BaseActivity {
 	/** 奖品图片数据适配器 */
 	private GoodsImageListAdapter imageListAdapter;
 	private Event event;
+	private List<Goods> list;
+	/** 是哪一个编辑框跳转到编辑页 */
+	private final int createeventNameFlag = 3;
+	private final int popGoodsNameFlag = 4;
+	private final int goodsNameFlag = 5;
+	private final int eventRuleFlag = 6;
+
+	/** 详情相册 */
+	private final int PICKPICTURE_DETAIL = 11;
+	/** 详情拍照 */
+	private final int TAKEPHOTO_DETAIL = 12;
+	/** 详情裁剪 */
+	private final int CROP_DETAIL = 13;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_create_event_first);
 		super.onCreate(savedInstanceState);
 		getActionBarBase("发活动");
-
+		initData();
 	}
 
 	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first,
-			R.id.iv_selected_PublishDate,R.id.iv_selected_DateStart,R.id.iv_selected_DateEnd })
+			R.id.iv_selected_PublishDate, R.id.iv_selected_DateStart,
+			R.id.iv_selected_DateEnd, R.id.btn_createevent_first,
+			R.id.et_popGoodsName, R.id.et_goodsName, R.id.et_createevent_rule,
+			R.id.et_createevent_name, R.id.iv_goods_temp })
 	public void OnClick(View v) {
 		switch (v.getId()) {
 		case R.id.iv_popgoods_add:
-			CustomerDialog customerDialog = new CustomerDialog(
-					CreatEventFirstActivity.this, R.layout.dialog_select_pic);
-			customerDialog
-					.setOnCustomerViewCreated(new CustomerViewInterface() {
-
-						@Override
-						public void getCustomerView(Window window,
-								AlertDialog dlg) {
-							Button leftButton = (Button) window
-									.findViewById(R.id.btn_left);
-							Button rightButton = (Button) window
-									.findViewById(R.id.btn_right);
-							leftButton
-									.setOnClickListener(new OnClickListener() {
-
-										@Override
-										public void onClick(View arg0) {
-											getPhotoByTakePicture();
-										}
-									});
-							rightButton
-									.setOnClickListener(new OnClickListener() {
-
-										@Override
-										public void onClick(View arg0) {
-											getPhotoFromGallery();
-										}
-									});
-						}
-					});
-			customerDialog.showDlg();
+			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext,
+					PICKPICTURE, TAKEPHOTO);
 			break;
 		case R.id.btn_createevent_first:
 			// StorgeCurrentData();
 			Intent intent = new Intent(CreatEventFirstActivity.this,
-					CalendarActivity.class);
+					CreateEventSecondActivity.class);
 			startActivityForAnima(intent, null);
 			break;
 		case R.id.iv_selected_PublishDate:
 			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
 					et_planPublishTime);
 			break;
-		case R.id.iv_selected_DateStart:
-			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
-					et_eventDateStart);
-			break;
-		case R.id.iv_selected_DateEnd:
-			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
-					et_eventDateEnd);
+
+		case R.id.et_popGoodsName:
+			startActivityForResultAndAnima(new Intent(
+					CreatEventFirstActivity.this, TextEditActivity.class),
+					popGoodsNameFlag, null);
 			break;
 
+		case R.id.et_goodsName:
+			startActivityForResultAndAnima(new Intent(
+					CreatEventFirstActivity.this, TextEditActivity.class),
+					goodsNameFlag, null);
+			break;
+		case R.id.iv_goods_temp:
+			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext,
+					PICKPICTURE_DETAIL, TAKEPHOTO_DETAIL);
+			break;
+		case R.id.et_createevent_rule:
+			startActivityForResultAndAnima(new Intent(
+					CreatEventFirstActivity.this, TextEditActivity.class),
+					eventRuleFlag, null);
+			break;
+		case R.id.et_createevent_name:
+			startActivityForResultAndAnima(new Intent(
+					CreatEventFirstActivity.this, TextEditActivity.class),
+					createeventNameFlag, null);
+
+			break;
 		default:
 			break;
 		}
 	}
 
+	private void initData() {
+		list = new ArrayList<Goods>();
+		imageListAdapter = new GoodsImageListAdapter(mContext, list);
+		lv_goodsAddList.setAdapter(imageListAdapter);
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		getWindow().getDecorView().invalidate();
+		if (resultCode != RESULT_OK) {
+			return;
+		}
+
 		switch (requestCode) {
 		case PICKPICTURE:
-
+			cropPicture(data.getData(), PICKPICTURE);
 			break;
 		case TAKEPHOTO:
+			File tempFile = new File(Environment.getExternalStorageDirectory()
+					+ "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile), TAKEPHOTO);
+			break;
+		case CROP:
+			Uri cropImageUri = data.getData();
+			// 图片解析成Bitmap对象
+			Bitmap bitmap = null;
+			try {
+				bitmap = BitmapFactory.decodeStream(getContentResolver()
+						.openInputStream(cropImageUri));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				if (bitmap!=null) {
+					bitmap.recycle();
+				}
+
+			}
+			String tempPicPath = AlbumAndCamera.getImagePath(
+					AlbumAndCamera.getTempPath(), bitmap);
+			Tonight8App.getSelf().bitmapUtils.display(iv_popgoods_add,
+					tempPicPath);
+			break;
+		case PICKPICTURE_DETAIL:
+			cropPicture(data.getData(), PICKPICTURE_DETAIL);
+			break;
+		case TAKEPHOTO_DETAIL:
+			File tempFile2 = new File(Environment.getExternalStorageDirectory()
+					+ "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile2), TAKEPHOTO_DETAIL);
+			break;
+		case CROP_DETAIL:
+			Uri cropImageUri2 = data.getData();
+			// 图片解析成Bitmap对象
+			Bitmap bitmap2 = null;
+			try {
+				bitmap2 = BitmapFactory.decodeStream(getContentResolver()
+						.openInputStream(cropImageUri2));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				if (bitmap2!=null) {
+					bitmap2.recycle();
+				}
+			}
+			String tempPicPath2 = AlbumAndCamera.getImagePath(
+					AlbumAndCamera.getTempPath(), bitmap2);
+			Goods goods = new Goods();
+			goods.pic = tempPicPath2;
+			list.add(goods);
+			break;
+		case TEXTEDIT:
+			switch (requestCode) {
+
+			case createeventNameFlag:
+				et_createevent_name.setText(data
+						.getStringExtra(TextEditActivity.INPUT_STRING));
+				break;
+			case popGoodsNameFlag:
+				et_popGoodsName.setText(data
+						.getStringExtra(TextEditActivity.INPUT_STRING));
+				break;
+			case goodsNameFlag:
+				et_goodsName.setText(data
+						.getStringExtra(TextEditActivity.INPUT_STRING));
+				break;
+			case eventRuleFlag:
+				et_createevent_rule.setText(data
+						.getStringExtra(TextEditActivity.INPUT_STRING));
+				break;
+
+			default:
+				break;
+			}
 
 			break;
 		default:
