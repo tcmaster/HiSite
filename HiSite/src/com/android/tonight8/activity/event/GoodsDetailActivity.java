@@ -3,21 +3,14 @@
  */
 package com.android.tonight8.activity.event;
 
-import java.text.Format;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +24,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.function.CountDownFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.model.event.EventConsultModel;
@@ -113,8 +107,6 @@ public class GoodsDetailActivity extends BaseActivity {
 	private int flag2 = REFRESH;
 	/** 该标记用于确定当前是否点击了tab按钮 */
 	private boolean flag3 = false;
-	/** 该标记用于本界面的倒计时，如果为false，则倒计时停止 */
-	private boolean flag4 = true;
 	/**
 	 * 本界面的数据更新handler
 	 */
@@ -144,7 +136,9 @@ public class GoodsDetailActivity extends BaseActivity {
 					tv_org_name.setText(source.org.name);
 					lv_goods_detail.setAdapter(adapter_left);
 					lv_goods_detail.stopRefresh();
-					beginCountDown("2015-03-16 18:59:59");// 倒计时开始
+					new CountDownFunction().beginCountDown(
+							GoodsDetailActivity.this, "2015-03-17 16:10:44",
+							tv_count_hour, tv_count_minute, tv_count_second);// 倒计时开始
 				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
 					Utils.toast("网络异常");
 					lv_goods_detail.stopRefresh();
@@ -205,7 +199,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	@Override
 	protected void onDestroy() {
-		flag4 = false;// 倒计时结束
+		flagCountDown = false;// 倒计时结束
 		super.onDestroy();
 	}
 
@@ -366,63 +360,5 @@ public class GoodsDetailActivity extends BaseActivity {
 				}
 			});
 		}
-	}
-
-	/**
-	 * 启动本页面的倒计时
-	 */
-	@SuppressLint("HandlerLeak")
-	private void beginCountDown(String time) {
-		final Handler countDownHandler = new Handler() {
-			@SuppressWarnings("deprecation")
-			@Override
-			public void handleMessage(Message msg) {
-				long time = (Long) msg.obj;
-				if (time < 0) {
-					tv_count_hour.setText("00");
-					tv_count_minute.setText("00");
-					tv_count_second.setText("00");
-					flag4 = false;
-					return;
-				}
-				Date date = new Date(time);
-				SimpleDateFormat format = new SimpleDateFormat("HH时mm分ss秒");
-				tv_count_hour.setText(format.format(date));
-			}
-		};
-
-		try {
-			SimpleDateFormat format = new SimpleDateFormat(
-					"yyyy-MM-dd HH:mm:ss");
-			Date date = format.parse(time);
-			final long needTimeMillis = date.getTime();
-			final long currentTimeMillis = System.currentTimeMillis();
-			if (needTimeMillis - currentTimeMillis > 0) {
-				new Thread(new Runnable() {
-
-					@Override
-					public void run() {
-						long timeMillis = needTimeMillis - currentTimeMillis;
-
-						try {
-							while (flag4) {
-								Message msg = countDownHandler.obtainMessage();
-								Thread.sleep(1000);
-								timeMillis = timeMillis - 1000;
-								msg.obj = timeMillis;
-								countDownHandler.sendMessage(msg);
-							}
-
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}).start();
-			}
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
 	}
 }

@@ -72,6 +72,9 @@ public class BaseActivity extends FragmentActivity {
 	/** 上拉加载标识 */
 	protected final int LOAD_MORE = 2;
 
+	/** 该标记用于本界面的倒计时，如果为false，则倒计时停止 */
+	public boolean flagCountDown = true;
+
 	/**
 	 * 通过构造方法对上下文内容与全局的app初始化
 	 */
