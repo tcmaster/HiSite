@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -24,11 +23,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.BaseActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -43,7 +45,9 @@ import com.mining.app.zxing.decoding.CaptureActivityHandler;
 import com.mining.app.zxing.decoding.InactivityTimer;
 import com.mining.app.zxing.decoding.RGBLuminanceSource;
 import com.mining.app.zxing.view.ViewfinderView;
-public class MipcaActivityCapture extends Activity implements Callback , View.OnClickListener{
+
+public class MipcaActivityCapture extends BaseActivity implements Callback,
+		View.OnClickListener {
 
 	private CaptureActivityHandler handler;
 	private ViewfinderView viewfinderView;
@@ -55,8 +59,7 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
-	
-	
+
 	private static final int REQUEST_CODE = 100;
 	private static final int PARSE_BARCODE_SUC = 300;
 	private static final int PARSE_BARCODE_FAIL = 303;
@@ -68,77 +71,77 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	    //取消标题  
+	    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_capture);
-		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		
+
 		Button mButtonBack = (Button) findViewById(R.id.button_back);
 		mButtonBack.setOnClickListener(this);
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
-		
-		ImageButton mImageButton = (ImageButton) findViewById(R.id.button_function);
-		mImageButton.setOnClickListener(this);
+
+		Button picButton = (Button) findViewById(R.id.button_function);
+		picButton.setOnClickListener(this);
 	}
-	
-	
+
 	@Override
 	public void onClick(View v) {
-		switch(v.getId()){
+		switch (v.getId()) {
 		case R.id.button_back:
-			this.finish();
+			MipcaActivityCapture.this.finish();
 			break;
 		case R.id.button_function:
-			//打开手机中的相册
-			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); //"android.intent.action.GET_CONTENT"
-	        innerIntent.setType("image/*");
-	        Intent wrapperIntent = Intent.createChooser(innerIntent, "选择二维码图片");
-	        this.startActivityForResult(wrapperIntent, REQUEST_CODE);
+			// 打开手机中的相册
+			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); // "android.intent.action.GET_CONTENT"
+			innerIntent.setType("image/*");
+			Intent wrapperIntent = Intent.createChooser(innerIntent, "选择二维码图片");
+			this.startActivityForResult(wrapperIntent, REQUEST_CODE);
 			break;
 		}
 	}
-	
-	
-	private Handler mHandler = new Handler(){
+
+	private Handler mHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			
 			mProgress.dismiss();
 			switch (msg.what) {
 			case PARSE_BARCODE_SUC:
-				onResultHandler((String)msg.obj, scanBitmap);
+				onResultHandler((String) msg.obj, scanBitmap);
 				break;
 			case PARSE_BARCODE_FAIL:
-				Toast.makeText(MipcaActivityCapture.this, (String)msg.obj, Toast.LENGTH_LONG).show();
+				Toast.makeText(MipcaActivityCapture.this, (String) msg.obj,
+						Toast.LENGTH_LONG).show();
 				break;
 
 			}
 		}
-		
+
 	};
-	
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if(resultCode == RESULT_OK){
-			switch(requestCode){
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
 			case REQUEST_CODE:
-				//获取选中图片的路径
-				Cursor cursor = getContentResolver().query(data.getData(), null, null, null, null);
+				// 获取选中图片的路径
+				Cursor cursor = getContentResolver().query(data.getData(),
+						null, null, null, null);
 				if (cursor.moveToFirst()) {
-					photo_path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+					photo_path = cursor.getString(cursor
+							.getColumnIndex(MediaStore.Images.Media.DATA));
 				}
 				cursor.close();
-				
+
 				mProgress = new ProgressDialog(MipcaActivityCapture.this);
 				mProgress.setMessage("正在扫描...");
 				mProgress.setCancelable(false);
 				mProgress.show();
-				
+
 				new Thread(new Runnable() {
 					@Override
 					public void run() {
@@ -156,24 +159,25 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 						}
 					}
 				}).start();
-				
+
 				break;
-			
+
 			}
 		}
 	}
-	
+
 	/**
 	 * 扫描二维码图片的方法
+	 * 
 	 * @param path
 	 * @return
 	 */
 	public Result scanningImage(String path) {
-		if(TextUtils.isEmpty(path)){
+		if (TextUtils.isEmpty(path)) {
 			return null;
 		}
 		Hashtable<DecodeHintType, String> hints = new Hashtable<DecodeHintType, String>();
-		hints.put(DecodeHintType.CHARACTER_SET, "UTF8"); //设置二维码内容的编码
+		hints.put(DecodeHintType.CHARACTER_SET, "UTF8"); // 设置二维码内容的编码
 
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true; // 先获取原大小
@@ -200,7 +204,6 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 		return null;
 	}
 
-
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -222,7 +225,7 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 		}
 		initBeepSound();
 		vibrate = true;
-		
+
 	}
 
 	@Override
@@ -240,9 +243,10 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 		inactivityTimer.shutdown();
 		super.onDestroy();
 	}
-	
+
 	/**
 	 * 处理扫描结果
+	 * 
 	 * @param result
 	 * @param barcode
 	 */
@@ -252,15 +256,17 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 		String resultString = result.getText();
 		onResultHandler(resultString, barcode);
 	}
-	
+
 	/**
 	 * 跳转到上一个页面
+	 * 
 	 * @param resultString
 	 * @param bitmap
 	 */
-	private void onResultHandler(String resultString, Bitmap bitmap){
-		if(TextUtils.isEmpty(resultString)){
-			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
+	private void onResultHandler(String resultString, Bitmap bitmap) {
+		if (TextUtils.isEmpty(resultString)) {
+			Toast.makeText(MipcaActivityCapture.this, "Scan failed!",
+					Toast.LENGTH_SHORT).show();
 			return;
 		}
 		Intent resultIntent = new Intent();
@@ -271,7 +277,7 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 		this.setResult(RESULT_OK, resultIntent);
 		MipcaActivityCapture.this.finish();
 	}
-	
+
 	private void initCamera(SurfaceHolder surfaceHolder) {
 		try {
 			CameraManager.get().openDriver(surfaceHolder);
@@ -364,6 +370,5 @@ public class MipcaActivityCapture extends Activity implements Callback , View.On
 			mediaPlayer.seekTo(0);
 		}
 	};
-
 
 }

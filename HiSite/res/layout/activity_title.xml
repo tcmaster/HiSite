@@ -2,14 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/red" >
+    android:background="@color/black_half_transparent" >
 
     <Button
         android:id="@+id/button_back"
-        android:layout_width="75.0dip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:background="@color/red"
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/common_margin_left"
+        android:paddingRight="@dimen/common_margin_left"
         android:text="返回"
         android:textColor="@android:color/white" />
 
@@ -20,17 +22,19 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
-        android:text="二维码扫描"
+        android:text="扫一扫"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/button_function"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="2dip"
-        android:background="@drawable/ic_launcher"
-        android:minWidth="70dip"/>
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/common_margin_left"
+        android:paddingRight="@dimen/common_margin_left"
+        android:text="相册"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

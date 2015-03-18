@@ -22,5 +22,8 @@
     <color name="result_view">#b0000000</color>
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color>
-
+    <!-- 50%透明黑色 -->
+    <color name="black_half_transparent">#7f000000</color>
+    <!-- 70%透明黑色 -->
+    <color name="black_seven_transparent">#b2000000</color>
 </resources>
