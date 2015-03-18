@@ -46,6 +46,8 @@ public class EventListNativeController {
 			CouponProvideEntity couponEntity = new CouponProvideEntity();
 			ExchangeEntity exchangeEntity = new ExchangeEntity();
 			PopGoodsEntity popGoodsEntity = new PopGoodsEntity();
+
+			Object object = new Object();
 			// 数据存储
 			DBUtil.copyData(PopGoods.class, PopGoodsEntity.class,
 					model.popGoods, popGoodsEntity);

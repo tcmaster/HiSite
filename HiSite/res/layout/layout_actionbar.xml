@@ -47,15 +47,31 @@
             android:textColor="@color/white"
             android:textSize="@dimen/bigTextSize" />
 
-        <TextView
-            android:id="@+id/tv_title_right"
+        <LinearLayout
+            android:id="@+id/ll_regional"
             style="@style/wrap"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:layout_toRightOf="@id/tv_title"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="@dimen/smallTextSize" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_title_right"
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallTextSize" />
+
+            <ImageView
+                android:id="@+id/iv_regional_right"
+                android:layout_width="@dimen/RegionalRightWidth"
+                android:layout_height="@dimen/RegionalRightHeight"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/check_mark_gray_hollow"
+                />
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

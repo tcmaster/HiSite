@@ -16,6 +16,8 @@
     <dimen name="superHugeTextSize">24sp</dimen>
     <!-- sideBar的宽度 -->
     <dimen name="sideBarWidth">40dp</dimen>
+    <dimen name="RegionalRightWidth">30dp</dimen>
+    <dimen name="RegionalRightHeight">30dp</dimen>
     <!-- 统一的文字左边距 (无图) -->
     <dimen name="text_left_margin">20dp</dimen>
     <!-- 统一的文字右边距 (无图) -->

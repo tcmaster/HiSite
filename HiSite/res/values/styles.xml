@@ -139,4 +139,9 @@
 	    <item name="android:layout_width">@dimen/user_headpic_minheight</item>
 	    <item name="android:layout_height">@dimen/user_headpic_minheight</item>
 	</style>
+	<!-- popWindow显示和隐藏的动画 -->
+	<style name="popup_animation">
+        <item name="@android:windowEnterAnimation">@anim/pop_show</item>
+        <item name="@android:windowExitAnimation">@anim/pop_hide</item>
+    </style>
 </resources>

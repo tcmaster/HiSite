@@ -141,8 +141,11 @@ public class MainActivity extends BaseActivity implements
 	public void onBackPressed() {
 		// 点击返回的逻辑，若在首页，则进行正常退出操作，若在其他页（除“我页”），则进行返回主页的操作，若在“我”页面，根据当前我页的状态进行返回操作
 		if (fragments[0].isVisible()) {
-			super.onBackPressed();
-			return;
+			if (fragments[0].onBackPress()) {
+				super.onBackPressed();
+				return;
+			} else
+				return;
 		}
 		if (fragments[4].isVisible()) {
 			if (fragments[4].onBackPress()) {

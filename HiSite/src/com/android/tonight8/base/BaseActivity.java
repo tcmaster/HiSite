@@ -15,6 +15,9 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,8 +43,12 @@ public class BaseActivity extends FragmentActivity {
 	private ImageView iv_logo;
 	/** 左边整体 */
 	private LinearLayout backButton;
+	/** 标题右边的布局 */
+	private LinearLayout ll_rl;
 	/** 标题旁边的字 */
 	private TextView tv_title_right;
+	/** 上下的箭头 */
+	private ImageView iv_rl;
 	/** 右边图片 */
 	private ImageView iv_right;
 	/** 获取当前Activity的上下文对象 */
@@ -170,6 +177,8 @@ public class BaseActivity extends FragmentActivity {
 			tv_title_right = (TextView) view.findViewById(R.id.tv_title_right);
 			iv_right = (ImageView) view.findViewById(R.id.rightimg);
 			backButton = (LinearLayout) view.findViewById(R.id.homelayout);
+			iv_rl = (ImageView) view.findViewById(R.id.iv_regional_right);
+			ll_rl = (LinearLayout) view.findViewById(R.id.ll_regional);
 			backButton.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -263,6 +272,15 @@ public class BaseActivity extends FragmentActivity {
 		return iv_right;
 	}
 
+	/**
+	 * 得到标题右边的布局
+	 * 
+	 * @return
+	 */
+	private LinearLayout getRLayout() {
+		return ll_rl;
+	}
+
 	// 对外公开的获取actionBar的方法
 	/**
 	 * @Description:获取最基本的actionBar，仅有左边返回按钮以及标题
@@ -353,8 +371,8 @@ public class BaseActivity extends FragmentActivity {
 	 *            右边的点击事件
 	 * @return 返回标题旁边的内容
 	 */
-	public TextView getActionBarSpeical(String title, int res, boolean hasLeft,
-			boolean hasSpeical, OnClickListener rightClick) {
+	public LinearLayout getActionBarSpeical(String title, int res,
+			boolean hasLeft, boolean hasSpeical, OnClickListener rightClick) {
 		useCustomerActionBar();
 		getLeftText().setVisibility(View.GONE);
 		getLogo().setVisibility(View.GONE);
@@ -377,7 +395,33 @@ public class BaseActivity extends FragmentActivity {
 		} else
 			getImageRight().setVisibility(View.GONE);
 
-		return getTitleRight();
+		return getRLayout();
+	}
+
+	/**
+	 * 将城市标记右边的图片翻转向上
+	 */
+	public void rlUp() {
+		RotateAnimation animation = new RotateAnimation(0.0f, 180.0f,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				0.5f);
+		animation.setFillAfter(true);
+		animation.setDuration(300);
+		animation.setInterpolator(new LinearInterpolator());
+		iv_rl.startAnimation(animation);
+	}
+
+	/**
+	 * 将城市标记右边的图片翻转向下
+	 */
+	public void rlDown() {
+		RotateAnimation animation = new RotateAnimation(180.0f, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				0.5f);
+		animation.setFillAfter(true);
+		animation.setDuration(300);
+		animation.setInterpolator(new LinearInterpolator());
+		iv_rl.startAnimation(animation);
 	}
 
 	/**
@@ -386,7 +430,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaosong
 	 * @date:2014-10-8
 	 */
-	public void cropPicture(Uri uri,int requestCode) {
+	public void cropPicture(Uri uri, int requestCode) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");// 可裁剪

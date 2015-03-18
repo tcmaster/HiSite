@@ -12,6 +12,7 @@ public class BaseFragment extends Fragment {
 	protected final int REFRESH = 1;
 	/** 上拉加载标识 */
 	protected final int LOAD_MORE = 2;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,10 +23,12 @@ public class BaseFragment extends Fragment {
 		if (intent != null) {
 			if (parentActivity != null) {
 				parentActivity.startActivity(intent);
-				parentActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				parentActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			} else {
 				startActivity(intent);
-				getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+				getActivity().overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		}
 	}

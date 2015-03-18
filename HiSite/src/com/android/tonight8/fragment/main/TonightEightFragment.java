@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,8 +33,11 @@ import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.model.event.EventListModel;
-import com.android.tonight8.utils.DialogUtils;
+import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.PointLinearlayout;
+import com.android.tonight8.view.RegionalSortPopupWindow;
+import com.android.tonight8.view.RegionalSortPopupWindow.SortListViewCallBack;
+import com.android.tonight8.view.sortlistview.SortModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.ViewUtils;
@@ -69,6 +73,7 @@ public class TonightEightFragment extends BaseFragment {
 	private CirculateFunction cFunction;
 	/** 本界面列表页的数据源 */
 	private MainPageListViewAdapter adapter;
+	private RegionalSortPopupWindow window;
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
@@ -257,18 +262,37 @@ public class TonightEightFragment extends BaseFragment {
 	}
 
 	private void initActionBar() {
-		final TextView tv_city = bA.getActionBarSpeical("今晚8点",
+		final LinearLayout ll_rl = bA.getActionBarSpeical("今晚8点",
 				R.drawable.m_action_right, false, true, null);
+		final TextView tv_city = (TextView) ll_rl
+				.findViewById(R.id.tv_title_right);
 		tv_city.setText("北京");
 
-		tv_city.setOnClickListener(new OnClickListener() {
+		ll_rl.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				int height = AppConstants.heightPx
-						- bA.getActionBar().getHeight();
-				DialogUtils.showRegionalDialog(bA, AppConstants.widthPx,
-						height, tv_city);
+				if (window == null) {
+					int height = AppConstants.heightPx
+							- bA.getActionBar().getHeight();
+					window = new RegionalSortPopupWindow(getActivity(),
+							AppConstants.widthPx, height);// 创建索引的window
+				}
+				if (window.isShowing()) {
+					bA.rlDown();
+					window.dismissPopWindow();
+				} else {
+					bA.rlUp();
+					window.showRegionalDialog(tv_city,
+							new SortListViewCallBack() {
+								@Override
+								public void getSortModel(SortModel model) {
+									bA.rlDown();
+									Utils.toast(model.getName());
+									tv_city.setText(model.getName());
+								}
+							});
+				}
 			}
 		});
 	}
@@ -295,4 +319,13 @@ public class TonightEightFragment extends BaseFragment {
 		startActivity(intent);
 	}
 
+	@Override
+	public boolean onBackPress() {
+		if (window != null && window.isShowing()) {
+			bA.rlDown();
+			window.dismissPopWindow();
+			return false;
+		} else
+			return super.onBackPress();
+	}
 }
