@@ -40,9 +40,10 @@ public class QRCodeUtils {
 		try {
 			int width = iv.getLayoutParams().width;
 			int height = iv.getLayoutParams().height;
-			HashMap<EncodeHintType, String> hints = new HashMap<EncodeHintType, String>();
-			hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-			BitMatrix bm = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, width, height, hints);// 生成图片每个点的像素值
+			// HashMap<EncodeHintType, String> hints = new
+			// HashMap<EncodeHintType, String>();
+			// hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+			BitMatrix bm = new QRCodeWriter().encode(str, BarcodeFormat.QR_CODE, width, height);// 生成图片每个点的像素值
 			int[] pixels = new int[width * height];
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {

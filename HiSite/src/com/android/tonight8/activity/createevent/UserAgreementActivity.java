@@ -1,6 +1,7 @@
 package com.android.tonight8.activity.createevent;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -11,7 +12,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.other.MipcaActivityCapture;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.utils.IntentUtils;
+import com.android.tonight8.utils.QRCodeUtils;
 import com.android.tonight8.view.WebViewForScrollView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;

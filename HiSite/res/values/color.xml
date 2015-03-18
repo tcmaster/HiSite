@@ -18,6 +18,9 @@
     <color name="blue">#0000FF</color>
     <!-- 橙色 -->
     <color name="orange">#FF8000</color>
-    
+    <!-- 扫描二维码用到的颜色 -->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
 
 </resources>

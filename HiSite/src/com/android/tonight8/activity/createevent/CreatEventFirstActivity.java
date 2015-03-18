@@ -26,6 +26,7 @@ import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.utils.DialogUtils;
+import com.android.tonight8.utils.IntentUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -189,7 +190,7 @@ public class CreatEventFirstActivity extends BaseActivity {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
-				if (bitmap!=null) {
+				if (bitmap != null) {
 					bitmap.recycle();
 				}
 
@@ -217,7 +218,7 @@ public class CreatEventFirstActivity extends BaseActivity {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
-				if (bitmap2!=null) {
+				if (bitmap2 != null) {
 					bitmap2.recycle();
 				}
 			}
