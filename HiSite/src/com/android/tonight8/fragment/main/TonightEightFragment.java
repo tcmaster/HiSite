@@ -263,7 +263,13 @@ public class TonightEightFragment extends BaseFragment {
 
 	private void initActionBar() {
 		final LinearLayout ll_rl = bA.getActionBarSpeical("今晚8点",
-				R.drawable.m_action_right, false, true, null);
+				R.drawable.pencil_gray, false, true, new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {// 右边按钮点击，进入筛选
+						Utils.toast("筛选进入成功");
+					}
+				});
 		final TextView tv_city = (TextView) ll_rl
 				.findViewById(R.id.tv_title_right);
 		tv_city.setText("北京");
@@ -282,7 +288,6 @@ public class TonightEightFragment extends BaseFragment {
 					bA.rlDown();
 					window.dismissPopWindow();
 				} else {
-					bA.rlUp();
 					window.showRegionalDialog(tv_city,
 							new SortListViewCallBack() {
 								@Override
@@ -292,7 +297,18 @@ public class TonightEightFragment extends BaseFragment {
 									tv_city.setText(model.getName());
 								}
 							});
+					bA.rlUp();
 				}
+			}
+		});
+		// 本界面actionBar的特殊内容，左边的历史记录
+		bA.getLogo().setVisibility(View.VISIBLE);
+		bA.getLogo().setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Utils.toast("播放历史记录");
+
 			}
 		});
 	}

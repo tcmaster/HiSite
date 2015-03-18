@@ -21,9 +21,11 @@
 
         <ImageView
             android:id="@+id/logo"
-            style="@style/wrap"
+            android:layout_width="@dimen/RegionalRightWidth"
+            android:layout_height="@dimen/RegionalRightHeight"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/search_white"
+            android:scaleType="fitXY"
             android:visibility="gone" />
 
         <TextView
@@ -37,7 +39,8 @@
 
     <RelativeLayout
         style="@style/match"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true"
+        >
 
         <TextView
             android:id="@+id/tv_title"
@@ -45,7 +48,8 @@
             android:layout_centerInParent="true"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="@dimen/bigTextSize" />
+            android:textSize="@dimen/bigTextSize"
+            />
 
         <LinearLayout
             android:id="@+id/ll_regional"
@@ -91,10 +95,11 @@
 
         <ImageView
             android:id="@+id/rightimg"
-            style="@style/wrap"
+            android:layout_width="@dimen/RegionalRightWidth"
+            android:layout_height="@dimen/RegionalRightHeight"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/m_action_right" />
+            android:src="@drawable/pencil_gray" />
     </LinearLayout>
 
 </RelativeLayout>

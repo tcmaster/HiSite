@@ -226,7 +226,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
-	private ImageView getLogo() {
+	public ImageView getLogo() {
 		return iv_logo;
 	}
 
@@ -297,7 +297,7 @@ public class BaseActivity extends FragmentActivity {
 		getArrow().setVisibility(View.VISIBLE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.GONE);
+		getRLayout().setVisibility(View.GONE);
 		getImageRight().setVisibility(View.GONE);
 
 	}
@@ -322,7 +322,7 @@ public class BaseActivity extends FragmentActivity {
 		getArrow().setVisibility(View.VISIBLE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.GONE);
+		getRLayout().setVisibility(View.GONE);
 		getImageRight().setVisibility(View.VISIBLE);
 		getImageRight().setImageResource(res);
 		getImageRight().setOnClickListener(rightClick);
@@ -349,10 +349,11 @@ public class BaseActivity extends FragmentActivity {
 		getArrow().setVisibility(View.GONE);
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
-		getTitleRight().setVisibility(View.GONE);
+		getRLayout().setVisibility(View.GONE);
 		getImageRight().setVisibility(View.VISIBLE);
 		getImageRight().setImageResource(res);
 		getImageRight().setOnClickListener(rightClick);
+
 	}
 
 	/**
@@ -384,9 +385,9 @@ public class BaseActivity extends FragmentActivity {
 		getActionTitle().setVisibility(View.VISIBLE);
 		getActionTitle().setText(title);
 		if (hasSpeical)
-			getTitleRight().setVisibility(View.VISIBLE);
+			getRLayout().setVisibility(View.VISIBLE);
 		else
-			getTitleRight().setVisibility(View.GONE);
+			getRLayout().setVisibility(View.GONE);
 
 		if (res != -1) {
 			getImageRight().setVisibility(View.VISIBLE);
