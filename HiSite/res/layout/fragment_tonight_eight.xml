@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.android.tonight8.view.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sm_search"
     xmlns:slidemenu="http://schemas.android.com/apk/res-auto"
     style="@style/match"
-    slidemenu:slideDirection="right" >
+    slidemenu:slideDirection="left|right"
+    slidemenu:secondaryShadowWidth="@dimen/common_margin_left_long" >
 
     <RelativeLayout
         style="@style/match"
@@ -24,8 +26,9 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/lv_right"
-        style="@style/match"
+        android:id="@+id/ll_right"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         slidemenu:layout_role="secondaryMenu"
         >

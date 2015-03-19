@@ -46,11 +46,15 @@ public class EventDetailNativeController {
 		List<GoodsEntity> goodsEntities = new ArrayList<GoodsEntity>();
 		List<Goods> goodses = model.goodses;
 		// 数据存储
-		DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods, popGoodsEntity);
-		DBUtil.copyData(Event.class, EventEntity.class, model.event, eventEntity);
+		DBUtil.copyData(PopGoods.class, PopGoodsEntity.class, model.popGoods,
+				popGoodsEntity);
+		DBUtil.copyData(Event.class, EventEntity.class, model.event,
+				eventEntity);
 		DBUtil.copyData(Org.class, OrgEntity.class, model.org, orgEntity);
-		DBUtil.copyData(CouponProvide.class, CouponProvideEntity.class, model.couponProvide, couponEntity);
-		DBUtil.copyData(Exchange.class, ExchangeEntity.class, model.exchange, exchangeEntity);
+		DBUtil.copyData(CouponProvide.class, CouponProvideEntity.class,
+				model.couponProvide, couponEntity);
+		DBUtil.copyData(Exchange.class, ExchangeEntity.class, model.exchange,
+				exchangeEntity);
 		// 外键连接
 		popGoodsEntity.event = eventEntity;
 		eventEntity.org = orgEntity;
@@ -59,16 +63,24 @@ public class EventDetailNativeController {
 		popGoodsEntity.event = eventEntity;
 		for (int i = 0; i < goodses.size(); i++) {
 			GoodsEntity goodsEntity = new GoodsEntity();
-			DBUtil.copyData(Goods.class, GoodsEntity.class, goodses.get(i), goodsEntity);
+			DBUtil.copyData(Goods.class, GoodsEntity.class, goodses.get(i),
+					goodsEntity);
 			goodsEntity.event = eventEntity;
 			goodsEntities.add(goodsEntity);
 		}
-		DBUtil.saveOrUpdate(eventEntity, EventEntity.class, "name", "timeStamp", "applyCount", "goodsCount", "timeRangeStart", "timeRangeEnd", "ruleDesc");
+		DBUtil.saveOrUpdate(eventEntity, EventEntity.class, "name",
+				"timeStamp", "applyCount", "goodsCount", "timeRangeStart",
+				"timeRangeEnd", "ruleDesc");
 		DBUtil.saveOrUpdate(orgEntity, OrgEntity.class, "name");
-		DBUtil.saveOrUpdate(couponEntity, CouponProvideEntity.class, "type", "provideNum", "provideAll", "value");
-		DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class, "method", "address", "orgAll");
-		DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class, WhereBuilder.b("rid", "=", eventEntity.getId()), "popGoodsName", "popGoodsPic", "popGoodsPrice");
-		DBUtil.saveOrUpdateAll(goodsEntities, GoodsEntity.class, "name", "pic", "size", "price");
+		DBUtil.saveOrUpdate(couponEntity, CouponProvideEntity.class, "type",
+				"provideNum", "provideAll", "value");
+		DBUtil.saveOrUpdate(exchangeEntity, ExchangeEntity.class, "method",
+				"address", "orgAll");
+		DBUtil.saveOrUpdate(popGoodsEntity, PopGoodsEntity.class,
+				WhereBuilder.b("rid", "=", eventEntity.getId()),
+				"popGoodsName", "popGoodsPic", "popGoodsPrice");
+		DBUtil.saveOrUpdateAll(goodsEntities, GoodsEntity.class, "name", "pic",
+				"size", "price");
 	}
 
 	/**
@@ -86,22 +98,31 @@ public class EventDetailNativeController {
 		Exchange exchange = new Exchange();
 		PopGoods popGoods = new PopGoods();
 		List<Goods> goodses = new ArrayList<Goods>();
-		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class, "id = " + id);
+		EventEntity eventEntity = DBUtil.getDataFirst(EventEntity.class,
+				"id = " + id);
 		OrgEntity orgEntity = eventEntity.org;
-		CouponProvideEntity couponProvideEntity = DBUtil.getDataFirst(CouponProvideEntity.class, "rid = " + eventEntity.getId());
-		List<GoodsEntity> goodsEntities = DBUtil.getData(GoodsEntity.class, "rid = " + event.getId());
-		ExchangeEntity exchangeEntity = DBUtil.getDataFirst(ExchangeEntity.class, "rid = " + event.rid);
-		PopGoodsEntity popGoodsEntity = DBUtil.getDataFirst(PopGoodsEntity.class, "rid = " + event.getId());
+		CouponProvideEntity couponProvideEntity = DBUtil.getDataFirst(
+				CouponProvideEntity.class, "rid = " + eventEntity.getId());
+		List<GoodsEntity> goodsEntities = DBUtil.getData(GoodsEntity.class,
+				"rid = " + event.getId());
+		ExchangeEntity exchangeEntity = DBUtil.getDataFirst(
+				ExchangeEntity.class, "rid = " + event.rid);
+		PopGoodsEntity popGoodsEntity = DBUtil.getDataFirst(
+				PopGoodsEntity.class, "rid = " + event.getId());
 		DBUtil.copyData(EventEntity.class, Event.class, eventEntity, event);
 		DBUtil.copyData(OrgEntity.class, Org.class, orgEntity, org);
-		DBUtil.copyData(CouponProvideEntity.class, CouponProvide.class, couponProvideEntity, couponProvide);
+		DBUtil.copyData(CouponProvideEntity.class, CouponProvide.class,
+				couponProvideEntity, couponProvide);
 		for (int i = 0; i < goodsEntities.size(); i++) {
 			Goods goods = new Goods();
-			DBUtil.copyData(GoodsEntity.class, Goods.class, goodsEntities.get(i), goods);
+			DBUtil.copyData(GoodsEntity.class, Goods.class,
+					goodsEntities.get(i), goods);
 			goodses.add(goods);
 		}
-		DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity, exchange);
-		DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, popGoodsEntity, popGoods);
+		DBUtil.copyData(ExchangeEntity.class, Exchange.class, exchangeEntity,
+				exchange);
+		DBUtil.copyData(PopGoodsEntity.class, PopGoods.class, popGoodsEntity,
+				popGoods);
 		model.event = event;
 		model.org = org;
 		model.couponProvide = couponProvide;

@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +36,7 @@ import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.PointLinearlayout;
 import com.android.tonight8.view.RegionalSortPopupWindow;
 import com.android.tonight8.view.RegionalSortPopupWindow.SortListViewCallBack;
+import com.android.tonight8.view.slidemenu.SlideMenu;
 import com.android.tonight8.view.sortlistview.SortModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
@@ -64,6 +64,10 @@ public class TonightEightFragment extends BaseFragment {
 	/** 列表loading圈 */
 	@ViewInject(R.id.pb_loading)
 	private ProgressBar pb_loading;
+	@ViewInject(R.id.sm_search)
+	private SlideMenu sm_search;
+	@ViewInject(R.id.ll_right)
+	private LinearLayout ll_right;
 	// ***************************其他成员***********************************//
 	/** 测试数据 */
 	private List<String> data;
@@ -171,8 +175,6 @@ public class TonightEightFragment extends BaseFragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		initActionBar();
 		super.onCreateOptionsMenu(menu, inflater);
-		Log.v("test", "height is + " + AppConstants.heightPx + " width is "
-				+ AppConstants.widthPx);
 	}
 
 	@Override
@@ -268,6 +270,10 @@ public class TonightEightFragment extends BaseFragment {
 					@Override
 					public void onClick(View arg0) {// 右边按钮点击，进入筛选
 						Utils.toast("筛选进入成功");
+						if (sm_search.isOpen())
+							sm_search.close(true);
+						else
+							sm_search.open(true, true);
 					}
 				});
 		final TextView tv_city = (TextView) ll_rl

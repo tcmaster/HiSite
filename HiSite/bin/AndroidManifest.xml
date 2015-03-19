@@ -26,6 +26,12 @@
     </uses-permission>
     <uses-permission android:name="android.permission.CALL_PHONE" >
     </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -286,6 +292,18 @@
             android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
             android:label="@string/title_activity_user_forget_password" >
         </activity>
+        <!-- 文本编辑页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.createevent.TextEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 二维码扫描页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.other.MipcaActivityCapture"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>
