@@ -299,7 +299,7 @@
             android:screenOrientation="portrait" />
         <!-- 二维码扫描页面 -->
         <activity
-            android:name="com.android.tonight8.activity.other.MipcaActivityCapture"
+            android:name="com.android.tonight8.activity.other.CaptureActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

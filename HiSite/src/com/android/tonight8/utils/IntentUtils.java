@@ -1,11 +1,12 @@
 package com.android.tonight8.utils;
 
+import com.android.tonight8.activity.other.CaptureActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
-import com.android.tonight8.activity.other.MipcaActivityCapture;
+import android.os.Build;
 
 /**
  * @Description：Intent管理类
@@ -31,7 +32,14 @@ public class IntentUtils {
 	 */
 	public static void startQRScanCodeActivity(Activity activity, int requestCode) {
 		Intent intent = new Intent();
-		intent.setClass(activity, MipcaActivityCapture.class);
+		//google对4.4的uri做了点改动  为了适配多种手机 需要做一个判断版本
+	    if (Build.VERSION.SDK_INT < 19) {  
+	    	intent.setAction(Intent.ACTION_GET_CONTENT);
+	    } else {  
+	    	intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+	    }  
+//		intent.setClass(activity, MipcaActivityCapture.class);
+		intent.setClass(activity, CaptureActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		activity.startActivityForResult(intent, requestCode);
 	}
