@@ -3,13 +3,10 @@
  */
 package com.android.tonight8.utils;
 
-import java.util.HashMap;
-
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;

@@ -65,7 +65,7 @@ public class MyCalendarView extends View implements View.OnTouchListener {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		surface.width = getResources().getDisplayMetrics().widthPixels;
-		surface.height = (int) (getResources().getDisplayMetrics().heightPixels * 3 / 5);
+		surface.height = getResources().getDisplayMetrics().heightPixels * 3 / 5;
 		if (View.MeasureSpec.getMode(widthMeasureSpec) == View.MeasureSpec.EXACTLY) {
 			surface.width = View.MeasureSpec.getSize(widthMeasureSpec);
 		}

@@ -1,7 +1,6 @@
 package com.android.tonight8.activity.createevent;
 
 import android.os.Bundle;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.android.tonight8.R;

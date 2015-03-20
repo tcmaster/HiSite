@@ -26,7 +26,6 @@ import com.android.tonight8.model.common.Event;
 import com.android.tonight8.model.common.Goods;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.utils.DialogUtils;
-import com.android.tonight8.utils.IntentUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 

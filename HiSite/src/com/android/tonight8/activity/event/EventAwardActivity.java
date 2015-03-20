@@ -62,7 +62,7 @@ public class EventAwardActivity extends BaseActivity {
 
 	// ***************************子方法***********************************//
 	private void initHeaderView() {
-		View view = (View) LayoutInflater.from(this).inflate(R.layout.header_award_or_exchange, null);
+		View view = LayoutInflater.from(this).inflate(R.layout.header_award_or_exchange, null);
 		tv_event_name = (TextView) view.findViewById(R.id.tv_event_name);
 		iv_popgoods_icon = (ImageView) view.findViewById(R.id.iv_popgoods_icon);
 		tv_org_name = (TextView) view.findViewById(R.id.tv_org_name);

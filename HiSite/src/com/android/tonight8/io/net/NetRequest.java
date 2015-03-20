@@ -10,6 +10,7 @@ import java.util.Set;
 
 import android.os.Handler;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.utils.JsonUtils;
@@ -204,7 +205,7 @@ public class NetRequest {
 
 		private NetEntityBase getBaseJsonObject(String baseStr) {
 			NetEntityBase base = new NetEntityBase();
-			JSONObject object = JSONObject.parseObject(baseStr);
+			JSONObject object = JSON.parseObject(baseStr);
 			base.status = object.getInteger("status");
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");

@@ -12,15 +12,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.parser.deserializer.StringFieldDeserializer;
 import com.android.tonight8.R;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.utils.MD5Utils;
-import com.baidu.android.bbalbs.common.a.a;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
-import com.baidu.mapapi.SDKInitializer;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
 import com.tencent.mm.sdk.openapi.IWXAPI;

@@ -918,7 +918,7 @@ public class SlideMenu extends ViewGroup {
 		for (int index = 0; index < count; index++) {
 			View child = getChildAt(index);
 			LayoutParams layoutParams = (LayoutParams) child.getLayoutParams();
-			needRemeasure |= (MeasureSpec.EXACTLY != measureHeightMode && LayoutParams.MATCH_PARENT == layoutParams.height);
+			needRemeasure |= (MeasureSpec.EXACTLY != measureHeightMode && android.view.ViewGroup.LayoutParams.MATCH_PARENT == layoutParams.height);
 			switch (layoutParams.role) {
 			case LayoutParams.ROLE_CONTENT:
 				measureChildWithMargins(child, widthMeasureSpec, 0,
@@ -954,7 +954,7 @@ public class SlideMenu extends ViewGroup {
 			for (int index = 0; index < count; index++) {
 				View child = getChildAt(index);
 				if (View.GONE != child.getVisibility()
-						&& LayoutParams.MATCH_PARENT == child.getLayoutParams().height) {
+						&& android.view.ViewGroup.LayoutParams.MATCH_PARENT == child.getLayoutParams().height) {
 					measureChildWithMargins(child, widthMeasureSpec, 0,
 							MeasureSpec.makeMeasureSpec(getMeasuredHeight(),
 									MeasureSpec.EXACTLY), 0);

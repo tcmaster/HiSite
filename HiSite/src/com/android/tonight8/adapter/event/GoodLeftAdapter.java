@@ -14,7 +14,6 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.model.common.Goods;
-import com.lidroid.xutils.BitmapUtils;
 
 public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 

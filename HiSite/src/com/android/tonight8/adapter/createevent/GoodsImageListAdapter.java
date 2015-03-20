@@ -4,16 +4,13 @@ import java.util.List;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
-import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.common.Goods;
-import com.android.tonight8.utils.DialogUtils;
 
 /**
  * @Description:发活动第一步用到的奖品详情列表数据适配器

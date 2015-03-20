@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.model.common.Message;
-import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.model.organization.OrgMessageModel;
 
 public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {

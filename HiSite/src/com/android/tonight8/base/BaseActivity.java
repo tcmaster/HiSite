@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images.ImageColumns;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -476,7 +477,7 @@ public class BaseActivity extends FragmentActivity {
 			Log.v("lixiaosong", "我要往这里放照片" + file.getAbsolutePath());
 			Intent getImageByCamera = new Intent(
 					"android.media.action.IMAGE_CAPTURE");
-			getImageByCamera.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
+			getImageByCamera.putExtra(ImageColumns.ORIENTATION, 0);
 			getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, u);
 			startActivityForResult(getImageByCamera, requestCode);
 		} else {
