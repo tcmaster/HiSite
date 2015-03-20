@@ -47,7 +47,7 @@ public class JsonUtils {
 					str = str.substring(0, str.indexOf("}},") + 2);
 				}
 
-				JSONObject jsonObject2 = JSONObject.parseObject(str);
+				JSONObject jsonObject2 = JSON.parseObject(str);
 				Set<String> keysey2 = jsonObject2.keySet();
 				key1 = key1 + "," + keysey2.toString().replace("[", "").replace("]", "");
 				for (int i = 0; i < keysey2.size(); i++) {

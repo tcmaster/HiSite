@@ -30,6 +30,7 @@ public class SharePopupWindow extends PopupWindow {
 		// 取消按钮
 		btn_cancel.setOnClickListener(new OnClickListener() {
 
+			@Override
 			public void onClick(View v) {
 				// 销毁弹出框
 				dismiss();
@@ -56,6 +57,7 @@ public class SharePopupWindow extends PopupWindow {
 		// mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 
+			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
 				int height = mMenuView.findViewById(R.id.pop_layout).getTop();

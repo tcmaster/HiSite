@@ -58,7 +58,7 @@ public class PointLinearlayout extends LinearLayout {
 		this.removeAllViews();
 		for (int i = 0; i < pointCount; i++) {
 			ImageView iv = new ImageView(getContext());
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 			iv.setLayoutParams(lp);
 			iv.setScaleType(ScaleType.FIT_XY);
 			iv.setImageResource(R.drawable.dialogue_gray);

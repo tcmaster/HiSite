@@ -67,7 +67,7 @@ public class RegionalSortPopupWindow {
 			@Override
 			public void onTouchingLetterChanged(String s) {
 				lv_regional_search.setSelection(adapter
-						.getPositionForSection((int) s.getBytes()[0]));
+						.getPositionForSection(s.getBytes()[0]));
 			}
 		});
 		lv_regional_search.setOnItemClickListener(new OnItemClickListener() {

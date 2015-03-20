@@ -79,11 +79,11 @@ public class EventIOController {
 					Org org = new Org();
 					CouponProvide couponProvide = new CouponProvide();
 					Exchange exchange = new Exchange();
-					couponProvide.id = (long) (12342 + i);
+					couponProvide.id = 12342 + i;
 					couponProvide.type = 1;
 					couponProvide.provideNum = (int) (1000 * Math.random());
 					couponProvide.provideAll = false;
-					event.id = (int) (122935 + i);
+					event.id = 122935 + i;
 					event.name = "中英文花式奖品" + ((int) (Math.random() * 2394));
 					event.distance = (float) (Math.random() * 11);
 					event.applyCount = (int) Math.random() * 2000;

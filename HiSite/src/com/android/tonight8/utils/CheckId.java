@@ -116,7 +116,7 @@ public class CheckId {
 	private int getGenderCode() {
 		this.checkIfValid();
 		char genderCode = this.cardNumber.charAt(NEW_CARD_NUMBER_LENGTH - 2);
-		return (((int) (genderCode - '0')) & 0x1);
+		return ((genderCode - '0') & 0x1);
 	}
 
 	private String getBirthDayPart() {
@@ -147,7 +147,7 @@ public class CheckId {
 		int sum = 0;
 		for (int i = 0; i < NEW_CARD_NUMBER_LENGTH - 1; i++) {
 			char ch = cardNumber.charAt(i);
-			sum += ((int) (ch - '0')) * VERIFY_CODE_WEIGHT[i];
+			sum += (ch - '0') * VERIFY_CODE_WEIGHT[i];
 		}
 		return VERIFY_CODE[sum % 11];
 	}

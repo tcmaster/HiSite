@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.model.common.Coupon;
-import com.android.tonight8.utils.DialogUtils;
-import com.android.tonight8.utils.Utils;
-import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
