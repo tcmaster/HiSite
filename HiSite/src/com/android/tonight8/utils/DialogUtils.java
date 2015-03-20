@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -170,6 +171,8 @@ public class DialogUtils {
 				window = dlg.getWindow();
 				WindowManager.LayoutParams lp = window.getAttributes();
 				lp.gravity = Gravity.BOTTOM;
+				lp.width = LayoutParams.MATCH_PARENT;
+				window.setAttributes(lp);
 				final GridView gv_share = (GridView) window
 						.findViewById(R.id.gv_share);
 				final Button cancleButton = (Button) window
@@ -191,12 +194,12 @@ public class DialogUtils {
 							int position, long arg3) {
 						switch (position) {
 						case 0:// QQ空间
-							SharedUtils.shareToQQOrQzone(activity,
-									shareThirdEntity, null, true);
+							SharedUtils.shareToQzone(activity,
+									shareThirdEntity, null);
 							break;
 						case 1:// QQ好友
-							SharedUtils.shareToQQOrQzone(activity,
-									shareThirdEntity, null, false);
+							SharedUtils.shareToQQ(activity,
+									shareThirdEntity, null);
 							break;
 						case 2:// 微信好友
 							SharedUtils.shareToWXOrFriends(activity,
@@ -216,7 +219,7 @@ public class DialogUtils {
 			}
 		});
 		Utils.hideSoftKeyBoard(activity);
-		cdlg.gravity = Gravity.BOTTOM;
+		// cdlg.gravity = Gravity.BOTTOM;
 		cdlg.showDlg();
 	}
 
