@@ -13,9 +13,9 @@ import com.lidroid.xutils.util.LogUtils;
  */
 public class TestUtils {
 
-	public static boolean enabled = true;
-	public long begin;
-	public long end;
+	private static boolean enabled = true;
+	private long begin;
+	private long end;
 
 	/**
 	 * @Description: 测试时间开始

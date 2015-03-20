@@ -67,7 +67,8 @@ public class Tonight8App extends Application {
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 		// 注册到微信
-		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(), WX_APP_ID);
+		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(),
+				WX_APP_ID);
 		wxApi.registerApp(WX_APP_ID);
 		// Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
 		// 其中APP_ID是分配给第三方应用的appid，类型为String。

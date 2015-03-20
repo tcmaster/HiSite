@@ -242,7 +242,9 @@ public class EventIOController {
 			int... attachments) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, EVENT_EVENT_PUBLISH_CONSULTS);
-		HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.EVENT_DETAIL_CONSULT,HandlerConstants.NETWORK_BEGIN,0);
+		HandlerConstants.sendMessage(handler, null,
+				HandlerConstants.Event.EVENT_DETAIL_CONSULT,
+				HandlerConstants.NETWORK_BEGIN, 0);
 		NetRequest.doGetRequest(params,
 				new RequestResult<EventConsultListEntity>(
 						EventConsultListEntity.class, handler) {
@@ -275,7 +277,9 @@ public class EventIOController {
 
 					@Override
 					public void onFailure(HttpException error, String msg) {
-						HandlerConstants.sendMessage(handler,null,HandlerConstants.Event.EVENT_DETAIL_CONSULT,HandlerConstants.RESULT_FAIL,0);
+						HandlerConstants.sendMessage(handler, null,
+								HandlerConstants.Event.EVENT_DETAIL_CONSULT,
+								HandlerConstants.RESULT_FAIL, 0);
 					}
 				});
 	}
