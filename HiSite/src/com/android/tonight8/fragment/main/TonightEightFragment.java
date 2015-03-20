@@ -31,6 +31,7 @@ import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
+import com.android.tonight8.io.event.EventIOControllerTest;
 import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.PointLinearlayout;
@@ -317,6 +318,7 @@ public class TonightEightFragment extends BaseFragment {
 
 			}
 		});
+		EventIOControllerTest.eventListRead(handler, 0);
 	}
 
 	/**

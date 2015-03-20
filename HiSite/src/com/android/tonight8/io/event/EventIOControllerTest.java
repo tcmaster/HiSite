@@ -22,9 +22,6 @@ import com.android.tonight8.utils.TestUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 
-import de.greenrobot.dao.async.AsyncOperation;
-import de.greenrobot.dao.async.AsyncOperationListener;
-
 public class EventIOControllerTest {
 	private static final String EVENT_LIST_URL = NetRequest.BASE_URL
 			+ "/api/index/index";
@@ -62,6 +59,7 @@ public class EventIOControllerTest {
 					event.setApplyCount((int) Math.random() * 2000);
 					event.setConsultCount((int) Math.random() * 2000);
 					PopGoods popGoods = new PopGoods();
+					popGoods.setId(event.getId());
 					popGoods.setPopGoodsName("神之海报"
 							+ (int) (Math.random() * 199));
 					popGoods.setPopGoodsPic(imgs[(int) (Math.random() * 8)]);
@@ -70,10 +68,12 @@ public class EventIOControllerTest {
 					org.setId(i);
 					org.setName("龙翔控股科技发展公司" + Math.random() * 5);
 					Exchange exchange = new Exchange();
+					exchange.setId(event.getId());
 					exchange.setMethod(1);
 					exchange.setAddress("ddkafkkdkfkd");
 					exchange.setOrgAll(1);
 					CouponProvide couponProvide = new CouponProvide();
+					couponProvide.setId(event.getId());
 					couponProvide.setId(12342 + i);
 					couponProvide.setType(1);
 					couponProvide.setProvideNum((int) (1000 * Math.random()));
@@ -88,17 +88,7 @@ public class EventIOControllerTest {
 				final TestUtils tUtils = new TestUtils();
 				tUtils.testTimeBegin();
 				EventListNativeControllerTest eventListNativeControllerTest = new EventListNativeControllerTest();
-				eventListNativeControllerTest.insertData(eventLists,
-						new AsyncOperationListener() {
-
-							@Override
-							public void onAsyncOperationCompleted(
-									AsyncOperation arg0) {
-								tUtils.testTimeEnd("外面的情况" + arg0.toString()
-										+ "  ");
-
-							}
-						});
+				eventListNativeControllerTest.insertData(eventLists);
 			}
 
 			@Override

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.tonight8.R;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.storage.DBUtil;
+import com.android.tonight8.storage.GreenDaoUtils;
 import com.android.tonight8.utils.MD5Utils;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -64,6 +65,7 @@ public class Tonight8App extends Application {
 		initDeviceParams();
 		// 初始化数据库
 		DBUtil.initDB(this);
+		GreenDaoUtils.init(this);
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 		// 注册到微信
