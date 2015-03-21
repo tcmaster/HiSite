@@ -51,6 +51,6 @@ public class GreenDaoUtils {
 		if (dao.queryBuilder().where(property.eq(value)).build().list().size() == 0)
 			dao.insert(data);
 		else
-			dao.update(data);
+			dao.update(data, columns);
 	}
 }

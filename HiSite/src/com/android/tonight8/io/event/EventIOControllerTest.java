@@ -74,7 +74,6 @@ public class EventIOControllerTest {
 					exchange.setOrgAll(1);
 					CouponProvide couponProvide = new CouponProvide();
 					couponProvide.setId(event.getId());
-					couponProvide.setId(12342 + i);
 					couponProvide.setType(1);
 					couponProvide.setProvideNum((int) (1000 * Math.random()));
 					couponProvide.setProvideAll(2);

@@ -36,21 +36,22 @@ public class EventListNativeControllerTest {
 					GreenDaoUtils.insertOrUpdate(daoSession.getEventDao(),
 							eventList.getEvent(), EventDao.Properties.Id,
 							eventList.getEvent().getId(), "rid", "name",
-							"distance");
+							"distance", "apply_count", "consult_count");
 					GreenDaoUtils.insertOrUpdate(daoSession.getExchangeDao(),
 							eventList.getExchange(), ExchangeDao.Properties.Id,
 							eventList.getExchange().getId(), "rid", "method",
-							"address", "orgAll");
+							"address", "org_all");
 					GreenDaoUtils.insertOrUpdate(daoSession
 							.getCouponProvideDao(), eventList
 							.getCouponProvide(),
 							CouponProvideDao.Properties.Id, eventList
 									.getCouponProvide().getId(), "type", "rid",
-							"provideNum", "provideAll");
+							"provide_num", "provide_all");
 					GreenDaoUtils.insertOrUpdate(daoSession.getPopGoodsDao(),
 							eventList.getPopGoods(), PopGoodsDao.Properties.Id,
 							eventList.getPopGoods().getId(), "rid",
-							"popGoodsPrice", "popGoodsPic", "popGoodsName");
+							"pop_goods_price", "pop_goods_pic",
+							"pop_goods_name");
 				}
 				tUtils.testTimeEnd("表面的时间");
 			}
