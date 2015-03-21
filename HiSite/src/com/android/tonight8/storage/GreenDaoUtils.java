@@ -1,5 +1,7 @@
 package com.android.tonight8.storage;
 
+import java.util.List;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -9,6 +11,7 @@ import com.android.tonight8.dao.DaoSession;
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.async.AsyncSession;
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * @Descripton 数据库操作工具类
@@ -52,5 +55,20 @@ public class GreenDaoUtils {
 			dao.insert(data);
 		else
 			dao.update(data, columns);
+	}
+
+	/**
+	 * 插入或更新操作（异步版），先从数据库查询是否有该条数据，有进行插入，没有进行更新（指定列）
+	 * 
+	 */
+	public static <T> void InsertOrUpdate(AsyncSession session,
+			AbstractDao<T, Long> dao, Property property, Object value, T data,
+			String... columns) {
+		if (((List<T>) session.queryList(
+				QueryBuilder.internalCreate(dao).where(property.eq(value))
+						.build()).getResult()).size() == 0) {
+			session.insert(data);
+		} else
+			session.update(data, columns);
 	}
 }
