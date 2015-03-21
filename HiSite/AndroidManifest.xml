@@ -284,10 +284,17 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent你的AppId" />
+                <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID -->
+                <data android:scheme="100424468" />
             </intent-filter>
         </activity>
+        <!-- 使用微信及微信朋友圈时需要注册回调Acitivity ! -->
+        <activity
+            android:name="com.android.tonight8.activity.other.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
             android:label="@string/title_activity_user_forget_password" >

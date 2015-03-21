@@ -30,6 +30,7 @@ import com.android.tonight8.model.live.LiveListModel;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.SharedUtils.ShareThirdEntity;
 import com.android.tonight8.utils.Utils;
+import com.tencent.connect.share.QQShare;
 
 /**
  * @author liuzhao hi现场的数据适配器
@@ -122,6 +123,14 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 			@Override
 			public void onClick(View arg0) {
 				ShareThirdEntity shareThirdEntity = new ShareThirdEntity();
+				shareThirdEntity.title = "标题";
+				shareThirdEntity.shareType = QQShare.SHARE_TO_QQ_TYPE_DEFAULT;
+				// 网络图片url
+				shareThirdEntity.imageUrl = "http://img3.douban.com/lpic/s3635685.jpg";
+				shareThirdEntity.appName = "app的名字";
+				// 分享后好友点击打开的目标链接地址
+				shareThirdEntity.targetUrl = "http://douban.fm/?start=8508g3c27g-3&amp;cid=-3";
+				shareThirdEntity.summary = "摘要，再多加两句话";
 				DialogUtils.showSelectShareDialog((MainActivity) mContext, shareThirdEntity);
 			}
 		});
