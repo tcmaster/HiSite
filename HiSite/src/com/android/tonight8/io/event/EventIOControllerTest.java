@@ -18,9 +18,12 @@ import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.storage.event.EventListNativeControllerTest;
-import com.android.tonight8.utils.TestUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
+
+import de.greenrobot.dao.async.AsyncOperation;
+import de.greenrobot.dao.async.AsyncOperation.OperationType;
+import de.greenrobot.dao.async.AsyncOperationListener;
 
 public class EventIOControllerTest {
 	private static final String EVENT_LIST_URL = NetRequest.BASE_URL
@@ -84,10 +87,18 @@ public class EventIOControllerTest {
 					eventList.setPopGoods(popGoods);
 					eventLists.add(eventList);
 				}
-				final TestUtils tUtils = new TestUtils();
-				tUtils.testTimeBegin();
 				EventListNativeControllerTest eventListNativeControllerTest = new EventListNativeControllerTest();
-				eventListNativeControllerTest.insertData(eventLists);
+				eventListNativeControllerTest.insertData(eventLists,
+						new AsyncOperationListener() {
+
+							@Override
+							public void onAsyncOperationCompleted(
+									AsyncOperation operation) {
+								if (operation.getType() == OperationType.TransactionRunnable) {
+									// 在这里进行数据处理完毕后的操作
+								}
+							}
+						});
 			}
 
 			@Override

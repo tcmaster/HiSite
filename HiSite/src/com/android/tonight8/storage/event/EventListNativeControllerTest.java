@@ -12,6 +12,7 @@ import com.android.tonight8.dao.entity.EventList;
 import com.android.tonight8.storage.GreenDaoUtils;
 import com.android.tonight8.utils.TestUtils;
 
+import de.greenrobot.dao.async.AsyncOperationListener;
 import de.greenrobot.dao.async.AsyncSession;
 
 public class EventListNativeControllerTest {
@@ -61,7 +62,8 @@ public class EventListNativeControllerTest {
 
 	}
 
-	public void insertData(final List<EventList> models, String a) {
+	public void insertData(final List<EventList> models,
+			final AsyncOperationListener listener) {
 		final DaoSession daoSession = GreenDaoUtils.getDaoSession();
 		final AsyncSession asyncSession = daoSession.startAsyncSession();
 		for (int i = 0; i < models.size(); i++) {
@@ -71,6 +73,7 @@ public class EventListNativeControllerTest {
 			model.getCouponProvide().setEvent(model.getEvent());
 			model.getPopGoods().setEvent(model.getEvent());
 		}
+		asyncSession.setListener(listener);
 		asyncSession.runInTx(new Runnable() {
 
 			@Override

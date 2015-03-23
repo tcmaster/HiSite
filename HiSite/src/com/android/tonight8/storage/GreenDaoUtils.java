@@ -1,7 +1,5 @@
 package com.android.tonight8.storage;
 
-import java.util.List;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,7 +9,6 @@ import com.android.tonight8.dao.DaoSession;
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.async.AsyncSession;
-import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * @Descripton 数据库操作工具类
@@ -64,9 +61,7 @@ public class GreenDaoUtils {
 	public static <T> void InsertOrUpdate(AsyncSession session,
 			AbstractDao<T, Long> dao, Property property, Object value, T data,
 			String... columns) {
-		if (((List<T>) session.queryList(
-				QueryBuilder.internalCreate(dao).where(property.eq(value))
-						.build()).getResult()).size() == 0) {
+		if (dao.queryBuilder().where(property.eq(value)).build().list().size() == 0) {
 			session.insert(data);
 		} else
 			session.update(data, columns);
