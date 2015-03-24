@@ -144,7 +144,7 @@ public class PostEventMenuFragment extends BaseFragment {
 			intent = new Intent(getActivity(), UserFeedbackActivity.class);
 			break;
 		case 7:
-			baseActivity.UpdateLoginedFragment(false);
+			// baseActivity.UpdateLoginedFragment(false);
 			break;
 		default:
 			break;

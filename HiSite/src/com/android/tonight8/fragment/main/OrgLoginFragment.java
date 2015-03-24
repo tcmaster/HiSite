@@ -107,9 +107,11 @@ public class OrgLoginFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_post_events, container, false);
+		rootView = inflater.inflate(R.layout.fragment_post_events, container,
+				false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
 		initView();
 		return rootView;
@@ -146,14 +148,15 @@ public class OrgLoginFragment extends BaseFragment {
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5, new Handler() {
+		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5,
+				new Handler() {
 
-			@Override
-			public void handleMessage(Message msg) {
-				viewPager.setCurrentItem(msg.what);
-				super.handleMessage(msg);
-			}
-		});
+					@Override
+					public void handleMessage(Message msg) {
+						viewPager.setCurrentItem(msg.what);
+						super.handleMessage(msg);
+					}
+				});
 		cFunction.start();// 开始轮播
 	}
 
@@ -178,7 +181,8 @@ public class OrgLoginFragment extends BaseFragment {
 		super.onStop();
 	}
 
-	@OnClick({ R.id.btn_shop_login, R.id.btn_shop_register, R.id.tv_forgot_id, R.id.tv_forgot_pwd })
+	@OnClick({ R.id.btn_shop_login, R.id.btn_shop_register, R.id.tv_forgot_id,
+			R.id.tv_forgot_pwd })
 	public void onClick(View v) {
 		Intent intent = null;
 		switch (v.getId()) {
@@ -193,7 +197,7 @@ public class OrgLoginFragment extends BaseFragment {
 			// Utils.toast("请输入密码");
 			// return;
 			// }
-			mainActivity.UpdateLoginedFragment(true);
+			// mainActivity.UpdateLoginedFragment(true);
 			break;
 		case R.id.btn_shop_register:
 			intent = new Intent(getActivity(), OrgRegisterActivity.class);

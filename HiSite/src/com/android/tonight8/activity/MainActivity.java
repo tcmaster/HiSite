@@ -3,19 +3,30 @@ package com.android.tonight8.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.fragment.main.HiLiveFragment;
 import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
-import com.android.tonight8.fragment.main.PostEventMenuFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
 import com.android.tonight8.storage.DBUtil;
+import com.android.tonight8.utils.Utils;
+import com.android.tonight8.view.RegionalSortPopupWindow;
+import com.android.tonight8.view.RegionalSortPopupWindow.SortListViewCallBack;
+import com.android.tonight8.view.SlideLayout;
+import com.android.tonight8.view.sortlistview.SortModel;
+import com.lidroid.xutils.util.LogUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * @Description:主界面
@@ -26,14 +37,18 @@ public class MainActivity extends BaseActivity implements
 		OnCheckedChangeListener {
 
 	/** 界面下方四个按钮组 */
+	@ViewInject(R.id.radio_group)
 	private RadioGroup rg_mian;
+	/** 侧滑菜单，用于管理“我”的界面 */
+	private SlideLayout sm_layout;
+	/** 本界面的popupwindow */
+	private RegionalSortPopupWindow window;
 	/** Fragment管理类 */
 	private FragmentManager fragmentManager;
 	/** 判断跳转到哪个页面的下标 */
 	private int switchid = 0;
 	/** 页面信息标题数组 */
-	private String[] titleArr = { "8点", "Hi现场", "发活动", "商家登陆", "我" };
-	private boolean isLogin = false;
+	private String[] titleArr = { "8点", "商家登陆" };
 	private FragmentTransaction fragmentTransaction;
 	private BaseFragment[] fragments;// 本界面所用到的fragment（方便以后使用）
 
@@ -51,24 +66,19 @@ public class MainActivity extends BaseActivity implements
 		case 1:
 			doFragmentShow(1);
 			break;
-		case 2:
-			if (isLogin) {
-				doFragmentShow(2);
-			} else {
-				doFragmentShow(3);
-			}
-			break;
-		case 3:
-			doFragmentShow(4);
+		default:
+			LogUtils.v("点击此处无效");
 			break;
 		}
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		initDatas();
+		super.onCreate(savedInstanceState);
+		initMainInterface();
+		initMeInterface();
+		initActionBar();
 	}
 
 	@Override
@@ -77,36 +87,20 @@ public class MainActivity extends BaseActivity implements
 		DBUtil.close();// 关闭数据库
 	}
 
-	private void initDatas() {
-		fragments = new BaseFragment[5];
+	private void initMainInterface() {
+		fragments = new BaseFragment[2];
 		fragments[0] = TonightEightFragment.newInstance();
-		fragments[1] = HiLiveFragment.newInstance();
-		fragments[2] = PostEventMenuFragment.newInstance();
-		fragments[3] = OrgLoginFragment.newInstance();
-		fragments[4] = MyAccountFragment.newInstance();
+		fragments[1] = OrgLoginFragment.newInstance();
 		/* 设置跳转那个fragment页面 */
 		fragmentManager = getSupportFragmentManager();
 		fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.add(R.id.tabcontent, fragments[0], titleArr[0]);
 		fragmentTransaction.add(R.id.tabcontent, fragments[1], titleArr[1]);
-		fragmentTransaction.add(R.id.tabcontent, fragments[2], titleArr[2]);
-		fragmentTransaction.add(R.id.tabcontent, fragments[3], titleArr[3]);
-		fragmentTransaction.add(R.id.tabcontent, fragments[4], titleArr[4]);
 		fragmentTransaction.commit();
 		/* fragment管理器初始化 */
 		/* 实始化下方单选按钮组 */
-		rg_mian = (RadioGroup) findViewById(R.id.radio_group);
 		rg_mian.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
-	}
-
-	public void UpdateLoginedFragment(boolean logined) {
-		isLogin = logined;
-		if (isLogin) {
-			doFragmentShow(2);
-		} else {
-			doFragmentShow(3);
-		}
 	}
 
 	/**
@@ -116,7 +110,67 @@ public class MainActivity extends BaseActivity implements
 	 * @date:2015-2-6
 	 */
 	public MyAccountFragment getMyAccountFragment() {
-		return (MyAccountFragment) fragments[4];
+		return null;
+	}
+
+	/**
+	 * 初始化“我”的界面
+	 */
+	private void initMeInterface() {
+		sm_layout = new SlideLayout(this, null, R.style.slidelayout_style);
+		View v = LayoutInflater.from(this).inflate(R.layout.activity_me, null);
+		sm_layout.addView(v);
+		sm_layout.attachToActivity(this, true);
+	}
+
+	private void initActionBar() {
+		final LinearLayout ll_rl = getActionBarSpeical("今晚8点",
+				R.drawable.pencil_gray, false, true, new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {// 右边按钮点击，弹出popWindow菜单
+					}
+				});
+		final TextView tv_city = (TextView) ll_rl
+				.findViewById(R.id.tv_title_right);
+		tv_city.setText("北京");
+
+		ll_rl.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (window == null) {
+					int height = AppConstants.heightPx
+							- getActionBar().getHeight();
+					window = new RegionalSortPopupWindow(MainActivity.this,
+							AppConstants.widthPx, height);// 创建索引的window
+				}
+				if (window.isShowing()) {
+					rlDown();
+					window.dismissPopWindow();
+				} else {
+					window.showRegionalDialog(tv_city,
+							new SortListViewCallBack() {
+								@Override
+								public void getSortModel(SortModel model) {
+									rlDown();
+									Utils.toast(model.getName());
+									tv_city.setText(model.getName());
+								}
+							});
+					rlUp();
+				}
+			}
+		});
+		// 本界面actionBar的特殊内容，点击进入“我”
+		getLogo().setVisibility(View.VISIBLE);
+		getLogo().setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				sm_layout.openLeftMenu(true);
+			}
+		});
 	}
 
 	/**
@@ -139,22 +193,12 @@ public class MainActivity extends BaseActivity implements
 
 	@Override
 	public void onBackPressed() {
-		// 点击返回的逻辑，若在首页，则进行正常退出操作，若在其他页（除“我页”），则进行返回主页的操作，若在“我”页面，根据当前我页的状态进行返回操作
-		if (fragments[0].isVisible()) {
-			if (fragments[0].onBackPress()) {
-				super.onBackPressed();
-				return;
-			} else
-				return;
-		}
-		if (fragments[4].isVisible()) {
-			if (fragments[4].onBackPress()) {
-			} else {
-				return;
-			}
-		}
-		// 其他情况下，返回首页
-		rg_mian.check(R.id.rb_main);
+		if (window != null && window.isShowing()) {
+			rlDown();
+			window.dismissPopWindow();
+			return;
+		} else
+			super.onBackPressed();
 	}
 
 }

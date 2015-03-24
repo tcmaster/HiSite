@@ -7,6 +7,8 @@
     <!-- 首页 -->
     <string name="win">中奖</string>
     <string name="signin">报名</string>
+    <string name="main_left_tab">8点整</string>
+    <string name="main_right_tab">心愿墙</string>
     <!-- 抽奖详情 -->
     <string name="hour">时</string>
     <string name="minute">分</string>

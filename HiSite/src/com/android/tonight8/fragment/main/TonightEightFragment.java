@@ -14,31 +14,22 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.event.GoodsDetailActivity;
 import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
-import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
-import com.android.tonight8.io.event.EventIOControllerTest;
 import com.android.tonight8.model.event.EventListModel;
-import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.PointLinearlayout;
-import com.android.tonight8.view.RegionalSortPopupWindow;
-import com.android.tonight8.view.RegionalSortPopupWindow.SortListViewCallBack;
-import com.android.tonight8.view.slidemenu.SlideMenu;
-import com.android.tonight8.view.sortlistview.SortModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.ViewUtils;
@@ -65,8 +56,6 @@ public class TonightEightFragment extends BaseFragment {
 	/** 列表loading圈 */
 	@ViewInject(R.id.pb_loading)
 	private ProgressBar pb_loading;
-	@ViewInject(R.id.sm_search)
-	private SlideMenu sm_search;
 	@ViewInject(R.id.ll_right)
 	private LinearLayout ll_right;
 	// ***************************其他成员***********************************//
@@ -78,7 +67,7 @@ public class TonightEightFragment extends BaseFragment {
 	private CirculateFunction cFunction;
 	/** 本界面列表页的数据源 */
 	private MainPageListViewAdapter adapter;
-	private RegionalSortPopupWindow window;
+
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
@@ -174,7 +163,6 @@ public class TonightEightFragment extends BaseFragment {
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		initActionBar();
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
@@ -264,63 +252,6 @@ public class TonightEightFragment extends BaseFragment {
 		return saFragment;
 	}
 
-	private void initActionBar() {
-		final LinearLayout ll_rl = bA.getActionBarSpeical("今晚8点",
-				R.drawable.pencil_gray, false, true, new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {// 右边按钮点击，进入筛选
-						Utils.toast("筛选进入成功");
-						if (sm_search.isOpen())
-							sm_search.close(true);
-						else
-							sm_search.open(true, true);
-					}
-				});
-		final TextView tv_city = (TextView) ll_rl
-				.findViewById(R.id.tv_title_right);
-		tv_city.setText("北京");
-
-		ll_rl.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (window == null) {
-					int height = AppConstants.heightPx
-							- bA.getActionBar().getHeight();
-					window = new RegionalSortPopupWindow(getActivity(),
-							AppConstants.widthPx, height);// 创建索引的window
-				}
-				if (window.isShowing()) {
-					bA.rlDown();
-					window.dismissPopWindow();
-				} else {
-					window.showRegionalDialog(tv_city,
-							new SortListViewCallBack() {
-								@Override
-								public void getSortModel(SortModel model) {
-									bA.rlDown();
-									Utils.toast(model.getName());
-									tv_city.setText(model.getName());
-								}
-							});
-					bA.rlUp();
-				}
-			}
-		});
-		// 本界面actionBar的特殊内容，左边的历史记录
-		bA.getLogo().setVisibility(View.VISIBLE);
-		bA.getLogo().setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				Utils.toast("播放历史记录");
-
-			}
-		});
-		EventIOControllerTest.eventListRead(handler, 0);
-	}
-
 	/**
 	 * @Description:初始化listView头部视图
 	 * @author: LiXiaoSong
@@ -341,15 +272,5 @@ public class TonightEightFragment extends BaseFragment {
 			long id) {
 		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
 		startActivity(intent);
-	}
-
-	@Override
-	public boolean onBackPress() {
-		if (window != null && window.isShowing()) {
-			bA.rlDown();
-			window.dismissPopWindow();
-			return false;
-		} else
-			return super.onBackPress();
 	}
 }

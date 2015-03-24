@@ -24,8 +24,8 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:button">@null</item>
         <item name="android:singleLine">true</item>
         <item name="android:drawablePadding">1dp</item>
@@ -143,5 +143,45 @@
 	<style name="popup_animation">
         <item name="@android:windowEnterAnimation">@anim/pop_show</item>
         <item name="@android:windowExitAnimation">@anim/pop_hide</item>
+    </style>
+    <style name="SlideLayoutStyleDefault">
+        <item name="sl_dragEnable">true</item>
+        <item name="sl_menuStyle">@style/SlideMenuStyleDefault</item>        
+    </style>
+    
+    <style name="SlideMenuStyleDefault">
+        <item name="sm_overDrag">true</item>
+        <item name="sm_menuBorder">48dp</item>
+        <item name="sm_menuOverDragBorder">48dp</item>
+        <item name="sm_slideRatio">0.5</item>
+        <item name="sm_menuShadow">8dp</item>
+        <item name="sm_dragEdge">32dp</item>
+        <item name="sm_touchSlop">16dp</item> 
+        <item name="sm_maxDim">0.3</item>
+        <item name="sm_velocitySlop">500</item>
+        <item name="sm_animDuration">800</item>
+        <item name="sm_closeEdge">0.75</item>
+    </style>
+    <!-- slidemenu的属性 -->
+    <style name="slidemenu_style" parent="@style/SlideMenuStyleDefault">
+        <item name="sm_overDrag">false</item>
+        <item name="sm_menuBorder">50dp</item>
+        <item name="sm_menuOverDragBorder">0dp</item>
+        <item name="sm_slideRatio">0.5</item> <!-- 移动比率，当前设置menu移动1，content移动0.5 -->
+        <item name="sm_menuShadow">8dp</item>
+        <item name="sm_dragEdge">50dp</item><!-- 拖曳的区域 -->
+        <item name="sm_touchSlop">30dp</item>
+        <item name="sm_maxDim">0.7</item>
+        <item name="sm_velocitySlop">500</item>
+        <item name="sm_animDuration">800</item>
+        <item name="sm_closeEdge">0.75</item>
+        <item name="sm_animInterpolator">@android:anim/decelerate_interpolator</item>
+    </style>
+    <!-- slidelayout的属性 -->
+    <style name="slidelayout_style" parent="@style/SlideLayoutStyleDefault">
+        <item name="sl_dragEnable">true</item>
+        <item name="sl_menuStyle">@style/slidemenu_style</item>
+        <item name="sl_leftMenuChild">0</item>
+        <item name="sl_contentChild">1</item>
     </style>
 </resources>

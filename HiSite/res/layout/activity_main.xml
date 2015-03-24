@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    style="@style/match"
     android:orientation="vertical" >
 
     <FrameLayout
@@ -10,46 +9,45 @@
         android:layout_height="0.0dip"
         android:layout_weight="1.0" />
 
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/half_white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
+    <FrameLayout style="@style/match_width" >
 
-        <RadioButton
-            android:id="@+id/rb_main"
-            style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/main_home"
-            android:paddingTop="5dip"
-            android:tag="0"
-            android:text="8点" />
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/half_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
-        <RadioButton
-            android:id="@+id/rb_investlist"
-            style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/main_invest_list"
-            android:paddingTop="5dip"
-            android:tag="1"
-            android:text="Hi现场" />
+            <RadioButton
+                android:id="@+id/rb_main_left"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/main_home"
+                android:paddingTop="5dip"
+                android:tag="0"
+                android:text="@string/main_left_tab" />
 
-        <RadioButton
-            android:id="@+id/rb_account"
-            style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/main_myaccount"
-            android:paddingTop="5dip"
-            android:tag="2"
-            android:text="发活动" />
+            <View style="@style/line_full_vertical" />
 
-        <RadioButton
-            android:id="@+id/rb_more"
-            style="@style/main_tab_bottom"
-            android:drawableTop="@drawable/main_more"
-            android:paddingTop="5dip"
-            android:tag="3"
-            android:text="我" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rb_main_right"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/main_myaccount"
+                android:paddingTop="5dp"
+                android:tag="1"
+                android:text="@string/main_right_tab" />
+        </RadioGroup>
+
+        <ImageButton
+            android:id="@+id/ib_main_center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/circle_center" />
+    </FrameLayout>
 
 </LinearLayout>

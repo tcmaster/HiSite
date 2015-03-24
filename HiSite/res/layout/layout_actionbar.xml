@@ -24,7 +24,7 @@
             android:layout_width="@dimen/RegionalRightWidth"
             android:layout_height="@dimen/RegionalRightHeight"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/search_white"
+            android:src="@drawable/speople_gray"
             android:scaleType="fitXY"
             android:visibility="gone" />
 
