@@ -80,24 +80,24 @@ public class EventListNativeControllerTest {
 			public void run() {
 				for (int i = 0; i < models.size(); i++) {
 					EventList model = models.get(i);
-					GreenDaoUtils.InsertOrUpdate(asyncSession, daoSession
+					GreenDaoUtils.insertOrUpdate(asyncSession, daoSession
 							.getOrgDao(), OrgDao.Properties.Id, model.getOrg()
 							.getId(), model.getOrg(), "name");
-					GreenDaoUtils.InsertOrUpdate(asyncSession,
+					GreenDaoUtils.insertOrUpdate(asyncSession,
 							daoSession.getEventDao(), EventDao.Properties.Id,
 							model.getEvent().getId(), model.getEvent(), "rid",
 							"name", "distance", "apply_count", "consult_count");
-					GreenDaoUtils.InsertOrUpdate(asyncSession, daoSession
+					GreenDaoUtils.insertOrUpdate(asyncSession, daoSession
 							.getExchangeDao(), ExchangeDao.Properties.Id, model
 							.getExchange().getId(), model.getExchange(), "rid",
 							"method", "address", "org_all");
-					GreenDaoUtils.InsertOrUpdate(asyncSession, daoSession
+					GreenDaoUtils.insertOrUpdate(asyncSession, daoSession
 							.getCouponProvideDao(),
 							CouponProvideDao.Properties.Id, model
 									.getCouponProvide().getId(), model
 									.getCouponProvide(), "type", "rid",
 							"provide_num", "provide_all");
-					GreenDaoUtils.InsertOrUpdate(asyncSession, daoSession
+					GreenDaoUtils.insertOrUpdate(asyncSession, daoSession
 							.getPopGoodsDao(), PopGoodsDao.Properties.Id, model
 							.getPopGoods().getId(), model.getPopGoods(), "rid",
 							"pop_goods_price", "pop_goods_pic",

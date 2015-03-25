@@ -58,7 +58,7 @@ public class GreenDaoUtils {
 	 * 插入或更新操作（异步版），先从数据库查询是否有该条数据，有进行插入，没有进行更新（指定列）
 	 * 
 	 */
-	public static <T> void InsertOrUpdate(AsyncSession session,
+	public static <T> void insertOrUpdate(AsyncSession session,
 			AbstractDao<T, Long> dao, Property property, Object value, T data,
 			String... columns) {
 		if (dao.queryBuilder().where(property.eq(value)).build().list().size() == 0) {
