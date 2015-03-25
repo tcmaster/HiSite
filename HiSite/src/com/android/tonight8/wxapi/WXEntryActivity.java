@@ -1,8 +1,9 @@
-package com.android.tonight8.activity.other;
+package com.android.tonight8.wxapi;
 
 import android.os.Bundle;
 
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.util.LogUtils;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -24,6 +25,23 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
 	@Override
 	public void onResp(BaseResp arg0) {
 		LogUtils.i("==onResp()arg0-->" + arg0.getType());
+		switch (arg0.errCode) {
+		case BaseResp.ErrCode.ERR_OK:
+			Utils.toast("分享成功");
+			break;
+		case BaseResp.ErrCode.ERR_USER_CANCEL:
+			Utils.toast("分享取消");
+			break;
+		case BaseResp.ErrCode.ERR_AUTH_DENIED:
+			Utils.toast("分享被拒绝");
+			break;
+		default:
+
+			break;
+		}
+
+		// TODO 微信分享 成功之后调用接口
+		this.finish();
 	}
 
 	@Override

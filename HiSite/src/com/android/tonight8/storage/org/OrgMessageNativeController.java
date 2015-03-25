@@ -3,14 +3,18 @@ package com.android.tonight8.storage.org;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.tonight8.dao.DaoSession;
 import com.android.tonight8.model.common.Message;
 import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.organization.OrgMessageModel;
 import com.android.tonight8.storage.DBUtil;
+import com.android.tonight8.storage.GreenDaoUtils;
 import com.android.tonight8.storage.entity.MessageEntity;
 import com.android.tonight8.storage.entity.OrgEntity;
 import com.android.tonight8.storage.entity.UserEntity;
+
+import de.greenrobot.dao.async.AsyncSession;
 
 public class OrgMessageNativeController {
 
@@ -36,10 +40,15 @@ public class OrgMessageNativeController {
 			DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org, orgEntity);
 			orglist.add(orgEntity);
 		}
-		// 存到数据库中
-		DBUtil.saveOrUpdateAll(messageEntities, MessageEntity.class);
-		DBUtil.saveOrUpdateAll(userlist, UserEntity.class, "name", "pic");
-		DBUtil.saveOrUpdateAll(orglist, OrgEntity.class, "name", "pic");
+		final DaoSession daoSession = GreenDaoUtils.getDaoSession();
+		daoSession.runInTx(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	/**
@@ -72,6 +81,15 @@ public class OrgMessageNativeController {
 			}
 
 		}
+		final DaoSession daoSession = GreenDaoUtils.getDaoSession();
+		final AsyncSession asyncSession = daoSession.startAsyncSession();
+		asyncSession.runInTx(new Runnable() {
+			
+			@Override
+			public void run() {
+
+			}
+		});
 
 		return listModels;
 	}
