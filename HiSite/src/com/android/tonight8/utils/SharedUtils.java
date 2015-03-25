@@ -1,9 +1,12 @@
 package com.android.tonight8.utils;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.android.tonight8.base.AppConstants;
@@ -11,11 +14,16 @@ import com.android.tonight8.base.Tonight8App;
 import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzoneShare;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.sdk.modelmsg.WXImageObject;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXTextObject;
+import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
 import com.tencent.tauth.IUiListener;
 
 public class SharedUtils {
+	// 分享图片的大小
+	private static final int THUMB_SIZE = 150;
+	public static final int WEB_PAGE = 10;
 
 	public static class ShareThirdEntity {
 
@@ -30,7 +38,8 @@ public class SharedUtils {
 		/**
 		 * 分享类型一般为默认（ 图文QQShare.SHARE_TO_QQ_TYPE_DEFAULT、纯图片QQShare.
 		 * SHARE_TO_QQ_TYPE_IMAGE
-		 * 、分享音乐QQShare.SHARE_TO_QQ_TYPE_AUDIO、应用分享QQShare.SHARE_TO_QQ_TYPE_APP）
+		 * 、分享音乐QQShare.SHARE_TO_QQ_TYPE_AUDIO、应用分享QQShare
+		 * .SHARE_TO_QQ_TYPE_APP）、网页SharedUtils.WEB_PAGE
 		 * 类型是图文QQShare.SHARE_TO_QQ_TYPE_DEFAULT时：targetUrl和title不能为空
 		 */
 		public int shareType;
@@ -55,24 +64,77 @@ public class SharedUtils {
 			shareThirdEntity = new ShareThirdEntity();
 			return;
 		}
-		if (isSupportFriendsShare()) {
-			String text = "share our application";
-			WXTextObject textObj = new WXTextObject();
-			textObj.text = text;
+		if (isFriends) {
+			if (!isSupportFriendsShare()) {
+				Utils.toast("当前微信版本不支持分享到朋友圈");
+				return;
+			}
+		}
 
-			WXMediaMessage msg = new WXMediaMessage(textObj);
+		SendMessageToWX.Req req = new SendMessageToWX.Req();
+		// 分享图文
+		if (shareThirdEntity.shareType == QQShare.SHARE_TO_QQ_TYPE_DEFAULT) {
+			// 初始化一个WXTextObject对象
+			WXTextObject textObj = new WXTextObject();
+			textObj.text = shareThirdEntity.title;
+
+			// 用WXTextObject对象初始化一个WXMediaMessage对象
+			WXMediaMessage msg = new WXMediaMessage();
 			msg.mediaObject = textObj;
-			msg.description = text;
 			// 发送文本类型的消息时，title字段不起作用
 			// msg.title = "Will be ignored";
-
-			SendMessageToWX.Req req = new SendMessageToWX.Req();
-			req.transaction = String.valueOf(System.currentTimeMillis());
+			msg.description = shareThirdEntity.summary;
+			// 构造一个Req
+			req.transaction = buildTransaction("text"); // transaction字段用于唯一标识一个请求
 			req.message = msg;
+
+			// 分享纯图片
+		} else if (shareThirdEntity.shareType == QQShare.SHARE_TO_QQ_TYPE_IMAGE) {
+
+			try {
+				WXImageObject imgObj = new WXImageObject();
+				imgObj.imageUrl = shareThirdEntity.imageUrl;
+
+				WXMediaMessage msg = new WXMediaMessage();
+				msg.mediaObject = imgObj;
+
+				Bitmap bmp = BitmapFactory.decodeStream(new URL(shareThirdEntity.imageUrl).openStream());
+				Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
+				bmp.recycle();
+				msg.thumbData = WXUtils.bmpToByteArray(thumbBmp, true);
+
+				req.transaction = buildTransaction("img");
+				req.message = msg;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 分享网页
+		} else if (shareThirdEntity.shareType == WEB_PAGE) {
+			try {
+				WXWebpageObject webpage = new WXWebpageObject();
+				webpage.webpageUrl = shareThirdEntity.targetUrl;
+				WXMediaMessage msg = new WXMediaMessage(webpage);
+				msg.title = shareThirdEntity.title;
+				msg.description = shareThirdEntity.summary;
+				Bitmap bmp = BitmapFactory.decodeStream(new URL(shareThirdEntity.imageUrl).openStream());
+				Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
+				msg.thumbData = WXUtils.bmpToByteArray(thumbBmp, true);
+				req.transaction = buildTransaction("webpage");
+				req.message = msg;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 分享到朋友圈还是微信
 			req.scene = isFriends ? SendMessageToWX.Req.WXSceneTimeline : SendMessageToWX.Req.WXSceneSession;
+			// 调用api接口发送数据到微信
 			Tonight8App.getSelf().wxApi.sendReq(req);
 		}
 
+	}
+
+	private static String buildTransaction(final String type) {
+		return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
 	}
 
 	/**
@@ -92,7 +154,7 @@ public class SharedUtils {
 
 		Bundle params = new Bundle();
 		// 分享图文
-		if (shareThirdEntity.shareType == QQShare.SHARE_TO_QQ_TYPE_DEFAULT) {
+		if (shareThirdEntity.shareType == QQShare.SHARE_TO_QQ_TYPE_DEFAULT || shareThirdEntity.shareType == WEB_PAGE) {
 			params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
 			params.putString(QQShare.SHARE_TO_QQ_TITLE, shareThirdEntity.title);
 			params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, shareThirdEntity.imageUrl);

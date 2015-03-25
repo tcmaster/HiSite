@@ -36,9 +36,9 @@ public class Tonight8App extends Application {
 	/** 应用名称 */
 	public static final String PACKAGE_NAME = "com.android.tonight8";
 	/** 微信的注册id */
-	private static final String WX_APP_ID = "1101316332";
+	public static final String WX_APP_ID = "wxb5731b78779c42cf";
 	/** QQ的注册id */
-	private static final String QQ_APP_ID = "1101316332";
+	public static final String QQ_APP_ID = "1101316332";
 	/** IWXAPI是第三方APP与微信通信的接口 */
 	public IWXAPI wxApi;
 	/** Tencent是第三方APP与QQ通信的接口 */
@@ -69,13 +69,11 @@ public class Tonight8App extends Application {
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 		// 注册到微信
-		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(),
-				WX_APP_ID);
+		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(), WX_APP_ID, true);
 		wxApi.registerApp(WX_APP_ID);
 		// Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
 		// 其中APP_ID是分配给第三方应用的appid，类型为String。
-		mTencent = Tencent.createInstance(QQ_APP_ID,
-				this.getApplicationContext());
+		mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
 
 	}
 
@@ -86,8 +84,7 @@ public class Tonight8App extends Application {
 	 */
 	public void initDeviceParams() {
 		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-		TelephonyManager tm = (TelephonyManager) this
-				.getSystemService(TELEPHONY_SERVICE);
+		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		AppConstants.dpi = dm.densityDpi + "";// 设备分辨率
@@ -96,17 +93,13 @@ public class Tonight8App extends Application {
 		AppConstants.imei = tm.getDeviceId();// 设备imei码
 		AppConstants.os_version = android.os.Build.VERSION.SDK_INT + "";// 操作系统版本号
 		try {
-			AppConstants.version = getPackageManager().getPackageInfo(
-					PACKAGE_NAME, 0).versionCode
-					+ "";// 应用版本
+			AppConstants.version = getPackageManager().getPackageInfo(PACKAGE_NAME, 0).versionCode + "";// 应用版本
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
-		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version
-				+ AppConstants.device_type + AppConstants.imei
-				+ AppConstants.dpi + AppConstants.os_version
-				+ AppConstants.phone_model + "keleping");
+		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei
+				+ AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
 		LocationFunction lcf = new LocationFunction(this);
 		lcf.beginLocation(new BDLocationListener() {
 
