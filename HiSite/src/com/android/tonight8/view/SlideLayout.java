@@ -19,6 +19,7 @@ import android.view.animation.Transformation;
 import android.widget.FrameLayout;
 
 import com.android.tonight8.R;
+import com.lidroid.xutils.util.LogUtils;
 
 public class SlideLayout extends FrameLayout {
 
@@ -64,6 +65,10 @@ public class SlideLayout extends FrameLayout {
 	private int mTotalChild = 0;
 	private int mOffsetX = 0;
 	private int mOffsetY = 0;
+	private float scaleXBegin = 1.0f;
+	private float scaleXEnd = 0.8f;
+	private float scaleYBegin = 1.0f;
+	private float scaleYEnd = 0.8f;
 	private boolean mDragEnable = true;
 	private Interpolator mInterpolator;
 
@@ -1102,6 +1107,16 @@ public class SlideLayout extends FrameLayout {
 						- mLeftMenuStyle.mMenuOverDragBorder
 						: mLeftMenuStyle.mSize, Math.max(0, mOffsetX
 						- (int) distanceX));
+				float scaleP = (scaleXBegin - scaleXEnd)
+						* ((e1 != null ? (e2.getX() - e1.getX()) : e2.getX()) / mLeftMenuStyle.mSize);
+				float scale = 0.0f;
+				if (scaleP > 0)
+					scale = scaleXBegin;
+				else
+					scale = scaleXEnd;
+				float value = scale - scaleP;
+				LogUtils.v("value is" + value);
+				setContentScale(value);
 				offsetViewX(mOffsetX);
 				dispatchOffsetChangedEvent((float) mOffsetX
 						/ (float) mLeftMenuStyle.mSize, 0f);
@@ -1252,12 +1267,12 @@ public class SlideLayout extends FrameLayout {
 				|| (!isState(ACTION_SHOW, TARGET_CONTENT) && !isState(
 						ACTION_DRAG, TARGET_LEFT)))
 			return;
-
-		long duration = (long) Math
-				.abs(mLeftMenuStyle.mAnimDuration
-						* ((float) (mLeftMenuStyle.mSize - mOffsetX) / (float) mLeftMenuStyle.mSize));
+		// long duration = (long) Math
+		// .abs(mLeftMenuStyle.mAnimDuration
+		// * ((float) (mLeftMenuStyle.mSize - mOffsetX) / (float)
+		// mLeftMenuStyle.mSize));
+		long duration = 300;
 		getLeftMenuView().clearAnimation();
-
 		if (animation && duration > 0) {
 			setState(ACTION_OPEN, TARGET_LEFT, OP.OPEN_LEFT);
 			SlideAnimation anim = new SlideAnimation(true);
@@ -1274,6 +1289,7 @@ public class SlideLayout extends FrameLayout {
 				@Override
 				public void onAnimationEnd(Animation animation) {
 					setState(ACTION_SHOW, TARGET_LEFT, OP.OPEN_LEFT);
+					setContentScale(scaleXEnd);
 				}
 			});
 			this.startAnimation(anim);
@@ -1290,7 +1306,9 @@ public class SlideLayout extends FrameLayout {
 						TARGET_LEFT)))
 			return;
 
-		long duration = (long) (mLeftMenuStyle.mAnimDuration * ((float) mOffsetX / (float) mLeftMenuStyle.mSize));
+		// long duration = (long) (mLeftMenuStyle.mAnimDuration * ((float)
+		// mOffsetX / (float) mLeftMenuStyle.mSize));
+		long duration = 300;
 		getLeftMenuView().clearAnimation();
 
 		if (animation && duration > 0) {
@@ -1309,6 +1327,7 @@ public class SlideLayout extends FrameLayout {
 				@Override
 				public void onAnimationEnd(Animation animation) {
 					setState(ACTION_SHOW, TARGET_CONTENT, OP.CLOSE_LEFT);
+					setContentScale(scaleXBegin);
 				}
 			});
 			this.startAnimation(anim);
@@ -1608,6 +1627,106 @@ public class SlideLayout extends FrameLayout {
 		if (mStateListener != null && mStateListener.get() != null)
 			mStateListener.get().onOffsetChanged(this, offsetX, offsetY,
 					getState(mAction, mTarget));
+	}
+
+	private void offsetViewX(int offsetX, float scale) {
+		View content = getContentView();
+		View menu;
+		View shadow;
+		View overlay = getOverlayView();
+
+		if (mTarget == TARGET_LEFT) {
+			menu = getLeftMenuView();
+			shadow = getLeftShadowView();
+			setContentScale(scale);
+			if (mLeftMenuChild > mContentChild) {
+				int left_menu = Math.min(0, offsetX - mLeftMenuStyle.mSize)
+						+ getPaddingLeft();
+				int left_content = (int) (offsetX * mLeftMenuStyle.mSlideRatio)
+						+ getPaddingLeft();
+
+				offsetLeftAndRight(content, left_content - content.getLeft());
+				offsetLeftAndRight(menu, left_menu - menu.getLeft());
+				offsetLeftAndRight(overlay, left_menu + mLeftMenuStyle.mSize
+						- overlay.getLeft());
+				offsetLeftAndRight(shadow, left_menu + mLeftMenuStyle.mSize
+						- shadow.getLeft());
+
+				setDim(1f - (float) offsetX / (float) mLeftMenuStyle.mSize,
+						mLeftMenuStyle.mMaxDim);
+			} else {
+				int left_menu = (int) ((offsetX - mLeftMenuStyle.mSize) * mLeftMenuStyle.mSlideRatio)
+						+ getPaddingLeft();
+				int left_content = offsetX + getPaddingLeft();
+
+				offsetLeftAndRight(content, left_content - content.getLeft());
+				offsetLeftAndRight(menu, left_menu - menu.getLeft());
+				offsetLeftAndRight(overlay,
+						left_content - mViewWidth - overlay.getLeft());
+				offsetLeftAndRight(shadow, left_content
+						- mLeftMenuStyle.mMenuShadow - shadow.getLeft());
+
+				setDim((float) offsetX / (float) mLeftMenuStyle.mSize,
+						mLeftMenuStyle.mMaxDim);
+			}
+
+			if (offsetX > 0) {
+				setVisibility(overlay, View.VISIBLE);
+				setVisibility(menu, View.VISIBLE);
+				setVisibility(shadow, View.VISIBLE);
+			} else {
+				setVisibility(overlay, View.GONE);
+				setVisibility(menu, View.GONE);
+				setVisibility(shadow, View.GONE);
+			}
+		} else if (mTarget == TARGET_RIGHT) {
+			menu = getRightMenuView();
+			shadow = getRightShadowView();
+
+			if (mRightMenuChild > mContentChild) {
+				int left_menu = Math.max(mRightMenuStyle.mMenuBorder, offsetX
+						+ mViewWidth)
+						+ getPaddingLeft();
+				int left_content = (int) (offsetX * mRightMenuStyle.mSlideRatio)
+						+ getPaddingLeft();
+
+				offsetLeftAndRight(content, left_content - content.getLeft());
+				offsetLeftAndRight(menu, left_menu - menu.getLeft());
+				offsetLeftAndRight(overlay,
+						left_menu - mViewWidth - overlay.getLeft());
+				offsetLeftAndRight(shadow, left_menu
+						- mRightMenuStyle.mMenuShadow - shadow.getLeft());
+
+				setDim(1f - (float) -offsetX / (float) mRightMenuStyle.mSize,
+						mRightMenuStyle.mMaxDim);
+			} else {
+				int left_menu = (int) ((offsetX + mRightMenuStyle.mSize) * mRightMenuStyle.mSlideRatio)
+						+ mRightMenuStyle.mMenuBorder + getPaddingLeft();
+				int left_content = offsetX + getPaddingLeft();
+
+				offsetLeftAndRight(content, left_content - content.getLeft());
+				offsetLeftAndRight(menu, left_menu - menu.getLeft());
+				offsetLeftAndRight(overlay,
+						left_content + mViewWidth - overlay.getLeft());
+				offsetLeftAndRight(shadow,
+						left_content + mViewWidth - shadow.getLeft());
+
+				setDim((float) -offsetX / (float) mRightMenuStyle.mSize,
+						mRightMenuStyle.mMaxDim);
+			}
+
+			if (offsetX < 0) {
+				setVisibility(overlay, View.VISIBLE);
+				setVisibility(menu, View.VISIBLE);
+				setVisibility(shadow, View.VISIBLE);
+			} else {
+				setVisibility(overlay, View.GONE);
+				setVisibility(menu, View.GONE);
+				setVisibility(shadow, View.GONE);
+			}
+		}
+
+		invalidate();
 	}
 
 	private void offsetViewX(int offsetX) {
@@ -2010,6 +2129,11 @@ public class SlideLayout extends FrameLayout {
 		v.offsetTopAndBottom(offset);
 	}
 
+	private void setContentScale(float scale) {
+		getContentView().setScaleX(scale);
+		getContentView().setScaleY(scale);
+	}
+
 	private void layout(View v, int l, int t, int r, int b) {
 		if (v == null || v.getVisibility() == View.GONE)
 			return;
@@ -2070,10 +2194,18 @@ public class SlideLayout extends FrameLayout {
 
 		private int distance;
 		private int start;
+		private float scaleStart;
+		private float scaleDistance;
 		private boolean isOpen;
 
 		public SlideAnimation(boolean isOpen) {
 			this.isOpen = isOpen;
+			scaleDistance = scaleStart;
+			if (isOpen) {
+				scaleStart = scaleXBegin;
+			} else {
+				scaleStart = scaleXEnd;
+			}
 			switch (mTarget) {
 			case TARGET_LEFT:
 				distance = isOpen ? mLeftMenuStyle.mSize - mOffsetX : mOffsetX;
@@ -2106,14 +2238,19 @@ public class SlideLayout extends FrameLayout {
 			float value = getInterpolator().getInterpolation(interpolatedTime);
 			switch (mTarget) {
 			case TARGET_LEFT:
-				if (isOpen)
+				if (isOpen) {
 					mOffsetX = distance > 0 ? Math.min(mLeftMenuStyle.mSize,
 							(int) (start + distance * value)) : Math.max(
 							mLeftMenuStyle.mSize, (int) (start + distance
 									* value));
-				else
+					scaleDistance = scaleStart
+							- ((scaleXBegin - scaleXEnd) * interpolatedTime);
+				} else {
 					mOffsetX = Math.max(0, (int) (start - distance * value));
-				offsetViewX(mOffsetX);
+					scaleDistance = scaleStart
+							+ ((scaleXBegin - scaleXEnd) * interpolatedTime);
+				}
+				offsetViewX(mOffsetX, scaleDistance);
 
 				if (isOpen) {
 					if (mOffsetX == mLeftMenuStyle.mSize)
@@ -2124,14 +2261,20 @@ public class SlideLayout extends FrameLayout {
 				}
 				break;
 			case TARGET_RIGHT:
-				if (isOpen)
+				if (isOpen) {
 					mOffsetX = distance > 0 ? Math.max(-mRightMenuStyle.mSize,
 							(int) (start - distance * value)) : Math.min(
 							-mRightMenuStyle.mSize, (int) (start - distance
 									* value));
-				else
+					scaleDistance = scaleStart
+							- ((scaleXBegin - scaleXEnd) * interpolatedTime);
+				} else {
 					mOffsetX = Math.min(0, (int) (start + distance * value));
-				offsetViewX(mOffsetX);
+					scaleDistance = scaleStart
+							+ ((scaleXBegin - scaleXEnd) * interpolatedTime);
+				}
+
+				offsetViewX(mOffsetX, scaleDistance);
 
 				if (isOpen) {
 					if (mOffsetX == -mRightMenuStyle.mSize)
