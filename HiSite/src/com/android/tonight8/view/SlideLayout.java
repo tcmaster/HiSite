@@ -1018,7 +1018,6 @@ public class SlideLayout extends FrameLayout {
 					mOffsetX = Math.min(mLeftMenuStyle.mSize,
 							Math.max(0, mOffsetX - (int) distanceX));
 					offsetViewX(mOffsetX);
-
 					cancelMotionEvent(e2, null);
 
 					if (mOffsetX > 0)
@@ -1115,8 +1114,14 @@ public class SlideLayout extends FrameLayout {
 				else
 					scale = scaleXEnd;
 				float value = scale - scaleP;
-				LogUtils.v("value is" + value);
-				setContentScale(value);
+				if (value > 1.0f)
+					value = 1.0f;
+				else if (value < 0.0f)
+					value = 0.0f;
+				LogUtils.v("offsetX   " + mOffsetX);
+				if (mOffsetX < mLeftMenuStyle.mSize) {
+					setContentScale(value);
+				}
 				offsetViewX(mOffsetX);
 				dispatchOffsetChangedEvent((float) mOffsetX
 						/ (float) mLeftMenuStyle.mSize, 0f);
@@ -1280,6 +1285,7 @@ public class SlideLayout extends FrameLayout {
 			anim.setAnimationListener(new Animation.AnimationListener() {
 				@Override
 				public void onAnimationStart(Animation animation) {
+					LogUtils.v("start");
 				}
 
 				@Override
@@ -1318,6 +1324,7 @@ public class SlideLayout extends FrameLayout {
 			anim.setAnimationListener(new Animation.AnimationListener() {
 				@Override
 				public void onAnimationStart(Animation animation) {
+					LogUtils.v("start");
 				}
 
 				@Override
@@ -2130,7 +2137,7 @@ public class SlideLayout extends FrameLayout {
 	}
 
 	private void setContentScale(float scale) {
-		getContentView().setScaleX(scale);
+		// getContentView().setScaleX(scale);
 		getContentView().setScaleY(scale);
 	}
 
@@ -2201,11 +2208,7 @@ public class SlideLayout extends FrameLayout {
 		public SlideAnimation(boolean isOpen) {
 			this.isOpen = isOpen;
 			scaleDistance = scaleStart;
-			if (isOpen) {
-				scaleStart = scaleXBegin;
-			} else {
-				scaleStart = scaleXEnd;
-			}
+			scaleStart = getContentView().getScaleX();// 获得当前的缩放比例
 			switch (mTarget) {
 			case TARGET_LEFT:
 				distance = isOpen ? mLeftMenuStyle.mSize - mOffsetX : mOffsetX;
@@ -2244,11 +2247,11 @@ public class SlideLayout extends FrameLayout {
 							mLeftMenuStyle.mSize, (int) (start + distance
 									* value));
 					scaleDistance = scaleStart
-							- ((scaleXBegin - scaleXEnd) * interpolatedTime);
+							- ((scaleStart - scaleXEnd) * interpolatedTime);
 				} else {
 					mOffsetX = Math.max(0, (int) (start - distance * value));
 					scaleDistance = scaleStart
-							+ ((scaleXBegin - scaleXEnd) * interpolatedTime);
+							+ ((scaleXBegin - scaleStart) * interpolatedTime);
 				}
 				offsetViewX(mOffsetX, scaleDistance);
 

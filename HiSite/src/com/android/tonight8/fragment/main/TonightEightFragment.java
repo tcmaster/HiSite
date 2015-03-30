@@ -220,7 +220,6 @@ public class TonightEightFragment extends BaseFragment {
 					@Override
 					public void handleMessage(Message msg) {
 						vp_show_img.setCurrentItem(msg.what);
-						super.handleMessage(msg);
 					}
 				});
 		cFunction.start();// 开始轮播

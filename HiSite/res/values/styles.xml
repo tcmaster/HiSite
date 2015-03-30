@@ -64,6 +64,11 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/line_gray</item>
     </style>
+    <style name="actionBar_btn_sty">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
     <!-- 通用编辑框样式 -->
     <style name="et_comm_style" parent="match">
         <item name="android:textSize">@dimen/middleTextSize</item>

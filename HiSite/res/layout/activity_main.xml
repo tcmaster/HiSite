@@ -1,53 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.tonight8.view.SlideView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slideview="http://schemas.android.com/apk/res/com.android.tonight8"
     style="@style/match"
-    android:orientation="vertical" >
-
-    <FrameLayout
-        android:id="@+id/tabcontent"
-        android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="1.0" />
-
-    <FrameLayout style="@style/match_width" >
-
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/half_white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/rb_main_left"
-                style="@style/main_tab_bottom"
-                android:drawableTop="@drawable/main_home"
-                android:paddingTop="5dip"
-                android:tag="0"
-                android:text="@string/main_left_tab" />
-
-            <View style="@style/line_full_vertical" />
-
-            <RadioButton
-                android:id="@+id/rb_main_right"
-                style="@style/main_tab_bottom"
-                android:drawableTop="@drawable/main_myaccount"
-                android:paddingTop="5dp"
-                android:tag="1"
-                android:text="@string/main_right_tab" />
-        </RadioGroup>
-
-        <ImageButton
-            android:id="@+id/ib_main_center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/topOrbottomPadding"
-            android:background="@null"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/circle_center" />
-    </FrameLayout>
-
-</LinearLayout>
+    android:id="@+id/sv_main_page"
+    android:background="@color/blue"
+    slideview:sv_left="250dp"
+    slideview:boundary="80dp"
+    />

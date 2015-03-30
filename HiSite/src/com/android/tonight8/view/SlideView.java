@@ -1,6 +1,7 @@
 package com.android.tonight8.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -9,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.Transformation;
 import android.widget.FrameLayout;
+
+import com.android.tonight8.R;
 
 public class SlideView extends FrameLayout {
 	private View leftView;// 左边视图的内容
@@ -20,7 +23,7 @@ public class SlideView extends FrameLayout {
 	private final int OPEN = 1;// 当前状态，打开
 	private final int CLOSE = 0;// 当前状态，关闭
 	private int state = CLOSE;// 当前视图的状态
-	private int boundary = 50;// 可以操作的边缘
+	private int boundary;// 可以操作的边缘
 	private float downX = -1.0f;
 	private float downY = -1.0f;
 	private float prevX = 0.0f;
@@ -34,6 +37,13 @@ public class SlideView extends FrameLayout {
 
 	public SlideView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		TypedArray array = context.obtainStyledAttributes(attrs,
+				R.styleable.SlideViewStyle);
+		width_left = array.getDimensionPixelSize(
+				R.styleable.SlideViewStyle_sv_left, 300);
+		boundary = array.getDimensionPixelSize(
+				R.styleable.SlideViewStyle_boundary, 80);
+		array.recycle();
 	}
 
 	/**
@@ -58,7 +68,7 @@ public class SlideView extends FrameLayout {
 	}
 
 	private void setupLeftView() {
-		FrameLayout.LayoutParams lps = new FrameLayout.LayoutParams(400,
+		FrameLayout.LayoutParams lps = new FrameLayout.LayoutParams(width_left,
 				FrameLayout.LayoutParams.MATCH_PARENT);
 		lps.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		leftView.setLayoutParams(lps);
@@ -77,7 +87,9 @@ public class SlideView extends FrameLayout {
 			int bottom) {
 		if (width_view == 0) {
 			width_view = right - left;
-			width_left = width_view / 10 * 6;
+			if (width_left > width_view) {// 像素值不能超过屏幕大小
+				width_left = width_view;
+			}
 		}
 		super.onLayout(changed, left, top, right, bottom);
 	}
@@ -125,13 +137,14 @@ public class SlideView extends FrameLayout {
 			if (downX > 0.0f && downY > 0.0f) {
 				float x = ev.getX();
 				float y = ev.getY();
-				disX += x - prevX;// 本次共移动的距离
+				float needMoveX = x - prevX;
+				disX += needMoveX;// 本次共移动的距离
 				disY += y - prevY;
 				prevX = x;
 				prevY = y;
 				if (Math.abs(disX) > Math.abs(disY) + 10) {// 保证横向滑动
 					if (Math.abs(disX) > 20.0f) {// 一次有效移动
-						offsetX = offsetX + disX / 2;
+						offsetX = offsetX + needMoveX;
 						if (offsetX > width_left) {
 							offsetX = width_left;
 							setState(OPEN);
@@ -140,6 +153,12 @@ public class SlideView extends FrameLayout {
 							setState(CLOSE);
 						}
 						doAnimation(offsetX / width_left);
+						boolean result = cancelMotionEvent(ev, null);
+						return result;
+					}
+				} else {
+					// 在打开菜单的时候，屏蔽右边的竖向滑动
+					if (state == OPEN && ev.getX() > width_left) {
 						boolean result = cancelMotionEvent(ev, null);
 						return result;
 					}
@@ -176,6 +195,16 @@ public class SlideView extends FrameLayout {
 		this.startAnimation(animation);
 	}
 
+	public boolean isOpen() {
+		if (state == OPEN) {
+			return true;
+		} else if (state == CLOSE) {
+			return false;
+		}
+		return false;
+
+	}
+
 	/** 播放动画 */
 	private void doAnimation(float avg) {
 		doLeftAnimation(avg);
@@ -184,8 +213,9 @@ public class SlideView extends FrameLayout {
 
 	/** 进行左边的动画(参数为0.0-1.0),代表当前动画进行的频率 */
 	private void doLeftAnimation(float avg) {
-		leftView.setScaleX(0.3f + 0.7f * avg);
-		leftView.setScaleY(0.3f + 0.7f * avg);
+		// leftView.setScaleX(0.3f + 0.7f * avg);
+		leftView.setTranslationX(-width_left / 10 + avg * (width_left / 10));
+		leftView.setScaleY(0.8f + 0.2f * avg);
 		leftView.setAlpha(avg);
 	}
 

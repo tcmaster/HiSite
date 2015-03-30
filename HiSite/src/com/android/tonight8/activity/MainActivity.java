@@ -6,25 +6,20 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.OrgLoginFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
 import com.android.tonight8.storage.DBUtil;
-import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.RegionalSortPopupWindow;
-import com.android.tonight8.view.RegionalSortPopupWindow.SortListViewCallBack;
-import com.android.tonight8.view.SlideLayout;
-import com.android.tonight8.view.sortlistview.SortModel;
+import com.android.tonight8.view.SlideView;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -37,16 +32,31 @@ public class MainActivity extends BaseActivity implements
 		OnCheckedChangeListener {
 
 	/** 界面下方四个按钮组 */
-	@ViewInject(R.id.radio_group)
 	private RadioGroup rg_mian;
-	/** 侧滑菜单，用于管理“我”的界面 */
-	private SlideLayout sm_layout;
 	/** 本界面的popupwindow */
 	private RegionalSortPopupWindow window;
+	/** "我"的界面 */
+	private View leftView;
+	/** 主界面 */
+	private View rightView;
+	/** slideView */
+	@ViewInject(R.id.sv_main_page)
+	private SlideView sv_main;
 	/** Fragment管理类 */
 	private FragmentManager fragmentManager;
 	/** 判断跳转到哪个页面的下标 */
 	private int switchid = 0;
+	// 自定义actionBar相关（主页）
+	/** 主页左边按钮（我） */
+	private ImageView iv_left_btn;
+	/** 主页最右边按钮 */
+	private ImageView iv_right_btn;
+	/** 主页较右边按钮 */
+	private ImageView iv_right_btn2;
+	/** 中间左边的选择 */
+	private RadioButton rb_left;
+	/** 中间右边的选择 */
+	private RadioButton rb_right;
 	/** 页面信息标题数组 */
 	private String[] titleArr = { "8点", "商家登陆" };
 	private FragmentTransaction fragmentTransaction;
@@ -77,7 +87,6 @@ public class MainActivity extends BaseActivity implements
 		setContentView(R.layout.activity_main);
 		super.onCreate(savedInstanceState);
 		initMainInterface();
-		initMeInterface();
 		initActionBar();
 	}
 
@@ -88,6 +97,38 @@ public class MainActivity extends BaseActivity implements
 	}
 
 	private void initMainInterface() {
+		rightView = LayoutInflater.from(this).inflate(
+				R.layout.layout_main_right, null);
+		leftView = LayoutInflater.from(this).inflate(
+				R.layout.activity_org_forgotid, null);
+		rg_mian = (RadioGroup) rightView.findViewById(R.id.radio_group);
+		sv_main.initView(leftView, rightView);
+		// 界面初始化工作
+		sv_main.post(new Runnable() {
+
+			@Override
+			public void run() {
+				initFragment();
+			}
+		});
+	}
+
+	private void initActionBar() {
+		iv_left_btn = (ImageView) rightView.findViewById(R.id.iv_left_btn);
+		iv_left_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (sv_main.isOpen()) {
+					sv_main.closeMenu();
+				} else
+					sv_main.openMenu();
+
+			}
+		});
+	}
+
+	private void initFragment() {
 		fragments = new BaseFragment[2];
 		fragments[0] = TonightEightFragment.newInstance();
 		fragments[1] = OrgLoginFragment.newInstance();
@@ -111,66 +152,6 @@ public class MainActivity extends BaseActivity implements
 	 */
 	public MyAccountFragment getMyAccountFragment() {
 		return null;
-	}
-
-	/**
-	 * 初始化“我”的界面
-	 */
-	private void initMeInterface() {
-		sm_layout = new SlideLayout(this, null, R.style.slidelayout_style);
-		View v = LayoutInflater.from(this).inflate(R.layout.activity_me, null);
-		sm_layout.addView(v);
-		sm_layout.attachToActivity(this, true);
-	}
-
-	private void initActionBar() {
-		final LinearLayout ll_rl = getActionBarSpeical("今晚8点",
-				R.drawable.pencil_gray, false, true, new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {// 右边按钮点击，弹出popWindow菜单
-					}
-				});
-		final TextView tv_city = (TextView) ll_rl
-				.findViewById(R.id.tv_title_right);
-		tv_city.setText("北京");
-
-		ll_rl.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (window == null) {
-					int height = AppConstants.heightPx
-							- getActionBar().getHeight();
-					window = new RegionalSortPopupWindow(MainActivity.this,
-							AppConstants.widthPx, height);// 创建索引的window
-				}
-				if (window.isShowing()) {
-					rlDown();
-					window.dismissPopWindow();
-				} else {
-					window.showRegionalDialog(tv_city,
-							new SortListViewCallBack() {
-								@Override
-								public void getSortModel(SortModel model) {
-									rlDown();
-									Utils.toast(model.getName());
-									tv_city.setText(model.getName());
-								}
-							});
-					rlUp();
-				}
-			}
-		});
-		// 本界面actionBar的特殊内容，点击进入“我”
-		getLogo().setVisibility(View.VISIBLE);
-		getLogo().setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				sm_layout.openLeftMenu(true);
-			}
-		});
 	}
 
 	/**

@@ -31,4 +31,8 @@
         <attr name="sm_animDuration" format="integer"/>
         <attr name="sm_animInterpolator" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="SlideViewStyle">
+        <attr name="sv_left" format="dimension"/>
+        <attr name="boundary" format="dimension"/>
+    </declare-styleable>
 </resources>

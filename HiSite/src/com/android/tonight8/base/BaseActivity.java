@@ -31,7 +31,7 @@ public class BaseActivity extends FragmentActivity {
 
 	/** 通用actionbar */
 	public ActionBar mActionBar;
-	// 自定义ActionBar相关
+	// 自定义ActionBar相关(非主页）
 	/** 左边文字 */
 	private TextView tv_left;
 	/** 右边文字 */
@@ -198,8 +198,6 @@ public class BaseActivity extends FragmentActivity {
 	/**
 	 * @Description:得到actionBar左边的文字
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
@@ -210,8 +208,6 @@ public class BaseActivity extends FragmentActivity {
 	/**
 	 * @Description:得到actionBar右边的文字
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
@@ -222,8 +218,6 @@ public class BaseActivity extends FragmentActivity {
 	/**
 	 * @Description:得到actionBar的logo
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
@@ -234,8 +228,6 @@ public class BaseActivity extends FragmentActivity {
 	/**
 	 * @Description:得到actionBar左边的箭头
 	 * @return
-	 * @see:
-	 * @since:
 	 * @author: LiXiaoSong
 	 * @date:2014-12-25
 	 */
