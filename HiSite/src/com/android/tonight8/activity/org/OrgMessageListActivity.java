@@ -12,6 +12,7 @@ import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.org.OrgIOController;
 import com.android.tonight8.model.organization.OrgMessageModel;
 import com.android.tonight8.storage.org.OrgLoginNativeController;
+import com.android.tonight8.storage.org.OrgMessageNativeController;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -95,11 +96,8 @@ public class OrgMessageListActivity extends BaseActivity {
 	}
 
 	private void initData() {
-		OrgLoginNativeController orgLoginNativeController = new OrgLoginNativeController(mContext);
-		orgId = orgLoginNativeController.getOrgLoginInfo();
-		if (orgId != null) {
-			OrgIOController.OrgMessageListRead(handler, orgId, INIT, ITEM_COUNT, current * ITEM_COUNT);
-		}
+		OrgMessageNativeController orgMessage=new OrgMessageNativeController();
+		orgMessage.saveOrUpdateData(null);
 		lv_only_list.setXListViewListener(new IXListViewListener() {// 设置上拉下拉事件
 
 			@Override

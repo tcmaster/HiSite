@@ -1,8 +1,9 @@
 package com.android.tonight8.model.organization;
 
+import com.android.tonight8.dao.entity.Message;
+import com.android.tonight8.dao.entity.Org;
 import com.android.tonight8.model.BaseModel;
-import com.android.tonight8.model.common.Message;
-import com.android.tonight8.model.common.Org;
+
 import com.android.tonight8.model.common.User;
 
 /**

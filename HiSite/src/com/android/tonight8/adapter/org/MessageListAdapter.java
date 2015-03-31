@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
-import com.android.tonight8.model.common.Message;
+import com.android.tonight8.dao.entity.Message;
 import com.android.tonight8.model.organization.OrgMessageModel;
 
 public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
@@ -35,16 +35,17 @@ public class MessageListAdapter extends BaseListAdapter<OrgMessageModel> {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Message message = mValues.get(position).getMessage();
-		 if ("1".equals(message.getType())) {
-		 holder.tv_message_type.setText("官方");
-		 } else {
-		 holder.tv_message_type.setText("商家");
-		 }
+		if ("1".equals(message.getType())) {
+			holder.tv_message_type.setText("官方");
+		} else {
+			holder.tv_message_type.setText("商家");
+		}
 
 		holder.tv_message_title.setText(message.getTitle());
 		holder.tv_message_content.setText(message.getContent());
 		holder.tv_message_datetime.setText(message.getDate() + message.getTime());
-		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic, message.get);
+		// Tonight8App.getSelf().bitmapUtils.display(holder.iv_org_logopic,
+		// message.get);
 		return convertView;
 	}
 

@@ -12,7 +12,7 @@ public class Message implements Serializable {
 	/** */
 	private static final long serialVersionUID = 1L;
 	/** */
-	public int id;
+	public long id;
 	/** */
 	public int fromId;
 	/** 消息类型 */
@@ -28,11 +28,11 @@ public class Message implements Serializable {
 	/** 消息时间 */
 	public String time;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
