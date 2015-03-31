@@ -17,9 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.LoginActivity;
 import com.android.tonight8.activity.MainActivity;
-import com.android.tonight8.activity.WBLoginLogoutActivity;
 import com.android.tonight8.activity.createevent.CouponHaveUsedActivity;
 import com.android.tonight8.activity.createevent.CouponToUseActivity;
 import com.android.tonight8.activity.createevent.EventsAwardManageActivity;

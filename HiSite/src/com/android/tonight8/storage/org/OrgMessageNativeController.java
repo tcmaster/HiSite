@@ -36,9 +36,10 @@ public class OrgMessageNativeController {
 			DBUtil.copyData(User.class, UserEntity.class, listModel.get(i).user, userEntity);
 			userlist.add(userEntity);
 
-			OrgEntity orgEntity = new OrgEntity();
-			DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org, orgEntity);
-			orglist.add(orgEntity);
+			// OrgEntity orgEntity = new OrgEntity();
+			// DBUtil.copyData(Org.class, OrgEntity.class, listModel.get(i).org,
+			// orgEntity);
+			// orglist.add(orgEntity);
 		}
 		final DaoSession daoSession = GreenDaoUtils.getDaoSession();
 		daoSession.runInTx(new Runnable() {
@@ -75,9 +76,9 @@ public class OrgMessageNativeController {
 				DBUtil.copyData(UserEntity.class, User.class, messageEntities.get(j).user, user);
 				model.setUser(user);
 
-				Org org = new Org();
-				DBUtil.copyData(OrgEntity.class, Org.class, messageEntities.get(j).org, org);
-				model.setOrg(org);
+//				Org org = new Org();
+//				DBUtil.copyData(OrgEntity.class, Org.class, messageEntities.get(j).org, org);
+//				model.setOrg(org);
 			}
 
 		}
