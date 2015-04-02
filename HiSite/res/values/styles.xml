@@ -149,44 +149,4 @@
         <item name="@android:windowEnterAnimation">@anim/pop_show</item>
         <item name="@android:windowExitAnimation">@anim/pop_hide</item>
     </style>
-    <style name="SlideLayoutStyleDefault">
-        <item name="sl_dragEnable">true</item>
-        <item name="sl_menuStyle">@style/SlideMenuStyleDefault</item>        
-    </style>
-    
-    <style name="SlideMenuStyleDefault">
-        <item name="sm_overDrag">true</item>
-        <item name="sm_menuBorder">48dp</item>
-        <item name="sm_menuOverDragBorder">48dp</item>
-        <item name="sm_slideRatio">0.5</item>
-        <item name="sm_menuShadow">8dp</item>
-        <item name="sm_dragEdge">32dp</item>
-        <item name="sm_touchSlop">16dp</item> 
-        <item name="sm_maxDim">0.3</item>
-        <item name="sm_velocitySlop">500</item>
-        <item name="sm_animDuration">800</item>
-        <item name="sm_closeEdge">0.75</item>
-    </style>
-    <!-- slidemenu的属性 -->
-    <style name="slidemenu_style" parent="@style/SlideMenuStyleDefault">
-        <item name="sm_overDrag">false</item>
-        <item name="sm_menuBorder">150dp</item>
-        <item name="sm_menuOverDragBorder">0dp</item>
-        <item name="sm_slideRatio">0.5</item> <!-- 移动比率，当前设置menu移动1，content移动0.5 -->
-        <item name="sm_menuShadow">1dp</item>
-        <item name="sm_dragEdge">200dp</item><!-- 拖曳的区域 -->
-        <item name="sm_touchSlop">30dp</item>
-        <item name="sm_maxDim">0.7</item>
-        <item name="sm_velocitySlop">500</item>
-        <item name="sm_animDuration">800</item>
-        <item name="sm_closeEdge">0.75</item>
-        <item name="sm_animInterpolator">@android:anim/decelerate_interpolator</item>
-    </style>
-    <!-- slidelayout的属性 -->
-    <style name="slidelayout_style" parent="@style/SlideLayoutStyleDefault">
-        <item name="sl_dragEnable">true</item>
-        <item name="sl_menuStyle">@style/slidemenu_style</item>
-        <item name="sl_leftMenuChild">0</item>
-        <item name="sl_contentChild">1</item>
-    </style>
 </resources>
