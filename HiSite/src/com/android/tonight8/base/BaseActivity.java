@@ -98,7 +98,6 @@ public class BaseActivity extends FragmentActivity {
 		if (Tonight8App.getSelf().mTencent != null) {
 			Tonight8App.getSelf().mTencent.releaseResource();
 		}
-
 	}
 
 	/**

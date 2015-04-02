@@ -16,7 +16,6 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 	}
 
 	protected void startActivityForAnima(Intent intent, Activity parentActivity) {
