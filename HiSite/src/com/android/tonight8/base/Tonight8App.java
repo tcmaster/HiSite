@@ -21,6 +21,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.sina.weibo.sdk.auth.AuthInfo;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.tauth.Tencent;
@@ -37,12 +38,23 @@ public class Tonight8App extends Application {
 	public static final String PACKAGE_NAME = "com.android.tonight8";
 	/** 微信的注册id */
 	public static final String WX_APP_ID = "wxb5731b78779c42cf";
+	/** 微信的SECRET id */
+	public static final String WX_APP_SECRET = "a3657f1d3e772ed6d576ccc455c6e082";
 	/** QQ的注册id */
 	public static final String QQ_APP_ID = "1101316332";
+	// --------------------------微博授权时所需要的参数--------------------
+	/** 当前 DEMO 应用的 APP_KEY，第三方应用应该使用自己的 APP_KEY 替换该 APP_KEY */
+	public static final String SINA_APP_KEY = "3956016765";
+	/** 新浪微博默认回调页：https://api.weibo.com/oauth2/default.html */
+	public static final String SINA_REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
+	/** Scope 新是 OAuth2.0 授权机制中 authorize 接口的一个参数。通过 Scope，平台将开放更多的微博信息 */
+	public static final String SINA_SCOPE = "email,direct_messages_read";
+	public static final String SINA_APP_SECRET = "2ea023b56f329f5bf5426416ddc3ddd7";
 	/** IWXAPI是第三方APP与微信通信的接口 */
 	public IWXAPI wxApi;
 	/** Tencent是第三方APP与QQ通信的接口 */
 	public Tencent mTencent;
+	public AuthInfo mSinaAuth;
 
 	public Tonight8App() {
 		/* 当前应用对像初始化 */
@@ -74,7 +86,8 @@ public class Tonight8App extends Application {
 		// Tencent类是SDK的主要实现类，开发者可通过Tencent类访问腾讯开放的OpenAPI。
 		// 其中APP_ID是分配给第三方应用的appid，类型为String。
 		mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
-
+		// 微博创建授权认证信息
+		mSinaAuth = new AuthInfo(this, SINA_APP_KEY, SINA_REDIRECT_URL, SINA_SCOPE);
 	}
 
 	/**

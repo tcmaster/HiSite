@@ -289,6 +289,7 @@
                 <data android:scheme="100424468" />
             </intent-filter>
         </activity>
+
         <!-- 使用微信及微信朋友圈时需要注册回调Acitivity ! -->
         <activity
             android:name="com.android.tonight8.activity.other.WXEntryActivity"
@@ -312,6 +313,26 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 第三方登录页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- 必须注册在新浪微博授权，分享微博时候用到 -->
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <service
+            android:name="com.sina.weibo.sdk.net.DownloadService"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>

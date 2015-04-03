@@ -1,21 +1,15 @@
-package com.android.tonight8.model.weixin;
+package com.android.tonight8.model.other;
 
 /**
  * @author asus通过code获取access_token的接口
  * 
  */
 public class AccessToken {
-	// {
-	// "access_token":"ACCESS_TOKEN",
-	// "expires_in":7200,
-	// "refresh_token":"REFRESH_TOKEN",
-	// "openid":"OPENID",
-	// "scope":"SCOPE"
-	// }
+
 	/** 接口调用凭证 */
 	private String access_token;
 	/** access_token接口调用凭证超时时间，单位（秒） */
-	private String expires_in;
+	private int expires_in;
 	/** 用户刷新access_token */
 	private String refresh_token;
 	/** 授权用户唯一标识 */
@@ -31,11 +25,11 @@ public class AccessToken {
 		this.access_token = access_token;
 	}
 
-	public String getExpires_in() {
+	public int getExpires_in() {
 		return expires_in;
 	}
 
-	public void setExpires_in(String expires_in) {
+	public void setExpires_in(int expires_in) {
 		this.expires_in = expires_in;
 	}
 
