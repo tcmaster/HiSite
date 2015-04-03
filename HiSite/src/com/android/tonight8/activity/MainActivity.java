@@ -1,5 +1,6 @@
 package com.android.tonight8.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -142,6 +143,8 @@ public class MainActivity extends BaseActivity implements
 		/* 实始化下方单选按钮组 */
 		rg_mian.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
+		Intent intent = new Intent();
+
 	}
 
 	/**
