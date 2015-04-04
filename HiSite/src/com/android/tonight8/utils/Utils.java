@@ -1,9 +1,12 @@
 package com.android.tonight8.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -43,7 +46,8 @@ public class Utils {
 	 */
 	public static boolean isNetConn(Context context) {
 		try {
-			ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+			ConnectivityManager connectivityManager = (ConnectivityManager) context
+					.getSystemService(Context.CONNECTIVITY_SERVICE);
 			NetworkInfo info = connectivityManager.getActiveNetworkInfo();
 			if (info != null && info.isAvailable()) {
 				String name = info.getTypeName();
@@ -85,7 +89,8 @@ public class Utils {
 		final View v = activity.getWindow().peekDecorView();
 		if (v != null && v.getWindowToken() != null) {
 			try {
-				((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+						activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 			} catch (Exception e) {
 
 			}
@@ -101,5 +106,26 @@ public class Utils {
 	public static void showSoftKeyBroad(Context context, EditText editText) {
 		InputMethodManager mgr = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 		mgr.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+	}
+
+	// QQ登录加载对话框
+	private static Dialog mProgressDialog;
+
+	public static final void showProgressDialog(Context context, String title, String message) {
+		dismissDialog();
+		if (TextUtils.isEmpty(title)) {
+			title = "请稍候";
+		}
+		if (TextUtils.isEmpty(message)) {
+			message = "正在加载...";
+		}
+		mProgressDialog = ProgressDialog.show(context, title, message);
+	}
+
+	public static final void dismissDialog() {
+		if (mProgressDialog != null) {
+			mProgressDialog.dismiss();
+			mProgressDialog = null;
+		}
 	}
 }

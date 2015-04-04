@@ -134,7 +134,6 @@ public class PostEventMenuFragment extends BaseFragment {
 			break;
 		case 5:
 			intent = new Intent(getActivity(), EventsPlaceManageActivity.class);
-			// intent = new Intent(getActivity(), WBLoginLogoutActivity.class);
 			break;
 		case 6:
 			intent = new Intent(getActivity(), UserFeedbackActivity.class);

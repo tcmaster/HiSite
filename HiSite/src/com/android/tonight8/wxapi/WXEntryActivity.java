@@ -1,12 +1,19 @@
 package com.android.tonight8.wxapi;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.io.other.WXIoController;
 import com.android.tonight8.utils.Utils;
 import com.lidroid.xutils.util.LogUtils;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 
 /**
@@ -48,6 +55,7 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LogUtils.i("==onCreate()");
+		handleIntent(getIntent());
 	}
 
 	@Override
@@ -61,5 +69,49 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
 		super.onStart();
 		LogUtils.i("==onStart()");
 		this.finish();// 分享（成功或失败后）不做任何处理
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		handleIntent(intent);
+	}
+
+	// 微信登录返回
+	private void handleIntent(Intent intent) {
+		SendAuth.Resp resp = new SendAuth.Resp(intent.getExtras());
+		switch (resp.errCode) {
+		case BaseResp.ErrCode.ERR_OK:// 用户同意
+			Utils.toast("授权成功");
+			// code 用户换取access_token的code，仅在ErrCode为0时有效
+			String code = resp.code;
+			// state
+			// 第三方程序发送时用来标识其请求的唯一性的标志，由第三方程序调用sendReq时传入，由微信终端回传，state字符串长度不能超过1K
+			String state = resp.state;
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("appid", Tonight8App.WX_APP_ID);
+			params.put("secret", Tonight8App.WX_APP_SECRET);
+			params.put("code", code);
+			params.put("grant_type", "authorization_code");
+			WXIoController.getWXAccessToken(null, params);
+			// 获取用户信息
+			// Map<String, String> params2 = new HashMap<String, String>();
+			// AccessToken accessToken = new AccessToken();
+			// params2.put("access_token", accessToken.getAccess_token());
+			// params2.put("openid", accessToken.getOpenid());
+			// WXIoController.getWxUserInfo(null, params2);
+			break;
+		case BaseResp.ErrCode.ERR_USER_CANCEL:
+			Utils.toast("授权取消");
+			break;
+		case BaseResp.ErrCode.ERR_AUTH_DENIED:
+			Utils.toast("授权失败");
+			break;
+		default:
+
+			break;
+		}
+		// 微信登录成功之后调用接口
+		this.finish();
 	}
 }

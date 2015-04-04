@@ -1,4 +1,4 @@
-package com.android.tonight8.model.weixin;
+package com.android.tonight8.model.other;
 
 import java.util.List;
 
