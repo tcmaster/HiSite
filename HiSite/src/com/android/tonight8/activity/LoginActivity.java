@@ -87,7 +87,8 @@ public class LoginActivity extends BaseActivity {
 		initData();
 	}
 
-	@OnClick({ R.id.btn_sina_login_cancel, R.id.btn_wx_login_ok, R.id.btn_wx_login_cancel, R.id.btn_qq_login_ok,
+	@OnClick({ R.id.btn_sina_login_cancel, R.id.btn_wx_login_ok,
+			R.id.btn_wx_login_cancel, R.id.btn_qq_login_ok,
 			R.id.btn_qq_login_cancle })
 	public void onClick(View arg0) {
 		switch (arg0.getId()) {
@@ -95,7 +96,8 @@ public class LoginActivity extends BaseActivity {
 		case R.id.btn_sina_login_cancel:
 			// 注销按钮
 			new LogoutAPI(LoginActivity.this, Tonight8App.SINA_APP_KEY,
-					AccessTokenKeeper.readAccessToken(LoginActivity.this)).logout(mLogoutListener);
+					AccessTokenKeeper.readAccessToken(LoginActivity.this))
+					.logout(mLogoutListener);
 			break;
 		case R.id.btn_wx_login_ok:
 			weixinLogin();
@@ -118,7 +120,8 @@ public class LoginActivity extends BaseActivity {
 	private void initData() {
 		// 新浪登陆按钮（银灰色）
 		btn_sina_login_ok = (LoginoutButton) findViewById(R.id.btn_sina_login_ok);
-		btn_sina_login_ok.setWeiboAuthInfo(Tonight8App.getSelf().mSinaAuth, mLoginListener);
+		btn_sina_login_ok.setWeiboAuthInfo(Tonight8App.getSelf().mSinaAuth,
+				mLoginListener);
 		btn_sina_login_ok.setLogoutListener(mLogoutListener);
 	}
 
@@ -139,7 +142,8 @@ public class LoginActivity extends BaseActivity {
 	}
 
 	private void updateUserInfo() {
-		if (Tonight8App.getSelf().mTencent != null && Tonight8App.getSelf().mTencent.isSessionValid()) {
+		if (Tonight8App.getSelf().mTencent != null
+				&& Tonight8App.getSelf().mTencent.isSessionValid()) {
 			IUiListener listener = new IUiListener() {
 
 				@Override
@@ -184,7 +188,8 @@ public class LoginActivity extends BaseActivity {
 
 				}
 			};
-			mInfo = new UserInfo(this, Tonight8App.getSelf().mTencent.getQQToken());
+			mInfo = new UserInfo(this,
+					Tonight8App.getSelf().mTencent.getQQToken());
 			mInfo.getUserInfo(listener);
 
 		} else {
@@ -225,22 +230,27 @@ public class LoginActivity extends BaseActivity {
 	private class AuthListener implements WeiboAuthListener {
 		@Override
 		public void onComplete(Bundle values) {
-			Oauth2AccessToken accessToken = Oauth2AccessToken.parseAccessToken(values);
+			Oauth2AccessToken accessToken = Oauth2AccessToken
+					.parseAccessToken(values);
 			if (accessToken != null && accessToken.isSessionValid()) {
-				String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new java.util.Date(accessToken
-						.getExpiresTime()));
+				String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+						.format(new java.util.Date(accessToken.getExpiresTime()));
 				String format = "Token：%1$s \n有效期：%2$s";
 				Utils.toast(String.format(format, accessToken.getToken(), date));
-				AccessTokenKeeper.writeAccessToken(getApplicationContext(), accessToken);
+				AccessTokenKeeper.writeAccessToken(getApplicationContext(),
+						accessToken);
 
 				String token = values.getString("access_token");
 				String expires_in = values.getString("expires_in");
-				Utils.toast("access_token : " + token + "  expires_in: " + expires_in);
+				Utils.toast("access_token : " + token + "  expires_in: "
+						+ expires_in);
 
 				// 微博获取当前已保存过的 Token
-				accessToken = AccessTokenKeeper.readAccessToken(LoginActivity.this);
+				accessToken = AccessTokenKeeper
+						.readAccessToken(LoginActivity.this);
 				// 微博获取用户信息接口
-				mUsersAPI = new UsersAPI(LoginActivity.this, Tonight8App.SINA_APP_KEY, accessToken);
+				mUsersAPI = new UsersAPI(LoginActivity.this,
+						Tonight8App.SINA_APP_KEY, accessToken);
 				long uid = Long.parseLong(accessToken.getUid());
 				mUsersAPI.show(uid, sinaListener);
 			}
@@ -267,9 +277,12 @@ public class LoginActivity extends BaseActivity {
 				// 调用 User#parse 将JSON串解析成User对象
 				User user = User.parse(response);
 				if (user != null) {
-					Toast.makeText(LoginActivity.this, "获取User信息成功，用户昵称：" + user.screen_name, Toast.LENGTH_LONG).show();
+					Toast.makeText(LoginActivity.this,
+							"获取User信息成功，用户昵称：" + user.screen_name,
+							Toast.LENGTH_LONG).show();
 				} else {
-					Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
+					Toast.makeText(LoginActivity.this, response,
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		}
@@ -277,7 +290,8 @@ public class LoginActivity extends BaseActivity {
 		@Override
 		public void onWeiboException(WeiboException e) {
 			ErrorInfo info = ErrorInfo.parse(e.getMessage());
-			Toast.makeText(LoginActivity.this, info.toString(), Toast.LENGTH_LONG).show();
+			Toast.makeText(LoginActivity.this, info.toString(),
+					Toast.LENGTH_LONG).show();
 		}
 	};
 
@@ -318,7 +332,8 @@ public class LoginActivity extends BaseActivity {
 	private void QqLogin() {
 		if (!Tonight8App.getSelf().mTencent.isSessionValid()) {
 			Tonight8App.getSelf().mTencent.login(this, "all", loginListener);
-			Log.d("SDKQQAgentPref", "FirstLaunch_SDK:" + SystemClock.elapsedRealtime());
+			Log.d("SDKQQAgentPref",
+					"FirstLaunch_SDK:" + SystemClock.elapsedRealtime());
 		} else {
 			Tonight8App.getSelf().mTencent.logout(this);
 			updateUserInfo();
@@ -330,7 +345,8 @@ public class LoginActivity extends BaseActivity {
 			String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
 			String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
 			String openId = jsonObject.getString(Constants.PARAM_OPEN_ID);
-			if (!TextUtils.isEmpty(token) && !TextUtils.isEmpty(expires) && !TextUtils.isEmpty(openId)) {
+			if (!TextUtils.isEmpty(token) && !TextUtils.isEmpty(expires)
+					&& !TextUtils.isEmpty(openId)) {
 				Tonight8App.getSelf().mTencent.setAccessToken(token, expires);
 				Tonight8App.getSelf().mTencent.setOpenId(openId);
 			}
@@ -341,7 +357,8 @@ public class LoginActivity extends BaseActivity {
 	public IUiListener loginListener = new BaseUiListener() {
 		@Override
 		protected void doComplete(JSONObject values) {
-			Log.d("SDKQQAgentPref", "AuthorSwitch_SDK:" + SystemClock.elapsedRealtime());
+			Log.d("SDKQQAgentPref",
+					"AuthorSwitch_SDK:" + SystemClock.elapsedRealtime());
 			initOpenidAndToken(values);
 			updateUserInfo();
 		}
@@ -393,7 +410,8 @@ public class LoginActivity extends BaseActivity {
 		boolean ready = Tonight8App.getSelf().mTencent.isSessionValid()
 				&& Tonight8App.getSelf().mTencent.getQQToken().getOpenId() != null;
 		if (!ready) {
-			Toast.makeText(context, "login and get openId first, please!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "login and get openId first, please!",
+					Toast.LENGTH_SHORT).show();
 		}
 		return ready;
 	}
