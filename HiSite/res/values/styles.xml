@@ -64,6 +64,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/line_gray</item>
     </style>
+
     <style name="actionBar_btn_sty">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
@@ -88,7 +89,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/middleTextSize</item>
     </style>
-        <!-- 白色Button style -->
+    <!-- 白色Button style -->
     <style name="button_style_white">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dialog_btn_height</item>
@@ -135,18 +136,28 @@
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
     <!-- 设置与我的账号的item设置 -->
-	<style name="myAccountItem">
-	    <item name="android:layout_width">match_parent</item>
-	    <item name="android:layout_height">@dimen/item_height_of_myaccount</item>
-	</style>
-	<!-- 用户头像固定宽高 -->
-	<style name="user_photo">
-	    <item name="android:layout_width">@dimen/user_headpic_minheight</item>
-	    <item name="android:layout_height">@dimen/user_headpic_minheight</item>
-	</style>
-	<!-- popWindow显示和隐藏的动画 -->
-	<style name="popup_animation">
+    <style name="myAccountItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/item_height_of_myaccount</item>
+    </style>
+    <!-- 用户头像固定宽高 -->
+    <style name="user_photo">
+        <item name="android:layout_width">@dimen/user_headpic_minheight</item>
+        <item name="android:layout_height">@dimen/user_headpic_minheight</item>
+    </style>
+    <!-- popWindow显示和隐藏的动画 -->
+    <style name="popup_animation">
         <item name="@android:windowEnterAnimation">@anim/pop_show</item>
         <item name="@android:windowExitAnimation">@anim/pop_hide</item>
     </style>
+
+    <style name="com_sina_weibo_sdk_loginview_default_style" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/com_sina_weibo_sdk_loginview_padding_top</item>
+        <item name="android:drawablePadding">@dimen/com_sina_weibo_sdk_loginview_compound_drawable_padding</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
