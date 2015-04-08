@@ -11,7 +11,14 @@
         android:layout_marginLeft="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher" />
-
+	<TextView 
+	    android:id="@+id/tv_location"
+	    style="@style/wrap"
+	    android:text="@string/win"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/iv_left_btn"
+        android:layout_centerVertical="true"
+        />
     <RadioGroup
         android:id="@+id/rg_center"
         style="@style/wrap"
@@ -46,14 +53,4 @@
         android:layout_marginRight="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher" />
-    <ImageView
-        android:id="@+id/iv_right_btn2"
-        style="@style/actionBar_btn_sty"
-        android:layout_toLeftOf="@id/iv_right_btn"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/common_margin_left"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher"/>
-        
-
 </RelativeLayout>

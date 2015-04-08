@@ -142,7 +142,6 @@ public class MainActivity extends BaseActivity implements
 		/* 实始化下方单选按钮组 */
 		rg_mian.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
-
 	}
 
 	/**

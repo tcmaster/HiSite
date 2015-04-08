@@ -5,10 +5,12 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <!-- 首页 -->
-    <string name="win">中奖</string>
+    <string name="win">现场</string>
     <string name="signin">报名</string>
     <string name="main_left_tab">8点整</string>
     <string name="main_right_tab">心愿墙</string>
+    <string name="compere">主持人</string>
+    <string name="program">节目单</string>
     <!-- 抽奖详情 -->
     <string name="hour">时</string>
     <string name="minute">分</string>
