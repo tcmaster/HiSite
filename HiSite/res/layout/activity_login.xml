@@ -7,30 +7,8 @@
 
     <LinearLayout
         style="@style/match_width"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
-
-        <TextView
-            style="@style/match_width"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:background="@color/black_half_transparent" />
-
-        <TextView
-            style="@style/wrap"
-            android:text=" 或 " />
-
-        <TextView
-            style="@style/match_width"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:background="@color/black_half_transparent" />
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/match_width"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
 
         <TextView
             android:id="@+id/btn_wx_login_ok"
@@ -64,50 +42,107 @@
             android:text="微博" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_wx_login_cancel"
-        style="@style/ok_button_style"
-        android:layout_marginTop="@dimen/margin_between_item"
-        android:text="微信登录注销" />
+    <LinearLayout
+        style="@style/match_width"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <Button
-        android:id="@+id/btn_qq_login_cancle"
-        style="@style/ok_button_style"
-        android:layout_marginTop="@dimen/margin_between_item"
-        android:text="QQ登录注销" />
+        <TextView
+            style="@style/match_width"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/black_half_transparent" />
 
-    <Button
-        android:id="@+id/btn_sina_login_cancel"
-        style="@style/ok_button_style"
-        android:layout_marginTop="@dimen/margin_between_item"
-        android:text="新浪微博注销" />
+        <TextView
+            style="@style/wrap"
+            android:text="   或   "
+            android:textColor="@color/black_half_transparent"
+            android:textSize="@dimen/bigTextSize" />
+
+        <TextView
+            style="@style/match_width"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/black_half_transparent" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_user_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="请输入手机号/邮箱/帐号ID"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <EditText
+        android:id="@+id/et_user_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_margin_left_long"
+        android:layout_marginLeft="@dimen/common_margin_left_long"
+        android:layout_marginRight="@dimen/common_margin_left_long"
+        android:drawableLeft="@drawable/lock"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:gravity="center_vertical"
+        android:hint="@string/input_pwd_hint"
+        android:inputType="textPassword"
+        android:textSize="@dimen/middleTextSize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin_left_long"
+        android:paddingRight="@dimen/common_margin_left_long" >
+
+        <CheckBox
+            android:id="@+id/cb_auto_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auto_login"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_forgot_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cb_auto_login"
+            android:layout_alignBottom="@+id/cb_auto_login"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="@string/forgotpwd"
+            android:textSize="@dimen/middleTextSize" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
 
-        <ImageView
-            android:id="@+id/user_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_user_register"
+            style="@style/button_style_white"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:text="@string/register" />
 
-        <TextView
-            android:id="@+id/user_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:textColor="#80505050"
-            android:textSize="18sp" />
+        <Button
+            android:id="@+id/btn_user_login"
+            style="@style/ok_button_style"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:text="@string/login" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_back"
-        style="@style/match_width"
-        android:text="" >
-    </TextView>
-
-    <TextView>
-    </TextView>
 
 </LinearLayout>
