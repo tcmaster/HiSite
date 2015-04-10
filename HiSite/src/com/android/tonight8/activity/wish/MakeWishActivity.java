@@ -6,15 +6,14 @@ import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 
 /**
- * @author lz 愿望列表
+ * @author lz 许愿页面
  */
-public class WishListActivity extends BaseActivity {
+public class MakeWishActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		 setContentView(R.layout.activity_wish_list);
 		super.onCreate(savedInstanceState);
-		
+		setContentView(R.layout.activity_make_wish);
 	}
-
+	
 }
