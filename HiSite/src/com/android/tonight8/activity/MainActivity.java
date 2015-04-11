@@ -112,10 +112,6 @@ public class MainActivity extends BaseActivity implements
 				R.layout.layout_main_right, null);
 		leftView = LayoutInflater.from(this).inflate(
 				R.layout.fragment_main_left, null);
-		rightView = LayoutInflater.from(this).inflate(
-				R.layout.layout_main_right, null);
-		leftView = LayoutInflater.from(this).inflate(
-				R.layout.activity_org_forgotid, null);
 		headView = LayoutInflater.from(this).inflate(R.layout.actionbar_main,
 				null);
 		rg_mian = (RadioGroup) rightView.findViewById(R.id.radio_group);
