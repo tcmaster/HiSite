@@ -23,6 +23,7 @@ public class WishListUnrealizedFragment extends BaseFragment {
 	private List<String> list;
 	@ViewInject(R.id.lv_wish)
 	private XListView lv_wish;
+	private View rootView;
 
 	public static final WishListUnrealizedFragment newInstance() {
 		WishListUnrealizedFragment wUnrealizedFragment = new WishListUnrealizedFragment();
