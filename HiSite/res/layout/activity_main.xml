@@ -5,6 +5,6 @@
     style="@style/match"
     android:id="@+id/sv_main_page"
     android:background="@color/blue"
-    slideview:sv_left="250dp"
+    slideview:sv_left="350dp"
     slideview:boundary="80dp"
     />

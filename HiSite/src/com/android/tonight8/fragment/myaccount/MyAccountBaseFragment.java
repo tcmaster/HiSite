@@ -20,44 +20,58 @@ import com.android.tonight8.utils.StringUtils;
 public class MyAccountBaseFragment extends BaseFragment {
 
 	/**
+	 * 初始化”我“的每项布局
 	 * 
-	 * @Description:设置“我”中专门的include控件的内容,为空的话，则该项自动隐藏
 	 * @param includeView
-	 *            要进行设置的视图
+	 *            要初始化的布局
 	 * @param leftRes
 	 *            左边的文字
 	 * @param leftLogo
-	 *            左边的图片
-	 * @param rightPoint
-	 *            右边的红点文字
-	 * @param rightText
+	 *            左边的logo
+	 * @param no
+	 *            该项的数量
+	 * @param rightInfo
 	 *            右边的文字
-	 * @author: LiXiaoSong
-	 * @date:2015-1-12
+	 * @param rightIsVisible
+	 *            右边的图标是否可见
 	 */
-	protected void setTextAndContent(View includeView, int leftRes, int leftLogo, String rightPoint, String rightText) {
-		if (includeView == null)
-			return;
-		ImageView iv_left = (ImageView) includeView.findViewById(R.id.iv_left_icon);
-		TextView tv_left = (TextView) includeView.findViewById(R.id.tv_left_text);
-		TextView tv_right = (TextView) includeView.findViewById(R.id.tv_right_text);
-		TextView tv_right_point = (TextView) includeView.findViewById(R.id.tv_red_point_text);
-		if (leftRes <= 0)
-			tv_left.setVisibility(View.INVISIBLE);
+	protected void setTextAndContent(View includeView, int leftRes,
+			int leftLogo, String no, String rightInfo, boolean rightIsVisible) {
+		ImageView iv_left_icon = (ImageView) includeView
+				.findViewById(R.id.iv_left_icon);
+		TextView tv_left_text = (TextView) includeView
+				.findViewById(R.id.tv_left_text);
+		TextView tv_no = (TextView) includeView.findViewById(R.id.tv_no);
+		ImageView iv_right_arrow = (ImageView) includeView
+				.findViewById(R.id.iv_right_arrow);
+		TextView tv_right_info = (TextView) includeView
+				.findViewById(R.id.tv_right_info);
+		if (leftRes != -1)
+			iv_left_icon.setImageResource(leftRes);
+		if (leftLogo != -1)
+			tv_left_text.setText(leftLogo);
+		if (!StringUtils.isNullOrEmpty(no)) {
+			tv_no.setText(no);
+			tv_no.setVisibility(View.VISIBLE);
+		}
+		if (!StringUtils.isNullOrEmpty(rightInfo)) {
+			tv_right_info.setText(rightInfo);
+			tv_right_info.setVisibility(View.VISIBLE);
+		}
+		if (rightIsVisible)
+			iv_right_arrow.setVisibility(View.VISIBLE);
 		else
-			tv_left.setText(leftRes);
-		if (StringUtils.isNullOrEmpty(rightPoint))
-			tv_right_point.setVisibility(View.GONE);
-		else
-			tv_right_point.setText(rightPoint);
-		if (leftLogo <= 0)
-			iv_left.setVisibility(View.INVISIBLE);
-		else
-			iv_left.setImageResource(leftLogo);
-		if (StringUtils.isNullOrEmpty(rightText))
-			tv_right.setVisibility(View.GONE);
-		else
-			tv_right.setText(rightText);
+			iv_right_arrow.setVisibility(View.INVISIBLE);
+
+	}
+
+	protected void setNo(View includeView, String no) {
+		TextView tv_no = (TextView) includeView.findViewById(R.id.tv_no);
+		if (!StringUtils.isNullOrEmpty(no)) {
+			tv_no.setText(no);
+			tv_no.setVisibility(View.VISIBLE);
+		} else
+			tv_no.setVisibility(View.INVISIBLE);
 	}
 
 	/**
@@ -71,11 +85,14 @@ public class MyAccountBaseFragment extends BaseFragment {
 	 * @author: LiXiaoSong
 	 * @date:2015-2-6
 	 */
-	protected void setTextAndContent(View includeView, int leftRes, String rightText) {
+	protected void setTextAndContent(View includeView, int leftRes,
+			String rightText) {
 		if (includeView == null)
 			return;
-		TextView tv_left = (TextView) includeView.findViewById(R.id.tv_left_text);
-		TextView tv_right = (TextView) includeView.findViewById(R.id.tv_red_point_text);
+		TextView tv_left = (TextView) includeView
+				.findViewById(R.id.tv_left_text);
+		TextView tv_right = (TextView) includeView
+				.findViewById(R.id.tv_red_point_text);
 		if (leftRes < 0)
 			tv_left.setVisibility(View.INVISIBLE);
 		else

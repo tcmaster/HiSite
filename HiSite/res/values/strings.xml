@@ -109,15 +109,18 @@
     <string name="company_weixin">微信号</string>
     <string name="company_other">其他</string>
     <!-- 我 -->
-    <string name="award_code">中奖码</string>
-    <string name="my_coupon">优惠券包</string>
-    <string name="lottery_activity">参加过的抽奖活动</string>
-    <string name="business">我关注的商家</string>
-    <string name="address">收货地址</string>
-    <string name="complain_sponsor">投诉主办方</string>
-    <string name="setting">设置</string>
-    <string name="cs_phonenum">400&#8211;600&#8211;8935</string>
-    <string name="cs_hot_line">客服热线</string>
+    <string name="my_code">中奖号码</string>
+    <string name="my_redpecket">我的红包</string>
+    <string name="my_order">我的订单</string>
+    <string name="my_address">我的地址</string>
+    <string name="my_seller_role">我要当卖手</string>
+    <string name="my_org_role">我要当商家</string>
+    <string name="my_account">我的账户</string>
+    <string name="my_wish">我的心愿</string>
+    <string name="my_save">我的收藏</string>
+    <string name="my_attention">我的关注</string>
+    <string name="message_center">消息中心</string>
+    <string name="settings">设置</string>
     <string name="nick_name">昵称</string>
     <string name="sex">性别</string>
     <string name="receiver_address">收货地址</string>

@@ -48,15 +48,16 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 	View layout_change_psw;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		/* 主布局初始化 */
 		if (v_rootView != null) {
 			/* 已存在空的view */
 			return v_rootView;
 		}
-		v_rootView = inflater.inflate(R.layout.fragment_personinfo, container, false);
+		v_rootView = inflater.inflate(R.layout.fragment_personinfo, container,
+				false);
 		ViewUtils.inject(this, v_rootView);
-		initDatas();
 		return v_rootView;
 	}
 
@@ -82,15 +83,6 @@ public class PersonInfoFragment extends MyAccountBaseFragment {
 		PersonInfoFragment fg = new PersonInfoFragment();
 		fg.setHasOptionsMenu(true);
 		return fg;
-	}
-
-	private void initDatas() {
-		setTextAndContent(layout_nickname, R.string.nick_name, R.drawable.arrow_down, "", "小新");
-		setTextAndContent(layout_sex, R.string.sex, R.drawable.sex, "", "男");
-		setTextAndContent(layout_receive_address, R.string.receiver_address, R.drawable.arrow_down, "", "北京市房山区丰台");
-		setTextAndContent(layout_nickname_phone_num, R.string.phone_num, R.drawable.phone, "", "18600416253");
-		setTextAndContent(layout_authorization, R.string.three_party, R.drawable.arrow_down, "", "");
-		setTextAndContent(layout_change_psw, R.string.change_password, R.drawable.arrow_down, "", "");
 	}
 
 	/**

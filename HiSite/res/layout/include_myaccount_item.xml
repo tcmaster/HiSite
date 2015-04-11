@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match_width" >
+
     <ImageView
-        style="@style/wrap"
         android:id="@+id/iv_left_icon"
-        android:layout_marginLeft="@dimen/common_margin_left"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher"
+        style="@style/wrap"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:paddingTop="@dimen/topOrBottomPaddingSmall"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:contentDescription="@string/app_name"
         android:paddingBottom="@dimen/topOrBottomPaddingSmall"
-        />
-	<TextView
-	    style="@style/wrap"
-	    android:id="@+id/tv_left_text"
-	    android:text="@string/app_name"
-	    android:layout_marginLeft="2dp"
-	    android:textSize="@dimen/middleTextSize"
-	    android:layout_toRightOf="@id/iv_left_icon"
-	    android:layout_centerVertical="true"
-	    android:textColor="@color/black"
-	    />
-	<ImageView 
-	    style="@style/wrap"
-	    android:id="@+id/iv_right_arrow"
-	    android:layout_marginRight="10dp"
-	    android:contentDescription="@string/app_name"
-	    android:src="@drawable/ic_launcher"
-	    android:layout_alignParentRight="true"
-	    android:layout_centerVertical="true"/>
-	<TextView
-	    style="@style/wrap"
-	    android:id="@+id/tv_red_point_text"
-	    android:layout_marginRight="2dp"
-	    android:text="@string/app_name"
-	    android:layout_centerVertical="true"
-	    android:textSize="@dimen/smallTextSize"
-	    android:textColor="@color/gray"
-	    android:layout_toLeftOf="@id/iv_right_arrow"
-	    />
-	<TextView
-	    style="@style/wrap"
-	    android:id="@+id/tv_right_text"
-	    android:layout_marginRight="2dp"
-	    android:text="@string/app_name"
-	    android:layout_centerVertical="true"
-	    android:textSize="@dimen/smallTextSize"
-	    android:textColor="@color/gray"
-	    android:layout_toLeftOf="@id/tv_red_point_text"
-	    />
-</RelativeLayout>
+        android:paddingTop="@dimen/topOrBottomPaddingSmall"
+        android:src="@drawable/ic_launcher" />
 
+    <TextView
+        android:id="@+id/tv_left_text"
+        style="@style/wrap"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/iv_left_icon"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize" />
+
+    <TextView
+        android:id="@+id/tv_no"
+        style="@style/wrap"
+        android:layout_gravity="top"
+        android:layout_toRightOf="@id/tv_left_text"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/iv_right_arrow"
+        style="@style/wrap"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_right_info"
+        style="@style/wrap"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2dp"
+        android:layout_toLeftOf="@id/iv_right_arrow"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/middleTextSize"
+        android:visibility="invisible" />
+
+</RelativeLayout>

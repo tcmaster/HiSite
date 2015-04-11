@@ -60,7 +60,10 @@ public class MainActivity extends BaseActivity implements
 	/** 页面信息标题数组 */
 	private String[] titleArr = { "8点", "商家登陆" };
 	private FragmentTransaction fragmentTransaction;
-	private BaseFragment[] fragments;// 本界面所用到的fragment（方便以后使用）
+	/** 右边界面所用到的fragment */
+	private BaseFragment[] fragments;
+	/** 左边界面所用到的fragment */
+	private MyAccountFragment myAccountFragment;
 
 	@Override
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
@@ -100,7 +103,7 @@ public class MainActivity extends BaseActivity implements
 		rightView = LayoutInflater.from(this).inflate(
 				R.layout.layout_main_right, null);
 		leftView = LayoutInflater.from(this).inflate(
-				R.layout.activity_org_forgotid, null);
+				R.layout.fragment_main_left, null);
 		rg_mian = (RadioGroup) rightView.findViewById(R.id.radio_group);
 		sv_main.initView(leftView, rightView);
 		// 界面初始化工作
@@ -132,11 +135,13 @@ public class MainActivity extends BaseActivity implements
 		fragments = new BaseFragment[2];
 		fragments[0] = TonightEightFragment.newInstance();
 		fragments[1] = OrgLoginFragment.newInstance();
+		myAccountFragment = MyAccountFragment.newInstance();
 		/* 设置跳转那个fragment页面 */
 		fragmentManager = getSupportFragmentManager();
 		fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.add(R.id.tabcontent, fragments[0], titleArr[0]);
 		fragmentTransaction.add(R.id.tabcontent, fragments[1], titleArr[1]);
+		fragmentTransaction.add(R.id.left_content, myAccountFragment);
 		fragmentTransaction.commit();
 		/* fragment管理器初始化 */
 		/* 实始化下方单选按钮组 */
