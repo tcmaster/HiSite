@@ -328,6 +328,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+        <!-- 许愿页面 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.MakeWishActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"

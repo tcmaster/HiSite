@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_wish_item_head"
+        style="@style/match_width"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/iv_wishpic"
+            style="@style/wrap"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/tv_wishtitle"
+            style="@style/match_width"
+            android:layout_alignParentTop="true"
+            android:background="@color/black_half_transparent"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/common_margin_small"
+            android:paddingTop="@dimen/common_margin_small"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_wishcontent"
+            style="@style/match_width"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_half_transparent"
+            android:maxLines="2"
+            android:paddingBottom="@dimen/common_margin_small"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingTop="@dimen/common_margin_small"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_wish_item_root"
+        style="@style/match_width"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/common_margin_left" >
+
+        <ImageView
+            android:id="@+id/iv_wish_userpic"
+            style="@style/wrap"
+            android:layout_width="@dimen/popGoodsUserPhotoWidth"
+            android:layout_height="@dimen/popGoodsUserPhotoWidth"
+            android:background="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_wish_username"
+            style="@style/wrap"
+            android:layout_toRightOf="@+id/iv_wish_userpic"
+            android:paddingLeft="@dimen/common_margin_small"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_wish_supportcount"
+            style="@style/wrap"
+            android:layout_alignBottom="@+id/iv_wish_userpic"
+            android:layout_toRightOf="@+id/iv_wish_userpic"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:drawablePadding="@dimen/common_margin_left"
+            android:paddingLeft="@dimen/common_margin_small"
+            android:textColor="@color/black" />
+
+        <com.android.tonight8.view.MyProgressBar
+            android:id="@+id/pb_wish_progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/tv_wish_supportcount"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android_custom:roundColor="@color/red"
+            android_custom:roundProgressColor="@color/red"
+            android_custom:roundWidth="4dip"
+            android_custom:textColorRound="@color/red"
+            android_custom:textIsDisplayable="true"
+            android_custom:textSizeRound="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

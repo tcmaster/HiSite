@@ -3,5 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-</LinearLayout>
+
+    <com.android.tonight8.view.xlistview.XListView
+        android:id="@+id/lv_wish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
