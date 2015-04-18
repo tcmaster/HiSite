@@ -56,13 +56,13 @@ public class BaseActivity extends FragmentActivity {
 	protected Context mContext;
 	// 标识位
 	/** 图库 */
-	protected static final int PICKPICTURE = 1;
+	public static final int PICKPICTURE = 1;
 	/** 相机 */
-	protected static final int TAKEPHOTO = 2;
+	public static final int TAKEPHOTO = 2;
 	/** 裁剪 */
-	protected static final int CROP = 3;
+	public static final int CROP = 3;
 	/** 文本 */
-	protected static final int TEXTEDIT = 4;
+	public static final int TEXTEDIT = 4;
 	// 默认裁剪的宽高
 	private static final int OUTPUT_X = 256;
 	private static final int OUTPUT_Y = 256;

@@ -186,6 +186,10 @@ public class DialogUtils {
 						case 3:// 朋友圈
 							SharedUtils.shareToWXOrFriends(activity, shareThirdEntity, true);
 							break;
+						case 4:// 新浪微博
+							SharedUtils.shareToSinaWeiBo(activity, shareThirdEntity);
+							break;
+
 						default:
 							break;
 

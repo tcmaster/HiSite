@@ -17,8 +17,8 @@ import com.android.tonight8.base.AppConstants;
  */
 public class ShareAdapter extends BaseAdapter {
 
-	private String[] strMenu = { "QQ空间", "QQ好友", "微信好友", "朋友圈" };
-	private int[] intMenu = { R.drawable.share_qq_zone, R.drawable.share_cqq, R.drawable.share_wx, R.drawable.share_wx_friend };
+	private String[] strMenu = { "QQ空间", "QQ好友", "微信好友", "朋友圈", "微博" };
+	private int[] intMenu = { R.drawable.share_qq_zone, R.drawable.share_cqq, R.drawable.share_wx, R.drawable.share_wx_friend,R.drawable.share_sina };
 	private Context context;
 	private LayoutInflater mLiInflater;
 

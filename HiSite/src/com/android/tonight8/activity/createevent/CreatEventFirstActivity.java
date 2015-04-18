@@ -172,12 +172,12 @@ public class CreatEventFirstActivity extends BaseActivity {
 
 		switch (requestCode) {
 		case PICKPICTURE:
-			cropPicture(data.getData(), PICKPICTURE);
+			cropPicture(data.getData(), CROP);
 			break;
 		case TAKEPHOTO:
 			File tempFile = new File(Environment.getExternalStorageDirectory()
 					+ "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile), TAKEPHOTO);
+			cropPicture(Uri.fromFile(tempFile), CROP);
 			break;
 		case CROP:
 			Uri cropImageUri = data.getData();

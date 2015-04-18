@@ -39,6 +39,7 @@
             android:drawablePadding="10dp"
             android:drawableTop="@drawable/login_weibo"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="微博" />
     </LinearLayout>
 
@@ -98,7 +99,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/common_margin_left_long"
         android:paddingRight="@dimen/common_margin_left_long" >
@@ -125,7 +125,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/common_margin_left" >

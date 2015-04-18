@@ -1,8 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/common_margin_left" >
+
+            <TextView
+                style="@style/wrap"
+                android:layout_gravity="center_horizontal"
+                android:text="心愿主题" />
+
+            <LinearLayout
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="心愿名称" />
+
+                <EditText
+                    android:id="@+id/et_wishname"
+                    style="@style/et_comm_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="主题图片" />
+
+                <com.android.tonight8.view.GridViewForScrollView
+                    android:id="@+id/gv_wish_themepic"
+                    style="@style/match_width"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="2"
+                    android:verticalSpacing="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="心愿描述" />
+
+                <EditText
+                    android:id="@+id/et_description"
+                    style="@style/et_comm_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="心愿价值" />
+
+                <EditText
+                    android:id="@+id/et_wishprice"
+                    style="@style/et_comm_style"
+                    android:layout_weight="1" />
+
+                <TextView
+                    style="@style/wrap"
+                    android:text="元" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/black_half_transparent" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/wrap"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/common_margin_left"
+                android:text="心愿故事" />
+
+            <com.android.tonight8.view.ListViewForScrollView
+                android:id="@+id/lv_wish_story"
+                style="@style/match_width" />
+        </LinearLayout>
+
+        <Button
+            style="@style/ok_button_style"
+            android:layout_marginTop="@dimen/common_margin_left"
+            android:text="心愿发布" />
+    </LinearLayout>
+
+</ScrollView>
