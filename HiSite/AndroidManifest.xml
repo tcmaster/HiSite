@@ -333,6 +333,11 @@
             android:name="com.android.tonight8.activity.wish.MakeWishActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 许愿详情页 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.WishLiveActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
