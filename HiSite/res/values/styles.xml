@@ -157,6 +157,7 @@
         <item name="android:paddingTop">@dimen/com_sina_weibo_sdk_loginview_padding_top</item>
         <item name="android:drawablePadding">@dimen/com_sina_weibo_sdk_loginview_compound_drawable_padding</item>
         <item name="android:background">@null</item>
+        <item name="android:drawableLeft">@null</item>
         <item name="android:gravity">center</item>
     </style>
 

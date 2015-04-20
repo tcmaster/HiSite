@@ -21,6 +21,8 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
+import com.sina.weibo.sdk.api.share.WeiboShareSDK;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -47,6 +49,8 @@ public class Tonight8App extends Application {
 	public static final String SINA_APP_SECRET = "2ea023b56f329f5bf5426416ddc3ddd7";
 	/** 新浪微博与第三方APP通信的接口 */
 	public AuthInfo mSinaAuth;
+    /** 微博分享的接口实例 */
+	public IWeiboShareAPI mWeiboShareAPI;
 	// --------------------------微信授权时所需要的参数--------------------
 	/** 微信与第三方APP通信的接口 */
 	public IWXAPI wxApi;
@@ -91,6 +95,9 @@ public class Tonight8App extends Application {
 		mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
 		// 注册到微博
 		mSinaAuth = new AuthInfo(this, SINA_APP_KEY, SINA_REDIRECT_URL, SINA_SCOPE);
+        // 创建微博 SDK 接口实例
+        mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(this, SINA_APP_KEY);
+        mWeiboShareAPI.registerApp();
 	}
 
 	/**

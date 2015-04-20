@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/common_margin_left"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="情节说明" />
+
+        <EditText
+            android:id="@+id/et_wishname"
+            style="@style/et_comm_style"
+            android:layout_weight="1"
+            android:hint="把你的心愿情节生动描述一下吧！" />
+
+        <TextView
+            android:id="@+id/tv_addwishpic"
+            style="@style/wrap"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/common_margin_left"
+            android:text="+"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_deletewishpic"
+            style="@style/wrap"
+            android:padding="@dimen/common_margin_left"
+            android:text="—"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="故事配图" />
+
+        <ImageView
+            android:id="@+id/iv_wish_storypic"
+            style="@style/match_width"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:background="@drawable/add_custom" />
+    </LinearLayout>
+
+</LinearLayout>

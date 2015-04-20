@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.MyProgressBar;
 
 /**
@@ -45,6 +47,21 @@ public class WishListAdapter extends BaseListAdapter<String> {
 		Tonight8App.getSelf().bitmapUtils.display(iv_wish_userpic,
 				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
 		pb_wish_progress.setProgress(20);
+		tv_wish_supportcount.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Utils.toast("支持+1");
+
+			}
+		});
+		// iv_wishpic.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View arg0) {
+		// mContext.startActivity(new Intent(mContext, WishLiveActivity.class));
+		// }
+		// });
 		return convertView;
 	}
 
