@@ -1,0 +1,9 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/match"
+    tools:context=".MessageListActivity" >
+
+    <com.android.tonight8.view.xlistview.XListView 
+        android:id="@+id/lv_message_list"
+        style="@style/match"/>
+</RelativeLayout>

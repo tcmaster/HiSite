@@ -196,4 +196,7 @@
     <string name="ensure_password">确认新密码</string>
     <string name="loading">获取中</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="title_activity_message_list">MessageList</string>
+    <string name="title_activity_message_detail">MessageDetailActivity</string>
+
 </resources>

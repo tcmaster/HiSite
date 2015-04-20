@@ -15,6 +15,7 @@ import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * @Description:我的账户
@@ -125,6 +126,18 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		rl_head.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 		ll_center_layout.getLayoutParams().height = AppConstants.heightPx / 10 * 8;
 		ll_tail.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
+	}
+
+	@OnClick({ R.id.layout_my_wish })
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.layout_my_wish:
+
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/** 创建一个静态的实例 */
