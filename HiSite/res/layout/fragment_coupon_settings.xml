@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="红包类型：" />
+
+        <Spinner
+            android:id="@+id/spinner_redpacket_type"
+            style="@style/match_width" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="金       额：" />
+
+        <EditText
+            android:id="@+id/et_coupon_amount"
+            style="@style/match_width"
+            android:layout_width="100dp" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="元" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="使用条件：" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="满" />
+
+        <EditText
+            android:id="@+id/et_amount_limit"
+            style="@style/match_width"
+            android:layout_width="100dp" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="元可用" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="发放数量：" />
+
+        <EditText
+            android:id="@+id/et_coupon_number"
+            style="@style/match_width"
+            android:layout_width="100dp" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="份" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="有效期限：" />
+
+        <RadioGroup
+            android:id="@+id/rg_"
+            style="@style/wrap"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动现场有效"
+                android:textSize="@dimen/smallTextSize" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置有效期限"
+                android:textSize="@dimen/smallTextSize" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_savesetting"
+        style="@style/ok_button_style"
+        android:layout_marginBottom="@dimen/common_margin_left"
+        android:text="保存设置" />
+
+    <include layout="@layout/activity_only_list" />
+
+</LinearLayout>

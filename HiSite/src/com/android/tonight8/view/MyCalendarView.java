@@ -15,8 +15,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.android.tonight8.R.color;
-
 /**
  * 日历控件 功能：获得点选的日期区间（可多选）
  * 
@@ -136,12 +134,18 @@ public class MyCalendarView extends View implements View.OnTouchListener {
 			if (todayIndex != -1 && i == todayIndex) {
 				color = surface.todayNumberColor;
 			}
-			if (isHaveDay(selectData, i)) {
-				color = surface.notodaySelectedColor;
-			}
-
 			// 画出日历格子数字
 			drawCellText(canvas, i, date[i] + "", color);
+
+			int drawnumber = curStartIndex + i - 1;
+			if (isHaveDay(selectData, i)) {
+
+				// 画出选中的日历格子背景
+				drawCellBg(canvas, drawnumber, surface.notodaySelectedBgColor);
+				// 画出日历格子数字
+				drawCellText(canvas, drawnumber, date[drawnumber] + "", surface.notodaySelectedColor);
+			}
+
 		}
 		super.onDraw(canvas);
 	}
@@ -281,14 +285,11 @@ public class MyCalendarView extends View implements View.OnTouchListener {
 			if (section[1] == -1) {
 				section[1] = 41;
 			}
-			for (int i = section[0]; i <= section[1]; i++) {
-				if (isHaveDay(selectData, i)) {
-					drawCellBg(canvas, i, color.red);
-				} else {
-					drawCellBg(canvas, i, surface.cellSelectedColor);
-				}
 
+			for (int i = section[0]; i <= section[1]; i++) {
+				drawCellBg(canvas, i, surface.cellSelectedColor);
 			}
+
 		}
 	}
 
@@ -379,6 +380,7 @@ public class MyCalendarView extends View implements View.OnTouchListener {
 	 */
 	public void setSelectedOtherDay(String[] selectData) {
 		this.selectData = selectData;
+		invalidate();
 	}
 
 	// 设置是否多选
@@ -489,13 +491,14 @@ public class MyCalendarView extends View implements View.OnTouchListener {
 		public float borderWidth;
 		public int bgColor = Color.parseColor("#dcdcdc");// 日历背景色
 		private int btnColor = Color.parseColor("#666666");
-		private int borderColor = Color.parseColor("#FFFFFF");// 格子线的颜色
+		private int borderColor = Color.parseColor("#FFFFFF");// 格子线的颜色（白色）
 		private int textColor = Color.BLACK;// 属于当前月数字颜色
 		private int otherMonthTextColor = Color.parseColor("#838181");// 不属于当前月数字颜色
 		public int todayNumberColor = Color.WHITE;// 今天数字颜色
-		public int cellDownColor = Color.parseColor("#CCFFFF");
-		public int cellSelectedColor = Color.parseColor("#FF9933");// 格子选中的颜色
-		public int notodaySelectedColor = Color.WHITE;// 不是今天数字被选中的格子颜色
+		public int cellDownColor = Color.parseColor("#CCFFFF");// （浅蓝色）
+		public int cellSelectedColor = Color.parseColor("#FF9933");// 格子选中的颜色（橘黄色）
+		public int notodaySelectedColor = Color.WHITE;// 不是今天数字被选中的格子文字颜色
+		public int notodaySelectedBgColor = Color.RED;// 不是今天数字被选中的格子背景颜色
 		public Paint borderPaint;
 		public Paint monthPaint;
 		public Paint weekPaint;

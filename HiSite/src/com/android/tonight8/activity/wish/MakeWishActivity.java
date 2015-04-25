@@ -67,11 +67,11 @@ public class MakeWishActivity extends BaseActivity {
 
 		switch (requestCode) {
 		case PICKPICTURE:
-			cropPicture(data.getData(), CROP);
+			cropPicture(data.getData(), CROP, 256, 256);
 			break;
 		case TAKEPHOTO:
 			File tempFile = new File(Environment.getExternalStorageDirectory() + "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile), CROP);
+			cropPicture(Uri.fromFile(tempFile), CROP,256, 256);
 			break;
 		case CROP:
 			Uri cropImageUri = data.getData();

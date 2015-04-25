@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin_left" >
+
+    <ImageView
+        android:id="@+id/iv_sponsor_wishpic"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:background="@drawable/ic_launcher" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_alignBottom="@+id/iv_sponsor_wishpic"
+        android:layout_alignTop="@+id/iv_sponsor_wishpic"
+        android:layout_toRightOf="@+id/iv_sponsor_wishpic"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/common_margin_small" >
+
+        <TextView
+            android:id="@+id/tv_sponsor_wishname"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="主题：驾车去西藏" />
+
+        <TextView
+            android:id="@+id/tv_sponsor_wishproject"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="项目：XXX项目名称" />
+
+        <TextView
+            android:id="@+id/tv_sponsor_wishstatus"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="状态：意愿发出中" />
+
+        <TextView
+            android:id="@+id/tv_sponsor_wishdate"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="日期：2015-04-25" />
+    </LinearLayout>
+
+</RelativeLayout>

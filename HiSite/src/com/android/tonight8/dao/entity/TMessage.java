@@ -6,20 +6,20 @@ package com.android.tonight8.dao.entity;
  */
 public class TMessage {
 
-    private Long id;
+    private String id;
     private String userPic;
     private String userName;
     private String userLastMessage;
-    private Long lastTime;
+    private String lastTime;
 
     public TMessage() {
     }
 
-    public TMessage(Long id) {
+    public TMessage(String id) {
         this.id = id;
     }
 
-    public TMessage(Long id, String userPic, String userName, String userLastMessage, Long lastTime) {
+    public TMessage(String id, String userPic, String userName, String userLastMessage, String lastTime) {
         this.id = id;
         this.userPic = userPic;
         this.userName = userName;
@@ -27,11 +27,11 @@ public class TMessage {
         this.lastTime = lastTime;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,11 +59,11 @@ public class TMessage {
         this.userLastMessage = userLastMessage;
     }
 
-    public Long getLastTime() {
+    public String getLastTime() {
         return lastTime;
     }
 
-    public void setLastTime(Long lastTime) {
+    public void setLastTime(String lastTime) {
         this.lastTime = lastTime;
     }
 
