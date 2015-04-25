@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin_left" >
+
+    <TextView
+        style="@style/match_width"
+        android:gravity="center_horizontal"
+        android:text="心愿赞助"
+        android:textSize="@dimen/middleTextSize" />
+
+    <TextView
+        style="@style/match_width"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="资金"
+        android:textSize="@dimen/middleTextSize" />
+
+    <View
+        style="@style/line_full"
+        android:paddingBottom="@dimen/common_margin_left" />
+
+    <TextView
+        android:id="@+id/tv_spnosor_sum"
+        style="@style/match_width"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="共需2000元"
+        android:textSize="@dimen/middleTextSize" />
+
+    <TextView
+        android:id="@+id/tv_spnosor_balance"
+        style="@style/match_width"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="还差1500元"
+        android:textSize="@dimen/middleTextSize" />
+
+    <TextView
+        style="@style/match_width"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="物品"
+        android:textSize="@dimen/middleTextSize" />
+
+    <View
+        style="@style/line_full"
+        android:paddingBottom="@dimen/common_margin_left" />
+
+    <com.android.tonight8.view.ListViewForScrollView
+        android:id="@+id/lv_sponsor_something"
+        style="@style/match_width" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="赞助金额："
+            android:textSize="@dimen/middleTextSize" />
+
+        <EditText
+            android:id="@+id/et_spnosor_money"
+            style="@style/wrap"
+            android:layout_width="100dp" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="元"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="赞助要求："
+            android:textSize="@dimen/middleTextSize" />
+
+        <EditText
+            style="@style/match_width"
+            android:hint="把您的赞助要求说明一下"
+            android:singleLine="false"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sponsor_submit"
+        style="@style/ok_button_style"
+        android:text="提交" />
+
+</LinearLayout>

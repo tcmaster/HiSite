@@ -17,7 +17,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
     </uses-permission>
@@ -29,6 +28,14 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -43,6 +50,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <!-- 设置环信应用的appkey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="joocola#mytest" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ofsgRgzkBB6tqYfuleWths3s" />
@@ -333,11 +345,32 @@
             android:name="com.android.tonight8.activity.wish.MakeWishActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 许愿详情页 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.WishLiveActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.android.tonight8.activity.user.ShowImgActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
             android:exported="false" >
         </service>
+        <!-- 声明sdk所需的service SDK核心功能 -->
+        <service android:name="com.easemob.chat.EMChatService" />
+
+        <activity
+            android:name="com.android.tonight8.activity.user.MessageListActivity"
+            android:label="@string/title_activity_message_list" >
+        </activity>
+        <activity
+            android:name="com.android.tonight8.activity.user.MessageDetailActivity"
+            android:label="@string/title_activity_message_detail" >
+        </activity>
     </application>
 
 </manifest>

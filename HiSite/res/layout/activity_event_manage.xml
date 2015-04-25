@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/rg_evnetmanage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/transparent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_button1"
+            style="@style/main_tab_bottom"
+            android:layout_width="30dp"
+            android:background="@color/half_white"
+            android:paddingTop="5dip"
+            android:tag="0"
+            android:text="开奖详情" />
+
+        <View style="@style/line_full_vertical" />
+
+        <RadioButton
+            android:id="@+id/rb_button2"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="赠券设置" />
+
+        <RadioButton
+            android:id="@+id/rb_button3"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="赠券使用" />
+
+        <RadioButton
+            android:id="@+id/rb_button4"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="赠券现场设置" />
+
+        <RadioButton
+            android:id="@+id/rb_button5"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="直播管理" />
+
+        <RadioButton
+            android:id="@+id/rb_button6"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="奖品寄送" />
+
+        <RadioButton
+            android:id="@+id/rb_button7"
+            style="@style/main_tab_bottom"
+            android:background="@color/half_white"
+            android:paddingTop="5dp"
+            android:tag="1"
+            android:text="订单寄送" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/ll_wish_container"
+        style="@style/match"
+        android:layout_weight="1"
+        android:orientation="vertical" />
+
+</LinearLayout>

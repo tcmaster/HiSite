@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        style="@style/match_width"
+        android:layout_height="250dp" >
+
+        <ImageView
+            android:id="@+id/iv_org_logopic"
+            style="@style/user_photo"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_org_name"
+            style="@style/match_width"
+            android:layout_below="@+id/iv_org_logopic"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/common_margin_left"
+            android:text="商家名称"
+            android:textSize="@dimen/middleTextSize" />
+
+        <LinearLayout
+            android:id="@+id/iv_iv_org_logopic"
+            style="@style/match_width"
+            android:layout_below="@+id/tv_org_name"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_left" >
+
+            <TextView
+                style="@style/wrap"
+                android:text="关注1234"
+                android:textSize="@dimen/middleTextSize" />
+
+            <View style="@style/line_full_vertical" />
+
+            <TextView
+                style="@style/wrap"
+                android:text="粉丝3244"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_org_message"
+            style="@style/wrap"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:text="消息" />
+
+        <Button
+            android:id="@+id/btn_org_follow"
+            style="@style/wrap"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:text="关注" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_org_detail"
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left" >
+
+        <RadioButton
+            android:id="@+id/rb_wish_talk"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="商家资料" />
+
+        <RadioButton
+            android:id="@+id/rb_wish_process"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="活动" />
+
+        <RadioButton
+            android:id="@+id/rb_wish_sponsor"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="赞助者" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/tabcontent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

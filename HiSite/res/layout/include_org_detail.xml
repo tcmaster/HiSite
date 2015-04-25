@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="所在地区" />
+
+        <TextView
+            android:id="@+id/tv_place_value"
+            style="@style/shoptext_style"
+            android:text="北京朝阳区" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="商家地址" />
+
+        <TextView
+            android:id="@+id/tv_address_value"
+            style="@style/shoptext_style"
+            android:text="中核路1号" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="联系人" />
+
+        <TextView
+            android:id="@+id/tv_personname_value"
+            style="@style/shoptext_style"
+            android:text="张可" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="联系电话" />
+
+        <TextView
+            android:id="@+id/tv_tele_value"
+            style="@style/shoptext_style"
+            android:text="010-12345678" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="联系手机" />
+
+        <TextView
+            android:id="@+id/tv_phone_value"
+            style="@style/shoptext_style"
+            android:text="123456789" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="@string/shopdetail_email" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_email_value"
+            style="@style/shoptext_style"
+            android:text="123456789@qq.com" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="@string/website" />
+
+        <TextView
+            android:id="@+id/tv_org_website"
+            style="@style/shoptext_style"
+            android:layout_height="wrap_content"
+            android:text="www.baidu.com" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="@string/weibo" />
+
+        <TextView
+            android:id="@+id/tv_org_weibo"
+            style="@style/shoptext_style"
+            android:layout_height="wrap_content"
+            android:text="633993048@qq.com" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="@string/weixinhao" />
+
+        <TextView
+            android:id="@+id/tv_org_weixinhao"
+            style="@style/shoptext_style"
+            android:layout_height="wrap_content"
+            android:text="lzandroid" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/ll_orgdetail_style"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <TextView
+            style="@style/shoptext_left_style"
+            android:text="微信二维码" />
+
+        <ImageView
+            android:id="@+id/iv_weixin_twocode"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_launcher"
+            android:gravity="right" />
+    </RelativeLayout>
+
+</LinearLayout>

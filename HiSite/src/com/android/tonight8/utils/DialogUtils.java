@@ -115,27 +115,40 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectCalendarDialog(final Activity activity, final EditText inputDate) {
+	public static void showSelectCalendarDialog(final Activity activity,final String[] selectData, final EditText inputDate) {
 		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.common_select_calendar);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 			@Override
 			public void getCustomerView(Window window, AlertDialog dlg) {
 				final MyCalendarView calendarView = (MyCalendarView) window.findViewById(R.id.calendarView_selected);
-
+				calendarView.setSelectedOtherDay(selectData);
 				calendarView.setOnItemClickListener(new OnMyItemClickListener() {
 
 					@Override
 					public void OnItemClick(Date selectedStartDate, Date selectedEndDate, Date downDate) {
 						LogUtils.i(downDate + "日历选中日期");
-						inputDate.setText(DateTimeUtils.dateToStr(downDate));
-						cdlg.dismissDlg();
+						if (!isInculdeDate(selectData,downDate)) {
+							String strSelectDate = DateTimeUtils.dateToStr(downDate);
+							inputDate.setText(strSelectDate);
+							cdlg.dismissDlg();
+						}
+
 					}
 				});
 			}
 		});
 		Utils.hideSoftKeyBoard(activity);
 		cdlg.showDlg();
+	}
+
+	private static boolean isInculdeDate(String[] selectData, Date downDate) {
+		for (int i = 0; i < selectData.length; i++) {
+			if (selectData[i].equals(DateTimeUtils.dateToStr(downDate))) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

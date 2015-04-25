@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin_left" >
+
+    <TextView
+        android:id="@+id/tv_myevent_name"
+        style="@style/match_width"
+        android:text="小米公司免费送手机" />
+
+    <ImageView
+        android:id="@+id/tv_myevent_pic"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_below="@+id/tv_myevent_name"
+        android:background="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/ll_myevent_content"
+        style="@style/match_width"
+        android:layout_alignBottom="@+id/tv_myevent_pic"
+        android:layout_below="@+id/tv_myevent_name"
+        android:layout_toRightOf="@+id/tv_myevent_pic"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/common_margin_small" >
+
+        <TextView
+            android:id="@+id/tv_award_name"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="奖品：香奈儿" />
+
+        <TextView
+            android:id="@+id/tv_price_count"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="价值：699名" />
+
+        <TextView
+            android:id="@+id/tv_enent_number"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="名额：5名" />
+
+        <TextView
+            android:id="@+id/tv_event_signup"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="报名：320名" />
+    </LinearLayout>
+
+</RelativeLayout>

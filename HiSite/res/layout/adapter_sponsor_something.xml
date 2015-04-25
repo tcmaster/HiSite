@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tv_sponsor_name"
+        style="@style/match_width"
+        android:layout_weight="1"
+        android:padding="@dimen/common_margin_left"
+        android:singleLine="false"
+        android:textSize="@dimen/middleTextSize" />
+
+    <CheckBox
+        android:id="@+id/cb_sponsor_something"
+        style="@style/wrap" />
+
+</LinearLayout>

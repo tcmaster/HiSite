@@ -92,9 +92,9 @@ public class AuthPicActivity extends BaseActivity {
 
 		case 0: // 0营业执照
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE);
+				cropPicture(data.getData(),PICKPICTURE,256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE);
+				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
 			} else if (requestCode == CROP) {
 
 				Uri cropImageUri = data.getData();
@@ -118,9 +118,9 @@ public class AuthPicActivity extends BaseActivity {
 
 		case 1: // 1身份证前面
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE);
+				cropPicture(data.getData(),PICKPICTURE,256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE);
+				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
 			} else if (requestCode == CROP) {
 				Uri cropImageUri = data.getData();
 				// 图片解析成Bitmap对象
@@ -141,9 +141,9 @@ public class AuthPicActivity extends BaseActivity {
 			break;
 		case 2: // 2身份证后面
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE);
+				cropPicture(data.getData(),PICKPICTURE,256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE);
+				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
 			} else if (requestCode == CROP) {
 				Uri cropImageUri = data.getData();
 				// 图片解析成Bitmap对象

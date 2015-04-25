@@ -94,6 +94,8 @@ public class CreatEventFirstActivity extends BaseActivity {
 	private final int TAKEPHOTO_DETAIL = 12;
 	/** 详情裁剪 */
 	private final int CROP_DETAIL = 13;
+	private String[] selectData = { "2015-02-25", "2015-02-23", "2015-02-18", "2014-12-25", "2015-03-25", "2015-04-25",
+			"2015-04-15", "2015-04-20" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,51 +105,41 @@ public class CreatEventFirstActivity extends BaseActivity {
 		initData();
 	}
 
-	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first,
-			R.id.iv_selected_PublishDate, R.id.iv_selected_DateStart,
-			R.id.iv_selected_DateEnd, R.id.btn_createevent_first,
-			R.id.et_popGoodsName, R.id.et_goodsName, R.id.et_createevent_rule,
-			R.id.et_createevent_name, R.id.iv_goods_temp })
+	@OnClick({ R.id.iv_popgoods_add, R.id.btn_createevent_first, R.id.iv_selected_PublishDate,
+			R.id.iv_selected_DateStart, R.id.iv_selected_DateEnd, R.id.btn_createevent_first, R.id.et_popGoodsName,
+			R.id.et_goodsName, R.id.et_createevent_rule, R.id.et_createevent_name, R.id.iv_goods_temp })
 	public void OnClick(View v) {
 		switch (v.getId()) {
 		case R.id.iv_popgoods_add:
-			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext,
-					PICKPICTURE, TAKEPHOTO);
+			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext, PICKPICTURE, TAKEPHOTO);
 			break;
 		case R.id.btn_createevent_first:
 			// StorgeCurrentData();
-			Intent intent = new Intent(CreatEventFirstActivity.this,
-					CreateEventSecondActivity.class);
+			Intent intent = new Intent(CreatEventFirstActivity.this, CreateEventSecondActivity.class);
 			startActivityForAnima(intent, null);
 			break;
 		case R.id.iv_selected_PublishDate:
-			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this,
-					et_planPublishTime);
+			DialogUtils.showSelectCalendarDialog(CreatEventFirstActivity.this, selectData, et_planPublishTime);
 			break;
 
 		case R.id.et_popGoodsName:
-			startActivityForResultAndAnima(new Intent(
-					CreatEventFirstActivity.this, TextEditActivity.class),
+			startActivityForResultAndAnima(new Intent(CreatEventFirstActivity.this, TextEditActivity.class),
 					popGoodsNameFlag, null);
 			break;
 
 		case R.id.et_goodsName:
-			startActivityForResultAndAnima(new Intent(
-					CreatEventFirstActivity.this, TextEditActivity.class),
+			startActivityForResultAndAnima(new Intent(CreatEventFirstActivity.this, TextEditActivity.class),
 					goodsNameFlag, null);
 			break;
 		case R.id.iv_goods_temp:
-			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext,
-					PICKPICTURE_DETAIL, TAKEPHOTO_DETAIL);
+			DialogUtils.showSelectPicDialog((CreatEventFirstActivity) mContext, PICKPICTURE_DETAIL, TAKEPHOTO_DETAIL);
 			break;
 		case R.id.et_createevent_rule:
-			startActivityForResultAndAnima(new Intent(
-					CreatEventFirstActivity.this, TextEditActivity.class),
+			startActivityForResultAndAnima(new Intent(CreatEventFirstActivity.this, TextEditActivity.class),
 					eventRuleFlag, null);
 			break;
 		case R.id.et_createevent_name:
-			startActivityForResultAndAnima(new Intent(
-					CreatEventFirstActivity.this, TextEditActivity.class),
+			startActivityForResultAndAnima(new Intent(CreatEventFirstActivity.this, TextEditActivity.class),
 					createeventNameFlag, null);
 
 			break;
@@ -172,20 +164,18 @@ public class CreatEventFirstActivity extends BaseActivity {
 
 		switch (requestCode) {
 		case PICKPICTURE:
-			cropPicture(data.getData(), CROP);
+			cropPicture(data.getData(), CROP, 256, 256);
 			break;
 		case TAKEPHOTO:
-			File tempFile = new File(Environment.getExternalStorageDirectory()
-					+ "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile), CROP);
+			File tempFile = new File(Environment.getExternalStorageDirectory() + "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile), CROP, 256, 256);
 			break;
 		case CROP:
 			Uri cropImageUri = data.getData();
 			// 图片解析成Bitmap对象
 			Bitmap bitmap = null;
 			try {
-				bitmap = BitmapFactory.decodeStream(getContentResolver()
-						.openInputStream(cropImageUri));
+				bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
@@ -194,26 +184,22 @@ public class CreatEventFirstActivity extends BaseActivity {
 				}
 
 			}
-			String tempPicPath = AlbumAndCamera.getImagePath(
-					AlbumAndCamera.getTempPath(), bitmap);
-			Tonight8App.getSelf().bitmapUtils.display(iv_popgoods_add,
-					tempPicPath);
+			String tempPicPath = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap);
+			Tonight8App.getSelf().bitmapUtils.display(iv_popgoods_add, tempPicPath);
 			break;
 		case PICKPICTURE_DETAIL:
-			cropPicture(data.getData(), PICKPICTURE_DETAIL);
+			cropPicture(data.getData(), PICKPICTURE_DETAIL, 256, 256);
 			break;
 		case TAKEPHOTO_DETAIL:
-			File tempFile2 = new File(Environment.getExternalStorageDirectory()
-					+ "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile2), TAKEPHOTO_DETAIL);
+			File tempFile2 = new File(Environment.getExternalStorageDirectory() + "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile2), TAKEPHOTO_DETAIL, 256, 256);
 			break;
 		case CROP_DETAIL:
 			Uri cropImageUri2 = data.getData();
 			// 图片解析成Bitmap对象
 			Bitmap bitmap2 = null;
 			try {
-				bitmap2 = BitmapFactory.decodeStream(getContentResolver()
-						.openInputStream(cropImageUri2));
+				bitmap2 = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri2));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
@@ -221,8 +207,7 @@ public class CreatEventFirstActivity extends BaseActivity {
 					bitmap2.recycle();
 				}
 			}
-			String tempPicPath2 = AlbumAndCamera.getImagePath(
-					AlbumAndCamera.getTempPath(), bitmap2);
+			String tempPicPath2 = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap2);
 			Goods goods = new Goods();
 			goods.pic = tempPicPath2;
 			list.add(goods);
@@ -231,20 +216,16 @@ public class CreatEventFirstActivity extends BaseActivity {
 			switch (requestCode) {
 
 			case createeventNameFlag:
-				et_createevent_name.setText(data
-						.getStringExtra(TextEditActivity.INPUT_STRING));
+				et_createevent_name.setText(data.getStringExtra(TextEditActivity.INPUT_STRING));
 				break;
 			case popGoodsNameFlag:
-				et_popGoodsName.setText(data
-						.getStringExtra(TextEditActivity.INPUT_STRING));
+				et_popGoodsName.setText(data.getStringExtra(TextEditActivity.INPUT_STRING));
 				break;
 			case goodsNameFlag:
-				et_goodsName.setText(data
-						.getStringExtra(TextEditActivity.INPUT_STRING));
+				et_goodsName.setText(data.getStringExtra(TextEditActivity.INPUT_STRING));
 				break;
 			case eventRuleFlag:
-				et_createevent_rule.setText(data
-						.getStringExtra(TextEditActivity.INPUT_STRING));
+				et_createevent_rule.setText(data.getStringExtra(TextEditActivity.INPUT_STRING));
 				break;
 
 			default:
