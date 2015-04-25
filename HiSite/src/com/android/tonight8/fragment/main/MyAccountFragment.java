@@ -1,5 +1,6 @@
 package com.android.tonight8.fragment.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.user.MessageListActivity;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
 import com.lidroid.xutils.ViewUtils;
@@ -128,13 +130,16 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		ll_tail.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 	}
 
-	@OnClick({ R.id.layout_my_wish })
+	@OnClick({ R.id.layout_my_wish, R.id.tv_message_center })
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.layout_my_wish:
 
 			break;
-
+		case R.id.tv_message_center:
+			Intent intent = new Intent(getActivity(), MessageListActivity.class);
+			getActivity().startActivity(intent);
+			break;
 		default:
 			break;
 		}

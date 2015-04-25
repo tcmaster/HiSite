@@ -53,5 +53,12 @@
     <dimen name="dialog_btn_height">35dp</dimen>
     <!-- 通用编辑框的高度 -->
     <dimen name="et_comm_height">40dp</dimen>
+    <!-- 消息列表相关 -->
+    <!-- 聊天框宽度 -->
+    <dimen name="talk_width">45dp</dimen>
+    <!-- 聊天附加框宽度 -->
+    <dimen name="talk_attachments_height">100dp</dimen>
+    <!-- 聊天附加按钮宽度 -->
+    <dimen name="talk_attachments_button_height">80dp</dimen>
 
 </resources>

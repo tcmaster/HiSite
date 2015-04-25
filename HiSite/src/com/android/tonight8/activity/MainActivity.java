@@ -14,12 +14,15 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.easemob.EaseMobManager;
+import com.android.tonight8.easemob.EaseMobManager.LoginCallBack;
 import com.android.tonight8.fragment.main.MyAccountFragment;
 import com.android.tonight8.fragment.main.TonightEightFragment;
 import com.android.tonight8.fragment.main.WishMainFragment;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.view.RegionalSortPopupWindow;
 import com.android.tonight8.view.SlideView;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -98,12 +101,28 @@ public class MainActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		initMainInterface();
 		initActionBar();
+		final String userName = "test2";
+		// 测试用，登录环信账号
+		EaseMobManager.loginAccount(userName, "123", new LoginCallBack() {
+
+			@Override
+			public void onSuccess() {
+				LogUtils.v("登录环信成功，用户名" + userName);
+				// EaseMobManager.sendTxtMessage("test2", "helloboy", null);
+			}
+
+			@Override
+			public void onError(int code, String msg) {
+
+			}
+		});
 
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		EaseMobManager.logout();
 		DBUtil.close();// 关闭数据库
 	}
 

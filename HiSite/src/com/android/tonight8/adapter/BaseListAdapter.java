@@ -72,16 +72,15 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 	}
 
 	@Override
-	public T getItem(int position) {
-		if (position == getCount() - 1 || mValues == null) {
-			return null;
-		}
-		return mValues.get(position);
+	public long getItemId(int position) {
+		return position;
 	}
 
 	@Override
-	public long getItemId(int position) {
-		return position;
+	public Object getItem(int position) {
+		if (position < 0 || position > mValues.size() - 1)
+			return null;
+		return mValues.get(position);
 	}
 
 	@Override
@@ -92,8 +91,9 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 	protected abstract View getItemView(View convertView, int position);
 
 	public void update(List<T> values) {
-		mValues = values;
-		notifyDataSetInvalidated();
+		mValues.clear();
+		mValues.addAll(values);
+		// notifyDataSetInvalidated();
 		notifyDataSetChanged();
 	}
 }

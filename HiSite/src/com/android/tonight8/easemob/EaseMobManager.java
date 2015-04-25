@@ -2,17 +2,10 @@ package com.android.tonight8.easemob;
 
 import java.io.File;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.android.tonight8.R;
 import com.easemob.EMCallBack;
 import com.easemob.EMError;
 import com.easemob.chat.EMChat;
@@ -26,7 +19,6 @@ import com.easemob.chat.MessageBody;
 import com.easemob.chat.TextMessageBody;
 import com.easemob.chat.VoiceMessageBody;
 import com.easemob.exceptions.EaseMobException;
-import com.lidroid.xutils.BitmapUtils;
 
 /**
  * ���Ź�����
@@ -38,29 +30,19 @@ import com.lidroid.xutils.BitmapUtils;
  */
 public class EaseMobManager {
 	/**
-	 * ��ʼ�����ţ��ڿͻ���ʹ��ʱ������APP���е����������
 	 * 
 	 * @param context
 	 */
-	private static Context useContext;// �������context
-	private static MessageReceiver receiver;// ������Ϣ�Ĺ㲥
+	private static Context useContext;// context
+	private static MessageReceiver receiver;// 接收消息的广播
 
 	public static void initEaseMob(Context context) {
-		Log.v("test", "���뻷�ų�ʼ��");
 		useContext = context;
 		int pid = android.os.Process.myPid();
 		String processAppName = MobUtils.getAppName(useContext, pid);
-		// ���app������Զ�̵�service����application:onCreate�ᱻ����2��
-		// Ϊ�˷�ֹ����SDK����ʼ��2�Σ��Ӵ��жϻᱣ֤SDK����ʼ��1��
-		// Ĭ�ϵ�app�����԰���ΪĬ�ϵ�process name�����У����鵽��process
-		// name����app��process
-		// name����������
 
 		if (processAppName == null
-				|| !processAppName.equalsIgnoreCase("com.example.easemobtest")) {
-			Log.e("lixiaosong", "enter the service process!");
-			// "com.easemob.chatuidemo"Ϊdemo�İ������Լ���Ŀ��Ҫ�ĳ��Լ�����
-			// ���application::onCreate �Ǳ�service ���õģ�ֱ�ӷ���
+				|| !processAppName.equalsIgnoreCase("com.android.tonight8")) {
 			return;
 		}
 		EMChat.getInstance().setAutoLogin(false);
@@ -69,7 +51,7 @@ public class EaseMobManager {
 	}
 
 	/**
-	 * ע��һ�������˺ţ�������
+	 * 注册一个账号
 	 * 
 	 * @param userName
 	 * @param password
@@ -87,16 +69,16 @@ public class EaseMobManager {
 					int errorCode = e.getErrorCode();
 					switch (errorCode) {
 					case EMError.NONETWORK_ERROR:
-						Log.v("test", "�����쳣");
+						Log.v("test", "网络异常");
 						break;
 					case EMError.USER_ALREADY_EXISTS:
-						Log.v("test", "�û��Ѵ���");
+						Log.v("test", "用户已注册");
 						break;
 					case EMError.UNAUTHORIZED:
-						Log.v("test", "��Ȩ��");
+						Log.v("test", "权限不足");
 						break;
 					default:
-						Log.v("test", "ע��ʧ��");
+						Log.v("test", "注册失败");
 						break;
 					}
 				}
@@ -105,14 +87,14 @@ public class EaseMobManager {
 	}
 
 	/**
-	 * ��¼�����˺�
+	 * 登录
 	 * 
 	 * @param userName
-	 *            �û���
+	 *            用户名
 	 * @param password
-	 *            ����
+	 *            密码
 	 * @param callBack
-	 *            ��¼�ص�
+	 *            登录回调
 	 */
 	public static void loginAccount(final String userName,
 			final String password, final LoginCallBack callBack) {
@@ -140,17 +122,16 @@ public class EaseMobManager {
 
 						@Override
 						public void onError(int arg0, String arg1) {
-							Log.v("test", "�����������¼ʧ��");
 							callBack.onError(arg0, arg1);
 						}
 					});
 		} else {
-			callBack.onError(444, "�ѵ�½");
+			callBack.onError(444, "未连接");
 		}
 	}
 
 	/**
-	 * �˳���¼�����˺�
+	 * 登出
 	 */
 	public static void logout() {
 		if (EMChatManager.getInstance().isConnected()) {
@@ -188,16 +169,38 @@ public class EaseMobManager {
 	 * @param callBack
 	 *            �ص�
 	 */
-	private static void sendMessage(String userName, ChatType type,
-			EMMessage.Type type2, MessageBody body, EMCallBack callBack) {
+	private static EMMessage sendMessage(String userName, ChatType type,
+			EMMessage.Type type2, MessageBody body, final SendCallBack callBack) {
 		EMConversation conversation = EMChatManager.getInstance()
 				.getConversation(userName);
-		EMMessage message = EMMessage.createSendMessage(type2);
+		final EMMessage message = EMMessage.createSendMessage(type2);
 		message.setChatType(type);
 		message.addBody(body);
 		message.setReceipt(userName);
+		message.setAttribute("photoUrl",
+				"http://img4.imgtn.bdimg.com/it/u=2352711400,4289515900&fm=11&gp=0.jpg");// 用户头像,自定义属性
 		conversation.addMessage(message);
-		EMChatManager.getInstance().sendMessage(message, callBack);
+		EMChatManager.getInstance().sendMessage(message, new EMCallBack() {
+
+			@Override
+			public void onSuccess() {
+				if (callBack != null)
+					callBack.onSuccess(message);
+			}
+
+			@Override
+			public void onProgress(int value, String des) {
+				if (callBack != null)
+					callBack.onProcess(value, des);
+			}
+
+			@Override
+			public void onError(int code, String msg) {
+				if (callBack != null)
+					callBack.onFail(code, msg);
+			}
+		});
+		return message;
 
 	}
 
@@ -208,93 +211,40 @@ public class EaseMobManager {
 	 * @param content
 	 * @param callBack
 	 */
-	public static void sendTxtMessage(String userName, String content,
-			EMCallBack callBack) {
+	public static EMMessage sendTxtMessage(String userName, String content,
+			SendCallBack callBack) {
 		TextMessageBody body = new TextMessageBody(content);
-		sendMessage(userName, ChatType.Chat, EMMessage.Type.TXT, body, callBack);
+		return sendMessage(userName, ChatType.Chat, EMMessage.Type.TXT, body,
+				callBack);
 	}
 
 	/**
-	 * ����ͼƬ��Ϣ
+	 * 发送图片消息
 	 * 
 	 * @param userName
 	 * @param imageFile
 	 * @param callBack
 	 */
 	public static void sendImgMessage(final String userName, File imageFile,
-			final Activity activity, final View container,
-			final ViewGroup parent, final BitmapUtils bmUtils,
-			final ImageCallBack callBack) {
-		parent.addView(container);
-		/** ͼƬcontainer���Ŀؼ� */
-		final ImageView iv_photo = (ImageView) container
-				.findViewById(R.id.iv_photo);
-		final ProgressBar pb_bar = (ProgressBar) container
-				.findViewById(R.id.pb_image);
-		final TextView tv_pnum = (TextView) container
-				.findViewById(R.id.tv_pnum);
-		pb_bar.setVisibility(View.VISIBLE);
-		tv_pnum.setVisibility(View.VISIBLE);
+			final SendCallBack callBack) {
 		ImageMessageBody body = new ImageMessageBody(imageFile);
 		body.setSendOriginalImage(true);// ����ԭͼ
 		sendMessage(userName, ChatType.Chat, EMMessage.Type.IMAGE, body,
-				new EMCallBack() {
-					@Override
-					public void onSuccess() {
-						activity.runOnUiThread(new Runnable() {
-
-							@Override
-							public void run() {
-								EMConversation conversation = EMChatManager
-										.getInstance()
-										.getConversation(userName);
-								EMMessage msg = conversation.getLastMessage();
-								EaseMobImageHelper.showImage(msg, container,
-										activity, bmUtils);
-								callBack.onSuccess(msg);
-							}
-						});
-
-					}
-
-					@Override
-					public void onProgress(final int progress, String arg1) {
-						activity.runOnUiThread(new Runnable() {
-
-							@Override
-							public void run() {
-								pb_bar.setProgress(progress);
-								tv_pnum.setText(progress + "");
-							}
-						});
-					}
-
-					@Override
-					public void onError(final int arg0, final String arg1) {
-						activity.runOnUiThread(new Runnable() {
-
-							@Override
-							public void run() {
-								parent.removeView(container);
-								callBack.onFail(arg0, arg1);
-							}
-						});
-					}
-				});
+				callBack);
 	}
 
 	/**
-	 * ����������Ϣ
+	 * 发送声音消息
 	 */
 	public static void sendVoiceMessage(String userName, File voiceFile,
-			int second, EMCallBack callBack) {
+			int second, SendCallBack callBack) {
 		VoiceMessageBody body = new VoiceMessageBody(voiceFile, second);
 		sendMessage(userName, ChatType.Chat, EMMessage.Type.VOICE, body,
 				callBack);
 	}
 
 	/**
-	 * ˢ��������Ϣ
+	 * 刷新信息
 	 */
 	public static void reflushInfo() {
 		EMGroupManager.getInstance().loadAllGroups();
@@ -302,7 +252,7 @@ public class EaseMobManager {
 	}
 
 	/**
-	 * ��¼��Ļص��ӿ�
+	 * 登录回调
 	 * 
 	 * @Descripton
 	 * @author LiXiaoSong
@@ -315,8 +265,18 @@ public class EaseMobManager {
 		public void onError(int code, String msg);
 	}
 
-	public static interface ImageCallBack {
+	/**
+	 * 发送消息的回调
+	 * 
+	 * @Descripton
+	 * @author LiXiaoSong
+	 * @2015-4-22
+	 * @Tonight8
+	 */
+	public static interface SendCallBack {
 		public void onSuccess(EMMessage msg);
+
+		public void onProcess(int value, String des);
 
 		public void onFail(int code, String msg);
 	}

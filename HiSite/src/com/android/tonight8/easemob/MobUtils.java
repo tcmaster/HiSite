@@ -7,6 +7,14 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+import com.android.tonight8.dao.TMessageDao;
+import com.android.tonight8.dao.entity.TMessage;
+import com.android.tonight8.storage.GreenDaoUtils;
+import com.easemob.chat.EMMessage;
+import com.easemob.exceptions.EaseMobException;
+
+import de.greenrobot.dao.Property;
+
 /**
  * �����õ��ĸ������
  * 
@@ -48,5 +56,40 @@ public class MobUtils {
 			}
 		}
 		return processName;
+	}
+
+	/**
+	 * 保存或更新一条message消息到本地
+	 * 
+	 * @param message
+	 */
+	public static void saveOrUpdateMessage(EMMessage message, String userName) {
+		TMessageDao dao = GreenDaoUtils.getDaoSession().getTMessageDao();
+		Property property = TMessageDao.Properties.UserName;
+		TMessage tMessage = dao.queryBuilder().where(property.eq(userName))
+				.build().unique();// 开启一条新的聊天记录列表
+		if (tMessage == null) {
+			// 插入
+			TMessage newTMessage = new TMessage();
+			newTMessage.setUserName(userName);
+			newTMessage.setLastTime(message.getMsgTime());
+			newTMessage.setUserLastMessage(message.getMsgId());
+			try {
+				newTMessage.setUserPic(message.getStringAttribute("photoUrl"));
+			} catch (EaseMobException e) {
+				e.printStackTrace();
+			}
+			dao.insert(newTMessage);
+		} else {
+			// 更新最新消息
+			tMessage.setLastTime(message.getMsgTime());
+			tMessage.setUserLastMessage(message.getMsgId());
+			try {
+				tMessage.setUserPic(message.getStringAttribute("photoUrl"));
+			} catch (EaseMobException e) {
+				e.printStackTrace();
+			}
+			dao.update(tMessage);
+		}
 	}
 }

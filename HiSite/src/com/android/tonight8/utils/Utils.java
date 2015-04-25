@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -74,7 +77,8 @@ public class Utils {
 	public static final int TYPE_GPRS = 2;
 
 	public static final int getNetWorkType(Context c) {
-		ConnectivityManager conn = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager conn = (ConnectivityManager) c
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (conn == null) {
 			return -1;
 		}
@@ -89,7 +93,8 @@ public class Utils {
 		} else if (type == ConnectivityManager.TYPE_MOBILE) {
 			return TYPE_3G;
 		} else {
-			TelephonyManager tm = (TelephonyManager) c.getSystemService(Context.TELEPHONY_SERVICE);
+			TelephonyManager tm = (TelephonyManager) c
+					.getSystemService(Context.TELEPHONY_SERVICE);
 			switch (tm.getNetworkType()) {
 			case TelephonyManager.NETWORK_TYPE_CDMA:
 				return TYPE_GPRS;
@@ -101,6 +106,29 @@ public class Utils {
 				return TYPE_3G;
 			}
 		}
+	}
+
+	/**
+	 * @category 将Uri转换为绝对地址
+	 * @param contentUri
+	 *            Uri内容
+	 * @param context
+	 *            上下文
+	 * @return 绝对地址
+	 */
+	public static String getRealPathFromURI(Uri contentUri, Context context) {
+		String res = null;
+		String[] proj = { MediaStore.Images.Media.DATA };
+		Cursor cursor = context.getContentResolver().query(contentUri, proj,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			;
+			int column_index = cursor
+					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			res = cursor.getString(column_index);
+		}
+		cursor.close();
+		return res;
 	}
 
 	/**
@@ -170,8 +198,11 @@ public class Utils {
 		final View v = activity.getWindow().peekDecorView();
 		if (v != null && v.getWindowToken() != null) {
 			try {
-				((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
-						activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				((InputMethodManager) activity
+						.getSystemService(Context.INPUT_METHOD_SERVICE))
+						.hideSoftInputFromWindow(activity.getCurrentFocus()
+								.getWindowToken(),
+								InputMethodManager.HIDE_NOT_ALWAYS);
 			} catch (Exception e) {
 
 			}
@@ -185,14 +216,16 @@ public class Utils {
 	 * @param editText
 	 */
 	public static void showSoftKeyBroad(Context context, EditText editText) {
-		InputMethodManager mgr = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager mgr = (InputMethodManager) context
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		mgr.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
 	}
 
 	// QQ登录加载对话框
 	private static Dialog mProgressDialog;
 
-	public static final void showProgressDialog(Context context, String title, String message) {
+	public static final void showProgressDialog(Context context, String title,
+			String message) {
 		dismissDialog();
 		if (TextUtils.isEmpty(title)) {
 			title = "请稍候";

@@ -55,12 +55,12 @@
 
     <style name="line_full">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_height">1px</item>
         <item name="android:background">@color/line_gray</item>
     </style>
 
     <style name="line_full_vertical">
-        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_width">1px</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/line_gray</item>
     </style>

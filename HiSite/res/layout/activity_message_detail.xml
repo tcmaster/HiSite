@@ -1,11 +1,113 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/match"
+    android:orientation="vertical"
     tools:context=".MessageDetailActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <LinearLayout
+        style="@style/match"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn_history"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/app_name" />
+
+        <ListView
+            android:id="@+id/lv_message_detail"
+            style="@style/match"
+            android:layout_marginBottom="@dimen/talk_width" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_process"
+            style="@style/match_width"
+            android:background="@color/black_half_transparent"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:id="@+id/ll_send"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/talk_width"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_voice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:hint="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/iv_add_photo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+        <!-- 传送图片/声音的附加框 -->
+
+        <View style="@style/line_full" />
+
+        <LinearLayout
+            android:id="@+id/ll_send_attachments"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/talk_attachments_height"
+            android:orientation="horizontal"
+            android:padding="@dimen/topOrbottomPadding"
+            android:visibility="gone" >
+
+            <ImageButton
+                android:id="@+id/ib_gallery"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/ib_take_pic"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/ib_voice"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

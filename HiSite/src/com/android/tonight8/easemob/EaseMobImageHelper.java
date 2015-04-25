@@ -1,6 +1,6 @@
 package com.android.tonight8.easemob;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -42,7 +42,7 @@ public class EaseMobImageHelper {
 	 *            ͼƬ����
 	 */
 	public static void showImage(EMMessage message, final View container,
-			final Activity activity, final BitmapUtils bmUtils) {
+			final Context activity, final BitmapUtils bmUtils) {
 		showImage(message, null, container, activity, bmUtils);
 	}
 
@@ -61,7 +61,7 @@ public class EaseMobImageHelper {
 	 *            ͼƬ����
 	 */
 	public static void showImage(EMMessage message, final ViewGroup parent,
-			final View container, final Activity activity,
+			final View container, final Context activity,
 			final BitmapUtils bmUtils) {
 		final ImageMessageBody body = (ImageMessageBody) message.getBody();
 		final String thUrl = body.getThumbnailUrl();
@@ -168,7 +168,7 @@ public class EaseMobImageHelper {
 									super.onLoadFailed(container, uri, drawable);
 									pb_num.setVisibility(View.INVISIBLE);
 									tv_pnum.setVisibility(View.INVISIBLE);
-									parent.removeView(iv_container);
+									// parent.removeView(iv_container);
 
 								}
 							});
@@ -232,7 +232,7 @@ public class EaseMobImageHelper {
 													drawable);
 											pb_num.setVisibility(View.INVISIBLE);
 											tv_pnum.setVisibility(View.INVISIBLE);
-											parent.removeView(iv_container);
+											// parent.removeView(iv_container);
 
 										}
 									});

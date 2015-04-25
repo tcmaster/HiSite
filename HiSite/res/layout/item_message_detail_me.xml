@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_time_show"
+        style="@style/wrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/middleTextSize" />
+
+    <LinearLayout
+        style="@style/wrap"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_marginRight="@dimen/common_margin_small" >
+
+            <TextView
+                android:id="@+id/tv_content"
+                style="@style/match_width"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/middleTextSize" />
+
+            <include
+                android:id="@+id/layout_img"
+                style="@style/wrap"
+                layout="@layout/item_photo" />
+        </FrameLayout>
+
+        <com.android.tonight8.view.CircleImageView
+            android:id="@+id/iv_user_photo"
+            android:layout_width="@dimen/popGoodsUserPhotoWidth"
+            android:layout_height="@dimen/popGoodsUserPhotoHeight"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tonight8.R;
+import com.android.tonight8.easemob.EaseMobManager;
 import com.android.tonight8.function.LocationFunction;
 import com.android.tonight8.storage.DBUtil;
 import com.android.tonight8.storage.GreenDaoUtils;
@@ -49,7 +50,7 @@ public class Tonight8App extends Application {
 	public static final String SINA_APP_SECRET = "2ea023b56f329f5bf5426416ddc3ddd7";
 	/** 新浪微博与第三方APP通信的接口 */
 	public AuthInfo mSinaAuth;
-    /** 微博分享的接口实例 */
+	/** 微博分享的接口实例 */
 	public IWeiboShareAPI mWeiboShareAPI;
 	// --------------------------微信授权时所需要的参数--------------------
 	/** 微信与第三方APP通信的接口 */
@@ -89,15 +90,20 @@ public class Tonight8App extends Application {
 		bitmapUtils = new BitmapUtils(mApp);
 		config = new BitmapDisplayConfig();
 		// 注册到微信
-		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(), WX_APP_ID, true);
+		wxApi = WXAPIFactory.createWXAPI(this.getApplicationContext(),
+				WX_APP_ID, true);
 		wxApi.registerApp(WX_APP_ID);
 		// 注册到QQ
-		mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
+		mTencent = Tencent.createInstance(QQ_APP_ID,
+				this.getApplicationContext());
 		// 注册到微博
-		mSinaAuth = new AuthInfo(this, SINA_APP_KEY, SINA_REDIRECT_URL, SINA_SCOPE);
-        // 创建微博 SDK 接口实例
-        mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(this, SINA_APP_KEY);
-        mWeiboShareAPI.registerApp();
+		mSinaAuth = new AuthInfo(this, SINA_APP_KEY, SINA_REDIRECT_URL,
+				SINA_SCOPE);
+		// 创建微博 SDK 接口实例
+		mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(this, SINA_APP_KEY);
+		mWeiboShareAPI.registerApp();
+		// 初始化聊天账号信息
+		EaseMobManager.initEaseMob(this);
 	}
 
 	/**
@@ -107,7 +113,8 @@ public class Tonight8App extends Application {
 	 */
 	public void initDeviceParams() {
 		WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+		TelephonyManager tm = (TelephonyManager) this
+				.getSystemService(TELEPHONY_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		AppConstants.dpi = dm.densityDpi + "";// 设备分辨率
@@ -116,13 +123,17 @@ public class Tonight8App extends Application {
 		AppConstants.imei = tm.getDeviceId();// 设备imei码
 		AppConstants.os_version = android.os.Build.VERSION.SDK_INT + "";// 操作系统版本号
 		try {
-			AppConstants.version = getPackageManager().getPackageInfo(PACKAGE_NAME, 0).versionCode + "";// 应用版本
+			AppConstants.version = getPackageManager().getPackageInfo(
+					PACKAGE_NAME, 0).versionCode
+					+ "";// 应用版本
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
 		AppConstants.phone_model = android.os.Build.MODEL;// 手机型号
-		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version + AppConstants.device_type + AppConstants.imei
-				+ AppConstants.dpi + AppConstants.os_version + AppConstants.phone_model + "keleping");
+		AppConstants.auth_code = MD5Utils.md5s(AppConstants.version
+				+ AppConstants.device_type + AppConstants.imei
+				+ AppConstants.dpi + AppConstants.os_version
+				+ AppConstants.phone_model + "keleping");
 		LocationFunction lcf = new LocationFunction(this);
 		lcf.beginLocation(new BDLocationListener() {
 

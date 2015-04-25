@@ -11,6 +11,7 @@ public class TMessage {
     private String userName;
     private String userLastMessage;
     private Long lastTime;
+    private Long userId;
 
     public TMessage() {
     }
@@ -19,12 +20,13 @@ public class TMessage {
         this.id = id;
     }
 
-    public TMessage(Long id, String userPic, String userName, String userLastMessage, Long lastTime) {
+    public TMessage(Long id, String userPic, String userName, String userLastMessage, Long lastTime, Long userId) {
         this.id = id;
         this.userPic = userPic;
         this.userName = userName;
         this.userLastMessage = userLastMessage;
         this.lastTime = lastTime;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -65,6 +67,14 @@ public class TMessage {
 
     public void setLastTime(Long lastTime) {
         this.lastTime = lastTime;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 }
