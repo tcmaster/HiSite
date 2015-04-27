@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.tonight8.R;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
 import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
@@ -25,17 +26,18 @@ public class ShowImgActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// setContentView(R.layout.activity_show_img);
-		// super.onCreate(savedInstanceState);
-		// iv_big_img = (ImageView) findViewById(R.id.iv_big_photo);
-		// pb_big_image = (ProgressBar) findViewById(R.id.pb_big_image);
-		// tv_big_pnum = (TextView) findViewById(R.id.tv_big_pnum);
-		// tv_ww = (TextView) findViewById(R.id.tv_ww);
+		setContentView(R.layout.activity_show_img);
+		super.onCreate(savedInstanceState);
+		iv_big_img = (ImageView) findViewById(R.id.iv_big_photo);
+		pb_big_image = (ProgressBar) findViewById(R.id.pb_big_image);
+		tv_big_pnum = (TextView) findViewById(R.id.tv_big_pnum);
+		tv_ww = (TextView) findViewById(R.id.tv_ww);
 		String remoteUrl = getIntent().getStringExtra("remoteUrl");
 		String localUrl = getIntent().getStringExtra("localUrl");
 		Log.v("test", "remoteUrl is" + remoteUrl);
 		pb_big_image.setVisibility(View.VISIBLE);
 		tv_big_pnum.setVisibility(View.VISIBLE);
+		tv_big_pnum.setText("0");
 		bmUtils = new BitmapUtils(this);
 		if (remoteUrl != null && !remoteUrl.equals("")) {
 			Log.v("test", "i m prepare for do");

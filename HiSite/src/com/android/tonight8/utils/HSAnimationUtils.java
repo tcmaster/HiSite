@@ -13,12 +13,13 @@ public class HSAnimationUtils {
 	 * @param v
 	 */
 	public static void playShowOrHideAnimation(View v,
-			AnimationListener listener, boolean isShow) {
+			AnimationListener listener, boolean isShow, boolean upOrDown) {
 		v.clearAnimation();
 		if (!isShow)
 			v.startAnimation(AnimationFactory.createShowAnimation(listener));
 		else
-			v.startAnimation(AnimationFactory.createHideAnimation(listener));
+			v.startAnimation(AnimationFactory.createHideAnimation(listener,
+					upOrDown));
 	}
 
 	/**
@@ -40,9 +41,15 @@ public class HSAnimationUtils {
 			return animation;
 		}
 
-		public static Animation createHideAnimation(AnimationListener listener) {
-			ScaleAnimation animation = new ScaleAnimation(1.0f, 1.0f, 1.0f,
-					0.0f, 1.0f, 1.0f);
+		public static Animation createHideAnimation(AnimationListener listener,
+				boolean upOrDown) {
+			ScaleAnimation animation;
+			if (upOrDown)
+				animation = new ScaleAnimation(1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
+						0.0f);
+			else
+				animation = new ScaleAnimation(1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
+						1.0f);
 			animation.setDuration(100);
 			if (listener != null)
 				animation.setAnimationListener(listener);

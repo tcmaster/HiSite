@@ -147,7 +147,7 @@ public class MessageDetailActivity extends BaseActivity {
 				String path = Utils.getRealPathFromURI(uri, this);
 				File file = new File(path);
 				// 发送
-
+				sendImageMessage(file);
 			}
 		} else if (requestCode == TAKEPHOTO && resultCode == RESULT_OK) {
 			File file = new File(Environment.getExternalStoragePublicDirectory(
@@ -164,6 +164,7 @@ public class MessageDetailActivity extends BaseActivity {
 			// // }
 			// File resultFile = Utils.createBitmapFile(bm);
 			// 发送
+			sendImageMessage(file);
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
@@ -278,7 +279,7 @@ public class MessageDetailActivity extends BaseActivity {
 						public void onAnimationEnd(Animation animation) {
 							ll_send_attachments.setVisibility(View.GONE);
 						}
-					}, true);
+					}, true, false);
 		} else {
 			HSAnimationUtils.playShowOrHideAnimation(ll_send_attachments,
 					new AnimationListener() {
@@ -295,7 +296,7 @@ public class MessageDetailActivity extends BaseActivity {
 						public void onAnimationEnd(Animation animation) {
 							ll_send_attachments.setVisibility(View.VISIBLE);
 						}
-					}, false);
+					}, false, false);
 		}
 	}
 

@@ -93,7 +93,7 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventListModel> {
 									ll_info.setVisibility(View.VISIBLE);
 								infos.set(position, !infos.get(position));
 							}
-						}, infos.get(position));
+						}, infos.get(position), true);
 			}
 		});
 		return convertView;

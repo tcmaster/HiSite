@@ -29,6 +29,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 		EMMessage message = mValues.get(position);
 		boolean isSend = false;// 这个标志用于判断当前显示的message是发送的消息还是接收的消息
 		MessageViewHolder holder = null;
+		LogUtils.v("messageInfoIs" + message.toString());
 		if (message.direct == EMMessage.Direct.SEND)
 			isSend = true;
 		else if (message.direct == EMMessage.Direct.RECEIVE)
@@ -130,6 +131,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 					.getMessage());
 		} else if (message.getType() == EMMessage.Type.IMAGE) {// 图片类型消息的处理
 			holder.layout_img.setVisibility(View.VISIBLE);
+			holder.iv_photo.setImageBitmap(null);
 			EaseMobImageHelper.showImage(message, holder.layout_img, mContext,
 					bmUtils);
 		}
