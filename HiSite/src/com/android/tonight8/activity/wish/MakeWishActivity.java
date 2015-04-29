@@ -39,6 +39,12 @@ public class MakeWishActivity extends BaseActivity {
 	private List<WishStroyModel> storyList;
 	/** 故事板点击的位置 */
 	private int clickPosition;
+	public static final int UPDATA_DATA = 0;
+	public static final int ADD_DATA = 1;
+	public static final int DELETE_DATA = 2;
+	public static final int THEME_PICKPICTURE = 4;
+	public static final int THEME_TAKEPHOTO = 5;
+	public static final int THEME_CROP = 6;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +76,24 @@ public class MakeWishActivity extends BaseActivity {
 			cropPicture(data.getData(), CROP, 256, 256);
 			break;
 		case TAKEPHOTO:
-			File tempFile = new File(Environment.getExternalStorageDirectory() + "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile), CROP,256, 256);
+			File tempFile = new File(Environment.getExternalStorageDirectory()
+					+ "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile), CROP, 256, 256);
 			break;
 		case CROP:
 			Uri cropImageUri = data.getData();
 			// 图片解析成Bitmap对象
 			Bitmap bitmap = null;
 			try {
-				bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(cropImageUri));
-				String tempPicPath = AlbumAndCamera.getImagePath(AlbumAndCamera.getTempPath(), bitmap);
+				bitmap = BitmapFactory.decodeStream(getContentResolver()
+						.openInputStream(cropImageUri));
+				String tempPicPath = AlbumAndCamera.getImagePath(
+						AlbumAndCamera.getTempPath(), bitmap);
 
 				WishStroyModel wishStroyModel = storyList.get(clickPosition);
 				wishStroyModel.setWishPic(tempPicPath);
-				storyList.set(clickPosition, wishStroyModel);
-				wishStoryAdapter.update(storyList);
+				updateClickPosition(clickPosition, MakeWishActivity.ADD_DATA,
+						wishStroyModel);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
@@ -95,7 +104,35 @@ public class MakeWishActivity extends BaseActivity {
 			}
 
 			break;
+		case THEME_PICKPICTURE:
+			cropPicture(data.getData(), THEME_CROP, 256, 256);
+			break;
+		case THEME_TAKEPHOTO:
+			File tempFile2 = new File(Environment.getExternalStorageDirectory()
+					+ "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile2), THEME_CROP, 256, 256);
+			break;
+		case THEME_CROP:
+			Uri cropImageUri2 = data.getData();
+			// 图片解析成Bitmap对象
+			Bitmap bitmap2 = null;
+			try {
+				bitmap2 = BitmapFactory.decodeStream(getContentResolver()
+						.openInputStream(cropImageUri2));
+				String tempPicPath2 = AlbumAndCamera.getImagePath(
+						AlbumAndCamera.getTempPath(), bitmap2);
+				updateWishThemeData(clickPosition, MakeWishActivity.ADD_DATA,
+						tempPicPath2);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				if (bitmap2 != null) {
+					bitmap2.recycle();
+				}
 
+			}
+
+			break;
 		default:
 			break;
 		}
@@ -108,19 +145,49 @@ public class MakeWishActivity extends BaseActivity {
 	 * @return void 返回类型
 	 * 
 	 */
-	public void updateClickPosition(int position, int type) {
+	public void updateWishThemeData(int position, int type, String picUrl) {
 		this.clickPosition = position;
-		if (type == 1) {
-			WishStroyModel wishStroyModel = new WishStroyModel();
-			storyList.add(position + 1, wishStroyModel);
-			wishStoryAdapter.update(storyList);
+		if (type == ADD_DATA) {
+			themeList.set(position, picUrl);
+			themeList.add(position + 1, "");
+			wishThemeGridAdapter.notifyDataSetChanged();
 		}
-		if (type == 2) {
-			if (storyList.size() == 1) {
-				return;
+		if (type == DELETE_DATA) {
+			if (themeList != null && themeList.size() != 1) {
+				themeList.remove(position);
+				wishThemeGridAdapter.notifyDataSetChanged();
 			}
-			storyList.remove(position);
-			wishStoryAdapter.update(storyList);
+
+		}
+
+	}
+
+	/**
+	 * @Description: 更新数据
+	 * @param @param position
+	 * @param @param type 0更新选中的项，1增加数据项，2删除数据项
+	 * @return void 返回类型
+	 * 
+	 */
+	public void updateClickPosition(int position, int type,
+			WishStroyModel wishStroyModel) {
+		this.clickPosition = position;
+		if (type == ADD_DATA) {
+			if (wishStroyModel == null) {
+				wishStroyModel = new WishStroyModel();
+				storyList.add(position + 1, wishStroyModel);
+			} else {
+				storyList.set(position, wishStroyModel);
+			}
+
+			wishStoryAdapter.notifyDataSetChanged();
+		}
+		if (type == DELETE_DATA) {
+			if (storyList != null && storyList.size() != 1) {
+				storyList.remove(position);
+				wishStoryAdapter.notifyDataSetChanged();
+			}
+
 		}
 
 	}

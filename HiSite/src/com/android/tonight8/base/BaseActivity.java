@@ -423,7 +423,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @author: LiXiaosong
 	 * @date:2014-10-8
 	 */
-	public void cropPicture(Uri uri, int requestCode,int OUTPUT_X,int OUTPUT_Y) {
+	public void cropPicture(Uri uri, int requestCode, int OUTPUT_X, int OUTPUT_Y) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");// 可裁剪
@@ -434,6 +434,8 @@ public class BaseActivity extends FragmentActivity {
 		intent.putExtra("scale", true);
 		intent.putExtra("return-data", false);// 若为false则表示不返回数据
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+		intent.putExtra("scale", true);// 去黑边
+		intent.putExtra("scaleUpIfNeeded", true);// 去黑边
 		intent.putExtra("noFaceDetection", true);
 		startActivityForResult(intent, requestCode);
 	}

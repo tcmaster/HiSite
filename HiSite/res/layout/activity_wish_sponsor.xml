@@ -66,6 +66,7 @@
         <EditText
             android:id="@+id/et_spnosor_money"
             style="@style/wrap"
+            android:inputType="number"
             android:layout_width="100dp" />
 
         <TextView

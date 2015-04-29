@@ -137,7 +137,7 @@
 //							.getColumnIndex(MediaStore.Images.Media.DATA));
 //
 //				}
-//	
+//
 //				cursor.close();
 //
 //				mProgress = new ProgressDialog(MipcaActivityCapture.this);
@@ -374,4 +374,4 @@
 //		}
 //	};
 //
-//}
+// }

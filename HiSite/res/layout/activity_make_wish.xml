@@ -45,7 +45,7 @@
                     android:id="@+id/gv_wish_themepic"
                     style="@style/match_width"
                     android:horizontalSpacing="10dp"
-                    android:numColumns="2"
+                    android:numColumns="3"
                     android:verticalSpacing="10dp" />
             </LinearLayout>
 
