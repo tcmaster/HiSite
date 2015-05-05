@@ -37,10 +37,22 @@
                 android:gravity="center"
                 android:text="@string/app_name"
                 android:textSize="@dimen/middleTextSize" />
-            <include 
+
+            <include
                 android:id="@+id/layout_img"
-                layout="@layout/item_photo"
-                style="@style/wrap"/>
+                style="@style/wrap"
+                layout="@layout/item_photo" />
+
+            <ImageView
+                android:id="@+id/iv_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/talk_voice_height"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/chatto_bg"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/chatto_voice_playing"
+                android:visibility="invisible" />
         </FrameLayout>
     </LinearLayout>
 

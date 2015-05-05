@@ -11,6 +11,8 @@
     <string name="main_right_tab">心愿墙</string>
     <string name="compere">主持人</string>
     <string name="program">节目单</string>
+    <string name="move_up_to_cancel">slide up cancel sending</string>
+    <string name="voice_prompt_init">长按说话</string>
     <!-- 抽奖详情 -->
     <string name="hour">时</string>
     <string name="minute">分</string>

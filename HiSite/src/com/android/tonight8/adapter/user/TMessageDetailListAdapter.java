@@ -3,8 +3,10 @@ package com.android.tonight8.adapter.user;
 import java.util.Date;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.easemob.EaseMobImageHelper;
+import com.android.tonight8.easemob.EaseMobVoiceHelper;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.TextMessageBody;
 import com.easemob.exceptions.EaseMobException;
@@ -26,7 +29,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		EMMessage message = mValues.get(position);
+		final EMMessage message = mValues.get(position);
 		boolean isSend = false;// 这个标志用于判断当前显示的message是发送的消息还是接收的消息
 		MessageViewHolder holder = null;
 		LogUtils.v("messageInfoIs" + message.toString());
@@ -59,6 +62,8 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 					.findViewById(R.id.tv_num);
 			holder.tv_time_show = (TextView) convertView
 					.findViewById(R.id.tv_time_show);
+			holder.iv_voice = (ImageView) convertView
+					.findViewById(R.id.iv_voice);
 			convertView.setTag(holder);
 		} else {
 			holder = (MessageViewHolder) convertView.getTag();
@@ -90,6 +95,8 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 						.findViewById(R.id.tv_num);
 				holder.tv_time_show = (TextView) convertView
 						.findViewById(R.id.tv_time_show);
+				holder.iv_voice = (ImageView) convertView
+						.findViewById(R.id.iv_voice);
 				convertView.setTag(holder);
 			}
 		}
@@ -97,6 +104,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 		holder.tv_content.setVisibility(View.INVISIBLE);
 		holder.layout_img.setVisibility(View.INVISIBLE);
 		holder.tv_time_show.setVisibility(View.INVISIBLE);
+		holder.iv_voice.setVisibility(View.INVISIBLE);
 		if (isSend) {
 			// 发送出去的消息，用户头像直接使用本地头像
 			bmUtils.display(holder.iv_user_photo,
@@ -134,6 +142,20 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 			holder.iv_photo.setImageBitmap(null);
 			EaseMobImageHelper.showImage(message, holder.layout_img, mContext,
 					bmUtils);
+		} else if (message.getType() == EMMessage.Type.VOICE) {
+			holder.iv_voice.setVisibility(View.VISIBLE);
+			holder.iv_voice.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (EaseMobVoiceHelper.isPlaying()) {
+						EaseMobVoiceHelper.stopVoice();
+					} else {
+						EaseMobVoiceHelper.playVoice(message,
+								(Activity) mContext);
+					}
+				}
+			});
 		}
 		return convertView;
 	}
@@ -165,6 +187,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 		ImageView iv_photo;// 图片内容
 		ProgressBar pb_image;// 图片进度条（圆形）
 		TextView tv_pnum;// 图片下载进度数字显示
+		ImageView iv_voice;// 声音内容
 		int flag;// 用来标注该视图属于接收视图还是发送视图,1为发送，0为接收
 	}
 }

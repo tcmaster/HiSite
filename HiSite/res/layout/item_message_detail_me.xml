@@ -36,6 +36,17 @@
                 android:id="@+id/layout_img"
                 style="@style/wrap"
                 layout="@layout/item_photo" />
+
+            <ImageView
+                android:id="@+id/iv_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/talk_voice_height"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/chatto_voice_playing"
+                android:background="@drawable/chatto_bg"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:visibility="invisible"/>
         </FrameLayout>
 
         <com.android.tonight8.view.CircleImageView

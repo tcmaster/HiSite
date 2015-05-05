@@ -60,5 +60,7 @@
     <dimen name="talk_attachments_height">100dp</dimen>
     <!-- 聊天附加按钮宽度 -->
     <dimen name="talk_attachments_button_height">80dp</dimen>
+    <!-- 聊天声音高度 -->
+    <dimen name="talk_voice_height">48dp</dimen>
 
 </resources>

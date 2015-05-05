@@ -193,7 +193,7 @@ public class EaseMobImageHelper {
 									super.onLoading(container, uri, config,
 											total, current);
 									int progress = (int) (((current * 1.0f) / (total * 1.0f)) * 100);
-									tv_pnum.setText(progress);
+									tv_pnum.setText(progress + "");
 								}
 
 								@Override
