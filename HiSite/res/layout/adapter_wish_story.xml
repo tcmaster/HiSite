@@ -17,6 +17,8 @@
         <EditText
             android:id="@+id/et_wishname"
             style="@style/et_comm_style"
+            android:singleLine="false"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="把你的心愿情节生动描述一下吧！" />
 
@@ -47,10 +49,11 @@
         <ImageView
             android:id="@+id/iv_wish_storypic"
             style="@style/match_width"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="@dimen/common_margin_left"
-            android:background="@drawable/add_custom" />
+            android:background="@drawable/add_custom"
+            android:scaleType="fitXY" />
     </LinearLayout>
 
 </LinearLayout>

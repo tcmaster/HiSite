@@ -3,32 +3,23 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <RelativeLayout
-        android:id="@+id/rl_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="3dip"
-        android:paddingLeft="4dip"
-        android:paddingRight="4dip"
-        android:paddingTop="3dip" >
-
-        <ImageView
-            android:id="@+id/iv_wish_themepic"
-            style="@style/match_width"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/common_margin_left"
-            android:background="@drawable/add_custom" />
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_wish_themepic"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_margin="@dimen/common_margin_left"
+        android:background="@drawable/add_custom"
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/iv_cs_gallay_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/rl_iv"
-        android:layout_alignTop="@+id/rl_iv"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginRight="0dip"
         android:layout_marginTop="0dip"
-        android:background="@drawable/delete_picture" />
+        android:background="@drawable/delete_picture"
+        android:visibility="gone" />
 
 </RelativeLayout>
