@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/wrap"
+    android:orientation="vertical"
+    tools:context=".EventLivePlayActivity" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popgoodsImgHeight" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_play_screen"
+            style="@style/match"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/iv_function"
+            style="@style/wrap"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_play_num"
+            style="@style/wrap"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+    </FrameLayout>
+	<LinearLayout 
+	    style="@style/match_width"
+	    android:orientation="horizontal">
+	    <ImageView
+	        android:id="@+id/play"
+	        style="@style/wrap"
+	        android:contentDescription="@string/app_name"
+	        />
+	</LinearLayout>
+</LinearLayout>

@@ -142,7 +142,7 @@ public class TMessageDetailListAdapter extends BaseListAdapter<EMMessage> {
 			holder.iv_photo.setImageBitmap(null);
 			EaseMobImageHelper.showImage(message, holder.layout_img, mContext,
 					bmUtils);
-		} else if (message.getType() == EMMessage.Type.VOICE) {
+		} else if (message.getType() == EMMessage.Type.VOICE) {// 语音类型消息处理
 			holder.iv_voice.setVisibility(View.VISIBLE);
 			holder.iv_voice.setOnClickListener(new OnClickListener() {
 

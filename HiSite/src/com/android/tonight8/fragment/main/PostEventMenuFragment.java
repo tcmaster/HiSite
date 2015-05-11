@@ -85,9 +85,11 @@ public class PostEventMenuFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin, container, false);
+		rootView = inflater.inflate(R.layout.fragment_post_events_afterlogin,
+				container, false);
 		ViewUtils.inject(this, rootView); // 注入view和事件
 
 		initData();
@@ -102,19 +104,22 @@ public class PostEventMenuFragment extends BaseFragment {
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		baseActivity.getActionBarNormal("发活动", R.drawable.ic_launcher, new OnClickListener() {
+		baseActivity.getActionBarNormal("发活动", R.drawable.ic_launcher,
+				new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent(baseActivity, OrgMessageListActivity.class);
-				startActivityForAnima(intent, baseActivity);
-			}
-		});
+					@Override
+					public void onClick(View arg0) {
+						Intent intent = new Intent(baseActivity,
+								OrgMessageListActivity.class);
+						startActivityForAnima(intent, baseActivity);
+					}
+				});
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@OnItemClick(R.id.gv_postevents_main)
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+			long arg3) {
 		Intent intent = null;
 		switch (position) {
 		case 0:
@@ -148,7 +153,8 @@ public class PostEventMenuFragment extends BaseFragment {
 	}
 
 	private void initData() {
-		OrgLoginNativeController orgLogin = new OrgLoginNativeController(getActivity());
+		OrgLoginNativeController orgLogin = new OrgLoginNativeController(
+				getActivity());
 		// tv_shop_id.setText(orgLogin.getOrgLoginInfo());
 		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");

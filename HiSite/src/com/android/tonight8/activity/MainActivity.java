@@ -101,14 +101,14 @@ public class MainActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		initMainInterface();
 		initActionBar();
-		final String userName = "test1";
+		final String userName = "liuzhao";
 		// 测试用，登录环信账号
 		EaseMobManager.loginAccount(userName, "123", new LoginCallBack() {
 
 			@Override
 			public void onSuccess() {
 				LogUtils.v("登录环信成功，用户名" + userName);
-				// EaseMobManager.sendTxtMessage("test2", "helloboy", null);
+				// EaseMobManager.sendTxtMessage("liuzhao", "helloboy", null);
 			}
 
 			@Override

@@ -28,7 +28,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -36,7 +35,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -283,6 +281,24 @@
             android:name="com.android.tonight8.activity.createevent.EventsAwardListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 消息列表界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.MessageListActivity"
+            android:label="@string/title_activity_message_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 消息详情界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.user.MessageDetailActivity"
+            android:label="@string/title_activity_message_detail"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 活动现场直播界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.event.EventLivePlayActivity"
+            android:label="@string/title_activity_event_live_play"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- QQ分享需要注册的 -->
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
@@ -363,15 +379,6 @@
         </service>
         <!-- 声明sdk所需的service SDK核心功能 -->
         <service android:name="com.easemob.chat.EMChatService" />
-
-        <activity
-            android:name="com.android.tonight8.activity.user.MessageListActivity"
-            android:label="@string/title_activity_message_list" >
-        </activity>
-        <activity
-            android:name="com.android.tonight8.activity.user.MessageDetailActivity"
-            android:label="@string/title_activity_message_detail" >
-        </activity>
     </application>
 
 </manifest>

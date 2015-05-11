@@ -158,6 +158,14 @@ public class MessageDetailActivity extends BaseActivity {
 	}
 
 	@Override
+	protected void onPause() {
+		if (EaseMobVoiceHelper.isPlaying()) {
+			EaseMobVoiceHelper.stopVoice();
+		}
+		super.onPause();
+	}
+
+	@Override
 	protected void onDestroy() {
 		if (receiver != null)
 			this.unregisterReceiver(receiver);

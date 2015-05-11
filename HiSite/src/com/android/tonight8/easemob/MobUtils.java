@@ -2,10 +2,14 @@ package com.android.tonight8.easemob;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 
 import com.android.tonight8.dao.TMessageDao;
 import com.android.tonight8.dao.entity.TMessage;
@@ -25,7 +29,7 @@ import de.greenrobot.dao.Property;
  */
 public class MobUtils {
 	/**
-	 * �õ�Ӧ�����
+	 * 得到应用的名称
 	 * 
 	 * @param context
 	 * @param pID
@@ -91,5 +95,26 @@ public class MobUtils {
 			}
 			dao.update(tMessage);
 		}
+	}
+
+	/**
+	 * 将普通文字解析转换成带表情的文字
+	 * 
+	 * @param text
+	 */
+	public SpannableStringBuilder getFaceString(Context context, String src) {
+		Iterator<Map.Entry<String, Integer>> iterator = MobConstants.FACELIB
+				.entrySet().iterator();
+		SpannableStringBuilder builder = new SpannableStringBuilder(src);
+		while (iterator.hasNext()) {
+			Entry<String, Integer> entry = iterator.next();
+			int index = src.indexOf(entry.getKey());
+			if (index != -1) {
+				builder.setSpan(new ImageSpan(context, entry.getValue()),
+						index, index + entry.getKey().length(),
+						SpannableStringBuilder.SPAN_INCLUSIVE_INCLUSIVE);
+			}
+		}
+		return builder;
 	}
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -54,8 +55,8 @@ public class EaseMobVoiceHelper {
 			return;// 这个文件不存在
 		}
 		LogUtils.v("音频文件的地址是" + path);
-		// AudioManager audioManager = (AudioManager) activity
-		// .getSystemService(Context.AUDIO_SERVICE);
+		AudioManager audioManager = (AudioManager) activity
+				.getSystemService(Context.AUDIO_SERVICE);
 		player = new MediaPlayer();
 		// if (EMChatManager.getInstance().getChatOptions().getUseSpeaker()) {
 		// audioManager.setMode(AudioManager.MODE_NORMAL);
@@ -69,6 +70,10 @@ public class EaseMobVoiceHelper {
 		// }
 		try {
 			// player.setVolume(1, 1);
+			// 听筒播放逻辑处理
+			audioManager.setSpeakerphoneOn(false);
+			audioManager.setMode(AudioManager.MODE_IN_CALL);
+			activity.setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
 			player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			player.setDataSource(path);
 			player.setLooping(false);
