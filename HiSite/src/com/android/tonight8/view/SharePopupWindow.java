@@ -24,7 +24,8 @@ public class SharePopupWindow extends PopupWindow {
 
 	public SharePopupWindow(Context context, OnClickListener itemsOnClick) {
 		super(context);
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mMenuView = inflater.inflate(R.layout.share_popupwindow, null);
 		btn_cancel = (Button) mMenuView.findViewById(R.id.btn_popwindow_cancle);
 		// 取消按钮

@@ -55,10 +55,13 @@ public class ExchangeLocationActivity extends BaseActivity {
 	 */
 	private void setOrgLocation() {
 		LatLng latLng = new LatLng(39.9, 116.3);
-		MapStatus mapStatus = new MapStatus.Builder().zoom(15).target(latLng).build();
+		MapStatus mapStatus = new MapStatus.Builder().zoom(15).target(latLng)
+				.build();
 		bm.setMapStatus(MapStatusUpdateFactory.newMapStatus(mapStatus));
-		BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.location_middle);
-		OverlayOptions options = new MarkerOptions().position(latLng).draggable(false).icon(descriptor).title("北京正统");
+		BitmapDescriptor descriptor = BitmapDescriptorFactory
+				.fromResource(R.drawable.location_middle);
+		OverlayOptions options = new MarkerOptions().position(latLng)
+				.draggable(false).icon(descriptor).title("北京正统");
 		bm.addOverlay(options);
 		View view = new View(this);
 		view.setBackgroundResource(R.drawable.talk_red);
@@ -70,6 +73,7 @@ public class ExchangeLocationActivity extends BaseActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 		mv_exchange_location.onDestroy();
+
 	}
 
 	@Override

@@ -5,6 +5,12 @@ import android.os.Bundle;
 
 import com.android.tonight8.R;
 
+/**
+ * @Descripton 活动现场界面
+ * @author LiXiaoSong
+ * @2015-5-11
+ * @Tonight8
+ */
 public class EventLivePlayActivity extends Activity {
 
 	@Override

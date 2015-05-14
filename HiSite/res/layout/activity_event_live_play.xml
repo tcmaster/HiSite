@@ -1,45 +1,296 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/wrap"
-    android:orientation="vertical"
-    tools:context=".EventLivePlayActivity" >
+    style="@style/match" >
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/popgoodsImgHeight" >
+    <LinearLayout
+        style="@style/match"
+        android:orientation="vertical"
+        tools:context=".EventLivePlayActivity"
+        android:layout_gravity="center" >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_play_screen"
-            style="@style/match"
-            android:layout_gravity="center" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popgoodsImgHeight" >
 
-        <ImageView
-            android:id="@+id/iv_function"
-            style="@style/wrap"
-            android:layout_gravity="left|top"
-            android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_marginTop="@dimen/topOrbottomPadding"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_play_screen"
+                style="@style/match"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/iv_function"
+                style="@style/wrap"
+                android:layout_gravity="left|top"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:layout_marginTop="@dimen/topOrbottomPadding"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_play_num"
+                style="@style/wrap"
+                android:layout_gravity="right|top"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_marginTop="@dimen/topOrbottomPadding"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/middleTextSize" />
+        </FrameLayout>
+
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_prev_page"
+                style="@style/wrap"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/iv_play_or_pause"
+                style="@style/wrap"
+                android:layout_marginLeft="@dimen/common_margin_small"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/iv_next_page"
+                style="@style/wrap"
+                android:layout_marginLeft="@dimen/common_margin_small"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <LinearLayout
+                style="@style/match_width"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/iv_power_off"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/iv_prompt"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/iv_download"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/iv_volume"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/iv_full_screen"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rg_tab"
+            style="@style/match_width"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rb_live"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding"
+                android:text="@string/app_name" />
+
+            <View
+                style="@style/line_full_vertical"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding" />
+
+            <RadioButton
+                android:id="@+id/rb_award_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding"
+                android:text="@string/app_name" />
+
+            <View
+                style="@style/line_full_vertical"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding" />
+
+            <RadioButton
+                android:id="@+id/rb_vote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding"
+                android:text="@string/app_name" />
+
+            <View
+                style="@style/line_full_vertical"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding" />
+
+            <RadioButton
+                android:id="@+id/rb_show_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding"
+                android:text="@string/app_name" />
+        </RadioGroup>
 
         <TextView
-            android:id="@+id/tv_play_num"
-            style="@style/wrap"
-            android:layout_gravity="right|top"
-            android:layout_marginRight="@dimen/common_margin_left"
-            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:id="@+id/tv_goods_info"
+            style="@style/match_width"
+            android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="@dimen/middleTextSize" />
-    </FrameLayout>
-	<LinearLayout 
-	    style="@style/match_width"
-	    android:orientation="horizontal">
-	    <ImageView
-	        android:id="@+id/play"
-	        style="@style/wrap"
-	        android:contentDescription="@string/app_name"
-	        />
-	</LinearLayout>
-</LinearLayout>
+		<!-- 有一个界面用到了item_event_award(用于用户中奖名单界面） -->
+        <LinearLayout
+            android:id="@+id/ll_container"
+            style="@style/match_width"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_process"
+            style="@style/match_width"
+            android:background="@color/black_half_transparent"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/ll_send"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/talk_width"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_voice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:hint="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/iv_add_photo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+        <!-- 传送图片/声音的附加框 -->
+
+        <View style="@style/line_full" />
+
+        <LinearLayout
+            android:id="@+id/ll_send_attachments"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/talk_attachments_height"
+            android:orientation="horizontal"
+            android:padding="@dimen/topOrbottomPadding"
+            android:visibility="visible" >
+
+            <ImageButton
+                android:id="@+id/ib_gallery"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/ib_take_pic"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/talk_attachments_button_height"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/ib_voice"
+                    style="@style/match"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_voice_prompt"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:text="@string/voice_prompt_init"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/middleTextSize" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
