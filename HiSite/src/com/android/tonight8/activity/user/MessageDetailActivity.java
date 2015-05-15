@@ -431,7 +431,6 @@ public class MessageDetailActivity extends BaseActivity {
 		} else if (flag == OTHER) {
 			lv_message.setSelection(lv_message.getCount());
 		}
-
 	}
 
 	/**

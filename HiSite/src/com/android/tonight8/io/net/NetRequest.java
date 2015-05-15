@@ -45,7 +45,8 @@ public class NetRequest {
 	 * @author: LiXiaoSong
 	 * @date:2014-12-26
 	 */
-	public static <T> void doRequest(final Map<String, String> param, final RequestResult<T> callback) {
+	public static <T> void doRequest(final Map<String, String> param,
+			final RequestResult<T> callback) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -93,7 +94,8 @@ public class NetRequest {
 	 * @return void 返回类型
 	 * @throws
 	 */
-	public static <T> void doGetThirdRequest(final Map<String, String> param, final RequestResult<T> callback) {
+	public static <T> void doGetThirdRequest(final Map<String, String> param,
+			final RequestResult<T> callback) {
 		param.put("method", GET_METHOD);
 		doRequest(param, callback);
 		// 测试，暂时未调用网络
@@ -104,7 +106,7 @@ public class NetRequest {
 				callback.getData(null, null, callback.handler);
 			}
 		}).start();
-		
+
 	}
 
 	/**
@@ -113,7 +115,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doGetRequest(final Map<String, String> param, final RequestResult<T> callback) {
+	public static <T> void doGetRequest(final Map<String, String> param,
+			final RequestResult<T> callback) {
 		// param.put("method", GET_METHOD);
 		// doRequest(param, callback);
 		// 测试，暂时未调用网络
@@ -137,7 +140,8 @@ public class NetRequest {
 	 * @date:2014-12-26
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> void doPostRequest(final Map<String, String> param, final RequestResult<T> callback) {
+	public static <T> void doPostRequest(final Map<String, String> param,
+			final RequestResult<T> callback) {
 		param.put("method", POST_METHOD);
 		doRequest(param, callback);
 	}
@@ -157,8 +161,8 @@ public class NetRequest {
 	 * @copyright @tonight8
 	 * @Date:2014-12-29
 	 */
-	public static <T> void postImageToServer(final Map<String, String> param, final RequestResult<T> callback,
-			final String fN, final File file) {
+	public static <T> void postImageToServer(final Map<String, String> param,
+			final RequestResult<T> callback, final String fN, final File file) {
 		new Thread(new Runnable() {
 
 			@Override
@@ -181,13 +185,14 @@ public class NetRequest {
 					// rP.addQueryStringParameter(kv.getKey(), kv.getValue());
 				}
 				rP.addBodyParameter(fN, file);
-				httpUtils.send(HttpMethod.POST, requestUrl, callback);
+				httpUtils.send(HttpMethod.POST, requestUrl, rP, callback);
 			}
 		}).start();
 
 	}
 
-	public abstract static class RequestResult<T> extends RequestCallBack<String> {
+	public abstract static class RequestResult<T> extends
+			RequestCallBack<String> {
 
 		private Class<T> clazz;
 		private Handler handler;
@@ -228,14 +233,17 @@ public class NetRequest {
 			base.attachment_path = object.getString("attachment_path");
 			base.message = object.getString("message");
 			JsonUtils.newJsonkey = "";
-			String jsonkey = JsonUtils.getObjectToString(object.getJSONObject("data"));
+			String jsonkey = JsonUtils.getObjectToString(object
+					.getJSONObject("data"));
 			LogUtils.v("ori is " + object.getJSONObject("data"));
-			base.data = JsonUtils.getStringData(jsonkey, object.getJSONObject("data"));
+			base.data = JsonUtils.getStringData(jsonkey,
+					object.getJSONObject("data"));
 			LogUtils.v("data is on parseFinish " + base.data);
 			return base;
 		}
 
-		public abstract void getData(NetEntityBase netEntityBase, T t, Handler handler);
+		public abstract void getData(NetEntityBase netEntityBase, T t,
+				Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {
