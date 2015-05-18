@@ -14,7 +14,7 @@ public class CouponHaveUsedActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_coupon_haveused);
+		setContentView(R.layout.fragment_coupon_haveused);
 		super.onCreate(savedInstanceState);
 		getActionBarBase("已用券核销");
 	}

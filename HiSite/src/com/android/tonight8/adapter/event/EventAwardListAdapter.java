@@ -80,14 +80,9 @@ public class EventAwardListAdapter extends BaseListAdapter<ManageAwardModel> {
 				R.id.tv_event_award_telephone);
 		TextView tv_event_award_address = ViewHolder.get(convertView,
 				R.id.tv_event_award_address);
-		TextView tv_award_sended_line = ViewHolder.get(convertView,
-				R.id.tv_award_sended_line);
-		TextView tv_award_signin_line = ViewHolder.get(convertView,
-				R.id.tv_award_signin_line);
 		TextView tv_award_sended = ViewHolder.get(convertView,
 				R.id.tv_award_sended);
-		TextView tv_award_signin = ViewHolder.get(convertView,
-				R.id.tv_award_signin);
+
 		TextView tv_send_info = ViewHolder.get(convertView, R.id.tv_send_info);
 		// ManageAwardModel model = mValues.get(position);
 		// if (model != null) {

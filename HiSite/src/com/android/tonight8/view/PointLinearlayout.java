@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.tonight8.R;
+import com.android.tonight8.base.AppConstants;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-
 
 /**
  * @Description:带有若干点的线性布局（配合ViewPager使用）
@@ -58,11 +58,18 @@ public class PointLinearlayout extends LinearLayout {
 		this.removeAllViews();
 		for (int i = 0; i < pointCount; i++) {
 			ImageView iv = new ImageView(getContext());
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+					android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+					android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 			iv.setLayoutParams(lp);
 			iv.setScaleType(ScaleType.FIT_XY);
-			iv.setImageResource(R.drawable.dialogue_gray);
+			iv.setImageResource(R.drawable.rb_point_h);
+			if (AppConstants.widthPx <= 480) {
+				iv.setPadding(10, 0, 0, 10);
+			} else
+				iv.setPadding(25, 0, 0, 25);
 			list_iv.add(iv);
+
 			this.addView(iv, i);
 		}
 	}
@@ -78,9 +85,9 @@ public class PointLinearlayout extends LinearLayout {
 	public void changePoint(int pos) {
 		for (int i = 0; i < list_iv.size(); i++) {
 			if (i == pos)
-				list_iv.get(i).setImageResource(R.drawable.dialogue_red);
+				list_iv.get(i).setImageResource(R.drawable.rb_point_n);
 			else
-				list_iv.get(i).setImageResource(R.drawable.dialogue_gray);
+				list_iv.get(i).setImageResource(R.drawable.rb_point_h);
 		}
 	}
 }

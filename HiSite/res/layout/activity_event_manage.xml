@@ -4,74 +4,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RadioGroup
-        android:id="@+id/rg_evnetmanage"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/transparent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
+    <RelativeLayout
+        android:id="@+id/rl_column"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" >
 
-        <RadioButton
-            android:id="@+id/rb_button1"
-            style="@style/main_tab_bottom"
-            android:layout_width="30dp"
-            android:background="@color/half_white"
-            android:paddingTop="5dip"
-            android:tag="0"
-            android:text="开奖详情" />
+        <com.android.tonight8.view.ColumnHorizontalScrollView
+            android:id="@+id/chsv_evnetmanage_tab"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#fff3f3f3"
+            android:scrollbars="none" >
 
-        <View style="@style/line_full_vertical" />
+            <LinearLayout
+                android:id="@+id/ll_evnetmanage_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" />
+        </com.android.tonight8.view.ColumnHorizontalScrollView>
 
-        <RadioButton
-            android:id="@+id/rb_button2"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="赠券设置" />
+        <ImageView
+            android:id="@+id/shade_left"
+            android:layout_width="10dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/channel_leftblock"
+            android:visibility="gone" />
 
-        <RadioButton
-            android:id="@+id/rb_button3"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="赠券使用" />
+        <ImageView
+            android:id="@+id/shade_right"
+            android:layout_width="10dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/channel_rightblock"
+            android:visibility="visible" />
+    </RelativeLayout>
 
-        <RadioButton
-            android:id="@+id/rb_button4"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="赠券现场设置" />
-
-        <RadioButton
-            android:id="@+id/rb_button5"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="直播管理" />
-
-        <RadioButton
-            android:id="@+id/rb_button6"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="奖品寄送" />
-
-        <RadioButton
-            android:id="@+id/rb_button7"
-            style="@style/main_tab_bottom"
-            android:background="@color/half_white"
-            android:paddingTop="5dp"
-            android:tag="1"
-            android:text="订单寄送" />
-    </RadioGroup>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_evnetmanage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/ll_wish_container"

@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.wish.MakeWishActivity;
 import com.android.tonight8.activity.wish.WishLiveActivity;
 import com.android.tonight8.adapter.wish.WishListAdapter;
 import com.android.tonight8.base.BaseActivity;
@@ -52,9 +51,11 @@ public class WishListUnrealizedFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.activity_wish_list, container, false);
+		rootView = inflater.inflate(R.layout.activity_wish_list, container,
+				false);
 		ViewUtils.inject(this, rootView);
 		list = new ArrayList<String>();
 		list.add("123");
@@ -68,8 +69,10 @@ public class WishListUnrealizedFragment extends BaseFragment {
 		lv_wish.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				mActivity.startActivity(new Intent(mActivity, WishLiveActivity.class));
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				mActivity.startActivity(new Intent(mActivity,
+						WishLiveActivity.class));
 			}
 		});
 		return rootView;

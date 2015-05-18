@@ -45,32 +45,8 @@
                 style="@style/wrap"
                 android:layout_marginLeft="@dimen/common_margin_small"
                 android:layout_toRightOf="@+id/tv_award_user_name"
-                android:background="@color/black"
                 android:padding="2dp"
                 android:text="中奖码:123456789"
-                android:textColor="@color/white"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_send_info"
-                style="@style/wrap"
-                android:layout_marginRight="@dimen/common_margin_small"
-                android:layout_toLeftOf="@+id/tv_user_contact"
-                android:background="@drawable/setting_btn_selector"
-                android:padding="2dp"
-                android:text="发货信息"
-                android:textColor="@color/white"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_user_contact"
-                style="@style/wrap"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/setting_btn_selector"
-                android:padding="2dp"
-                android:text="@string/contact"
-                android:textColor="@color/white"
                 android:textSize="@dimen/middleTextSize" />
         </RelativeLayout>
 
@@ -93,70 +69,28 @@
             android:text="寄送地址：短发的高温防护萨佛塑复合"
             android:textSize="@dimen/middleTextSize" />
 
-        <LinearLayout
-            android:id="@+id/ll_award_state_temp_line"
-            style="@style/match_width"
+        <TextView
+            android:id="@+id/tv_send_info"
+            style="@style/wrap"
             android:layout_alignLeft="@+id/ll_award_temp_head"
             android:layout_below="@+id/tv_event_award_address"
-            android:gravity="center_vertical"
-            android:paddingBottom="@dimen/common_margin_small"
-            android:paddingTop="@dimen/common_margin_small" >
+            android:layout_marginRight="@dimen/common_margin_small"
+            android:background="@drawable/setting_btn_selector"
+            android:padding="2dp"
+            android:text="发货信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
 
-            <TextView
-                android:id="@+id/tv_award_waitsend_line"
-                style="@style/wrap"
-                android:layout_height="3dp"
-                android:layout_weight="1"
-                android:background="@color/orange" />
-
-            <TextView
-                android:id="@+id/tv_award_sended_line"
-                style="@style/wrap"
-                android:layout_height="3dp"
-                android:layout_weight="1"
-                android:background="@color/red_sys" />
-
-            <TextView
-                android:id="@+id/tv_award_signin_line"
-                style="@style/wrap"
-                android:layout_height="3dp"
-                android:layout_weight="1"
-                android:background="@color/red_sys" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_award_state_temp"
-            style="@style/match_width"
-            android:layout_alignLeft="@+id/ll_award_temp_head"
-            android:layout_below="@+id/ll_award_state_temp_line" >
-
-            <TextView
-                android:id="@+id/tv_award_waitsend"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="待发货"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_award_sended"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="已发送"
-                android:textColor="@color/red_sys"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_award_signin"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="已签收"
-                android:textColor="@color/red_sys"
-                android:textSize="@dimen/middleTextSize" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_user_contact"
+            style="@style/wrap"
+            android:layout_below="@+id/tv_event_award_address"
+            android:layout_toRightOf="@+id/tv_send_info"
+            android:background="@drawable/setting_btn_selector"
+            android:padding="2dp"
+            android:text="@string/contact"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
     </RelativeLayout>
 
 </LinearLayout>

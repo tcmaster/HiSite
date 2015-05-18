@@ -2,12 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    >
+    android:orientation="vertical" >
 
-    <FrameLayout style="@style/match_width"
-        >
+    <FrameLayout style="@style/match_width" >
 
         <ImageView
             android:id="@+id/iv_commodity_img"
@@ -56,8 +54,7 @@
         android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:layout_marginLeft="@dimen/common_margin_left"
         android:layout_marginTop="@dimen/topOrbottomPadding"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal" >
 
         <TextView
             style="@style/wrap"
@@ -129,8 +126,7 @@
         style="@style/match_width"
         android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:layout_marginTop="@dimen/topOrbottomPadding"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal" >
 
         <TextView
             style="@style/wrap"
@@ -153,8 +149,7 @@
         style="@style/match_width"
         android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:layout_marginTop="@dimen/topOrbottomPadding"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal" >
 
         <TextView
             style="@style/wrap"
@@ -175,8 +170,7 @@
     <LinearLayout
         style="@style/match_width"
         android:layout_marginBottom="@dimen/topOrbottomPadding"
-        android:layout_marginTop="@dimen/topOrbottomPadding"
-        >
+        android:layout_marginTop="@dimen/topOrbottomPadding" >
 
         <TextView
             style="@style/wrap"
@@ -206,17 +200,16 @@
 
     <RelativeLayout
         style="@style/match_width"
-        android:orientation="horizontal"
         android:layout_marginBottom="@dimen/topOrbottomPadding"
         android:layout_marginTop="@dimen/topOrbottomPadding"
-        >
+        android:orientation="horizontal" >
 
         <TextView
-            style="@style/wrap"
             android:id="@+id/tv_one_of_exchange"
+            style="@style/wrap"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/topOrbottomPadding"
             android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_centerVertical="true"
             android:text="@string/activityLocation"
             android:textColor="@color/black"
             android:textSize="@dimen/smallTextSize" />
@@ -224,25 +217,25 @@
         <TextView
             android:id="@+id/tv_see_location"
             style="@style/wrap"
-            android:gravity="right"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/common_margin_left"
+            android:gravity="right"
             android:paddingRight="@dimen/common_margin_left"
             android:text="@string/app_name"
             android:textSize="@dimen/smallTextSize" />
     </RelativeLayout>
 
     <View style="@style/line_full" />
+
     <TextView
         android:id="@+id/tv_activity_rules"
         style="@style/match_width"
-        android:paddingTop="@dimen/topOrbottomPadding"
         android:paddingBottom="@dimen/topOrbottomPadding"
         android:paddingLeft="@dimen/common_margin_left"
-        android:text="@string/activityRule"
-        />
-	<!--  
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:text="@string/activityRule" />
+    <!--
     <LinearLayout
         style="@style/match_width"
         android:layout_marginBottom="@dimen/topOrbottomPadding"
@@ -343,7 +336,8 @@
             android:textColor="@color/gray"
             android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
-	-->
+    -->
+
     <View style="@style/line_full" />
 
     <View
@@ -354,8 +348,7 @@
         style="@style/match_width"
         android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
         android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/btn_choice_award"

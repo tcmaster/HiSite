@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:orientation="vertical"
-    android:background="@color/white" >
-	<include layout="@layout/actionbar_main"
-	    android:layout_width="match_parent"
-	    android:layout_height="50dp"/>
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        layout="@layout/actionbar_main" />
+
     <FrameLayout
         android:id="@+id/tabcontent"
         android:layout_width="match_parent"
@@ -21,28 +24,27 @@
             android:layout_gravity="bottom"
             android:background="@color/transparent"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal" >
 
             <RadioButton
                 android:id="@+id/rb_main_left"
                 style="@style/main_tab_bottom"
+                android:background="@color/half_white"
                 android:drawableTop="@drawable/main_home"
                 android:paddingTop="5dip"
                 android:tag="0"
-                android:text="@string/main_left_tab"
-                android:background="@color/half_white" />
+                android:text="@string/main_left_tab" />
 
             <View style="@style/line_full_vertical" />
 
             <RadioButton
                 android:id="@+id/rb_main_right"
                 style="@style/main_tab_bottom"
+                android:background="@color/half_white"
                 android:drawableTop="@drawable/main_myaccount"
                 android:paddingTop="5dp"
                 android:tag="1"
-                android:text="@string/main_right_tab"
-                android:background="@color/half_white" />
+                android:text="@string/main_right_tab" />
         </RadioGroup>
 
         <ImageButton

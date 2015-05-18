@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/rg_live_setting"
+        style="@style/match_width"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <RadioButton
+            android:id="@+id/rb_compere"
+            style="@style/wrap"
+            android:background="@drawable/selector_orangetowhite_left_corner"
+            android:button="@null"
+            android:checked="true"
+            android:padding="@dimen/common_margin_small"
+            android:text="主持人" />
+
+        <RadioButton
+            android:id="@+id/rb_slide"
+            style="@style/wrap"
+            android:background="@drawable/seletor_orangetowhite"
+            android:button="@null"
+            android:padding="@dimen/common_margin_small"
+            android:text="幻灯片" />
+
+        <RadioButton
+            android:id="@+id/rb_program"
+            style="@style/wrap"
+            android:background="@drawable/seletor_orangetowhite"
+            android:button="@null"
+            android:padding="@dimen/common_margin_small"
+            android:text="节目单" />
+
+        <RadioButton
+            android:id="@+id/rb_topic"
+            style="@style/wrap"
+            android:background="@drawable/selector_orangetowhite_right_corner"
+            android:button="@null"
+            android:padding="@dimen/common_margin_small"
+            android:text="主题单" />
+    </RadioGroup>
+
+</LinearLayout>

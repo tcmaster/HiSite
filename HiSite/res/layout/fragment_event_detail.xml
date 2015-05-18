@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout style="@style/match_width" >
+
+        <ImageView
+            android:id="@+id/iv_detail_commodity_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popgoodsHeight"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_detail_awardname"
+            style="@style/wrap"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:text="奖品名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_awardprice"
+            style="@style/wrap"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginRight="@dimen/topOrbottomPadding"
+            android:text="奖品价值120元"
+            android:textColor="@color/red"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_awardcollect"
+            style="@style/ok_button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginRight="@dimen/topOrbottomPadding"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="收藏"
+            android:textSize="@dimen/middleTextSize" />
+
+    </FrameLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:text="@string/toOpenAward"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_hour"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/hour"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_detail_minute"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/minute"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_second"
+            style="@style/wrap"
+            android:background="@color/black"
+            android:padding="2dp"
+            android:text="@string/defaultTime"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            style="@style/wrap"
+            android:padding="2dp"
+            android:text="@string/second"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_apply_count"
+            style="@style/match_width"
+            android:gravity="right|center_vertical"
+            android:paddingRight="@dimen/common_margin_left"
+            android:text="@string/defaultTime"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/activityTheme"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_theme"
+            style="@style/wrap"
+            android:text="小米公司送手机"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        android:id="@+id/ll_company"
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/sponsor"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_company"
+            style="@style/wrap"
+            android:text="北京可乐屏有限公司"
+            android:textColor="@color/gray" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding" >
+
+        <TextView
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/coupon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_coupon"
+            style="@style/match_width"
+            android:layout_weight="1"
+            android:text="价值200元优惠券"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_couplecount"
+            style="@style/wrap"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:gravity="right"
+            android:text="发放数量：200张"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+    <RelativeLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_one_of_exchange"
+            style="@style/wrap"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:text="@string/activityLocation"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_award_location"
+            style="@style/match_width"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_detail_look_location"
+            android:layout_toRightOf="@+id/tv_one_of_exchange"
+            android:gravity="left"
+            android:paddingRight="@dimen/common_margin_left"
+            android:text="北京市丰台区中核路"
+            android:textSize="@dimen/smallTextSize" />
+
+        <TextView
+            android:id="@+id/tv_detail_look_location"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:gravity="right"
+            android:paddingRight="@dimen/common_margin_left"
+            android:text="查看兑奖地点"
+            android:textSize="@dimen/smallTextSize" />
+    </RelativeLayout>
+
+    <View style="@style/line_full" />
+
+    <TextView
+        android:id="@+id/tv_detail_activity_rules"
+        style="@style/match_width"
+        android:paddingBottom="@dimen/topOrbottomPadding"
+        android:paddingLeft="@dimen/common_margin_left"
+        android:paddingTop="@dimen/topOrbottomPadding"
+        android:text="活动规则：" />
+
+    <View style="@style/line_full" />
+
+    <View
+        style="@style/line_full"
+        android:layout_marginTop="@dimen/topOrbottomPaddingLong" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
+        android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_detail_award_introduce"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/awardIntroduce"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <View style="@style/line_full_vertical" />
+
+        <Button
+            android:id="@+id/btn_detail_award_consult"
+            style="@style/wrap"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/activityQ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+    <View style="@style/line_full" />
+
+</LinearLayout>

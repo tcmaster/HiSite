@@ -17,6 +17,7 @@ import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.model.manageevent.ManageAwardModel;
 import com.android.tonight8.view.xlistview.XListView;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -91,6 +92,7 @@ public class OrdersSendFragment extends BaseFragment {
 
 		super.onCreateView(inflater, container, savedInstanceState);
 		rootView = inflater.inflate(R.layout.activity_event_award_list, null);
+		ViewUtils.inject(this, rootView);
 		initData();
 		return rootView;
 	}

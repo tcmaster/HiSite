@@ -44,25 +44,25 @@
         android:background="@color/white"
         android:padding="@dimen/common_margin_left" >
 
-        <ImageView
-            android:id="@+id/iv_wish_userpic"
+        <com.android.tonight8.view.CircleImageView
+            android:id="@+id/civ_wish_userpic"
             style="@style/wrap"
             android:layout_width="@dimen/popGoodsUserPhotoWidth"
             android:layout_height="@dimen/popGoodsUserPhotoWidth"
-            android:background="@drawable/ic_launcher" />
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_wish_username"
             style="@style/wrap"
-            android:layout_toRightOf="@+id/iv_wish_userpic"
+            android:layout_toRightOf="@+id/civ_wish_userpic"
             android:paddingLeft="@dimen/common_margin_small"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_wish_supportcount"
             style="@style/wrap"
-            android:layout_alignBottom="@+id/iv_wish_userpic"
-            android:layout_toRightOf="@+id/iv_wish_userpic"
+            android:layout_alignBottom="@+id/civ_wish_userpic"
+            android:layout_toRightOf="@+id/civ_wish_userpic"
             android:drawableLeft="@drawable/ic_launcher"
             android:drawablePadding="@dimen/common_margin_left"
             android:paddingLeft="@dimen/common_margin_small"

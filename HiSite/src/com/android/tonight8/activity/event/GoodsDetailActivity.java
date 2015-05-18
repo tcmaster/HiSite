@@ -181,6 +181,9 @@ public class GoodsDetailActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		initHeaderView();
 		initData();
+		for (int i = 0; i < 1000; i++) {
+			System.out.print("1");
+		}
 	}
 
 	@OnClick({ R.id.ibtn_commit, R.id.btn_signup })

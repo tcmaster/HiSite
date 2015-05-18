@@ -9,7 +9,7 @@
 
         <TextView
             style="@style/match"
-            android:gravity="center"
+            android:gravity="left"
             android:padding="@dimen/common_margin_left"
             android:text="适合企业进行认证，需提供营业执照，负责人身份证的照片"
             android:textSize="@dimen/smallTextSize" />
@@ -31,11 +31,14 @@
 
             <TextView
                 style="@style/wrap"
+                android:layout_alignLeft="@+id/iv_org_license"
                 android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/iv_org_license"
                 android:background="@color/half_black"
-                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
                 android:text="点击上传营业执照"
-                android:textColor="@color/white" >
+                android:textColor="@color/white"
+                android:textSize="@dimen/more_smallTextSize" >
             </TextView>
         </RelativeLayout>
 
@@ -63,11 +66,13 @@
                 <TextView
                     style="@style/wrap"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignRight="@+id/iv_identity_front"
                     android:background="@color/half_black"
+                    android:gravity="center_horizontal"
                     android:text="上传法人身份证图(正)"
-
-                    android:textColor="@color/white" >
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/more_smallTextSize" >
                 </TextView>
             </RelativeLayout>
 
@@ -90,10 +95,13 @@
                 <TextView
                     style="@style/wrap"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignRight="@+id/iv_identity_reverse"
                     android:background="@color/half_black"
+                    android:gravity="center_horizontal"
                     android:text="上传法人身份证图(反)"
-                    android:textColor="@color/white" >
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/more_smallTextSize" >
                 </TextView>
             </RelativeLayout>
         </LinearLayout>

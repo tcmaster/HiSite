@@ -87,7 +87,6 @@ public class EventsAwardListActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_event_award_list);
 		super.onCreate(savedInstanceState);
-		getActionBarBase("中奖名单");
 		initData();
 	}
 

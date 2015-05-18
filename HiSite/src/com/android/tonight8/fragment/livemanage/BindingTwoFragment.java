@@ -1,4 +1,4 @@
-package com.android.tonight8.fragment.event;
+package com.android.tonight8.fragment.livemanage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,24 +9,23 @@ import android.widget.RadioGroup;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.fragment.event.LiveManageFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
- * @author lz 活动现场设置
+ * @author asus绑定小二
  * 
  */
-public class LiveSettingsFragment extends BaseFragment {
-
+public class BindingTwoFragment extends BaseFragment {
+	/** 按钮 */
+	@ViewInject(R.id.rg_live_manage)
+	private RadioGroup rg_live_manage;
 	private View rootView;
 
-	/** 按钮 */
-	@ViewInject(R.id.rg_live_setting)
-	private RadioGroup rg_live_setting;
-
-	public static final LiveSettingsFragment newInstance() {
-		LiveSettingsFragment liveSettingsFragment = new LiveSettingsFragment();
-		return liveSettingsFragment;
+	public static final LiveManageFragment newInstance() {
+		LiveManageFragment liveManageFragment = new LiveManageFragment();
+		return liveManageFragment;
 
 	}
 
@@ -34,7 +33,6 @@ public class LiveSettingsFragment extends BaseFragment {
 		/* 处理被单击的按钮 */
 		RadioButton mRadioButton = (RadioButton) arg0.findViewById(arg1);
 		int switchid = Integer.parseInt(mRadioButton.getTag().toString());
-
 
 	}
 
@@ -48,7 +46,7 @@ public class LiveSettingsFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		rootView = inflater.inflate(R.layout.fragment_live_setting, container,
+		rootView = inflater.inflate(R.layout.fragment_live_manage, container,
 				false);
 		ViewUtils.inject(this, rootView);
 

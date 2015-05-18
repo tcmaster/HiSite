@@ -6,6 +6,7 @@
 
     <RadioGroup
         android:id="@+id/rg_wishmain"
+        android:visibility="gone"
         style="@style/match_width"
         android:gravity="center"
         android:orientation="horizontal"

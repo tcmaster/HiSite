@@ -2,6 +2,8 @@ package com.android.tonight8.activity.org;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +11,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,8 +20,12 @@ import android.widget.RelativeLayout;
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.io.net.NetEntityBase;
+import com.android.tonight8.io.net.NetRequest;
+import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.utils.DialogUtils;
+import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -77,6 +85,15 @@ public class AuthPicActivity extends BaseActivity {
 	// });
 	// }
 	// };
+	public static Handler mHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+		}
+
+	};
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -92,9 +109,9 @@ public class AuthPicActivity extends BaseActivity {
 
 		case 0: // 0营业执照
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE,256, 256);
+				cropPicture(data.getData(), PICKPICTURE, 256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
+				cropPicture(Uri.fromFile(tempFile), PICKPICTURE, 256, 256);
 			} else if (requestCode == CROP) {
 
 				Uri cropImageUri = data.getData();
@@ -118,9 +135,9 @@ public class AuthPicActivity extends BaseActivity {
 
 		case 1: // 1身份证前面
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE,256, 256);
+				cropPicture(data.getData(), PICKPICTURE, 256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
+				cropPicture(Uri.fromFile(tempFile), PICKPICTURE, 256, 256);
 			} else if (requestCode == CROP) {
 				Uri cropImageUri = data.getData();
 				// 图片解析成Bitmap对象
@@ -141,9 +158,9 @@ public class AuthPicActivity extends BaseActivity {
 			break;
 		case 2: // 2身份证后面
 			if (requestCode == PICKPICTURE) {
-				cropPicture(data.getData(),PICKPICTURE,256, 256);
+				cropPicture(data.getData(), PICKPICTURE, 256, 256);
 			} else if (requestCode == TAKEPHOTO) {
-				cropPicture(Uri.fromFile(tempFile),PICKPICTURE,256, 256);
+				cropPicture(Uri.fromFile(tempFile), PICKPICTURE, 256, 256);
 			} else if (requestCode == CROP) {
 				Uri cropImageUri = data.getData();
 				// 图片解析成Bitmap对象
@@ -189,16 +206,45 @@ public class AuthPicActivity extends BaseActivity {
 		case R.id.rl_identity_reverse:
 			imageType = 2;
 			break;
+		case R.id.btn_auth_ok:
+			upAuthPic();
+			break;
+
 		default:
 			break;
 		}
-		DialogUtils.showSelectPicDialog(AuthPicActivity.this,PICKPICTURE, TAKEPHOTO);
+		DialogUtils.showSelectPicDialog(AuthPicActivity.this, PICKPICTURE,
+				TAKEPHOTO);
 	}
 
 	private void initData() {
 		if (getIntent().getBooleanExtra("isPerson", true)) {
 			rl_org_license.setVisibility(View.GONE);
 		}
+
+	}
+
+	/** 上传认证图片 */
+	private void upAuthPic() {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(NetRequest.REQUEST_URL, NetRequest.BASE_URL);
+		RequestResult<String> callback = new RequestResult<String>(null,
+				mHandler) {
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+
+			}
+
+			@Override
+			public void getData(NetEntityBase netEntityBase, String t,
+					Handler handler) {
+
+			}
+		};
+
+		NetRequest.postImageToServer(params, callback, "PIC", new File(
+				licensePicPath));
 
 	}
 }
