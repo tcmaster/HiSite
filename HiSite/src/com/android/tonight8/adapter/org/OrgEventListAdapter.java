@@ -10,15 +10,15 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.event.EventListModel;
 
 /**
  * @author lz商家的活动列表数据
  * 
  */
-public class OrgEventListAdapter extends BaseListAdapter<Event> {
+public class OrgEventListAdapter extends BaseListAdapter<EventListModel> {
 
-	public OrgEventListAdapter(Context context, List<Event> values) {
+	public OrgEventListAdapter(Context context, List<EventListModel> values) {
 		super(context, values);
 
 	}

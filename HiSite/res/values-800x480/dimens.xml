@@ -44,6 +44,6 @@
     <!-- 心愿详情页图片宽 -->
     <dimen name="wishImgwidth">640px</dimen>
     <!-- 心愿详情页图片高 -->
-    <dimen name="wishImgHeight">225px</dimen>
+    <dimen name="wishImgHeight">400px</dimen>
 
 </resources>

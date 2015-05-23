@@ -37,6 +37,7 @@ public class WishMainFragment extends BaseFragment implements OnCheckedChangeLis
 	private FragmentTransaction ft;
 	private BaseFragment[] fragments;
 	private View rootView;
+	
 
 	public static final WishMainFragment newInstance() {
 		WishMainFragment wFragment = new WishMainFragment();

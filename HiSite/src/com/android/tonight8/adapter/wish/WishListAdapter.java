@@ -53,6 +53,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
 		Tonight8App.getSelf().bitmapUtils.display(iv_wish_userpic,
 				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
+		pb_wish_progress.setMax(100);
 		pb_wish_progress.setProgress(20);
 		tv_wish_supportcount.setOnClickListener(new OnClickListener() {
 
@@ -70,6 +71,27 @@ public class WishListAdapter extends BaseListAdapter<String> {
 		// }
 		// });
 		return convertView;
+	}
+
+	/**
+	 * 增加数据源
+	 * 
+	 * @param models
+	 */
+	public void addData(List<String> models) {
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 重置数据源
+	 * 
+	 * @param models
+	 */
+	public void initData(List<String> models) {
+		mValues.clear();
+		mValues.addAll(models);
+		notifyDataSetChanged();
 	}
 
 }
