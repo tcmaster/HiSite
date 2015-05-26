@@ -1,9 +1,7 @@
 package com.android.tonight8.storage;
 
-import java.util.Date;
 import java.util.List;
 
-import android.R.bool;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -14,7 +12,6 @@ import com.tencent.wxop.stat.t;
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.async.AsyncSession;
-import de.greenrobot.dao.query.Query;
 import de.greenrobot.dao.query.QueryBuilder;
 import de.greenrobot.dao.query.WhereCondition;
 
@@ -28,7 +25,8 @@ public class GreenDaoUtils {
 	private static DaoMaster master;
 
 	public static void init(Context context) {
-		SQLiteDatabase db = new DaoMaster.DevOpenHelper(context, "tonight_8", null).getWritableDatabase();
+		SQLiteDatabase db = new DaoMaster.DevOpenHelper(context, "tonight_8",
+				null).getWritableDatabase();
 		master = new DaoMaster(db);
 	}
 
@@ -53,8 +51,8 @@ public class GreenDaoUtils {
 	 *            更新时条件的value
 	 * @param columns
 	 */
-	public static <T> void insertOrUpdate(AbstractDao<T, Long> dao, T data, Property property, Object value,
-			String... columns) {
+	public static <T> void insertOrUpdate(AbstractDao<T, Long> dao, T data,
+			Property property, Object value, String... columns) {
 		if (dao.queryBuilder().where(property.eq(value)).build().list().size() == 0)
 			dao.insert(data);
 		else
@@ -65,8 +63,9 @@ public class GreenDaoUtils {
 	 * 插入或更新操作（异步版），先从数据库查询是否有该条数据，有进行插入，没有进行更新（指定列）
 	 * 
 	 */
-	public static <T> void insertOrUpdate(AsyncSession session, AbstractDao<T, Long> dao, Property property,
-			Object value, T data, String... columns) {
+	public static <T> void insertOrUpdate(AsyncSession session,
+			AbstractDao<T, Long> dao, Property property, Object value, T data,
+			String... columns) {
 		if (dao.queryBuilder().where(property.eq(value)).build().list().size() == 0) {
 			session.insert(data);
 		} else
@@ -107,9 +106,9 @@ public class GreenDaoUtils {
 	 * @return T 返回类型
 	 * @throws
 	 */
-	public static <T> T selectData(AbstractDao<T, Long> dao, T data, Property property, WhereCondition whereCondition) {
-		T t = dao.queryBuilder().where(whereCondition).build().unique();
-		return t;
+	public static <T> T selectData(AbstractDao<T, Long> dao,
+			WhereCondition whereCondition) {
+		return dao.queryBuilder().where(whereCondition).build().unique();
 	}
 
 	/**
@@ -125,8 +124,9 @@ public class GreenDaoUtils {
 	 * @return List<T> 返回类型
 	 * @throws
 	 */
-	public static <T> List<T> selectListData(AbstractDao<T, Long> dao, WhereCondition whereCondition, int offset,
-			int limit, boolean isDesc, Property descProperty) {
+	public static <T> List<T> selectListData(AbstractDao<T, Long> dao,
+			WhereCondition whereCondition, int offset, int limit,
+			boolean isDesc, Property descProperty) {
 		QueryBuilder<T> queryBuilder2 = dao.queryBuilder();
 		if (whereCondition != null) {
 			queryBuilder2.where(whereCondition);

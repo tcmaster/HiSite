@@ -13,12 +13,15 @@ import com.android.tonight8.dao.EventDao;
 public class CouponProvide {
 
     private long id;
-    private Integer type;
-    private Integer value;
     private Long rid;
+    private Integer type;
+    private Float value;
     private String content;
-    private Integer provideNum;
-    private Integer provideAll;
+    private String dispatchContent;
+    private Integer provideNumber;
+    private Integer dispatchNumber;
+    private Boolean provideAll;
+    private Boolean isLiveUse;
     private String dateRangeStart;
     private String dateRangeEnd;
     private String templatePic;
@@ -41,14 +44,17 @@ public class CouponProvide {
         this.id = id;
     }
 
-    public CouponProvide(long id, Integer type, Integer value, Long rid, String content, Integer provideNum, Integer provideAll, String dateRangeStart, String dateRangeEnd, String templatePic, String publishTime) {
+    public CouponProvide(long id, Long rid, Integer type, Float value, String content, String dispatchContent, Integer provideNumber, Integer dispatchNumber, Boolean provideAll, Boolean isLiveUse, String dateRangeStart, String dateRangeEnd, String templatePic, String publishTime) {
         this.id = id;
+        this.rid = rid;
         this.type = type;
         this.value = value;
-        this.rid = rid;
         this.content = content;
-        this.provideNum = provideNum;
+        this.dispatchContent = dispatchContent;
+        this.provideNumber = provideNumber;
+        this.dispatchNumber = dispatchNumber;
         this.provideAll = provideAll;
+        this.isLiveUse = isLiveUse;
         this.dateRangeStart = dateRangeStart;
         this.dateRangeEnd = dateRangeEnd;
         this.templatePic = templatePic;
@@ -69,6 +75,14 @@ public class CouponProvide {
         this.id = id;
     }
 
+    public Long getRid() {
+        return rid;
+    }
+
+    public void setRid(Long rid) {
+        this.rid = rid;
+    }
+
     public Integer getType() {
         return type;
     }
@@ -77,20 +91,12 @@ public class CouponProvide {
         this.type = type;
     }
 
-    public Integer getValue() {
+    public Float getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Float value) {
         this.value = value;
-    }
-
-    public Long getRid() {
-        return rid;
-    }
-
-    public void setRid(Long rid) {
-        this.rid = rid;
     }
 
     public String getContent() {
@@ -101,20 +107,44 @@ public class CouponProvide {
         this.content = content;
     }
 
-    public Integer getProvideNum() {
-        return provideNum;
+    public String getDispatchContent() {
+        return dispatchContent;
     }
 
-    public void setProvideNum(Integer provideNum) {
-        this.provideNum = provideNum;
+    public void setDispatchContent(String dispatchContent) {
+        this.dispatchContent = dispatchContent;
     }
 
-    public Integer getProvideAll() {
+    public Integer getProvideNumber() {
+        return provideNumber;
+    }
+
+    public void setProvideNumber(Integer provideNumber) {
+        this.provideNumber = provideNumber;
+    }
+
+    public Integer getDispatchNumber() {
+        return dispatchNumber;
+    }
+
+    public void setDispatchNumber(Integer dispatchNumber) {
+        this.dispatchNumber = dispatchNumber;
+    }
+
+    public Boolean getProvideAll() {
         return provideAll;
     }
 
-    public void setProvideAll(Integer provideAll) {
+    public void setProvideAll(Boolean provideAll) {
         this.provideAll = provideAll;
+    }
+
+    public Boolean getIsLiveUse() {
+        return isLiveUse;
+    }
+
+    public void setIsLiveUse(Boolean isLiveUse) {
+        this.isLiveUse = isLiveUse;
     }
 
     public String getDateRangeStart() {

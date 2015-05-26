@@ -13,25 +13,21 @@ import com.android.tonight8.dao.OrgDao;
 public class Event {
 
     private long id;
-    private Long rid;
+    private Long orgId;
     private String name;
     private Integer status;
-    private Integer distance;
     private String timeRangeStart;
     private String timeRangeEnd;
-    private Integer timeStamp;
     private String publishTime;
-    private String ruleDesc;
-    private Integer winningStatus;
+    private Long timeStamp;
+    private String ruleDescription;
     private Integer winningLimit;
-    private Integer goodsCount;
     private Integer applyCount;
-    private Integer consultCount;
-    private Integer subjectCount;
-    private Integer signInCount;
-    private Integer cityAll;
     private Integer awardCount;
-    private Integer isCouponNoneAward;
+    private Integer awardShippingCount;
+    private Integer orderCount;
+    private Integer orderShippingCount;
+    private Integer audienceCount;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -50,27 +46,23 @@ public class Event {
         this.id = id;
     }
 
-    public Event(long id, Long rid, String name, Integer status, Integer distance, String timeRangeStart, String timeRangeEnd, Integer timeStamp, String publishTime, String ruleDesc, Integer winningStatus, Integer winningLimit, Integer goodsCount, Integer applyCount, Integer consultCount, Integer subjectCount, Integer signInCount, Integer cityAll, Integer awardCount, Integer isCouponNoneAward) {
+    public Event(long id, Long orgId, String name, Integer status, String timeRangeStart, String timeRangeEnd, String publishTime, Long timeStamp, String ruleDescription, Integer winningLimit, Integer applyCount, Integer awardCount, Integer awardShippingCount, Integer orderCount, Integer orderShippingCount, Integer audienceCount) {
         this.id = id;
-        this.rid = rid;
+        this.orgId = orgId;
         this.name = name;
         this.status = status;
-        this.distance = distance;
         this.timeRangeStart = timeRangeStart;
         this.timeRangeEnd = timeRangeEnd;
-        this.timeStamp = timeStamp;
         this.publishTime = publishTime;
-        this.ruleDesc = ruleDesc;
-        this.winningStatus = winningStatus;
+        this.timeStamp = timeStamp;
+        this.ruleDescription = ruleDescription;
         this.winningLimit = winningLimit;
-        this.goodsCount = goodsCount;
         this.applyCount = applyCount;
-        this.consultCount = consultCount;
-        this.subjectCount = subjectCount;
-        this.signInCount = signInCount;
-        this.cityAll = cityAll;
         this.awardCount = awardCount;
-        this.isCouponNoneAward = isCouponNoneAward;
+        this.awardShippingCount = awardShippingCount;
+        this.orderCount = orderCount;
+        this.orderShippingCount = orderShippingCount;
+        this.audienceCount = audienceCount;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -87,12 +79,12 @@ public class Event {
         this.id = id;
     }
 
-    public Long getRid() {
-        return rid;
+    public Long getOrgId() {
+        return orgId;
     }
 
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
     }
 
     public String getName() {
@@ -111,14 +103,6 @@ public class Event {
         this.status = status;
     }
 
-    public Integer getDistance() {
-        return distance;
-    }
-
-    public void setDistance(Integer distance) {
-        this.distance = distance;
-    }
-
     public String getTimeRangeStart() {
         return timeRangeStart;
     }
@@ -135,14 +119,6 @@ public class Event {
         this.timeRangeEnd = timeRangeEnd;
     }
 
-    public Integer getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Integer timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
     public String getPublishTime() {
         return publishTime;
     }
@@ -151,20 +127,20 @@ public class Event {
         this.publishTime = publishTime;
     }
 
-    public String getRuleDesc() {
-        return ruleDesc;
+    public Long getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setRuleDesc(String ruleDesc) {
-        this.ruleDesc = ruleDesc;
+    public void setTimeStamp(Long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
-    public Integer getWinningStatus() {
-        return winningStatus;
+    public String getRuleDescription() {
+        return ruleDescription;
     }
 
-    public void setWinningStatus(Integer winningStatus) {
-        this.winningStatus = winningStatus;
+    public void setRuleDescription(String ruleDescription) {
+        this.ruleDescription = ruleDescription;
     }
 
     public Integer getWinningLimit() {
@@ -175,52 +151,12 @@ public class Event {
         this.winningLimit = winningLimit;
     }
 
-    public Integer getGoodsCount() {
-        return goodsCount;
-    }
-
-    public void setGoodsCount(Integer goodsCount) {
-        this.goodsCount = goodsCount;
-    }
-
     public Integer getApplyCount() {
         return applyCount;
     }
 
     public void setApplyCount(Integer applyCount) {
         this.applyCount = applyCount;
-    }
-
-    public Integer getConsultCount() {
-        return consultCount;
-    }
-
-    public void setConsultCount(Integer consultCount) {
-        this.consultCount = consultCount;
-    }
-
-    public Integer getSubjectCount() {
-        return subjectCount;
-    }
-
-    public void setSubjectCount(Integer subjectCount) {
-        this.subjectCount = subjectCount;
-    }
-
-    public Integer getSignInCount() {
-        return signInCount;
-    }
-
-    public void setSignInCount(Integer signInCount) {
-        this.signInCount = signInCount;
-    }
-
-    public Integer getCityAll() {
-        return cityAll;
-    }
-
-    public void setCityAll(Integer cityAll) {
-        this.cityAll = cityAll;
     }
 
     public Integer getAwardCount() {
@@ -231,17 +167,41 @@ public class Event {
         this.awardCount = awardCount;
     }
 
-    public Integer getIsCouponNoneAward() {
-        return isCouponNoneAward;
+    public Integer getAwardShippingCount() {
+        return awardShippingCount;
     }
 
-    public void setIsCouponNoneAward(Integer isCouponNoneAward) {
-        this.isCouponNoneAward = isCouponNoneAward;
+    public void setAwardShippingCount(Integer awardShippingCount) {
+        this.awardShippingCount = awardShippingCount;
+    }
+
+    public Integer getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(Integer orderCount) {
+        this.orderCount = orderCount;
+    }
+
+    public Integer getOrderShippingCount() {
+        return orderShippingCount;
+    }
+
+    public void setOrderShippingCount(Integer orderShippingCount) {
+        this.orderShippingCount = orderShippingCount;
+    }
+
+    public Integer getAudienceCount() {
+        return audienceCount;
+    }
+
+    public void setAudienceCount(Integer audienceCount) {
+        this.audienceCount = audienceCount;
     }
 
     /** To-one relationship, resolved on first access. */
     public Org getOrg() {
-        Long __key = this.rid;
+        Long __key = this.orgId;
         if (org__resolvedKey == null || !org__resolvedKey.equals(__key)) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
@@ -259,8 +219,8 @@ public class Event {
     public void setOrg(Org org) {
         synchronized (this) {
             this.org = org;
-            rid = org == null ? null : org.getId();
-            org__resolvedKey = rid;
+            orgId = org == null ? null : org.getId();
+            org__resolvedKey = orgId;
         }
     }
 

@@ -1,12 +1,17 @@
 package com.android.tonight8.dao;
 
+import java.util.List;
+import java.util.ArrayList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
+import de.greenrobot.dao.internal.SqlUtils;
 import de.greenrobot.dao.internal.DaoConfig;
+
+import com.android.tonight8.dao.entity.Member;
 
 import com.android.tonight8.dao.entity.Org;
 
@@ -24,26 +29,27 @@ public class OrgDao extends AbstractDao<Org, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, long.class, "id", true, "ID");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property Intro = new Property(2, String.class, "intro", false, "INTRO");
+        public final static Property MemberId = new Property(1, Long.class, "memberId", false, "MEMBER_ID");
+        public final static Property Name = new Property(2, String.class, "name", false, "NAME");
         public final static Property Logo = new Property(3, String.class, "logo", false, "LOGO");
         public final static Property Pic = new Property(4, String.class, "pic", false, "PIC");
-        public final static Property Coordinate = new Property(5, Boolean.class, "coordinate", false, "COORDINATE");
-        public final static Property ProvinceCode = new Property(6, String.class, "provinceCode", false, "PROVINCE_CODE");
-        public final static Property CityCode = new Property(7, String.class, "cityCode", false, "CITY_CODE");
-        public final static Property AreaCode = new Property(8, String.class, "areaCode", false, "AREA_CODE");
-        public final static Property Address = new Property(9, String.class, "address", false, "ADDRESS");
-        public final static Property Telephone = new Property(10, String.class, "telephone", false, "TELEPHONE");
-        public final static Property Email = new Property(11, String.class, "email", false, "EMAIL");
-        public final static Property ContactPerson = new Property(12, String.class, "contactPerson", false, "CONTACT_PERSON");
-        public final static Property ContactMobilePhone = new Property(13, String.class, "contactMobilePhone", false, "CONTACT_MOBILE_PHONE");
-        public final static Property PaperPhoto = new Property(14, String.class, "paperPhoto", false, "PAPER_PHOTO");
-        public final static Property PaperCode = new Property(15, String.class, "paperCode", false, "PAPER_CODE");
-        public final static Property IdentityType = new Property(16, String.class, "identityType", false, "IDENTITY_TYPE");
-        public final static Property IdentityCode = new Property(17, String.class, "identityCode", false, "IDENTITY_CODE");
-        public final static Property IdentityPhotoFront = new Property(18, String.class, "identityPhotoFront", false, "IDENTITY_PHOTO_FRONT");
-        public final static Property IdentityPhotoReverse = new Property(19, String.class, "identityPhotoReverse", false, "IDENTITY_PHOTO_REVERSE");
+        public final static Property Introduce = new Property(5, String.class, "introduce", false, "INTRODUCE");
+        public final static Property Telephone = new Property(6, String.class, "telephone", false, "TELEPHONE");
+        public final static Property Email = new Property(7, String.class, "email", false, "EMAIL");
+        public final static Property Website = new Property(8, String.class, "website", false, "WEBSITE");
+        public final static Property ContactPerson = new Property(9, String.class, "contactPerson", false, "CONTACT_PERSON");
+        public final static Property ContactMobilePhone = new Property(10, String.class, "contactMobilePhone", false, "CONTACT_MOBILE_PHONE");
+        public final static Property PaperPhoto = new Property(11, String.class, "paperPhoto", false, "PAPER_PHOTO");
+        public final static Property PaperCode = new Property(12, String.class, "paperCode", false, "PAPER_CODE");
+        public final static Property IdentityType = new Property(13, Integer.class, "identityType", false, "IDENTITY_TYPE");
+        public final static Property IdentityCode = new Property(14, String.class, "identityCode", false, "IDENTITY_CODE");
+        public final static Property IdentityPhotoFront = new Property(15, String.class, "identityPhotoFront", false, "IDENTITY_PHOTO_FRONT");
+        public final static Property IdentityPhotoReverse = new Property(16, String.class, "identityPhotoReverse", false, "IDENTITY_PHOTO_REVERSE");
+        public final static Property FollowingCount = new Property(17, Integer.class, "followingCount", false, "FOLLOWING_COUNT");
+        public final static Property FollowersCount = new Property(18, Integer.class, "followersCount", false, "FOLLOWERS_COUNT");
     };
+
+    private DaoSession daoSession;
 
 
     public OrgDao(DaoConfig config) {
@@ -52,6 +58,7 @@ public class OrgDao extends AbstractDao<Org, Long> {
     
     public OrgDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -59,25 +66,24 @@ public class OrgDao extends AbstractDao<Org, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'ORG' (" + //
                 "'ID' INTEGER PRIMARY KEY NOT NULL ," + // 0: id
-                "'NAME' TEXT," + // 1: name
-                "'INTRO' TEXT," + // 2: intro
+                "'MEMBER_ID' INTEGER," + // 1: memberId
+                "'NAME' TEXT," + // 2: name
                 "'LOGO' TEXT," + // 3: logo
                 "'PIC' TEXT," + // 4: pic
-                "'COORDINATE' INTEGER," + // 5: coordinate
-                "'PROVINCE_CODE' TEXT," + // 6: provinceCode
-                "'CITY_CODE' TEXT," + // 7: cityCode
-                "'AREA_CODE' TEXT," + // 8: areaCode
-                "'ADDRESS' TEXT," + // 9: address
-                "'TELEPHONE' TEXT," + // 10: telephone
-                "'EMAIL' TEXT," + // 11: email
-                "'CONTACT_PERSON' TEXT," + // 12: contactPerson
-                "'CONTACT_MOBILE_PHONE' TEXT," + // 13: contactMobilePhone
-                "'PAPER_PHOTO' TEXT," + // 14: paperPhoto
-                "'PAPER_CODE' TEXT," + // 15: paperCode
-                "'IDENTITY_TYPE' TEXT," + // 16: identityType
-                "'IDENTITY_CODE' TEXT," + // 17: identityCode
-                "'IDENTITY_PHOTO_FRONT' TEXT," + // 18: identityPhotoFront
-                "'IDENTITY_PHOTO_REVERSE' TEXT);"); // 19: identityPhotoReverse
+                "'INTRODUCE' TEXT," + // 5: introduce
+                "'TELEPHONE' TEXT," + // 6: telephone
+                "'EMAIL' TEXT," + // 7: email
+                "'WEBSITE' TEXT," + // 8: website
+                "'CONTACT_PERSON' TEXT," + // 9: contactPerson
+                "'CONTACT_MOBILE_PHONE' TEXT," + // 10: contactMobilePhone
+                "'PAPER_PHOTO' TEXT," + // 11: paperPhoto
+                "'PAPER_CODE' TEXT," + // 12: paperCode
+                "'IDENTITY_TYPE' INTEGER," + // 13: identityType
+                "'IDENTITY_CODE' TEXT," + // 14: identityCode
+                "'IDENTITY_PHOTO_FRONT' TEXT," + // 15: identityPhotoFront
+                "'IDENTITY_PHOTO_REVERSE' TEXT," + // 16: identityPhotoReverse
+                "'FOLLOWING_COUNT' INTEGER," + // 17: followingCount
+                "'FOLLOWERS_COUNT' INTEGER);"); // 18: followersCount
     }
 
     /** Drops the underlying database table. */
@@ -92,14 +98,14 @@ public class OrgDao extends AbstractDao<Org, Long> {
         stmt.clearBindings();
         stmt.bindLong(1, entity.getId());
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(2, name);
+        Long memberId = entity.getMemberId();
+        if (memberId != null) {
+            stmt.bindLong(2, memberId);
         }
  
-        String intro = entity.getIntro();
-        if (intro != null) {
-            stmt.bindString(3, intro);
+        String name = entity.getName();
+        if (name != null) {
+            stmt.bindString(3, name);
         }
  
         String logo = entity.getLogo();
@@ -112,80 +118,81 @@ public class OrgDao extends AbstractDao<Org, Long> {
             stmt.bindString(5, pic);
         }
  
-        Boolean coordinate = entity.getCoordinate();
-        if (coordinate != null) {
-            stmt.bindLong(6, coordinate ? 1l: 0l);
-        }
- 
-        String provinceCode = entity.getProvinceCode();
-        if (provinceCode != null) {
-            stmt.bindString(7, provinceCode);
-        }
- 
-        String cityCode = entity.getCityCode();
-        if (cityCode != null) {
-            stmt.bindString(8, cityCode);
-        }
- 
-        String areaCode = entity.getAreaCode();
-        if (areaCode != null) {
-            stmt.bindString(9, areaCode);
-        }
- 
-        String address = entity.getAddress();
-        if (address != null) {
-            stmt.bindString(10, address);
+        String introduce = entity.getIntroduce();
+        if (introduce != null) {
+            stmt.bindString(6, introduce);
         }
  
         String telephone = entity.getTelephone();
         if (telephone != null) {
-            stmt.bindString(11, telephone);
+            stmt.bindString(7, telephone);
         }
  
         String email = entity.getEmail();
         if (email != null) {
-            stmt.bindString(12, email);
+            stmt.bindString(8, email);
+        }
+ 
+        String website = entity.getWebsite();
+        if (website != null) {
+            stmt.bindString(9, website);
         }
  
         String contactPerson = entity.getContactPerson();
         if (contactPerson != null) {
-            stmt.bindString(13, contactPerson);
+            stmt.bindString(10, contactPerson);
         }
  
         String contactMobilePhone = entity.getContactMobilePhone();
         if (contactMobilePhone != null) {
-            stmt.bindString(14, contactMobilePhone);
+            stmt.bindString(11, contactMobilePhone);
         }
  
         String paperPhoto = entity.getPaperPhoto();
         if (paperPhoto != null) {
-            stmt.bindString(15, paperPhoto);
+            stmt.bindString(12, paperPhoto);
         }
  
         String paperCode = entity.getPaperCode();
         if (paperCode != null) {
-            stmt.bindString(16, paperCode);
+            stmt.bindString(13, paperCode);
         }
  
-        String identityType = entity.getIdentityType();
+        Integer identityType = entity.getIdentityType();
         if (identityType != null) {
-            stmt.bindString(17, identityType);
+            stmt.bindLong(14, identityType);
         }
  
         String identityCode = entity.getIdentityCode();
         if (identityCode != null) {
-            stmt.bindString(18, identityCode);
+            stmt.bindString(15, identityCode);
         }
  
         String identityPhotoFront = entity.getIdentityPhotoFront();
         if (identityPhotoFront != null) {
-            stmt.bindString(19, identityPhotoFront);
+            stmt.bindString(16, identityPhotoFront);
         }
  
         String identityPhotoReverse = entity.getIdentityPhotoReverse();
         if (identityPhotoReverse != null) {
-            stmt.bindString(20, identityPhotoReverse);
+            stmt.bindString(17, identityPhotoReverse);
         }
+ 
+        Integer followingCount = entity.getFollowingCount();
+        if (followingCount != null) {
+            stmt.bindLong(18, followingCount);
+        }
+ 
+        Integer followersCount = entity.getFollowersCount();
+        if (followersCount != null) {
+            stmt.bindLong(19, followersCount);
+        }
+    }
+
+    @Override
+    protected void attachEntity(Org entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
@@ -199,25 +206,24 @@ public class OrgDao extends AbstractDao<Org, Long> {
     public Org readEntity(Cursor cursor, int offset) {
         Org entity = new Org( //
             cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // intro
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // memberId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // name
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // logo
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // pic
-            cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0, // coordinate
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // provinceCode
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // cityCode
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // areaCode
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // address
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // telephone
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // email
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // contactPerson
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // contactMobilePhone
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // paperPhoto
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // paperCode
-            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // identityType
-            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // identityCode
-            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // identityPhotoFront
-            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19) // identityPhotoReverse
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // introduce
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // telephone
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // email
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // website
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // contactPerson
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // contactMobilePhone
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // paperPhoto
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // paperCode
+            cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13), // identityType
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // identityCode
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // identityPhotoFront
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // identityPhotoReverse
+            cursor.isNull(offset + 17) ? null : cursor.getInt(offset + 17), // followingCount
+            cursor.isNull(offset + 18) ? null : cursor.getInt(offset + 18) // followersCount
         );
         return entity;
     }
@@ -226,25 +232,24 @@ public class OrgDao extends AbstractDao<Org, Long> {
     @Override
     public void readEntity(Cursor cursor, Org entity, int offset) {
         entity.setId(cursor.getLong(offset + 0));
-        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setIntro(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setMemberId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setLogo(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPic(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setCoordinate(cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0);
-        entity.setProvinceCode(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setCityCode(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setAreaCode(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setAddress(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setTelephone(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setEmail(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setContactPerson(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setContactMobilePhone(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setPaperPhoto(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-        entity.setPaperCode(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
-        entity.setIdentityType(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
-        entity.setIdentityCode(cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17));
-        entity.setIdentityPhotoFront(cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18));
-        entity.setIdentityPhotoReverse(cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19));
+        entity.setIntroduce(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTelephone(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setEmail(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setWebsite(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setContactPerson(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setContactMobilePhone(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setPaperPhoto(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setPaperCode(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setIdentityType(cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13));
+        entity.setIdentityCode(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setIdentityPhotoFront(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
+        entity.setIdentityPhotoReverse(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
+        entity.setFollowingCount(cursor.isNull(offset + 17) ? null : cursor.getInt(offset + 17));
+        entity.setFollowersCount(cursor.isNull(offset + 18) ? null : cursor.getInt(offset + 18));
      }
     
     /** @inheritdoc */
@@ -270,4 +275,95 @@ public class OrgDao extends AbstractDao<Org, Long> {
         return true;
     }
     
+    private String selectDeep;
+
+    protected String getSelectDeep() {
+        if (selectDeep == null) {
+            StringBuilder builder = new StringBuilder("SELECT ");
+            SqlUtils.appendColumns(builder, "T", getAllColumns());
+            builder.append(',');
+            SqlUtils.appendColumns(builder, "T0", daoSession.getMemberDao().getAllColumns());
+            builder.append(" FROM ORG T");
+            builder.append(" LEFT JOIN MEMBER T0 ON T.'MEMBER_ID'=T0.'ID'");
+            builder.append(' ');
+            selectDeep = builder.toString();
+        }
+        return selectDeep;
+    }
+    
+    protected Org loadCurrentDeep(Cursor cursor, boolean lock) {
+        Org entity = loadCurrent(cursor, 0, lock);
+        int offset = getAllColumns().length;
+
+        Member member = loadCurrentOther(daoSession.getMemberDao(), cursor, offset);
+        entity.setMember(member);
+
+        return entity;    
+    }
+
+    public Org loadDeep(Long key) {
+        assertSinglePk();
+        if (key == null) {
+            return null;
+        }
+
+        StringBuilder builder = new StringBuilder(getSelectDeep());
+        builder.append("WHERE ");
+        SqlUtils.appendColumnsEqValue(builder, "T", getPkColumns());
+        String sql = builder.toString();
+        
+        String[] keyArray = new String[] { key.toString() };
+        Cursor cursor = db.rawQuery(sql, keyArray);
+        
+        try {
+            boolean available = cursor.moveToFirst();
+            if (!available) {
+                return null;
+            } else if (!cursor.isLast()) {
+                throw new IllegalStateException("Expected unique result, but count was " + cursor.getCount());
+            }
+            return loadCurrentDeep(cursor, true);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+    /** Reads all available rows from the given cursor and returns a list of new ImageTO objects. */
+    public List<Org> loadAllDeepFromCursor(Cursor cursor) {
+        int count = cursor.getCount();
+        List<Org> list = new ArrayList<Org>(count);
+        
+        if (cursor.moveToFirst()) {
+            if (identityScope != null) {
+                identityScope.lock();
+                identityScope.reserveRoom(count);
+            }
+            try {
+                do {
+                    list.add(loadCurrentDeep(cursor, false));
+                } while (cursor.moveToNext());
+            } finally {
+                if (identityScope != null) {
+                    identityScope.unlock();
+                }
+            }
+        }
+        return list;
+    }
+    
+    protected List<Org> loadDeepAllAndCloseCursor(Cursor cursor) {
+        try {
+            return loadAllDeepFromCursor(cursor);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+
+    /** A raw-style query where you can pass any WHERE clause and arguments. */
+    public List<Org> queryDeep(String where, String... selectionArg) {
+        Cursor cursor = db.rawQuery(getSelectDeep() + where, selectionArg);
+        return loadDeepAllAndCloseCursor(cursor);
+    }
+ 
 }

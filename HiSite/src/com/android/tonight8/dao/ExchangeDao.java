@@ -28,11 +28,10 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "ID");
-        public final static Property Rid = new Property(1, Long.class, "rid", false, "RID");
+        public final static Property Id = new Property(0, long.class, "id", true, "ID");
+        public final static Property EventId = new Property(1, Long.class, "eventId", false, "EVENT_ID");
         public final static Property Method = new Property(2, Integer.class, "method", false, "METHOD");
-        public final static Property Address = new Property(3, String.class, "address", false, "ADDRESS");
-        public final static Property OrgAll = new Property(4, Integer.class, "orgAll", false, "ORG_ALL");
+        public final static Property LocationType = new Property(3, Integer.class, "locationType", false, "LOCATION_TYPE");
     };
 
     private DaoSession daoSession;
@@ -51,11 +50,10 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'EXCHANGE' (" + //
-                "'ID' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "'RID' INTEGER," + // 1: rid
+                "'ID' INTEGER PRIMARY KEY NOT NULL ," + // 0: id
+                "'EVENT_ID' INTEGER," + // 1: eventId
                 "'METHOD' INTEGER," + // 2: method
-                "'ADDRESS' TEXT," + // 3: address
-                "'ORG_ALL' INTEGER);"); // 4: orgAll
+                "'LOCATION_TYPE' INTEGER);"); // 3: locationType
     }
 
     /** Drops the underlying database table. */
@@ -68,15 +66,11 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Exchange entity) {
         stmt.clearBindings();
+        stmt.bindLong(1, entity.getId());
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
- 
-        Long rid = entity.getRid();
-        if (rid != null) {
-            stmt.bindLong(2, rid);
+        Long eventId = entity.getEventId();
+        if (eventId != null) {
+            stmt.bindLong(2, eventId);
         }
  
         Integer method = entity.getMethod();
@@ -84,14 +78,9 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
             stmt.bindLong(3, method);
         }
  
-        String address = entity.getAddress();
-        if (address != null) {
-            stmt.bindString(4, address);
-        }
- 
-        Integer orgAll = entity.getOrgAll();
-        if (orgAll != null) {
-            stmt.bindLong(5, orgAll);
+        Integer locationType = entity.getLocationType();
+        if (locationType != null) {
+            stmt.bindLong(4, locationType);
         }
     }
 
@@ -104,18 +93,17 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+        return cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Exchange readEntity(Cursor cursor, int offset) {
         Exchange entity = new Exchange( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // rid
+            cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // eventId
             cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // method
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // address
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4) // orgAll
+            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3) // locationType
         );
         return entity;
     }
@@ -123,11 +111,10 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Exchange entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setRid(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setId(cursor.getLong(offset + 0));
+        entity.setEventId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
         entity.setMethod(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
-        entity.setAddress(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setOrgAll(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
+        entity.setLocationType(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
      }
     
     /** @inheritdoc */
@@ -162,7 +149,7 @@ public class ExchangeDao extends AbstractDao<Exchange, Long> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T0", daoSession.getEventDao().getAllColumns());
             builder.append(" FROM EXCHANGE T");
-            builder.append(" LEFT JOIN EVENT T0 ON T.'RID'=T0.'ID'");
+            builder.append(" LEFT JOIN EVENT T0 ON T.'EVENT_ID'=T0.'ID'");
             builder.append(' ');
             selectDeep = builder.toString();
         }

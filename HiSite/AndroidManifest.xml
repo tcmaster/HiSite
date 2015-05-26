@@ -179,11 +179,6 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
-        <!-- 关于我们 -->
-        <activity
-            android:name="com.android.tonight8.activity.AboutUsActivity"
-            android:label="@string/title_activity_about_us" >
-        </activity>
         <activity
             android:name="com.android.tonight8.activity.event.EventAwardActivity"
             android:label="@string/title_activity_event_award" >
@@ -260,11 +255,6 @@
             android:name="com.android.tonight8.activity.org.AuthenticationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-        <!-- 认证成功页面 -->
-        <activity
-            android:name="com.andrcom.android.tonight8.activity.org.AuthSuccessActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
         <!-- 认证上传图片页面 -->
         <activity
             android:name="com.android.tonight8.activity.org.AuthPicActivity"
@@ -318,14 +308,6 @@
                 <data android:scheme="100424468" />
             </intent-filter>
         </activity>
-
-        <!-- 使用微信及微信朋友圈时需要注册回调Acitivity ! -->
-        <activity
-            android:name="com.android.tonight8.activity.other.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.android.tonight8.activity.user.UserForgetPasswordActivity"
             android:label="@string/title_activity_user_forget_password" >

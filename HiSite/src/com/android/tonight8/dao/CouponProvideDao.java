@@ -29,16 +29,19 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, long.class, "id", true, "ID");
-        public final static Property Type = new Property(1, Integer.class, "type", false, "TYPE");
-        public final static Property Value = new Property(2, Integer.class, "value", false, "VALUE");
-        public final static Property Rid = new Property(3, Long.class, "rid", false, "RID");
+        public final static Property Rid = new Property(1, Long.class, "rid", false, "RID");
+        public final static Property Type = new Property(2, Integer.class, "type", false, "TYPE");
+        public final static Property Value = new Property(3, Float.class, "value", false, "VALUE");
         public final static Property Content = new Property(4, String.class, "content", false, "CONTENT");
-        public final static Property ProvideNum = new Property(5, Integer.class, "provideNum", false, "PROVIDE_NUM");
-        public final static Property ProvideAll = new Property(6, Integer.class, "provideAll", false, "PROVIDE_ALL");
-        public final static Property DateRangeStart = new Property(7, String.class, "dateRangeStart", false, "DATE_RANGE_START");
-        public final static Property DateRangeEnd = new Property(8, String.class, "dateRangeEnd", false, "DATE_RANGE_END");
-        public final static Property TemplatePic = new Property(9, String.class, "templatePic", false, "TEMPLATE_PIC");
-        public final static Property PublishTime = new Property(10, String.class, "publishTime", false, "PUBLISH_TIME");
+        public final static Property DispatchContent = new Property(5, String.class, "dispatchContent", false, "DISPATCH_CONTENT");
+        public final static Property ProvideNumber = new Property(6, Integer.class, "provideNumber", false, "PROVIDE_NUMBER");
+        public final static Property DispatchNumber = new Property(7, Integer.class, "dispatchNumber", false, "DISPATCH_NUMBER");
+        public final static Property ProvideAll = new Property(8, Boolean.class, "provideAll", false, "PROVIDE_ALL");
+        public final static Property IsLiveUse = new Property(9, Boolean.class, "isLiveUse", false, "IS_LIVE_USE");
+        public final static Property DateRangeStart = new Property(10, String.class, "dateRangeStart", false, "DATE_RANGE_START");
+        public final static Property DateRangeEnd = new Property(11, String.class, "dateRangeEnd", false, "DATE_RANGE_END");
+        public final static Property TemplatePic = new Property(12, String.class, "templatePic", false, "TEMPLATE_PIC");
+        public final static Property PublishTime = new Property(13, String.class, "publishTime", false, "PUBLISH_TIME");
     };
 
     private DaoSession daoSession;
@@ -58,16 +61,19 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'COUPON_PROVIDE' (" + //
                 "'ID' INTEGER PRIMARY KEY NOT NULL ," + // 0: id
-                "'TYPE' INTEGER," + // 1: type
-                "'VALUE' INTEGER," + // 2: value
-                "'RID' INTEGER," + // 3: rid
+                "'RID' INTEGER," + // 1: rid
+                "'TYPE' INTEGER," + // 2: type
+                "'VALUE' REAL," + // 3: value
                 "'CONTENT' TEXT," + // 4: content
-                "'PROVIDE_NUM' INTEGER," + // 5: provideNum
-                "'PROVIDE_ALL' INTEGER," + // 6: provideAll
-                "'DATE_RANGE_START' TEXT," + // 7: dateRangeStart
-                "'DATE_RANGE_END' TEXT," + // 8: dateRangeEnd
-                "'TEMPLATE_PIC' TEXT," + // 9: templatePic
-                "'PUBLISH_TIME' TEXT);"); // 10: publishTime
+                "'DISPATCH_CONTENT' TEXT," + // 5: dispatchContent
+                "'PROVIDE_NUMBER' INTEGER," + // 6: provideNumber
+                "'DISPATCH_NUMBER' INTEGER," + // 7: dispatchNumber
+                "'PROVIDE_ALL' INTEGER," + // 8: provideAll
+                "'IS_LIVE_USE' INTEGER," + // 9: isLiveUse
+                "'DATE_RANGE_START' TEXT," + // 10: dateRangeStart
+                "'DATE_RANGE_END' TEXT," + // 11: dateRangeEnd
+                "'TEMPLATE_PIC' TEXT," + // 12: templatePic
+                "'PUBLISH_TIME' TEXT);"); // 13: publishTime
     }
 
     /** Drops the underlying database table. */
@@ -82,19 +88,19 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
         stmt.clearBindings();
         stmt.bindLong(1, entity.getId());
  
-        Integer type = entity.getType();
-        if (type != null) {
-            stmt.bindLong(2, type);
-        }
- 
-        Integer value = entity.getValue();
-        if (value != null) {
-            stmt.bindLong(3, value);
-        }
- 
         Long rid = entity.getRid();
         if (rid != null) {
-            stmt.bindLong(4, rid);
+            stmt.bindLong(2, rid);
+        }
+ 
+        Integer type = entity.getType();
+        if (type != null) {
+            stmt.bindLong(3, type);
+        }
+ 
+        Float value = entity.getValue();
+        if (value != null) {
+            stmt.bindDouble(4, value);
         }
  
         String content = entity.getContent();
@@ -102,34 +108,49 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
             stmt.bindString(5, content);
         }
  
-        Integer provideNum = entity.getProvideNum();
-        if (provideNum != null) {
-            stmt.bindLong(6, provideNum);
+        String dispatchContent = entity.getDispatchContent();
+        if (dispatchContent != null) {
+            stmt.bindString(6, dispatchContent);
         }
  
-        Integer provideAll = entity.getProvideAll();
+        Integer provideNumber = entity.getProvideNumber();
+        if (provideNumber != null) {
+            stmt.bindLong(7, provideNumber);
+        }
+ 
+        Integer dispatchNumber = entity.getDispatchNumber();
+        if (dispatchNumber != null) {
+            stmt.bindLong(8, dispatchNumber);
+        }
+ 
+        Boolean provideAll = entity.getProvideAll();
         if (provideAll != null) {
-            stmt.bindLong(7, provideAll);
+            stmt.bindLong(9, provideAll ? 1l: 0l);
+        }
+ 
+        Boolean isLiveUse = entity.getIsLiveUse();
+        if (isLiveUse != null) {
+            stmt.bindLong(10, isLiveUse ? 1l: 0l);
         }
  
         String dateRangeStart = entity.getDateRangeStart();
         if (dateRangeStart != null) {
-            stmt.bindString(8, dateRangeStart);
+            stmt.bindString(11, dateRangeStart);
         }
  
         String dateRangeEnd = entity.getDateRangeEnd();
         if (dateRangeEnd != null) {
-            stmt.bindString(9, dateRangeEnd);
+            stmt.bindString(12, dateRangeEnd);
         }
  
         String templatePic = entity.getTemplatePic();
         if (templatePic != null) {
-            stmt.bindString(10, templatePic);
+            stmt.bindString(13, templatePic);
         }
  
         String publishTime = entity.getPublishTime();
         if (publishTime != null) {
-            stmt.bindString(11, publishTime);
+            stmt.bindString(14, publishTime);
         }
     }
 
@@ -150,16 +171,19 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
     public CouponProvide readEntity(Cursor cursor, int offset) {
         CouponProvide entity = new CouponProvide( //
             cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // type
-            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // value
-            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // rid
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // rid
+            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // type
+            cursor.isNull(offset + 3) ? null : cursor.getFloat(offset + 3), // value
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // content
-            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // provideNum
-            cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // provideAll
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // dateRangeStart
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // dateRangeEnd
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // templatePic
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // publishTime
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // dispatchContent
+            cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // provideNumber
+            cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7), // dispatchNumber
+            cursor.isNull(offset + 8) ? null : cursor.getShort(offset + 8) != 0, // provideAll
+            cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0, // isLiveUse
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // dateRangeStart
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // dateRangeEnd
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // templatePic
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13) // publishTime
         );
         return entity;
     }
@@ -168,16 +192,19 @@ public class CouponProvideDao extends AbstractDao<CouponProvide, Long> {
     @Override
     public void readEntity(Cursor cursor, CouponProvide entity, int offset) {
         entity.setId(cursor.getLong(offset + 0));
-        entity.setType(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
-        entity.setValue(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
-        entity.setRid(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setRid(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setType(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
+        entity.setValue(cursor.isNull(offset + 3) ? null : cursor.getFloat(offset + 3));
         entity.setContent(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setProvideNum(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
-        entity.setProvideAll(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
-        entity.setDateRangeStart(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setDateRangeEnd(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setTemplatePic(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setPublishTime(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setDispatchContent(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setProvideNumber(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
+        entity.setDispatchNumber(cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7));
+        entity.setProvideAll(cursor.isNull(offset + 8) ? null : cursor.getShort(offset + 8) != 0);
+        entity.setIsLiveUse(cursor.isNull(offset + 9) ? null : cursor.getShort(offset + 9) != 0);
+        entity.setDateRangeStart(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setDateRangeEnd(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setTemplatePic(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setPublishTime(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
      }
     
     /** @inheritdoc */

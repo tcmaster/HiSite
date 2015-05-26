@@ -12,11 +12,10 @@ import com.android.tonight8.dao.ExchangeDao;
  */
 public class Exchange {
 
-    private Long id;
-    private Long rid;
+    private long id;
+    private Long eventId;
     private Integer method;
-    private String address;
-    private Integer orgAll;
+    private Integer locationType;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -31,16 +30,15 @@ public class Exchange {
     public Exchange() {
     }
 
-    public Exchange(Long id) {
+    public Exchange(long id) {
         this.id = id;
     }
 
-    public Exchange(Long id, Long rid, Integer method, String address, Integer orgAll) {
+    public Exchange(long id, Long eventId, Integer method, Integer locationType) {
         this.id = id;
-        this.rid = rid;
+        this.eventId = eventId;
         this.method = method;
-        this.address = address;
-        this.orgAll = orgAll;
+        this.locationType = locationType;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -49,20 +47,20 @@ public class Exchange {
         myDao = daoSession != null ? daoSession.getExchangeDao() : null;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getRid() {
-        return rid;
+    public Long getEventId() {
+        return eventId;
     }
 
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 
     public Integer getMethod() {
@@ -73,25 +71,17 @@ public class Exchange {
         this.method = method;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getLocationType() {
+        return locationType;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getOrgAll() {
-        return orgAll;
-    }
-
-    public void setOrgAll(Integer orgAll) {
-        this.orgAll = orgAll;
+    public void setLocationType(Integer locationType) {
+        this.locationType = locationType;
     }
 
     /** To-one relationship, resolved on first access. */
     public Event getEvent() {
-        Long __key = this.rid;
+        Long __key = this.eventId;
         if (event__resolvedKey == null || !event__resolvedKey.equals(__key)) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
@@ -109,8 +99,8 @@ public class Exchange {
     public void setEvent(Event event) {
         synchronized (this) {
             this.event = event;
-            rid = event == null ? null : event.getId();
-            event__resolvedKey = rid;
+            eventId = event == null ? null : event.getId();
+            event__resolvedKey = eventId;
         }
     }
 
