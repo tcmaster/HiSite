@@ -16,7 +16,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.adapter.org.OrgEventListAdapter;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.view.xlistview.XListView;
 
 /**
@@ -27,7 +27,7 @@ public class OrgEventListFragment extends BaseFragment {
 
 	private XListView lv_only_list;
 	private OrgEventListAdapter orgEventListAdapter;
-	private List<Event> list;
+	private List<EventListModel> list;
 	private View rootView;
 
 	public static final OrgEventListFragment newInstance() {
@@ -41,9 +41,9 @@ public class OrgEventListFragment extends BaseFragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		rootView = inflater.inflate(R.layout.activity_only_list, null);
 		lv_only_list = (XListView) rootView.findViewById(R.id.lv_only_list);
-		list = new ArrayList<Event>();
+		list = new ArrayList<EventListModel>();
 		for (int i = 0; i < 10; i++) {
-			Event event = new Event();
+			EventListModel event = new EventListModel();
 			list.add(event);
 		}
 		orgEventListAdapter = new OrgEventListAdapter(activity, list);

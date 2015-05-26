@@ -19,7 +19,8 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 /**
  * @author asus 别人看到的商家资料
  */
-public class OrgDetailForOtherActivity extends BaseActivity implements OnCheckedChangeListener {
+public class OrgDetailForOtherActivity extends BaseActivity implements
+		OnCheckedChangeListener {
 	@ViewInject(R.id.rg_org_detail)
 	private RadioGroup rg_org_detail;
 	@ViewInject(R.id.rb_wish_talk)
@@ -28,8 +29,6 @@ public class OrgDetailForOtherActivity extends BaseActivity implements OnChecked
 	private RadioButton rb_wish_process;
 	@ViewInject(R.id.rb_wish_sponsor)
 	private RadioButton rb_wish_sponsor;
-	@ViewInject(R.id.rb_wish_aboutme)
-	private RadioButton rb_wish_aboutme;
 	private FragmentManager fm;
 	private FragmentTransaction ft;
 	private BaseFragment[] baseFragments;
@@ -83,7 +82,7 @@ public class OrgDetailForOtherActivity extends BaseActivity implements OnChecked
 
 		fm = getSupportFragmentManager();
 		ft = fm.beginTransaction();
-		baseFragments = new BaseFragment[4];
+		baseFragments = new BaseFragment[3];
 		baseFragments[0] = OrgDetailFragment.newInstance();
 		baseFragments[1] = OrgEventListFragment.newInstance();
 		baseFragments[2] = SponsorWishFragment.newInstance();

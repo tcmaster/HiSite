@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/common_margin_small" >
+
+    <ImageView
+        android:id="@+id/iv_live_comment_headpic"
+        android:layout_width="@dimen/user_headpic_minheight"
+        android:layout_height="@dimen/user_headpic_minheight"
+        android:layout_marginRight="@dimen/item_left_hilive"
+        android:background="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_live_comment_name"
+        style="@style/wrap"
+        android:layout_alignTop="@+id/iv_live_comment_headpic"
+        android:layout_toRightOf="@+id/iv_live_comment_headpic"
+        android:text="小新"
+        android:textColor="@color/red" />
+
+    <TextView
+        android:id="@+id/tv_talk_time"
+        style="@style/wrap"
+        android:layout_alignParentRight="true"
+        android:text="1分钟前"
+        android:textColor="@color/half_black" />
+
+    <TextView
+        android:id="@+id/tv_wish_talk_content"
+        style="@style/match_width"
+        android:layout_below="@+id/tv_live_comment_name"
+        android:layout_toRightOf="@+id/iv_live_comment_headpic"
+        android:text="用户话题用户话题用户话题用户话题用户话题用户话题用户话题用户话题用户话题"
+        android:textColor="@color/half_black" />
+
+    <LinearLayout
+        android:id="@+id/ll_talk_comment_left"
+        style="@style/wrap"
+        android:layout_below="@+id/tv_wish_talk_content"
+        android:layout_toLeftOf="@+id/tv_talk_dialog"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_talk_comment_left"
+            style="@style/wrap"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:text="赞20"
+            android:gravity="center_vertical"
+            android:textColor="@color/half_black" />
+
+        <TextView
+            android:id="@+id/tv_talk_comment_comment"
+            style="@style/wrap"
+            android:text="评论"
+            android:textColor="@color/half_black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_talk_dialog"
+        style="@style/wrap"
+        android:layout_alignRight="@+id/tv_wish_talk_content"
+        android:layout_below="@+id/tv_wish_talk_content"
+        android:background="@drawable/ic_launcher"
+        android:textColor="@color/half_black" />
+
+</RelativeLayout>

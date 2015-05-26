@@ -75,12 +75,16 @@
             android:layout_alignBottom="@+id/tv_wish_supportcount"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/common_margin_left"
-            android_custom:roundColor="@color/red"
+            android_custom:roundColor="#ff6b6c"
             android_custom:roundProgressColor="@color/red"
             android_custom:roundWidth="4dip"
             android_custom:textColorRound="@color/red"
             android_custom:textIsDisplayable="true"
             android_custom:textSizeRound="14sp" />
     </RelativeLayout>
+
+    <View
+        style="@style/line_full"
+        android:layout_marginBottom="@dimen/common_margin_left" />
 
 </LinearLayout>

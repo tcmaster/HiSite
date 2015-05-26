@@ -6,10 +6,11 @@
 
     <RelativeLayout
         style="@style/match_width"
-        android:layout_height="250dp" >
+        android:layout_height="250dp"
+        android:background="@drawable/ic_launcher" >
 
         <ImageView
-            android:id="@+id/iv_org_logopic"
+            android:id="@+id/iv_org_logo"
             style="@style/user_photo"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_launcher" />
@@ -17,7 +18,7 @@
         <TextView
             android:id="@+id/tv_org_name"
             style="@style/match_width"
-            android:layout_below="@+id/iv_org_logopic"
+            android:layout_below="@+id/iv_org_logo"
             android:gravity="center_horizontal"
             android:padding="@dimen/common_margin_left"
             android:text="商家名称"
@@ -32,13 +33,17 @@
             android:padding="@dimen/common_margin_left" >
 
             <TextView
+                android:id="@+id/tv_follow_count"
                 style="@style/wrap"
                 android:text="关注1234"
                 android:textSize="@dimen/middleTextSize" />
 
-            <View style="@style/line_full_vertical" />
+            <View
+                style="@style/line_full_vertical"
+                android:layout_width="3dp" />
 
             <TextView
+                android:id="@+id/tv_fans_count"
                 style="@style/wrap"
                 android:text="粉丝3244"
                 android:textSize="@dimen/middleTextSize" />
@@ -66,6 +71,7 @@
     <RadioGroup
         android:id="@+id/rg_org_detail"
         style="@style/match_width"
+        android:background="@color/half_white"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/common_margin_left"
         android:paddingTop="@dimen/common_margin_left" >
@@ -92,7 +98,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="赞助者" />
+            android:text="赞助" />
     </RadioGroup>
 
     <FrameLayout

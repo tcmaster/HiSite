@@ -59,14 +59,14 @@
         <include
             android:id="@+id/layout_award_no"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_redpacket"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_orders"
@@ -76,26 +76,26 @@
         <include
             android:id="@+id/layout_my_address"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_act_seller"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_act_org"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_money"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <View
             style="@style/line_full"
@@ -104,22 +104,28 @@
             android:background="@color/white" />
 
         <include
+            android:id="@+id/layout_my_event"
+            style="@style/match_width"
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
+
+        <include
             android:id="@+id/layout_my_wish"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_save"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_attention"
             style="@style/match_width"
-            layout="@layout/include_myaccount_item"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
     </LinearLayout>
 
     <LinearLayout
@@ -142,11 +148,10 @@
 
         <View
             style="@style/line_full_vertical"
-            android:background="@color/white"
             android:layout_gravity="center_vertical"
-            android:paddingTop="@dimen/topOrbottomPadding"
-        	android:paddingBottom="@dimen/topOrbottomPadding"
-            />
+            android:background="@color/white"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingTop="@dimen/topOrbottomPadding" />
 
         <TextView
             android:id="@+id/tv_settings"

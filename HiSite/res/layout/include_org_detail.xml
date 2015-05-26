@@ -20,6 +20,8 @@
             android:text="北京朝阳区" />
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         style="@style/ll_orgdetail_style"
         android:orientation="horizontal"
@@ -34,6 +36,8 @@
             style="@style/shoptext_style"
             android:text="中核路1号" />
     </LinearLayout>
+
+    <View style="@style/line_full" />
 
     <LinearLayout
         style="@style/ll_orgdetail_style"
@@ -50,6 +54,8 @@
             android:text="张可" />
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         style="@style/ll_orgdetail_style"
         android:orientation="horizontal"
@@ -65,6 +71,8 @@
             android:text="010-12345678" />
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         style="@style/ll_orgdetail_style"
         android:orientation="horizontal"
@@ -79,6 +87,8 @@
             style="@style/shoptext_style"
             android:text="123456789" />
     </LinearLayout>
+
+    <View style="@style/line_full" />
 
     <LinearLayout
         style="@style/ll_orgdetail_style"
@@ -97,6 +107,8 @@
         </TextView>
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         style="@style/ll_orgdetail_style"
         android:orientation="horizontal"
@@ -112,6 +124,8 @@
             android:layout_height="wrap_content"
             android:text="www.baidu.com" />
     </LinearLayout>
+
+    <View style="@style/line_full" />
 
     <LinearLayout
         style="@style/ll_orgdetail_style"
@@ -129,6 +143,8 @@
             android:text="633993048@qq.com" />
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
     <LinearLayout
         style="@style/ll_orgdetail_style"
         android:orientation="horizontal"
@@ -144,6 +160,8 @@
             android:layout_height="wrap_content"
             android:text="lzandroid" />
     </LinearLayout>
+
+    <View style="@style/line_full" />
 
     <RelativeLayout
         style="@style/ll_orgdetail_style"
@@ -161,5 +179,25 @@
             android:background="@drawable/ic_launcher"
             android:gravity="right" />
     </RelativeLayout>
+
+    <View style="@style/line_full" />
+
+    <include layout="@layout/include_org_detail" />
+
+    <TextView
+        style="@style/match_width"
+        android:background="@color/half_white"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/common_margin_left"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="商家简介"
+        android:textSize="@dimen/bigTextSize" />
+
+    <TextView
+        android:id="@+id/tv_org_description"
+        style="@style/shoptext_left_style"
+        android:layout_marginBottom="@dimen/common_margin_left"
+        android:padding="@dimen/common_margin_left"
+        android:text="很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的" />
 
 </LinearLayout>

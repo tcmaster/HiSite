@@ -20,8 +20,6 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.fragment.wish.WishAboutMeFragment;
-import com.android.tonight8.fragment.wish.WishProgressFragment;
 import com.android.tonight8.fragment.wish.WishSponsorFragment;
 import com.android.tonight8.fragment.wish.WishTalkFragment;
 import com.android.tonight8.function.CirculateFunction;
@@ -32,9 +30,10 @@ import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
- * @author lz 心愿现场页面
+ * @author lz 心愿详情页面
  */
-public class WishLiveActivity extends BaseActivity implements OnCheckedChangeListener{
+public class WishLiveActivity extends BaseActivity implements
+		OnCheckedChangeListener {
 	/** 滑动的图片viewpager控件 */
 	@ViewInject(R.id.vp_wish_live)
 	private ViewPager viewPager;
@@ -48,32 +47,23 @@ public class WishLiveActivity extends BaseActivity implements OnCheckedChangeLis
 	private RadioGroup rg_wish_detail;
 	@ViewInject(R.id.rb_wish_talk)
 	private RadioButton rb_wish_talk;
-	@ViewInject(R.id.rb_wish_process)
-	private RadioButton rb_wish_process;
 	@ViewInject(R.id.rb_wish_sponsor)
 	private RadioButton rb_wish_sponsor;
-	@ViewInject(R.id.rb_wish_aboutme)
-	private RadioButton rb_wish_aboutme;
 	private FragmentManager fm;
 	private FragmentTransaction ft;
 	private BaseFragment[] baseFragments;
 
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
 		int radioButtonId = arg0.getCheckedRadioButtonId();
-		LogUtils.i(arg1+"");
+		LogUtils.i(arg1 + "");
 		switch (radioButtonId) {
 		case R.id.rb_wish_talk:
 			doFragmentShow(0);
 			break;
-		case R.id.rb_wish_process:
+		case R.id.rb_wish_sponsor:
 			doFragmentShow(1);
 			break;
-		case R.id.rb_wish_sponsor:
-			doFragmentShow(2);
-			break;
-		case R.id.rb_wish_aboutme:
-			doFragmentShow(3);
-			break;
+
 		default:
 			break;
 		}
@@ -103,7 +93,8 @@ public class WishLiveActivity extends BaseActivity implements OnCheckedChangeLis
 		@Override
 		public void onClick(View arg0) {
 			ShareThirdEntity shareThirdEntity = new ShareThirdEntity();
-			DialogUtils.showSelectShareDialog(WishLiveActivity.this, shareThirdEntity);
+			DialogUtils.showSelectShareDialog(WishLiveActivity.this,
+					shareThirdEntity);
 
 		}
 	};
@@ -119,18 +110,14 @@ public class WishLiveActivity extends BaseActivity implements OnCheckedChangeLis
 	}
 
 	private void initData() {
-		
+
 		fm = getSupportFragmentManager();
 		ft = fm.beginTransaction();
-		baseFragments = new BaseFragment[4];
+		baseFragments = new BaseFragment[2];
 		baseFragments[0] = WishTalkFragment.newInstance();
-		baseFragments[1] = WishProgressFragment.newInstance();
-		baseFragments[2] = WishSponsorFragment.newInstance();
-		baseFragments[3] = WishAboutMeFragment.newInstance();
+		baseFragments[1] = WishSponsorFragment.newInstance();
 		ft.add(R.id.ll_wish_fourcontent, baseFragments[0]);
 		ft.add(R.id.ll_wish_fourcontent, baseFragments[1]);
-		ft.add(R.id.ll_wish_fourcontent, baseFragments[2]);
-		ft.add(R.id.ll_wish_fourcontent, baseFragments[3]);
 		ft.commit();
 		rg_wish_detail.setOnCheckedChangeListener(this);
 	}
@@ -141,7 +128,7 @@ public class WishLiveActivity extends BaseActivity implements OnCheckedChangeLis
 		data.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
 		data.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
 		data.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
-		ll_wishlive_container.setPointCount(4);
+		ll_wishlive_container.setPointCount(data.size());
 		ll_wishlive_container.changePoint(0);
 		viewPager.setAdapter(new MyPagerAdapter(WishLiveActivity.this, data));
 		viewPager.setCurrentItem(0);
@@ -160,14 +147,15 @@ public class WishLiveActivity extends BaseActivity implements OnCheckedChangeLis
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5, new Handler() {
+		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5,
+				new Handler() {
 
-			@Override
-			public void handleMessage(Message msg) {
-				viewPager.setCurrentItem(msg.what);
-				super.handleMessage(msg);
-			}
-		});
+					@Override
+					public void handleMessage(Message msg) {
+						viewPager.setCurrentItem(msg.what);
+						super.handleMessage(msg);
+					}
+				});
 		cFunction.start();// 开始轮播
 	}
 

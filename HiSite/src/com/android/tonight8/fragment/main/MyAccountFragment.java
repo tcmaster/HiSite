@@ -12,7 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.event.OrgEventListActivity;
+import com.android.tonight8.activity.org.OrgDetailActivity;
 import com.android.tonight8.activity.user.MessageListActivity;
+import com.android.tonight8.activity.wish.MyWishActivity;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
 import com.lidroid.xutils.ViewUtils;
@@ -74,6 +77,9 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 我的心愿 */
 	@ViewInject(R.id.layout_my_wish)
 	private RelativeLayout layout_my_wish;
+	/** 我的活动 */
+	@ViewInject(R.id.layout_my_event)
+	private RelativeLayout layout_my_event;
 	/** 我的收藏 */
 	@ViewInject(R.id.layout_my_save)
 	private RelativeLayout layout_my_save;
@@ -86,6 +92,8 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 设置 */
 	@ViewInject(R.id.tv_settings)
 	private TextView tv_settings;
+	/** 账户角色0用户1卖手2商家 */
+	private int AccountType = 2;
 
 	// *********************其他成员****************************//
 
@@ -121,6 +129,8 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 				R.string.my_account, null, null, true);
 		setTextAndContent(layout_my_wish, R.drawable.ic_launcher,
 				R.string.my_wish, null, null, true);
+		setTextAndContent(layout_my_event, R.drawable.ic_launcher,
+				R.string.my_event, null, null, true);
 		setTextAndContent(layout_my_save, R.drawable.ic_launcher,
 				R.string.my_save, null, null, true);
 		setTextAndContent(layout_my_attention, R.drawable.ic_launcher,
@@ -128,17 +138,38 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		rl_head.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 		ll_center_layout.getLayoutParams().height = AppConstants.heightPx / 10 * 8;
 		ll_tail.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
+		if (AccountType == 0) {
+
+		} else if (AccountType == 1) {
+
+		} else if (AccountType == 2) {
+			layout_my_wish.setVisibility(View.GONE);
+		}
 	}
 
-	@OnClick({ R.id.layout_my_wish, R.id.tv_message_center })
+	@OnClick({ R.id.rl_head, R.id.layout_my_wish, R.id.tv_message_center,
+			R.id.layout_my_wish })
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.layout_my_wish:
+		case R.id.rl_head:
+			if (AccountType == 2) {
 
+				getActivity().startActivity(
+						new Intent(getActivity(), OrgDetailActivity.class));
+			}
 			break;
 		case R.id.tv_message_center:
-			Intent intent = new Intent(getActivity(), MessageListActivity.class);
-			getActivity().startActivity(intent);
+			getActivity().startActivity(
+					new Intent(getActivity(), MessageListActivity.class));
+			break;
+		case R.id.layout_my_wish:
+			getActivity().startActivity(
+					new Intent(getActivity(), MyWishActivity.class));
+			break;
+
+		case R.id.layout_my_event:
+			getActivity().startActivity(
+					new Intent(getActivity(), OrgEventListActivity.class));
 			break;
 		default:
 			break;

@@ -136,28 +136,12 @@
                 android:text="讨论区" />
 
             <RadioButton
-                android:id="@+id/rb_wish_process"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="心愿历程" />
-
-            <RadioButton
                 android:id="@+id/rb_wish_sponsor"
                 style="@style/wrap"
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
                 android:text="赞助者" />
-
-            <RadioButton
-                android:id="@+id/rb_wish_aboutme"
-                style="@style/wrap"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="关于我" />
         </RadioGroup>
 
         <LinearLayout

@@ -25,6 +25,7 @@ import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
 import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
 import com.sina.weibo.sdk.api.share.WeiboShareSDK;
 import com.sina.weibo.sdk.auth.AuthInfo;
+import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.tauth.Tencent;
@@ -104,6 +105,22 @@ public class Tonight8App extends Application {
 		mWeiboShareAPI.registerApp();
 		// 初始化聊天账号信息
 		EaseMobManager.initEaseMob(this);
+	}
+
+	/**
+	 * 初始化微信支付
+	 */
+	private void initWXPay() {
+		PayReq request = new PayReq();
+		request.appId = "wxd930ea5d5a258f4f";
+		request.partnerId = "1900000109";
+		request.prepayId = "1101000000140415649af9fc314aa427";
+		request.packageValue = "Sign=WXPay";
+		request.nonceStr = "1101000000140429eb40476f8896f4c9";
+		request.timeStamp = "1398746574";
+		request.sign = "7FFECB600D7157C5AA49810D2D8F28BC2811827B";
+		wxApi.sendReq(request);
+
 	}
 
 	/**

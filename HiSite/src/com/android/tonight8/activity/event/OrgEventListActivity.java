@@ -13,7 +13,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.createevent.UserAgreementActivity;
 import com.android.tonight8.adapter.org.OrgEventListAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.common.Event;
+import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnItemClick;
@@ -26,7 +26,7 @@ public class OrgEventListActivity extends BaseActivity {
 	@ViewInject(R.id.lv_only_list)
 	private XListView lv_only_list;
 	private OrgEventListAdapter orgEventListAdapter;
-	private List<Event> list;
+	private List<EventListModel> list;
 	private OnClickListener onClickListener = new OnClickListener() {
 
 		@Override
@@ -40,9 +40,9 @@ public class OrgEventListActivity extends BaseActivity {
 		setContentView(R.layout.activity_only_list);
 		super.onCreate(savedInstanceState);
 		getActionBarNormal("我的活动", R.drawable.ic_launcher, onClickListener);
-		list = new ArrayList<Event>();
+		list = new ArrayList<EventListModel>();
 		for (int i = 0; i < 10; i++) {
-			Event event = new Event();
+			EventListModel event = new EventListModel();
 			list.add(event);
 		}
 
