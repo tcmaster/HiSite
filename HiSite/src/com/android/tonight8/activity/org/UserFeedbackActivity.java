@@ -14,7 +14,6 @@ import com.android.tonight8.model.common.Org;
 import com.android.tonight8.model.common.Question;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.organization.OrgQuestionModel;
-import com.android.tonight8.storage.org.OrgStorage;
 import com.android.tonight8.view.xlistview.XListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -131,10 +130,10 @@ public class UserFeedbackActivity extends BaseActivity {
 
 			list.add(model);
 		}
-		OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123);
-		list = OrgStorage.getOrgQuestionController().selectData(123, 0,
-				current, ITEM_COUNT * current);
-
+		// OrgStorage.getOrgQuestionController().saveOrUpdateData(list, 123);
+		// list = OrgStorage.getOrgQuestionController().selectData(123, 0,
+		// current, ITEM_COUNT * current);
+		list = new ArrayList<OrgQuestionModel>();
 		listAdapter = new UserFeedbackAdapter(mContext, list);
 		lv_only_list.setAdapter(listAdapter);
 

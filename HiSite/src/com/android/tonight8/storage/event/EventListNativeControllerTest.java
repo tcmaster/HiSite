@@ -1,6 +1,6 @@
 package com.android.tonight8.storage.event;
 
-
+//数据库操作示例
 public class EventListNativeControllerTest {
 	// public void insertData(final List<EventList> models) {
 	// final DaoSession daoSession = GreenDaoUtils.getDaoSession();

@@ -29,7 +29,6 @@ import com.android.tonight8.activity.org.OrgMessageListActivity;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.createevent.PostEventsGridAdapter;
 import com.android.tonight8.base.BaseFragment;
-import com.android.tonight8.storage.org.OrgLoginNativeController;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -153,8 +152,8 @@ public class PostEventMenuFragment extends BaseFragment {
 	}
 
 	private void initData() {
-		OrgLoginNativeController orgLogin = new OrgLoginNativeController(
-				getActivity());
+		// OrgLoginNativeController orgLogin = new OrgLoginNativeController(
+		// getActivity());
 		// tv_shop_id.setText(orgLogin.getOrgLoginInfo());
 		tv_shop_id.setText("15210162168");
 		tv_shopname.setText("可乐屏新一代餐饮系统");

@@ -11,8 +11,6 @@ import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.org.OrgIOController;
 import com.android.tonight8.model.organization.OrgMessageModel;
-import com.android.tonight8.storage.org.OrgLoginNativeController;
-import com.android.tonight8.storage.org.OrgMessageNativeController;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -96,22 +94,25 @@ public class OrgMessageListActivity extends BaseActivity {
 	}
 
 	private void initData() {
-		OrgMessageNativeController orgMessage=new OrgMessageNativeController();
-		orgMessage.saveOrUpdateData(null);
+		// OrgMessageNativeController orgMessage=new
+		// OrgMessageNativeController();
+		// orgMessage.saveOrUpdateData(null);
 		lv_only_list.setXListViewListener(new IXListViewListener() {// 设置上拉下拉事件
 
-			@Override
-			public void onRefresh() {
-				current = 0;// 回归0页
-				lv_only_list.setPullLoadEnable(true);
-				OrgIOController.OrgMessageListRead(handler, orgId, REFRESH, ITEM_COUNT, current * ITEM_COUNT);
-			}
+					@Override
+					public void onRefresh() {
+						current = 0;// 回归0页
+						lv_only_list.setPullLoadEnable(true);
+						OrgIOController.OrgMessageListRead(handler, orgId,
+								REFRESH, ITEM_COUNT, current * ITEM_COUNT);
+					}
 
-			@Override
-			public void onLoadMore() {
-				current++;
-				OrgIOController.OrgMessageListRead(handler, orgId, LOAD_MORE, ITEM_COUNT, current * ITEM_COUNT);
-			}
-		});
+					@Override
+					public void onLoadMore() {
+						current++;
+						OrgIOController.OrgMessageListRead(handler, orgId,
+								LOAD_MORE, ITEM_COUNT, current * ITEM_COUNT);
+					}
+				});
 	}
 }

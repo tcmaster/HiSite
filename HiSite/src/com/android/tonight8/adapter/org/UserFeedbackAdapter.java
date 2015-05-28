@@ -1,5 +1,6 @@
 package com.android.tonight8.adapter.org;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -15,7 +16,6 @@ import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.organization.OrgQuestionModel;
-import com.android.tonight8.storage.org.OrgStorage;
 import com.android.tonight8.utils.DialogUtils;
 
 /**
@@ -35,7 +35,7 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 
 		@Override
 		public void onClick(View arg0) {
-			TextView tv = (TextView)arg0;
+			TextView tv = (TextView) arg0;
 			Integer pos = (Integer) tv.getTag();
 			// mValues.get(pos).getQuestion().getId();
 			// mValues.get(pos).getQuestion().getContent();
@@ -69,8 +69,7 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 		ListView lv_org_quesition_reply = ViewHolder.get(convertView,
 				R.id.lv_org_quesition_reply);
 		OrgQuestionModel model = mValues.get(position);
-		List<OrgQuestionModel> list2 = OrgStorage.getOrgQuestionController()
-				.selectData(123, model.getQuestion().getToId(), 0, 0);
+		List<OrgQuestionModel> list2 = new ArrayList<OrgQuestionModel>();
 		UserFeedbackAdapter listAdapter = new UserFeedbackAdapter(mContext,
 				list2);
 		lv_org_quesition_reply.setAdapter(listAdapter);

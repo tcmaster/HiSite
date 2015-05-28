@@ -14,7 +14,6 @@ import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.model.common.Regional;
-import com.android.tonight8.storage.other.RegionalStorage;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 
@@ -37,16 +36,19 @@ public class CommonIOController {
 	public static void saveRegional(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, REGIONAL_URL);
-		NetRequest.doGetRequest(params, new RequestResult<RegionalNetEntity>(RegionalNetEntity.class,handler) {
+		NetRequest.doGetRequest(params, new RequestResult<RegionalNetEntity>(
+				RegionalNetEntity.class, handler) {
 
 			@Override
-			public void getData(NetEntityBase base, RegionalNetEntity t,Handler handler) {
+			public void getData(NetEntityBase base, RegionalNetEntity t,
+					Handler handler) {
 				LogUtils.v("getData" + "*************************************");
-				LogUtils.v(Thread.currentThread().getName() + "*************************************");
+				LogUtils.v(Thread.currentThread().getName()
+						+ "*************************************");
 				if (t != null) {
 					List<Regional> data = t.getCommon_regional().getRegional();
 					// 数据库存储逻辑
-					RegionalStorage.getRegionalNativeController().insertData(data);
+					// RegionalStorage.getRegionalNativeController().insertData(data);
 				} else {
 				}
 

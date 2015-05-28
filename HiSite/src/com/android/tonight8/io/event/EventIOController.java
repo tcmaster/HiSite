@@ -16,7 +16,6 @@ import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.model.event.EventConsultModel;
-import com.android.tonight8.storage.event.EventStorage;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 
@@ -51,14 +50,14 @@ public class EventIOController {
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t, Handler handler) {
 				LogUtils.v("the t is " + t);
-				EventStorage.getEventListNativeController().insertData(
-						t.getEvent_publish_events());
-				HandlerConstants.sendMessage(
-						handler,
-						EventStorage.getEventListNativeController().selectData(
-								attachments[1], attachments[2]),
-						HandlerConstants.Event.MAINPAGE_LIST,
-						HandlerConstants.RESULT_OK, attachments[0]);
+				// EventStorage.getEventListNativeController().insertData(
+				// t.getEvent_publish_events());
+				// HandlerConstants.sendMessage(
+				// handler,
+				// //EventStorage.getEventListNativeController().selectData(
+				// // attachments[1], attachments[2]),
+				// HandlerConstants.Event.MAINPAGE_LIST,
+				// HandlerConstants.RESULT_OK, attachments[0]);
 			}
 
 			@Override
