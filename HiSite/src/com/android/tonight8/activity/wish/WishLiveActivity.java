@@ -23,6 +23,7 @@ import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.fragment.wish.WishSponsorFragment;
 import com.android.tonight8.fragment.wish.WishTalkFragment;
 import com.android.tonight8.function.CirculateFunction;
+import com.android.tonight8.model.wish.WishDetailModel;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.SharedUtils.ShareThirdEntity;
 import com.android.tonight8.view.PointLinearlayout;
@@ -52,6 +53,8 @@ public class WishLiveActivity extends BaseActivity implements
 	private FragmentManager fm;
 	private FragmentTransaction ft;
 	private BaseFragment[] baseFragments;
+	/** 心愿详情 */
+	private WishDetailModel wishDetailModel;
 
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
 		int radioButtonId = arg0.getCheckedRadioButtonId();

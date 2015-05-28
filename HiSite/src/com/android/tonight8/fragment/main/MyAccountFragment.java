@@ -1,5 +1,6 @@
 package com.android.tonight8.fragment.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -143,12 +144,18 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		} else if (AccountType == 1) {
 
 		} else if (AccountType == 2) {
-			layout_my_wish.setVisibility(View.GONE);
+			// layout_my_wish.setVisibility(View.GONE);
 		}
 	}
 
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+
+	}
+
 	@OnClick({ R.id.rl_head, R.id.layout_my_wish, R.id.tv_message_center,
-			R.id.layout_my_wish })
+			R.id.layout_my_event })
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.rl_head:

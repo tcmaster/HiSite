@@ -11,14 +11,15 @@
         android:layout_marginLeft="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher" />
-	<TextView 
-	    android:id="@+id/tv_location"
-	    style="@style/wrap"
-	    android:text="@string/win"
-        android:textColor="@color/white"
-        android:layout_toRightOf="@id/iv_left_btn"
+
+    <TextView
+        android:id="@+id/tv_location"
+        style="@style/wrap"
         android:layout_centerVertical="true"
-        />
+        android:layout_toRightOf="@id/iv_left_btn"
+        android:text="@string/win"
+        android:textColor="@color/white" />
+
     <RadioGroup
         android:id="@+id/rg_center"
         style="@style/wrap"
@@ -30,21 +31,27 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/rb_main_top_selector_left"
             android:button="@null"
             android:gravity="center"
+            android:checked="true"
+            android:padding="@dimen/common_margin_small"
             android:text="@string/win"
-            android:textColor="@color/white" />
+            android:textColor="@drawable/setting_text_selector" />
 
         <RadioButton
             android:id="@+id/rb_right"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/rb_main_top_selector_right"
             android:button="@null"
             android:gravity="center"
+            android:padding="@dimen/common_margin_small"
             android:text="@string/win"
-            android:textColor="@color/white" />
+            android:textColor="@drawable/setting_text_selector" />
     </RadioGroup>
+
     <ImageView
         android:id="@+id/iv_right_btn"
         style="@style/actionBar_btn_sty"
@@ -53,4 +60,5 @@
         android:layout_marginRight="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher" />
+
 </RelativeLayout>

@@ -23,7 +23,12 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color>
     <!-- 50%透明黑色 -->
-    <color name="black_half_transparent">#7f000000</color>
+    <color name="black_half_transparent">#66000000</color>
     <!-- 70%透明黑色 -->
     <color name="black_seven_transparent">#b2000000</color>
+    <!-- 40%透明紫色 -->
+    <color name="black_seven_purple">#66aa63c2</color>
+    <!-- （标题）灰色 -->
+    <color name="title_gray">#9b9b9b</color>
+
 </resources>

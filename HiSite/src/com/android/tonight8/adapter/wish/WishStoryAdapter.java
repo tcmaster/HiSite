@@ -14,18 +14,18 @@ import com.android.tonight8.activity.wish.MakeWishActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.wish.WishStroyModel;
+import com.android.tonight8.model.wish.WishListModel;
 import com.android.tonight8.utils.DialogUtils;
 
 /**
  * @author lz 心愿故事数据适配器
  * 
  */
-public class WishStoryAdapter extends BaseListAdapter<WishStroyModel> implements
+public class WishStoryAdapter extends BaseListAdapter<WishListModel> implements
 		OnClickListener {
 	private MakeWishActivity mActivity;
 
-	public WishStoryAdapter(Context context, List<WishStroyModel> values) {
+	public WishStoryAdapter(Context context, List<WishListModel> values) {
 		super(context, values);
 		mActivity = (MakeWishActivity) mContext;
 	}
@@ -46,7 +46,7 @@ public class WishStoryAdapter extends BaseListAdapter<WishStroyModel> implements
 		tv_addwishpic.setOnClickListener(this);
 		tv_deletewishpic.setOnClickListener(this);
 		iv_wish_storypic.setOnClickListener(this);
-		bmUtils.display(iv_wish_storypic, mValues.get(position).wishPic);
+//		bmUtils.display(iv_wish_storypic, mValues.get(position).getWish().);
 		return convertView;
 	}
 

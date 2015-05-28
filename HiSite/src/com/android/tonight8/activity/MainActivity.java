@@ -35,10 +35,7 @@ public class MainActivity extends BaseActivity implements
 
 	/** 界面下方2个按钮组 */
 	private RadioGroup rg_mian;
-	@ViewInject(R.id.rb_main_right)
 	private RadioButton rb_main_right;
-	@ViewInject(R.id.rb_main_left)
-	private RadioButton rb_main_left;
 	/** 本界面的popupwindow */
 	private RegionalSortPopupWindow window;
 	/** "我"的界面 */
@@ -82,14 +79,7 @@ public class MainActivity extends BaseActivity implements
 		/* 处理被单击的按钮 */
 		RadioButton mRadioButton = (RadioButton) arg0.findViewById(arg1);
 		switchid = Integer.parseInt(mRadioButton.getTag().toString());
-
-		if (arg0.getId() == R.id.rg_center) {
-			if (rb_main_right.isChecked()) {
-				WishMainFragment wFragment = (WishMainFragment) fragments[1];
-				wFragment.doFragmentShow(switchid);
-			}
-
-		} else if (arg0.getId() == R.id.radio_group) {
+		if (arg0.getId() == R.id.radio_group) {
 			doFragmentShow(switchid);
 		}
 
@@ -133,7 +123,7 @@ public class MainActivity extends BaseActivity implements
 		headView = LayoutInflater.from(this).inflate(R.layout.actionbar_main,
 				null);
 		rg_mian = (RadioGroup) rightView.findViewById(R.id.radio_group);
-		rg_center = (RadioGroup) headView.findViewById(R.id.rg_center);
+
 		sv_main.initView(leftView, rightView);
 		// 界面初始化工作
 		sv_main.post(new Runnable() {
@@ -146,7 +136,37 @@ public class MainActivity extends BaseActivity implements
 	}
 
 	private void initActionBar() {
+		rb_main_right = (RadioButton) rightView
+				.findViewById(R.id.rb_main_right);
 		iv_left_btn = (ImageView) rightView.findViewById(R.id.iv_left_btn);
+		rb_left = (RadioButton) rightView.findViewById(R.id.rb_left);
+		rb_right = (RadioButton) rightView.findViewById(R.id.rb_right);
+		rg_center = (RadioGroup) rightView.findViewById(R.id.rg_center);
+		rg_center.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+				switch (checkedId) {
+				case R.id.rb_left:
+					if (rb_main_right.isChecked()) {
+						WishMainFragment wFragment = (WishMainFragment) fragments[1];
+						wFragment.doFragmentShow(0);
+					}
+					break;
+				case R.id.rb_right:
+					if (rb_main_right.isChecked()) {
+						WishMainFragment wFragment = (WishMainFragment) fragments[1];
+						wFragment.doFragmentShow(1);
+					}
+					break;
+
+				default:
+					break;
+				}
+
+			}
+		});
 		iv_left_btn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -175,7 +195,6 @@ public class MainActivity extends BaseActivity implements
 		/* fragment管理器初始化 */
 		/* 实始化下方单选按钮组 */
 		rg_mian.setOnCheckedChangeListener(this);
-		rg_center.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
 	}
 
@@ -197,12 +216,25 @@ public class MainActivity extends BaseActivity implements
 	 * @date:2015-2-6
 	 */
 	private void doFragmentShow(int which) {
+		if (which == 0) {
+			rb_left.setText("今日");
+			rb_right.setText("预告");
+			((RadioButton) rg_center.getChildAt(0)).setChecked(true);
+		} else {
+			rb_left.setText("未实现");
+			rb_right.setText("已实现");
+			((RadioButton) rg_center.getChildAt(0)).setChecked(true);
+		}
+
 		fragmentTransaction = fragmentManager.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
 			if (which == i) {
+
 				fragmentTransaction.show(fragments[i]);
-			} else
+			} else {
+
 				fragmentTransaction.hide(fragments[i]);
+			}
 		}
 		fragmentTransaction.commit();
 	}

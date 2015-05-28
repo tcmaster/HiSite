@@ -95,7 +95,7 @@
                 style="@style/wrap"
                 android:layout_gravity="center_horizontal"
                 android:padding="@dimen/common_margin_left"
-                android:text="心愿故事" />
+                android:text="心愿清单" />
 
             <com.android.tonight8.view.ListViewForScrollView
                 android:id="@+id/lv_wish_story"

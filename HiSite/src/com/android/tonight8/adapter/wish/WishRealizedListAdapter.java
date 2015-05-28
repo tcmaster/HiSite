@@ -11,18 +11,17 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.model.wish.WishListModel;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.CircleImageView;
-import com.android.tonight8.view.MyProgressBar;
 
 /**
- * @author lz愿望列表
+ * @author lz已经愿望列表
  * 
  */
-public class WishListAdapter extends BaseListAdapter<String> {
+public class WishRealizedListAdapter extends BaseListAdapter<WishListModel> {
 
-	public WishListAdapter(Context context, List<String> values) {
+	public WishRealizedListAdapter(Context context, List<WishListModel> values) {
 		super(context, values);
 
 	}
@@ -30,31 +29,29 @@ public class WishListAdapter extends BaseListAdapter<String> {
 	@Override
 	protected View getItemView(View convertView, int position) {
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.adapter_wish_list, null);
+			convertView = mInflater.inflate(
+					R.layout.adapter_realized_wish_item, null);
 		}
-		ImageView iv_wishpic = ViewHolder.get(convertView, R.id.iv_wishpic);
-		TextView tv_wishtitle = ViewHolder.get(convertView, R.id.tv_wishtitle);
-		TextView tv_wishcontent = ViewHolder.get(convertView,
-				R.id.tv_wishcontent);
-		CircleImageView iv_wish_userpic = ViewHolder.get(convertView,
-				R.id.civ_wish_userpic);
+		ImageView iv_wishpic = ViewHolder.get(convertView,
+				R.id.iv_realized_wishpic);
 		TextView tv_wish_username = ViewHolder.get(convertView,
-				R.id.tv_wish_username);
+				R.id.tv_realized_wishusername);
 		TextView tv_wish_supportcount = ViewHolder.get(convertView,
-				R.id.tv_wish_supportcount);
-		MyProgressBar pb_wish_progress = ViewHolder.get(convertView,
-				R.id.pb_wish_progress);
-
-		tv_wishtitle.setText("标题测试");
-		tv_wishcontent.setText("内容测试:各种好各种好各种好");
-		tv_wish_username.setText("用户姓名测试");
-		tv_wish_supportcount.setText("1234");
-		Tonight8App.getSelf().bitmapUtils.display(iv_wishpic,
+				R.id.tv_realized_wishsupportcount);
+		TextView tv_realized_wishtitle = ViewHolder.get(convertView,
+				R.id.tv_realized_wishtitle);
+		TextView tv_realized_wishcontent = ViewHolder.get(convertView,
+				R.id.tv_realized_wishcontent);
+		CircleImageView wish_userpic = ViewHolder.get(convertView,
+				R.id.civ_realized_wish_userpic);
+		WishListModel wishListModel = mValues.get(position);
+		tv_realized_wishtitle.setText(wishListModel.getWish().getName());
+		tv_realized_wishcontent.setText(wishListModel.getWish().getDescribe());
+		tv_wish_username.setText(wishListModel.getUser().getName());
+		tv_wish_supportcount.setText(wishListModel.getWish().getSupportCount().toString());
+		bmUtils.display(iv_wishpic,wishListModel.getPopPic().getUrl());
+		bmUtils.display(wish_userpic,
 				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		Tonight8App.getSelf().bitmapUtils.display(iv_wish_userpic,
-				"http://www.jpcai.com/upfiles/photo/200606/20060624181709800.jpg");
-		pb_wish_progress.setMax(100);
-		pb_wish_progress.setProgress(20);
 		tv_wish_supportcount.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -78,7 +75,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 	 * 
 	 * @param models
 	 */
-	public void addData(List<String> models) {
+	public void addData(List<WishListModel> models) {
 		mValues.addAll(models);
 		notifyDataSetChanged();
 	}
@@ -88,7 +85,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 	 * 
 	 * @param models
 	 */
-	public void initData(List<String> models) {
+	public void initData(List<WishListModel> models) {
 		mValues.clear();
 		mValues.addAll(models);
 		notifyDataSetChanged();

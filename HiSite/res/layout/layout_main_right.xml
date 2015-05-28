@@ -35,8 +35,6 @@
                 android:tag="0"
                 android:text="@string/main_left_tab" />
 
-            <View style="@style/line_full_vertical" />
-
             <RadioButton
                 android:id="@+id/rb_main_right"
                 style="@style/main_tab_bottom"
@@ -49,9 +47,9 @@
 
         <ImageButton
             android:id="@+id/ib_main_center"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="@dimen/topOrbottomPadding"
             android:background="@null"
             android:contentDescription="@string/app_name"

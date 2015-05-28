@@ -7,8 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_wish_item_head"
-        style="@style/match_width"
-        android:layout_height="wrap_content" >
+        style="@style/match_width" >
 
         <ImageView
             android:id="@+id/iv_wishpic"
@@ -19,7 +18,7 @@
             android:id="@+id/tv_wishtitle"
             style="@style/match_width"
             android:layout_alignParentTop="true"
-            android:background="@color/black_half_transparent"
+            android:background="@color/black_seven_purple"
             android:gravity="center_horizontal"
             android:paddingBottom="@dimen/common_margin_small"
             android:paddingTop="@dimen/common_margin_small"
@@ -37,54 +36,83 @@
             android:textColor="@color/white" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_wish_item_root"
         style="@style/match_width"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:background="@color/white"
-        android:padding="@dimen/common_margin_left" >
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_small" >
 
         <com.android.tonight8.view.CircleImageView
             android:id="@+id/civ_wish_userpic"
             style="@style/wrap"
-            android:layout_width="@dimen/popGoodsUserPhotoWidth"
-            android:layout_height="@dimen/popGoodsUserPhotoWidth"
+            android:layout_width="@dimen/wishUserPhotoWidth"
+            android:layout_height="@dimen/wishUserPhotoWidth"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_wish_username"
             style="@style/wrap"
-            android:layout_toRightOf="@+id/civ_wish_userpic"
-            android:paddingLeft="@dimen/common_margin_small"
-            android:textColor="@color/black" />
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/common_margin_small"
+            android:text="用户名"
+            android:textColor="@color/black_seven_purple" />
+
+        <View
+            style="@style/line_full_vertical"
+            android:layout_width="2dp"
+            android:layout_margin="@dimen/common_margin_small"
+            android:background="@color/black_seven_purple" />
 
         <TextView
             android:id="@+id/tv_wish_supportcount"
             style="@style/wrap"
-            android:layout_alignBottom="@+id/civ_wish_userpic"
-            android:layout_toRightOf="@+id/civ_wish_userpic"
+            android:layout_gravity="center_vertical"
             android:drawableLeft="@drawable/ic_launcher"
             android:drawablePadding="@dimen/common_margin_left"
+            android:gravity="center_vertical"
             android:paddingLeft="@dimen/common_margin_small"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/wrap"
+            android:layout_weight="1" />
+
+        <TextView
+            style="@style/wrap"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/common_margin_small"
+            android:text="实现进度"
             android:textColor="@color/black" />
 
         <com.android.tonight8.view.MyProgressBar
             android:id="@+id/pb_wish_progress"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/tv_wish_supportcount"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/common_margin_left"
-            android_custom:roundColor="#ff6b6c"
-            android_custom:roundProgressColor="@color/red"
+            android:gravity="right"
+            android_custom:roundColor="@color/white_gray"
+            android_custom:roundProgressColor="@color/black_seven_purple"
             android_custom:roundWidth="4dip"
-            android_custom:textColorRound="@color/red"
+            android_custom:textColorRound="@color/black_seven_purple"
             android_custom:textIsDisplayable="true"
             android_custom:textSizeRound="14sp" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <View
         style="@style/line_full"
-        android:layout_marginBottom="@dimen/common_margin_left" />
+        android:background="@color/half_black" />
+
+    <View
+        style="@style/line_full"
+        android:layout_height="@dimen/common_margin_small"
+        android:background="@color/white_gray" />
+
+    <View
+        style="@style/line_full"
+        android:background="@color/half_black" />
 
 </LinearLayout>

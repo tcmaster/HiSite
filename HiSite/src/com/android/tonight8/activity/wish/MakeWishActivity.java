@@ -17,7 +17,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishStoryAdapter;
 import com.android.tonight8.adapter.wish.WishThemeGridAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.wish.WishStroyModel;
+import com.android.tonight8.model.wish.WishListModel;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.view.GridViewForScrollView;
 import com.android.tonight8.view.ListViewForScrollView;
@@ -36,7 +36,7 @@ public class MakeWishActivity extends BaseActivity {
 	private WishStoryAdapter wishStoryAdapter;
 	private WishThemeGridAdapter wishThemeGridAdapter;
 	private List<String> themeList;
-	private List<WishStroyModel> storyList;
+	private List<WishListModel> storyList;
 	/** 故事板点击的位置 */
 	private int clickPosition;
 	public static final int UPDATA_DATA = 0;
@@ -51,8 +51,8 @@ public class MakeWishActivity extends BaseActivity {
 		setContentView(R.layout.activity_make_wish);
 		super.onCreate(savedInstanceState);
 
-		storyList = new ArrayList<WishStroyModel>();
-		WishStroyModel bean = new WishStroyModel();
+		storyList = new ArrayList<WishListModel>();
+		WishListModel bean = new WishListModel();
 		storyList.add(bean);
 		wishStoryAdapter = new WishStoryAdapter(mContext, storyList);
 		lv_wish_story.setAdapter(wishStoryAdapter);
@@ -90,8 +90,8 @@ public class MakeWishActivity extends BaseActivity {
 				String tempPicPath = AlbumAndCamera.getImagePath(
 						AlbumAndCamera.getTempPath(), bitmap);
 
-				WishStroyModel wishStroyModel = storyList.get(clickPosition);
-				wishStroyModel.setWishPic(tempPicPath);
+				WishListModel wishStroyModel = storyList.get(clickPosition);
+//				wishStroyModel.setWishPic(tempPicPath);
 				updateClickPosition(clickPosition, MakeWishActivity.ADD_DATA,
 						wishStroyModel);
 			} catch (FileNotFoundException e) {
@@ -170,11 +170,11 @@ public class MakeWishActivity extends BaseActivity {
 	 * 
 	 */
 	public void updateClickPosition(int position, int type,
-			WishStroyModel wishStroyModel) {
+			WishListModel wishStroyModel) {
 		this.clickPosition = position;
 		if (type == ADD_DATA) {
 			if (wishStroyModel == null) {
-				wishStroyModel = new WishStroyModel();
+				wishStroyModel = new WishListModel();
 				storyList.add(position + 1, wishStroyModel);
 			} else {
 				storyList.set(position, wishStroyModel);

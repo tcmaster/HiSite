@@ -31,7 +31,8 @@ public class OrgEventListActivity extends BaseActivity {
 
 		@Override
 		public void onClick(View arg0) {
-			startActivityForAnima(new Intent(OrgEventListActivity.this, UserAgreementActivity.class), null);
+			startActivityForAnima(new Intent(OrgEventListActivity.this,
+					UserAgreementActivity.class), null);
 		}
 	};
 
@@ -53,8 +54,9 @@ public class OrgEventListActivity extends BaseActivity {
 
 	@OnItemClick(R.id.lv_only_list)
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		startActivityForAnima(new Intent(OrgEventListActivity.this,
-				EventManageActivity.class), null);
+		Intent intent = new Intent(OrgEventListActivity.this,
+				EventManageActivity.class);
+		startActivityForAnima(intent, null);
 
 	}
 }

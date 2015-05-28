@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/common_margin_small"
+    android:background="@drawable/shape_radius_wish_item"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/rl_wish_item_head"
+        style="@style/match_width"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_wishdate"
+            style="@style/match_width"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/common_margin_small"
+            android:paddingTop="@dimen/common_margin_small"
+            android:text="2015-02-07 13:09"
+            android:textColor="@color/half_black" />
+
+        <ImageView
+            android:id="@+id/iv_realized_wishpic"
+            style="@style/wrap"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_realized_wishtitle"
+        style="@style/wrap"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/common_margin_small"
+        android:paddingRight="@dimen/common_margin_small"
+        android:text="心愿标题"
+        android:textColor="@color/black"
+        android:textSize="@dimen/smallTextSize" />
+
+    <TextView
+        android:id="@+id/tv_realized_wishcontent"
+        style="@style/wrap"
+        android:layout_gravity="center"
+        android:padding="@dimen/common_margin_small"
+        android:text="心愿内容"
+        android:textSize="@dimen/more_smallTextSize" />
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/common_margin_small"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <com.android.tonight8.view.CircleImageView
+            android:id="@+id/civ_realized_wish_userpic"
+            style="@style/wrap"
+            android:layout_width="@dimen/wishUserPhotoWidth"
+            android:layout_height="@dimen/wishUserPhotoWidth"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_realized_wishusername"
+            style="@style/wrap"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/common_margin_small"
+            android:text="用户名"
+            android:textColor="@color/black_seven_purple"
+            android:textSize="@dimen/more_smallTextSize" />
+
+        <View
+            style="@style/line_full_vertical"
+            android:layout_width="2dp"
+            android:layout_margin="@dimen/common_margin_small"
+            android:background="@color/black_seven_purple" />
+
+        <TextView
+            android:id="@+id/tv_realized_wishsupportcount"
+            style="@style/wrap"
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:drawablePadding="@dimen/common_margin_small"
+            android:gravity="center_vertical"
+            android:text="1234"
+            android:textColor="@color/black"
+            android:textSize="@dimen/more_smallTextSize" />
+    </LinearLayout>
+
+</LinearLayout>

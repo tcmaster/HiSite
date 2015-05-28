@@ -31,7 +31,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class WishListUnrealizedFragment extends BaseFragment {
 	private WishListAdapter wishListAdapter;
 	private List<String> list;
-	@ViewInject(R.id.lv_wish)
+	@ViewInject(R.id.lv_only_list)
 	private XListView lv_wish;
 	private View rootView;
 	private BaseActivity mActivity;
@@ -121,7 +121,7 @@ public class WishListUnrealizedFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.activity_wish_list, container,
+		rootView = inflater.inflate(R.layout.activity_only_list, container,
 				false);
 		ViewUtils.inject(this, rootView);
 		list = new ArrayList<String>();

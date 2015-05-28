@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.android.tonight8.view.xlistview.XListView
-        android:id="@+id/lv_wish"
+    <GridView
+        android:id="@+id/gv_wish"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="@color/white"
@@ -13,6 +13,10 @@
         android:dividerHeight="0dp"
         android:drawSelectorOnTop="false"
         android:fastScrollEnabled="false"
-        android:listSelector="@color/transparent" />
+        android:horizontalSpacing="@dimen/common_margin_small"
+        android:listSelector="@color/transparent"
+        android:numColumns="2"
+        android:padding="@dimen/common_margin_small"
+        android:verticalSpacing="@dimen/common_margin_small" />
 
 </LinearLayout>
