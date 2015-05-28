@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:background="@color/white"
-    android:orientation="vertical" >
+    android:background="@color/white" >
+
+    <LinearLayout
+        style="@style/match"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <FrameLayout style="@style/match_width" >
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rb_main_left"
+                    style="@style/main_tab_bottom"
+                    android:background="@color/half_white"
+                    android:drawableTop="@drawable/main_home"
+                    android:paddingTop="5dip"
+                    android:tag="0"
+                    android:text="@string/main_left_tab" />
+
+                <RadioButton
+                    android:id="@+id/rb_main_right"
+                    style="@style/main_tab_bottom"
+                    android:background="@color/half_white"
+                    android:drawableTop="@drawable/main_myaccount"
+                    android:paddingTop="5dp"
+                    android:tag="1"
+                    android:text="@string/main_right_tab" />
+            </RadioGroup>
+
+            <ImageButton
+                android:id="@+id/ib_main_center"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/topOrbottomPadding"
+                android:background="@null"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/circle_center" />
+        </FrameLayout>
+    </LinearLayout>
 
     <include
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        layout="@layout/actionbar_main" />
+        layout="@layout/actionbar_main"
+        android:layout_gravity="top" />
 
-    <FrameLayout
-        android:id="@+id/tabcontent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <FrameLayout style="@style/match_width" >
-
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/transparent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/rb_main_left"
-                style="@style/main_tab_bottom"
-                android:background="@color/half_white"
-                android:drawableTop="@drawable/main_home"
-                android:paddingTop="5dip"
-                android:tag="0"
-                android:text="@string/main_left_tab" />
-
-            <RadioButton
-                android:id="@+id/rb_main_right"
-                style="@style/main_tab_bottom"
-                android:background="@color/half_white"
-                android:drawableTop="@drawable/main_myaccount"
-                android:paddingTop="5dp"
-                android:tag="1"
-                android:text="@string/main_right_tab" />
-        </RadioGroup>
-
-        <ImageButton
-            android:id="@+id/ib_main_center"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/topOrbottomPadding"
-            android:background="@null"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/circle_center" />
-    </FrameLayout>
-
-</LinearLayout>
+</FrameLayout>

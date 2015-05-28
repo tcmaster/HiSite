@@ -87,8 +87,7 @@ public class MainActivity extends BaseActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_main);
-		super.onCreate(savedInstanceState);
+		initCreateOverLay(savedInstanceState, R.layout.activity_main);
 		initMainInterface();
 		initActionBar();
 		final String userName = "liuzhao";

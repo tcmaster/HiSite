@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:background="@color/red_sys" >
+    android:background="@color/black_half_transparent"
+    >
 
     <ImageView
         android:id="@+id/iv_left_btn"

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,6 +17,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
@@ -86,9 +88,18 @@ public class BaseActivity extends FragmentActivity {
 		mContext = this;
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	// 在oncreate的第一行必须调用
+	protected void initCreateOverLay(Bundle savedInstanceState, int res) {
+		// 悬浮型actionBar
 		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+		setContentView(res);
+		ViewUtils.inject(this);
+	}
+
+	protected void initCreateNomal(Bundle savedInstanceState, int res) {
+		super.onCreate(savedInstanceState);
+		setContentView(res);
 		ViewUtils.inject(this);
 	}
 
@@ -163,11 +174,10 @@ public class BaseActivity extends FragmentActivity {
 	private void useCustomerActionBar() {
 		if (mActionBar == null) {
 			mActionBar = getActionBar();
-			mActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP
-					| ActionBar.DISPLAY_SHOW_TITLE
-					| ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-			mActionBar.setCustomView(R.layout.layout_actionbar);
 			mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			mActionBar.setBackgroundDrawable(new ColorDrawable(getResources()
+					.getColor(R.color.black_half_transparent)));
+			mActionBar.setCustomView(R.layout.layout_actionbar);
 			View view = mActionBar.getCustomView();
 			tv_left = (TextView) view.findViewById(R.id.leftText);
 			tv_right = (TextView) view.findViewById(R.id.rightText);

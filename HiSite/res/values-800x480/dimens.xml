@@ -12,7 +12,7 @@
     <!-- 活动开奖 - 推荐活动 -海报奖品图片宽 -->
     <dimen name="popgoodsImgwidth">640px</dimen>
     <!-- 活动开奖 - 推荐活动 -海报奖品图片高 -->
-    <dimen name="popgoodsImgHeight">225px</dimen>
+    <dimen name="popgoodsImgHeight">325px</dimen>
     <!-- 活动开奖列表，海报奖品缩略图片宽 -->
     <dimen name="popgoodsImgThumbWidth">193px</dimen>
     <!-- 活动开奖列表，海报奖品缩略图片高 -->

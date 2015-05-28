@@ -10,7 +10,16 @@ import com.android.tonight8.model.event.EventDetailModel;
  * @2015-3-7
  * @Tonight8
  */
-public class EventDetailNetEntity extends NetEntityBase{
-	/**活动详情*/
+public class EventDetailNetEntity extends NetEntityBase {
+	/** 活动详情 */
 	EventDetailModel eventPublishDetail;
+
+	public EventDetailModel getEventPublishDetail() {
+		return eventPublishDetail;
+	}
+
+	public void setEventPublishDetail(EventDetailModel eventPublishDetail) {
+		this.eventPublishDetail = eventPublishDetail;
+	}
+
 }

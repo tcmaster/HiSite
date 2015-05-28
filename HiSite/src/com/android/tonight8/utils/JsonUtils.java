@@ -23,6 +23,16 @@ public class JsonUtils {
 
 	public static String newJsonkey = "";
 	private static String key1 = "";//
+	private static List<String> classList;// 实体类列表
+	private static String[] imgs = {
+			"http://img4.imgtn.bdimg.com/it/u=2352711400,4289515900&fm=11&gp=0.jpg",
+			"http://img4.imgtn.bdimg.com/it/u=3923171974,2721923014&fm=21&gp=0.jpg",
+			"http://img0.imgtn.bdimg.com/it/u=3934165751,994592123&fm=21&gp=0.jpg",
+			"http://img4.imgtn.bdimg.com/it/u=3027043412,2228507304&fm=21&gp=0.jpg",
+			"http://img2.imgtn.bdimg.com/it/u=3255667149,1938179631&fm=21&gp=0.jpg",
+			"http://img1.gamersky.com/image2013/05/20130518u_6/gamersky_24small_48_20135181047D16.jpg",
+			"http://image.tianjimedia.com/uploadImages/2013/081/77E8DL96VPZ4_0000784667.jpg",
+			"http://img4.imgtn.bdimg.com/it/u=1195536478,3585633064&fm=21&gp=0.jpg" };
 
 	public static <T> T parseJsonStr(String jsonStr, Class<T> clazz) {
 		T t = JSON.parseObject(jsonStr, clazz);
@@ -108,8 +118,6 @@ public class JsonUtils {
 		return tempJsonStr;
 	}
 
-	private static List<String> classList;// 实体类列表
-
 	public static <T> T getVirualData(Class<T> clazz) {
 		T result = null;
 		try {
@@ -142,7 +150,13 @@ public class JsonUtils {
 							|| name.equals(Float.class.toString())) {
 						field.set(result, 1.0f);
 					} else if (type.toString().equals(String.class.toString())) {
-						field.set(result, "字符串测试");
+						if (field.getName().toLowerCase().contains("url")
+								|| field.getName().toLowerCase()
+										.contains("pic")) {
+							field.set(result,
+									imgs[(int) (Math.random() * imgs.length)]);
+						} else
+							field.set(result, "字符串测试");
 					} else if (name.equals("long")
 							|| name.equals(Long.class.toString())) {
 						field.set(result, 919L);

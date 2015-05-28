@@ -2,8 +2,8 @@
 <!-- 通用actionBar -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:background="@color/red_sys"
-    android:padding="10dp" >
+    android:padding="10dp"
+    >
 
     <LinearLayout
         android:id="@+id/homelayout"

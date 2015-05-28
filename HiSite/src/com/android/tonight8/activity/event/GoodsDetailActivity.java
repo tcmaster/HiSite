@@ -177,8 +177,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_goods_detail);
-		super.onCreate(savedInstanceState);
+		initCreateOverLay(savedInstanceState, R.layout.activity_goods_detail);
 		initHeaderView();
 		initData();
 		for (int i = 0; i < 1000; i++) {
