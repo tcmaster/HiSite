@@ -19,13 +19,13 @@ import com.android.tonight8.dao.entity.WishSponsor;
 import com.android.tonight8.dao.entity.Prize;
 import com.android.tonight8.dao.entity.Goods;
 import com.android.tonight8.dao.entity.PopPic;
-import com.android.tonight8.dao.entity.detailPic;
+import com.android.tonight8.dao.entity.DetailPic;
 import com.android.tonight8.dao.entity.GoodsCategory;
 import com.android.tonight8.dao.entity.CouponProvide;
 import com.android.tonight8.dao.entity.GoodsStandard;
 import com.android.tonight8.dao.entity.GoodsSpecification;
 import com.android.tonight8.dao.entity.GoodsStock;
-import com.android.tonight8.dao.entity.goodsStockItem;
+import com.android.tonight8.dao.entity.GoodsStockItem;
 import com.android.tonight8.dao.entity.GoodsService;
 import com.android.tonight8.dao.entity.Order;
 import com.android.tonight8.dao.entity.Seller;
@@ -77,13 +77,13 @@ import com.android.tonight8.dao.WishSponsorDao;
 import com.android.tonight8.dao.PrizeDao;
 import com.android.tonight8.dao.GoodsDao;
 import com.android.tonight8.dao.PopPicDao;
-import com.android.tonight8.dao.detailPicDao;
+import com.android.tonight8.dao.DetailPicDao;
 import com.android.tonight8.dao.GoodsCategoryDao;
 import com.android.tonight8.dao.CouponProvideDao;
 import com.android.tonight8.dao.GoodsStandardDao;
 import com.android.tonight8.dao.GoodsSpecificationDao;
 import com.android.tonight8.dao.GoodsStockDao;
-import com.android.tonight8.dao.goodsStockItemDao;
+import com.android.tonight8.dao.GoodsStockItemDao;
 import com.android.tonight8.dao.GoodsServiceDao;
 import com.android.tonight8.dao.OrderDao;
 import com.android.tonight8.dao.SellerDao;
@@ -202,13 +202,13 @@ public class DaoSession extends AbstractDaoSession {
     private final PrizeDao prizeDao;
     private final GoodsDao goodsDao;
     private final PopPicDao popPicDao;
-    private final detailPicDao detailPicDao;
+    private final DetailPicDao detailPicDao;
     private final GoodsCategoryDao goodsCategoryDao;
     private final CouponProvideDao couponProvideDao;
     private final GoodsStandardDao goodsStandardDao;
     private final GoodsSpecificationDao goodsSpecificationDao;
     private final GoodsStockDao goodsStockDao;
-    private final goodsStockItemDao goodsStockItemDao;
+    private final GoodsStockItemDao goodsStockItemDao;
     private final GoodsServiceDao goodsServiceDao;
     private final OrderDao orderDao;
     private final SellerDao sellerDao;
@@ -284,7 +284,7 @@ public class DaoSession extends AbstractDaoSession {
         popPicDaoConfig = daoConfigMap.get(PopPicDao.class).clone();
         popPicDaoConfig.initIdentityScope(type);
 
-        detailPicDaoConfig = daoConfigMap.get(detailPicDao.class).clone();
+        detailPicDaoConfig = daoConfigMap.get(DetailPicDao.class).clone();
         detailPicDaoConfig.initIdentityScope(type);
 
         goodsCategoryDaoConfig = daoConfigMap.get(GoodsCategoryDao.class).clone();
@@ -302,7 +302,7 @@ public class DaoSession extends AbstractDaoSession {
         goodsStockDaoConfig = daoConfigMap.get(GoodsStockDao.class).clone();
         goodsStockDaoConfig.initIdentityScope(type);
 
-        goodsStockItemDaoConfig = daoConfigMap.get(goodsStockItemDao.class).clone();
+        goodsStockItemDaoConfig = daoConfigMap.get(GoodsStockItemDao.class).clone();
         goodsStockItemDaoConfig.initIdentityScope(type);
 
         goodsServiceDaoConfig = daoConfigMap.get(GoodsServiceDao.class).clone();
@@ -435,13 +435,13 @@ public class DaoSession extends AbstractDaoSession {
         prizeDao = new PrizeDao(prizeDaoConfig, this);
         goodsDao = new GoodsDao(goodsDaoConfig, this);
         popPicDao = new PopPicDao(popPicDaoConfig, this);
-        detailPicDao = new detailPicDao(detailPicDaoConfig, this);
+        detailPicDao = new DetailPicDao(detailPicDaoConfig, this);
         goodsCategoryDao = new GoodsCategoryDao(goodsCategoryDaoConfig, this);
         couponProvideDao = new CouponProvideDao(couponProvideDaoConfig, this);
         goodsStandardDao = new GoodsStandardDao(goodsStandardDaoConfig, this);
         goodsSpecificationDao = new GoodsSpecificationDao(goodsSpecificationDaoConfig, this);
         goodsStockDao = new GoodsStockDao(goodsStockDaoConfig, this);
-        goodsStockItemDao = new goodsStockItemDao(goodsStockItemDaoConfig, this);
+        goodsStockItemDao = new GoodsStockItemDao(goodsStockItemDaoConfig, this);
         goodsServiceDao = new GoodsServiceDao(goodsServiceDaoConfig, this);
         orderDao = new OrderDao(orderDaoConfig, this);
         sellerDao = new SellerDao(sellerDaoConfig, this);
@@ -493,13 +493,13 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(Prize.class, prizeDao);
         registerDao(Goods.class, goodsDao);
         registerDao(PopPic.class, popPicDao);
-        registerDao(detailPic.class, detailPicDao);
+        registerDao(DetailPic.class, detailPicDao);
         registerDao(GoodsCategory.class, goodsCategoryDao);
         registerDao(CouponProvide.class, couponProvideDao);
         registerDao(GoodsStandard.class, goodsStandardDao);
         registerDao(GoodsSpecification.class, goodsSpecificationDao);
         registerDao(GoodsStock.class, goodsStockDao);
-        registerDao(goodsStockItem.class, goodsStockItemDao);
+        registerDao(GoodsStockItem.class, goodsStockItemDao);
         registerDao(GoodsService.class, goodsServiceDao);
         registerDao(Order.class, orderDao);
         registerDao(Seller.class, sellerDao);
@@ -642,7 +642,7 @@ public class DaoSession extends AbstractDaoSession {
         return popPicDao;
     }
 
-    public detailPicDao getDetailPicDao() {
+    public DetailPicDao getDetailPicDao() {
         return detailPicDao;
     }
 
@@ -666,7 +666,7 @@ public class DaoSession extends AbstractDaoSession {
         return goodsStockDao;
     }
 
-    public goodsStockItemDao getGoodsStockItemDao() {
+    public GoodsStockItemDao getGoodsStockItemDao() {
         return goodsStockItemDao;
     }
 

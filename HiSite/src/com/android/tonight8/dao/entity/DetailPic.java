@@ -4,7 +4,7 @@ package com.android.tonight8.dao.entity;
 /**
  * Entity mapped to table DETAIL_PIC.
  */
-public class detailPic {
+public class DetailPic {
 
     private long id;
     private Integer type;
@@ -13,14 +13,14 @@ public class detailPic {
     private String size;
     private String describe;
 
-    public detailPic() {
+    public DetailPic() {
     }
 
-    public detailPic(long id) {
+    public DetailPic(long id) {
         this.id = id;
     }
 
-    public detailPic(long id, Integer type, Long relateId, String url, String size, String describe) {
+    public DetailPic(long id, Integer type, Long relateId, String url, String size, String describe) {
         this.id = id;
         this.type = type;
         this.relateId = relateId;

@@ -126,7 +126,9 @@ public class NetRequest {
 			public void run() {
 				// try {
 				// Thread.sleep(1000);
-				callback.getData(null, null, callback.handler);
+				callback.getData(null,
+						JsonUtils.getVirualData(callback.getResultClass()),
+						callback.handler);
 				// } catch (InterruptedException e) {
 				// e.printStackTrace();
 				// }
@@ -206,6 +208,10 @@ public class NetRequest {
 		public RequestResult(final Class<T> clazz, final Handler handler) {
 			this.handler = handler;
 			this.clazz = clazz;
+		}
+
+		public Class<T> getResultClass() {
+			return clazz;
 		}
 
 		@Override

@@ -27,7 +27,6 @@ import com.android.tonight8.model.common.PopGoods;
 import com.android.tonight8.model.common.User;
 import com.android.tonight8.model.event.EventConsultModel;
 import com.android.tonight8.model.event.EventDetailModel;
-import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.storage.event.EventStorage;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
@@ -71,40 +70,9 @@ public class EventIOController {
 			@Override
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t, Handler handler) {
-				ArrayList<EventListModel> lists = new ArrayList<EventListModel>();
-				for (int i = 0; i < 10; i++) {
-					EventListModel model = new EventListModel();
-					Event event = new Event();
-					PopGoods popGoods = new PopGoods();
-					Org org = new Org();
-					CouponProvide couponProvide = new CouponProvide();
-					Exchange exchange = new Exchange();
-					couponProvide.id = 12342 + i;
-					couponProvide.type = 1;
-					couponProvide.provideNum = (int) (1000 * Math.random());
-					couponProvide.provideAll = false;
-					event.id = 122935 + i;
-					event.name = "中英文花式奖品" + ((int) (Math.random() * 2394));
-					event.distance = (float) (Math.random() * 11);
-					event.applyCount = (int) Math.random() * 2000;
-					event.consultCount = (int) Math.random() * 2000;
-					popGoods.popGoodsName = "神之海报"
-							+ (int) (Math.random() * 199);
-					popGoods.popGoodsPic = imgs[(int) (Math.random() * 8)];
-					popGoods.popGoodsPrice = (int) (Math.random() * 888);
-					org.id = i;
-					org.name = "龙翔控股科技发展公司" + Math.random() * 5;
-					exchange.method = 1;
-					exchange.address = "ddkafkkdkfkd";
-					exchange.locationType = 1;
-					model.event = event;
-					model.org = org;
-					model.popGoods = popGoods;
-					model.couponProvide = couponProvide;
-					model.exchange = exchange;
-					lists.add(model);
-				}
-				EventStorage.getEventListNativeController().insertData(lists);
+				LogUtils.v("you know" + t);
+				EventStorage.getEventListNativeController().insertData(
+						t.getEvent_publish_events());
 				HandlerConstants.sendMessage(
 						handler,
 						EventStorage.getEventListNativeController().selectData(
