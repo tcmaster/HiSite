@@ -59,21 +59,32 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = mInflater.inflate(R.layout.adapter_hilive, null);
-			holder.tv_title_hilive = (TextView) convertView.findViewById(R.id.tv_title_hilive);
-			holder.tv_place_time = (TextView) convertView.findViewById(R.id.tv_place_time);
-			holder.iv_camera_icon = (ImageView) convertView.findViewById(R.id.iv_camera_icon);
-			holder.tv_subjectCount = (TextView) convertView.findViewById(R.id.tv_subjectcount);
-			int margin = mContext.getResources().getDimensionPixelSize(R.dimen.tonight_iv_margin);
+			holder.tv_title_hilive = (TextView) convertView
+					.findViewById(R.id.tv_title_hilive);
+			holder.tv_place_time = (TextView) convertView
+					.findViewById(R.id.tv_place_time);
+			holder.iv_camera_icon = (ImageView) convertView
+					.findViewById(R.id.iv_camera_icon);
+			holder.tv_subjectCount = (TextView) convertView
+					.findViewById(R.id.tv_subjectcount);
+			int margin = mContext.getResources().getDimensionPixelSize(
+					R.dimen.tonight_iv_margin);
 			int margin_error = Utils.dip2px(mContext, ivCount * margin);
 			int iv_with = (AppConstants.widthPx - margin_error) / ivCount;
 			holder.tv_subjectCount.setHeight(iv_with);
 			holder.tv_subjectCount.setWidth(iv_with);
-			holder.vp_adapter_hilive = (ViewPager) convertView.findViewById(R.id.vp_adapter_hilive);
-			holder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.rv_recyclerview_horizontal);
-			holder.tv_share = (TextView) convertView.findViewById(R.id.tv_share);
-			holder.cb_subject = (CheckBox) convertView.findViewById(R.id.cb_subject);
-			holder.lv_subject = (ListView) convertView.findViewById(R.id.lv_subject);
-			holder.tv_signInCount = (TextView) convertView.findViewById(R.id.tv_signInCount);
+			holder.vp_adapter_hilive = (ViewPager) convertView
+					.findViewById(R.id.vp_adapter_hilive);
+			holder.mRecyclerView = (RecyclerView) convertView
+					.findViewById(R.id.rv_recyclerview_horizontal);
+			holder.tv_share = (TextView) convertView
+					.findViewById(R.id.tv_share);
+			holder.cb_subject = (CheckBox) convertView
+					.findViewById(R.id.cb_subject);
+			holder.lv_subject = (ListView) convertView
+					.findViewById(R.id.lv_subject);
+			holder.tv_signInCount = (TextView) convertView
+					.findViewById(R.id.tv_signInCount);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -81,22 +92,26 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 		// 签到的大图
 		LiveListModel liveListModel = mValues.get(position);
 		holder.tv_title_hilive.setText(liveListModel.getEvent().getName());
-		holder.tv_place_time.setText(liveListModel.getEvent().getTimeRangeStart());
+		holder.tv_place_time.setText(liveListModel.getEvent()
+				.getTimeRangeStart());
 		// 话题数量
-		holder.tv_subjectCount.setText(liveListModel.getEvent().subjectCount + "");
+		holder.tv_subjectCount.setText(liveListModel.getEvent().subjectCount
+				+ "");
 		// 签到数量
-		holder.tv_signInCount.setText(liveListModel.getEvent().signInCount + "");
+		holder.tv_signInCount
+				.setText(liveListModel.getEvent().signInCount + "");
 		// 签到大图
 		List<String> mdata = new ArrayList<String>();
 		for (int i = 0; i < liveListModel.getSignIn().size(); i++) {
 			mdata.add(liveListModel.getSignIn().get(i).pic);
 		}
-		pagerAdapter = new MyPagerAdapter(mContext, mdata);
+		// pagerAdapter = new MyPagerAdapter(mContext, mdata);
 		holder.vp_adapter_hilive.setAdapter(pagerAdapter);
 		holder.vp_adapter_hilive.setCurrentItem(index);
 
 		// 底部头像
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+				mContext);
 		linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 		holder.mRecyclerView.setLayoutManager(linearLayoutManager);
 		List<String> galleryData = new ArrayList<String>();
@@ -113,7 +128,8 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 
 			@Override
 			public void onItemClick(View view, int position1) {
-				Toast.makeText(mContext, position + "  " + position1 + " ", Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, position + "  " + position1 + " ",
+						Toast.LENGTH_SHORT).show();
 				holder.vp_adapter_hilive.setTag(position);
 				holder.vp_adapter_hilive.setCurrentItem(position1);
 			}
@@ -131,40 +147,44 @@ public class HiLiveAdapter extends BaseListAdapter<LiveListModel> {
 				// 分享后好友点击打开的目标链接地址
 				shareThirdEntity.targetUrl = "http://douban.fm/?start=8508g3c27g-3&amp;cid=-3";
 				shareThirdEntity.summary = "摘要，再多加两句话";
-				DialogUtils.showSelectShareDialog((MainActivity) mContext, shareThirdEntity);
+				DialogUtils.showSelectShareDialog((MainActivity) mContext,
+						shareThirdEntity);
 			}
 		});
 		// 话题列表
-		holder.cb_subject.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		holder.cb_subject
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean isChecked) {
-				holder.lv_subject.setTag(position);
-				// true展开话题
-				if (isChecked) {
-					listComment = new ArrayList<LiveCommentModel>();
-					for (int i = 0; i < 5; i++) {
-						LiveCommentModel liveCommentModel = new LiveCommentModel();
-						Comment comment = new Comment();
-						comment.content = "很好很好！！！！！";
-						comment.date = "2012-12-12";
-						comment.time = "12:12:12";
-						User user = new User();
-						user.pic = "http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg";
-						user.name = "晓松";
-						liveCommentModel.setComment(comment);
-						liveCommentModel.setUser(user);
-						listComment.add(liveCommentModel);
+					@Override
+					public void onCheckedChanged(CompoundButton arg0,
+							boolean isChecked) {
+						holder.lv_subject.setTag(position);
+						// true展开话题
+						if (isChecked) {
+							listComment = new ArrayList<LiveCommentModel>();
+							for (int i = 0; i < 5; i++) {
+								LiveCommentModel liveCommentModel = new LiveCommentModel();
+								Comment comment = new Comment();
+								comment.content = "很好很好！！！！！";
+								comment.date = "2012-12-12";
+								comment.time = "12:12:12";
+								User user = new User();
+								user.pic = "http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg";
+								user.name = "晓松";
+								liveCommentModel.setComment(comment);
+								liveCommentModel.setUser(user);
+								listComment.add(liveCommentModel);
+							}
+							subjectListAdapter = new LiveListCommentAdapter(
+									mContext, listComment);
+							holder.lv_subject.setAdapter(subjectListAdapter);
+							holder.lv_subject.setVisibility(View.VISIBLE);
+						} else {
+							holder.lv_subject.setVisibility(View.GONE);
+						}
 					}
-					subjectListAdapter = new LiveListCommentAdapter(mContext, listComment);
-					holder.lv_subject.setAdapter(subjectListAdapter);
-					holder.lv_subject.setVisibility(View.VISIBLE);
-				} else {
-					holder.lv_subject.setVisibility(View.GONE);
-				}
-			}
 
-		});
+				});
 
 		return convertView;
 	}

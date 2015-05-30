@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
+    android:layout_width="wrap_content"
     android:layout_margin="@dimen/common_margin_small"
     android:orientation="vertical" >
 
@@ -29,73 +30,20 @@
             android:src="@drawable/arrow_down" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         style="@style/match_width"
-        android:orientation="vertical"
         android:id="@+id/ll_info"
         android:visibility="gone" >
-
-        <TextView
-            style="@style/match_width"
-            android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
-            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
-            android:gravity="center"
-            android:text="@string/compere"
-            android:textColor="@color/black"
-            android:textSize="@dimen/bigTextSize" />
-
-        <View style="@style/line_full" />
-
-        <RelativeLayout style="@style/match_width" >
-
-            <ImageView
-                android:id="@+id/iv_compere_pic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/common_margin_left"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
-
-            <TextView
-                android:id="@+id/tv_compere_name"
-                style="@style/wrap"
-                android:layout_marginLeft="@dimen/common_margin_left"
-                android:layout_marginTop="@dimen/topOrbottomPadding"
-                android:layout_toRightOf="@id/iv_compere_pic"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_compere_info"
-                style="@style/wrap"
-                android:layout_below="@id/tv_compere_name"
-                android:layout_marginLeft="@dimen/common_margin_left"
-                android:layout_marginTop="@dimen/topOrbottomPadding"
-                android:layout_toRightOf="@id/iv_compere_pic"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-        </RelativeLayout>
-
-        <TextView
-            style="@style/match_width"
-            android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
-            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
-            android:gravity="center"
-            android:text="@string/program"
-            android:textColor="@color/black"
-            android:textSize="@dimen/bigTextSize" />
-
-        <View style="@style/line_full" />
-
+        <ProgressBar 
+            android:id="@+id/pb_program_loading"
+            style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
         <com.android.tonight8.view.ListViewForScrollView
             android:id="@+id/lv_prgram"
             style="@style/match_width" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll_top"

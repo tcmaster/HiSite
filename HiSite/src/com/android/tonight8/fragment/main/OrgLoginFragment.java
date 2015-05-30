@@ -1,15 +1,11 @@
 package com.android.tonight8.fragment.main;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +22,6 @@ import com.android.tonight8.activity.MainActivity;
 import com.android.tonight8.activity.org.OrgForgotIDActivity;
 import com.android.tonight8.activity.org.OrgForgotPwdActivity;
 import com.android.tonight8.activity.org.OrgRegisterActivity;
-import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.view.PointLinearlayout;
@@ -124,40 +119,41 @@ public class OrgLoginFragment extends BaseFragment {
 	}
 
 	private void initView() {
-		data = new ArrayList<String>();
-		data.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
-		data.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
-		data.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
-		data.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
-		pll_point_container.setPointCount(4);
-		pll_point_container.changePoint(0);
-		viewPager.setAdapter(new MyPagerAdapter(getActivity(), data));
-		viewPager.setCurrentItem(0);
-		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-
-			@Override
-			public void onPageSelected(int arg0) {
-				pll_point_container.changePoint(arg0);
-			}
-
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
-
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-			}
-		});
-		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5,
-				new Handler() {
-
-					@Override
-					public void handleMessage(Message msg) {
-						viewPager.setCurrentItem(msg.what);
-						super.handleMessage(msg);
-					}
-				});
-		cFunction.start();// 开始轮播
+		// data = new ArrayList<String>();
+		// data.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
+		// data.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
+		// data.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
+		// data.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
+		// pll_point_container.setPointCount(4);
+		// pll_point_container.changePoint(0);
+		// viewPager.setAdapter(new MyPagerAdapter(getActivity(), data));
+		// viewPager.setCurrentItem(0);
+		// viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+		//
+		// @Override
+		// public void onPageSelected(int arg0) {
+		// pll_point_container.changePoint(arg0);
+		// }
+		//
+		// @Override
+		// public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// }
+		//
+		// @Override
+		// public void onPageScrollStateChanged(int arg0) {
+		// }
+		// });
+		// cFunction = new CirculateFunction(viewPager.getAdapter().getCount(),
+		// 5,
+		// new Handler() {
+		//
+		// @Override
+		// public void handleMessage(Message msg) {
+		// viewPager.setCurrentItem(msg.what);
+		// super.handleMessage(msg);
+		// }
+		// });
+		// cFunction.start();// 开始轮播
 	}
 
 	@Override

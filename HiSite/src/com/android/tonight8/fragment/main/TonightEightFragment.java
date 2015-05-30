@@ -1,8 +1,8 @@
 package com.android.tonight8.fragment.main;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,10 +25,11 @@ import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.dao.model.event.EventList;
+import com.android.tonight8.dao.model.event.EventRecommends;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
-import com.android.tonight8.model.event.EventListModel;
 import com.android.tonight8.view.PointLinearlayout;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
@@ -59,8 +60,6 @@ public class TonightEightFragment extends BaseFragment {
 	@ViewInject(R.id.ll_right)
 	private LinearLayout ll_right;
 	// ***************************其他成员***********************************//
-	/** 测试数据 */
-	private List<String> data;
 	/** 本界面的activity */
 	private BaseActivity bA;
 	/** vp轮播功能 */
@@ -69,8 +68,10 @@ public class TonightEightFragment extends BaseFragment {
 	private MainPageListViewAdapter adapter;
 
 	/** 本界面的数据更新handler */
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 
+		@SuppressLint("HandlerLeak")
 		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(Message msg) {
@@ -80,7 +81,7 @@ public class TonightEightFragment extends BaseFragment {
 					if (msg.arg2 == INIT) {
 						pb_loading.setVisibility(View.INVISIBLE);
 						lv_item_container.setVisibility(View.VISIBLE);
-						List<EventListModel> data = (List<EventListModel>) msg.obj;
+						List<EventList> data = (List<EventList>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_item_container.setPullLoadEnable(false);
 						else
@@ -89,16 +90,16 @@ public class TonightEightFragment extends BaseFragment {
 								data);
 						lv_item_container.setAdapter(adapter);
 					} else if (msg.arg2 == REFRESH) {
-						List<EventListModel> data = (List<EventListModel>) msg.obj;
+						List<EventList> data = (List<EventList>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_item_container.setPullLoadEnable(false);
 						adapter.initData(data);
 						lv_item_container.stopRefresh();
 					} else if (msg.arg2 == LOAD_MORE) {
-						List<EventListModel> data = (List<EventListModel>) msg.obj;
+						List<EventList> data = (List<EventList>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_item_container.setPullLoadEnable(false);
-						adapter.addData((List<EventListModel>) msg.obj);
+						adapter.addData((List<EventList>) msg.obj);
 						lv_item_container.stopLoadMore();
 					}
 
@@ -116,7 +117,44 @@ public class TonightEightFragment extends BaseFragment {
 
 				}
 				break;
+			case HandlerConstants.Event.MAINPAGE_TOP:
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {
+					List<EventRecommends> source = (List<EventRecommends>) msg.obj;
+					vp_show_img.setAdapter(new MyPagerAdapter(getActivity(),
+							source));
+					vp_show_img.setCurrentItem(0);
+					vp_show_img
+							.setOnPageChangeListener(new OnPageChangeListener() {
 
+								@Override
+								public void onPageSelected(int arg0) {
+									ll_point_container.changePoint(arg0);
+								}
+
+								@Override
+								public void onPageScrolled(int arg0,
+										float arg1, int arg2) {
+								}
+
+								@Override
+								public void onPageScrollStateChanged(int arg0) {
+								}
+							});
+					ll_point_container.setPointCount(source.size());
+					ll_point_container.changePoint(0);
+					cFunction = new CirculateFunction(vp_show_img.getAdapter()
+							.getCount(), 5, new Handler() {
+
+						@Override
+						public void handleMessage(Message msg) {
+							vp_show_img.setCurrentItem(msg.what);
+						}
+					});
+					cFunction.start();// 开始轮播
+				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
+
+				}
+				break;
 			default:
 				break;
 			}
@@ -190,39 +228,7 @@ public class TonightEightFragment extends BaseFragment {
 	// ***************************子方法***********************************//
 	private void initData() {
 		current = 0;
-		data = new ArrayList<String>();
-		data.add("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
-		data.add("http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923c841dc779058d109b3de498a.jpg");
-		data.add("http://c.hiphotos.baidu.com/image/w%3D230/sign=68825dc2e2fe9925cb0c6e5304a95ee4/9e3df8dcd100baa19fba02bc4510b912c8fc2e26.jpg");
-		data.add("http://f.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8697b640331fa828ba61e46b8.jpg");
-		ll_point_container.setPointCount(4);
-		ll_point_container.changePoint(0);
-		vp_show_img.setAdapter(new MyPagerAdapter(getActivity(), data));
-		vp_show_img.setCurrentItem(0);
-		vp_show_img.setOnPageChangeListener(new OnPageChangeListener() {
-
-			@Override
-			public void onPageSelected(int arg0) {
-				ll_point_container.changePoint(arg0);
-			}
-
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
-
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-			}
-		});
-		cFunction = new CirculateFunction(vp_show_img.getAdapter().getCount(),
-				5, new Handler() {
-
-					@Override
-					public void handleMessage(Message msg) {
-						vp_show_img.setCurrentItem(msg.what);
-					}
-				});
-		cFunction.start();// 开始轮播
+		EventIOController.eventRecommend(handler);
 		EventIOController.eventsRead(handler, INIT, ITEM_COUNT, current
 				* ITEM_COUNT);
 		lv_item_container.setXListViewListener(new IXListViewListener() {// 设置上拉下拉事件

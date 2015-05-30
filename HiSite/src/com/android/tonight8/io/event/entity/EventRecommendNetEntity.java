@@ -3,10 +3,10 @@
  */
 package com.android.tonight8.io.event.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import com.android.tonight8.dao.model.event.EventRecommends;
 import com.android.tonight8.io.net.NetEntityBase;
-import com.android.tonight8.model.event.EventRecommendModel;
 
 /**
  * @Description:活动推荐网络实体
@@ -16,19 +16,20 @@ import com.android.tonight8.model.event.EventRecommendModel;
  */
 public class EventRecommendNetEntity extends NetEntityBase {
 
-	public ArrayList<EventRecommendModel> eventPublishRecommends;
+	private List<EventRecommends> eventRecommends;
 
-	public ArrayList<EventRecommendModel> getEventPublishRecommends() {
-		return eventPublishRecommends;
+	public List<EventRecommends> getEventRecommends() {
+		return eventRecommends;
 	}
 
-	public void setEventPublishRecommends(ArrayList<EventRecommendModel> eventPublishRecommends) {
-		this.eventPublishRecommends = eventPublishRecommends;
+	public void setEventRecommends(List<EventRecommends> eventRecommends) {
+		this.eventRecommends = eventRecommends;
 	}
 
 	@Override
 	public String toString() {
-		return "EventRecommendNetEntity [eventPublishRecommends=" + eventPublishRecommends + "]";
+		return "EventRecommendNetEntity [eventRecommends=" + eventRecommends
+				+ "]";
 	}
 
 }

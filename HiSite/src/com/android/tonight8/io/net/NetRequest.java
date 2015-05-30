@@ -126,7 +126,11 @@ public class NetRequest {
 			public void run() {
 				// try {
 				// Thread.sleep(1000);
-				callback.getData(null,
+				NetEntityBase base = new NetEntityBase();
+				base.status = 0;
+				base.message = "测试用，假网，放心，安全，OK";
+				base.data = "中国小嵩";
+				callback.getData(base,
 						JsonUtils.getVirualData(callback.getResultClass()),
 						callback.handler);
 				// } catch (InterruptedException e) {

@@ -28,6 +28,7 @@ public class Event {
     private Integer orderCount;
     private Integer orderShippingCount;
     private Integer audienceCount;
+    private Integer type;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -46,7 +47,7 @@ public class Event {
         this.id = id;
     }
 
-    public Event(long id, Long orgId, String name, Integer status, String timeRangeStart, String timeRangeEnd, String publishTime, Long timeStamp, String ruleDescription, Integer winningLimit, Integer applyCount, Integer awardCount, Integer awardShippingCount, Integer orderCount, Integer orderShippingCount, Integer audienceCount) {
+    public Event(long id, Long orgId, String name, Integer status, String timeRangeStart, String timeRangeEnd, String publishTime, Long timeStamp, String ruleDescription, Integer winningLimit, Integer applyCount, Integer awardCount, Integer awardShippingCount, Integer orderCount, Integer orderShippingCount, Integer audienceCount, Integer type) {
         this.id = id;
         this.orgId = orgId;
         this.name = name;
@@ -63,6 +64,7 @@ public class Event {
         this.orderCount = orderCount;
         this.orderShippingCount = orderShippingCount;
         this.audienceCount = audienceCount;
+        this.type = type;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -197,6 +199,14 @@ public class Event {
 
     public void setAudienceCount(Integer audienceCount) {
         this.audienceCount = audienceCount;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     /** To-one relationship, resolved on first access. */

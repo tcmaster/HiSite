@@ -38,8 +38,10 @@ public class EventIOController {
 			final int... attachments) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, EVENT_LIST_URL);
-		params.put("user.coordinate", "39.9,116.3");
-		params.put("city.code", "1");
+		params.put("regional.code", "");
+		params.put("isToday", "");
+		params.put("page.offSet", "");
+		params.put("page.row", "");
 		HandlerConstants.sendMessage(handler, null,
 				HandlerConstants.Event.MAINPAGE_LIST,
 				HandlerConstants.NETWORK_BEGIN, attachments[0]);
@@ -49,15 +51,9 @@ public class EventIOController {
 			@Override
 			public void getData(NetEntityBase netEntityBase,
 					EventListNetEntity t, Handler handler) {
-				LogUtils.v("the t is " + t);
-				// EventStorage.getEventListNativeController().insertData(
-				// t.getEvent_publish_events());
-				// HandlerConstants.sendMessage(
-				// handler,
-				// //EventStorage.getEventListNativeController().selectData(
-				// // attachments[1], attachments[2]),
-				// HandlerConstants.Event.MAINPAGE_LIST,
-				// HandlerConstants.RESULT_OK, attachments[0]);
+				HandlerConstants.sendMessage(handler, t.getEventList(),
+						HandlerConstants.Event.MAINPAGE_LIST,
+						HandlerConstants.RESULT_OK, attachments[0]);
 			}
 
 			@Override
@@ -79,6 +75,8 @@ public class EventIOController {
 	public static void eventRecommend(final Handler handler) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(NetRequest.REQUEST_URL, EVENT_RECOMMAND_URL);
+		params.put("regional.code", "");
+		params.put("isToday", "true");
 		NetRequest.doGetRequest(params,
 				new RequestResult<EventRecommendNetEntity>(
 						EventRecommendNetEntity.class, handler) {
@@ -86,11 +84,17 @@ public class EventIOController {
 					@Override
 					public void getData(NetEntityBase netEntityBase,
 							EventRecommendNetEntity t, Handler handler) {
-
+						HandlerConstants.sendMessage(handler,
+								t.getEventRecommends(),
+								HandlerConstants.Event.MAINPAGE_TOP,
+								HandlerConstants.RESULT_OK, -1);
 					}
 
 					@Override
 					public void onFailure(HttpException arg0, String arg1) {
+						HandlerConstants.sendMessage(handler, null,
+								HandlerConstants.Event.MAINPAGE_TOP,
+								HandlerConstants.RESULT_FAIL, -1);
 					}
 				});
 	}

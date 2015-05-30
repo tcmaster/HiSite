@@ -44,6 +44,7 @@ public class EventDao extends AbstractDao<Event, Long> {
         public final static Property OrderCount = new Property(13, Integer.class, "orderCount", false, "ORDER_COUNT");
         public final static Property OrderShippingCount = new Property(14, Integer.class, "orderShippingCount", false, "ORDER_SHIPPING_COUNT");
         public final static Property AudienceCount = new Property(15, Integer.class, "audienceCount", false, "AUDIENCE_COUNT");
+        public final static Property Type = new Property(16, Integer.class, "type", false, "TYPE");
     };
 
     private DaoSession daoSession;
@@ -77,7 +78,8 @@ public class EventDao extends AbstractDao<Event, Long> {
                 "'AWARD_SHIPPING_COUNT' INTEGER," + // 12: awardShippingCount
                 "'ORDER_COUNT' INTEGER," + // 13: orderCount
                 "'ORDER_SHIPPING_COUNT' INTEGER," + // 14: orderShippingCount
-                "'AUDIENCE_COUNT' INTEGER);"); // 15: audienceCount
+                "'AUDIENCE_COUNT' INTEGER," + // 15: audienceCount
+                "'TYPE' INTEGER);"); // 16: type
     }
 
     /** Drops the underlying database table. */
@@ -166,6 +168,11 @@ public class EventDao extends AbstractDao<Event, Long> {
         if (audienceCount != null) {
             stmt.bindLong(16, audienceCount);
         }
+ 
+        Integer type = entity.getType();
+        if (type != null) {
+            stmt.bindLong(17, type);
+        }
     }
 
     @Override
@@ -199,7 +206,8 @@ public class EventDao extends AbstractDao<Event, Long> {
             cursor.isNull(offset + 12) ? null : cursor.getInt(offset + 12), // awardShippingCount
             cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13), // orderCount
             cursor.isNull(offset + 14) ? null : cursor.getInt(offset + 14), // orderShippingCount
-            cursor.isNull(offset + 15) ? null : cursor.getInt(offset + 15) // audienceCount
+            cursor.isNull(offset + 15) ? null : cursor.getInt(offset + 15), // audienceCount
+            cursor.isNull(offset + 16) ? null : cursor.getInt(offset + 16) // type
         );
         return entity;
     }
@@ -223,6 +231,7 @@ public class EventDao extends AbstractDao<Event, Long> {
         entity.setOrderCount(cursor.isNull(offset + 13) ? null : cursor.getInt(offset + 13));
         entity.setOrderShippingCount(cursor.isNull(offset + 14) ? null : cursor.getInt(offset + 14));
         entity.setAudienceCount(cursor.isNull(offset + 15) ? null : cursor.getInt(offset + 15));
+        entity.setType(cursor.isNull(offset + 16) ? null : cursor.getInt(offset + 16));
      }
     
     /** @inheritdoc */
