@@ -4,9 +4,14 @@
 package com.android.tonight8.adapter.event;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -21,8 +26,14 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.dao.model.event.EventList;
+import com.android.tonight8.dao.model.event.PlayBillList;
+import com.android.tonight8.io.event.EventIOController;
+import com.android.tonight8.io.event.entity.PlayListNetEntity;
+import com.android.tonight8.io.net.NetEntityBase;
+import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.utils.HSAnimationUtils;
 import com.android.tonight8.view.ListViewForScrollView;
+import com.lidroid.xutils.exception.HttpException;
 
 /**
  * @Description:
@@ -32,25 +43,27 @@ import com.android.tonight8.view.ListViewForScrollView;
  */
 public class MainPageListViewAdapter extends BaseListAdapter<EventList> {
 	private List<Boolean> infos;// 本界面的数据源附加信息,目前是记录该条项目是否为开启状态,默认为全部关闭
+	private Map<Long, List<PlayBillList>> playBillMaps;// 本界面的节目单数据
 
 	public MainPageListViewAdapter(Context context, List<EventList> values) {
 		super(context, values);
 		infos = new ArrayList<Boolean>();
+		playBillMaps = new HashMap<Long, List<PlayBillList>>();
 		resetInfos();
 	}
 
 	@Override
 	protected View getItemView(View convertView, final int position) {
-		EventList model = mValues.get(position);
+		final EventList model = mValues.get(position);
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_home_lv, null, false);
 		}
 		RelativeLayout rl_show_more_info = ViewHolder.get(convertView,
 				R.id.rl_show_more_info);// 标题布局
 		TextView tv_title = ViewHolder.get(convertView, R.id.tv_title);// 首页标题
-		ProgressBar pb_program_loading = ViewHolder.get(convertView,
+		final ProgressBar pb_program_loading = ViewHolder.get(convertView,
 				R.id.pb_program_loading);
-		ListViewForScrollView lv_prgram = ViewHolder.get(convertView,
+		final ListViewForScrollView lv_prgram = ViewHolder.get(convertView,
 				R.id.lv_prgram);// 节目单列表
 		final RelativeLayout rl_info = ViewHolder
 				.get(convertView, R.id.ll_info);// 附加信息
@@ -88,12 +101,71 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventList> {
 
 							}
 
+							@SuppressLint("HandlerLeak")
 							@Override
 							public void onAnimationEnd(Animation animation) {
-								if (infos.get(position))
+								if (infos.get(position)) {
 									rl_info.setVisibility(View.GONE);
-								else
+								} else {
+									pb_program_loading
+											.setVisibility(View.VISIBLE);
+									lv_prgram.setVisibility(View.INVISIBLE);
 									rl_info.setVisibility(View.VISIBLE);
+									List<PlayBillList> list = playBillMaps
+											.get(model.getEvent().getId());
+									if (list == null) {
+										final long eventId = model.getEvent()
+												.getId();
+										EventIOController
+												.eventPlayBillRead(
+														eventId,
+														new RequestResult<PlayListNetEntity>(
+																PlayListNetEntity.class,
+																null) {
+															@Override
+															public void getData(
+																	NetEntityBase netEntityBase,
+																	final PlayListNetEntity t,
+																	Handler handler) {
+																Activity activity = (Activity) mContext;
+																activity.runOnUiThread(new Runnable() {
+
+																	@Override
+																	public void run() {
+																		pb_program_loading
+																				.setVisibility(View.INVISIBLE);
+																		lv_prgram
+																				.setVisibility(View.VISIBLE);
+																		playBillMaps
+																				.put(eventId,
+																						t.getPlaybillList());
+																		if (eventId == model
+																				.getEvent()
+																				.getId()) {
+																			showProgramList(
+																					lv_prgram,
+																					t.getPlaybillList());
+																		}
+																	}
+																});
+
+															}
+
+															@Override
+															public void onFailure(
+																	HttpException error,
+																	String msg) {
+
+															}
+
+														});
+									} else {
+										pb_program_loading
+												.setVisibility(View.INVISIBLE);
+										lv_prgram.setVisibility(View.VISIBLE);
+										showProgramList(lv_prgram, list);
+									}
+								}
 								infos.set(position, !infos.get(position));
 							}
 						}, infos.get(position), true);
@@ -133,5 +205,19 @@ public class MainPageListViewAdapter extends BaseListAdapter<EventList> {
 		for (int i = 0; i < mValues.size(); i++) {
 			infos.add(false);
 		}
+	}
+
+	/**
+	 * 显示节目单
+	 */
+	private void showProgramList(ListViewForScrollView lv,
+			List<PlayBillList> data) {
+		PlayBillListAdapter adapter = (PlayBillListAdapter) lv.getAdapter();
+		if (adapter == null) {
+			adapter = new PlayBillListAdapter(getContext(), data);
+			lv.setAdapter(adapter);
+			return;
+		}
+		adapter.update(data);
 	}
 }

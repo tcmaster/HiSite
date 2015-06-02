@@ -12,6 +12,7 @@ import com.android.tonight8.io.event.entity.EventConsultListEntity;
 import com.android.tonight8.io.event.entity.EventDetailNetEntity;
 import com.android.tonight8.io.event.entity.EventListNetEntity;
 import com.android.tonight8.io.event.entity.EventRecommendNetEntity;
+import com.android.tonight8.io.event.entity.PlayListNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
@@ -26,6 +27,8 @@ public class EventIOController {
 	private static final String EVENT_RECOMMAND_URL = NetRequest.BASE_URL + "";
 	private static final String EVENT_DETAIL_URL = NetRequest.BASE_URL + "";
 	private static final String EVENT_EVENT_PUBLISH_CONSULTS = NetRequest.BASE_URL
+			+ "";
+	private static final String EVENT_PLAYBILL_LIST_URL = NetRequest.BASE_URL
 			+ "";
 
 	/**
@@ -97,6 +100,17 @@ public class EventIOController {
 								HandlerConstants.RESULT_FAIL, -1);
 					}
 				});
+	}
+
+	/**
+	 * 节目单列表
+	 */
+	public static void eventPlayBillRead(final long eventId,
+			final RequestResult<PlayListNetEntity> callback) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(NetRequest.REQUEST_URL, EVENT_PLAYBILL_LIST_URL);
+		params.put("event.id", eventId + "");
+		NetRequest.doGetRequest(params, callback);
 	}
 
 	/**

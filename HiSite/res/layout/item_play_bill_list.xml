@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="horizontal" >
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/wrap"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallTextSize"/>
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/wrap"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/middleTextSize"
+        android:layout_marginLeft="@dimen/smallTextSize"/>
+
+</LinearLayout>

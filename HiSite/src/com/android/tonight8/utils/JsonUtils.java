@@ -159,7 +159,7 @@ public class JsonUtils {
 							field.set(result, "字符串测试");
 					} else if (name.equals("long")
 							|| name.equals(Long.class.toString())) {
-						field.set(result, 919L);
+						field.set(result, (long) (999 * Math.random()));
 					} else if (name.equals("double")
 							|| name.equals(Double.class.toString())) {
 						field.set(result, 1.0d);

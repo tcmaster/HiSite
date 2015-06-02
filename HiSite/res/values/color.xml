@@ -24,10 +24,14 @@
     <color name="possible_result_points">#c0ffff00</color>
     <!-- 40%透明黑色 -->
     <color name="black_half_transparent">#44000000</color>
+    <!-- 40%透明灰色 -->
+    <color name="gray_half_transparent">#44bebebe</color>
     <!-- 70%透明黑色 -->
     <color name="black_seven_transparent">#b2000000</color>
     <!-- 40%透明紫色 -->
     <color name="black_seven_purple">#66aa63c2</color>
+    <!-- 紫色 -->
+    <color name="purple">#ffaa63c2</color>
     <!-- （标题）灰色 -->
     <color name="title_gray">#9b9b9b</color>
 

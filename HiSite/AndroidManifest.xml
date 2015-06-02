@@ -179,6 +179,7 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
+
         <activity
             android:name="com.android.tonight8.activity.event.EventAwardActivity"
             android:label="@string/title_activity_event_award" >
@@ -190,6 +191,11 @@
         <!-- 用户中奖码列表 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserAwardListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!-- 用户 -->
+        <activity
+            android:name="com.android.tonight8.activity.event.OrgEventListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- 用户中奖码签收 -->

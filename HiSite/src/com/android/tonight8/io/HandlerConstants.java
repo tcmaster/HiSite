@@ -30,6 +30,7 @@ public class HandlerConstants {
 		public static final int EVENT_DETAIL = 3;
 		/** 详情部分右下咨询 */
 		public static final int EVENT_DETAIL_CONSULT = 4;
+		public static final int EVENT_BILL_LIST = 5;
 	}
 
 	/**
@@ -44,6 +45,8 @@ public class HandlerConstants {
 	 *            当前发送的状态（开始，结束，网络状况良好，较差）
 	 * @param arg2
 	 *            附加信息
+	 * @param objs
+	 *            额外使用到的信息
 	 */
 	public static void sendMessage(Handler handler, Object obj, int what,
 			int arg1, int arg2) {

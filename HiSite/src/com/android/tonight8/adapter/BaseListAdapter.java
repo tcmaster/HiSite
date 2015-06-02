@@ -1,5 +1,6 @@
 package com.android.tonight8.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -41,7 +42,8 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 		mContext = context;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mValues = values;
+		mValues = new ArrayList<T>();// 单独建立一个数据源，防止数据源重用造成混乱
+		mValues.addAll(values);
 		bmUtils = new BitmapUtils(context);
 	}
 
@@ -49,7 +51,8 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 		mContext = context;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mValues = values;
+		mValues = new ArrayList<T>();// 单独建立一个数据源，防止数据源重用造成混乱
+		mValues.addAll(values);
 		mRemark = remark;
 	}
 
@@ -57,7 +60,8 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 		mContext = context;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mValues = values;
+		mValues = new ArrayList<T>();// 单独建立一个数据源，防止数据源重用造成混乱
+		mValues.addAll(values);
 	}
 
 	public Context getContext() {

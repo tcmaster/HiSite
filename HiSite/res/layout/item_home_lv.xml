@@ -2,13 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
     android:layout_width="wrap_content"
-    android:layout_margin="@dimen/common_margin_small"
     android:orientation="vertical" >
+
+    <View
+        style="@style/line_full"
+        android:layout_marginTop="@dimen/topOrbottomPadding" />
 
     <RelativeLayout
         android:id="@+id/rl_show_more_info"
         style="@style/match_width"
-        android:background="@color/gray" >
+        android:background="@color/white_gray" >
 
         <TextView
             android:id="@+id/tv_title"
@@ -17,7 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/app_name"
-            android:textColor="@color/black"
+            android:textColor="@color/purple"
             android:textSize="@dimen/bigTextSize" />
 
         <ImageView
@@ -31,18 +34,20 @@
     </RelativeLayout>
 
     <RelativeLayout
-        style="@style/match_width"
         android:id="@+id/ll_info"
+        style="@style/match_width"
         android:visibility="gone" >
-        <ProgressBar 
+
+        <ProgressBar
             android:id="@+id/pb_program_loading"
             style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
         <com.android.tonight8.view.ListViewForScrollView
             android:id="@+id/lv_prgram"
-            style="@style/match_width" />
+            style="@style/match_width"
+            android:divider="@null" />
     </RelativeLayout>
 
     <LinearLayout
@@ -58,15 +63,15 @@
 
             <ImageView
                 android:id="@+id/iv_bpic"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/iv_bg"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
                 android:src="@drawable/label_genuine" />
@@ -75,7 +80,7 @@
         <LinearLayout
             android:id="@+id/ll_right"
             android:layout_width="match_parent"
-            android:layout_height="108dp"
+            android:layout_height="120dp"
             android:layout_marginBottom="@dimen/common_margin_small"
             android:gravity="center_vertical"
             android:orientation="vertical" >
@@ -127,8 +132,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/topOrbottomPadding"
-            android:paddingTop="@dimen/topOrbottomPadding" >
+            android:paddingBottom="@dimen/topOrBottomPaddingSmall"
+            android:paddingTop="@dimen/topOrBottomPaddingSmall" >
 
             <ImageView
                 android:id="@+id/iv_win"
@@ -154,8 +159,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/topOrbottomPadding"
-            android:paddingTop="@dimen/topOrbottomPadding" >
+            android:paddingBottom="@dimen/topOrBottomPaddingSmall"
+            android:paddingTop="@dimen/topOrBottomPaddingSmall" >
 
             <ImageView
                 android:id="@+id/iv_apply"
@@ -173,5 +178,7 @@
                 android:textSize="@dimen/middleTextSize" />
         </LinearLayout>
     </LinearLayout>
+    <View style="@style/line_full"
+        />
 
 </LinearLayout>
