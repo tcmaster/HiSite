@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
+    android:layout_margin="@dimen/common_margin_left"
     android:background="@color/gray_half_transparent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/common_margin_left" >
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/rl_head"
         style="@style/match_width"
-        android:layout_marginBottom="@dimen/topOrbottomPadding" >
+        android:layout_marginBottom="@dimen/topOrbottomPaddingLong"
+        android:layout_marginTop="@dimen/topOrbottomPadding" >
 
         <ImageView
             android:id="@+id/iv_user_photo"
@@ -18,9 +19,10 @@
             android:layout_marginBottom="@dimen/topOrbottomPadding"
             android:layout_marginLeft="@dimen/common_margin_left_long"
             android:layout_marginTop="@dimen/topOrbottomPaddingLong"
+            android:layout_marginRight="@dimen/common_margin_left"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/vme" />
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -28,7 +30,7 @@
             android:layout_marginLeft="@dimen/common_margin_small"
             android:layout_marginTop="@dimen/topOrbottomPaddingLong"
             android:layout_toRightOf="@id/iv_user_photo"
-            android:text="@string/app_name"
+            android:text="@string/usersimple"
             android:textColor="@color/white"
             android:textSize="@dimen/bigTextSize" />
 
@@ -39,18 +41,28 @@
             android:layout_marginLeft="@dimen/common_margin_small"
             android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
             android:layout_toRightOf="@id/iv_user_photo"
+            android:text="@string/addresssimple"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bigTextSize"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_user_role"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_user_address"
+            android:layout_marginRight="@dimen/common_margin_left"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="@dimen/bigTextSize" />
-
-        <Spinner
-            android:id="@+id/sp_user_role"
-            style="@style/match"
-            android:layout_alignBottom="@id/tv_user_address"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/common_margin_left"
-            android:gravity="bottom|center_horizontal" />
+            android:textSize="@dimen/bigTextSize"
+            android:gravity="center"
+            android:drawableRight="@drawable/vwhitearrow" />
     </RelativeLayout>
+
+    <View
+        style="@style/line_full"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        android:background="@color/white" />
 
     <LinearLayout
         android:id="@+id/ll_center_layout"
@@ -108,7 +120,8 @@
             android:id="@+id/layout_my_event"
             style="@style/match_width"
             android:layout_weight="1"
-            layout="@layout/include_myaccount_item" />
+            layout="@layout/include_myaccount_item"
+            android:visibility="gone" />
 
         <include
             android:id="@+id/layout_my_wish"
@@ -127,43 +140,23 @@
             style="@style/match_width"
             android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_tail"
-        style="@style/match_width"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/topOrbottomPadding"
-        android:paddingTop="@dimen/topOrbottomPadding" >
-
-        <TextView
-            android:id="@+id/tv_message_center"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left_long"
-            android:layout_marginRight="@dimen/common_margin_left"
-            android:drawableLeft="@drawable/ic_launcher"
-            android:gravity="center"
-            android:text="@string/message_center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/bigTextSize" />
 
         <View
-            style="@style/line_full_vertical"
-            android:layout_gravity="center_vertical"
-            android:background="@color/white"
-            android:paddingBottom="@dimen/topOrbottomPadding"
-            android:paddingTop="@dimen/topOrbottomPadding" />
+            style="@style/line_full"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:background="@color/white" />
+        <include
+            android:id="@+id/layout_my_message"
+            style="@style/match_width"
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
 
-        <TextView
-            android:id="@+id/tv_settings"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_marginRight="@dimen/common_margin_left"
-            android:drawableLeft="@drawable/ic_launcher"
-            android:gravity="center"
-            android:text="@string/settings"
-            android:textColor="@color/white"
-            android:textSize="@dimen/bigTextSize" />
+        <include
+            android:id="@+id/layout_my_settings"
+            style="@style/match_width"
+            android:layout_weight="1"
+            layout="@layout/include_myaccount_item" />
     </LinearLayout>
 
 </LinearLayout>

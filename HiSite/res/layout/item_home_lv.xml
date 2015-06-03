@@ -29,8 +29,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/common_margin_left"
             android:contentDescription="@string/app_name"
+            android:layout_centerVertical="true"
             android:scaleType="fitXY"
-            android:src="@drawable/arrow_down" />
+            android:src="@drawable/vblackarrow" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -137,12 +138,11 @@
 
             <ImageView
                 android:id="@+id/iv_win"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                style="@style/wrap"
                 android:layout_marginRight="@dimen/drawable_padding"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/star_red_small" />
+                android:src="@drawable/vvideorecord" />
 
             <TextView
                 android:id="@+id/tv_win"
@@ -164,12 +164,11 @@
 
             <ImageView
                 android:id="@+id/iv_apply"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                style="@style/wrap"
                 android:layout_marginRight="@dimen/drawable_padding"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/speople_red" />
+                android:src="@drawable/vsignin" />
 
             <TextView
                 android:id="@+id/tv_apply"

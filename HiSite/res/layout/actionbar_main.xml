@@ -4,14 +4,16 @@
     android:background="@color/black_half_transparent"
     >
 
-    <ImageView
+    <com.android.tonight8.view.CircleImageView
         android:id="@+id/iv_left_btn"
-        style="@style/actionBar_btn_sty"
+        style="@style/wrap"
+        android:scaleType="fitXY"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/vme"
+        android:background="@color/white" />
 
     <TextView
         android:id="@+id/tv_location"
@@ -19,7 +21,8 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/iv_left_btn"
         android:text="@string/win"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
     <RadioGroup
         android:id="@+id/rg_center"
@@ -60,6 +63,6 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/vsearch" />
 
 </RelativeLayout>

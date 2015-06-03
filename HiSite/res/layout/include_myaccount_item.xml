@@ -7,7 +7,7 @@
         style="@style/wrap"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginLeft="@dimen/common_margin_left_long"
         android:contentDescription="@string/app_name"
         android:paddingBottom="@dimen/topOrBottomPaddingSmall"
         android:paddingTop="@dimen/topOrBottomPaddingSmall"
@@ -40,7 +40,8 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/vwhiterightarrow"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_right_info"

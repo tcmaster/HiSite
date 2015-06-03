@@ -1,24 +1,21 @@
 package com.android.tonight8.fragment.main;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.event.OrgEventListActivity;
-import com.android.tonight8.activity.org.OrgDetailActivity;
-import com.android.tonight8.activity.user.MessageListActivity;
-import com.android.tonight8.activity.wish.MyWishActivity;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
+import com.android.tonight8.view.RolePopupWindow;
+import com.android.tonight8.view.RolePopupWindow.RolePopupWindowCallBack;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -39,9 +36,6 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 中间布局 */
 	@ViewInject(R.id.ll_center_layout)
 	private LinearLayout ll_center_layout;
-	/** 尾部布局 */
-	@ViewInject(R.id.ll_tail)
-	private LinearLayout ll_tail;
 	/** 用户图片 */
 	@ViewInject(R.id.iv_user_photo)
 	private ImageView iv_user_photo;
@@ -51,9 +45,9 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 用户地址 */
 	@ViewInject(R.id.tv_user_address)
 	private TextView tv_user_address;
-	/** 用户角色选择 */
-	@ViewInject(R.id.sp_user_role)
-	private Spinner sp_user_role;
+	/** 用户角色 */
+	@ViewInject(R.id.tv_user_role)
+	private TextView tv_user_role;
 	/** 中奖号码 */
 	@ViewInject(R.id.layout_award_no)
 	private RelativeLayout layout_award_no;
@@ -88,15 +82,16 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	@ViewInject(R.id.layout_my_attention)
 	private RelativeLayout layout_my_attention;
 	/** 消息中心 */
-	@ViewInject(R.id.tv_message_center)
-	private TextView tv_message_center;
+	@ViewInject(R.id.layout_my_message)
+	private RelativeLayout layout_my_message;
 	/** 设置 */
-	@ViewInject(R.id.tv_settings)
-	private TextView tv_settings;
+	@ViewInject(R.id.layout_my_settings)
+	private RelativeLayout layout_my_settings;
 	/** 账户角色0用户1卖手2商家 */
 	private int AccountType = 2;
 
 	// *********************其他成员****************************//
+	private RolePopupWindow window;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -114,31 +109,35 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	}
 
 	private void initDatas() {
-		setTextAndContent(layout_award_no, R.drawable.ic_launcher,
-				R.string.my_code, null, null, true);
-		setTextAndContent(layout_my_redpacket, R.drawable.ic_launcher,
+		setTextAndContent(layout_award_no, R.drawable.vaward, R.string.my_code,
+				null, null, true);
+		setTextAndContent(layout_my_redpacket, R.drawable.vredpacket,
 				R.string.my_redpecket, null, null, true);
-		setTextAndContent(layout_my_orders, R.drawable.ic_launcher,
+		setTextAndContent(layout_my_orders, R.drawable.vorder,
 				R.string.my_order, null, null, true);
-		setTextAndContent(layout_my_address, R.drawable.ic_launcher,
+		setTextAndContent(layout_my_address, R.drawable.vaddress,
 				R.string.my_address, null, null, true);
-		setTextAndContent(layout_act_seller, R.drawable.ic_launcher,
+		setTextAndContent(layout_act_seller, R.drawable.vseller,
 				R.string.my_seller_role, null, null, true);
-		setTextAndContent(layout_act_org, R.drawable.ic_launcher,
+		setTextAndContent(layout_act_org, R.drawable.vorg,
 				R.string.my_org_role, null, null, true);
-		setTextAndContent(layout_my_money, R.drawable.ic_launcher,
+		setTextAndContent(layout_my_money, R.drawable.vlove,
 				R.string.my_account, null, null, true);
-		setTextAndContent(layout_my_wish, R.drawable.ic_launcher,
-				R.string.my_wish, null, null, true);
-		setTextAndContent(layout_my_event, R.drawable.ic_launcher,
+		setTextAndContent(layout_my_wish, R.drawable.vlove, R.string.my_wish,
+				null, null, true);
+		setTextAndContent(layout_my_event, R.drawable.vattention,
 				R.string.my_event, null, null, true);
-		setTextAndContent(layout_my_save, R.drawable.ic_launcher,
-				R.string.my_save, null, null, true);
-		setTextAndContent(layout_my_attention, R.drawable.ic_launcher,
+		setTextAndContent(layout_my_save, R.drawable.vsave, R.string.my_save,
+				null, null, true);
+		setTextAndContent(layout_my_attention, R.drawable.vattention,
 				R.string.my_attention, null, null, true);
+		setTextAndContent(layout_my_message, R.drawable.vmessage,
+				R.string.message_center, null, null, false);
+		setTextAndContent(layout_my_settings, R.drawable.vsetting,
+				R.string.settings, null, null, false);
+		tv_user_role.setText("用户");
 		rl_head.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 		ll_center_layout.getLayoutParams().height = AppConstants.heightPx / 10 * 8;
-		ll_tail.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 		if (AccountType == 0) {
 
 		} else if (AccountType == 1) {
@@ -146,6 +145,30 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		} else if (AccountType == 2) {
 			// layout_my_wish.setVisibility(View.GONE);
 		}
+
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		window = new RolePopupWindow(getActivity(),
+				new RolePopupWindowCallBack() {
+
+					@Override
+					public void onUser(String userText) {
+						tv_user_role.setText(userText);
+					}
+
+					@Override
+					public void onSeller(String sellerText) {
+						tv_user_role.setText(sellerText);
+					}
+
+					@Override
+					public void onOrg(String orgText) {
+						tv_user_role.setText(orgText);
+					}
+				});
 	}
 
 	@Override
@@ -154,29 +177,11 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 
 	}
 
-	@OnClick({ R.id.rl_head, R.id.layout_my_wish, R.id.tv_message_center,
-			R.id.layout_my_event })
+	@OnClick({ R.id.tv_user_role })
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.rl_head:
-			if (AccountType == 2) {
-
-				getActivity().startActivity(
-						new Intent(getActivity(), OrgDetailActivity.class));
-			}
-			break;
-		case R.id.tv_message_center:
-			getActivity().startActivity(
-					new Intent(getActivity(), MessageListActivity.class));
-			break;
-		case R.id.layout_my_wish:
-			getActivity().startActivity(
-					new Intent(getActivity(), MyWishActivity.class));
-			break;
-
-		case R.id.layout_my_event:
-			getActivity().startActivity(
-					new Intent(getActivity(), OrgEventListActivity.class));
+		case R.id.tv_user_role:
+			window.showWindow(tv_user_role);
 			break;
 		default:
 			break;

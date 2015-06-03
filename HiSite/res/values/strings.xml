@@ -111,7 +111,7 @@
     <string name="company_weixin">微信号</string>
     <string name="company_other">其他</string>
     <!-- 我 -->
-    <string name="my_code">中奖号码</string>
+    <string name="my_code">我的奖品</string>
     <string name="my_redpecket">我的红包</string>
     <string name="my_order">我的订单</string>
     <string name="my_address">我的地址</string>
@@ -133,6 +133,9 @@
     <string name="change_password">修改密码</string>
     <string name="title_activity_event_award">EventAwardActivity</string>
     <string name="title_activity_event_exchange">EventExchangeActivity</string>
+    <string name="user">用户</string>
+    <string name="org">商家</string>
+    <string name="seller">卖手</string>
     <!-- 中奖码列表 -->
     <string name="award_no">中奖号码：</string>
     <string name="value">价值：</string>
@@ -202,5 +205,8 @@
     <string name="title_activity_message_list">MessageList</string>
     <string name="title_activity_message_detail">MessageDetailActivity</string>
     <string name="title_activity_event_live_play">EventLivePlayActivity</string>
+    <!-- 测试字符串 -->
+    <string name="usersimple">小明</string>
+    <string name="addresssimple">北京市海淀区</string>
 
 </resources>

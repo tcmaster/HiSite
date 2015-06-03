@@ -43,15 +43,14 @@
                     android:text="@string/main_right_tab" />
             </RadioGroup>
 
-            <ImageButton
-                android:id="@+id/ib_main_center"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+            <ImageView
+                android:id="@+id/iv_main_center"
+                style="@style/wrap"
                 android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/topOrbottomPadding"
                 android:background="@null"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/circle_center" />
+                android:src="@drawable/main_center"
+                android:scaleType="fitXY" />
         </FrameLayout>
     </LinearLayout>
 

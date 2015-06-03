@@ -42,7 +42,7 @@
     <!-- hi现场文字左右边距 -->
     <dimen name="item_left_hilive">5dp</dimen>
     <!-- hi现场用户头像最大宽高 -->
-    <dimen name="user_headpic_minheight">45dp</dimen>
+    <dimen name="user_headpic_minheight">55dp</dimen>
     <!-- 活动详情相关 -->
     <!-- 海报高度 -->
     <dimen name="popgoodsHeight">300dp</dimen>
