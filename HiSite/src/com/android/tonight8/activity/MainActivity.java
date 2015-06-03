@@ -33,8 +33,11 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class MainActivity extends BaseActivity implements
 		OnCheckedChangeListener {
 
-	/** 界面下方2个按钮组 */
+	/** 下方radioGroup */
 	private RadioGroup rg_mian;
+	/** 左边的radioButton */
+	private RadioButton rb_main_left;
+	/** 右边的radioButton */
 	private RadioButton rb_main_right;
 	/** 本界面的popupwindow */
 	private RegionalSortPopupWindow window;
@@ -138,6 +141,7 @@ public class MainActivity extends BaseActivity implements
 		rb_main_right = (RadioButton) rightView
 				.findViewById(R.id.rb_main_right);
 		iv_left_btn = (ImageView) rightView.findViewById(R.id.iv_left_btn);
+		rb_main_left = (RadioButton) rightView.findViewById(R.id.rb_main_left);
 		rb_left = (RadioButton) rightView.findViewById(R.id.rb_left);
 		rb_right = (RadioButton) rightView.findViewById(R.id.rb_right);
 		rg_center = (RadioGroup) rightView.findViewById(R.id.rg_center);
@@ -151,12 +155,18 @@ public class MainActivity extends BaseActivity implements
 					if (rb_main_right.isChecked()) {
 						WishMainFragment wFragment = (WishMainFragment) fragments[1];
 						wFragment.doFragmentShow(0);
+					} else if (rb_main_left.isChecked()) {
+						TonightEightFragment tFragment = (TonightEightFragment) fragments[0];
+						tFragment.changeLeft();
 					}
 					break;
 				case R.id.rb_right:
 					if (rb_main_right.isChecked()) {
 						WishMainFragment wFragment = (WishMainFragment) fragments[1];
 						wFragment.doFragmentShow(1);
+					} else if (rb_main_left.isChecked()) {
+						TonightEightFragment tFragment = (TonightEightFragment) fragments[0];
+						tFragment.changeRight();
 					}
 					break;
 

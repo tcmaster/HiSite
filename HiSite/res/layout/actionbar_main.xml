@@ -13,7 +13,7 @@
         android:layout_marginLeft="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
         android:src="@drawable/vme"
-        android:background="@color/white" />
+        />
 
     <TextView
         android:id="@+id/tv_location"

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/wrap"
     android:orientation="vertical"
-    android:background="@color/white" >
+    android:background="@drawable/vrolebg"
+    android:padding="@dimen/topOrbottomPadding" >
     <TextView
         style="@style/wrap"
         android:id="@+id/tv_user"

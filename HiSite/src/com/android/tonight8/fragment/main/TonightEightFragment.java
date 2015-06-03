@@ -278,4 +278,20 @@ public class TonightEightFragment extends BaseFragment {
 		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
 		startActivity(intent);
 	}
+
+	/**
+	 * 切换今日
+	 */
+	public void changeLeft() {
+		EventIOController.eventsRead(handler, REFRESH, ITEM_COUNT, current
+				* ITEM_COUNT);
+	}
+
+	/**
+	 * 切换预告
+	 */
+	public void changeRight() {
+		EventIOController.eventsRead(handler, REFRESH, ITEM_COUNT, current
+				* ITEM_COUNT);
+	}
 }
