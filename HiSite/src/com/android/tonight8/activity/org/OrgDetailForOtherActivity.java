@@ -24,10 +24,10 @@ public class OrgDetailForOtherActivity extends BaseActivity implements
 	@ViewInject(R.id.rg_org_detail)
 	private RadioGroup rg_org_detail;
 	@ViewInject(R.id.rb_wish_talk)
-	private RadioButton rb_wish_talk;
-	@ViewInject(R.id.rb_wish_process)
-	private RadioButton rb_wish_process;
-	@ViewInject(R.id.rb_wish_sponsor)
+	private RadioButton rb_org_info;
+	@ViewInject(R.id.rb_org_info)
+	private RadioButton rb_org_event;
+	@ViewInject(R.id.rb_org_sponor)
 	private RadioButton rb_wish_sponsor;
 	private FragmentManager fm;
 	private FragmentTransaction ft;
@@ -37,13 +37,13 @@ public class OrgDetailForOtherActivity extends BaseActivity implements
 		int radioButtonId = arg0.getCheckedRadioButtonId();
 		LogUtils.i(arg1 + "");
 		switch (radioButtonId) {
-		case R.id.rb_wish_talk:
+		case R.id.rb_org_info:
 			doFragmentShow(0);
 			break;
-		case R.id.rb_wish_process:
+		case R.id.rb_org_event:
 			doFragmentShow(1);
 			break;
-		case R.id.rb_wish_sponsor:
+		case R.id.rb_org_sponor:
 			doFragmentShow(2);
 			break;
 		default:

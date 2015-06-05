@@ -1,32 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="@dimen/common_margin_small" >
 
-    <ImageView
-        android:id="@+id/iv_orglogopic"
+    <com.android.tonight8.view.CircleImageView
+        android:id="@+id/iv_sponsor_orglogopic"
         android:layout_width="@dimen/user_headpic_minheight"
-        android:layout_height="@dimen/user_headpic_minheight" />
+        android:layout_height="@dimen/user_headpic_minheight"
+        android:layout_marginRight="@dimen/item_left_hilive"
+        android:background="@drawable/ic_launcher" />
 
-    <LinearLayout
-        style="@style/match_width"
-        android:orientation="vertical" >
+    <TextView
+        android:id="@+id/tv_sponsor_orgname"
+        style="@style/wrap"
+        android:layout_alignTop="@+id/iv_sponsor_orglogopic"
+        android:layout_marginLeft="@dimen/common_margin_small"
+        android:layout_toRightOf="@+id/iv_sponsor_orglogopic"
+        android:text="小新" />
 
-        <TextView
-            android:id="@+id/tv_wish_orgpname"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left" />
+    <TextView
+        android:id="@+id/tv_sponsormoney_text"
+        style="@style/wrap"
+        android:layout_alignLeft="@+id/tv_sponsor_orgname"
+        android:layout_below="@+id/tv_sponsor_orgname"
+        android:layout_marginTop="@dimen/common_margin_small"
+        android:background="@color/black_seven_purple"
+        android:text="赞助"
+        android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/tv_moneycount"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left" />
+    <TextView
+        android:id="@+id/tv_sponsor_orgrequest_text"
+        style="@style/wrap"
+        android:layout_alignLeft="@+id/tv_sponsormoney_text"
+        android:layout_below="@+id/tv_sponsormoney_text"
+        android:layout_marginTop="@dimen/common_margin_small"
+        android:background="@color/black_seven_purple"
+        android:text="要求"
+        android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/tv_wish_orgrequest"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_sponsor_orgrequest"
+        style="@style/wrap"
+        android:layout_alignBaseline="@+id/tv_sponsor_orgrequest_text"
+        android:layout_alignBottom="@+id/tv_sponsor_orgrequest_text"
+        android:layout_marginTop="@dimen/common_margin_small"
+        android:layout_toRightOf="@+id/tv_sponsor_orgrequest_text" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_sponsormoney"
+        style="@style/wrap"
+        android:layout_alignBaseline="@+id/tv_sponsormoney_text"
+        android:layout_alignBottom="@+id/tv_sponsormoney_text"
+        android:layout_alignLeft="@+id/tv_sponsor_orgrequest"
+        android:layout_marginTop="@dimen/common_margin_small" />
+
+</RelativeLayout>

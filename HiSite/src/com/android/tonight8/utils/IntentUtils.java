@@ -16,13 +16,37 @@ import com.android.tonight8.activity.other.CaptureActivity;
 public class IntentUtils {
 
 	/**
-	 * @Description：打电话
+	 * @Description：打电话（直接拨打）
 	 * @date 2015-3-7下午5:20:40
 	 * @author liuzhao
 	 */
-	public static void showCallPhoneDialog(Context context, String phone) {
+	public static void startCallPhone(Context context, String phoneNumber) {
 		context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
-				+ phone)));
+				+ phoneNumber)));
+	}
+
+	/**
+	 * @Description：打电话（跳转到拨号界面）
+	 * @date 2015-3-7下午5:20:40
+	 * @author liuzhao
+	 */
+	public static void showCallPhoneDialog(Context context, String phoneNumber) {
+		Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+				+ phoneNumber));
+
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		context.startActivity(intent);
+	}
+
+	/**
+	 * @Description：打电话（跳转到联系人界面）
+	 * @date 2015-3-7下午5:20:40
+	 * @author liuzhao
+	 */
+	public static void startContactsPage(Context context, String phoneNumber) {
+		Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+				+ phoneNumber));
+		context.startActivity(intentPhone);
 	}
 
 	/**

@@ -5,6 +5,7 @@ package com.android.tonight8.io.net;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -126,12 +127,35 @@ public class NetRequest {
 			public void run() {
 				// try {
 				// Thread.sleep(1000);
-				NetEntityBase base = new NetEntityBase();
-				base.status = 0;
-				base.message = "测试用，假网，放心，安全，OK";
-				base.data = "中国小嵩";
-				callback.getData(base,
+				callback.getData(null,
 						JsonUtils.getVirualData(callback.getResultClass()),
+						callback.handler);
+				// } catch (InterruptedException e) {
+				// e.printStackTrace();
+				// }
+			}
+		}).start();
+	}
+
+	/**
+	 * @Description: 进行一次GET请求(无需传method方法)
+	 * @author: LiXiaoSong
+	 * @date:2014-12-26
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> void doGetRequestList(final Map<String, String> param,
+			final RequestResultList<T> callback) {
+		// param.put("method", GET_METHOD);
+		// doRequest(param, callback);
+		// 测试，暂时未调用网络
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// try {
+				// Thread.sleep(1000);
+				callback.getDataList(null,
+						JsonUtils.getVirualDataList(callback.getResultClass()),
 						callback.handler);
 				// } catch (InterruptedException e) {
 				// e.printStackTrace();
@@ -254,6 +278,65 @@ public class NetRequest {
 
 		public abstract void getData(NetEntityBase netEntityBase, T t,
 				Handler handler);
+	}
+
+	public abstract static class RequestResultList<T> extends
+			RequestCallBack<String> {
+
+		private Class<T> clazz;
+		private Handler handler;
+
+		/**
+		 * @param clazz
+		 *            需要解析的实体类（如果解析完以后就是NetBaseEntity，则该类可为任何类型）
+		 * @param handler
+		 *            主线程的handler（用于将数据传输给UI界面）
+		 */
+		public RequestResultList(final Class<T> clazz, final Handler handler) {
+			this.handler = handler;
+			this.clazz = clazz;
+		}
+
+		public Class<T> getResultClass() {
+			return clazz;
+		}
+
+		@Override
+		public void onSuccess(final ResponseInfo<String> arg0) {
+			// 解析基本的网络实体,根据业务需求，需要另开线程(数据库操作比较频繁)
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					NetEntityBase base = getBaseJsonObject(arg0.result);
+					List<T> t = null;
+					if (!StringUtils.isNullOrEmpty(base.data)) {
+						t = JsonUtils.parseJsonList(base.data, clazz);// 解析好需要的实体
+					}
+					getDataList(base, t, handler);
+				}
+			}).start();
+
+		}
+
+		private NetEntityBase getBaseJsonObject(String baseStr) {
+			NetEntityBase base = new NetEntityBase();
+			JSONObject object = JSON.parseObject(baseStr);
+			base.status = object.getInteger("status");
+			base.attachment_path = object.getString("attachment_path");
+			base.message = object.getString("message");
+			JsonUtils.newJsonkey = "";
+			String jsonkey = JsonUtils.getObjectToString(object
+					.getJSONObject("data"));
+			LogUtils.v("ori is " + object.getJSONObject("data"));
+			base.data = JsonUtils.getStringData(jsonkey,
+					object.getJSONObject("data"));
+			LogUtils.v("data is on parseFinish " + base.data);
+			return base;
+		}
+
+		public abstract void getDataList(NetEntityBase netEntityBase,
+				List<T> t, Handler handler);
 	}
 
 	private static void addHeader(RequestParams rP) {

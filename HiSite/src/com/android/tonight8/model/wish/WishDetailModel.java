@@ -2,6 +2,7 @@ package com.android.tonight8.model.wish;
 
 import com.android.tonight8.dao.entity.DetailPic;
 import com.android.tonight8.dao.entity.PopPic;
+import com.android.tonight8.dao.entity.User;
 import com.android.tonight8.dao.entity.Wish;
 
 /**
@@ -14,6 +15,16 @@ public class WishDetailModel {
 	public PopPic popPic;
 	/** 详情图片 */
 	public DetailPic detailPic;
+	/** 用户 */
+	public User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Wish getWish() {
 		return wish;

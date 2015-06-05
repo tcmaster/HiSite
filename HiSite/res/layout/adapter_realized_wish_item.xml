@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/common_margin_small"
-    android:background="@drawable/shape_radius_wish_item"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -23,7 +22,7 @@
 
         <ImageView
             android:id="@+id/iv_realized_wishpic"
-            style="@style/wrap"
+            style="@style/match_width"
             android:scaleType="centerCrop" />
     </LinearLayout>
 
@@ -52,7 +51,7 @@
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/common_margin_small"
         android:background="@color/white"
-        android:gravity="center"
+        android:gravity="left"
         android:orientation="horizontal" >
 
         <com.android.tonight8.view.CircleImageView

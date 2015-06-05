@@ -1,7 +1,9 @@
 package com.android.tonight8.fragment.wish;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,6 +22,8 @@ import com.android.tonight8.adapter.wish.WishListAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.wish.WishIOController;
+import com.android.tonight8.model.wish.WishListModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.ViewUtils;
@@ -30,7 +34,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  */
 public class WishListUnrealizedFragment extends BaseFragment {
 	private WishListAdapter wishListAdapter;
-	private List<String> list;
+	private List<WishListModel> list;
 	@ViewInject(R.id.lv_only_list)
 	private XListView lv_wish;
 	private View rootView;
@@ -57,7 +61,7 @@ public class WishListUnrealizedFragment extends BaseFragment {
 				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 					if (msg.arg2 == INIT) {
 						lv_wish.setVisibility(View.VISIBLE);
-						List<String> data = (List<String>) msg.obj;
+						List<WishListModel> data = (List<WishListModel>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_wish.setPullLoadEnable(false);
 						else
@@ -66,16 +70,16 @@ public class WishListUnrealizedFragment extends BaseFragment {
 								data);
 						lv_wish.setAdapter(wishListAdapter);
 					} else if (msg.arg2 == REFRESH) {
-						List<String> data = (List<String>) msg.obj;
+						List<WishListModel> data = (List<WishListModel>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_wish.setPullLoadEnable(false);
 						wishListAdapter.initData(data);
 						lv_wish.stopRefresh();
 					} else if (msg.arg2 == LOAD_MORE) {
-						List<String> data = (List<String>) msg.obj;
+						List<WishListModel> data = (List<WishListModel>) msg.obj;
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_wish.setPullLoadEnable(false);
-						wishListAdapter.addData((List<String>) msg.obj);
+						wishListAdapter.addData((List<WishListModel>) msg.obj);
 						lv_wish.stopLoadMore();
 					}
 
@@ -124,16 +128,33 @@ public class WishListUnrealizedFragment extends BaseFragment {
 		rootView = inflater.inflate(R.layout.activity_only_list, container,
 				false);
 		ViewUtils.inject(this, rootView);
-		list = new ArrayList<String>();
-		list.add("123");
-		list.add("123");
-		list.add("123");
-		list.add("123");
-		list.add("123");
-		list.add("123");
+		Map<String, String> params = new HashMap<String, String>();
+		WishIOController.getWishList(handler, params, INIT);
+
+		// WishListModel wListModel = new WishListModel();
+		// PopPic poppic = new PopPic();
+		// Wish wish = new Wish();
+		// User user = new User();
+		// wish.setName("我想去大理");
+		// wish.setPublishTime("2015年10月1日 8:00");
+		// wish.setSupportCount(200);
+		// wish.setProgress((float) 0.23);
+		// wish.setDescribe("给我三个月假期和2万元钱助我一臂之力去大理，嗷嗷嗷叫");
+		// poppic.setUrl("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
+		// user.setPic("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
+		// user.setName("明月");
+		// wListModel.setPopPic(poppic);
+		// wListModel.setWish(wish);
+		// wListModel.setUser(user);
+		// list.add(wListModel);
+		// list.add(wListModel);
+		// list.add(wListModel);
+		// list.add(wListModel);
+		// list.add(wListModel);
+
+		list = new ArrayList<WishListModel>();
 		wishListAdapter = new WishListAdapter(activity, list);
 		lv_wish.setAdapter(wishListAdapter);
-		lv_wish.setPullLoadEnable(true);
 		lv_wish.setPullLoadEnable(true);
 		lv_wish.setOnItemClickListener(new OnItemClickListener() {
 

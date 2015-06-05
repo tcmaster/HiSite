@@ -30,6 +30,8 @@
     <color name="black_seven_transparent">#b2000000</color>
     <!-- 40%透明紫色 -->
     <color name="black_seven_purple">#66aa63c2</color>
+    <!-- 10%透明紫色 -->
+    <color name="ten_purple">#1aaa63c2</color>
     <!-- 紫色 -->
     <color name="purple">#ffaa63c2</color>
     <!-- （标题）灰色 -->

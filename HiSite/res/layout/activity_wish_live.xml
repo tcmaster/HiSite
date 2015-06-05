@@ -28,81 +28,125 @@
                 android:orientation="horizontal" />
         </FrameLayout>
 
-        <LinearLayout
+        <RelativeLayout
             style="@style/match_width"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin_left"
+            android:paddingRight="@dimen/common_margin_left" >
 
             <TextView
+                android:id="@+id/tv_vp_left"
                 style="@style/wrap"
-                android:text="播放" />
-        </LinearLayout>
+                android:layout_centerVertical="true"
+                android:text="向左" />
 
-        <RelativeLayout
+            <TextView
+                android:id="@+id/tv_vp_pause"
+                style="@style/wrap"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_vp_left"
+                android:text="暂停" />
+
+            <TextView
+                android:id="@+id/tv_vp_right"
+                style="@style/wrap"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_vp_pause"
+                android:text="向右" />
+
+            <TextView
+                android:id="@+id/tv_callme"
+                style="@style/wrap"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/ic_launcher"
+                android:gravity="center_vertical"
+                android:text="联系我"
+                android:textSize="@dimen/smallTextSize" />
+        </RelativeLayout>
+
+        <View style="@style/line_full" />
+
+        <View
+            style="@style/line_full"
+            android:layout_height="@dimen/common_margin_left"
+            android:background="@color/half_white" />
+
+        <View style="@style/line_full" />
+
+        <LinearLayout
             android:id="@+id/rl_wish_item_root"
             style="@style/match_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:background="@color/white"
-            android:padding="@dimen/common_margin_left" >
+            android:orientation="horizontal"
+            android:padding="@dimen/common_margin_small" >
 
-            <ImageView
-                android:id="@+id/iv_wish_userpic"
+            <com.android.tonight8.view.CircleImageView
+                android:id="@+id/civ_wishlive_userpic"
                 style="@style/wrap"
                 android:layout_width="@dimen/popGoodsUserPhotoWidth"
                 android:layout_height="@dimen/popGoodsUserPhotoWidth"
-                android:background="@drawable/ic_launcher" />
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_wish_username"
                 style="@style/wrap"
-                android:layout_toRightOf="@+id/iv_wish_userpic"
-                android:paddingLeft="@dimen/common_margin_small"
-                android:textColor="@color/black" />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/common_margin_small"
+                android:text="用户名"
+                android:textColor="@color/black_seven_purple" />
+
+            <View
+                style="@style/line_full_vertical"
+                android:layout_width="2dp"
+                android:layout_margin="@dimen/common_margin_small"
+                android:background="@color/black_seven_purple" />
 
             <TextView
                 android:id="@+id/tv_wish_supportcount"
                 style="@style/wrap"
-                android:layout_alignBottom="@+id/iv_wish_userpic"
-                android:layout_toRightOf="@+id/iv_wish_userpic"
+                android:layout_gravity="center_vertical"
                 android:drawableLeft="@drawable/ic_launcher"
                 android:drawablePadding="@dimen/common_margin_left"
+                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/common_margin_small"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/tv_wish_callme"
                 style="@style/wrap"
-                android:layout_alignLeft="@+id/tv_wish_followme"
-                android:layout_alignParentRight="true"
-                android:drawableLeft="@drawable/ic_launcher"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/common_margin_small"
-                android:text="联系"
-                android:textColor="@color/black" />
+                android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/tv_wish_followme"
                 style="@style/wrap"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tv_wish_callme"
-                android:drawableLeft="@drawable/ic_launcher"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/common_margin_small"
-                android:text="关注"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/common_margin_small"
+                android:text="实现进度"
                 android:textColor="@color/black" />
 
             <com.android.tonight8.view.MyProgressBar
-                android:id="@+id/pb_wishdetail_progress"
+                android:id="@+id/pb_wish_live"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/tv_wish_callme"
-                android_custom:roundColor="@color/red"
-                android_custom:roundProgressColor="@color/red"
+                android:layout_marginRight="@dimen/common_margin_left"
+                android:gravity="right"
+                android_custom:roundColor="@color/white_gray"
+                android_custom:roundProgressColor="@color/black_seven_purple"
                 android_custom:roundWidth="4dip"
-                android_custom:textColorRound="@color/red"
+                android_custom:textColorRound="@color/black_seven_purple"
                 android_custom:textIsDisplayable="true"
                 android_custom:textSizeRound="14sp" />
-        </RelativeLayout>
+        </LinearLayout>
+
+        <View style="@style/line_full" />
+
+        <View
+            style="@style/line_full"
+            android:layout_height="@dimen/common_margin_left"
+            android:background="@color/half_white" />
+
+        <View style="@style/line_full" />
 
         <LinearLayout
             style="@style/match_width"
@@ -114,11 +158,14 @@
                 android:text="我的心愿"
                 android:textSize="@dimen/middleTextSize" />
 
-            <TextView
+            <com.android.tonight8.view.CollapsibleTextView
+                android:id="@+id/ctv_wish_content"
                 style="@style/match_width"
                 android:text="我要车，要美女，要金钱，要房子"
                 android:textSize="@dimen/smallTextSize" />
         </LinearLayout>
+
+        <View style="@style/line_full" />
 
         <RadioGroup
             android:id="@+id/rg_wish_detail"
@@ -132,8 +179,12 @@
                 style="@style/wrap"
                 android:layout_weight="1"
                 android:button="@null"
+                android:checked="true"
                 android:gravity="center"
-                android:text="讨论区" />
+                android:text="讨论区"
+                android:textColor="@drawable/text_black_to_purple" />
+
+            <View style="@style/line_full_vertical" />
 
             <RadioButton
                 android:id="@+id/rb_wish_sponsor"
@@ -141,8 +192,11 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="赞助者" />
+                android:text="赞助者"
+                android:textColor="@drawable/text_black_to_purple" />
         </RadioGroup>
+
+        <View style="@style/line_full" />
 
         <LinearLayout
             android:id="@+id/ll_wish_fourcontent"

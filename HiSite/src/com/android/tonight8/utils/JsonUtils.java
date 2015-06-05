@@ -39,7 +39,11 @@ public class JsonUtils {
 		LogUtils.v(t.toString());
 		return t;
 	}
-
+	public static <T> List<T> parseJsonList(String jsonStr, Class<T> clazz) {
+		List<T> t = (List<T>) JSON.parseArray(jsonStr, clazz);
+		LogUtils.v(t.toString());
+		return t;
+	}
 	public static String getObjectToString(JSONObject jsonObject) {
 
 		Iterator<Entry<String, Object>> it = jsonObject.entrySet().iterator();
@@ -159,7 +163,7 @@ public class JsonUtils {
 							field.set(result, "字符串测试");
 					} else if (name.equals("long")
 							|| name.equals(Long.class.toString())) {
-						field.set(result, (long) (999 * Math.random()));
+						field.set(result, 919L);
 					} else if (name.equals("double")
 							|| name.equals(Double.class.toString())) {
 						field.set(result, 1.0d);
