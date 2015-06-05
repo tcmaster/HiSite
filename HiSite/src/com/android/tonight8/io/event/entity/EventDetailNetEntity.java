@@ -1,7 +1,7 @@
 package com.android.tonight8.io.event.entity;
 
+import com.android.tonight8.dao.model.event.EventDetail;
 import com.android.tonight8.io.net.NetEntityBase;
-import com.android.tonight8.model.event.EventDetailModel;
 
 /**
  * 
@@ -12,14 +12,19 @@ import com.android.tonight8.model.event.EventDetailModel;
  */
 public class EventDetailNetEntity extends NetEntityBase {
 	/** 活动详情 */
-	EventDetailModel eventPublishDetail;
+	EventDetail eventDetail;
 
-	public EventDetailModel getEventPublishDetail() {
-		return eventPublishDetail;
+	public EventDetail getEventDetail() {
+		return eventDetail;
 	}
 
-	public void setEventPublishDetail(EventDetailModel eventPublishDetail) {
-		this.eventPublishDetail = eventPublishDetail;
+	public void setEventDetail(EventDetail eventDetail) {
+		this.eventDetail = eventDetail;
+	}
+
+	@Override
+	public String toString() {
+		return "EventDetailNetEntity [eventDetail=" + eventDetail + "]";
 	}
 
 }

@@ -13,17 +13,16 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.common.Goods;
+import com.android.tonight8.dao.entity.DetailPic;
 
-public class GoodLeftAdapter extends BaseListAdapter<Goods> {
-
-	public GoodLeftAdapter(Context context, List<Goods> values) {
+public class GoodLeftAdapter extends BaseListAdapter<DetailPic> {
+	public GoodLeftAdapter(Context context, List<DetailPic> values) {
 		super(context, values);
 	}
 
 	@Override
 	protected View getItemView(View convertView, int position) {
-		Goods goods = mValues.get(position);
+		DetailPic data = mValues.get(position);
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.item_fg_goods_detail_left,
 					null, false);
@@ -32,15 +31,15 @@ public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 				R.id.iv_activity_img);
 		TextView tv_goods_info = ViewHolder
 				.get(convertView, R.id.tv_goods_info);
-		bmUtils.display(iv_activity_img, goods.pic);
-		tv_goods_info.setText(goods.name + " 价格：" + goods.price + "元");
+		bmUtils.display(iv_activity_img, data.getUrl());
+		tv_goods_info.setText(data.getDescribe());
 		return convertView;
 	}
 
 	/**
 	 * 增加数据
 	 */
-	public void addData(List<Goods> data) {
+	public void addData(List<DetailPic> data) {
 		mValues.addAll(data);
 		notifyDataSetChanged();
 	}
@@ -48,7 +47,7 @@ public class GoodLeftAdapter extends BaseListAdapter<Goods> {
 	/**
 	 * 刷新数据
 	 */
-	public void updateData(List<Goods> data) {
+	public void updateData(List<DetailPic> data) {
 		mValues.clear();
 		mValues.addAll(data);
 		notifyDataSetChanged();

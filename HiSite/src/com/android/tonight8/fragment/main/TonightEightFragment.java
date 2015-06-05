@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.event.GoodsDetailActivity;
+import com.android.tonight8.activity.event.EventDetailActivity;
 import com.android.tonight8.adapter.event.MainPageListViewAdapter;
 import com.android.tonight8.adapter.event.MyPagerAdapter;
 import com.android.tonight8.base.BaseActivity;
@@ -275,7 +275,7 @@ public class TonightEightFragment extends BaseFragment {
 	@OnItemClick(R.id.lv_show_detail)
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
+		Intent intent = new Intent(getActivity(), EventDetailActivity.class);
 		startActivity(intent);
 	}
 

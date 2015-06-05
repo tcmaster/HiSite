@@ -4,7 +4,7 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#ff0000</color>
-    <color name="gray">#BEBEBE</color>
+    <color name="gray">#9b9b9b</color>
     <color name="line_gray">#d2d2d2</color>
     <color name="base_header_red">#df3031</color>
     <color name="base_header_btnpressed_red">#b2df3031</color>

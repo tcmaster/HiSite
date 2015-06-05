@@ -1,8 +1,6 @@
 package com.android.tonight8.io.event;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import android.os.Handler;
@@ -16,7 +14,6 @@ import com.android.tonight8.io.event.entity.PlayListNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
-import com.android.tonight8.model.event.EventConsultModel;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 
@@ -134,7 +131,7 @@ public class EventIOController {
 					public void getData(NetEntityBase netEntityBase,
 							EventDetailNetEntity t, Handler handler) {
 						HandlerConstants.sendMessage(handler,
-								t.getEventPublishDetail(),
+								t.getEventDetail(),
 								HandlerConstants.Event.EVENT_DETAIL,
 								HandlerConstants.RESULT_OK, 0);
 					}
@@ -162,7 +159,6 @@ public class EventIOController {
 					@Override
 					public void getData(NetEntityBase netEntityBase,
 							EventConsultListEntity t, Handler handler) {
-						List<EventConsultModel> models = new ArrayList<EventConsultModel>();
 						HandlerConstants.sendMessage(handler,
 								t.getEventPublishConsults(),
 								HandlerConstants.Event.EVENT_DETAIL_CONSULT,

@@ -14,48 +14,50 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.event.GoodLeftAdapter;
 import com.android.tonight8.adapter.event.GoodRightAdapter;
 import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.dao.model.event.EventDetail;
 import com.android.tonight8.function.CountDownFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.model.event.EventConsultModel;
-import com.android.tonight8.model.event.EventDetailModel;
 import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 import com.lidroid.xutils.BitmapUtils;
-import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * @Description:商品详情界面
+ * @Description:活动详情界面
  * @author:LiXiaoSong
  * @copyright @tonight8
  * @Date:2014-12-29
  */
-public class GoodsDetailActivity extends BaseActivity {
+public class EventDetailActivity extends BaseActivity {
 
 	// ***************************控件成员***********************************//
 	// headerView 的成员
 	/** 左边的tab */
-	private Button tv_tab_left;
+	private RadioButton rb_tab_left;
 	/** 右边的tab */
-	private Button tv_tab_right;
+	private RadioButton rb_tab_right;
 	/** 主办方一栏 */
 	private LinearLayout ll_company;
-	/** 查看兑奖地点按钮 */
-	private TextView tv_see_prize_location;
 	/** 活动主题 */
 	private TextView tv_event_name;
 	/** 左上角海报名称 */
@@ -107,6 +109,9 @@ public class GoodsDetailActivity extends BaseActivity {
 	private int flag2 = REFRESH;
 	/** 该标记用于确定当前是否点击了tab按钮 */
 	private boolean flag3 = false;
+	/** 记住lv滑动位置 */
+	int selectionPos = 0;
+	int top = 0;
 	/**
 	 * 本界面的数据更新handler
 	 */
@@ -121,23 +126,28 @@ public class GoodsDetailActivity extends BaseActivity {
 					pb_loading.setVisibility(View.INVISIBLE);
 					ll_bottom.setVisibility(View.VISIBLE);
 					lv_goods_detail.setVisibility(View.VISIBLE);
-					EventDetailModel source = (EventDetailModel) msg.obj;
+					EventDetail source = (EventDetail) msg.obj;
 					adapter_left = new GoodLeftAdapter(
-							GoodsDetailActivity.this, source.goodses);
+							EventDetailActivity.this, source.getDetailPics());
 					adapter_right = new GoodRightAdapter(
-							GoodsDetailActivity.this,
+							EventDetailActivity.this,
 							new ArrayList<EventConsultModel>());
-					tv_event_name.setText(source.event.name);
-					tv_pop_goods_name.setText(source.popGoods.popGoodsName);
-					utils.display(iv_pop_goods_pic, source.popGoods.popGoodsPic);
-					tv_pop_goods_price.setText(source.popGoods.popGoodsPrice
+					tv_event_name.setText(source.getEvent().getName());
+					tv_pop_goods_name.setText(source.getPopPics().get(0)
+							.getDescribe());
+					utils.display(iv_pop_goods_pic, source.getPopPics().get(0)
+							.getUrl());
+					tv_pop_goods_price.setText(source.getPopPics().get(0)
+							.getDescribe()
 							+ "");
-					tv_apply_count.setText(source.event.applyCount + "人");
-					tv_org_name.setText(source.org.name);
+					tv_apply_count.setText(source.getEvent().getApplyCount()
+							+ "人");
+					tv_org_name.setText(source.getOrg().getName());
 					lv_goods_detail.setAdapter(adapter_left);
 					lv_goods_detail.stopRefresh();
+					rb_tab_left.setChecked(true);
 					new CountDownFunction().beginCountDown(
-							GoodsDetailActivity.this, "2015-03-17 16:10:44",
+							EventDetailActivity.this, "2015-06-10 16:10:44",
 							tv_count_hour, tv_count_minute, tv_count_second);// 倒计时开始
 				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
 					Utils.toast("网络异常");
@@ -160,12 +170,12 @@ public class GoodsDetailActivity extends BaseActivity {
 								.addData((List<EventConsultModel>) msg.obj);
 						lv_goods_detail.stopLoadMore();
 					}
+					scrollListView();
 				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {
 
 				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {
 
 				}
-				scrollListView();
 				break;
 			default:
 				break;
@@ -214,7 +224,7 @@ public class GoodsDetailActivity extends BaseActivity {
 					@Override
 					public void onClick(View v) {
 						DialogUtils.showSelectShareDialog(
-								GoodsDetailActivity.this, null);
+								EventDetailActivity.this, null);
 					}
 				});
 		EventIOController.eventDetailRead(handler);
@@ -240,6 +250,22 @@ public class GoodsDetailActivity extends BaseActivity {
 
 			}
 		});
+		lv_goods_detail.setOnScrollListener(new OnScrollListener() {
+
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				if (scrollState == SCROLL_STATE_IDLE) {
+					selectionPos = lv_goods_detail.getFirstVisiblePosition();
+					View v = lv_goods_detail.getChildAt(0);
+					top = (v == null) ? 0 : v.getTop();
+				}
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+			}
+		});
 	}
 
 	/**
@@ -249,9 +275,10 @@ public class GoodsDetailActivity extends BaseActivity {
 	 */
 	private void initHeaderView() {
 		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View view = inflater.inflate(R.layout.header_goods_detail, null, false);
-		tv_tab_left = (Button) view.findViewById(R.id.btn_choice_award);
-		tv_tab_right = (Button) view.findViewById(R.id.btn_choice_activity_q);
+		View view = inflater.inflate(R.layout.header_event_detail, null, false);
+		rb_tab_left = (RadioButton) view.findViewById(R.id.rb_choice_award);
+		rb_tab_right = (RadioButton) view
+				.findViewById(R.id.rb_choice_activity_q);
 		ll_company = (LinearLayout) view.findViewById(R.id.ll_company);
 		tv_event_name = (TextView) view.findViewById(R.id.tv_theme);
 		tv_pop_goods_name = (TextView) view.findViewById(R.id.tv_fg_left_top);
@@ -263,24 +290,13 @@ public class GoodsDetailActivity extends BaseActivity {
 		tv_count_second = (TextView) view.findViewById(R.id.tv_second);
 		tv_apply_count = (TextView) view.findViewById(R.id.tv_apply_count);
 		tv_org_name = (TextView) view.findViewById(R.id.tv_company);
-		tv_see_prize_location = (TextView) view
-				.findViewById(R.id.tv_see_location);
-		OnClickListener listener = new OnClickListener() {
+		OnClickListener clickListener = new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				switch (v.getId()) {
-				case R.id.btn_choice_award:
-					doChangeFA();
-					break;
-				case R.id.btn_choice_activity_q:
-					doChangeFB();
-					break;
 				case R.id.ll_company:
 					doJumpCompany();
-					break;
-				case R.id.tv_see_location:
-					doWatchAllPrizeLocation();
 					break;
 				default:
 					break;
@@ -288,10 +304,28 @@ public class GoodsDetailActivity extends BaseActivity {
 
 			}
 		};
-		tv_tab_left.setOnClickListener(listener);
-		tv_tab_right.setOnClickListener(listener);
-		ll_company.setOnClickListener(listener);
-		tv_see_prize_location.setOnClickListener(listener);
+		OnCheckedChangeListener checkedChangeListener = new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton button, boolean isCheck) {
+				if (isCheck) {
+					switch (button.getId()) {
+					case R.id.rb_choice_award:
+						doChangeFA();
+						break;
+					case R.id.rb_choice_activity_q:
+						doChangeFB();
+						break;
+					default:
+						break;
+					}
+				}
+
+			}
+		};
+		rb_tab_left.setOnCheckedChangeListener(checkedChangeListener);
+		rb_tab_right.setOnCheckedChangeListener(checkedChangeListener);
+		ll_company.setOnClickListener(clickListener);
 		lv_goods_detail.addExtraHeaderView(view);
 
 	}
@@ -335,32 +369,11 @@ public class GoodsDetailActivity extends BaseActivity {
 	}
 
 	/**
-	 * 查看兑奖地点
-	 * 
-	 * @Description:
-	 * @author: LiXiaoSong
-	 * @date:2015-1-8
-	 */
-	private void doWatchAllPrizeLocation() {
-		Intent intent = new Intent(this, EventExchangeActivity.class);
-		startActivity(intent);
-	}
-
-	/**
 	 * 当点击tab按钮时，将listview滑动到listView第一个item的位置
 	 */
 	private void scrollListView() {
 		if (flag3) {
-			lv_goods_detail.post(new Runnable() {
-
-				@Override
-				public void run() {
-					LogUtils.v("已经进入");
-					if (lv_goods_detail.getAdapter().getCount() != 0)
-						lv_goods_detail.setSelection(2);// 有两个头部，所以首个item的位置是2
-					flag3 = false;
-				}
-			});
+			lv_goods_detail.setSelectionFromTop(selectionPos, top);
 		}
 	}
 }

@@ -19,9 +19,9 @@
     <string name="second">秒</string>
     <string name="defaultTime">00</string>
     <string name="toOpenAward">距开奖还有：</string>
-    <string name="activityTheme">活动主题：</string>
+    <string name="activityTheme">活动：</string>
     <string name="sponsor">主办方：</string>
-    <string name="coupon">优惠券：</string>
+    <string name="coupon">赠券：</string>
     <string name="have_apply">已报名：</string>
     <string name="couponCount">发放数量：</string>
     <string name="activityDetail">活动详情</string>
@@ -29,7 +29,7 @@
     <string name="activityCount">奖品数量：</string>
     <string name="activityTime">活动时间：</string>
     <string name="activityLocation">兑奖地点：</string>
-    <string name="activityRule">活动规则：</string>
+    <string name="activityRule">活动规则：1.兑奖时间：2015年5月5日-10月5日\n2.本活动优惠券不可与其他优惠券一同使用</string>
     <string name="awardIntroduce">奖品介绍</string>
     <string name="activityQ">活动咨询</string>
     <string name="commit">评价</string>
