@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.base.Tonight8App;
+import com.android.tonight8.model.wish.WishListModel;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.CircleImageView;
 import com.android.tonight8.view.MyProgressBar;
@@ -20,9 +20,9 @@ import com.android.tonight8.view.MyProgressBar;
  * @author lz愿望列表
  * 
  */
-public class WishListAdapter extends BaseListAdapter<String> {
+public class WishListAdapter extends BaseListAdapter<WishListModel> {
 
-	public WishListAdapter(Context context, List<String> values) {
+	public WishListAdapter(Context context, List<WishListModel> values) {
 		super(context, values);
 
 	}
@@ -44,15 +44,18 @@ public class WishListAdapter extends BaseListAdapter<String> {
 				R.id.tv_wish_supportcount);
 		MyProgressBar pb_wish_progress = ViewHolder.get(convertView,
 				R.id.pb_wish_progress);
+		WishListModel wishListModel = new WishListModel();
+		wishListModel = mValues.get(position);
+		bmUtils.display(iv_wishpic,
+				"http://pica.nipic.com/2008-05-07/20085722191339_2.jpg");
 
-		tv_wishtitle.setText("标题测试");
-		tv_wishcontent.setText("内容测试:各种好各种好各种好");
-		tv_wish_username.setText("用户姓名测试");
-		tv_wish_supportcount.setText("1234");
-		Tonight8App.getSelf().bitmapUtils.display(iv_wishpic,
-				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		Tonight8App.getSelf().bitmapUtils.display(iv_wish_userpic,
-				"http://www.jpcai.com/upfiles/photo/200606/20060624181709800.jpg");
+		// bmUtils.display(iv_wishpic, wishListModel.getPopPic().getUrl());
+		tv_wishtitle.setText(wishListModel.getWish().getName());
+		tv_wishcontent.setText(wishListModel.getWish().getDescribe());
+		tv_wish_username.setText(wishListModel.getUser().getName());
+		tv_wish_supportcount.setText(wishListModel.getWish().getSupportCount()
+				+ "");
+		bmUtils.display(iv_wish_userpic, wishListModel.getUser().getPic());
 		pb_wish_progress.setMax(100);
 		pb_wish_progress.setProgress(20);
 		tv_wish_supportcount.setOnClickListener(new OnClickListener() {
@@ -63,13 +66,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 
 			}
 		});
-		// iv_wishpic.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View arg0) {
-		// mContext.startActivity(new Intent(mContext, WishLiveActivity.class));
-		// }
-		// });
+
 		return convertView;
 	}
 
@@ -78,7 +75,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 	 * 
 	 * @param models
 	 */
-	public void addData(List<String> models) {
+	public void addData(List<WishListModel> models) {
 		mValues.addAll(models);
 		notifyDataSetChanged();
 	}
@@ -88,7 +85,7 @@ public class WishListAdapter extends BaseListAdapter<String> {
 	 * 
 	 * @param models
 	 */
-	public void initData(List<String> models) {
+	public void initData(List<WishListModel> models) {
 		mValues.clear();
 		mValues.addAll(models);
 		notifyDataSetChanged();

@@ -345,6 +345,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+        <!-- 我的心愿-->
+        <activity
+            android:name="com.android.tonight8.activity.wish.MyWishActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 许愿页面 -->
         <activity
             android:name="com.android.tonight8.activity.wish.MakeWishActivity"

@@ -44,12 +44,15 @@ public class WishRealizedListAdapter extends BaseListAdapter<WishListModel> {
 				R.id.tv_realized_wishcontent);
 		CircleImageView wish_userpic = ViewHolder.get(convertView,
 				R.id.civ_realized_wish_userpic);
+
 		WishListModel wishListModel = mValues.get(position);
 		tv_realized_wishtitle.setText(wishListModel.getWish().getName());
 		tv_realized_wishcontent.setText(wishListModel.getWish().getDescribe());
 		tv_wish_username.setText(wishListModel.getUser().getName());
-		tv_wish_supportcount.setText(wishListModel.getWish().getSupportCount().toString());
-		bmUtils.display(iv_wishpic,wishListModel.getPopPic().getUrl());
+		tv_wish_supportcount.setText(wishListModel.getWish().getSupportCount()
+				.toString());
+		bmUtils.display(iv_wishpic,
+				"http://pic1.nipic.com/2008-09-08/200898163242920_2.jpg");
 		bmUtils.display(wish_userpic,
 				"http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
 		tv_wish_supportcount.setOnClickListener(new OnClickListener() {

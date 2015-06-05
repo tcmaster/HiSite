@@ -216,6 +216,9 @@ public class Utils {
 	 * @param editText
 	 */
 	public static void showSoftKeyBroad(Context context, EditText editText) {
+		editText.setFocusable(true); 
+        editText.setFocusableInTouchMode(true); 
+        editText.requestFocus(); 
 		InputMethodManager mgr = (InputMethodManager) context
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		mgr.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);

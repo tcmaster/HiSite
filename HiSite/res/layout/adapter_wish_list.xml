@@ -11,7 +11,7 @@
 
         <ImageView
             android:id="@+id/iv_wishpic"
-            style="@style/wrap"
+            style="@style/match_width"
             android:scaleType="centerInside" />
 
         <TextView
@@ -102,17 +102,11 @@
             android_custom:textSizeRound="14sp" />
     </LinearLayout>
 
-    <View
-        style="@style/line_full"
-        android:background="@color/half_black" />
+    <View style="@style/line_full" />
 
     <View
         style="@style/line_full"
-        android:layout_height="@dimen/common_margin_small"
-        android:background="@color/white_gray" />
-
-    <View
-        style="@style/line_full"
-        android:background="@color/half_black" />
+        android:layout_height="@dimen/common_margin_left"
+        android:background="@color/ten_purple" />
 
 </LinearLayout>

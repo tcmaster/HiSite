@@ -208,5 +208,7 @@
     <!-- 测试字符串 -->
     <string name="usersimple">小明</string>
     <string name="addresssimple">北京市海淀区</string>
-
+    <!-- 心愿 -->
+    <string name="desc_shrinkup">收起</string>
+    <string name="desc_spread">显示更多</string>
 </resources>

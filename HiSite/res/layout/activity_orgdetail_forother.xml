@@ -77,7 +77,7 @@
         android:paddingTop="@dimen/common_margin_left" >
 
         <RadioButton
-            android:id="@+id/rb_wish_talk"
+            android:id="@+id/rb_org_info"
             style="@style/wrap"
             android:layout_weight="1"
             android:button="@null"
@@ -85,7 +85,7 @@
             android:text="商家资料" />
 
         <RadioButton
-            android:id="@+id/rb_wish_process"
+            android:id="@+id/rb_org_event"
             style="@style/wrap"
             android:layout_weight="1"
             android:button="@null"
@@ -93,7 +93,7 @@
             android:text="活动" />
 
         <RadioButton
-            android:id="@+id/rb_wish_sponsor"
+            android:id="@+id/rb_org_sponor"
             style="@style/wrap"
             android:layout_weight="1"
             android:button="@null"
