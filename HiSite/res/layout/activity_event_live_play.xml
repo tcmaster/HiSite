@@ -4,9 +4,9 @@
 
     <LinearLayout
         style="@style/match"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".EventLivePlayActivity"
-        android:layout_gravity="center" >
+        tools:context=".EventLivePlayActivity" >
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -40,31 +40,34 @@
 
         <LinearLayout
             style="@style/match_width"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:gravity="center_vertical" >
 
             <ImageView
                 android:id="@+id/iv_prev_page"
                 style="@style/wrap"
-                android:layout_marginLeft="@dimen/common_margin_left"
+                android:layout_marginLeft="@dimen/common_margin_left_long"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/vprev" />
 
             <ImageView
                 android:id="@+id/iv_play_or_pause"
                 style="@style/wrap"
-                android:layout_marginLeft="@dimen/common_margin_small"
+                android:layout_marginLeft="@dimen/common_margin_left_long"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/vpause" />
 
             <ImageView
                 android:id="@+id/iv_next_page"
                 style="@style/wrap"
-                android:layout_marginLeft="@dimen/common_margin_small"
+                android:layout_marginLeft="@dimen/common_margin_left_long"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/vfront" />
 
             <LinearLayout
                 style="@style/match_width"
@@ -74,44 +77,48 @@
                 <ImageView
                     android:id="@+id/iv_power_off"
                     style="@style/wrap"
-                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:layout_marginLeft="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/vpower" />
 
                 <ImageView
                     android:id="@+id/iv_prompt"
                     style="@style/wrap"
-                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:layout_marginLeft="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/vdownload"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/iv_download"
                     style="@style/wrap"
-                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:layout_marginLeft="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/vdownload" />
 
                 <ImageView
                     android:id="@+id/iv_volume"
                     style="@style/wrap"
-                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:layout_marginLeft="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/vsound" />
 
                 <ImageView
                     android:id="@+id/iv_full_screen"
                     style="@style/wrap"
-                    android:layout_marginLeft="@dimen/common_margin_small"
+                    android:layout_marginLeft="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/vfullscreen"
+                    android:layout_marginRight="@dimen/common_margin_left_long" />
             </LinearLayout>
         </LinearLayout>
+
+        <View style="@style/line_full" />
 
         <RadioGroup
             android:id="@+id/rg_tab"
@@ -121,71 +128,82 @@
             <RadioButton
                 android:id="@+id/rb_live"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding"
-                android:text="@string/app_name" />
+                android:text="@string/live"
+                android:textSize="@dimen/middleTextSize"
+                android:textColor="@drawable/selector_tab_text_color"
+                android:background="@drawable/tab_selector" />
 
             <View
                 style="@style/line_full_vertical"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding" />
+                android:layout_marginBottom="@dimen/topOrbottomPadding"
+                android:layout_marginTop="@dimen/topOrbottomPadding" />
 
             <RadioButton
-                android:id="@+id/rb_award_list"
+                android:id="@+id/rb_winner_list"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding"
-                android:text="@string/app_name" />
+                android:text="@string/winnerlist"
+                android:textSize="@dimen/middleTextSize"
+                android:textColor="@drawable/selector_tab_text_color"
+                android:background="@drawable/tab_selector" />
 
             <View
                 style="@style/line_full_vertical"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding" />
+                android:layout_marginBottom="@dimen/topOrbottomPadding"
+                android:layout_marginTop="@dimen/topOrbottomPadding" />
 
             <RadioButton
                 android:id="@+id/rb_vote"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding"
-                android:text="@string/app_name" />
+                android:text="@string/vote"
+                android:textSize="@dimen/middleTextSize"
+                android:textColor="@drawable/selector_tab_text_color"
+                android:background="@drawable/tab_selector" />
 
             <View
                 style="@style/line_full_vertical"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding" />
+                android:layout_marginBottom="@dimen/topOrbottomPadding"
+                android:layout_marginTop="@dimen/topOrbottomPadding" />
 
             <RadioButton
-                android:id="@+id/rb_show_list"
+                android:id="@+id/rb_program_list"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:paddingBottom="@dimen/topOrbottomPadding"
-                android:paddingTop="@dimen/topOrbottomPadding"
-                android:text="@string/app_name" />
+                android:text="@string/programlist"
+                android:textSize="@dimen/middleTextSize"
+                android:textColor="@drawable/selector_tab_text_color"
+                android:background="@drawable/tab_selector"
+                />
         </RadioGroup>
+
+        <View style="@style/line_full" />
 
         <TextView
             android:id="@+id/tv_goods_info"
             style="@style/match_width"
-            android:layout_marginLeft="@dimen/common_margin_left"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="@dimen/middleTextSize" />
-		<!-- 有一个界面用到了item_event_award(用于用户中奖名单界面） -->
+            android:textSize="@dimen/middleTextSize"
+            android:gravity="center"
+            android:ellipsize="marquee"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:paddingBottom="@dimen/topOrbottomPadding" />
+        <!-- 有一个界面用到了item_event_award(用于用户中奖名单界面） -->
+
         <LinearLayout
             android:id="@+id/ll_container"
             style="@style/match_width"
@@ -215,7 +233,7 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:id="@+id/iv_voice"
+                android:id="@+id/iv_attachment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/common_margin_left"
@@ -231,7 +249,7 @@
                 android:hint="@string/app_name" />
 
             <ImageView
-                android:id="@+id/iv_add_photo"
+                android:id="@+id/tv_send_message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -248,7 +266,7 @@
             android:layout_height="@dimen/talk_attachments_height"
             android:orientation="horizontal"
             android:padding="@dimen/topOrbottomPadding"
-            android:visibility="visible" >
+            android:visibility="gone" >
 
             <ImageButton
                 android:id="@+id/ib_gallery"

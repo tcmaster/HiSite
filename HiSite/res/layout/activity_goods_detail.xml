@@ -24,18 +24,20 @@
         android:padding="5dp"
         >
 
-        <ImageButton
-            android:id="@+id/ibtn_commit"
+        <Button
+            android:id="@+id/btn_commit"
             style="@style/wrap"
-            android:background="@color/transparent"
+            android:background="@drawable/selector_apply_click"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/dialogue_red" />
+            android:text="@string/question"
+            android:textColor="@drawable/selector_tab_text_color" />
 
         <Button
             android:id="@+id/btn_signup"
             style="@style/ok_button_style"
             android:text="@string/signup" />
+        
     </LinearLayout>
 
 </FrameLayout>

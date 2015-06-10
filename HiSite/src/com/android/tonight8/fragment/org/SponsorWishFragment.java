@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +40,8 @@ public class SponsorWishFragment extends BaseFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		rootView = inflater.inflate(R.layout.activity_only_list, null);
 		list = new ArrayList<Event>();
@@ -57,7 +57,8 @@ public class SponsorWishFragment extends BaseFragment {
 
 	@OnItemClick(R.id.lv_only_list)
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		startActivityForAnima(new Intent(activity, UserAgreementActivity.class), null);
+		startActivityForAnima(
+				new Intent(activity, UserAgreementActivity.class), null);
 
 	}
 
@@ -74,12 +75,18 @@ public class SponsorWishFragment extends BaseFragment {
 
 		@Override
 		protected View getItemView(View convertView, int position) {
-			convertView = mInflater.inflate(R.layout.adapter_org_eventlist, null);
-			ImageView iv_sponsor_wishpic = ViewHolder.get(convertView, R.id.iv_sponsor_wishpic);
-			TextView tv_sponsor_wishname = ViewHolder.get(convertView, R.id.tv_sponsor_wishname);
-			TextView tv_sponsor_wishproject = ViewHolder.get(convertView, R.id.tv_sponsor_wishproject);
-			TextView tv_sponsor_wishstatus = ViewHolder.get(convertView, R.id.tv_sponsor_wishstatus);
-			TextView tv_sponsor_wishdate = ViewHolder.get(convertView, R.id.tv_sponsor_wishdate);
+			convertView = mInflater.inflate(R.layout.adapter_org_eventlist,
+					null);
+			ImageView iv_sponsor_wishpic = ViewHolder.get(convertView,
+					R.id.iv_sponsor_wishpic);
+			TextView tv_sponsor_wishname = ViewHolder.get(convertView,
+					R.id.tv_sponsor_wishname);
+			TextView tv_sponsor_wishproject = ViewHolder.get(convertView,
+					R.id.tv_sponsor_wishproject);
+			TextView tv_sponsor_wishstatus = ViewHolder.get(convertView,
+					R.id.tv_sponsor_wishstatus);
+			TextView tv_sponsor_wishdate = ViewHolder.get(convertView,
+					R.id.tv_sponsor_wishdate);
 			bmUtils.display(iv_sponsor_wishpic, "");
 			// tv_sponsor_wishname.setText();
 			// tv_sponsor_wishproject.setText();

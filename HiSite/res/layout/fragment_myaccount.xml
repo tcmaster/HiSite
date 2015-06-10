@@ -72,13 +72,11 @@
         <include
             android:id="@+id/layout_award_no"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_redpacket"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
@@ -89,25 +87,21 @@
         <include
             android:id="@+id/layout_my_address"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_act_seller"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_act_org"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_money"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <View
@@ -119,26 +113,22 @@
         <include
             android:id="@+id/layout_my_event"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item"
             android:visibility="gone" />
 
         <include
             android:id="@+id/layout_my_wish"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_save"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_attention"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <View
@@ -149,13 +139,11 @@
         <include
             android:id="@+id/layout_my_message"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
 
         <include
             android:id="@+id/layout_my_settings"
             style="@style/match_width"
-            android:layout_weight="1"
             layout="@layout/include_myaccount_item" />
     </LinearLayout>
 

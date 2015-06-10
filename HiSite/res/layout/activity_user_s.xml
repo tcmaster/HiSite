@@ -1,0 +1,125 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/match"
+    android:orientation="vertical"
+    tools:context=".UserInfoActivity" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popgoodsImgHeight" >
+
+        <ImageView
+            android:id="@+id/iv_background"
+            style="@style/match"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/tv_change_bg"
+            style="@style/wrap"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginRight="@dimen/topOrbottomPadding"
+            android:background="@color/half_black"
+            android:padding="@dimen/topOrbottomPadding"
+            android:text="@string/change_bg"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
+    </FrameLayout>
+
+    <View style="@style/line_full" />
+
+    <RelativeLayout
+        android:id="@+id/rl_photo"
+        style="@style/match_width" >
+
+        <ImageView
+            android:id="@+id/iv_left_icon"
+            style="@style/wrap"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/common_margin_left_long"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/vphoto" />
+
+        <TextView
+            android:id="@+id/tv_left_text"
+            style="@style/wrap"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:layout_marginLeft="@dimen/common_margin_small"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:layout_toRightOf="@id/iv_left_icon"
+            android:text="@string/userphoto"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize" />
+
+        <TextView
+            android:id="@+id/tv_no"
+            style="@style/wrap"
+            android:layout_gravity="top"
+            android:layout_toRightOf="@id/tv_left_text"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/middleTextSize"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/iv_right_arrow"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_margin_left"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/vblackicon" />
+
+        <com.android.tonight8.view.CircleImageView
+            android:id="@+id/iv_right_info"
+            style="@style/wrap"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_margin_small"
+            android:layout_toLeftOf="@id/iv_right_arrow"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_nickname"
+        style="@style/match_width"
+        layout="@layout/include_my_account_item_black" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_sex"
+        style="@style/match_width"
+        layout="@layout/include_my_account_item_black" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_phone"
+        style="@style/match_width"
+        layout="@layout/include_my_account_item_black" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_email"
+        style="@style/match_width"
+        layout="@layout/include_my_account_item_black" />
+
+    <View style="@style/line_full" />
+
+    <include
+        android:id="@+id/layout_location"
+        style="@style/match_width"
+        layout="@layout/include_my_account_item_black" />
+
+    <View style="@style/line_full" />
+
+</LinearLayout>

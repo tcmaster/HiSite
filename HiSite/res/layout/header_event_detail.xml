@@ -345,26 +345,36 @@
 
         <RadioButton
             android:id="@+id/rb_choice_award"
-            style="@style/wrap"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/tab_selector"
             android:gravity="center"
             android:text="@string/awardIntroduce"
-            android:textColor="@color/black"
+            android:textColor="@drawable/selector_tab_text_color"
             android:textSize="@dimen/smallTextSize"
             android:button="@null"
-            android:padding="@dimen/topOrBottomPaddingSmall" />
+            android:layout_marginLeft="@dimen/common_margin_left_long"
+            android:layout_marginRight="@dimen/common_margin_left_long"
+            />
+        <View style="@style/line_full_vertical"
+            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+            android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
+        />
         <RadioButton
             android:id="@+id/rb_choice_activity_q"
-            style="@style/wrap"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/tab_selector"
             android:gravity="center"
             android:text="@string/activityQ"
-            android:textColor="@color/black"
+            android:textColor="@drawable/selector_tab_text_color"
             android:textSize="@dimen/smallTextSize"
             android:button="@null"
-            android:padding="@dimen/topOrBottomPaddingSmall" />
+            android:layout_marginLeft="@dimen/common_margin_left_long"
+            android:layout_marginRight="@dimen/common_margin_left_long"
+            />
     </RadioGroup>
     <View style="@style/line_full"
         />

@@ -1,5 +1,6 @@
 package com.android.tonight8.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.event.EventLivePlayActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.easemob.EaseMobManager;
@@ -35,6 +37,8 @@ public class MainActivity extends BaseActivity implements
 
 	/** 下方radioGroup */
 	private RadioGroup rg_mian;
+	/** 下方中间的按钮 */
+	private ImageView iv_main_center;
 	/** 左边的radioButton */
 	private RadioButton rb_main_left;
 	/** 右边的radioButton */
@@ -125,7 +129,8 @@ public class MainActivity extends BaseActivity implements
 		headView = LayoutInflater.from(this).inflate(R.layout.actionbar_main,
 				null);
 		rg_mian = (RadioGroup) rightView.findViewById(R.id.radio_group);
-
+		iv_main_center = (ImageView) rightView
+				.findViewById(R.id.iv_main_center);
 		sv_main.initView(leftView, rightView);
 		// 界面初始化工作
 		sv_main.post(new Runnable() {
@@ -133,6 +138,13 @@ public class MainActivity extends BaseActivity implements
 			@Override
 			public void run() {
 				initFragment();
+			}
+		});
+		iv_main_center.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				processCenterClick();
 			}
 		});
 	}
@@ -205,6 +217,11 @@ public class MainActivity extends BaseActivity implements
 		/* 实始化下方单选按钮组 */
 		rg_mian.setOnCheckedChangeListener(this);
 		((RadioButton) rg_mian.getChildAt(0)).setChecked(true);
+	}
+
+	private void processCenterClick() {
+		Intent intent = new Intent(this, EventLivePlayActivity.class);
+		startActivity(intent);
 	}
 
 	/**

@@ -164,10 +164,10 @@ public class EventDetailFragment extends BaseFragment {
 		return rootView;
 	};
 
-	@OnClick({ R.id.ibtn_commit, R.id.btn_signup })
+	@OnClick({ R.id.btn_commit, R.id.btn_signup })
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.ibtn_commit:
+		case R.id.btn_commit:
 			DialogUtils.showCommitDialog(activity, "请输入评论");
 			break;
 		case R.id.btn_signup:

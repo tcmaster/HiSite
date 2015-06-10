@@ -32,8 +32,9 @@
     <string name="activityRule">活动规则：1.兑奖时间：2015年5月5日-10月5日\n2.本活动优惠券不可与其他优惠券一同使用</string>
     <string name="awardIntroduce">奖品介绍</string>
     <string name="activityQ">活动咨询</string>
+    <string name="question">咨询</string>
     <string name="commit">评价</string>
-    <string name="signup">立即报名</string>
+    <string name="signup">报名</string>
     <string name="havesignup">已经报名</string>
     <!-- Hi现场 -->
     <string name="share">分享</string>
@@ -136,6 +137,9 @@
     <string name="user">用户</string>
     <string name="org">商家</string>
     <string name="seller">卖手</string>
+    <string name="change_bg">更换背景</string>
+    <string name="userphoto">头像</string>
+    <string name="location">所在地</string>
     <!-- 中奖码列表 -->
     <string name="award_no">中奖号码：</string>
     <string name="value">价值：</string>
@@ -211,4 +215,11 @@
     <!-- 心愿 -->
     <string name="desc_shrinkup">收起</string>
     <string name="desc_spread">显示更多</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_event_live">EventLiveActivity</string>
+	<!-- 活动现场 -->
+	<string name="live">现场\n(10302人)</string>
+	<string name="winnerlist">中奖名单\n(33345)人</string>
+	<string name="vote">投票\n(5499)人</string>
+	<string name="programlist">节目单\n(60)项</string>
 </resources>

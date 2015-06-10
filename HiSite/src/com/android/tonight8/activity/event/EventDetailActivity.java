@@ -81,8 +81,8 @@ public class EventDetailActivity extends BaseActivity {
 	@ViewInject(R.id.lv_goods_detail)
 	private XListView lv_goods_detail;
 	/** 评论 */
-	@ViewInject(R.id.ibtn_commit)
-	private ImageView ibtn_commit;
+	@ViewInject(R.id.btn_commit)
+	private Button btn_commit;
 	/** 提交报名 */
 	@ViewInject(R.id.btn_signup)
 	private Button btn_signup;
@@ -195,10 +195,10 @@ public class EventDetailActivity extends BaseActivity {
 		}
 	}
 
-	@OnClick({ R.id.ibtn_commit, R.id.btn_signup })
+	@OnClick({ R.id.btn_commit, R.id.btn_signup })
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.ibtn_commit:
+		case R.id.btn_commit:
 			DialogUtils.showCommitDialog(this, "请输入评论");
 			break;
 		case R.id.btn_signup:
@@ -218,15 +218,14 @@ public class EventDetailActivity extends BaseActivity {
 	// ***************************子方法***********************************//
 	private void initData() {
 		utils = new BitmapUtils(this);
-		getActionBarNormal("活动详情", R.drawable.ic_launcher,
-				new OnClickListener() {
+		getActionBarNormal("活动详情", R.drawable.vshare, new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						DialogUtils.showSelectShareDialog(
-								EventDetailActivity.this, null);
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				DialogUtils.showSelectShareDialog(EventDetailActivity.this,
+						null);
+			}
+		});
 		EventIOController.eventDetailRead(handler);
 		lv_goods_detail.setXListViewListener(new IXListViewListener() {
 

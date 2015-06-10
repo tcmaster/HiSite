@@ -9,8 +9,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/common_margin_left_long"
         android:contentDescription="@string/app_name"
-        android:paddingBottom="@dimen/topOrBottomPaddingSmall"
-        android:paddingTop="@dimen/topOrBottomPaddingSmall"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -21,7 +19,9 @@
         android:layout_toRightOf="@id/iv_left_icon"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="@dimen/middleTextSize" />
+        android:textSize="@dimen/middleTextSize"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:layout_marginBottom="@dimen/topOrbottomPadding" />
 
     <TextView
         android:id="@+id/tv_no"

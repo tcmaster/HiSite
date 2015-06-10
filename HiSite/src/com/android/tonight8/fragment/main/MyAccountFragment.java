@@ -1,8 +1,8 @@
 package com.android.tonight8.fragment.main;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.user.UserInfoActivity;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
 import com.android.tonight8.view.RolePopupWindow;
@@ -149,7 +150,7 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	}
 
 	@Override
-	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		window = new RolePopupWindow(getActivity(),
 				new RolePopupWindowCallBack() {
@@ -177,11 +178,15 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 
 	}
 
-	@OnClick({ R.id.tv_user_role })
+	@OnClick({ R.id.tv_user_role, R.id.iv_user_photo })
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_user_role:
 			window.showWindow(tv_user_role);
+			break;
+		case R.id.iv_user_photo:
+			Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+			startActivity(intent);
 			break;
 		default:
 			break;

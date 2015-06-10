@@ -95,8 +95,7 @@
 
         <ImageView
             android:id="@+id/rightimg"
-            android:layout_width="@dimen/RegionalRightWidth"
-            android:layout_height="@dimen/RegionalRightHeight"
+            style="@style/wrap"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
             android:src="@drawable/pencil_gray" />
