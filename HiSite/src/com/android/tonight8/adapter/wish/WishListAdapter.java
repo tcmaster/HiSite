@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.wish.WishListModel;
+import com.android.tonight8.dao.model.wish.WishListModel;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.CircleImageView;
 import com.android.tonight8.view.MyProgressBar;

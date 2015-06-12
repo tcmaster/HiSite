@@ -1,4 +1,4 @@
-package com.android.tonight8.model.wish;
+package com.android.tonight8.dao.model.wish;
 
 import com.android.tonight8.dao.entity.PopPic;
 import com.android.tonight8.dao.entity.User;

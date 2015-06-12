@@ -5,17 +5,19 @@ import java.util.Map;
 
 import android.os.Handler;
 
+import com.android.tonight8.dao.model.wish.MyWishListModel;
+import com.android.tonight8.dao.model.wish.MyWishSponsorListModel;
+import com.android.tonight8.dao.model.wish.SubjectListModel;
+import com.android.tonight8.dao.model.wish.WishDetailModel;
+import com.android.tonight8.dao.model.wish.WishItemModel;
+import com.android.tonight8.dao.model.wish.WishListModel;
+import com.android.tonight8.dao.model.wish.WishSponsorList;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
 import com.android.tonight8.io.net.NetRequest.RequestResultList;
 import com.android.tonight8.model.BaseModel;
-import com.android.tonight8.model.wish.SubjectListModel;
-import com.android.tonight8.model.wish.WishDetailModel;
-import com.android.tonight8.model.wish.WishItemModel;
-import com.android.tonight8.model.wish.WishListModel;
-import com.android.tonight8.model.wish.WishSponsorList;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 
@@ -30,12 +32,18 @@ public class WishIOController {
 	/** 心愿详情 */
 	private static final String WISH_DETAIL_URL = NetRequest.BASE_URL + "";
 	/** 心愿赞助清单 */
-	private static final String Wish_SPONOR_CHECKLIST = NetRequest.BASE_URL
+	private static final String WISH_SPONOR_CHECKLIST = NetRequest.BASE_URL
 			+ "";
 	/** 心愿赞助录入 */
 	private static final String WISH_SPONOR_POST_URL = NetRequest.BASE_URL + "";
+	/** 我的心愿赞助 */
+	private static final String MYWISH_SPONOR_URL = NetRequest.BASE_URL + "";
+	/** 我的心愿发布列表 */
+	private static final String MYWISH_POST_URL = NetRequest.BASE_URL + "";
 
 	/**
+	 * 主页面心愿列表
+	 * 
 	 * @param handler
 	 * @param params
 	 * @param attachments
@@ -184,7 +192,7 @@ public class WishIOController {
 		if (params == null) {
 			return;
 		}
-		params.put(NetRequest.REQUEST_URL, Wish_SPONOR_CHECKLIST);
+		params.put(NetRequest.REQUEST_URL, WISH_SPONOR_CHECKLIST);
 
 		NetRequest.doGetRequest(params, new RequestResult<WishItemModel>(
 				WishItemModel.class, handler) {
@@ -235,4 +243,71 @@ public class WishIOController {
 		});
 	}
 
+	/**
+	 * @Description:我的心愿列表
+	 * @param handler
+	 * @date:2015-2-12
+	 */
+	public static void getMyWishList(final Handler handler,
+			Map<String, String> params, final int... attachments) {
+		if (params == null) {
+			return;
+		}
+		params.put(NetRequest.REQUEST_URL, WISH_SPONOR_CHECKLIST);
+
+		NetRequest.doGetRequestList(params,
+				new RequestResultList<MyWishListModel>(MyWishListModel.class,
+						handler) {
+
+					@Override
+					public void getDataList(NetEntityBase netEntityBase,
+							List<MyWishListModel> t, Handler handler) {
+						HandlerConstants.sendMessage(handler, t,
+								attachments[0], HandlerConstants.RESULT_OK,
+								attachments[1]);
+					}
+
+					@Override
+					public void onFailure(HttpException error, String msg) {
+						HandlerConstants.sendMessage(handler, null,
+								attachments[0], HandlerConstants.RESULT_FAIL,
+								attachments[1]);
+					}
+
+				});
+	}
+
+	/**
+	 * @Description:我的心愿赞助列表
+	 * @param handler
+	 * @date:2015-2-12
+	 */
+	public static void getMyWishSponsorList(final Handler handler,
+			Map<String, String> params, final int... attachments) {
+		if (params == null) {
+			return;
+		}
+		params.put(NetRequest.REQUEST_URL, WISH_SPONOR_CHECKLIST);
+
+		NetRequest.doGetRequestList(params,
+				new RequestResultList<MyWishSponsorListModel>(
+						MyWishSponsorListModel.class, handler) {
+
+					@Override
+					public void getDataList(NetEntityBase netEntityBase,
+							List<MyWishSponsorListModel> t, Handler handler) {
+						HandlerConstants.sendMessage(handler, t,
+								attachments[0], HandlerConstants.RESULT_OK,
+								attachments[1]);
+					}
+
+					@Override
+					public void onFailure(HttpException error, String msg) {
+						HandlerConstants.sendMessage(handler, null,
+								attachments[0], HandlerConstants.RESULT_FAIL,
+								attachments[1]);
+					}
+
+				});
+	}
 }

@@ -93,7 +93,15 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 	}
 
 	protected abstract View getItemView(View convertView, int position);
-
+	/**
+	 * 增加数据源
+	 * 
+	 * @param models
+	 */
+	public void addData(List<T> models) {
+		mValues.addAll(models);
+		notifyDataSetChanged();
+	}
 	public void update(List<T> values) {
 		mValues.clear();
 		mValues.addAll(values);

@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishTalkAdapter;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.dao.model.wish.SubjectListModel;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.wish.WishIOController;
-import com.android.tonight8.model.wish.SubjectListModel;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 

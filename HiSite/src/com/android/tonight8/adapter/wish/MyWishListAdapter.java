@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.wish.MyWishListModel;
+import com.android.tonight8.dao.model.wish.MyWishListModel;
 
 /**
  * @author lz 我的心愿列表

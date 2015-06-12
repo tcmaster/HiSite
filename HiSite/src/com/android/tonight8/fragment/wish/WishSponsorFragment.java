@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishSponsorAdapter;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.dao.model.wish.WishSponsorList;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.io.wish.WishIOController;
-import com.android.tonight8.model.wish.WishSponsorList;
 import com.android.tonight8.view.xlistview.XListView;
 import com.android.tonight8.view.xlistview.XListView.IXListViewListener;
 
