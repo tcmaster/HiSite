@@ -85,8 +85,8 @@
             <com.android.tonight8.view.CircleImageView
                 android:id="@+id/civ_wishlive_userpic"
                 style="@style/wrap"
-                android:layout_width="@dimen/popGoodsUserPhotoWidth"
-                android:layout_height="@dimen/popGoodsUserPhotoWidth"
+                android:layout_width="@dimen/wishUserPhotoWidth"
+                android:layout_height="@dimen/wishUserPhotoWidth"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_launcher" />
 
@@ -108,7 +108,7 @@
                 android:id="@+id/tv_wish_supportcount"
                 style="@style/wrap"
                 android:layout_gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_launcher"
+                android:drawableLeft="@drawable/vwish_supportcount"
                 android:drawablePadding="@dimen/common_margin_left"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/common_margin_small"

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,9 +34,7 @@ import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.wish.WishIOController;
 import com.android.tonight8.model.wish.WishDetailModel;
-import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.utils.IntentUtils;
-import com.android.tonight8.utils.SharedUtils.ShareThirdEntity;
 import com.android.tonight8.view.CircleImageView;
 import com.android.tonight8.view.CollapsibleTextView;
 import com.android.tonight8.view.MyProgressBar;
@@ -86,11 +85,11 @@ public class WishLiveActivity extends BaseActivity implements
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(Message msg) {
 
-			if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
+			if (msg.what == HandlerConstants.WISH.WISH_DETAIL
+					&& msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 				wishDetailModel = (WishDetailModel) msg.obj;
 				ctv_wish_content
 						.setDesc(
@@ -145,10 +144,12 @@ public class WishLiveActivity extends BaseActivity implements
 
 		@Override
 		public void onClick(View arg0) {
-			ShareThirdEntity shareThirdEntity = new ShareThirdEntity();
-			DialogUtils.showSelectShareDialog(WishLiveActivity.this,
-					shareThirdEntity);
-
+			// ShareThirdEntity shareThirdEntity = new ShareThirdEntity();
+			// DialogUtils.showSelectShareDialog(WishLiveActivity.this,
+			// shareThirdEntity);
+			Intent intent = new Intent(WishLiveActivity.this,
+					WishSponsorActivity.class);
+			startActivityForAnima(intent, null);
 		}
 	};
 
@@ -175,7 +176,8 @@ public class WishLiveActivity extends BaseActivity implements
 		rg_wish_detail.setOnCheckedChangeListener(this);
 		Map<String, String> params = new HashMap<String, String>();
 		wishDetailModel = new WishDetailModel();
-		WishIOController.getWishLiveDetail(handler, params, 0);
+		WishIOController.getWishLiveDetail(handler, params,
+				HandlerConstants.WISH.WISH_DETAIL, REFRESH);
 
 	}
 
@@ -185,11 +187,12 @@ public class WishLiveActivity extends BaseActivity implements
 		PopPic popPic = new PopPic();
 		popPic.setUrl("http://g.hiphotos.baidu.com/image/pic/item/622762d0f703918fce56b5d6523d269759eec423.jpg");
 		eventRecommends.setPopPic(popPic);
-		eventRecommends.setPopPic(popPic);
-		eventRecommends.setPopPic(popPic);
-		eventRecommends.setPopPic(popPic);
+		data.add(eventRecommends);
+		data.add(eventRecommends);
+		data.add(eventRecommends);
+		data.add(eventRecommends);
 		ll_wishlive_container.setPointCount(data.size());
-		ll_wishlive_container.changePoint(0);
+		ll_wishlive_container.changePoint(data.size());
 		viewPager.setAdapter(new MyPagerAdapter(WishLiveActivity.this, data));
 		viewPager.setCurrentItem(0);
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {

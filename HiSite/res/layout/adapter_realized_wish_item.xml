@@ -89,4 +89,13 @@
             android:textSize="@dimen/more_smallTextSize" />
     </LinearLayout>
 
+    <View style="@style/line_full" />
+
+    <View
+        style="@style/line_full"
+        android:layout_height="@dimen/common_margin_left"
+        android:background="@color/ten_purple" />
+
+    <View style="@style/line_full" />
+
 </LinearLayout>

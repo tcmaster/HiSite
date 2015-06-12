@@ -13,5 +13,9 @@ import java.io.Serializable;
  */
 public class BaseModel implements Serializable {
 	private static final long serialVersionUID = 1L;
+	/** success/fail/error */
+	public String status;
+	/** 中英文消息内容 */
+	public String message;
 
 }

@@ -41,5 +41,11 @@ public class AppConstants {
 	public static final String ROOT_DIR_PATH = "/tonight8/res";
 	/** 缓存目录 */
 	public static final String CACHE_DIR_PATH = ROOT_DIR_PATH + "/cache";
-
+	// --------------------------接口返回的参数--------------------
+	/** 成功 */
+	public static final String SUCCESS = "success";
+	/** 失败 */
+	public static final String FAIL = "fail";
+	/** 错误 */
+	public static final String ERROR = "error";
 }

@@ -91,7 +91,7 @@ public class MakeWishActivity extends BaseActivity {
 						AlbumAndCamera.getTempPath(), bitmap);
 
 				WishListModel wishStroyModel = storyList.get(clickPosition);
-//				wishStroyModel.setWishPic(tempPicPath);
+				// wishStroyModel.setWishPic(tempPicPath);
 				updateClickPosition(clickPosition, MakeWishActivity.ADD_DATA,
 						wishStroyModel);
 			} catch (FileNotFoundException e) {

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:android_custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -71,7 +71,7 @@
             android:id="@+id/tv_wish_supportcount"
             style="@style/wrap"
             android:layout_gravity="center_vertical"
-            android:drawableLeft="@drawable/ic_launcher"
+            android:drawableLeft="@drawable/vwish_supportcount"
             android:drawablePadding="@dimen/common_margin_left"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/common_margin_small"
@@ -108,5 +108,7 @@
         style="@style/line_full"
         android:layout_height="@dimen/common_margin_left"
         android:background="@color/ten_purple" />
+
+    <View style="@style/line_full" />
 
 </LinearLayout>

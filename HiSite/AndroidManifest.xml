@@ -360,6 +360,11 @@
             android:name="com.android.tonight8.activity.wish.WishLiveActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!-- 赞助心愿 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.WishSponsorActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- 用户信息界面 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserInfoActivity"

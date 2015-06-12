@@ -42,12 +42,6 @@ public class WishRealizedFragment extends BaseFragment {
 	private int current = 0;
 	/** 每页显示的条数 */
 	private final int ITEM_COUNT = 10;
-	/** 下拉刷新标识 */
-	private final int REFRESH = 1;
-	/** 上拉加载标识 */
-	private final int LOAD_MORE = 2;
-	/** 首次加载标识 */
-	private final int INIT = 3;
 
 	public static final WishRealizedFragment newInstance() {
 		WishRealizedFragment wUnrealizedFragment = new WishRealizedFragment();
@@ -58,48 +52,30 @@ public class WishRealizedFragment extends BaseFragment {
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(Message msg) {
+			if (msg.what == HandlerConstants.WISH.WISH_LIST_REALIZED) {
 
-			if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
-				List<WishListModel> data = null;
-				if (msg.arg2 == INIT) {
-					xlist.setVisibility(View.VISIBLE);
-					data = (List<WishListModel>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					else
-						xlist.setPullLoadEnable(true);
-					wishListAdapter.initData(data);
-					xlist.stopRefresh();
-				} else if (msg.arg2 == REFRESH) {
-					data = (List<WishListModel>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					wishListAdapter.initData(data);
-					xlist.stopRefresh();
-				} else if (msg.arg2 == LOAD_MORE) {
-					data = (List<WishListModel>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					wishListAdapter.addData((List<WishListModel>) msg.obj);
-					xlist.stopLoadMore();
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
+					List<WishListModel> data = (List<WishListModel>) msg.obj;
+					switch (msg.arg2) {
+					case REFRESH:
+						if (data == null || data.size() < ITEM_COUNT)
+							xlist.setPullLoadEnable(false);
+						wishListAdapter.initData(data);
+						xlist.stopRefresh();
+						break;
+					case LOAD_MORE:
+						if (data == null || data.size() < ITEM_COUNT)
+							xlist.setPullLoadEnable(false);
+						wishListAdapter.addData((List<WishListModel>) msg.obj);
+						xlist.stopLoadMore();
+						break;
+					default:
+						break;
+					}
 				}
-
-			} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {// 网络数据开始
-				if (msg.arg2 == INIT) {
-
-					xlist.setVisibility(View.INVISIBLE);
-				}
-			} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {// 出错处理
-				if (msg.arg2 == INIT) {
-					xlist.setVisibility(View.INVISIBLE);
-				}
-			} else if (msg.arg1 == HandlerConstants.NETWORK_END) {// 网络数据获取完毕
-
 			}
-
 		};
 	};
 
@@ -122,30 +98,16 @@ public class WishRealizedFragment extends BaseFragment {
 		rootView = inflater.inflate(R.layout.activity_only_list, container,
 				false);
 		ViewUtils.inject(this, rootView);
+		initData();
+		return rootView;
+	}
+
+	private void initData() {
 		xlist = (XListView) rootView.findViewById(R.id.lv_only_list);
 		list = new ArrayList<WishListModel>();
-		// WishListModel wListModel = new WishListModel();
-		// PopPic poppic = new PopPic();
-		// Wish wish = new Wish();
-		// User user = new User();
-		// wish.setName("我想去大理");
-		// wish.setPublishTime("2015年10月1日 8:00");
-		// wish.setSupportCount(200);
-		// wish.setProgress((float) 0.23);
-		// wish.setDescribe("给我三个月假期和2万元钱助我一臂之力去大理，嗷嗷嗷叫");
-		// poppic.setUrl("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		// user.setPic("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		// user.setName("明月");
-		// wListModel.setPopPic(poppic);
-		// wListModel.setWish(wish);
-		// wListModel.setUser(user);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
 		Map<String, String> params = new HashMap<String, String>();
-		WishIOController.getWishList(handler, params, INIT);
+		WishIOController.getWishList(handler, params,
+				HandlerConstants.WISH.WISH_LIST_REALIZED, REFRESH);
 		wishListAdapter = new WishRealizedListAdapter(activity, list);
 		xlist.setAdapter(wishListAdapter);
 		xlist.setOnItemClickListener(new OnItemClickListener() {
@@ -160,7 +122,5 @@ public class WishRealizedFragment extends BaseFragment {
 			}
 
 		});
-		return rootView;
 	}
-
 }
