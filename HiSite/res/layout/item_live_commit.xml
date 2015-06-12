@@ -5,50 +5,50 @@
     android:padding="@dimen/common_margin_small" >
 
     <com.android.tonight8.view.CircleImageView
-        android:id="@+id/iv_wish_talk_headpic"
+        android:id="@+id/iv_live_talk_headpic"
         android:layout_width="@dimen/user_headpic_minheight"
         android:layout_height="@dimen/user_headpic_minheight"
         android:layout_marginRight="@dimen/item_left_hilive"
         android:background="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/tv_wish_talk_name"
+        android:id="@+id/tv_live_talk_name"
         style="@style/wrap"
-        android:layout_alignTop="@+id/iv_wish_talk_headpic"
-        android:layout_toRightOf="@+id/iv_wish_talk_headpic"
+        android:layout_alignTop="@+id/iv_live_talk_headpic"
+        android:layout_toRightOf="@+id/iv_live_talk_headpic"
         android:text="@string/app_name"
         android:textColor="@color/red" />
 
     <TextView
-        android:id="@+id/tv_wish_talk_time"
+        android:id="@+id/tv_live_talk_time"
         style="@style/wrap"
         android:layout_alignParentRight="true"
         android:text="@string/app_name"
         android:textColor="@color/half_black" />
 
     <TextView
-        android:id="@+id/tv_wish_talk_content"
+        android:id="@+id/tv_live_talk_content"
         style="@style/match_width"
-        android:layout_below="@+id/tv_wish_talk_name"
-        android:layout_toRightOf="@+id/iv_wish_talk_headpic"
+        android:layout_below="@+id/tv_live_talk_name"
+        android:layout_toRightOf="@+id/iv_live_talk_headpic"
         android:text="@string/app_name"
         android:textColor="@color/half_black" />
 
     <CheckBox
-        android:id="@+id/cb_talk_dialog"
+        android:id="@+id/cb_live_dialog"
         style="@style/wrap"
-        android:layout_alignRight="@+id/tv_wish_talk_content"
-        android:layout_below="@+id/tv_wish_talk_content"
+        android:layout_alignRight="@+id/tv_live_talk_content"
+        android:layout_below="@+id/tv_live_talk_content"
         android:background="@drawable/ic_launcher"
         android:button="@null"
         android:checked="false"
         android:textColor="@color/half_black" />
 
     <com.android.tonight8.view.ListViewForScrollView
-        android:id="@+id/lv_wishitem"
+        android:id="@+id/lv_reply_item"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_talk_dialog"
+        android:layout_below="@+id/cb_live_dialog"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp" >
     </com.android.tonight8.view.ListViewForScrollView>
@@ -56,12 +56,12 @@
     <LinearLayout
         android:id="@+id/ll_dialog_commit"
         style="@style/match_width"
-        android:layout_below="@+id/lv_wishitem"
+        android:layout_below="@+id/lv_reply_item"
         android:orientation="horizontal"
         android:visibility="gone" >
 
         <EditText
-            android:id="@+id/et_wish_commit"
+            android:id="@+id/et_live_commit"
             style="@style/match_width"
             />
 

@@ -23,14 +23,21 @@ public class HandlerConstants {
 	// ---------------------------发送的标识（确定发给谁）--------
 	public static interface Event {// 活动相关
 		/** 首页上部 */
-		public static final int MAINPAGE_TOP = 1;
+		public static final int MAINPAGE_TOP = 101;
 		/** 首页列表 */
-		public static final int MAINPAGE_LIST = 2;
+		public static final int MAINPAGE_LIST = 102;
 		/** 详情部分 */
-		public static final int EVENT_DETAIL = 3;
+		public static final int EVENT_DETAIL = 103;
 		/** 详情部分右下咨询 */
-		public static final int EVENT_DETAIL_CONSULT = 4;
-		public static final int EVENT_BILL_LIST = 5;
+		public static final int EVENT_DETAIL_CONSULT = 104;
+		public static final int EVENT_BILL_LIST = 105;
+	}
+
+	public static interface Live {
+		/** 现场直播title */
+		public static final int LIVE_TITLE = 201;
+		/** 现场评论 */
+		public static final int LIVE_COMMIT = 202;
 	}
 
 	/**

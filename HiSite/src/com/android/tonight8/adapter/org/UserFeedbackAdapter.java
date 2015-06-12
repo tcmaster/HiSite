@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import com.android.tonight8.R;
 import com.android.tonight8.activity.org.UserFeedbackActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.base.Tonight8App;
 import com.android.tonight8.model.organization.OrgQuestionModel;
 import com.android.tonight8.utils.DialogUtils;
 
@@ -52,8 +50,6 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 		if (convertView == null)
 			convertView = mInflater.inflate(R.layout.adapter_user_feedback,
 					null);
-		ImageView iv_comment_head_icon = ViewHolder.get(convertView,
-				R.id.iv_comment_head_icon);
 		TextView tv_userback_name = ViewHolder.get(convertView,
 				R.id.tv_userback_name);
 		TextView tv_userback_date = ViewHolder.get(convertView,
@@ -75,12 +71,8 @@ public class UserFeedbackAdapter extends BaseListAdapter<OrgQuestionModel> {
 		lv_org_quesition_reply.setAdapter(listAdapter);
 
 		if (model.getOrg() != null) {
-			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon,
-					model.getOrg().logo);
 			tv_userback_name.setText(model.getOrg().name);
 		} else if (model.getUser() != null) {
-			Tonight8App.getSelf().bitmapUtils.display(iv_comment_head_icon,
-					model.getUser().pic);
 			tv_userback_name.setText(model.getUser().name);
 		}
 		tv_userback_date.setText(model.getQuestion().date);

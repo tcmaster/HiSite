@@ -291,7 +291,7 @@
         </activity>
         <!-- 活动现场直播界面 -->
         <activity
-            android:name="com.android.tonight8.activity.event.EventLivePlayActivity"
+            android:name="com.android.tonight8.activity.live.EventLivePlayActivity"
             android:label="@string/title_activity_event_live_play"
             android:screenOrientation="portrait" >
         </activity>

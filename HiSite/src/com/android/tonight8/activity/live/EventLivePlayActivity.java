@@ -1,9 +1,12 @@
-package com.android.tonight8.activity.event;
+package com.android.tonight8.activity.live;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -13,10 +16,13 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
+import com.android.tonight8.dao.model.live.EventLive;
 import com.android.tonight8.fragment.livemanage.LiveCommitListFragment;
 import com.android.tonight8.fragment.livemanage.ProgramListFragment;
 import com.android.tonight8.fragment.livemanage.VoteFragment;
 import com.android.tonight8.fragment.livemanage.WinnerListFragment;
+import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.live.LiveIOController;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -76,6 +82,37 @@ public class EventLivePlayActivity extends BaseActivity {
 	private BaseFragment[] bfs;
 	/** fg管理器 */
 	private FragmentManager fm;
+	/** 本界面的handler */
+	@SuppressLint("HandlerLeak")
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case HandlerConstants.Live.LIVE_TITLE:
+				switch (msg.arg1) {
+				case HandlerConstants.NETWORK_BEGIN:
+
+					break;
+				case HandlerConstants.RESULT_OK:
+					EventLive result = (EventLive) msg.obj;
+					getActionBarSpeical(result.getEvent().getName(),
+							R.drawable.ic_launcher, true, false,
+							new View.OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+								}
+							});
+					break;
+				default:
+					break;
+				}
+
+			default:
+				break;
+			}
+		};
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +121,12 @@ public class EventLivePlayActivity extends BaseActivity {
 	}
 
 	private void initDatas() {
+		initInterface();
 		initFragments();
+	}
+
+	private void initInterface() {
+		LiveIOController.readLiveTitle(handler);
 	}
 
 	private void initFragments() {
@@ -99,6 +141,7 @@ public class EventLivePlayActivity extends BaseActivity {
 		FragmentTransaction ft = fm.beginTransaction();
 		for (BaseFragment bf : bfs)
 			ft.add(R.id.ll_container, bf);
+		ft.commit();
 		rg_tab.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override

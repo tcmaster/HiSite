@@ -154,7 +154,6 @@ public class WishLiveActivity extends BaseActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		initCreateNomal(savedInstanceState, R.layout.activity_wish_live);
 		getActionBarNormal("心愿详情", R.drawable.ic_launcher, onClickListener);
 		initView();

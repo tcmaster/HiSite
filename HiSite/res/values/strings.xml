@@ -217,6 +217,7 @@
     <string name="desc_spread">显示更多</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_event_live">EventLiveActivity</string>
+    <string name="send">发送</string>
 	<!-- 活动现场 -->
 	<string name="live">现场\n(10302人)</string>
 	<string name="winnerlist">中奖名单\n(33345)人</string>

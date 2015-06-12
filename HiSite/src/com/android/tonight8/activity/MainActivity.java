@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.event.EventLivePlayActivity;
+import com.android.tonight8.activity.live.EventLivePlayActivity;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.easemob.EaseMobManager;
