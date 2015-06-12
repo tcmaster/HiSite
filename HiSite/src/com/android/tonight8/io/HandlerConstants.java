@@ -40,6 +40,23 @@ public class HandlerConstants {
 		public static final int LIVE_COMMIT = 202;
 	}
 
+	public static interface WISH {// 心愿相关
+		/** 心愿赞助列表 */
+		public static final int WISH_SPONOR_LIST = 201;
+		/** 心愿首页列表 （已实现） */
+		public static final int WISH_LIST_REALIZED = 202;
+		/** 心愿首页列表（未实现） */
+		public static final int WISH_LIST_UNREALIZED = 203;
+		/** 心愿详情 */
+		public static final int WISH_DETAIL = 204;
+		/** 心愿赞助录入 */
+		public static final int WISH_SPONOR_POST = 205;
+		/** 心愿赞助清单 */
+		public static final int WISH_SPONOR_CHECK_LIST = 206;
+		/** 心愿讨论区 */
+		public static final int WISH_LIVE_TALK = 207;
+	}
+
 	/**
 	 * @param 发送一条handler消息
 	 * @param handler

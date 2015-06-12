@@ -8,7 +8,6 @@ import java.util.Map;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishTalkAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.io.HandlerConstants;
-import com.android.tonight8.io.event.EventIOController;
 import com.android.tonight8.io.wish.WishIOController;
 import com.android.tonight8.model.wish.SubjectListModel;
 import com.android.tonight8.view.xlistview.XListView;
@@ -36,14 +34,8 @@ public class WishTalkFragment extends BaseFragment {
 	private int current = 0;
 	/** 每页显示的条数 */
 	private final int ITEM_COUNT = 10;
-	/** 下拉刷新标识 */
-	private final int REFRESH = 1;
-	/** 上拉加载标识 */
-	private final int LOAD_MORE = 2;
-	/** 首次加载标识 */
-	private final int INIT = 3;
 	private View rootView;
-	
+
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
@@ -51,7 +43,8 @@ public class WishTalkFragment extends BaseFragment {
 		@Override
 		public void handleMessage(Message msg) {
 
-			if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
+			if (msg.what == HandlerConstants.WISH.WISH_LIVE_TALK
+					&& msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 				List<SubjectListModel> data = null;
 				if (msg.arg2 == INIT) {
 					xlist.setVisibility(View.VISIBLE);
@@ -91,10 +84,12 @@ public class WishTalkFragment extends BaseFragment {
 
 		};
 	};
+
 	public static final WishTalkFragment newInstance() {
 		WishTalkFragment wishTalkFragment = new WishTalkFragment();
 		return wishTalkFragment;
 	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -118,8 +113,8 @@ public class WishTalkFragment extends BaseFragment {
 	private void initData() {
 		list = new ArrayList<SubjectListModel>();
 		Map<String, String> params = new HashMap<String, String>();
-		WishIOController.getWishTalkRead(handler, params, INIT, ITEM_COUNT,
-				current * ITEM_COUNT);
+		WishIOController.getWishTalkRead(handler, params,
+				HandlerConstants.WISH.WISH_LIVE_TALK, REFRESH);
 		list = new ArrayList<SubjectListModel>();
 		talkAdapter = new WishTalkAdapter(getActivity(), list);
 		xlist.setAdapter(talkAdapter);
@@ -129,15 +124,17 @@ public class WishTalkFragment extends BaseFragment {
 			public void onRefresh() {
 				current = 0;// 回归0页
 				xlist.setPullLoadEnable(true);
-				EventIOController.eventsRead(handler, REFRESH, ITEM_COUNT,
-						current * ITEM_COUNT);
+				Map<String, String> params = new HashMap<String, String>();
+				WishIOController.getWishTalkRead(handler, params,
+						HandlerConstants.WISH.WISH_LIVE_TALK, REFRESH);
 			}
 
 			@Override
 			public void onLoadMore() {
 				current++;
-				EventIOController.eventsRead(handler, LOAD_MORE, ITEM_COUNT,
-						current * ITEM_COUNT);
+				Map<String, String> params = new HashMap<String, String>();
+				WishIOController.getWishTalkRead(handler, params,
+						HandlerConstants.WISH.WISH_LIVE_TALK, LOAD_MORE);
 			}
 		});
 	}

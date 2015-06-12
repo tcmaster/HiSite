@@ -44,61 +44,32 @@ public class WishListUnrealizedFragment extends BaseFragment {
 	private int current = 0;
 	/** 每页显示的条数 */
 	private final int ITEM_COUNT = 3;
-	/** 下拉刷新标识 */
-	private final int REFRESH = 1;
-	/** 上拉加载标识 */
-	private final int LOAD_MORE = 2;
-	/** 首次加载标识 */
-	private final int INIT = 3;
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case HandlerConstants.Event.MAINPAGE_LIST:
+			if (msg.what == HandlerConstants.WISH.WISH_LIST_UNREALIZED) {
+
 				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
-					if (msg.arg2 == INIT) {
-						lv_wish.setVisibility(View.VISIBLE);
-						List<WishListModel> data = (List<WishListModel>) msg.obj;
-						if (data == null || data.size() < ITEM_COUNT)
-							lv_wish.setPullLoadEnable(false);
-						else
-							lv_wish.setPullLoadEnable(true);
-						wishListAdapter = new WishListAdapter(getActivity(),
-								data);
-						lv_wish.setAdapter(wishListAdapter);
-					} else if (msg.arg2 == REFRESH) {
-						List<WishListModel> data = (List<WishListModel>) msg.obj;
+					List<WishListModel> data = (List<WishListModel>) msg.obj;
+					switch (msg.arg2) {
+					case REFRESH:
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_wish.setPullLoadEnable(false);
 						wishListAdapter.initData(data);
 						lv_wish.stopRefresh();
-					} else if (msg.arg2 == LOAD_MORE) {
-						List<WishListModel> data = (List<WishListModel>) msg.obj;
+						break;
+					case LOAD_MORE:
 						if (data == null || data.size() < ITEM_COUNT)
 							lv_wish.setPullLoadEnable(false);
 						wishListAdapter.addData((List<WishListModel>) msg.obj);
 						lv_wish.stopLoadMore();
+						break;
+					default:
+						break;
 					}
-
-				} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {// 网络数据开始
-					if (msg.arg2 == INIT) {
-
-						lv_wish.setVisibility(View.INVISIBLE);
-					}
-				} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {// 出错处理
-					if (msg.arg2 == INIT) {
-						lv_wish.setVisibility(View.INVISIBLE);
-					}
-				} else if (msg.arg1 == HandlerConstants.NETWORK_END) {// 网络数据获取完毕
-
 				}
-				break;
-
-			default:
-				break;
 			}
 		};
 	};
@@ -106,12 +77,6 @@ public class WishListUnrealizedFragment extends BaseFragment {
 	public static final WishListUnrealizedFragment newInstance() {
 		WishListUnrealizedFragment wUnrealizedFragment = new WishListUnrealizedFragment();
 		return wUnrealizedFragment;
-
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
 	}
 
@@ -128,30 +93,14 @@ public class WishListUnrealizedFragment extends BaseFragment {
 		rootView = inflater.inflate(R.layout.activity_only_list, container,
 				false);
 		ViewUtils.inject(this, rootView);
+		initData();
+		return rootView;
+	}
+
+	private void initData() {
 		Map<String, String> params = new HashMap<String, String>();
-		WishIOController.getWishList(handler, params, INIT);
-
-		// WishListModel wListModel = new WishListModel();
-		// PopPic poppic = new PopPic();
-		// Wish wish = new Wish();
-		// User user = new User();
-		// wish.setName("我想去大理");
-		// wish.setPublishTime("2015年10月1日 8:00");
-		// wish.setSupportCount(200);
-		// wish.setProgress((float) 0.23);
-		// wish.setDescribe("给我三个月假期和2万元钱助我一臂之力去大理，嗷嗷嗷叫");
-		// poppic.setUrl("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		// user.setPic("http://pica.nipic.com/2007-12-22/2007122215556437_2.jpg");
-		// user.setName("明月");
-		// wListModel.setPopPic(poppic);
-		// wListModel.setWish(wish);
-		// wListModel.setUser(user);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
-		// list.add(wListModel);
-
+		WishIOController.getWishList(handler, params,
+				HandlerConstants.WISH.WISH_LIST_UNREALIZED, REFRESH);
 		list = new ArrayList<WishListModel>();
 		wishListAdapter = new WishListAdapter(activity, list);
 		lv_wish.setAdapter(wishListAdapter);
@@ -177,7 +126,6 @@ public class WishListUnrealizedFragment extends BaseFragment {
 				stopOnLoad();
 			}
 		});
-		return rootView;
 	}
 
 	/*

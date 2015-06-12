@@ -34,59 +34,48 @@ public class WishSponsorFragment extends BaseFragment {
 	private int current = 0;
 	/** 每页显示的条数 */
 	private final int ITEM_COUNT = 10;
-	/** 下拉刷新标识 */
-	private final int REFRESH = 1;
-	/** 上拉加载标识 */
-	private final int LOAD_MORE = 2;
-	/** 首次加载标识 */
-	private final int INIT = 3;
 
+	private View rootView;
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void handleMessage(Message msg) {
+			if (msg.what == HandlerConstants.WISH.WISH_SPONOR_LIST) {
 
-			if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
-				if (msg.arg2 == INIT) {
-					xlist.setVisibility(View.VISIBLE);
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 					List<WishSponsorList> data = (List<WishSponsorList>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					else
-						xlist.setPullLoadEnable(true);
-					wishSponsorAdapter.initData(data);
-					xlist.stopRefresh();
-				} else if (msg.arg2 == REFRESH) {
-					List<WishSponsorList> data = (List<WishSponsorList>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					wishSponsorAdapter.initData(data);
-					xlist.stopRefresh();
-				} else if (msg.arg2 == LOAD_MORE) {
-					List<WishSponsorList> data = (List<WishSponsorList>) msg.obj;
-					if (data == null || data.size() < ITEM_COUNT)
-						xlist.setPullLoadEnable(false);
-					wishSponsorAdapter.addData((List<WishSponsorList>) msg.obj);
-					xlist.stopLoadMore();
+					switch (msg.arg2) {
+					case REFRESH:
+						if (data == null || data.size() < ITEM_COUNT)
+							xlist.setPullLoadEnable(false);
+						wishSponsorAdapter.initData(data);
+						xlist.stopRefresh();
+						break;
+					case LOAD_MORE:
+						if (data == null || data.size() < ITEM_COUNT)
+							xlist.setPullLoadEnable(false);
+						wishSponsorAdapter.addData(data);
+						xlist.stopLoadMore();
+						break;
+					default:
+						break;
+					}
 				}
-
-			} else if (msg.arg1 == HandlerConstants.NETWORK_BEGIN) {// 网络数据开始
-				if (msg.arg2 == INIT) {
-
-					xlist.setVisibility(View.INVISIBLE);
-				}
-			} else if (msg.arg1 == HandlerConstants.RESULT_FAIL) {// 出错处理
-				if (msg.arg2 == INIT) {
-					xlist.setVisibility(View.INVISIBLE);
-				}
-			} else if (msg.arg1 == HandlerConstants.NETWORK_END) {// 网络数据获取完毕
-
 			}
-
 		};
 	};
+
+	public static final WishSponsorFragment newInstance() {
+		WishSponsorFragment wishSponsorFragment = new WishSponsorFragment();
+		return wishSponsorFragment;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,8 +83,8 @@ public class WishSponsorFragment extends BaseFragment {
 		rootView = inflater.inflate(R.layout.fragment_wish_sponsor, container,
 				false);
 		Map<String, String> params = new HashMap<String, String>();
-		WishIOController.getWishSponorRead(handler, params, INIT, ITEM_COUNT,
-				current * ITEM_COUNT);
+		WishIOController.getWishSponorRead(handler, params,
+				HandlerConstants.WISH.WISH_SPONOR_LIST, REFRESH);
 		xlist = (XListView) rootView.findViewById(R.id.lv_wishsupportlist);
 		xlist.setFocusable(false);
 		list = new ArrayList<WishSponsorList>();
@@ -119,19 +108,6 @@ public class WishSponsorFragment extends BaseFragment {
 			}
 		});
 		return rootView;
-
-	}
-
-	public static final WishSponsorFragment newInstance() {
-		WishSponsorFragment wishSponsorFragment = new WishSponsorFragment();
-		return wishSponsorFragment;
-	}
-
-	private View rootView;
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
 	}
 }

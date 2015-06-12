@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.activity.user.UserInfoActivity;
+import com.android.tonight8.activity.wish.MyWishActivity;
 import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.fragment.myaccount.MyAccountBaseFragment;
 import com.android.tonight8.view.RolePopupWindow;
@@ -187,6 +188,10 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		case R.id.iv_user_photo:
 			Intent intent = new Intent(getActivity(), UserInfoActivity.class);
 			startActivity(intent);
+			break;
+		case R.id.layout_my_wish:
+			startActivityForAnima(new Intent(activity, MyWishActivity.class),
+					activity);
 			break;
 		default:
 			break;

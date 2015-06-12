@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
+    <CheckBox
+        android:id="@+id/cb_sponsor_thing_title"
+        style="@style/wrap" />
+
     <TextView
         android:id="@+id/tv_sponsor_name"
         style="@style/match_width"
-        android:layout_weight="1"
-        android:padding="@dimen/common_margin_left"
+        android:layout_toRightOf="@+id/cb_sponsor_thing_title"
+        android:padding="@dimen/common_margin_small"
         android:singleLine="false"
         android:textSize="@dimen/middleTextSize" />
 
-    <CheckBox
-        android:id="@+id/cb_sponsor_something"
-        style="@style/wrap" />
+    <TextView
+        android:id="@+id/tv_sponsor_content"
+        style="@style/match_width"
+        android:layout_below="@+id/tv_sponsor_name"
+        android:layout_alignLeft="@+id/tv_sponsor_name"
+        android:padding="@dimen/common_margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/middleTextSize" />
 
-</LinearLayout>
+</RelativeLayout>
