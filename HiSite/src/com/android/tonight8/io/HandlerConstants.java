@@ -44,19 +44,23 @@ public class HandlerConstants {
 
 	public static interface WISH {// 心愿相关
 		/** 心愿赞助列表 */
-		public static final int WISH_SPONOR_LIST = 201;
+		public static final int WISH_SPONOR_LIST = 301;
 		/** 心愿首页列表 （已实现） */
-		public static final int WISH_LIST_REALIZED = 202;
+		public static final int WISH_LIST_REALIZED = 302;
 		/** 心愿首页列表（未实现） */
-		public static final int WISH_LIST_UNREALIZED = 203;
+		public static final int WISH_LIST_UNREALIZED = 303;
 		/** 心愿详情 */
-		public static final int WISH_DETAIL = 204;
+		public static final int WISH_DETAIL = 304;
 		/** 心愿赞助录入 */
-		public static final int WISH_SPONOR_POST = 205;
+		public static final int WISH_SPONOR_POST = 305;
 		/** 心愿赞助清单 */
-		public static final int WISH_SPONOR_CHECK_LIST = 206;
+		public static final int WISH_SPONOR_CHECK_LIST = 306;
 		/** 心愿讨论区 */
-		public static final int WISH_LIVE_TALK = 207;
+		public static final int WISH_LIVE_TALK = 307;
+		/** 我的心愿：赞助的心愿 */
+		public static final int MYWISH_SPONSOR = 308;
+		/** 我的心愿：我发布的心愿*/
+		public static final int MYWISH_POST = 309;
 	}
 
 	/**

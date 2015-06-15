@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.model.wish.WishSponsorList;
+import com.android.tonight8.dao.model.wish.WishSponsorList;
 import com.android.tonight8.view.CircleImageView;
 
 /**

@@ -17,7 +17,7 @@ import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishStoryAdapter;
 import com.android.tonight8.adapter.wish.WishThemeGridAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.wish.WishListModel;
+import com.android.tonight8.dao.model.wish.WishListModel;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.view.GridViewForScrollView;
 import com.android.tonight8.view.ListViewForScrollView;

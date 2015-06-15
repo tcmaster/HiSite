@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
+import com.android.tonight8.dao.model.wish.SubjectListModel;
 import com.android.tonight8.model.ActionItem;
-import com.android.tonight8.model.wish.SubjectListModel;
 import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.CircleImageView;
 import com.android.tonight8.view.CommitPopup;
@@ -27,9 +27,9 @@ import com.android.tonight8.view.TitlePopup.OnItemOnClickListener;
  * 
  */
 public class WishTalkAdapter extends BaseListAdapter<SubjectListModel> {
-	/**赞成和评论按钮弹出框*/
+	/** 赞成和评论按钮弹出框 */
 	private TitlePopup titlePopup;
-	/**评论提交弹出框*/
+	/** 评论提交弹出框 */
 	private CommitPopup commitPopup;
 
 	public WishTalkAdapter(Context context, List<SubjectListModel> values) {
@@ -45,7 +45,11 @@ public class WishTalkAdapter extends BaseListAdapter<SubjectListModel> {
 
 	@Override
 	protected View getItemView(View convertView, final int position) {
-		convertView = mInflater.inflate(R.layout.adapter_wish_talk_item, null);
+		if (convertView == null) {
+			convertView = mInflater.inflate(R.layout.adapter_wish_talk_item,
+					null);
+		}
+
 		final CheckBox cb_talk_dialog = ViewHolder.get(convertView,
 				R.id.cb_talk_dialog);
 		CircleImageView iv_wish_talk_headpic = ViewHolder.get(convertView,

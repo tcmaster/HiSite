@@ -14,7 +14,7 @@ import com.android.tonight8.activity.wish.MakeWishActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.model.wish.WishListModel;
+import com.android.tonight8.dao.model.wish.WishListModel;
 import com.android.tonight8.utils.DialogUtils;
 
 /**
