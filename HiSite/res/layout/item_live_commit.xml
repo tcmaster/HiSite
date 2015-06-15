@@ -34,11 +34,31 @@
         android:text="@string/app_name"
         android:textColor="@color/half_black" />
 
+    <FrameLayout
+        android:id="@+id/fg_container"
+        style="@style/wrap"
+        android:layout_below="@+id/tv_live_talk_content"
+        android:layout_marginTop="@dimen/topOrbottomPadding" >
+
+        <GridView
+            android:id="@+id/gv_more_info"
+            style="@style/match_width"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rl_more_info"
+            style="@style/match_width"
+            android:visibility="gone" >
+        </RelativeLayout>
+    </FrameLayout>
+
     <CheckBox
         android:id="@+id/cb_live_dialog"
         style="@style/wrap"
         android:layout_alignRight="@+id/tv_live_talk_content"
-        android:layout_below="@+id/tv_live_talk_content"
+        android:layout_below="@+id/fg_container"
         android:background="@drawable/ic_launcher"
         android:button="@null"
         android:checked="false"
@@ -46,24 +66,21 @@
 
     <com.android.tonight8.view.ListViewForScrollView
         android:id="@+id/lv_reply_item"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        style="@style/match_width"
         android:layout_below="@+id/cb_live_dialog"
         android:divider="#b5b5b5"
-        android:dividerHeight="1dp" >
-    </com.android.tonight8.view.ListViewForScrollView>
+        android:dividerHeight="1dp" />
 
     <LinearLayout
         android:id="@+id/ll_dialog_commit"
         style="@style/match_width"
-        android:layout_below="@+id/lv_reply_item"
+        android:layout_below="@+id/fg_container"
         android:orientation="horizontal"
         android:visibility="gone" >
 
         <EditText
             android:id="@+id/et_live_commit"
-            style="@style/match_width"
-            />
+            style="@style/match_width" />
 
         <Button
             style="@style/ok_button_style"

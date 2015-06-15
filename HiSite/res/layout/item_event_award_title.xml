@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_width"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/wrap"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/middleTextSize"
+        android:layout_marginTop="@dimen/topOrbottomPadding"
+        android:layout_marginBottom="@dimen/topOrbottomPadding"
+        />
+</LinearLayout>

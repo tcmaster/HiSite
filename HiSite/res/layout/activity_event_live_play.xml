@@ -2,9 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/match" >
 
+   <ScrollView
+       android:id="@+id/sv_lv_main"
+       style="@style/match"
+       android:layout_gravity="center"
+       >
     <LinearLayout
-        style="@style/match"
-        android:layout_gravity="center"
+        style="@style/match_width"
         android:orientation="vertical"
         tools:context=".EventLivePlayActivity" >
 
@@ -14,7 +18,8 @@
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_play_screen"
-                style="@style/match"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/popgoodsImgHeight"
                 android:layout_gravity="center" />
 
             <ImageView
@@ -40,10 +45,10 @@
 
         <LinearLayout
             style="@style/match_width"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/topOrbottomPadding"
             android:paddingBottom="@dimen/topOrbottomPadding"
-            android:gravity="center_vertical" >
+            android:paddingTop="@dimen/topOrbottomPadding" >
 
             <ImageView
                 android:id="@+id/iv_prev_page"
@@ -111,10 +116,10 @@
                     android:id="@+id/iv_full_screen"
                     style="@style/wrap"
                     android:layout_marginLeft="@dimen/common_margin_left_long"
+                    android:layout_marginRight="@dimen/common_margin_left_long"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/vfullscreen"
-                    android:layout_marginRight="@dimen/common_margin_left_long" />
+                    android:src="@drawable/vfullscreen" />
             </LinearLayout>
         </LinearLayout>
 
@@ -130,12 +135,12 @@
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@drawable/tab_selector"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/live"
-                android:textSize="@dimen/middleTextSize"
                 android:textColor="@drawable/selector_tab_text_color"
-                android:background="@drawable/tab_selector" />
+                android:textSize="@dimen/middleTextSize" />
 
             <View
                 style="@style/line_full_vertical"
@@ -147,12 +152,12 @@
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@drawable/tab_selector"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/winnerlist"
-                android:textSize="@dimen/middleTextSize"
                 android:textColor="@drawable/selector_tab_text_color"
-                android:background="@drawable/tab_selector" />
+                android:textSize="@dimen/middleTextSize" />
 
             <View
                 style="@style/line_full_vertical"
@@ -164,12 +169,12 @@
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@drawable/tab_selector"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/vote"
-                android:textSize="@dimen/middleTextSize"
                 android:textColor="@drawable/selector_tab_text_color"
-                android:background="@drawable/tab_selector" />
+                android:textSize="@dimen/middleTextSize" />
 
             <View
                 style="@style/line_full_vertical"
@@ -181,13 +186,12 @@
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:background="@drawable/tab_selector"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/programlist"
-                android:textSize="@dimen/middleTextSize"
                 android:textColor="@drawable/selector_tab_text_color"
-                android:background="@drawable/tab_selector"
-                />
+                android:textSize="@dimen/middleTextSize" />
         </RadioGroup>
 
         <View style="@style/line_full" />
@@ -195,20 +199,21 @@
         <TextView
             android:id="@+id/tv_goods_info"
             style="@style/match_width"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingTop="@dimen/topOrbottomPadding"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="@dimen/middleTextSize"
-            android:gravity="center"
-            android:ellipsize="marquee"
-            android:paddingTop="@dimen/topOrbottomPadding"
-            android:paddingBottom="@dimen/topOrbottomPadding" />
+            android:textSize="@dimen/middleTextSize" />
         <!-- 有一个界面用到了item_event_award(用于用户中奖名单界面） -->
 
         <LinearLayout
-            android:id="@+id/ll_container"
+            android:id="@+id/ll_lv_container"
             style="@style/match_width"
             android:orientation="vertical" />
     </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         style="@style/match_width"

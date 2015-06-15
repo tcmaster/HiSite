@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+    <com.android.tonight8.view.ListViewForScrollView
+        android:id="@+id/lv_only_list"
+        style="@style/match"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+</LinearLayout>

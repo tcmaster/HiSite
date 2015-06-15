@@ -22,15 +22,19 @@ import com.lidroid.xutils.exception.HttpException;
  */
 public class UserIOController {
 
-	private static String USER_AWARDS_URL = NetRequest.BASE_URL + "/api/member/awards";
+	private static String USER_AWARDS_URL = NetRequest.BASE_URL
+			+ "/api/member/awards";
 
 	public static void userAwardsRead(final Handler handler) {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put(NetRequest.REQUEST_URL, USER_AWARDS_URL);
-		NetRequest.doGetRequest(param, new RequestResult<UserAwardNetEntity>(UserAwardNetEntity.class, handler) {
+		NetRequest.doGetRequest(param, new RequestResult<UserAwardNetEntity>(
+				UserAwardNetEntity.class, handler) {
 
 			@Override
-			public void getData(NetEntityBase netEntityBase, UserAwardNetEntity t, Handler handler) {
+			public void getData(NetEntityBase netEntityBase,
+					UserAwardNetEntity t, Handler handler) {
+
 			}
 
 			@Override

@@ -50,8 +50,8 @@ public class EventLiveCommitAdapter extends BaseListAdapter<SubjectList> {
 		SubjectList subjectList = mValues.get(position);
 		if (convertView == null)
 			convertView = mInflater.inflate(R.layout.item_live_commit, null);
-		final CheckBox cb_talk_dialog = ViewHolder.get(convertView,
-				R.id.cb_talk_dialog);
+		final CheckBox cb_live_dialog = ViewHolder.get(convertView,
+				R.id.cb_live_dialog);
 		CircleImageView iv_live_comment_headpic = ViewHolder.get(convertView,
 				R.id.iv_live_comment_headpic);// 用户头像
 		TextView tv_live_talk_name = ViewHolder.get(convertView,
@@ -61,23 +61,21 @@ public class EventLiveCommitAdapter extends BaseListAdapter<SubjectList> {
 		TextView tv_live_talk_content = ViewHolder.get(convertView,
 				R.id.tv_live_talk_content);
 
-		// bmUtils.display(iv_wish_talk_headpic, subjectListModel.getUser()
-		// .getPic());
-		// tv_wish_talk_name.setText(subjectListModel.getUser().getName());
-		// tv_wish_talk_time.setText(subjectListModel.getSubject().getDate()
-		// + subjectListModel.getSubject().getTime());
-		// tv_wish_talk_content
-		// .setText(subjectListModel.getSubject().getContent());
-		cb_talk_dialog.setTag(position);
-		cb_talk_dialog.setOnClickListener(new OnClickListener() {
+		bmUtils.display(iv_live_comment_headpic, subjectList.getUser().getPic());
+		tv_live_talk_name.setText(subjectList.getUser().getName());
+		tv_live_talk_time.setText(subjectList.getSubject().getDate()
+				+ subjectList.getSubject().getTime());
+		tv_live_talk_content.setText(subjectList.getSubject().getContent());
+		cb_live_dialog.setTag(position);
+		cb_live_dialog.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Utils.toast(((Integer) v.getTag()) + "测试第几个");
-				titlePopup.show(v, cb_talk_dialog);
+				titlePopup.show(v, cb_live_dialog);
 			}
 		});
-		cb_talk_dialog.setTag(position);
+		cb_live_dialog.setTag(position);
 		titlePopup.setItemOnClickListener(new OnItemOnClickListener() {
 
 			@Override

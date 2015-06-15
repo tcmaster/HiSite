@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
@@ -32,6 +33,9 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * @Tonight8
  */
 public class EventLivePlayActivity extends BaseActivity {
+	/** 滑动布局 */
+	@ViewInject(R.id.sv_lv_main)
+	private ScrollView sv_lv_main;
 	/** 直播界面的ViewPager */
 	@ViewInject(R.id.vp_play_screen)
 	private ViewPager vp_play_screen;
@@ -127,6 +131,7 @@ public class EventLivePlayActivity extends BaseActivity {
 
 	private void initInterface() {
 		LiveIOController.readLiveTitle(handler);
+
 	}
 
 	private void initFragments() {
@@ -139,8 +144,10 @@ public class EventLivePlayActivity extends BaseActivity {
 		if (fm == null)
 			fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
-		for (BaseFragment bf : bfs)
-			ft.add(R.id.ll_container, bf);
+		for (BaseFragment bf : bfs) {
+			ft.add(R.id.ll_lv_container, bf);
+			ft.hide(bf);
+		}
 		ft.commit();
 		rg_tab.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -168,6 +175,11 @@ public class EventLivePlayActivity extends BaseActivity {
 		rg_tab.check(R.id.rb_live);
 	}
 
+	/**
+	 * 切换当前显示的fragment
+	 * 
+	 * @param pos
+	 */
 	private void changeFragment(int pos) {
 		FragmentTransaction ft = fm.beginTransaction();
 		for (int i = 0; i < 4; i++) {
@@ -177,5 +189,10 @@ public class EventLivePlayActivity extends BaseActivity {
 				ft.hide(bfs[i]);
 		}
 		ft.commit();
+	}
+
+	/** 滑到顶端 */
+	public void scrollTop() {
+		sv_lv_main.scrollTo(0, 0);
 	}
 }

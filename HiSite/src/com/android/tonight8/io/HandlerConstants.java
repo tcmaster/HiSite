@@ -38,6 +38,8 @@ public class HandlerConstants {
 		public static final int LIVE_TITLE = 201;
 		/** 现场评论 */
 		public static final int LIVE_COMMIT = 202;
+		/** 中奖名单 */
+		public static final int LIVE_WINNER_LIST = 203;
 	}
 
 	public static interface WISH {// 心愿相关
