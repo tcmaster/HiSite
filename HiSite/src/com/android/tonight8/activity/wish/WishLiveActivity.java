@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -80,8 +81,18 @@ public class WishLiveActivity extends BaseActivity implements
 	/** 心愿进度 */
 	@ViewInject(R.id.pb_wish_live)
 	private MyProgressBar pb_wish_live;
+	/** 联系我 */
 	@ViewInject(R.id.tv_callme)
 	private TextView tv_callme;
+	/** 前一页 */
+	@ViewInject(R.id.iv_wishlive_previous)
+	private ImageView iv_wishlive_previous;
+	/** 暂定 */
+	@ViewInject(R.id.iv_wishlive_pause)
+	private ImageView iv_wishlive_pause;
+	/** 下一页 */
+	@ViewInject(R.id.iv_wishlive_next)
+	private ImageView iv_wishlive_next;
 	/** 本界面的数据更新handler */
 	private Handler handler = new Handler() {
 
@@ -209,7 +220,7 @@ public class WishLiveActivity extends BaseActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), 5,
+		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), data.size(),
 				new Handler() {
 
 					@Override
@@ -247,6 +258,16 @@ public class WishLiveActivity extends BaseActivity implements
 		switch (v.getId()) {
 		case R.id.tv_callme:
 			IntentUtils.showCallPhoneDialog(mContext, "15210162168");
+			break;
+		case R.id.iv_wishlive_previous:
+
+			break;
+		case R.id.iv_wishlive_pause:
+			if (cFunction != null)
+				cFunction.pause();
+			break;
+		case R.id.iv_wishlive_next:
+
 			break;
 
 		default:

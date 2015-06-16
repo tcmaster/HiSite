@@ -46,7 +46,7 @@ public class WishStoryAdapter extends BaseListAdapter<WishListModel> implements
 		tv_addwishpic.setOnClickListener(this);
 		tv_deletewishpic.setOnClickListener(this);
 		iv_wish_storypic.setOnClickListener(this);
-//		bmUtils.display(iv_wish_storypic, mValues.get(position).getWish().);
+		// bmUtils.display(iv_wish_storypic, mValues.get(position).getWish().);
 		return convertView;
 	}
 

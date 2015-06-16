@@ -64,8 +64,8 @@ public class MyWishSponsorFragment extends BaseFragment {
 		};
 	};
 
-	public static final MyWishPostFragment newInstance() {
-		MyWishPostFragment myWishPostFragment = new MyWishPostFragment();
+	public static final MyWishSponsorFragment newInstance() {
+		MyWishSponsorFragment myWishPostFragment = new MyWishSponsorFragment();
 		return myWishPostFragment;
 
 	}

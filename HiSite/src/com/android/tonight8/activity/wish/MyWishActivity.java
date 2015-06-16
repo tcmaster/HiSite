@@ -1,36 +1,35 @@
 package com.android.tonight8.activity.wish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.android.tonight8.R;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.fragment.wish.MyWishPostFragment;
 import com.android.tonight8.fragment.wish.MyWishSponsorFragment;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnCompoundButtonCheckedChange;
 
 /**
  * @author lz 我的心愿
  * 
  */
-public class MyWishActivity extends BaseActivity {
+public class MyWishActivity extends BaseActivity implements
+		OnCheckedChangeListener {
 	private FragmentManager fm;
 	private FragmentTransaction ft;
 	private BaseFragment[] baseFragments;
-	@ViewInject(R.id.rg_mywish)
 	private RadioGroup rg_mywish;
-	@ViewInject(R.id.rb_wywish_post)
-	private RadioButton rb_wywish_post;
-	@ViewInject(R.id.rb_wywish_sponsor)
-	private RadioButton rb_wywish_sponsor;
 
-	@OnCompoundButtonCheckedChange(R.id.rb_wywish_post)
+	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		/* 处理被单击的按钮 */
 		switch (checkedId) {
 		case R.id.rb_wywish_post:
 			doFragmentShow(0);
@@ -38,23 +37,42 @@ public class MyWishActivity extends BaseActivity {
 		case R.id.rb_wywish_sponsor:
 			doFragmentShow(1);
 			break;
+
 		default:
 			break;
 		}
+
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_my_wish);
+		initCreateNomal(savedInstanceState, R.layout.activity_my_wish);
+		getActionBarNormal("我的心愿", R.drawable.ic_launcher,
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						startActivityForAnima(new Intent(MyWishActivity.this,
+								MakeWishActivity.class), null);
+					}
+				});
 		initData();
-		
+
 	}
 
 	private void initData() {
+
+		fm = getSupportFragmentManager();
+		ft = fm.beginTransaction();
 		baseFragments = new BaseFragment[2];
 		baseFragments[0] = MyWishPostFragment.newInstance();
 		baseFragments[1] = MyWishSponsorFragment.newInstance();
+		ft.add(R.id.ll_mywish_rcontent, baseFragments[0]);
+		ft.add(R.id.ll_mywish_rcontent, baseFragments[1]);
+		ft.commit();
+		rg_mywish = (RadioGroup) findViewById(R.id.rg_mywish);
+		rg_mywish.setOnCheckedChangeListener(this);
+
 	}
 
 	/**
@@ -74,4 +92,5 @@ public class MyWishActivity extends BaseActivity {
 		}
 		ft.commit();
 	}
+
 }

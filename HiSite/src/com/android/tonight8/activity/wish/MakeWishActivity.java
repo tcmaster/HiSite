@@ -48,9 +48,8 @@ public class MakeWishActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_make_wish);
-		super.onCreate(savedInstanceState);
-
+		initCreateNomal(savedInstanceState, R.layout.activity_make_wish);
+		getActionBarBase("许愿页面");
 		storyList = new ArrayList<WishListModel>();
 		WishListModel bean = new WishListModel();
 		storyList.add(bean);

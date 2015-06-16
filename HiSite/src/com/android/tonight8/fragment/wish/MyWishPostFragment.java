@@ -39,7 +39,7 @@ public class MyWishPostFragment extends BaseFragment {
 
 		@Override
 		public void handleMessage(Message msg) {
-			if (msg.what == HandlerConstants.WISH.MYWISH_SPONSOR) {
+			if (msg.what == HandlerConstants.WISH.MYWISH_POST) {
 
 				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 					List<MyWishListModel> data = (List<MyWishListModel>) msg.obj;
@@ -51,8 +51,10 @@ public class MyWishPostFragment extends BaseFragment {
 						xlist.stopRefresh();
 						break;
 					case LOAD_MORE:
-						if (data == null || data.size() < ITEM_COUNT)
+						if (data == null || data.size() < ITEM_COUNT) {
 							xlist.setPullLoadEnable(false);
+							xlist.setPullLoadHide();
+						}
 						adapter.addData(data);
 						xlist.stopLoadMore();
 						break;
@@ -88,5 +90,6 @@ public class MyWishPostFragment extends BaseFragment {
 		Map<String, String> params = new HashMap<String, String>();
 		WishIOController.getMyWishList(handler, params,
 				HandlerConstants.WISH.MYWISH_POST, REFRESH);
+		xlist.setPullLoadHide();
 	}
 }

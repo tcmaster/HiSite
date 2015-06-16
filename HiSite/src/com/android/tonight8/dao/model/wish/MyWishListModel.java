@@ -1,5 +1,7 @@
 package com.android.tonight8.dao.model.wish;
 
+import java.util.List;
+
 import com.android.tonight8.dao.entity.Wish;
 import com.android.tonight8.dao.entity.WishItem;
 import com.android.tonight8.dao.entity.WishSponsor;
@@ -14,7 +16,16 @@ public class MyWishListModel {
 	/** 心愿项目 */
 	private WishItem wishItem;
 	/** 心愿赞助 */
-	private WishSponsor wishSponsor;
+	private List<WishSponsor> wishSponsors;
+	private boolean isChecked = false;
+
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
 
 	public Wish getWish() {
 		return wish;
@@ -32,12 +43,12 @@ public class MyWishListModel {
 		this.wishItem = wishItem;
 	}
 
-	public WishSponsor getWishSponsor() {
-		return wishSponsor;
+	public List<WishSponsor> getWishSponsors() {
+		return wishSponsors;
 	}
 
-	public void setWishSponsor(WishSponsor wishSponsor) {
-		this.wishSponsor = wishSponsor;
+	public void setWishSponsors(List<WishSponsor> wishSponsors) {
+		this.wishSponsors = wishSponsors;
 	}
 
 }

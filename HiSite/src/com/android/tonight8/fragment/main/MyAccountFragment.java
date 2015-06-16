@@ -179,7 +179,7 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 
 	}
 
-	@OnClick({ R.id.tv_user_role, R.id.iv_user_photo })
+	@OnClick({ R.id.tv_user_role, R.id.iv_user_photo, R.id.layout_my_wish })
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_user_role:
