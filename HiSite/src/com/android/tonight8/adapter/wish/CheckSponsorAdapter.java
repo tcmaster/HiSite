@@ -65,7 +65,7 @@ public class CheckSponsorAdapter extends BaseListAdapter<WishSponsor> {
 
 			@Override
 			public void onClick(View v) {
-				btn_accept.setText("已经拒绝邀请");
+				btn_refuse.setText("已经拒绝邀请");
 			}
 		});
 		return convertView;

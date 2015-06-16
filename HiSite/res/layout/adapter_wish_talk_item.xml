@@ -6,8 +6,8 @@
 
     <com.android.tonight8.view.CircleImageView
         android:id="@+id/iv_wish_talk_headpic"
-        android:layout_width="@dimen/user_headpic_minheight"
-        android:layout_height="@dimen/user_headpic_minheight"
+        android:layout_width="@dimen/wishUserPhotoWidth"
+        android:layout_height="@dimen/wishUserPhotoWidth"
         android:layout_marginRight="@dimen/item_left_hilive"
         android:background="@drawable/ic_launcher" />
 
@@ -39,10 +39,8 @@
         style="@style/wrap"
         android:layout_alignRight="@+id/tv_wish_talk_content"
         android:layout_below="@+id/tv_wish_talk_content"
-        android:background="@drawable/ic_launcher"
-        android:button="@null"
-        android:checked="false"
-        android:textColor="@color/half_black" />
+        android:button="@drawable/wishtalk_comment_selector"
+        android:checked="false" />
 
     <com.android.tonight8.view.ListViewForScrollView
         android:id="@+id/lv_wishitem"
@@ -62,8 +60,7 @@
 
         <EditText
             android:id="@+id/et_wish_commit"
-            style="@style/match_width"
-            />
+            style="@style/match_width" />
 
         <Button
             style="@style/ok_button_style"
