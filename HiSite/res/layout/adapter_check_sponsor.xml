@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/common_margin_small"
     android:orientation="vertical" >
 
     <com.android.tonight8.view.CircleImageView
-        android:id="@+id/civ_mywishsponsor_userpic"
+        android:id="@+id/civ_mywishcheck_userpic"
         style="@style/wrap"
         android:layout_width="@dimen/wishUserPhotoWidth"
         android:layout_height="@dimen/wishUserPhotoWidth"
@@ -14,19 +13,19 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/tv_mywishsponsor_username"
+        android:id="@+id/tv_mywishcheck_username"
         style="@style/wrap"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/common_margin_small"
-        android:layout_toRightOf="@+id/civ_mywishsponsor_userpic"
+        android:layout_toRightOf="@+id/civ_mywishcheck_userpic"
         android:text="用户名"
         android:textColor="@color/black_seven_purple" />
 
     <LinearLayout
         android:id="@+id/ll_theme"
         style="@style/match_width"
-        android:layout_alignLeft="@+id/tv_mywishsponsor_username"
-        android:layout_below="@+id/tv_mywishsponsor_username"
+        android:layout_alignLeft="@+id/tv_mywishcheck_username"
+        android:layout_below="@+id/tv_mywishcheck_username"
         android:orientation="horizontal" >
 
         <TextView
@@ -35,7 +34,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/tv_mywishsponsor_theme"
+            android:id="@+id/tv_mywishcheck_theme"
             style="@style/wrap"
             android:text="小米送手机"
             android:textSize="@dimen/smallTextSize" />
@@ -44,7 +43,7 @@
     <LinearLayout
         android:id="@+id/ll_sponsortype"
         style="@style/match_width"
-        android:layout_alignLeft="@+id/tv_mywishsponsor_username"
+        android:layout_alignLeft="@+id/tv_mywishcheck_username"
         android:layout_below="@+id/ll_theme"
         android:orientation="horizontal" >
 
@@ -54,7 +53,7 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/tv_mywishsponsor_type"
+            android:id="@+id/tv_mywishcheck_sponsortype"
             style="@style/wrap"
             android:text="现金"
             android:textSize="@dimen/smallTextSize" />
@@ -63,7 +62,7 @@
     <LinearLayout
         android:id="@+id/ll_sponsor_item"
         style="@style/match_width"
-        android:layout_alignLeft="@+id/tv_mywishsponsor_username"
+        android:layout_alignLeft="@+id/tv_mywishcheck_username"
         android:layout_below="@+id/ll_sponsortype"
         android:orientation="horizontal" >
 
@@ -73,14 +72,15 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/tv_mywishsponsor_item"
+            android:id="@+id/tv_mywishcheck_sponsoritem"
             style="@style/wrap"
             android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_sponsorrequest"
         style="@style/match_width"
-        android:layout_alignLeft="@+id/tv_mywishsponsor_username"
+        android:layout_alignLeft="@+id/tv_mywishcheck_username"
         android:layout_below="@+id/ll_sponsor_item"
         android:orientation="horizontal" >
 
@@ -90,9 +90,28 @@
             android:textSize="@dimen/smallTextSize" />
 
         <TextView
-            android:id="@+id/tv_mywishsponsor_request"
+            android:id="@+id/tv_mywishcheck_sponsorrequest"
             style="@style/wrap"
             android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/match_width"
+        android:layout_alignLeft="@+id/tv_mywishcheck_username"
+        android:layout_below="@+id/ll_sponsorrequest"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_check_accept"
+            style="@style/ok_button_style"
+            android:layout_weight="1"
+            android:text="接受赞助" />
+
+        <Button
+            android:id="@+id/btn_check_refuse"
+            style="@style/ok_button_style"
+            android:layout_weight="1"
+            android:text="拒绝赞助" />
     </LinearLayout>
 
 </RelativeLayout>

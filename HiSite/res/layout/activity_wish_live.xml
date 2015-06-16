@@ -30,38 +30,43 @@
 
         <RelativeLayout
             style="@style/match_width"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/common_margin_left"
-            android:paddingRight="@dimen/common_margin_left" >
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingTop="@dimen/topOrbottomPadding" >
 
-            <TextView
-                android:id="@+id/tv_vp_left"
+            <ImageView
+                android:id="@+id/iv_wishlive_previous"
                 style="@style/wrap"
                 android:layout_centerVertical="true"
-                android:text="向左" />
+                android:layout_marginLeft="@dimen/common_margin_left_long"
+                android:scaleType="fitXY"
+                android:src="@drawable/vprev" />
 
-            <TextView
-                android:id="@+id/tv_vp_pause"
+            <ImageView
+                android:id="@+id/iv_wishlive_pause"
                 style="@style/wrap"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tv_vp_left"
-                android:text="暂停" />
+                android:layout_marginLeft="@dimen/common_margin_left_long"
+                android:layout_toRightOf="@+id/iv_wishlive_previous"
+                android:scaleType="fitXY"
+                android:src="@drawable/vpause" />
 
-            <TextView
-                android:id="@+id/tv_vp_right"
+            <ImageView
+                android:id="@+id/iv_wishlive_next"
                 style="@style/wrap"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tv_vp_pause"
-                android:text="向右" />
+                android:layout_marginLeft="@dimen/common_margin_left_long"
+                android:layout_toRightOf="@+id/iv_wishlive_pause"
+                android:scaleType="fitXY"
+                android:src="@drawable/vfront" />
 
             <TextView
                 android:id="@+id/tv_callme"
                 style="@style/wrap"
                 android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/iv_wishlive_next"
                 android:drawableLeft="@drawable/ic_launcher"
-                android:gravity="center_vertical"
-                android:text="联系我"
-                android:textSize="@dimen/smallTextSize" />
+                android:paddingRight="@dimen/common_margin_left_long" />
         </RelativeLayout>
 
         <View style="@style/line_full" />
