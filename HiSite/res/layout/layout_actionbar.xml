@@ -90,7 +90,7 @@
             style="@style/wrap"
             android:layout_marginRight="@dimen/drawable_padding"
             android:text="@string/app_name"
-            android:textColor="@color/gray"
+            android:textColor="@color/white"
             android:textSize="@dimen/middleTextSize" />
 
         <ImageView

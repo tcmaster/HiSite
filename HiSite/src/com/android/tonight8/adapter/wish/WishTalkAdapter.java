@@ -34,12 +34,12 @@ public class WishTalkAdapter extends BaseListAdapter<SubjectListModel> {
 
 	public WishTalkAdapter(Context context, List<SubjectListModel> values) {
 		super(context, values);
-		titlePopup = new TitlePopup(mContext, Utils.dip2px(context, 165),
+		titlePopup = new TitlePopup(mContext, Utils.dip2px(context, 180),
 				Utils.dip2px(context, 40));
 		titlePopup.addAction(new ActionItem(mContext, "赞",
-				R.drawable.ic_launcher));
+				R.drawable.vhearticon));
 		titlePopup.addAction(new ActionItem(mContext, "评论",
-				R.drawable.ic_launcher));
+				R.drawable.vcommenticon));
 
 	}
 

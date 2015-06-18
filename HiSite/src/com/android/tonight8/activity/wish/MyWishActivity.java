@@ -47,7 +47,7 @@ public class MyWishActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		initCreateNomal(savedInstanceState, R.layout.activity_my_wish);
-		getActionBarNormal("我的心愿", R.drawable.ic_launcher,
+		getActionBarNormal("我的心愿", R.drawable.vadd,
 				new OnClickListener() {
 
 					@Override

@@ -39,11 +39,17 @@ public class MakeWishActivity extends BaseActivity {
 	private List<WishListModel> storyList;
 	/** 故事板点击的位置 */
 	private int clickPosition;
+	/** 更新数据 */
 	public static final int UPDATA_DATA = 0;
+	/** 增加数据 */
 	public static final int ADD_DATA = 1;
+	/** 删除数据 */
 	public static final int DELETE_DATA = 2;
+	/** 主题图片从相册获取标识 */
 	public static final int THEME_PICKPICTURE = 4;
+	/** 主题图片从拍照获取标识 */
 	public static final int THEME_TAKEPHOTO = 5;
+	/** 主题图片从剪裁获取的标识 */
 	public static final int THEME_CROP = 6;
 
 	@Override

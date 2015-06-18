@@ -65,8 +65,12 @@
                 style="@style/wrap"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/iv_wishlive_next"
-                android:drawableLeft="@drawable/ic_launcher"
-                android:paddingRight="@dimen/common_margin_left_long" />
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/vcallme"
+                android:paddingRight="@dimen/common_margin_left_long"
+                android:text="联系我"
+                android:drawablePadding="@dimen/common_margin_small"
+                android:textSize="@dimen/middleTextSize" />
         </RelativeLayout>
 
         <View style="@style/line_full" />

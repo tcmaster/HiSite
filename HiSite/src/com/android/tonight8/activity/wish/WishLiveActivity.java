@@ -104,7 +104,7 @@ public class WishLiveActivity extends BaseActivity implements
 				wishDetailModel = (WishDetailModel) msg.obj;
 				ctv_wish_content
 						.setDesc(
-								"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+								"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
 								BufferType.NORMAL);
 				Tonight8App.getSelf().bitmapUtils.display(civ_wishlive_userpic,
 						wishDetailModel.getUser().getPic());
@@ -167,7 +167,7 @@ public class WishLiveActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		initCreateNomal(savedInstanceState, R.layout.activity_wish_live);
-		getActionBarNormal("心愿详情", R.drawable.ic_launcher, onClickListener);
+		getActionBarRight("心愿详情", "我要赞助", onClickListener);
 		initView();
 		initData();
 		doFragmentShow(0);
@@ -220,8 +220,8 @@ public class WishLiveActivity extends BaseActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
-		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(), data.size(),
-				new Handler() {
+		cFunction = new CirculateFunction(viewPager.getAdapter().getCount(),
+				data.size(), new Handler() {
 
 					@Override
 					public void handleMessage(Message msg) {
@@ -253,7 +253,8 @@ public class WishLiveActivity extends BaseActivity implements
 		super.onStop();
 	}
 
-	@OnClick({ R.id.tv_callme })
+	@OnClick({ R.id.tv_callme, R.id.iv_wishlive_pause,
+			R.id.iv_wishlive_previous, R.id.iv_wishlive_next })
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_callme:

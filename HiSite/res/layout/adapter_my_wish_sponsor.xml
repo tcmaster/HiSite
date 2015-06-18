@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/common_margin_small"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_margin="@dimen/common_margin_small" >
 
     <com.android.tonight8.view.CircleImageView
         android:id="@+id/civ_mywishsponsor_userpic"
@@ -94,5 +94,7 @@
             style="@style/wrap"
             android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
+
+    <View style="@style/line_full" />
 
 </RelativeLayout>
