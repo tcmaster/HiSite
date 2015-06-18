@@ -53,19 +53,18 @@ public class EventLiveCommitAdapter extends BaseListAdapter<SubjectList> {
 		final CheckBox cb_live_dialog = ViewHolder.get(convertView,
 				R.id.cb_live_dialog);
 		CircleImageView iv_live_comment_headpic = ViewHolder.get(convertView,
-				R.id.iv_live_comment_headpic);// 用户头像
+				R.id.iv_live_talk_headpic);// 用户头像
 		TextView tv_live_talk_name = ViewHolder.get(convertView,
 				R.id.tv_live_talk_name);
 		TextView tv_live_talk_time = ViewHolder.get(convertView,
 				R.id.tv_live_talk_time);
 		TextView tv_live_talk_content = ViewHolder.get(convertView,
 				R.id.tv_live_talk_content);
-
-		bmUtils.display(iv_live_comment_headpic, subjectList.getUser().getPic());
 		tv_live_talk_name.setText(subjectList.getUser().getName());
 		tv_live_talk_time.setText(subjectList.getSubject().getDate()
 				+ subjectList.getSubject().getTime());
 		tv_live_talk_content.setText(subjectList.getSubject().getContent());
+		bmUtils.display(iv_live_comment_headpic, subjectList.getUser().getPic());
 		cb_live_dialog.setTag(position);
 		cb_live_dialog.setOnClickListener(new OnClickListener() {
 
