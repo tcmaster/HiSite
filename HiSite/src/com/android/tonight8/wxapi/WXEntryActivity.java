@@ -17,7 +17,7 @@ import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 
 /**
- * @Description：微信发出的请求将回调到onReq方法，发送到微信请求的响应结果将回调到onResp方法
+ * @Description：微信分享发出的请求将回调到onReq方法，发送到微信请求的响应结果将回调到onResp方法
  * @date 2015-3-20下午3:52:57
  * @author liuzhao
  */

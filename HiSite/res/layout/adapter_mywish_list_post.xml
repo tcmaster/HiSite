@@ -2,44 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:android_custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/seletor_white_to_gray"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin_small" >
 
-    <View style="@style/line_full" />
+    <TextView
+        android:id="@+id/tv_mywishpost_theme"
+        style="@style/wrap"
+        android:layout_marginLeft="@dimen/common_margin_small"
+        android:layout_marginRight="@dimen/common_margin_small"
+        android:singleLine="false"
+        android:text="我要去西藏"
+        android:textColor="@color/purple" />
 
-    <LinearLayout
-        android:padding="@dimen/common_margin_small"
+    <TextView
+        android:id="@+id/tv_mywishpost_datetime"
         style="@style/match_width"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/tv_enterlive"
-            style="@style/wrap"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="进入现场" />
-
-        <View style="@style/line_full_vertical" />
-
-        <TextView
-            android:id="@+id/tv_mywish_edit"
-            style="@style/wrap"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="心愿制作" />
-
-        <View style="@style/line_full_vertical" />
-
-        <TextView
-            android:id="@+id/tv_post_end"
-            style="@style/wrap"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="发布结束" />
-    </LinearLayout>
-
-    <View style="@style/line_full" />
+        android:layout_marginLeft="@dimen/common_margin_small"
+        android:text="发布：2015-06-18 12:38"
+        android:textSize="@dimen/more_smallTextSize" />
 
     <LinearLayout
         style="@style/match_width"
@@ -48,23 +30,7 @@
 
         <TextView
             style="@style/wrap"
-            android:text="心愿主题:" />
-
-        <TextView
-            android:id="@+id/tv_mywishpost_theme"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_small"
-            android:text="我要去西藏" />
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/match_width"
-        android:layout_margin="@dimen/common_margin_small"
-        android:orientation="horizontal" >
-
-        <TextView
-            style="@style/wrap"
-            android:text="支持人数:" />
+            android:text="支持人数：" />
 
         <TextView
             android:id="@+id/tv_support_count"
@@ -90,33 +56,33 @@
             android_custom:textIsDisplayable="true"
             android_custom:textSizeRound="14sp" />
 
-        <CheckBox
-            android:id="@+id/cb_check_sponsor"
+        <TextView
+            android:id="@+id/tv_check_sponsor"
             style="@style/wrap"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:button="@null"
-            android:checked="false"
-            android:drawableRight="@drawable/vblackarrow"
-            android:drawablePadding="@dimen/common_margin_small"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/common_margin_left"
+            android:layout_toRightOf="@+id/pb_mywish_progress"
             android:text="查看赞助"
-            android:textColor="@color/black_seven_purple" />
+            android:textColor="@color/purple" />
 
         <TextView
             android:id="@+id/tv_mywish_progress"
             style="@style/wrap"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:text="实现进度:"
+            android:text="实现进度："
             android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_wish_progress"
+            style="@style/wrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/setting_btn_selector"
+            android:gravity="center_vertical"
+            android:padding="@dimen/common_margin_small"
+            android:text="历程发布"
+            android:textColor="@color/white" />
     </RelativeLayout>
-
-    <View style="@style/line_full" />
-
-    <com.android.tonight8.view.ListViewForScrollView
-        android:id="@+id/lv_mywish_listview"
-        style="@style/match_width"
-        android:visibility="gone" />
 
 </LinearLayout>

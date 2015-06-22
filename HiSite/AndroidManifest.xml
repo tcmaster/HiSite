@@ -364,7 +364,8 @@
         <activity
             android:name="com.android.tonight8.activity.wish.WishSponsorActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <!-- 用户信息界面 -->
         <activity
             android:name="com.android.tonight8.activity.user.UserInfoActivity"
@@ -374,6 +375,18 @@
         </activity>
         <activity
             android:name="com.android.tonight8.activity.user.ShowImgActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 心愿历程发布界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.WishProcessPostActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 我的心愿赞助界面 -->
+        <activity
+            android:name="com.android.tonight8.activity.wish.MyWishSponsorActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>

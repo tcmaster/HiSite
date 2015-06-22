@@ -74,9 +74,9 @@ public class BaseActivity extends FragmentActivity {
 	 */
 	protected String tempName = "";
 	/** 下拉刷新标识 */
-	protected final int REFRESH = 1;
+	protected final static int REFRESH = 1;
 	/** 上拉加载标识 */
-	protected final int LOAD_MORE = 2;
+	protected final static int LOAD_MORE = 2;
 
 	/** 该标记用于本界面的倒计时，如果为false，则倒计时停止 */
 	public boolean flagCountDown = true;
@@ -306,11 +306,13 @@ public class BaseActivity extends FragmentActivity {
 
 	/**
 	 * @Description:获取actionBar，有左边返回按钮,标题,右边有文字和点击事件
-	 * @param title 标题内容
+	 * @param title
+	 *            标题内容
 	 * @param rightText
 	 * @param rightClick
 	 */
-	public void getActionBarRight(String title,String rightText,OnClickListener rightClick) {
+	public void getActionBarRight(String title, String rightText,
+			OnClickListener rightClick) {
 		useCustomerActionBar();
 		getLeftText().setVisibility(View.GONE);
 		getLogo().setVisibility(View.GONE);
@@ -323,6 +325,7 @@ public class BaseActivity extends FragmentActivity {
 		getRightText().setOnClickListener(rightClick);
 		getRightText().setText(rightText);
 	}
+
 	/**
 	 * @Description:获取常规actionBar,有左边的按钮，中间的标题以及右边的图片
 	 * @param title

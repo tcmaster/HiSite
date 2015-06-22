@@ -52,8 +52,10 @@ import com.google.zxing.Result;
  * shows feedback as the image processing is happening, and then overlays the
  * results when a scan is successful.
  * 
- * @author dswitkin@google.com (Daniel Switkin)
- * @author Sean Owen
+ * /**
+ * 
+ * @author lz二维码扫描的页面
+ * 
  */
 public final class CaptureActivity extends Activity implements
 		SurfaceHolder.Callback {

@@ -4,12 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <include layout="@layout/adapter_mywish_list_post" />
+
+    <View
+        style="@style/line_full"
+        android:layout_height="@dimen/common_margin_left" />
+
     <com.android.tonight8.view.xlistview.XListView
         android:id="@+id/lv_mywishsponsor"
-        style="@style/match_width"
+        style="@style/match"
         android:divider="@color/white_gray"
-        android:dividerHeight="@dimen/common_margin_left"
-        android:listSelector="@drawable/seletor_white_to_gray"
+        android:dividerHeight="1dp"
         android:scrollbars="none" />
 
 </LinearLayout>

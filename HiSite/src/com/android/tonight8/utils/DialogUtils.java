@@ -18,7 +18,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.ShareAdapter;
@@ -40,7 +42,8 @@ public class DialogUtils {
 
 	public static final int TYPE_SIMPLE_LIST = 1;
 
-	public static void showListDialog(Activity act, int type, ListDialogInterface listener) {
+	public static void showListDialog(Activity act, int type,
+			ListDialogInterface listener) {
 		int res = -1;
 		switch (type) {
 		case TYPE_SIMPLE_LIST:
@@ -54,11 +57,13 @@ public class DialogUtils {
 		cdlg.showDlg();
 	}
 
-	public static abstract class ListDialogInterface implements CustomerViewInterface {
+	public static abstract class ListDialogInterface implements
+			CustomerViewInterface {
 
 		@Override
 		public void getCustomerView(Window window, AlertDialog dlg) {
-			ListView lv_simple = (ListView) window.findViewById(R.id.lv_list_simple);// 找到listView
+			ListView lv_simple = (ListView) window
+					.findViewById(R.id.lv_list_simple);// 找到listView
 			getListView(lv_simple, dlg);
 		}
 
@@ -74,21 +79,25 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectPicDialog(final Activity activity, final int requestCodeGallery,
-			final int requestCodeTakePicture) {
-		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_select_pic);
+	public static void showSelectPicDialog(final Activity activity,
+			final int requestCodeGallery, final int requestCodeTakePicture) {
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.dialog_select_pic);
 
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 			@Override
 			public void getCustomerView(Window window, final AlertDialog dlg) {
-				Button btn_left = (Button) window.findViewById(R.id.btn_pic_left);
-				Button btn_right = (Button) window.findViewById(R.id.btn_pic_right);
+				Button btn_left = (Button) window
+						.findViewById(R.id.btn_pic_left);
+				Button btn_right = (Button) window
+						.findViewById(R.id.btn_pic_right);
 				btn_left.setOnClickListener(new OnClickListener() {
 
 					@Override
 					public void onClick(View arg0) {
-						((BaseActivity) activity).getPhotoFromGallery(requestCodeGallery);
+						((BaseActivity) activity)
+								.getPhotoFromGallery(requestCodeGallery);
 						dlg.dismiss();
 
 					}
@@ -97,7 +106,8 @@ public class DialogUtils {
 
 					@Override
 					public void onClick(View arg0) {
-						((BaseActivity) activity).getPhotoByTakePicture(requestCodeTakePicture);
+						((BaseActivity) activity)
+								.getPhotoByTakePicture(requestCodeTakePicture);
 						dlg.dismiss();
 					}
 				});
@@ -115,27 +125,33 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectCalendarDialog(final Activity activity,final String[] selectData, final EditText inputDate) {
-		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.common_select_calendar);
+	public static void showSelectCalendarDialog(final Activity activity,
+			final String[] selectData, final EditText inputDate) {
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.common_select_calendar);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 			@Override
 			public void getCustomerView(Window window, AlertDialog dlg) {
-				final MyCalendarView calendarView = (MyCalendarView) window.findViewById(R.id.calendarView_selected);
+				final MyCalendarView calendarView = (MyCalendarView) window
+						.findViewById(R.id.calendarView_selected);
 				calendarView.setSelectedOtherDay(selectData);
-				calendarView.setOnItemClickListener(new OnMyItemClickListener() {
+				calendarView
+						.setOnItemClickListener(new OnMyItemClickListener() {
 
-					@Override
-					public void OnItemClick(Date selectedStartDate, Date selectedEndDate, Date downDate) {
-						LogUtils.i(downDate + "日历选中日期");
-						if (!isInculdeDate(selectData,downDate)) {
-							String strSelectDate = DateTimeUtils.dateToStr(downDate);
-							inputDate.setText(strSelectDate);
-							cdlg.dismissDlg();
-						}
+							@Override
+							public void OnItemClick(Date selectedStartDate,
+									Date selectedEndDate, Date downDate) {
+								LogUtils.i(downDate + "日历选中日期");
+								if (!isInculdeDate(selectData, downDate)) {
+									String strSelectDate = DateTimeUtils
+											.dateToStr(downDate);
+									inputDate.setText(strSelectDate);
+									cdlg.dismissDlg();
+								}
 
-					}
-				});
+							}
+						});
 			}
 		});
 		Utils.hideSoftKeyBoard(activity);
@@ -159,8 +175,10 @@ public class DialogUtils {
 	 * @date:2015年1月29日
 	 */
 
-	public static void showSelectShareDialog(final Activity activity, final ShareThirdEntity shareThirdEntity) {
-		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dialog_share_grid);
+	public static void showSelectShareDialog(final Activity activity,
+			final ShareThirdEntity shareThirdEntity) {
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.dialog_share_grid);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 			@Override
@@ -170,8 +188,10 @@ public class DialogUtils {
 				lp.gravity = Gravity.BOTTOM;
 				lp.width = LayoutParams.MATCH_PARENT;
 				window.setAttributes(lp);
-				final GridView gv_share = (GridView) window.findViewById(R.id.gv_share);
-				final Button cancleButton = (Button) window.findViewById(R.id.btn_share_dialog_cancel);
+				final GridView gv_share = (GridView) window
+						.findViewById(R.id.gv_share);
+				final Button cancleButton = (Button) window
+						.findViewById(R.id.btn_share_dialog_cancel);
 				cancleButton.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -185,22 +205,28 @@ public class DialogUtils {
 				gv_share.setOnItemClickListener(new OnItemClickListener() {
 
 					@Override
-					public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+					public void onItemClick(AdapterView<?> arg0, View arg1,
+							int position, long arg3) {
 						switch (position) {
 						case 0:// QQ空间
-							SharedUtils.shareToQzone(activity, shareThirdEntity, null);
+							SharedUtils.shareToQzone(activity,
+									shareThirdEntity, null);
 							break;
 						case 1:// QQ好友
-							SharedUtils.shareToQQ(activity, shareThirdEntity, null);
+							SharedUtils.shareToQQ(activity, shareThirdEntity,
+									null);
 							break;
 						case 2:// 微信好友
-							SharedUtils.shareToWXOrFriends(activity, shareThirdEntity, false);
+							SharedUtils.shareToWXOrFriends(activity,
+									shareThirdEntity, false);
 							break;
 						case 3:// 朋友圈
-							SharedUtils.shareToWXOrFriends(activity, shareThirdEntity, true);
+							SharedUtils.shareToWXOrFriends(activity,
+									shareThirdEntity, true);
 							break;
 						case 4:// 新浪微博
-							SharedUtils.shareToSinaWeiBo(activity, shareThirdEntity);
+							SharedUtils.shareToSinaWeiBo(activity,
+									shareThirdEntity);
 							break;
 
 						default:
@@ -225,13 +251,16 @@ public class DialogUtils {
 	 * @date:2015-3-4
 	 */
 	public static void showCommitDialog(Activity activity, final String init) {
-		final CustomerDialog cdlg = new CustomerDialog(activity, R.layout.dlg_commit);
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.dlg_commit);
 		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
 
 			@Override
 			public void getCustomerView(Window window, AlertDialog dlg) {
-				EditText et_commit = (EditText) window.findViewById(R.id.et_commit);
-				Button btn_commit_ok = (Button) window.findViewById(R.id.btn_commit_ok);
+				EditText et_commit = (EditText) window
+						.findViewById(R.id.et_commit);
+				Button btn_commit_ok = (Button) window
+						.findViewById(R.id.btn_commit_ok);
 				et_commit.setHint(init);
 				btn_commit_ok.setOnClickListener(new OnClickListener() {
 
@@ -245,6 +274,45 @@ public class DialogUtils {
 		});
 		cdlg.setDismissIfClick(true);
 		cdlg.setLayoutGravity(Gravity.BOTTOM);
+		cdlg.showDlg();
+	}
+
+	/**
+	 * @Description:支付的对话框：支付宝和微信支付
+	 * @param activity
+	 * @param inputDate
+	 * @author: LiuZhao
+	 * @date:2015年1月29日
+	 */
+
+	public static void showPayDialog(final Activity activity) {
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.dialog_select_payway);
+
+		cdlg.setOnCustomerViewCreated(new CustomerViewInterface() {
+
+			@Override
+			public void getCustomerView(Window window, final AlertDialog dlg) {
+				LinearLayout ll_weixinpay = (LinearLayout) window
+						.findViewById(R.id.ll_weixinpay);
+				LinearLayout ll_zhifubaopay = (LinearLayout) window
+						.findViewById(R.id.ll_zhifubaopay);
+				ll_weixinpay.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+					}
+				});
+				ll_zhifubaopay.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+					}
+				});
+			}
+		});
 		cdlg.showDlg();
 	}
 }

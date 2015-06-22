@@ -11,16 +11,18 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
-import com.android.tonight8.dao.entity.WishSponsor;
-import com.android.tonight8.utils.Utils;
+import com.android.tonight8.dao.model.wish.MyWishSponsorListModel;
+import com.android.tonight8.view.CircleImageView;
 
 /**
  * @author lz 我的心愿赞助列表
  * 
  */
-public class CheckSponsorAdapter extends BaseListAdapter<WishSponsor> {
+public class CheckSponsorAdapter extends
+		BaseListAdapter<MyWishSponsorListModel> {
 
-	public CheckSponsorAdapter(Context context, List<WishSponsor> values) {
+	public CheckSponsorAdapter(Context context,
+			List<MyWishSponsorListModel> values) {
 		super(context, values);
 
 	}
@@ -32,8 +34,8 @@ public class CheckSponsorAdapter extends BaseListAdapter<WishSponsor> {
 					null);
 		}
 
-		// CircleImageView civ_mywish_userpic = ViewHolder.get(convertView,
-		// R.id.civ_mywishcheck_userpic);
+		CircleImageView civ_mywish_userpic = ViewHolder.get(convertView,
+				R.id.civ_mywishcheck_userpic);
 		TextView tv_mywishcheck_username = ViewHolder.get(convertView,
 				R.id.tv_mywishcheck_username);
 		TextView tv_mywishcheck_sponsortype = ViewHolder.get(convertView,
@@ -42,30 +44,32 @@ public class CheckSponsorAdapter extends BaseListAdapter<WishSponsor> {
 				R.id.tv_mywishcheck_sponsoritem);
 		TextView tv_mywishcheck_sponsorrequest = ViewHolder.get(convertView,
 				R.id.tv_mywishcheck_sponsorrequest);
-		final Button btn_accept = ViewHolder.get(convertView,
-				R.id.btn_check_accept);
-		final Button btn_refuse = ViewHolder.get(convertView,
-				R.id.btn_check_refuse);
-		WishSponsor myModel = mValues.get(position);
-		if (myModel != null) {
-			tv_mywishcheck_sponsorrequest.setText(myModel.getDescribe());
+		Button btn_accept = ViewHolder.get(convertView, R.id.btn_check_accept);
+		Button btn_refuse = ViewHolder.get(convertView, R.id.btn_check_refuse);
+
+		if (mValues != null) {
+			MyWishSponsorListModel myModel = mValues.get(position);
+			tv_mywishcheck_username.setText("北京相宜本化妆品有限公司");
+			tv_mywishcheck_sponsorrequest.setText(myModel.getWishSponsor()
+					.getDescribe());
 			tv_mywishcheck_sponsoritem.setText("赞助的项目");
-			tv_mywishcheck_sponsortype.setText(myModel.getStatus() + "");
+			tv_mywishcheck_sponsortype.setText(myModel.getWishSponsor()
+					.getType() + "");
 		}
+		// bmUtils.display(civ_mywish_userpic, myModel.get);
+
 		btn_accept.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				Utils.toast("");
-				btn_accept.setText("已经接受邀请");
 			}
 		});
 		btn_refuse.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				btn_refuse.setText("已经拒绝邀请");
+
 			}
 		});
 		return convertView;

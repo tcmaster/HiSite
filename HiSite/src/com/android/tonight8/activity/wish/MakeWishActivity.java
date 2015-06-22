@@ -11,13 +11,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.widget.TextView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.adapter.wish.WishStoryAdapter;
+import com.android.tonight8.adapter.wish.WishItemAdapter;
 import com.android.tonight8.adapter.wish.WishThemeGridAdapter;
 import com.android.tonight8.base.BaseActivity;
-import com.android.tonight8.dao.model.wish.WishListModel;
+import com.android.tonight8.dao.model.other.WishAddItem;
 import com.android.tonight8.utils.AlbumAndCamera;
 import com.android.tonight8.view.GridViewForScrollView;
 import com.android.tonight8.view.ListViewForScrollView;
@@ -31,12 +30,12 @@ public class MakeWishActivity extends BaseActivity {
 	private ListViewForScrollView lv_wish_story;
 	@ViewInject(R.id.gv_wish_themepic)
 	private GridViewForScrollView gv_wish_themepic;
-	@ViewInject(R.id.tv_addwishpic)
-	private TextView tv_addwishpic;
-	private WishStoryAdapter wishStoryAdapter;
+	// @ViewInject(R.id.iv_addwishpic)
+	// private TextView tv_addwishpic;
+	private WishItemAdapter wishStoryAdapter;
 	private WishThemeGridAdapter wishThemeGridAdapter;
 	private List<String> themeList;
-	private List<WishListModel> storyList;
+	private List<WishAddItem> wishAddItems;
 	/** 故事板点击的位置 */
 	private int clickPosition;
 	/** 更新数据 */
@@ -54,12 +53,12 @@ public class MakeWishActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		initCreateNomal(savedInstanceState, R.layout.activity_make_wish);
-		getActionBarBase("许愿页面");
-		storyList = new ArrayList<WishListModel>();
-		WishListModel bean = new WishListModel();
-		storyList.add(bean);
-		wishStoryAdapter = new WishStoryAdapter(mContext, storyList);
+		initCreateOverLay(savedInstanceState, R.layout.activity_make_wish);
+		getActionBarBase("许愿");
+		wishAddItems = new ArrayList<WishAddItem>();
+		WishAddItem bean = new WishAddItem();
+		wishAddItems.add(bean);
+		wishStoryAdapter = new WishItemAdapter(mContext, wishAddItems);
 		lv_wish_story.setAdapter(wishStoryAdapter);
 
 		themeList = new ArrayList<String>();
@@ -95,10 +94,10 @@ public class MakeWishActivity extends BaseActivity {
 				String tempPicPath = AlbumAndCamera.getImagePath(
 						AlbumAndCamera.getTempPath(), bitmap);
 
-				WishListModel wishStroyModel = storyList.get(clickPosition);
+				WishAddItem wishItem = wishAddItems.get(clickPosition);
 				// wishStroyModel.setWishPic(tempPicPath);
 				updateClickPosition(clickPosition, MakeWishActivity.ADD_DATA,
-						wishStroyModel);
+						wishItem);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
@@ -175,25 +174,39 @@ public class MakeWishActivity extends BaseActivity {
 	 * 
 	 */
 	public void updateClickPosition(int position, int type,
-			WishListModel wishStroyModel) {
+			WishAddItem wishAddItem) {
 		this.clickPosition = position;
-		if (type == ADD_DATA) {
-			if (wishStroyModel == null) {
-				wishStroyModel = new WishListModel();
-				storyList.add(position + 1, wishStroyModel);
+		switch (type) {
+		case ADD_DATA:
+			wishAddItems.add(position + 1, new WishAddItem());
+			// WishAddItem addItem = wishAddItems.get(position);
+			// addItem.setAdd(false);
+			// wishAddItems.set(position, addItem);
+			break;
+		case DELETE_DATA:
+			wishAddItems.remove(position);
+			// WishAddItem delelteItem = wishAddItems.get(position);
+			// delelteItem.setAdd(false);
+			// wishAddItems.set(position - 1, delelteItem);
+
+			break;
+		case UPDATA_DATA:
+			wishAddItems.set(position, wishAddItem);
+			break;
+		default:
+			break;
+		}
+		// wishStoryAdapter = new WishItemAdapter(mContext, wishAddItems);
+		// lv_wish_story.setAdapter(wishStoryAdapter);
+		for (int i = 0; i < wishAddItems.size(); i++) {
+			if (i == wishAddItems.size()-1) {
+				wishAddItems.get(i).setAdd(true);
 			} else {
-				storyList.set(position, wishStroyModel);
-			}
-
-			wishStoryAdapter.notifyDataSetChanged();
-		}
-		if (type == DELETE_DATA) {
-			if (storyList != null && storyList.size() != 1) {
-				storyList.remove(position);
-				wishStoryAdapter.notifyDataSetChanged();
+				wishAddItems.get(i).setAdd(false);
 			}
 
 		}
+		wishStoryAdapter.update(wishAddItems);
 
 	}
 

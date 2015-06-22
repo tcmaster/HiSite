@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        style="@style/match_width"
+        android:background="@null"
+        android:hint="这一刻的想法…"
+        android:padding="@dimen/common_margin_left" />
+
+    <com.android.tonight8.view.GridViewForScrollView
+        android:id="@+id/gv_wishprogress"
+        style="@style/match_width"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="@dimen/common_margin_small"
+        android:numColumns="4"
+        android:verticalSpacing="@dimen/common_margin_small" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_left" >
+
+        <ImageView
+            style="@style/wrap"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/common_margin_small"
+            android:background="@drawable/place"
+            android:scaleType="fitXY" />
+
+        <TextView
+            style="@style/wrap"
+            android:text="所在位置"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
+
+</LinearLayout>

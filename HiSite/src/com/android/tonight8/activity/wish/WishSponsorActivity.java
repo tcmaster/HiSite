@@ -20,6 +20,7 @@ import com.android.tonight8.dao.entity.WishItem;
 import com.android.tonight8.dao.model.wish.WishItemModel;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.wish.WishIOController;
+import com.android.tonight8.utils.DialogUtils;
 import com.android.tonight8.view.ListViewForScrollView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -63,17 +64,18 @@ public class WishSponsorActivity extends BaseActivity {
 		switch (v.getId()) {
 		case R.id.btn_sponsor_submit:
 
-			if (wishItemIds != null) {
-				wishItemIds = wishItemIds
-						.substring(0, wishItemIds.length() - 1);
-			}
-
-			Map<String, String> postParams = new HashMap<String, String>();
-			postParams.put("wish.id", wishId);
-			postParams.put("user.id", userId);
-			postParams.put("wishItem.ids", wishItemIds);
-			postParams.put("wishItem.id", wishItemId);
-			WishIOController.postWishSponsor(handler, postParams, REFRESH);
+			// if (wishItemIds != null) {
+			// wishItemIds = wishItemIds
+			// .substring(0, wishItemIds.length() - 1);
+			// }
+			//
+			// Map<String, String> postParams = new HashMap<String, String>();
+			// postParams.put("wish.id", wishId);
+			// postParams.put("user.id", userId);
+			// postParams.put("wishItem.ids", wishItemIds);
+			// postParams.put("wishItem.id", wishItemId);
+			// WishIOController.postWishSponsor(handler, postParams, REFRESH);
+			DialogUtils.showPayDialog(WishSponsorActivity.this);
 			break;
 
 		default:
@@ -92,7 +94,8 @@ public class WishSponsorActivity extends BaseActivity {
 				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
 					wishItemModel = (WishItemModel) msg.obj;
 					if (msg.arg2 == REFRESH) {
-						if (wishItemModel != null&&wishItemModel.getWishitems()!=null) {
+						if (wishItemModel != null
+								&& wishItemModel.getWishitems() != null) {
 							wAdapter.update(wishItemModel.getWishitems());
 						}
 					}

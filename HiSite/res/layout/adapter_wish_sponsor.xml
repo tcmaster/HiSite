@@ -22,21 +22,27 @@
 
     <TextView
         android:id="@+id/tv_sponsormoney_text"
-        style="@style/wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_sponsor_orgname"
         android:layout_below="@+id/tv_sponsor_orgname"
         android:layout_marginTop="@dimen/common_margin_small"
-        android:background="@color/black_seven_purple"
+        android:background="@drawable/shape_purple_radius"
+        android:padding="2dp"
+        android:paddingRight="@dimen/common_margin_left"
         android:text="赞助"
         android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/tv_sponsor_orgrequest_text"
-        style="@style/wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_sponsormoney_text"
         android:layout_below="@+id/tv_sponsormoney_text"
         android:layout_marginTop="@dimen/common_margin_small"
-        android:background="@color/black_seven_purple"
+        android:background="@drawable/shape_purple_radius"
+        android:padding="2dp"
+        android:paddingRight="@dimen/common_margin_left"
         android:text="要求"
         android:textColor="@color/white" />
 
