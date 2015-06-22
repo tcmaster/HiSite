@@ -9,7 +9,8 @@
         android:layout_width="@dimen/user_headpic_minheight"
         android:layout_height="@dimen/user_headpic_minheight"
         android:layout_marginRight="@dimen/item_left_hilive"
-        android:background="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_live_talk_name"

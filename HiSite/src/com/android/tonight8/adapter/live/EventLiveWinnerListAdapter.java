@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.dao.model.live.EventAward;
+import com.android.tonight8.view.CircleImageView;
 
 public class EventLiveWinnerListAdapter extends BaseListAdapter<EventAward> {
 	private List<String> times;// 测试时间控件
@@ -69,7 +70,7 @@ public class EventLiveWinnerListAdapter extends BaseListAdapter<EventAward> {
 						.inflate(R.layout.item_event_award, null);
 				contentHolder.iv_have_do = (ImageView) convertView
 						.findViewById(R.id.iv_have_do);
-				contentHolder.iv_user_pic = (ImageView) convertView
+				contentHolder.iv_user_pic = (CircleImageView) convertView
 						.findViewById(R.id.iv_user_pic);
 				contentHolder.tv_location = (TextView) convertView
 						.findViewById(R.id.tv_location);
@@ -100,7 +101,7 @@ public class EventLiveWinnerListAdapter extends BaseListAdapter<EventAward> {
 							null);
 					contentHolder.iv_have_do = (ImageView) convertView
 							.findViewById(R.id.iv_have_do);
-					contentHolder.iv_user_pic = (ImageView) convertView
+					contentHolder.iv_user_pic = (CircleImageView) convertView
 							.findViewById(R.id.iv_user_pic);
 					contentHolder.tv_location = (TextView) convertView
 							.findViewById(R.id.tv_location);
@@ -156,7 +157,7 @@ public class EventLiveWinnerListAdapter extends BaseListAdapter<EventAward> {
 
 	private class ContentHolder {
 		ImageView iv_have_do;
-		ImageView iv_user_pic;
+		CircleImageView iv_user_pic;
 		TextView tv_user_name;
 		TextView tv_phone_num;
 		TextView tv_location;

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/match"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/topOrBottomPaddingSmall"
+    android:paddingBottom="@dimen/topOrBottomPaddingSmall" >
 
-    <ImageView
+    <com.android.tonight8.view.CircleImageView
         android:id="@+id/iv_user_pic"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/user_headpic_minheight"
+        android:layout_height="@dimen/user_headpic_minheight"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/common_margin_left"
         android:contentDescription="@string/app_name"
@@ -44,8 +46,8 @@
 
     <ImageView
         android:id="@+id/iv_have_do"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/user_headpic_minheight"
+        android:layout_height="@dimen/user_headpic_minheight"
         android:layout_gravity="center_vertical"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
