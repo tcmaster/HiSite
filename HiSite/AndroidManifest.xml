@@ -384,6 +384,11 @@
         </service>
         <!-- 声明sdk所需的service SDK核心功能 -->
         <service android:name="com.easemob.chat.EMChatService" />
+
+        <activity
+            android:name="com.android.tonight8.activity.live.GoodsInfoActivity"
+            android:label="@string/title_activity_goods_info" >
+        </activity>
     </application>
 
 </manifest>
