@@ -9,6 +9,7 @@ import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.live.entity.EventLiveCommitNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveWinnerListNetEntity;
+import com.android.tonight8.io.live.entity.GoodsDetailNetEntity;
 import com.android.tonight8.io.net.NetEntityBase;
 import com.android.tonight8.io.net.NetRequest;
 import com.android.tonight8.io.net.NetRequest.RequestResult;
@@ -24,6 +25,7 @@ public class LiveIOController {
 	private static final String EVENT_LIVE_COMMIT = NetRequest.BASE_URL + "";
 	private static final String EVENT_LIVE_WINNER_LIST = NetRequest.BASE_URL
 			+ "";
+	private static final String EVENT_GOODS_SHOW = NetRequest.BASE_URL + "";
 
 	public static void readLiveTitle(final Handler handler) {
 		Map<String, String> param = new HashMap<String, String>();
@@ -96,5 +98,29 @@ public class LiveIOController {
 					public void onFailure(HttpException error, String msg) {
 					}
 				});
+	}
+
+	/** 活动现场主题商品展示接口 */
+	public static void readGoodsInfo(final Handler handler) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put(NetRequest.REQUEST_URL, EVENT_GOODS_SHOW);
+		HandlerConstants.sendMessage(handler, null,
+				HandlerConstants.Live.GOODS_DETAIL,
+				HandlerConstants.NETWORK_BEGIN, -1);
+		NetRequest.doGetRequest(param, new RequestResult<GoodsDetailNetEntity>(
+				GoodsDetailNetEntity.class, handler) {
+
+			@Override
+			public void getData(NetEntityBase netEntityBase,
+					GoodsDetailNetEntity t, Handler handler) {
+				HandlerConstants.sendMessage(handler, t.getEventGoods(),
+						HandlerConstants.Live.GOODS_DETAIL,
+						HandlerConstants.RESULT_OK, -1);
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+			}
+		});
 	}
 }

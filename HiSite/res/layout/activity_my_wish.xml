@@ -4,52 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <com.android.tonight8.view.xlistview.XListView
+        android:id="@+id/lv_mywishsponsor"
         style="@style/match_width"
-        android:background="@color/white"
-        android:padding="@dimen/common_margin_left"
-        android:orientation="vertical" >
-
-        <RadioGroup
-            android:id="@+id/rg_mywish"
-            style="@style/wrap"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/rb_wywish_post"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/rb_mywish_selector_left"
-                android:button="@null"
-                android:checked="true"
-                android:gravity="center"
-                android:padding="@dimen/common_margin_small"
-                android:text="发布的心愿"
-                android:textColor="@drawable/seletor_blacktowhite" />
-
-            <RadioButton
-                android:id="@+id/rb_wywish_sponsor"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/rb_mywish_selector_right"
-                android:button="@null"
-                android:gravity="center"
-                android:padding="@dimen/common_margin_small"
-                android:text="赞助的心愿"
-                android:textColor="@drawable/seletor_blacktowhite" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <View
-        style="@style/line_full"
-        android:layout_height="@dimen/common_margin_left" />
-
-    <LinearLayout
-        android:id="@+id/ll_mywish_rcontent"
-        style="@style/match"
-        android:orientation="horizontal" />
+        android:divider="@color/white_gray"
+        android:dividerHeight="@dimen/common_margin_left"
+        android:listSelector="@drawable/seletor_white_to_gray"
+        android:scrollbars="none" />
 
 </LinearLayout>

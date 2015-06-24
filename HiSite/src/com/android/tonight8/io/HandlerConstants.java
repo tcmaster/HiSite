@@ -40,6 +40,8 @@ public class HandlerConstants {
 		public static final int LIVE_COMMIT = 202;
 		/** 中奖名单 */
 		public static final int LIVE_WINNER_LIST = 203;
+		/** 商品详情 */
+		public static final int GOODS_DETAIL = 204;
 	}
 
 	public static interface WISH {// 心愿相关
@@ -59,7 +61,7 @@ public class HandlerConstants {
 		public static final int WISH_LIVE_TALK = 307;
 		/** 我的心愿：赞助的心愿 */
 		public static final int MYWISH_SPONSOR = 308;
-		/** 我的心愿：我发布的心愿*/
+		/** 我的心愿：我发布的心愿 */
 		public static final int MYWISH_POST = 309;
 	}
 

@@ -28,7 +28,7 @@
             <TextView
                 android:id="@+id/tv_fund_text"
                 style="@style/wrap"
-                android:background="@color/half_black"
+                android:background="@drawable/shape_purple_radius"
                 android:padding="@dimen/common_margin_small"
                 android:text="资金"
                 android:textColor="@color/white"
@@ -60,7 +60,7 @@
             <TextView
                 android:id="@+id/tv_something_text"
                 style="@style/wrap"
-                android:background="@color/half_black"
+                android:background="@drawable/shape_purple_radius"
                 android:padding="@dimen/common_margin_small"
                 android:text="物品"
                 android:textColor="@color/white"

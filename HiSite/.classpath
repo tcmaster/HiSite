@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="libs/fastjson-1.1.45.android.jar"/>
-	<classpathentry kind="lib" path="libs/GreenDao.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/fastjson-1.1.45.android.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/GreenDao.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/BaiduLBS_Android.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/easemobchat_2.1.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/libammsdk.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/mta-sdk-1.6.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/open_sdk_r4547.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/recyclerview.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/xutils-self.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/zxing_qrscancode.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/zxing.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/common_margin_small" >
+    android:layout_margin="@dimen/common_margin_small"
+    android:background="@drawable/seletor_white_to_gray"
+    android:orientation="vertical" >
 
     <com.android.tonight8.view.CircleImageView
         android:id="@+id/civ_mywishsponsor_userpic"

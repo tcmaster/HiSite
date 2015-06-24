@@ -1,12 +1,14 @@
 package com.android.tonight8.activity.live;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -131,6 +133,15 @@ public class EventLivePlayActivity extends BaseActivity {
 
 	private void initInterface() {
 		LiveIOController.readLiveTitle(handler);
+		tv_send_message.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(EventLivePlayActivity.this,
+						GoodsInfoActivity.class);
+				startActivity(intent);
+			}
+		});
 
 	}
 

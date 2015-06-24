@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/shape_radius_corners"
     android:orientation="vertical" >
 
     <TextView
@@ -10,6 +10,7 @@
         style="@style/match_width"
         android:padding="@dimen/common_margin_left"
         android:text="选择照片"
+        android:gravity="center"
         android:textSize="@dimen/hugeTextSize" />
 
     <LinearLayout

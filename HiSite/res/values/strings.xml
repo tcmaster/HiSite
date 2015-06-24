@@ -218,9 +218,16 @@
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_event_live">EventLiveActivity</string>
     <string name="send">发送</string>
-	<!-- 活动现场 -->
-	<string name="live">现场\n(10302人)</string>
-	<string name="winnerlist">中奖名单\n(33345)人</string>
-	<string name="vote">投票\n(5499)人</string>
-	<string name="programlist">节目单\n(60)项</string>
+    <!-- 活动现场 -->
+    <string name="live">现场\n(10302人)</string>
+    <string name="winnerlist">中奖名单\n(33345)人</string>
+    <string name="vote">投票\n(5499)人</string>
+    <string name="programlist">节目单\n(60)项</string>
+    <string name="title_activity_goods_info">GoodsInfoActivity</string>
+    <!-- 商品详情 -->
+    <string name="goods_detail">详情介绍</string>
+    <string name="product_style">商品规格</string>
+    <string name="goods_comment">口碑</string>
+    <string name="goods_coupon">使用优惠券</string>
+
 </resources>

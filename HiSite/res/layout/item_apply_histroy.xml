@@ -26,7 +26,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/shaple_red_rect"
+            android:background="@drawable/shape_red_rect"
             android:text="@string/delete"
             android:textColor="@color/red"
             android:textSize="@dimen/smallTextSize" />

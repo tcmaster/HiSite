@@ -6,6 +6,7 @@
        android:id="@+id/sv_lv_main"
        style="@style/match"
        android:layout_gravity="center"
+       android:scrollbars="none"
        >
     <LinearLayout
         style="@style/match_width"
@@ -253,13 +254,13 @@
                 android:layout_weight="8"
                 android:hint="@string/app_name" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/tv_send_message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_launcher" />
+                android:text="@string/app_name"
+                />
         </LinearLayout>
         <!-- 传送图片/声音的附加框 -->
 
