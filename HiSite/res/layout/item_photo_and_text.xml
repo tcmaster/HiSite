@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 上面大图片，下面是文字 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popgoodsImgHeight"
+		android:contentDescription="@string/app_name"
+		android:src="@drawable/ic_launcher"
+		android:scaleType="fitXY"
+		/>
+    <TextView
+        android:id="@+id/tv_result"
+        style="@style/match_width"
+        android:text="@string/app_name"
+        android:textSize="@dimen/middleTextSize"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="@dimen/topOrbottomPadding"
+        />
+</LinearLayout>

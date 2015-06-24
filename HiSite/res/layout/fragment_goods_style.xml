@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:orientation="vertical" >
+    <com.android.tonight8.view.GridViewForScrollView
+        style="@style/match"
+        android:id="@+id/gv_goods_style"
+        android:numColumns="2"
+        android:horizontalSpacing="@dimen/common_margin_left_long"
+        android:gravity="center"
+        android:focusable="false"
+        android:scrollbars="none"
+        android:focusableInTouchMode="false"/>
+</LinearLayout>
