@@ -1,18 +1,31 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_goods_detail"
     style="@style/match"
-    tools:context=".GoodsInfoActivity"
     android:scrollbars="none"
-    android:id="@+id/sv_goods_detail" >
+    tools:context=".GoodsInfoActivity" >
 
     <LinearLayout
         style="@style/match_width"
         android:orientation="vertical" >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_goods_img"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/popgoodsImgHeight" />
+            android:layout_height="@dimen/popgoodsImgHeight" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_goods_img"
+                style="@style/match"
+                android:layout_gravity="center" />
+
+            <com.android.tonight8.view.PointLinearlayout
+                android:id="@+id/ll_point_container"
+                style="@style/match_width"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </FrameLayout>
 
         <View style="@style/line_full" />
 
@@ -125,7 +138,8 @@
             android:id="@+id/btn_ensure_order"
             style="@style/ok_button_style"
             android:layout_marginBottom="@dimen/topOrbottomPadding"
-            android:layout_marginTop="@dimen/topOrbottomPadding" />
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:text="@string/fast_order" />
 
         <RadioGroup
             android:id="@+id/rg_goods_info"

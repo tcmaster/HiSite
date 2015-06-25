@@ -8,9 +8,9 @@
         android:layout_width="@dimen/user_headpic_minheight"
         android:layout_height="@dimen/user_headpic_minheight"
         android:layout_marginRight="@dimen/item_left_hilive"
-        android:src="@drawable/ic_launcher"
-        android:scaleType="fitXY" />
-
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+	
     <TextView
         android:id="@+id/tv_live_talk_name"
         style="@style/wrap"
@@ -18,14 +18,15 @@
         android:layout_toRightOf="@+id/iv_live_talk_headpic"
         android:text="@string/app_name"
         android:textColor="@color/red" />
-
-    <TextView
-        android:id="@+id/tv_live_talk_time"
-        style="@style/wrap"
-        android:layout_alignParentRight="true"
-        android:text="@string/app_name"
-        android:textColor="@color/half_black" />
-
+	<RatingBar 
+	    android:id="@+id/rab_score"
+	    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginRight="@dimen/common_margin_small"
+	    android:numStars="5"
+	    android:rating="0"/>
     <TextView
         android:id="@+id/tv_live_talk_content"
         style="@style/match_width"
@@ -53,40 +54,13 @@
             android:visibility="gone" >
         </RelativeLayout>
     </FrameLayout>
-
-    <CheckBox
-        android:id="@+id/cb_live_dialog"
-        style="@style/wrap"
-        android:layout_alignRight="@+id/tv_live_talk_content"
-        android:layout_below="@+id/fg_container"
-        android:background="@drawable/ic_launcher"
-        android:button="@null"
-        android:checked="false"
-        android:textColor="@color/half_black" />
-
-    <com.android.tonight8.view.ListViewForScrollView
-        android:id="@+id/lv_reply_item"
-        style="@style/match_width"
-        android:layout_below="@+id/cb_live_dialog"
-        android:divider="#b5b5b5"
-        android:dividerHeight="1dp" />
-
-    <LinearLayout
-        android:id="@+id/ll_dialog_commit"
-        style="@style/match_width"
-        android:layout_below="@+id/fg_container"
-        android:orientation="horizontal"
-        android:visibility="gone" >
-
-        <EditText
-            android:id="@+id/et_live_commit"
-            style="@style/match_width" />
-
-        <Button
-            style="@style/ok_button_style"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="0dp"
-            android:text="@string/send" />
-    </LinearLayout>
-
+	<TextView
+	    android:id="@+id/tv_time"
+	    style="@style/wrap"
+	    android:text="@string/app_name"
+	    android:textColor="@color/gray"
+	    android:textSize="@dimen/smallTextSize"
+	    android:layout_below="@id/fg_container"
+	    android:layout_toRightOf="@id/iv_live_talk_headpic"
+	    android:layout_marginTop="@dimen/topOrBottomPaddingSmall"/>
 </RelativeLayout>

@@ -229,5 +229,6 @@
     <string name="product_style">商品规格</string>
     <string name="goods_comment">口碑</string>
     <string name="goods_coupon">使用优惠券</string>
+    <string name="fast_order">立即下单</string>
 
 </resources>

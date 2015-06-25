@@ -6,6 +6,7 @@ import java.util.Map;
 import android.os.Handler;
 
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.live.entity.EventGoodsServiceNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveCommitNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveWinnerListNetEntity;
@@ -26,6 +27,7 @@ public class LiveIOController {
 	private static final String EVENT_LIVE_WINNER_LIST = NetRequest.BASE_URL
 			+ "";
 	private static final String EVENT_GOODS_SHOW = NetRequest.BASE_URL + "";
+	private static final String EVENT_GOODS_COMMENT = NetRequest.BASE_URL + "";
 
 	public static void readLiveTitle(final Handler handler) {
 		Map<String, String> param = new HashMap<String, String>();
@@ -122,5 +124,30 @@ public class LiveIOController {
 			public void onFailure(HttpException error, String msg) {
 			}
 		});
+	}
+
+	public static void readGoodsComment(final Handler handler) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put(NetRequest.REQUEST_URL, EVENT_GOODS_COMMENT);
+		HandlerConstants.sendMessage(handler, null,
+				HandlerConstants.Live.GOODS_COMMENT,
+				HandlerConstants.NETWORK_BEGIN, -1);
+		NetRequest.doGetRequest(param,
+				new RequestResult<EventGoodsServiceNetEntity>(
+						EventGoodsServiceNetEntity.class, handler) {
+
+					@Override
+					public void getData(NetEntityBase netEntityBase,
+							EventGoodsServiceNetEntity t, Handler handler) {
+						HandlerConstants.sendMessage(handler,
+								t.getEventGoodsServiceMarkList(),
+								HandlerConstants.Live.GOODS_COMMENT,
+								HandlerConstants.RESULT_OK, -1);
+					}
+
+					@Override
+					public void onFailure(HttpException error, String msg) {
+					}
+				});
 	}
 }

@@ -42,6 +42,8 @@ public class HandlerConstants {
 		public static final int LIVE_WINNER_LIST = 203;
 		/** 商品详情 */
 		public static final int GOODS_DETAIL = 204;
+		/** 商品口碑 */
+		public static final int GOODS_COMMENT = 205;
 	}
 
 	public static interface WISH {// 心愿相关
