@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/common_margin_left" >
+    android:orientation="vertical" >
 
     <LinearLayout
         style="@style/match_width"
@@ -31,6 +30,7 @@
         android:orientation="horizontal" >
 
         <TextView
+            android:id="@+id/tv_wishitem_thing"
             style="@style/wrap"
             android:layout_gravity="bottom"
             android:text="物品名称："
@@ -67,23 +67,23 @@
         style="@style/match_width"
         android:layout_marginBottom="@dimen/common_margin_left"
         android:layout_marginTop="@dimen/common_margin_left"
-        android:background="@drawable/setting_btn_selector"
         android:gravity="center"
         android:orientation="horizontal"
+        android:background="@drawable/shape_white_raduis"
         android:padding="@dimen/common_margin_small" >
 
         <ImageView
             android:id="@+id/iv_add_item"
             style="@style/wrap"
             android:scaleType="fitXY"
-            android:src="@drawable/add_item" />
+            android:background="@drawable/add_item" />
 
         <TextView
             android:id="@+id/tv_add_item"
             style="@style/wrap"
             android:layout_marginLeft="@dimen/common_margin_left"
             android:text="添加赞助项"
-            android:textColor="@color/white"
+            android:textColor="@color/purple"
             android:textSize="@dimen/middleTextSize" />
     </LinearLayout>
 

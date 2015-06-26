@@ -10,6 +10,6 @@
         android:width="1dp"
         android:color="#660a0204" />
     <!-- 虚线的高度 -->
-    <size android:height="2dp" />
+    <size android:height="1dp" />
 
 </shape>

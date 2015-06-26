@@ -2,17 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin_left" >
+
+    <!-- 垂直滚动条 -->
 
     <EditText
-        style="@style/match_width"
+        android:id="@+id/et_thinking"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:background="@null"
+        android:gravity="top"
         android:hint="这一刻的想法…"
-        android:padding="@dimen/common_margin_left" />
+        android:padding="@dimen/common_margin_left"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textSize="@dimen/middleTextSize" />
 
     <com.android.tonight8.view.GridViewForScrollView
         android:id="@+id/gv_wishprogress"
         style="@style/match_width"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:horizontalSpacing="@dimen/common_margin_small"
         android:numColumns="4"
@@ -33,7 +43,7 @@
         <TextView
             style="@style/wrap"
             android:text="所在位置"
-            android:textSize="@dimen/smallTextSize" />
+            android:textSize="@dimen/middleTextSize" />
     </LinearLayout>
 
 </LinearLayout>

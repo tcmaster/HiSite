@@ -390,19 +390,25 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
-		<!-- 商品详情 -->
+        <!-- 商品详情 -->
         <activity
             android:name="com.android.tonight8.activity.live.GoodsInfoActivity"
+            android:hardwareAccelerated="true"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:hardwareAccelerated="true" />
+            android:screenOrientation="portrait" />
+        <!-- 活动管理 -->
+        <activity
+            android:name="com.android.tonight8.activity.event.EventManageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
             android:exported="false" >
         </service>
         <!-- 声明sdk所需的service SDK核心功能 -->
         <service android:name="com.easemob.chat.EMChatService" />
-		
     </application>
-</manifest>
 
+</manifest>

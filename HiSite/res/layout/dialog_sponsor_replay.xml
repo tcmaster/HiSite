@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_radius_corners"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_dilog_sponsor_replay_title"
+        style="@style/match_width"
+        android:gravity="center"
+        android:paddingTop="@dimen/common_margin_left"
+        android:text="接受赞助回复"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/bigTextSize" />
+
+    <EditText
+        android:id="@+id/et_dilog_replay_content"
+        style="@style/match_width"
+        android:layout_height="150dp"
+        android:layout_margin="@dimen/common_margin_left"
+        android:background="@drawable/shape_gray_rect"
+        android:gravity="top"
+        android:padding="@dimen/common_margin_left"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textColorHint="@color/gray"
+        android:textSize="@dimen/middleTextSize" />
+
+    <View style="@style/line_full" />
+
+    <LinearLayout
+        style="@style/match_width"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_replay_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/seletor_bottom_corner_left"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="取消"
+            android:textSize="@dimen/middleTextSize" />
+
+        <View style="@style/line_full_vertical" />
+
+        <Button
+            android:id="@+id/btn_replay_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/seletor_bottom_corner_right"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="确定"
+            android:textSize="@dimen/middleTextSize" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,15 +3,19 @@ package com.android.tonight8.adapter.wish;
 import java.util.List;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.android.tonight8.R;
-import com.android.tonight8.activity.wish.MakeWishActivity;
 import com.android.tonight8.activity.wish.WishProcessPostActivity;
 import com.android.tonight8.adapter.BaseListAdapter;
 import com.android.tonight8.adapter.ViewHolder;
+import com.android.tonight8.base.BaseActivity;
+import com.android.tonight8.dao.model.wish.MyWishSponsorListModel;
+import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.utils.DialogUtils;
 
 public class WishProgressPostAdapter extends BaseListAdapter<String> {
@@ -44,11 +48,8 @@ public class WishProgressPostAdapter extends BaseListAdapter<String> {
 
 				if (mValues.get(position) == null
 						|| "".equals(mValues.get(position))) {
-					// mActivity.updateWishThemeData(position,
-					// MakeWishActivity.UPDATA_DATA, null);
 					DialogUtils.showSelectPicDialog(mActivity,
-							MakeWishActivity.THEME_PICKPICTURE,
-							MakeWishActivity.THEME_TAKEPHOTO);
+							BaseActivity.PICKPICTURE, BaseActivity.TAKEPHOTO);
 				}
 			}
 		});
@@ -57,10 +58,18 @@ public class WishProgressPostAdapter extends BaseListAdapter<String> {
 
 			@Override
 			public void onClick(View arg0) {
-				// mActivity.updateWishThemeData(position,
-				// MakeWishActivity.DELETE_DATA, null);
+				mActivity.deleteWishProcessPost(position);
 			}
 		});
 		return convertView;
 	}
+
+	/**
+	 * 按照顺序更新最新数据
+	 */
+	public void updateData(List<String> list) {
+		mValues = list;
+		notifyDataSetChanged();
+	}
+
 }

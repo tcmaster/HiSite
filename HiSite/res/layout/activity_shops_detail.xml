@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/match" >
+    style="@style/match"
+    android:scrollbars="vertical" >
 
     <LinearLayout
         style="@style/match_width"
@@ -8,8 +9,9 @@
 
         <ImageView
             style="@style/match_width"
-            android:layout_height="300px"
-            android:background="@drawable/ic_launcher" />
+            android:layout_height="300dp"
+            android:background="@drawable/ic_launcher"
+            android:scaleType="fitXY" />
 
         <RelativeLayout
             style="@style/ll_orgdetail_style"
@@ -26,7 +28,8 @@
                 style="@style/wrap"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/ic_launcher"
-                android:gravity="right" />
+                android:gravity="right"
+                android:scaleType="fitXY" />
         </RelativeLayout>
 
         <LinearLayout
@@ -77,7 +80,8 @@
                 style="@style/wrap"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/ic_launcher"
-                android:gravity="right" />
+                android:gravity="right"
+                android:scaleType="fitXY" />
         </RelativeLayout>
 
         <TextView
@@ -91,21 +95,22 @@
 
         <include layout="@layout/include_org_detail" />
 
-        <TextView
-            style="@style/match_width"
-            android:background="@color/half_white"
-            android:gravity="center_horizontal"
-            android:paddingBottom="@dimen/common_margin_left"
-            android:paddingTop="@dimen/common_margin_left"
-            android:text="商家简介"
-            android:textSize="@dimen/bigTextSize" />
+        <!-- <TextView -->
+        <!-- style="@style/match_width" -->
+        <!-- android:background="@color/half_white" -->
+        <!-- android:gravity="center_horizontal" -->
+        <!-- android:paddingBottom="@dimen/common_margin_left" -->
+        <!-- android:paddingTop="@dimen/common_margin_left" -->
+        <!-- android:text="商家简介" -->
+        <!-- android:textSize="@dimen/bigTextSize" /> -->
 
-        <TextView
-            android:id="@+id/tv_org_description"
-            style="@style/shoptext_left_style"
-            android:layout_marginBottom="@dimen/common_margin_left"
-            android:padding="@dimen/common_margin_left"
-            android:text="很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的" />
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/tv_org_description" -->
+        <!-- style="@style/shoptext_left_style" -->
+        <!-- android:layout_marginBottom="@dimen/common_margin_left" -->
+        <!-- android:padding="@dimen/common_margin_left" -->
+        <!-- android:text="很好的商家嗷嗷啊的很好的商家嗷好的商家嗷很好的商家嗷嗷啊的" /> -->
     </LinearLayout>
 
 </ScrollView>

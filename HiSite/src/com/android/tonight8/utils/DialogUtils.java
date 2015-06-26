@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.ShareAdapter;
@@ -314,5 +314,91 @@ public class DialogUtils {
 			}
 		});
 		cdlg.showDlg();
+	}
+
+	/**
+	 * @Description:心愿赞助回复对话框
+	 * @param activity
+	 * @param isAccepted
+	 */
+
+	public static void showSponsorReplayDialog(Activity activity,
+			ReplayOKDialogInterface okDialogInterface,
+			ReplayNODialogInterface noDialogInterface) {
+		final CustomerDialog cdlg = new CustomerDialog(activity,
+				R.layout.dialog_sponsor_replay);
+		if (okDialogInterface == null) {
+			cdlg.setOnCustomerViewCreated(noDialogInterface);
+		} else {
+			cdlg.setOnCustomerViewCreated(okDialogInterface);
+		}
+
+		cdlg.setDismissIfClick(true);
+		cdlg.setLayoutGravity(Gravity.CENTER);
+		cdlg.showDlg();
+	}
+
+	public static abstract class ReplayOKDialogInterface implements
+			CustomerViewInterface {
+
+		@Override
+		public void getCustomerView(Window window, final AlertDialog dlg) {
+			EditText et_commit = (EditText) window
+					.findViewById(R.id.et_dilog_replay_content);
+			Button btn_replay_left = (Button) window
+					.findViewById(R.id.btn_replay_left);
+			Button btn_replay_right = (Button) window
+					.findViewById(R.id.btn_replay_right);
+			TextView tv_dilog_sponsor_replay_title = (TextView) window
+					.findViewById(R.id.tv_dilog_sponsor_replay_title);
+			tv_dilog_sponsor_replay_title.setText("接受赞助回复");
+			et_commit.setHint("请输入赞助回复");
+			btn_replay_left.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					dlg.dismiss();
+
+				}
+			});
+
+			getEditText(et_commit, dlg, btn_replay_right);
+		}
+
+		public abstract void getEditText(EditText et_commit,
+				final AlertDialog dlg, Button btn_replay_right);
+
+	}
+
+	public static abstract class ReplayNODialogInterface implements
+			CustomerViewInterface {
+
+		@Override
+		public void getCustomerView(Window window, final AlertDialog dlg) {
+			EditText et_commit = (EditText) window
+					.findViewById(R.id.et_dilog_replay_content);
+			Button btn_replay_left = (Button) window
+					.findViewById(R.id.btn_replay_left);
+			Button btn_replay_right = (Button) window
+					.findViewById(R.id.btn_replay_right);
+			TextView tv_dilog_sponsor_replay_title = (TextView) window
+					.findViewById(R.id.tv_dilog_sponsor_replay_title);
+			tv_dilog_sponsor_replay_title.setText("拒绝理由");
+			et_commit.setHint("请输入拒绝理由");
+			btn_replay_left.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					dlg.dismiss();
+
+				}
+			});
+
+			getEditText(et_commit, dlg, btn_replay_right);
+		}
+
+		public abstract void getEditText(EditText et_commit,
+				final AlertDialog dlg, Button btn_replay_right);
+
 	}
 }

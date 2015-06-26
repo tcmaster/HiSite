@@ -38,9 +38,9 @@ public class UserAgreementActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_user_agreement);
+		initCreateNomal(savedInstanceState, R.layout.activity_user_agreement);
 		getActionBarBase("活动协议");
-		super.onCreate(savedInstanceState);
+		
 		initData();
 	}
 

@@ -63,7 +63,6 @@ public class WishSponsorActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_sponsor_submit:
-
 			// if (wishItemIds != null) {
 			// wishItemIds = wishItemIds
 			// .substring(0, wishItemIds.length() - 1);

@@ -182,8 +182,6 @@
 
     <View style="@style/line_full" />
 
-    <include layout="@layout/include_org_detail" />
-
     <TextView
         style="@style/match_width"
         android:background="@color/half_white"
@@ -198,6 +196,6 @@
         style="@style/shoptext_left_style"
         android:layout_marginBottom="@dimen/common_margin_left"
         android:padding="@dimen/common_margin_left"
-        android:text="很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的" />
+        android:text="很好的商家嗷嗷啊的很好的商家商家嗷嗷啊的很好的商家嗷嗷啊的很好的商家嗷嗷啊的" />
 
 </LinearLayout>

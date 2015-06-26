@@ -40,6 +40,10 @@ public class WishIOController {
 	private static final String MYWISH_SPONOR_URL = NetRequest.BASE_URL + "";
 	/** 我的心愿发布列表 */
 	private static final String MYWISH_POST_URL = NetRequest.BASE_URL + "";
+	/** 我制作的心愿数据提交 */
+	private static final String MAKEWISH_POST_URL = NetRequest.BASE_URL + "";
+	/** 我的心愿赞助答复录入 */
+	private static final String MYWISH_REPLAY_URL = NetRequest.BASE_URL + "";
 
 	/**
 	 * 主页面心愿列表
@@ -310,4 +314,65 @@ public class WishIOController {
 
 				});
 	}
+
+	/**
+	 * @Description:我的心愿发布录入
+	 * @param handler
+	 * @date:2015-2-12
+	 */
+	public static void postMyWish(Handler handler, Map<String, String> params,
+			final int... attachments) {
+		if (params == null) {
+			return;
+		}
+		params.put(NetRequest.REQUEST_URL, MAKEWISH_POST_URL);
+
+		NetRequest.doGetRequest(params, new RequestResult<BaseModel>(
+				BaseModel.class, handler) {
+
+			@Override
+			public void getData(NetEntityBase netEntityBase, BaseModel t,
+					Handler handler) {
+				HandlerConstants.sendMessage(handler, t, attachments[0],
+						HandlerConstants.RESULT_OK, attachments[1]);
+
+			}
+
+			@Override
+			public void onFailure(HttpException arg0, String arg1) {
+			}
+
+		});
+	}
+
+	/**
+	 * @Description:我的心愿赞助答复录入
+	 * @param handler
+	 * @date:2015-2-12
+	 */
+	public static void replayMyWishSponsor(Handler handler,
+			Map<String, String> params, final int... attachments) {
+		if (params == null) {
+			return;
+		}
+		params.put(NetRequest.REQUEST_URL, MYWISH_REPLAY_URL);
+
+		NetRequest.doGetRequest(params, new RequestResult<BaseModel>(
+				BaseModel.class, handler) {
+
+			@Override
+			public void getData(NetEntityBase netEntityBase, BaseModel t,
+					Handler handler) {
+				HandlerConstants.sendMessage(handler, t, attachments[0],
+						HandlerConstants.RESULT_OK, attachments[1]);
+
+			}
+
+			@Override
+			public void onFailure(HttpException arg0, String arg1) {
+			}
+
+		});
+	}
+
 }

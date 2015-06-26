@@ -3,7 +3,9 @@ package com.android.tonight8.activity.wish;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,13 +13,25 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.wish.WishItemAdapter;
 import com.android.tonight8.adapter.wish.WishThemeGridAdapter;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.dao.model.other.WishAddItem;
+import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.wish.WishIOController;
+import com.android.tonight8.model.BaseModel;
 import com.android.tonight8.utils.AlbumAndCamera;
+import com.android.tonight8.utils.Utils;
 import com.android.tonight8.view.GridViewForScrollView;
 import com.android.tonight8.view.ListViewForScrollView;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -27,15 +41,16 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  */
 public class MakeWishActivity extends BaseActivity {
 	@ViewInject(R.id.lv_wish_story)
-	private ListViewForScrollView lv_wish_story;
+	private ListViewForScrollView lv_wishitem;
 	@ViewInject(R.id.gv_wish_themepic)
 	private GridViewForScrollView gv_wish_themepic;
-	// @ViewInject(R.id.iv_addwishpic)
-	// private TextView tv_addwishpic;
 	private WishItemAdapter wishStoryAdapter;
 	private WishThemeGridAdapter wishThemeGridAdapter;
 	private List<String> themeList;
+	/** 空的清单数据 */
 	private List<WishAddItem> wishAddItems;
+	/** 本地缓存的清单数据 */
+	private List<WishAddItem> addlist;
 	/** 故事板点击的位置 */
 	private int clickPosition;
 	/** 更新数据 */
@@ -44,102 +59,79 @@ public class MakeWishActivity extends BaseActivity {
 	public static final int ADD_DATA = 1;
 	/** 删除数据 */
 	public static final int DELETE_DATA = 2;
-	/** 主题图片从相册获取标识 */
-	public static final int THEME_PICKPICTURE = 4;
-	/** 主题图片从拍照获取标识 */
-	public static final int THEME_TAKEPHOTO = 5;
-	/** 主题图片从剪裁获取的标识 */
-	public static final int THEME_CROP = 6;
+	private List<Map<String, Object>> mCheckItemList = null;
+	@ViewInject(R.id.btn_wish_post)
+	private Button btn_wish_post;
+	private Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+			if (msg.what == HandlerConstants.WISH.WISH_SPONOR_LIST) {
+
+				if (msg.arg1 == HandlerConstants.RESULT_OK) {// 网络数据获取成功
+					BaseModel baseModel = (BaseModel) msg.obj;
+
+					if (baseModel != null) {
+						Utils.toast("提交成功");
+					}
+				}
+			}
+		}
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		initCreateOverLay(savedInstanceState, R.layout.activity_make_wish);
 		getActionBarBase("许愿");
+		initData();
+	}
+
+	private void initData() {
 		wishAddItems = new ArrayList<WishAddItem>();
-		WishAddItem bean = new WishAddItem();
-		wishAddItems.add(bean);
-		wishStoryAdapter = new WishItemAdapter(mContext, wishAddItems);
-		lv_wish_story.setAdapter(wishStoryAdapter);
+		wishAddItems.add(new WishAddItem());
+		mCheckItemList = new ArrayList<Map<String, Object>>();
+		Map<String, Object> mMap = new HashMap<String, Object>();
+		mCheckItemList.add(mMap);
+		wishStoryAdapter = new WishItemAdapter(mContext, wishAddItems,
+				mCheckItemList);
+		lv_wishitem.setAdapter(wishStoryAdapter);
 
 		themeList = new ArrayList<String>();
 		themeList.add("");
 		wishThemeGridAdapter = new WishThemeGridAdapter(mContext, themeList);
 		gv_wish_themepic.setAdapter(wishThemeGridAdapter);
-	}
+		btn_wish_post.setOnClickListener(new OnClickListener() {
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		getWindow().getDecorView().invalidate();
-		if (resultCode != RESULT_OK) {
-			return;
-		}
+			@Override
+			public void onClick(View v) {
+				addlist = new ArrayList<WishAddItem>();
+				for (int i = 0; i < lv_wishitem.getChildCount(); i++) {
+					WishAddItem wItem = null;
+					LinearLayout layout = (LinearLayout) lv_wishitem
+							.getChildAt(i);// 获得子item的layout
+					EditText et_request_thing = (EditText) layout
+							.findViewById(R.id.et_request_thing);// 从layout中获得控件,根据其id
+					EditText et_request_reason = (EditText) layout
+							.findViewById(R.id.et_request_reason);
+					Spinner sp_request_type = (Spinner) layout
+							.findViewById(R.id.sp_request_type);
 
-		switch (requestCode) {
-		case PICKPICTURE:
-			cropPicture(data.getData(), CROP, 256, 256);
-			break;
-		case TAKEPHOTO:
-			File tempFile = new File(Environment.getExternalStorageDirectory()
-					+ "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile), CROP, 256, 256);
-			break;
-		case CROP:
-			Uri cropImageUri = data.getData();
-			// 图片解析成Bitmap对象
-			Bitmap bitmap = null;
-			try {
-				bitmap = BitmapFactory.decodeStream(getContentResolver()
-						.openInputStream(cropImageUri));
-				String tempPicPath = AlbumAndCamera.getImagePath(
-						AlbumAndCamera.getTempPath(), bitmap);
-
-				WishAddItem wishItem = wishAddItems.get(clickPosition);
-				// wishStroyModel.setWishPic(tempPicPath);
-				updateClickPosition(clickPosition, MakeWishActivity.ADD_DATA,
-						wishItem);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} finally {
-				if (bitmap != null) {
-					bitmap.recycle();
+					wItem = new WishAddItem();
+					wItem.setType(sp_request_type.getSelectedItemPosition());
+					wItem.setThings(et_request_thing.getText().toString());
+					wItem.setReason(et_request_reason.getText().toString());
+					addlist.add(wItem);
 				}
-
+				Map<String, String> params = new HashMap<String, String>();
+				// params.put("wishItems", addlist);
+				WishIOController.postMyWish(handler, params,
+						HandlerConstants.WISH.MAKEWISH_POST, 0);
 			}
+		});
 
-			break;
-		case THEME_PICKPICTURE:
-			cropPicture(data.getData(), THEME_CROP, 256, 256);
-			break;
-		case THEME_TAKEPHOTO:
-			File tempFile2 = new File(Environment.getExternalStorageDirectory()
-					+ "/Camera/", tempName);
-			cropPicture(Uri.fromFile(tempFile2), THEME_CROP, 256, 256);
-			break;
-		case THEME_CROP:
-			Uri cropImageUri2 = data.getData();
-			// 图片解析成Bitmap对象
-			Bitmap bitmap2 = null;
-			try {
-				bitmap2 = BitmapFactory.decodeStream(getContentResolver()
-						.openInputStream(cropImageUri2));
-				String tempPicPath2 = AlbumAndCamera.getImagePath(
-						AlbumAndCamera.getTempPath(), bitmap2);
-				updateWishThemeData(clickPosition, MakeWishActivity.ADD_DATA,
-						tempPicPath2);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} finally {
-				if (bitmap2 != null) {
-					bitmap2.recycle();
-				}
-
-			}
-
-			break;
-		default:
-			break;
-		}
 	}
 
 	/**
@@ -178,17 +170,10 @@ public class MakeWishActivity extends BaseActivity {
 		this.clickPosition = position;
 		switch (type) {
 		case ADD_DATA:
-			wishAddItems.add(position + 1, new WishAddItem());
-			// WishAddItem addItem = wishAddItems.get(position);
-			// addItem.setAdd(false);
-			// wishAddItems.set(position, addItem);
+			wishAddItems.add(new WishAddItem());
 			break;
 		case DELETE_DATA:
 			wishAddItems.remove(position);
-			// WishAddItem delelteItem = wishAddItems.get(position);
-			// delelteItem.setAdd(false);
-			// wishAddItems.set(position - 1, delelteItem);
-
 			break;
 		case UPDATA_DATA:
 			wishAddItems.set(position, wishAddItem);
@@ -196,10 +181,9 @@ public class MakeWishActivity extends BaseActivity {
 		default:
 			break;
 		}
-		// wishStoryAdapter = new WishItemAdapter(mContext, wishAddItems);
-		// lv_wish_story.setAdapter(wishStoryAdapter);
+
 		for (int i = 0; i < wishAddItems.size(); i++) {
-			if (i == wishAddItems.size()-1) {
+			if (i == wishAddItems.size() - 1) {
 				wishAddItems.get(i).setAdd(true);
 			} else {
 				wishAddItems.get(i).setAdd(false);
@@ -210,4 +194,46 @@ public class MakeWishActivity extends BaseActivity {
 
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		getWindow().getDecorView().invalidate();
+		if (resultCode != RESULT_OK) {
+			return;
+		}
+
+		switch (requestCode) {
+		case PICKPICTURE:
+			cropPicture(data.getData(), CROP, 256, 256);
+			break;
+		case TAKEPHOTO:
+			File tempFile = new File(Environment.getExternalStorageDirectory()
+					+ "/Camera/", tempName);
+			cropPicture(Uri.fromFile(tempFile), CROP, 256, 256);
+			break;
+		case CROP:
+			Uri cropImageUri = data.getData();
+			// 图片解析成Bitmap对象
+			Bitmap bitmap = null;
+			try {
+				bitmap = BitmapFactory.decodeStream(getContentResolver()
+						.openInputStream(cropImageUri));
+				String tempPicPath = AlbumAndCamera.getImagePath(
+						AlbumAndCamera.getTempPath(), bitmap);
+				updateWishThemeData(clickPosition, ADD_DATA, tempPicPath);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				if (bitmap != null) {
+					bitmap.recycle();
+				}
+
+			}
+
+			break;
+
+		default:
+			break;
+		}
+	}
 }
