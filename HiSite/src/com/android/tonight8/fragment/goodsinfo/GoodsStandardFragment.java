@@ -6,21 +6,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ScrollView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.live.GoodStandardAdapter;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.dao.entity.GoodsStandard;
+import com.android.tonight8.view.ListViewForScrollView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class GoodsStandardFragment extends BaseFragment {
 	/** 父View */
 	private View view;
-	@ViewInject(R.id.gv_goods_style)
-	GridView gv_goods_style;
+	@ViewInject(R.id.lv_only_list)
+	ListViewForScrollView lv_only_list;
 	/** 适配器 */
 	private GoodStandardAdapter adapter;
 
@@ -28,7 +28,8 @@ public class GoodsStandardFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		if (view == null) {
-			view = inflater.inflate(R.layout.fragment_goods_style, null);
+			view = inflater.inflate(R.layout.activity_only_list_for_scroll,
+					null);
 			ViewUtils.inject(this, view);
 		}
 		return view;
@@ -44,7 +45,7 @@ public class GoodsStandardFragment extends BaseFragment {
 		if (adapter == null) {
 			adapter = new GoodStandardAdapter(getActivity(),
 					(List<GoodsStandard>) t);
-			gv_goods_style.setAdapter(adapter);
+			lv_only_list.setAdapter(adapter);
 
 		} else
 			adapter.update((List<GoodsStandard>) t);
@@ -52,7 +53,7 @@ public class GoodsStandardFragment extends BaseFragment {
 
 	@Override
 	public void scrollToTop(final ScrollView sv) {
-		gv_goods_style.post(new Runnable() {
+		lv_only_list.post(new Runnable() {
 
 			@Override
 			public void run() {

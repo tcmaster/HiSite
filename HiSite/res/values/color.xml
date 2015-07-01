@@ -16,6 +16,7 @@
     <color name="transparent">#00000000</color>
     <color name="trans_white">#44ffffff</color>
     <color name="blue">#0000FF</color>
+    <color name="yellow">#ffa500</color>
     <!-- 橙色 -->
     <color name="orange">#FF8000</color>
     <!-- 扫描二维码用到的颜色 -->

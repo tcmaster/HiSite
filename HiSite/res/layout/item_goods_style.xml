@@ -5,23 +5,22 @@
     android:padding="@dimen/topOrbottomPadding" >
     <TextView
         android:id="@+id/tv_style_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/wrap"
         android:text="@string/app_name"
         android:textSize="@dimen/middleTextSize"
         android:textColor="@color/gray"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:gravity="center_vertical"
         />
     <TextView
         android:id="@+id/tv_style"
-        android:layout_width="0dp"
+        style="@style/wrap"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textSize="@dimen/middleTextSize"
         android:textColor="@color/gray"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_marginLeft="@dimen/common_margin_left"
+        android:gravity="center_vertical"
         />
 
 </LinearLayout>

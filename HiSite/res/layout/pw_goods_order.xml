@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match"
+    android:id="@+id/sv_parent" >
+
+    <LinearLayout
+        style="@style/match_width"
+        android:background="@color/gray"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/match_width"
+            android:background="@color/gray_half_transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/topOrbottomPadding"
+            android:paddingTop="@dimen/topOrbottomPadding"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bigTextSize" />
+
+        <LinearLayout
+            android:id="@+id/goods_detail"
+            style="@style/match_width"
+            android:layout_margin="@dimen/common_margin_small"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_bpic"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/common_margin_small"
+                android:layout_weight="5"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:id="@+id/ll_right"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="@dimen/common_margin_small"
+                android:layout_weight="4"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_awards"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_left"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_prize"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_left"
+                    android:layout_marginTop="@dimen/topOrbottomPadding"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_count"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_left"
+                    android:layout_marginTop="@dimen/topOrbottomPadding"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_sold"
+                    style="@style/wrap"
+                    android:layout_marginLeft="@dimen/common_margin_left"
+                    android:layout_marginTop="@dimen/topOrbottomPadding"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/middleTextSize" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_publish"
+            style="@style/wrap"
+            android:layout_marginBottom="@dimen/common_margin_left"
+            android:layout_marginLeft="@dimen/common_margin_small"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
+
+        <View style="@style/line_full" />
+
+        <com.android.tonight8.view.ListViewForScrollView
+            android:id="@+id/lv_standard"
+            style="@style/match_width" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_marginLeft="@dimen/common_margin_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/count"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize" />
+
+            <ImageButton
+                android:id="@+id/ib_sub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+
+            <EditText
+                android:id="@+id/et_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:hint="@string/countinit" />
+
+            <ImageButton
+                android:id="@+id/ib_add"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+
+        <View style="@style/line_full" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:layout_marginBottom="@dimen/topOrBottomPaddingSmall"
+            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/wrap"
+                android:layout_marginLeft="@dimen/common_margin_small"
+                android:text="@string/use_coupon"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize" />
+
+            <TextView
+                android:id="@+id/tv_which_coupon"
+                style="@style/wrap"
+                android:text="@string/coupon_init"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_goods_promise"
+            style="@style/wrap"
+            android:layout_marginLeft="@dimen/common_margin_small"
+            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+            android:text="@string/goods_promise"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middleTextSize" />
+
+        <com.android.tonight8.view.GridViewForScrollView
+            android:id="@+id/gv_promise_item"
+            style="@style/match_width"
+            android:layout_marginBottom="@dimen/topOrbottomPadding"
+            android:numColumns="3"
+            android:stretchMode="columnWidth" />
+
+        <View style="@style/line_full" />
+
+        <LinearLayout
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:layout_marginBottom="@dimen/topOrbottomPadding" >
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_margin_small"
+                android:layout_weight="8"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize" />
+
+            <Button
+                android:id="@+id/btn_change_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/org_change"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize" />
+        </LinearLayout>
+        <View style="@style/line_full" />
+        <LinearLayout 
+            style="@style/match_width"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/topOrbottomPaddingLong"
+            android:layout_marginBottom="@dimen/topOrbottomPaddingLong">
+            <TextView 
+                style="@style/wrap"
+                android:text="@string/value_scene"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize"/>
+            <TextView 
+                android:id="@+id/tv_value_scene"
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize"
+                />
+            <TextView 
+                style="@style/wrap"
+                android:text="@string/value_net"
+                android:textColor="@color/white"
+                android:textSize="@dimen/middleTextSize"
+                android:layout_marginLeft="@dimen/common_margin_left_long"/>
+            <TextView 
+                android:id="@+id/tv_value_net"
+                style="@style/wrap"
+                android:text="@string/app_name"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/middleTextSize"/>
+        </LinearLayout>
+        <LinearLayout 
+            android:orientation="horizontal"
+            style="@style/match_width">
+            <Button 
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:layout_weight="1"/>
+            <Button 
+                android:id="@+id/btn_ok"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/go_to_buy"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

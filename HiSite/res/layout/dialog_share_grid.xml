@@ -15,7 +15,7 @@
         android:id="@+id/btn_share_dialog_cancel"
         style="@style/ok_button_style"
         android:layout_below="@+id/gv_share"
-        android:text="@string/cancle" >
+        android:text="@string/cancel" >
     </Button>
 
 </RelativeLayout>

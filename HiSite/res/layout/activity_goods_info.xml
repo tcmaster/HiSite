@@ -1,192 +1,169 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sv_goods_detail"
-    style="@style/match"
-    android:scrollbars="none"
-    tools:context=".GoodsInfoActivity" >
+    tools:context=".GoodsInfoActivity"
+    style="@style/match" >
 
-    <LinearLayout
-        style="@style/match_width"
-        android:orientation="vertical" >
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/popgoodsImgHeight" >
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_goods_img"
-                style="@style/match"
-                android:layout_gravity="center" />
-
-            <com.android.tonight8.view.PointLinearlayout
-                android:id="@+id/ll_point_container"
-                style="@style/match_width"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:orientation="horizontal" />
-
-        </FrameLayout>
-
-        <View style="@style/line_full" />
-
-        <RelativeLayout
-            style="@style/match_width"
-            android:paddingBottom="@dimen/topOrbottomPadding"
-            android:paddingTop="@dimen/topOrbottomPadding" >
-
-            <TextView
-                android:id="@+id/tv_goods_name"
-                style="@style/wrap"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="@dimen/common_margin_left"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_goods_prize_old"
-                style="@style/wrap"
-                android:layout_alignLeft="@id/tv_goods_name"
-                android:layout_below="@id/tv_goods_name"
-                android:layout_marginTop="@dimen/topOrbottomPadding"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_goods_prize_now"
-                style="@style/wrap"
-                android:layout_alignTop="@id/tv_goods_prize_old"
-                android:layout_below="@id/tv_goods_prize_old"
-                android:layout_marginLeft="@dimen/margin_between_item"
-                android:layout_toRightOf="@id/tv_goods_prize_old"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-
-            <TextView
-                android:id="@+id/tv_goods_count"
-                style="@style/wrap"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/common_margin_left"
-                android:background="@drawable/shape_red_rect"
-                android:padding="@dimen/topOrBottomPaddingSmall"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middleTextSize" />
-        </RelativeLayout>
-
-        <View style="@style/line_full" />
-
-        <TextView
-            android:id="@+id/tv_goods_freight"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_marginTop="@dimen/topOrbottomPadding"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/middleTextSize" />
-
-        <TextView
-            android:id="@+id/tv_goods_promise"
-            style="@style/wrap"
-            android:layout_marginLeft="@dimen/common_margin_left"
-            android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/middleTextSize" />
-
-        <com.android.tonight8.view.GridViewForScrollView
-            android:id="@+id/gv_promise_item"
-            style="@style/match_width"
-            android:layout_marginBottom="@dimen/topOrbottomPadding"
-            android:numColumns="3"
-            android:stretchMode="columnWidth"
-            android:visibility="gone" />
-
-        <View style="@style/line_full" />
-        <!-- 选择优惠券 -->
+    <ScrollView
+        android:id="@+id/sv_goods_detail"
+        style="@style/match"
+        android:layout_gravity="center"
+        android:scrollbars="none" >
 
         <LinearLayout
             style="@style/match_width"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/topOrbottomPadding"
-            android:paddingTop="@dimen/topOrbottomPadding" >
+            android:orientation="vertical"
+            >
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/popgoodsImgHeight" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_goods_img"
+                    style="@style/match"
+                    android:layout_gravity="center" />
+
+                <com.android.tonight8.view.PointLinearlayout
+                    android:id="@+id/ll_point_container"
+                    style="@style/match_width"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </FrameLayout>
+
+            <View style="@style/line_full" />
+
+            <RelativeLayout
+                style="@style/match_width"
+                android:paddingBottom="@dimen/topOrbottomPadding"
+                android:paddingTop="@dimen/topOrbottomPadding" >
+
+                <TextView
+                    android:id="@+id/tv_goods_name"
+                    style="@style/wrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/common_margin_left"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_goods_prize_old"
+                    style="@style/wrap"
+                    android:layout_alignLeft="@id/tv_goods_name"
+                    android:layout_below="@id/tv_goods_name"
+                    android:layout_marginTop="@dimen/topOrbottomPadding"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_goods_prize_now"
+                    style="@style/wrap"
+                    android:layout_alignTop="@id/tv_goods_prize_old"
+                    android:layout_below="@id/tv_goods_prize_old"
+                    android:layout_marginLeft="@dimen/margin_between_item"
+                    android:layout_toRightOf="@id/tv_goods_prize_old"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_goods_count"
+                    style="@style/wrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/common_margin_left"
+                    android:background="@drawable/shape_red_rect"
+                    android:padding="@dimen/topOrBottomPaddingSmall"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/middleTextSize"
+                    android:gravity="right"/>
+            </RelativeLayout>
+
+            <View style="@style/line_full" />
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/tv_goods_promise"
+                style="@style/wrap"
                 android:layout_marginLeft="@dimen/common_margin_left"
-                android:layout_weight="1"
-                android:text="@string/about"
+                android:layout_marginTop="@dimen/topOrBottomPaddingSmall"
+                android:text="@string/goods_promise"
                 android:textColor="@color/black"
                 android:textSize="@dimen/middleTextSize" />
 
-            <TextView
-                android:id="@+id/tv_coupon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/about"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/middleTextSize" />
+            <com.android.tonight8.view.GridViewForScrollView
+                android:id="@+id/gv_promise_item"
+                style="@style/match_width"
+                android:layout_marginBottom="@dimen/topOrbottomPadding"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                />
+
+            <View style="@style/line_full" />
+            
+            <RadioGroup
+                android:id="@+id/rg_goods_info"
+                style="@style/match_width"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rb_goods_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/goods_detail"
+                    android:textColor="@drawable/selector_tab_text_color"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <RadioButton
+                    android:id="@+id/rb_goods_style"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/product_style"
+                    android:textColor="@drawable/selector_tab_text_color"
+                    android:textSize="@dimen/middleTextSize" />
+
+                <RadioButton
+                    android:id="@+id/rb_goods_comment"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/goods_comment"
+                    android:textColor="@drawable/selector_tab_text_color"
+                    android:textSize="@dimen/middleTextSize" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/ll_container"
+                style="@style/match_width"
+                android:orientation="vertical" />
         </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white" >
 
         <Button
             android:id="@+id/btn_ensure_order"
             style="@style/ok_button_style"
-            android:layout_marginBottom="@dimen/topOrbottomPadding"
-            android:layout_marginTop="@dimen/topOrbottomPadding"
+            android:layout_centerInParent="true"
             android:text="@string/fast_order" />
+    </RelativeLayout>
 
-        <RadioGroup
-            android:id="@+id/rg_goods_info"
-            style="@style/match_width"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/rb_goods_detail"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:background="@drawable/tab_selector"
-                android:button="@null"
-                android:gravity="center"
-                android:text="@string/goods_detail"
-                android:textColor="@drawable/selector_tab_text_color"
-                android:textSize="@dimen/middleTextSize" />
-
-            <RadioButton
-                android:id="@+id/rb_goods_style"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:background="@drawable/tab_selector"
-                android:button="@null"
-                android:gravity="center"
-                android:text="@string/product_style"
-                android:textColor="@drawable/selector_tab_text_color"
-                android:textSize="@dimen/middleTextSize" />
-
-            <RadioButton
-                android:id="@+id/rb_goods_comment"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:background="@drawable/tab_selector"
-                android:button="@null"
-                android:gravity="center"
-                android:text="@string/goods_comment"
-                android:textColor="@drawable/selector_tab_text_color"
-                android:textSize="@dimen/middleTextSize" />
-        </RadioGroup>
-
-        <LinearLayout
-            android:id="@+id/ll_container"
-            style="@style/match_width"
-            android:orientation="vertical" />
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

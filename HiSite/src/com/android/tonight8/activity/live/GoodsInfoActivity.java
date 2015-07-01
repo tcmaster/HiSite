@@ -10,24 +10,32 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.live.GoodDetailPopVpAdapter;
+import com.android.tonight8.adapter.live.GoodServiceAdapter;
+import com.android.tonight8.base.AppConstants;
 import com.android.tonight8.base.BaseActivity;
 import com.android.tonight8.base.BaseFragment;
 import com.android.tonight8.dao.model.live.EventGoods;
+import com.android.tonight8.dao.model.live.EventGoodsOrder;
 import com.android.tonight8.fragment.goodsinfo.GoodsDetailIntroduceFragment;
 import com.android.tonight8.fragment.goodsinfo.GoodsPraiseFragment;
 import com.android.tonight8.fragment.goodsinfo.GoodsStandardFragment;
 import com.android.tonight8.function.CirculateFunction;
 import com.android.tonight8.io.HandlerConstants;
 import com.android.tonight8.io.live.LiveIOController;
+import com.android.tonight8.view.GoodsOrderPopupWindow;
+import com.android.tonight8.view.GoodsOrderPopupWindow.GoodsOrderPWCallBack;
 import com.android.tonight8.view.PointLinearlayout;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -41,6 +49,9 @@ public class GoodsInfoActivity extends BaseActivity {
 	/** 本页面的滑动按钮 */
 	@ViewInject(R.id.sv_goods_detail)
 	private ScrollView sv_goods_detail;
+	/** 底部布局 */
+	@ViewInject(R.id.rl_bottom)
+	private RelativeLayout rl_bottom;
 	/** 商品名称 */
 	@ViewInject(R.id.tv_goods_name)
 	private TextView tv_goods_name;
@@ -53,15 +64,9 @@ public class GoodsInfoActivity extends BaseActivity {
 	/** 商品数量 */
 	@ViewInject(R.id.tv_goods_count)
 	private TextView tv_goods_count;
-	/** 商品运费 */
-	@ViewInject(R.id.tv_goods_freight)
-	private TextView tv_goods_freight;
 	/** 商品保障项 */
 	@ViewInject(R.id.gv_promise_item)
 	private GridView gv_promise_item;
-	/** 选择优惠券 */
-	@ViewInject(R.id.tv_coupon)
-	private TextView tv_coupon;
 	/** 确认订购按钮 */
 	@ViewInject(R.id.btn_ensure_order)
 	private Button btn_ensure_order;
@@ -72,12 +77,23 @@ public class GoodsInfoActivity extends BaseActivity {
 	private BaseFragment[] baseFragments;
 	private FragmentManager fm;
 	private CirculateFunction cFunction;
+	/** 商品保障适配器 */
+	private GoodServiceAdapter adapter;
 
 	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
+			case HandlerConstants.Live.GOODS_ORDER:
+				switch (msg.arg1) {
+				case HandlerConstants.RESULT_OK:
+					processEnsureOrder((EventGoodsOrder) msg.obj);
+					break;
+				default:
+					break;
+				}
+				break;
 			case HandlerConstants.Live.GOODS_DETAIL:
 				switch (msg.arg1) {
 				case HandlerConstants.RESULT_OK:
@@ -89,33 +105,38 @@ public class GoodsInfoActivity extends BaseActivity {
 					ll_point_container.changePoint(0);
 					if (cFunction == null) {
 						initCFunction(model.getPopPics().size());
-						cFunction.start();
-						vp_goods_info
-								.setOnPageChangeListener(new OnPageChangeListener() {
 
-									@Override
-									public void onPageSelected(int arg0) {
-										ll_point_container.changePoint(arg0);
-									}
-
-									@Override
-									public void onPageScrolled(int arg0,
-											float arg1, int arg2) {
-									}
-
-									@Override
-									public void onPageScrollStateChanged(
-											int arg0) {
-									}
-								});
 					}
-
+					// 商品详细信息内容的填充
+					tv_goods_name.setText(model.getGoods().getName());
+					tv_goods_prize_old.setText(model.getGoods()
+							.getPreviewValue() + "");
+					tv_goods_prize_now.setText(model.getGoods()
+							.getCurrentValue() + "");
+					tv_goods_count.setText("剩余："
+							+ model.getGoods().getLimitNumber() + "\n"
+							+ "限量：1000");
+					// 商品保障项内容的填充
+					if (adapter == null) {
+						adapter = new GoodServiceAdapter(
+								GoodsInfoActivity.this,
+								model.getGoodsServices());
+						gv_promise_item.setAdapter(adapter);
+					} else
+						adapter.update(model.getGoodsServices());
 					// 处理下面两个布局中的adapter
 					baseFragments[0].updateData(List.class,
 							model.getDetailPics());
 					baseFragments[1].updateData(List.class,
 							model.getGoodsStandards());
 					rg_goods_info.check(R.id.rb_goods_detail);
+					btn_ensure_order.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							LiveIOController.readOrderShow(handler);
+						}
+					});
 					break;
 
 				default:
@@ -133,6 +154,7 @@ public class GoodsInfoActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		initCreateNomal(savedInstanceState, R.layout.activity_goods_info);
 		getActionBarBase("初始化只希望确定");
+		initViews();
 		initDatas();
 	}
 
@@ -158,6 +180,18 @@ public class GoodsInfoActivity extends BaseActivity {
 		cFunction = null;
 	}
 
+	private void initViews() {
+		rl_bottom.post(new Runnable() {
+
+			@Override
+			public void run() {
+				rl_bottom.getLayoutParams().height = AppConstants.heightPx / 9;
+				sv_goods_detail.setPadding(0, 0, 0, AppConstants.heightPx / 9);
+				rl_bottom.invalidate();
+			}
+		});
+	}
+
 	private void initDatas() {
 		baseFragments = new BaseFragment[3];
 		baseFragments[0] = GoodsDetailIntroduceFragment.newInstance();
@@ -177,25 +211,24 @@ public class GoodsInfoActivity extends BaseActivity {
 
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				int which = -1;
 				switch (checkedId) {
 				case R.id.rb_goods_detail:
-					which = changeFragment(0);
+					changeFragment(0);
 					break;
 				case R.id.rb_goods_style:
-					which = changeFragment(1);
+					changeFragment(1);
 					break;
 				case R.id.rb_goods_comment:
-					which = changeFragment(2);
+					changeFragment(2);
 					break;
 				default:
-					which = 0;
 					break;
 				}
 			}
 		});
 		LiveIOController.readGoodsInfo(handler);
 		sv_goods_detail.fullScroll(ScrollView.FOCUS_UP);
+
 	}
 
 	/**
@@ -203,7 +236,7 @@ public class GoodsInfoActivity extends BaseActivity {
 	 * 
 	 * @param pos
 	 */
-	private int changeFragment(int pos) {
+	private void changeFragment(int pos) {
 		FragmentTransaction ft = fm.beginTransaction();
 		for (int i = 0; i < baseFragments.length; i++) {
 			if (i == pos)
@@ -212,7 +245,6 @@ public class GoodsInfoActivity extends BaseActivity {
 				ft.hide(baseFragments[i]);
 		}
 		ft.commit();
-		return pos;
 	}
 
 	@SuppressLint("HandlerLeak")
@@ -223,5 +255,28 @@ public class GoodsInfoActivity extends BaseActivity {
 				vp_goods_info.setCurrentItem(msg.what);
 			}
 		});
+		cFunction.start();
+		vp_goods_info.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int arg0) {
+				ll_point_container.changePoint(arg0);
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+			}
+		});
+	}
+
+	private void processEnsureOrder(EventGoodsOrder model) {
+		GoodsOrderPopupWindow window = new GoodsOrderPopupWindow(this,
+				new GoodsOrderPWCallBack() {
+				}, model);
+		window.showWindow();
 	}
 }

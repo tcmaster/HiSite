@@ -6,6 +6,7 @@ import java.util.Map;
 import android.os.Handler;
 
 import com.android.tonight8.io.HandlerConstants;
+import com.android.tonight8.io.live.entity.EventGoodsOrderNetEntity;
 import com.android.tonight8.io.live.entity.EventGoodsServiceNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveCommitNetEntity;
 import com.android.tonight8.io.live.entity.EventLiveNetEntity;
@@ -28,6 +29,8 @@ public class LiveIOController {
 			+ "";
 	private static final String EVENT_GOODS_SHOW = NetRequest.BASE_URL + "";
 	private static final String EVENT_GOODS_COMMENT = NetRequest.BASE_URL + "";
+	private static final String EVENT_GOODS_ORDER_SHOW = NetRequest.BASE_URL
+			+ "";
 
 	public static void readLiveTitle(final Handler handler) {
 		Map<String, String> param = new HashMap<String, String>();
@@ -142,6 +145,31 @@ public class LiveIOController {
 						HandlerConstants.sendMessage(handler,
 								t.getEventGoodsServiceMarkList(),
 								HandlerConstants.Live.GOODS_COMMENT,
+								HandlerConstants.RESULT_OK, -1);
+					}
+
+					@Override
+					public void onFailure(HttpException error, String msg) {
+					}
+				});
+	}
+
+	public static void readOrderShow(final Handler handler) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put(NetRequest.REQUEST_URL, EVENT_GOODS_ORDER_SHOW);
+		HandlerConstants.sendMessage(handler, null,
+				HandlerConstants.Live.GOODS_ORDER,
+				HandlerConstants.NETWORK_BEGIN, -1);
+		NetRequest.doGetRequest(param,
+				new RequestResult<EventGoodsOrderNetEntity>(
+						EventGoodsOrderNetEntity.class, handler) {
+
+					@Override
+					public void getData(NetEntityBase netEntityBase,
+							EventGoodsOrderNetEntity t, Handler handler) {
+						HandlerConstants.sendMessage(handler,
+								t.getEventGoodsOrder(),
+								HandlerConstants.Live.GOODS_ORDER,
 								HandlerConstants.RESULT_OK, -1);
 					}
 

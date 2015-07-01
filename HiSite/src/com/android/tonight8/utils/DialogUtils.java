@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 
 import com.android.tonight8.R;
 import com.android.tonight8.adapter.createevent.ShareAdapter;
@@ -314,5 +313,9 @@ public class DialogUtils {
 			}
 		});
 		cdlg.showDlg();
+	}
+
+	public static void showGoodsOrderPopWindow() {
+
 	}
 }

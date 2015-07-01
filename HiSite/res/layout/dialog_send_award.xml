@@ -62,7 +62,7 @@
             android:background="@drawable/seletor_bottom_corner_left"
             android:gravity="center"
             android:singleLine="true"
-            android:text="@string/cancle"/>
+            android:text="@string/cancel"/>
 
         <View style="@style/line_full_vertical" />
 
