@@ -14,7 +14,8 @@
         android:layout_marginRight="@dimen/common_margin_small"
         android:singleLine="false"
         android:text="我要去西藏"
-        android:textColor="@color/purple" />
+        android:textColor="@color/purple"
+        android:textSize="@dimen/smallTextSize" />
 
     <TextView
         android:id="@+id/tv_mywishpost_datetime"
@@ -30,13 +31,15 @@
 
         <TextView
             style="@style/wrap"
-            android:text="支持人数：" />
+            android:text="支持人数："
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_support_count"
             style="@style/wrap"
             android:layout_marginLeft="@dimen/common_margin_small"
-            android:text="20000" />
+            android:text="20000"
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <RelativeLayout
@@ -63,7 +66,8 @@
             android:layout_marginLeft="@dimen/common_margin_left"
             android:layout_toRightOf="@+id/pb_mywish_progress"
             android:text="查看赞助"
-            android:textColor="@color/purple" />
+            android:textColor="@color/purple"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_mywish_progress"
@@ -71,7 +75,8 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="实现进度："
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_wish_progress"
@@ -82,7 +87,9 @@
             android:gravity="center_vertical"
             android:padding="@dimen/common_margin_small"
             android:text="历程发布"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </LinearLayout>

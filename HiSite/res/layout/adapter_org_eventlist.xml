@@ -2,28 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:drawSelectorOnTop="true"
+    android:background="@drawable/seletor_white_to_gray"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/tv_myevent_name"
         style="@style/match_width"
-        android:background="@color/half_white"
         android:padding="@dimen/common_margin_left"
-        android:text="小米公司免费送手机" />
+        android:text="小米公司免费送手机"
+        android:textColor="@color/purple" />
 
-    <ImageView
-        android:id="@+id/tv_myevent_pic"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_below="@+id/tv_myevent_name"
-        android:background="@drawable/ic_launcher" />
+    <View
+        android:id="@+id/view_line"
+        style="@style/line_full"
+        android:layout_below="@+id/tv_myevent_name" />
+
+    <RelativeLayout
+        android:id="@+id/ll_myevent_pic"
+        style="@style/wrap"
+        android:layout_margin="@dimen/common_margin_small"
+        android:layout_below="@+id/view_line" >
+
+        <ImageView
+            android:id="@+id/tv_myevent_pic"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/ic_launcher"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/iv_myevent_pictype"
+            style="@style/wrap"
+            android:background="@drawable/label_genuine"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll_myevent_content"
         style="@style/match_width"
-        android:layout_alignBottom="@+id/tv_myevent_pic"
-        android:layout_below="@+id/tv_myevent_name"
-        android:layout_toRightOf="@+id/tv_myevent_pic"
+        android:layout_alignBottom="@+id/ll_myevent_pic"
+        android:layout_below="@+id/view_line"
+        android:layout_toRightOf="@+id/ll_myevent_pic"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="@dimen/common_margin_small" >
@@ -33,28 +53,33 @@
             style="@style/match_width"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="奖品：香奈儿" />
+            android:text="奖品：香奈儿"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_price_count"
             style="@style/match_width"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="价值：699名" />
+            android:text="价值：699名"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_enent_number"
             style="@style/match_width"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="名额：5名" />
+            android:text="名额：5名"
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/tv_event_signup"
             style="@style/match_width"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="报名：320名" />
+            android:text="报名：320名"
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
 </RelativeLayout>

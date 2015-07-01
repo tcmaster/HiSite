@@ -115,7 +115,11 @@
             style="@style/match_width"
             layout="@layout/include_myaccount_item"
             android:visibility="gone" />
-
+        <include
+            android:id="@+id/layout_my_event_host"
+            style="@style/match_width"
+            layout="@layout/include_myaccount_item"
+            android:visibility="gone" />
         <include
             android:id="@+id/layout_my_wish"
             style="@style/match_width"

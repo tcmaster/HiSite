@@ -5,10 +5,10 @@ package com.android.tonight8.dao.model.other;
  * 
  */
 public class WishAddItem {
-	/** 0现金 1物品 */
-	private int type;
-	/** 金额 */
-	private String money;
+	/** 0物品 1现金 */
+	private int type = 0;
+	/** 赞助的东西：现金或者物品 */
+	private String things;
 	/** 原因 */
 	private String reason;
 	/** 是否是添加 */
@@ -30,12 +30,12 @@ public class WishAddItem {
 		this.type = type;
 	}
 
-	public String getMoney() {
-		return money;
+	public String getThings() {
+		return things;
 	}
 
-	public void setMoney(String money) {
-		this.money = money;
+	public void setThings(String things) {
+		this.things = things;
 	}
 
 	public String getReason() {

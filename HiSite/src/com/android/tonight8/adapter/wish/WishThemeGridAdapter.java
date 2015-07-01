@@ -50,8 +50,8 @@ public class WishThemeGridAdapter extends BaseListAdapter<String> {
 					mActivity.updateWishThemeData(position,
 							MakeWishActivity.UPDATA_DATA, null);
 					DialogUtils.showSelectPicDialog(mActivity,
-							MakeWishActivity.THEME_PICKPICTURE,
-							MakeWishActivity.THEME_TAKEPHOTO);
+							MakeWishActivity.PICKPICTURE,
+							MakeWishActivity.TAKEPHOTO);
 				}
 			}
 		});

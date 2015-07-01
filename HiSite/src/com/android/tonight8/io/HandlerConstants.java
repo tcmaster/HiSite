@@ -65,8 +65,12 @@ public class HandlerConstants {
 		public static final int WISH_LIVE_TALK = 307;
 		/** 我的心愿：赞助的心愿 */
 		public static final int MYWISH_SPONSOR = 308;
-		/** 我的心愿：我发布的心愿 */
+		/** 我的心愿：我发布的心愿*/
 		public static final int MYWISH_POST = 309;
+		/** 我制作的心愿提交*/
+		public static final int MAKEWISH_POST = 310;
+		/** 我的心愿赞助回复*/
+		public static final int MYWISH_REPLAY = 311;
 	}
 
 	/**

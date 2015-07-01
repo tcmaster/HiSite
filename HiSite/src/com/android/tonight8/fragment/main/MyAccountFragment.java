@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.tonight8.R;
+import com.android.tonight8.activity.event.OrgEventListActivity;
+import com.android.tonight8.activity.org.OrgDetailActivity;
 import com.android.tonight8.activity.user.UserInfoActivity;
 import com.android.tonight8.activity.wish.MyWishActivity;
 import com.android.tonight8.base.AppConstants;
@@ -71,6 +73,10 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 我的账户 */
 	@ViewInject(R.id.layout_my_money)
 	private RelativeLayout layout_my_money;
+
+	/** 我的活动主持 */
+	@ViewInject(R.id.layout_my_event_host)
+	private RelativeLayout layout_my_event_host;
 	/** 我的心愿 */
 	@ViewInject(R.id.layout_my_wish)
 	private RelativeLayout layout_my_wish;
@@ -83,6 +89,7 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 	/** 我的关注 */
 	@ViewInject(R.id.layout_my_attention)
 	private RelativeLayout layout_my_attention;
+
 	/** 消息中心 */
 	@ViewInject(R.id.layout_my_message)
 	private RelativeLayout layout_my_message;
@@ -119,12 +126,15 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 				R.string.my_order, null, null, true);
 		setTextAndContent(layout_my_address, R.drawable.vaddress,
 				R.string.my_address, null, null, true);
+		setTextAndContent(layout_my_money, R.drawable.vlove,
+				R.string.my_account, null, null, true);
 		setTextAndContent(layout_act_seller, R.drawable.vseller,
 				R.string.my_seller_role, null, null, true);
 		setTextAndContent(layout_act_org, R.drawable.vorg,
 				R.string.my_org_role, null, null, true);
-		setTextAndContent(layout_my_money, R.drawable.vlove,
-				R.string.my_account, null, null, true);
+
+		setTextAndContent(layout_my_event_host, R.drawable.vseller,
+				R.string.my_event_host, null, null, true);
 		setTextAndContent(layout_my_wish, R.drawable.vlove, R.string.my_wish,
 				null, null, true);
 		setTextAndContent(layout_my_event, R.drawable.vattention,
@@ -140,13 +150,6 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 		tv_user_role.setText("用户");
 		rl_head.getLayoutParams().height = AppConstants.heightPx / 10 * 1;
 		ll_center_layout.getLayoutParams().height = AppConstants.heightPx / 10 * 8;
-		if (AccountType == 0) {
-
-		} else if (AccountType == 1) {
-
-		} else if (AccountType == 2) {
-			// layout_my_wish.setVisibility(View.GONE);
-		}
 
 	}
 
@@ -158,17 +161,35 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 
 					@Override
 					public void onUser(String userText) {
+						AccountType = 0;
 						tv_user_role.setText(userText);
+						layout_my_event_host.setVisibility(View.GONE);
+						layout_my_event.setVisibility(View.GONE);
+						layout_act_seller.setVisibility(View.VISIBLE);
+						layout_act_org.setVisibility(View.VISIBLE);
+						layout_my_wish.setVisibility(View.VISIBLE);
 					}
 
 					@Override
 					public void onSeller(String sellerText) {
+						AccountType = 1;
 						tv_user_role.setText(sellerText);
+						layout_my_event_host.setVisibility(View.VISIBLE);
+						layout_my_event.setVisibility(View.GONE);
+						layout_act_seller.setVisibility(View.GONE);
+						layout_act_org.setVisibility(View.GONE);
+						layout_my_wish.setVisibility(View.VISIBLE);
 					}
 
 					@Override
 					public void onOrg(String orgText) {
+						AccountType = 2;
 						tv_user_role.setText(orgText);
+						layout_my_event_host.setVisibility(View.GONE);
+						layout_my_event.setVisibility(View.VISIBLE);
+						layout_act_seller.setVisibility(View.GONE);
+						layout_act_org.setVisibility(View.GONE);
+						layout_my_wish.setVisibility(View.GONE);
 					}
 				});
 	}
@@ -179,19 +200,32 @@ public class MyAccountFragment extends MyAccountBaseFragment {
 
 	}
 
-	@OnClick({ R.id.tv_user_role, R.id.iv_user_photo, R.id.layout_my_wish })
+	@OnClick({ R.id.tv_user_role, R.id.iv_user_photo, R.id.layout_my_wish,
+			R.id.layout_my_event })
 	public void onClick(View v) {
+		Intent intent = null;
 		switch (v.getId()) {
 		case R.id.tv_user_role:
 			window.showWindow(tv_user_role);
 			break;
 		case R.id.iv_user_photo:
-			Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+			if (AccountType == 0) {
+				intent = new Intent(getActivity(), UserInfoActivity.class);
+			} else if (AccountType == 1) {
+				// intent = new Intent(getActivity(), OrgDetailActivity.class);
+			} else if (AccountType == 2) {
+				intent = new Intent(getActivity(), OrgDetailActivity.class);
+			}
+
 			startActivity(intent);
 			break;
 		case R.id.layout_my_wish:
 			startActivityForAnima(new Intent(activity, MyWishActivity.class),
 					activity);
+			break;
+		case R.id.layout_my_event:
+			startActivityForAnima(new Intent(activity,
+					OrgEventListActivity.class), activity);
 			break;
 		default:
 			break;

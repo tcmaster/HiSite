@@ -15,7 +15,7 @@
 
             <ImageView
                 style="@style/wrap"
-                android:layout_height="80dp"
+                android:layout_height="90dp"
                 android:background="@drawable/wish_theme"
                 android:scaleType="fitXY" />
 
@@ -89,6 +89,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_wish_post"
             style="@style/ok_button_style"
             android:layout_margin="@dimen/common_margin_left"
             android:text="心愿发布" />
