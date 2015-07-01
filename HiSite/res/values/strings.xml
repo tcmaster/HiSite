@@ -183,7 +183,7 @@
     <string name="detail_address">详细地址：</string>
     <string name="save">保存</string>
     <!-- 对话框取消 -->
-    <string name="cancle">取消</string>
+    <string name="cancel">取消</string>
     <!-- 商家注册 -->
     <string name="register">注册</string>
     <string name="login">登录</string>
@@ -230,5 +230,12 @@
     <string name="goods_comment">口碑</string>
     <string name="goods_coupon">使用优惠券</string>
     <string name="fast_order">立即下单</string>
-
+    <string name="goods_promise">商品保障：</string>
+    <string name="count">数量</string>
+	<string name="countinit">输入数量</string>
+	<string name="use_coupon">使用优惠券：</string>
+	<string name="coupon_init">满100减50</string>
+	<string name="value_scene">现场价：</string>
+	<string name="value_net">实付：</string>
+	<string name="go_to_buy">去付款</string>
 </resources>
